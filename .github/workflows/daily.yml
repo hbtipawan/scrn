@@ -2,8 +2,8 @@ name: Daily update
 
 on:
   schedule:
-    # 11:30 UTC = 5:00 PM IST, Monday to Friday (after NSE close and bhavcopy)
-    - cron: "30 11 * * 1-5"
+    # 13:10 UTC = 6:40 PM IST, Monday to Friday (after NSE close and bhavcopy)
+    - cron: "10 13 * * 1-5"
   workflow_dispatch:
     inputs:
       source:
