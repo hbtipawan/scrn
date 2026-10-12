@@ -1,6 +1,6 @@
 {
  "scan_date": "2026-10-09",
- "scan_timestamp": "2026-10-12T18:02:00+05:30",
+ "scan_timestamp": "2026-10-13T00:27:30+05:30",
  "market": "IN",
  "sector_both": [
   {
@@ -2475,9 +2475,9 @@
   },
   {
    "sector": "Healthcare",
-   "stocks_passing": 25,
+   "stocks_passing": 26,
    "total_in_universe": 39,
-   "hit_rate_%": 64.1
+   "hit_rate_%": 66.7
   },
   {
    "sector": "Diamond, Gems and Jewellery",
@@ -3712,6 +3712,12 @@
    "hit_rate_%": 75.0
   },
   {
+   "industry": "Electronics - Others",
+   "stocks_passing": 3,
+   "total_in_universe": 4,
+   "hit_rate_%": 75.0
+  },
+  {
    "industry": "Engines",
    "stocks_passing": 3,
    "total_in_universe": 4,
@@ -4103,12 +4109,6 @@
   },
   {
    "industry": "Computer - Hardware",
-   "stocks_passing": 2,
-   "total_in_universe": 4,
-   "hit_rate_%": 50.0
-  },
-  {
-   "industry": "Electronics - Others",
    "stocks_passing": 2,
    "total_in_universe": 4,
    "hit_rate_%": 50.0
