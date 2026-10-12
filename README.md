@@ -175,6 +175,24 @@ The **Long bases** tab lists every stock that is in a base on the daily chart, s
 
 The code is `scripts/stage2.py`. It uses the long-base breakouts from `bases.py` to count bases.
 
+## Quarterly results (Results tab)
+
+**Results** shows every result announced in the current results season — the calendar quarter in which it was announced: 1 Oct – 31 Dec, 1 Jan – 31 Mar, and so on (the Oct–Dec season is mostly the September quarter, Q2). The season before it is one tap away, and the next 14 days of announced results dates are listed at the bottom. Each result is a card (revenue, EBITDA, net profit and EPS with YoY and QoQ change, EBITDA margin and its change in points) or a row in a sortable list.
+
+- **Basis:** consolidated when the company files it, else standalone. YoY and QoQ compare only against quarters filed on the same basis. Banks show net interest income and operating profit before provisions; other lenders show operating profit without adding back finance cost.
+- **Result date:** the first filing, or the board meeting that approved the results when that came 1–3 days earlier (the XBRL file often follows the results by a day). Revised filings keep the original date. Filings more than 100 days after the quarter ended (old quarters, revisions) are left out.
+- **Result Quality Score (0–100)** — is the quarter good, and is the profit real? Revenue growth 20 · operating profit growth 20 · margins 20 (best margin in five quarters, change on the year) · consistency 20 (quarters in a row with operating profit up, revenue growth speeding up) · clean profit 20 (points off for a net loss, an exceptional gain, a tax rate under 10%, other income above 30% of PBT; 8 or less caps the score at 54). Grades: 85+ Excellent · 70+ Very good · 55+ Good · 40+ Weak · under 40 Very weak. A result with no like-for-like quarter a year ago is not rated.
+- **PEAD score (0–9)** — how likely the price keeps drifting up after the result: profit surprise 2 (standardised unexpected EBITDA) · profit jump vs share price 1 · revenue surprise 2 · two-session price reaction vs NIFTY 500 2 · strong close 1 · within 10% of the 52-week high before the result 1. It is filled in once two full sessions from the result day are in; until then the card shows the points already known (out of 6).
+- **Scanners:** "Strong results, PEAD 7+" (Quality 70+ and PEAD 7+; also in watchlist highlights and the Telegram digest) and "Excellent results (Quality 85+)".
+
+**Tested on 22,188 NSE results from Jul 2019 to Jul 2026** (full tables in the tab and in `config/results_evidence.json`); returns are from the close of the second session after the result, against NIFTY 500:
+
+- **PEAD 9/9:** +8.3% on average over the next 60 sessions, 58% beat the index. **0/9:** -1.3%, 39%. The order held in every year 2019–2026 and in every market-cap band, strongest in smaller companies.
+- **Quality 85+:** next quarter's operating profit was also up on the year 91% of the time (under 40: 40%), and the stock did +5.0% over 60 sessions (under 40: +0.1%).
+- The two-session reaction and the revenue surprise were the strongest single signs; result-day volume added little once those were known.
+
+The code is `scripts/results.py` (it reads `config/fund_results.csv` from the fundamentals step).
+
 ## Telegram alerts
 
 Two kinds of message, both sent by your own Telegram bot:
