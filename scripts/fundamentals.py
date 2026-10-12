@@ -62,7 +62,7 @@ def stock_metrics(q, hold):
         qn = (q.index.year * 4 + (q.index.month - 1) // 3).tolist()
         pos = {n: i for i, n in enumerate(qn)}
         n0 = qn[-1]
-        cols = {c: q[c].to_numpy(dtype=float) if c in q else None for c in q.columns if c not in ("symbol", "basis", "aud", "filed", "xbrl")}
+        cols = {c: q[c].to_numpy(dtype=float) if c in q else None for c in q.columns if c not in ("symbol", "basis", "aud", "filed", "xbrl", "first_filed")}
 
         def at(months_back, col):
             i = pos.get(n0 - months_back // 3)

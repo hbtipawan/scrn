@@ -39,6 +39,9 @@ XPRE = "https://nsearchives.nseindia.com/corporate/xbrl/"
 short = lambda u: str(u).replace(XPRE, "") if isinstance(u, str) else u      # keep CSVs compact
 full_url = lambda u: u if str(u).startswith("http") else XPRE + str(u)
 QUARTERS_KEPT = 12          # quarters of results kept per stock
+RES_COLS = ["symbol", "qe", "basis", "aud", "filed", "bank", "rev", "oi", "inc", "exp", "fin", "dep", "exc", "pbt", "tax", "pat", "pat_own", "eps",
+            "paidup", "fv", "prov", "equity", "borrow", "cash", "cwip", "assets", "inv", "recv", "ocf", "capex", "ytd_rev", "ytd_pat", "xbrl",
+            "first_filed"]
 SHP_QUARTERS = 5            # shareholding XBRLs per stock (latest quarter + 1 year back)
 _tl = threading.local()
 
@@ -298,8 +301,18 @@ def main():
 
     # ── results
     old = pd.read_csv(F_RES, dtype={"symbol": str}) if F_RES.exists() and not (full or a.redo_results) else pd.DataFrame()
+    if len(old) and ("first_filed" not in old or old["first_filed"].isna().all()):
+        # one-time: original announcement dates for recent quarters (later revisions overwrote "filed")
+        L0 = list_results(today - timedelta(days=210), today)
+        f0 = L0[L0.filed_dt.notna()].groupby(["symbol", "qe"]).filed_dt.min().dt.strftime("%Y-%m-%d")
+        old["first_filed"] = [min(f0.get((s_, q_), fd), fd) if isinstance(fd, str) else f0.get((s_, q_))
+                              for s_, q_, fd in zip(old.symbol, old.qe, old.filed)]
+        print(f"  original result dates filled for {int(sum((s_, q_) in f0.index for s_, q_ in zip(old.symbol, old.qe)))} recent quarters")
     lst = list_results(date(2024, 4, 1) if a.redo_results else since, today)
-    lst = lst[lst.symbol.isin(want)].sort_values("filed_dt").drop_duplicates(["symbol", "qe", "basis"], keep="last")
+    lst = lst[lst.symbol.isin(want)]
+    # first broadcast of each quarter's results (any basis): a later revision must not move the result date
+    first_dt = lst.groupby(["symbol", "qe"]).filed_dt.min()
+    lst = lst.sort_values("filed_dt").drop_duplicates(["symbol", "qe", "basis"], keep="last")
     # One basis per quarter: consolidated when the company files it, else standalone.
     lst["pref"] = (lst.basis == "C").astype(int)
     lst = lst.sort_values(["pref", "filed_dt"]).drop_duplicates(["symbol", "qe"], keep="last").drop(columns="pref")
@@ -317,18 +330,22 @@ def main():
         r = parse_result(t) if t else None
         if not r:
             return None
+        f0 = first_dt.get((row.symbol, row.qe))
         r.update({"symbol": row.symbol, "qe": row.qe, "basis": row.basis, "aud": str(row.aud)[:1],
-                  "filed": row.filed_dt.strftime("%Y-%m-%d") if row.filed_dt else None, "xbrl": row.xbrl})
+                  "filed": row.filed_dt.strftime("%Y-%m-%d") if row.filed_dt else None, "xbrl": row.xbrl,
+                  "first_filed": f0.strftime("%Y-%m-%d") if f0 is not None and pd.notna(f0) else None})
         return r
     new = pd.DataFrame(run_pool(list(lst.itertuples()), job_r, 8, "results"))
     res = pd.concat([old, new], ignore_index=True) if len(old) else new
     if len(res):
+        # keep the earliest known announcement date when a revised filing replaces the original
+        ff = res["first_filed"] if "first_filed" in res else pd.Series(None, index=res.index, dtype=object)
+        res["first_filed"] = ff.where(ff.notna(), res["filed"])
+        res["first_filed"] = res.groupby(["symbol", "qe"])["first_filed"].transform("min")
         res["pref"] = (res.basis == "C").astype(int)
         res = res.sort_values(["pref", "filed"]).drop_duplicates(["symbol", "qe"], keep="last").drop(columns="pref")
         res = res[res.qe >= cutoff_q].sort_values(["symbol", "qe", "basis"])
-        cols = ["symbol", "qe", "basis", "aud", "filed", "bank", "rev", "oi", "inc", "exp", "fin", "dep", "exc", "pbt", "tax", "pat", "pat_own", "eps",
-                "paidup", "fv", "prov", "equity", "borrow", "cash", "cwip", "assets", "inv", "recv", "ocf", "capex", "ytd_rev", "ytd_pat", "xbrl"]
-        res.reindex(columns=cols).to_csv(F_RES, index=False)
+        res.reindex(columns=RES_COLS).to_csv(F_RES, index=False)
     print(f"fund_results.csv: {len(res)} rows, {res.symbol.nunique() if len(res) else 0} stocks")
 
     # ── shareholding
@@ -361,7 +378,21 @@ def main():
     print(f"fund_holdings.csv: {len(shp)} rows, {shp.symbol.nunique() if len(shp) else 0} stocks")
 
     # ── results calendar (next 60 days) + NSE industry from board meetings; Yahoo industry for everyone
-    bm = list_meetings(today - timedelta(days=60 if not full else 400), today + timedelta(days=60))
+    bm = list_meetings(today - timedelta(days=120 if not full else 400), today + timedelta(days=60))
+    # result date = the board meeting that approved the results when it came 1-3 days before the
+    # first filing (the XBRL often follows the announcement by a day)
+    if len(res) and len(bm):
+        rm = bm[bm.results & bm.date.notna() & bm.symbol.notna()][["symbol", "date"]].copy()
+        rm["mtg"] = pd.to_datetime(rm.date).dt.normalize()
+        rm = rm.drop(columns="date").drop_duplicates().sort_values("mtg")
+        ff = pd.to_datetime(res["first_filed"], errors="coerce")
+        q = pd.DataFrame({"i": res.index, "symbol": res.symbol, "ff": ff - pd.Timedelta(days=1)}).dropna().sort_values("ff")
+        m = pd.merge_asof(q, rm, left_on="ff", right_on="mtg", by="symbol", direction="backward", tolerance=pd.Timedelta(days=2))
+        m = m[m.mtg.notna()]
+        if len(m):
+            res.loc[m.i.to_numpy(), "first_filed"] = m.mtg.dt.strftime("%Y-%m-%d").to_numpy()
+            res.reindex(columns=RES_COLS).to_csv(F_RES, index=False)
+            print(f"  result dates moved to the board meeting day: {len(m)}")
     info = pd.read_csv(F_INFO, dtype={"symbol": str}).set_index("symbol") if F_INFO.exists() else pd.DataFrame(columns=["industry"])
     if len(bm):
         bm = bm[bm.symbol.notna()]
@@ -369,12 +400,19 @@ def main():
         ind = ind[ind.astype(str).str.strip().ne("-")]
         rs = bm[bm.results & bm.date.notna()]
         nxt = rs[rs.date.dt.date >= today].groupby("symbol")["date"].min()
+        # latest results meeting already held: the results usually reach the market that day, while the
+        # XBRL file (our "filed" date) can follow a day or two later (results.py uses the earlier date)
+        held = rs[rs.date.dt.date <= today].groupby("symbol")["date"].max()
         info = info.reindex(sorted(set(info.index) | set(ind.index) | want))
         info.loc[ind.index, "nse_industry"] = ind
         info["next_results"] = nxt.reindex(info.index).dt.strftime("%Y-%m-%d")
+        if "last_results" not in info:
+            info["last_results"] = None
+        held = held[held.index.isin(info.index)]
+        info.loc[held.index, "last_results"] = held.dt.strftime("%Y-%m-%d")
     else:
         info = info.reindex(sorted(set(info.index) | want))
-    for c in ("industry", "sector", "ind_date", "nse_industry", "next_results"):
+    for c in ("industry", "sector", "ind_date", "nse_industry", "next_results", "last_results"):
         if c not in info:
             info[c] = None
     # Yahoo classification: missing ones first, then refresh the oldest (max 400 a night)
@@ -408,7 +446,7 @@ def main():
             print("  yfinance not installed - industry skipped")
     info = info[info.index.isin(want)]
     info.index.name = "symbol"
-    info[["industry", "sector", "ind_date", "nse_industry", "next_results"]].to_csv(F_INFO)
+    info[["industry", "sector", "ind_date", "nse_industry", "next_results", "last_results"]].to_csv(F_INFO)
     print(f"fund_info.csv: {int(info.industry.notna().sum())} stocks with industry, {int(info.next_results.notna().sum())} with upcoming results date")
 
     if len(res):

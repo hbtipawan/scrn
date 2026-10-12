@@ -124,7 +124,7 @@ def lists_of(wl, s):
 
 # ───────────────────────────────────────────── evening digest
 BULL = ["combo3", "up4", "high52_dcr", "ath", "vcp", "pocket_pivot", "tight3w", "power3", "bgu", "episodic_pivot", "darvas",
-        "stage2_bo", "bull_snort", "wedge_pop", "f_post", "f_accel", "lb_breakout", "lb_near", "s2_early"]
+        "stage2_bo", "bull_snort", "wedge_pop", "f_post", "f_accel", "lb_breakout", "lb_near", "s2_early", "res_strong"]
 BEAR = ["down4", "leader_down", "below200", "ema_down", "death", "gap_down", "f_red"]
 ICON = {"crit": "🛑", "warn": "⚠️", "good": "🚀", "info": "📅"}
 
@@ -257,7 +257,7 @@ def evening():
 
     top = lambda ids, n=8: sorted(ids, key=lambda s: -((by.get(s) or {}).get("rs") or 0))[:n]
     lines += ["", "<b>🔎 Today's scans</b>"]
-    for sid, label in (("combo3", "Confluence (4+ signal groups)"), ("lb_breakout", "Long-base breakouts (100+ day bases)"), ("s2_early", "Early Stage 2, score 70+"), ("f_post", "Post-results breakouts"), ("high52_dcr", "52-week highs, strong close"), ("vcp", "VCP setups")):
+    for sid, label in (("combo3", "Confluence (4+ signal groups)"), ("lb_breakout", "Long-base breakouts (100+ day bases)"), ("s2_early", "Early Stage 2, score 70+"), ("res_strong", "Strong results (Quality 70+, PEAD 7+)"), ("f_post", "Post-results breakouts"), ("high52_dcr", "52-week highs, strong close"), ("vcp", "VCP setups")):
         h = scans["hits"].get(sid) or []
         if h:
             lines.append(f"{label}: <b>{len(h)}</b> — " + ", ".join(sym(s) for s in top(h)))
@@ -359,12 +359,26 @@ def live(force=False):
 # ───────────────────────────────────────────── test
 def test():
     global CHAT
+    me = tg("getMe")
+    bot = me.get("username", "?")
+    print(f"This token belongs to the bot @{bot}  (https://t.me/{bot})")
     if not CHAT:
+        hook = tg("getWebhookInfo")
+        if hook.get("url"):                       # a webhook blocks getUpdates - remove it
+            tg("deleteWebhook")
+            print("Removed a webhook that was set on this bot")
         ups = tg("getUpdates")
-        chats = {u["message"]["chat"]["id"]: u["message"]["chat"].get("first_name") or u["message"]["chat"].get("title")
-                 for u in ups if "message" in u}
+        chats = {}
+        for u in ups:
+            for k in ("message", "edited_message", "my_chat_member", "channel_post"):
+                ch = (u.get(k) or {}).get("chat")
+                if ch:
+                    chats[ch["id"]] = ch.get("first_name") or ch.get("title") or ch.get("username") or ""
+        print(f"Messages waiting for @{bot}: {len(ups)}")
         if not chats:
-            print("No chat found. Open your bot in Telegram, press Start (or send it 'hi'), then run this again.")
+            print(f"No chat found. In Telegram open https://t.me/{bot} (exactly this bot), press Start, "
+                  f"send it 'hi', then run this test again within a few minutes.")
+            print("If you messaged a bot with a different name, the TELEGRAM_BOT_TOKEN secret is from another bot.")
             return
         CHAT = str(list(chats)[-1])
         print(f"YOUR TELEGRAM_CHAT_ID IS: {CHAT}  ({list(chats.values())[-1]}) - save it as a repository secret")

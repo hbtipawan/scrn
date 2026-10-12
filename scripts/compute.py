@@ -375,6 +375,26 @@ def main():
         import traceback
         traceback.print_exc()
         print(f"stage 2 phases skipped: {e}")
+    # ---------------- quarterly results: this season's results, Result Quality and PEAD scores (results.py)
+    res_meta = None
+    try:
+        import results as RES
+        RB = RES.build(W, U, {"bench": bench, "names": {r["s"]: r.get("n", "") for r in rows}, "mcap": mc_show.reindex(U)})
+        for r in rows:
+            r.update(RB["per_stock"].get(r["s"], {}))
+        rm, rh, rmet = RES.scans(RB)
+        sc_meta += rm
+        sc_hits.update(rh)
+        sc_metric.update(rmet)
+        at = cats.index("Stage 2") + 1 if "Stage 2" in cats else len(cats)
+        cats = cats[:at] + ["Results"] + cats[at:]
+        dump_later["results.json"] = {k: RB[k] for k in ("asof", "seasons", "rows", "due", "evidence")}
+        res_meta = {"season": RB["seasons"][0]["label"], "main": RB["seasons"][0]["main"],
+                    "n": sum(1 for x in RB["rows"] if x["sn"] == RB["seasons"][0]["id"])}
+    except Exception as e:  # never break the daily run
+        import traceback
+        traceback.print_exc()
+        print(f"results skipped: {e}")
     scans = {"cats": cats, "meta": sc_meta, "hits": sc_hits, "metric": sc_metric}
 
     ist = timezone(timedelta(hours=5, minutes=30))
@@ -384,7 +404,7 @@ def main():
             "failed": fm.get("failed_count"), "indices": indices,
             "filters": {"min_price": S["min_price"], "min_median_turnover_cr": S["min_median_turnover_cr"],
                         "min_market_cap_cr": S["min_market_cap_cr"] if mcap is not None else None},
-            "min_group_size": S["min_group_size"], "fund": fund_meta, "bases": base_meta, "stage2": s2_meta}
+            "min_group_size": S["min_group_size"], "fund": fund_meta, "bases": base_meta, "stage2": s2_meta, "results": res_meta}
 
     def dump(name, obj):
         (OUT / name).write_text(json.dumps(obj, separators=(",", ":"), allow_nan=False))
