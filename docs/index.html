@@ -52,6 +52,74 @@ a{color:inherit}
 h1,h2,h3,h4{font-family:var(--display);font-stretch:108%;margin:0;line-height:1.15;text-wrap:balance}
 [hidden]{display:none!important}
 
+/* ── Quarterly results ────────────────────────────────── */
+.rgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:14px;margin-bottom:14px}
+.rcard{--rc:#0F213B;--rc2:#172E4F;--rc-ink:#FFFFFF;--rc-mut:#AFC0D6;--rc-line:#2A4468;
+  background:var(--rc);color:var(--rc-ink);border-radius:14px;padding:18px 18px 16px;border:1px solid var(--rc-line);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px;min-width:0}
+.rc-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.rc-k{font-size:13px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rc-mut)}
+.rc-name{font-family:var(--display);font-weight:800;font-stretch:108%;font-size:25px;line-height:1.15;margin:4px 0 8px;overflow-wrap:anywhere}
+.rc-name button{all:unset;cursor:pointer;color:var(--rc-ink)}
+.rc-name button:hover{text-decoration:underline;text-underline-offset:3px}
+.rc-name button:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+.rc-sym{font-family:var(--body);font-size:14px;font-weight:600;color:var(--rc-mut);margin-left:6px;font-stretch:100%}
+.rc-qrow{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px}
+.rc-d{font-size:15px;font-weight:600;color:var(--rc-mut)}
+.rc-q{display:inline-block;background:rgba(46,196,140,.16);color:#7FE3BC;border:1px solid rgba(46,196,140,.45);border-radius:999px;padding:3px 12px;font-size:15px;font-weight:700}
+.rc-q.late{background:rgba(240,180,86,.14);color:#F5C46B;border-color:rgba(240,180,86,.45)}
+.rc-qs{flex:none;text-align:center;border-radius:12px;padding:6px 10px 7px;min-width:92px;border:1.5px solid currentColor}
+.rc-qs b{display:block;font-family:var(--display);font-size:32px;font-weight:800;line-height:1}
+.rc-qs span{display:block;font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-top:3px;opacity:.9}
+.g-ex{color:#5EE0B5}.g-vg{color:#8FE3A0}.g-gd{color:#D7E48A}.g-wk{color:#F5C46B}.g-vw{color:#FF9C85}
+.rc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rc-t{background:var(--rc2);border-radius:10px;padding:11px 12px 10px;min-width:0}
+.rc-t .k{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--rc-mut)}
+.rc-t .v{font-family:var(--display);font-weight:800;font-stretch:104%;font-size:27px;line-height:1.15;margin:3px 0 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rc-t .v small{font-size:17px;font-weight:700;color:var(--rc-mut);margin-left:3px}
+.rc-t .g{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px}
+.yp{display:inline-block;border-radius:999px;padding:1px 9px;font-size:15px;font-weight:700;white-space:nowrap}
+.yp.up{background:rgba(46,196,140,.18);color:#6FE3B7}.yp.down{background:rgba(255,120,90,.18);color:#FF9C85}.yp.na{background:rgba(175,192,214,.14);color:var(--rc-mut)}
+.qq{font-size:14.5px;color:var(--rc-mut);font-weight:600;white-space:nowrap}
+.qq b{font-weight:700}.qq .up{color:#6FE3B7}.qq .down{color:#FF9C85}
+.rc-foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 12px;border-top:1px solid var(--rc-line);padding-top:11px;font-size:16px}
+.rc-foot .m{color:var(--rc-mut)}.rc-foot .m b{color:var(--rc-ink);font-weight:700;margin:0 4px}
+.rc-foot .m .up{color:#6FE3B7;font-weight:700}.rc-foot .m .down{color:#FF9C85;font-weight:700}
+.rc-pead{display:inline-flex;align-items:center;gap:7px;border-radius:999px;padding:4px 13px;font-weight:800;font-size:16px;background:rgba(240,180,86,.16);color:#F5C46B;border:1px solid rgba(240,180,86,.5);white-space:nowrap}
+.rc-pead.hi{background:rgba(46,196,140,.18);color:#6FE3B7;border-color:rgba(46,196,140,.55)}
+.rc-pead.lo{background:rgba(175,192,214,.12);color:var(--rc-mut);border-color:rgba(175,192,214,.4)}
+.rc-pead i{font-style:normal;font-weight:600;font-size:13.5px;opacity:.85}
+.rc-react{font-size:15px;color:var(--rc-mut);line-height:1.45}
+.rc-react b{color:var(--rc-ink)}.rc-react .up{color:#6FE3B7;font-weight:700}.rc-react .down{color:#FF9C85;font-weight:700}
+.rc-flags{display:flex;flex-wrap:wrap;gap:6px}
+.rc-flag{font-size:14px;font-weight:600;border-radius:7px;padding:2px 9px;background:rgba(240,180,86,.13);color:#F5C46B}
+.rc-flag.good{background:rgba(46,196,140,.13);color:#6FE3B7}
+.rc-why{font-size:14.5px;color:var(--rc-mut)}
+.rc-why summary{cursor:pointer;font-weight:600;color:var(--rc-ink);list-style:none}
+.rc-why summary::-webkit-details-marker{display:none}
+.rc-why summary::before{content:"▸ ";color:#F5C46B}
+.rc-why[open] summary::before{content:"▾ "}
+.rc-why table{width:100%;border-collapse:collapse;margin-top:6px;font-size:14.5px}
+.rc-why td{padding:3px 4px;border-bottom:1px solid var(--rc-line);vertical-align:top}
+.rc-why td.p{text-align:right;font-weight:700;color:var(--rc-ink);white-space:nowrap;font-variant-numeric:tabular-nums}
+.gpill{display:inline-block;min-width:44px;text-align:center;border-radius:8px;padding:2px 8px;font-weight:800;font-size:16px;font-variant-numeric:tabular-nums}
+.gp-ex{background:#0E7A5C;color:#fff}.gp-vg{background:#3E9B4F;color:#fff}.gp-gd{background:#A3B23A;color:#1A1F05}.gp-wk{background:#E3A13A;color:#2A1A00}.gp-vw{background:#C9442B;color:#fff}
+.ppill{display:inline-block;border-radius:8px;padding:2px 8px;font-weight:800;font-size:16px;border:1.5px solid currentColor;font-variant-numeric:tabular-nums;white-space:nowrap}
+.pp-hi{color:var(--up-t)}.pp-mid{color:var(--accent-ink)}.pp-lo{color:var(--muted)}
+.rmore{display:flex;justify-content:center;margin:4px 0 18px}
+.rsum{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:baseline;margin:-4px 0 12px;color:var(--muted);font-size:16px}
+.rsum b{color:var(--ink)}
+@media (max-width:720px){
+  .rgrid{grid-template-columns:minmax(0,1fr)}
+  .rcard{padding:15px 14px 14px}
+  .rc-name{font-size:23px}
+  .rc-t .v{font-size:24px}
+  .rc-qs{min-width:80px}.rc-qs b{font-size:28px}
+}
+@media (max-width:380px){.rc-t .v{font-size:21px}.yp{font-size:14px}.qq{font-size:13.5px}}
+.ebar.neg{background:var(--down)}
+.egrid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:1000px){.egrid.two{grid-template-columns:minmax(0,1fr)}}
+
 /* ── Long bases ───────────────────────────────────────── */
 .bdays{display:block;font-family:var(--display);font-weight:800;font-stretch:108%;font-size:23px;line-height:1.1}
 .bsub{display:block;font-size:13.5px;color:var(--muted);font-weight:500;white-space:normal;max-width:260px}
@@ -456,7 +524,7 @@ footer.foot p{margin:4px 0;max-width:110ch}
   .verdict .v{font-size:27px}
   .tabbar{position:fixed;top:auto;bottom:0;left:0;right:0;border-top:1px solid var(--line);border-bottom:0;padding-bottom:env(safe-area-inset-bottom,0px)}
   .tabbar .wrap{padding-inline:4px;gap:0;justify-content:space-between}
-  .tab{flex:1;flex-direction:column;gap:3px;padding:9px 2px 8px;font-size:12.5px;border-bottom:0;border-top:3px solid transparent;min-width:0}
+  .tab{flex:1 1 auto;flex-direction:column;gap:3px;padding:9px 1px 8px;font-size:12.5px;border-bottom:0;border-top:3px solid transparent;min-width:0}
   .tab[aria-selected="true"]{border-top-color:var(--accent)}
   .tab .cnt{display:none}
   .tab .lf{display:none}.tab .ls{display:inline}
@@ -516,10 +584,11 @@ footer.foot p{margin:4px 0;max-width:110ch}
   <div class="wrap" role="tablist" id="tabs">
     <button class="tab" role="tab" data-v="rotation" aria-selected="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 5h11v3H3zm0 5.5h16v3H3zM3 16h8v3H3z"/></svg>Rotation</button>
     <button class="tab" role="tab" data-v="breadth" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M3 13h4l2.5-6 4 11 2.5-6H21"/></svg>Breadth</button>
-    <button class="tab" role="tab" data-v="rs" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M4 18l6-6 4 4 6-8M15 8h5v5"/></svg><span class="lf">RS ranking</span><span class="ls">RS rank</span></button>
-    <button class="tab" role="tab" data-v="scanners" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M16 16l4.5 4.5"/></svg>Scanners<span class="cnt" id="scanCnt"></span></button>
+    <button class="tab" role="tab" data-v="rs" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M4 18l6-6 4 4 6-8M15 8h5v5"/></svg><span class="lf">RS ranking</span><span class="ls">RS</span></button>
+    <button class="tab" role="tab" data-v="scanners" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M16 16l4.5 4.5"/></svg><span class="lf">Scanners</span><span class="ls">Scans</span><span class="cnt" id="scanCnt"></span></button>
     <button class="tab" role="tab" data-v="bases" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M3 19h18M5 15c2-1 3 1 5 0s3-2 5-1 2 1 4 0"/><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-dasharray="3 2.4" stroke-linecap="round" d="M4 8h16"/></svg><span class="lf">Long bases</span><span class="ls">Bases</span></button>
-    <button class="tab" role="tab" data-v="watch" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 3.6l2.5 5.2 5.6.7-4.1 3.9 1 5.6L12 16.3 7 19l1-5.6-4.1-3.9 5.6-.7z"/></svg><span class="lf">Watchlists</span><span class="ls">Watchlist</span><span class="cnt" id="wlCnt"></span></button>
+    <button class="tab" role="tab" data-v="results" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="3" width="15" height="18" rx="2.2" fill="none" stroke="currentColor" stroke-width="2"/><path stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M8.5 16.5v-3M12 16.5v-6M15.5 16.5V8"/></svg>Results<span class="cnt" id="resCnt"></span></button>
+    <button class="tab" role="tab" data-v="watch" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 3.6l2.5 5.2 5.6.7-4.1 3.9 1 5.6L12 16.3 7 19l1-5.6-4.1-3.9 5.6-.7z"/></svg><span class="lf">Watchlists</span><span class="ls">Lists</span><span class="cnt" id="wlCnt"></span></button>
     <button class="tab" role="tab" data-v="vpci" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/></svg><span class="lf">VPCI screener</span><span class="ls">VPCI</span></button>
   </div>
 </nav>
@@ -538,7 +607,7 @@ footer.foot p{margin:4px 0;max-width:110ch}
 /* ════════════════════ state & helpers ════════════════════ */
 const PERIODS=["1D","1W","1M","3M","6M","YTD","1Y"];
 const PL={"1D":"Today","1W":"1W","1M":"1M","3M":"3M","6M":"6M","YTD":"YTD","1Y":"1Y"};
-const TABS=["rotation","breadth","rs","scanners","bases","watch","vpci"];
+const TABS=["rotation","breadth","rs","scanners","bases","results","watch","vpci"];
 const st={tab:"rotation",period:"1M",group:"Themes",agg:"mean",sort:"ret",view:"bars",open:null,scan:"combo3",scanTop:0,scanFund:0,
   rs:{q:"",sec:"",theme:"",min:0,fmin:0,tt:false,s2:false,a50:false},tbl:{}};
 let D={};
@@ -578,6 +647,7 @@ function renderHeader(){
   const m=D.meta;
   $("#asof").textContent=`Prices to ${fmtDate(m.asof)} · updated ${m.generated.replace(/^\d{4}-\d{2}-\d{2} /,"")}`;
   const n=Object.values(D.scans?.hits||{}).filter(a=>a.length).length;$("#scanCnt").textContent=n||"";
+  const rc=D.meta.results?.n;$("#resCnt").textContent=rc||"";
 }
 function renderPulse(){
   const m=D.meta,b=D.breadth,L=b.dates.length-1,bn=b.bench_name,ix=m.indices||{},main=ix[bn]||Object.values(ix)[0];
@@ -985,6 +1055,7 @@ const phPill=p=>{const [l,c]=PHL[p]||["–",""];return `<span class="phpill ${c}
 const S2W={below50:"Below 50-day",offpeak:"15%+ off its peak",slowing:"150-day slope slowing",climax:"Climax: 100%+ above 200-day"};
 const s2wk=a=>{if(a>=260)return `${(a/250).toFixed(1)} yrs`;if(a>=42)return `${Math.round(a/21)} months`;const w=Math.max(1,Math.round(a/5));return w===1?"1 week":`${w} weeks`};
 if(!st.s2)st.s2={q:"",ph:"all",min:"0",rs70:false,f60:false,nowarn:false};
+if(!st.rx)st.rx={season:"",view:"cards",q:"",sort:"new",qmin:"0",pmin:"0",mc:"0",fin:"all",both:false,wl:false};
 const S2COL={
   ph:{k:"ph",label:"Phase",l:1,fmt:r=>`${phPill(r.z.ph)} <span class="bsub" style="display:inline">${r.z.mat}/9</span>`,sort:r=>PHO[r.z.ph]*1000-r.z.sc,csv:r=>(PHL[r.z.ph]||[""])[0]},
   sc:{k:"sc2",label:"Stage 2 Score",fmt:r=>scorePill(r.z.sc),sort:r=>r.z.sc,csv:r=>r.z.sc},
@@ -1223,9 +1294,9 @@ async function openDrawer(sym,ex,focusWl){
   const kv=(k,v)=>`<div><dt>${k}</dt><dd class="num">${v}</dd></div>`;
   const scans=(D.scansOf[sym]||[]).map(id=>D.scanMeta[id]).filter(Boolean);
   const name=x?.n||vr?.["Company Name"]||"",sector=x?.ind||x?.sec||vr?.Sector||"";
-  const [S2B,BB]=await Promise.all([s2Load().catch(()=>null),basesLoad().catch(()=>null)]);
-  const hasS2=!!S2B?.by?.[sym],hasB=!!BB?.by?.[sym];
-  const navs=[["pchart","Chart"],["wlsec","Watchlist"],hasS2&&["s2sec","Stage 2"],hasB&&["basesec","Base"],x&&["retsec","Returns"],x&&["trendsec","Trend"],fundHtml&&["fundsec","Fundamentals"],vr&&["vpcisec","VPCI"],["scansec","Scanners"]].filter(Boolean);
+  const [S2B,BB,RR]=await Promise.all([s2Load().catch(()=>null),basesLoad().catch(()=>null),resLoad().catch(()=>null)]);
+  const hasS2=!!S2B?.by?.[sym],hasB=!!BB?.by?.[sym],rres=RR?.by?.[sym]?.[0]||null;
+  const navs=[["pchart","Chart"],["wlsec","Watchlist"],hasS2&&["s2sec","Stage 2"],hasB&&["basesec","Base"],rres&&["ressec","Result"],x&&["retsec","Returns"],x&&["trendsec","Trend"],fundHtml&&["fundsec","Fundamentals"],vr&&["vpcisec","VPCI"],["scansec","Scanners"]].filter(Boolean);
   $("#drawer").innerHTML=`<header><div><h2 id="dTitle">${esc(sym)}</h2><div class="co">${esc(name)}${sector?` · ${esc(sector)}`:""}</div></div>
     ${x?`<div class="dprice"><span class="px num">₹${inr(x.px)}</span><span class="chg num ${cls(x.r["1D"])}">${sgn(x.r["1D"])} today</span>${isNum(x.mc)?`<span class="mc num">Mcap ₹${Math.round(x.mc).toLocaleString("en-IN")} Cr</span>`:""}</div>`:`<div></div>`}
     <div class="dacts"><a class="ghost tvl" href="${tv(sym,ex||vr?.exchange)}" target="_blank" rel="noopener">TradingView ↗</a><button class="close" type="button" data-close aria-label="Close ${esc(sym)}"><b aria-hidden="true">✕</b> Close</button></div>
@@ -1239,6 +1310,7 @@ async function openDrawer(sym,ex,focusWl){
       ${kv("ADX 14",isNum(x.adx)?x.adx.toFixed(0):"–")}${kv("ATR % of price",isNum(x.atrp)?x.atrp.toFixed(1)+"%":"–")}${kv("Volume × 50d",isNum(x.vr)?x.vr.toFixed(1):"–")}${kv("Turnover ₹Cr/day",isNum(x.to)?x.to:"–")}
       ${kv("Close range today",isNum(x.dcr)?x.dcr.toFixed(0)+"%":"–")}${kv("ADR % (20d)",isNum(x.adr)?x.adr.toFixed(1)+"%":"–")}${kv("Signal groups today",isNum(x.nsc)?x.nsc.toFixed(0)+" / 7":"–")}</dl></div>`:`<p class="note" style="margin:0">This symbol is outside the main NSE universe (BSE-only, or below the liquidity filter), so only its VPCI read is shown.</p><div id="pchartSlot"></div>${wlCardHtml(sym)}`}
     </div><div class="dcol">
+    ${rres?`<div class="dsec" id="ressec"><h4>Latest quarterly result</h4>${resCard(rxJoin(rres))}<p class="note" style="margin-top:8px"><button type="button" class="linkbtn" data-res-go>All of this season's results →</button></p></div>`:""}
     ${fundHtml?`<div id="fundsec">${fundHtml}</div>`:""}
     ${vr?`<div class="dsec" id="vpcisec"><h4>VPCI screener · completed weeks</h4><div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px">${statusPill(vr.status)}${gateDots(vr)}<span style="color:var(--muted)">${esc(vr.position_state||"")}</span></div>
       <dl class="dgrid">${kv("Gates",vr.gate_count+"/7")}${kv("VPCI",isNum(vr.vpci)?vr.vpci.toFixed(2):"–")}${kv("Trail stop","₹"+inr(vr.trail_stop))}${kv("Risk",isNum(vr.risk_pct)?vr.risk_pct.toFixed(1)+"%":"–")}</dl>
@@ -1340,7 +1412,7 @@ function spark(s,added){const c=CL?.c?.[s];if(!c)return `<span style="color:var(
   return `<svg class="spark" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${s} last 3 months ${up?"up":"down"}"><polyline points="${pts}" fill="none" stroke="${up?"var(--up)":"var(--down)"}" stroke-width="2" stroke-linejoin="round"/>${dot}</svg>`}
 
 /* ── alerts: what needs attention today ── */
-const BULL_SCANS=["combo3","up4","high52_dcr","ath","vcp","pocket_pivot","tight3w","power3","bgu","episodic_pivot","darvas","stage2_bo","bull_snort","wedge_pop","f_post","f_accel","lb_breakout","lb_near","s2_early"];
+const BULL_SCANS=["combo3","up4","high52_dcr","ath","vcp","pocket_pivot","tight3w","power3","bgu","episodic_pivot","darvas","stage2_bo","bull_snort","wedge_pop","f_post","f_accel","lb_breakout","lb_near","s2_early","res_strong"];
 const BEAR_SCANS=["down4","leader_down","below200","ema_down","death","gap_down","f_red"];
 function sma50(c,i){if(!c||i<49)return null;let t=0;for(let k=i-49;k<=i;k++){if(!isNum(c[k]))return null;t+=c[k]}return t/50}
 function wlAlerts(syms){
@@ -1646,11 +1718,168 @@ $("#mscrim").addEventListener("click",modalClose);
 
 wlGet();
 
+/* ════════════════════ QUARTERLY RESULTS ════════════════════ */
+let RES=null;
+async function resLoad(){if(window.EMBED?.results)return RES=RES||resIndex(window.EMBED.results);if(!D.meta.results)return null;if(!RES){const r=await fetch(`data/results.json?v=${Date.now()}`);if(!r.ok)return null;RES=resIndex(await r.json())}return RES}
+function resIndex(R){R.by={};for(const r of R.rows){(R.by[r.s]=R.by[r.s]||[]).push(r)}for(const k in R.by)R.by[k].sort((a,b)=>b.d.localeCompare(a.d));return R}
+const GRADE={ex:["EXCELLENT","g-ex","gp-ex"],vg:["VERY GOOD","g-vg","gp-vg"],gd:["GOOD","g-gd","gp-gd"],wk:["WEAK","g-wk","gp-wk"],vw:["VERY WEAK","g-vw","gp-vw"]};
+const gradeOf=q=>!isNum(q)?null:q>=85?"ex":q>=70?"vg":q>=55?"gd":q>=40?"wk":"vw";
+const CO_UP=new Set(["AND","OF","THE","FOR","IN","CO"]),CO_ACR=new Set(["ICICI","IDFC","IIFL","IRCTC","IREDA","IRFC","ONGC","BHEL","BEML","KPIT","NIIT","RITES","IRCON","HUDCO","AU","IT","IOL","ACC","ABB","UTI","AIA","EIH","IFB","IFCI","INOX","OBEROI"]),CO_DROP=/\s+(LIMITED|LTD\.?|LT|L)$/i;
+function coName(n){if(!n)return "";const t=String(n).trim().replace(CO_DROP,"");
+  return t.split(/\s+/).map((w,i)=>{const a=w.replace(/[^A-Z]/g,"");if(/[a-z]/.test(w)||!a)return w;
+    if(CO_ACR.has(a)||(a.length<=3&&(i===0||!/[AEIOU]/.test(a))&&!CO_UP.has(a))||(a.length<=5&&!/[AEIOUY]/.test(a)))return w;
+    const l=w.toLowerCase();return (i>0&&CO_UP.has(a))?l:l.replace(/(^|[-(&./])([a-z])/g,(m,x,y)=>x+y.toUpperCase())}).join(" ")}
+const crs=v=>!isNum(v)?"–":Math.abs(v)>=10000?Math.round(v).toLocaleString("en-IN"):Math.abs(v)>=100?v.toLocaleString("en-IN",{maximumFractionDigits:0}):v.toFixed(1);
+const gtxt=(v,d=0)=>!isNum(v)?"–":v>=999?"≥999%":(v>0?"+":v<0?"−":"")+Math.abs(v).toFixed(Math.abs(v)>=100?0:Math.abs(v)<10&&d===0?1:d)+"%";
+const ptxt=v=>!isNum(v)?"–":(v>0?"+":v<0?"−":"")+Math.abs(v).toFixed(1)+" pts";
+function qPill(q){if(!isNum(q))return "–";const g=GRADE[gradeOf(q)];return `<span class="gpill ${g[2]}" title="${g[0]}">${q}</span>`}
+function pPill(p,pend,pre){if(!isNum(p))return pend?`<span class="ppill pp-lo" title="Scored after two full sessions from the result day; ${pre??0} of 6 points known before the reaction">${pre??0}/6 …</span>`:"–";return `<span class="ppill ${p>=7?"pp-hi":p>=5?"pp-mid":"pp-lo"}">${p}/9</span>`}
+const TILE_LAB={0:["Revenue","EBITDA","Net profit","EPS"],1:["Net interest income","Operating profit","Net profit","EPS"],2:["Revenue","Operating profit","Net profit","EPS"]};
+const MGN_LAB={0:"EBITDA margin",1:"Operating profit / income",2:"Operating margin"};
+function resCard(r){
+  const lab=TILE_LAB[r.fin||0],g=GRADE[gradeOf(r.qs)];
+  const yp=v=>!isNum(v)?`<span class="yp na">YoY n/a</span>`:`<span class="yp ${v>=0?"up":"down"}">${v>=0?"▲":"▼"} ${gtxt(v)} YoY</span>`;
+  const qq=v=>`<span class="qq">QoQ <b class="${cls(v)}">${gtxt(v,1)}</b></span>`;
+  const t=(k,v,y,q,unit)=>`<div class="rc-t"><div class="k">${k}</div><div class="v num">${isNum(v)?(unit==="eps"?"₹"+v.toFixed(2):"₹"+crs(v)+"<small>Cr</small>"):"–"}</div><div class="g">${yp(y)}${qq(q)}</div></div>`;
+  const pc=!isNum(r.pead)?"lo":r.pead>=7?"hi":r.pead>=5?"":"lo";
+  const react=r.pend?`Price reaction: <b>scored after two full sessions from the result day</b> (the evening update does it automatically)`:
+    !isNum(r.ear)?"":`Reaction, first 2 sessions: <span class="${cls(r.ear)}">${sgn(r.ear,1)}</span> vs NIFTY 500 · volume <b>${isNum(r.vr)?r.vr.toFixed(1)+"×":"–"}</b>${isNum(r.since)?` · since the result <span class="${cls(r.since)}">${sgn(r.since,1)}</span>`:""}`;
+  const pead=r.pend?`<span class="rc-pead lo" title="Points known before the price reaction: ${r.pre} of 6">PEAD score –/9 <i>${r.pre??0}/6 before the reaction</i></span>`:
+    isNum(r.pead)?`<span class="rc-pead ${pc}">PEAD score ${r.pead}/9</span>`:`<span class="rc-pead lo" title="No like-for-like quarter a year ago">PEAD score –/9</span>`;
+  const fl=(r.flags||[]).map(f=>`<span class="rc-flag${f[0]==="+"?" good":""}">${esc(f.replace(/^[+!]/,""))}</span>`).join("");
+  const why=resWhy(r);
+  return `<article class="rcard">
+  <div class="rc-top"><div style="min-width:0"><div class="rc-k">Quarterly results</div>
+    <h3 class="rc-name"><button type="button" class="symbtn" data-sym="${esc(r.s)}">${esc(coName(r.n)||r.s)}</button><span class="rc-sym">${esc(r.s)}</span></h3>
+    <div class="rc-qrow"><span class="rc-q${r.late?" late":""}">${esc(r.q)} · ${r.b==="C"?"Consolidated":"Standalone"}${r.late?" · late":""}</span><span class="rc-d">${esc(fmtDate(r.d))}</span></div></div>
+    ${g?`<div class="rc-qs ${g[1]}" title="Result Quality Score (0–100)"><b class="num">${r.qs}</b><span>${g[0]}</span></div>`:`<div class="rc-qs" style="color:var(--rc-mut)" title="No like-for-like quarter a year ago (new listing, or the company changed to consolidated results)"><b>–</b><span>Not rated</span></div>`}</div>
+  <div class="rc-grid">${t(lab[0],r.rev,r.rev_y,r.rev_q)}${t(lab[1],r.eb,r.eb_y,r.eb_q)}${t(lab[2],r.np,r.np_y,r.np_q)}${t(lab[3],r.eps,r.eps_y,r.eps_q,"eps")}</div>
+  <div class="rc-foot"><span class="m">${MGN_LAB[r.fin||0]}<b class="num">${isNum(r.m)?r.m.toFixed(1)+"%":"–"}</b><span class="${cls(r.m_y)}">${ptxt(r.m_y)} YoY</span></span>
+    ${pead}</div>
+  ${react?`<div class="rc-react">${react}</div>`:""}
+  ${fl?`<div class="rc-flags">${fl}</div>`:""}
+  ${why}
+</article>`}
+function resWhy(r){
+  const QL=RES?.evidence?.quality_parts||[],PL_=RES?.evidence?.pead_parts||[];
+  if(!r.qp&&!r.pp)return "";
+  const rows=(names,pts,max)=>names.map((n,i)=>`<tr><td>${esc(n)}</td><td class="p">${pts?.[i]??"–"} / ${max[i]}</td></tr>`).join("");
+  return `<details class="rc-why"><summary>Why these scores</summary><table>
+    ${r.qp?`<tr><td colspan="2" style="color:var(--rc-ink);font-weight:700;padding-top:6px">Result Quality ${r.qs}/100</td></tr>${rows(QL.map(x=>x.name),r.qp,QL.map(x=>x.max))}`:""}
+    ${r.pp?`<tr><td colspan="2" style="color:var(--rc-ink);font-weight:700;padding-top:10px">PEAD ${isNum(r.pead)?r.pead:"–"}/9</td></tr>${rows(PL_.map(x=>x.name),r.pp,PL_.map(x=>x.max))}`:""}
+  </table></details>`}
+const RCOL={
+  stock:{k:"s",label:"Stock",l:1,fmt:r=>symBtn(r.s,r.n),sort:r=>r.s},
+  d:{k:"d",label:"Result date",fmt:r=>`<span class="num">${esc(fmtDate(r.d))}</span>`,sort:r=>r.d},
+  q:{k:"q",label:"Quarter",l:1,fmt:r=>`${esc(r.q)} <span style="color:var(--muted)">${r.b==="C"?"Cons.":"Stand."}</span>`,sort:r=>r.qe},
+  qs:{k:"qs",label:"Quality",fmt:r=>qPill(r.qs)},
+  pead:{k:"pead",label:"PEAD /9",fmt:r=>pPill(r.pead,r.pend,r.pre)},
+  rev:{k:"rev",label:"Revenue ₹Cr",fmt:r=>`<span class="num">${crs(r.rev)}</span>`},
+  rev_y:{k:"rev_y",label:"Rev YoY",fmt:r=>`<span class="num ${cls(r.rev_y)}">${gtxt(r.rev_y)}</span>`},
+  rev_q:{k:"rev_q",label:"Rev QoQ",fmt:r=>`<span class="num ${cls(r.rev_q)}">${gtxt(r.rev_q)}</span>`},
+  eb:{k:"eb",label:"EBITDA ₹Cr",fmt:r=>`<span class="num">${crs(r.eb)}</span>`},
+  eb_y:{k:"eb_y",label:"EBITDA YoY",fmt:r=>`<span class="num ${cls(r.eb_y)}">${gtxt(r.eb_y)}</span>`},
+  eb_q:{k:"eb_q",label:"EBITDA QoQ",fmt:r=>`<span class="num ${cls(r.eb_q)}">${gtxt(r.eb_q)}</span>`},
+  m:{k:"m",label:"Margin %",fmt:r=>`<span class="num">${isNum(r.m)?r.m.toFixed(1):"–"}</span>`},
+  m_y:{k:"m_y",label:"Margin Δ YoY",fmt:r=>`<span class="num ${cls(r.m_y)}">${isNum(r.m_y)?(r.m_y>0?"+":r.m_y<0?"−":"")+Math.abs(r.m_y).toFixed(1):"–"}</span>`},
+  np:{k:"np",label:"Net profit ₹Cr",fmt:r=>`<span class="num ${r.np<0?"down":""}">${crs(r.np)}</span>`},
+  np_y:{k:"np_y",label:"Profit YoY",fmt:r=>`<span class="num ${cls(r.np_y)}">${gtxt(r.np_y)}</span>`},
+  np_q:{k:"np_q",label:"Profit QoQ",fmt:r=>`<span class="num ${cls(r.np_q)}">${gtxt(r.np_q)}</span>`},
+  eps:{k:"eps",label:"EPS ₹",fmt:r=>`<span class="num">${isNum(r.eps)?r.eps.toFixed(2):"–"}</span>`},
+  eps_y:{k:"eps_y",label:"EPS YoY",fmt:r=>`<span class="num ${cls(r.eps_y)}">${gtxt(r.eps_y)}</span>`},
+  ear:{k:"ear",label:"Reaction vs index",fmt:r=>`<span class="num ${cls(r.ear)}">${r.pend?"…":sgn(r.ear,1)}</span>`},
+  since:{k:"since",label:"Since result",fmt:r=>`<span class="num ${cls(r.since)}">${sgn(r.since,1)}</span>`},
+  vr:{k:"vr",label:"Result-day vol ×",fmt:r=>`<span class="num">${isNum(r.vr)?r.vr.toFixed(1):"–"}</span>`},
+  mc:{k:"mc",label:"Mcap ₹Cr",fmt:r=>`<span class="num">${isNum(r.mc)?Math.round(r.mc).toLocaleString("en-IN"):"–"}</span>`},
+  rs:{k:"rs",label:"RS",fmt:r=>rsPill(r.rs)},
+  sec:{k:"sec",label:"Sector / industry",l:1,fmt:r=>esc(r.ind||"–"),sort:r=>r.ind||""},
+};
+const RSORT={new:["Newest",r=>r.d+String(r.qs??0).padStart(3,"0")],qs:["Quality",r=>r.qs??-1],pead:["PEAD",r=>(r.pead??-1)*1000+(r.qs??0)],rev_y:["Revenue YoY",r=>r.rev_y??-1e9],np_y:["Profit YoY",r=>r.np_y??-1e9],ear:["Reaction",r=>r.ear??-1e9],mc:["Market cap",r=>r.mc??-1]};
+function rxJoin(r){const x=D.by[r.s];return {...r,rs:x?.rs??null,mc:x?.mc??r.mc??null,n:r.n||x?.n||"",ind:x?.ind||x?.sec||r.ind||""}}
+function rxFilter(rows){
+  const f=st.rx,q=f.q.trim().toUpperCase(),wl=f.wl?new Set(wlAllSyms()):null;
+  return rows.filter(r=>(!q||r.s.includes(q)||(r.n||"").toUpperCase().includes(q))&&(+f.qmin===0||(r.qs??-1)>=+f.qmin)&&(+f.pmin===0||(r.pead??-1)>=+f.pmin)
+    &&(+f.mc===0||(r.mc??0)>=+f.mc)&&(!f.both||((r.rev_y??-1)>0&&(r.np_y??-1)>0))&&(!wl||wl.has(r.s))&&(f.fin==="all"||(f.fin==="nf"?!r.fin:!!r.fin)))}
+async function renderResults(){
+  $("#view").innerHTML=`<div class="empty">Loading results…</div>`;
+  const R=await resLoad();if(st.tab!=="results")return;
+  if(!R){$("#view").innerHTML=`<div class="err">Results data isn't there yet. It is made by the evening “Daily update” run — run it once from the Actions tab, then reload.</div>`;return}
+  const f=st.rx,S=R.seasons,sid=(S.find(x=>x.id===f.season)||S[0]).id,ss=S.find(x=>x.id===sid);
+  const all=R.rows.filter(r=>r.sn===sid).map(rxJoin);RX_ROWS=all;
+  const n=all.length,q70=all.filter(r=>r.qs>=70).length,p7=all.filter(r=>r.pead>=7).length,both=all.filter(r=>r.qs>=70&&r.pead>=7).length;
+  const due=(R.due||[]).length;
+  const tile=(id,k,v,d)=>`<button type="button" class="card tile btile" data-rpreset="${id}"><div class="k">${k}</div><div class="v num">${v.toLocaleString("en-IN")}</div><div class="d">${d}</div></button>`;
+  $("#view").innerHTML=`<div class="sec-head"><div><h2>Quarterly results · ${esc(ss.main)} season</h2><p>Results announced ${esc(fmtDate(ss.start))} – ${esc(fmtDate(ss.end))}, newest first. Each result has a <b>Result Quality Score</b> (0–100: is the quarter good, and is the profit real?) and a <b>PEAD score</b> (0–9: how likely the price keeps drifting up after the result). Both were tested on ${esc(R.evidence?.n_label||"NSE results since 2019")} — see the evidence below. Late filings for older quarters (100+ days after the quarter ended) are left out.</p></div></div>
+  <div class="tiles btiles">${tile("all","Results announced",n,`${esc(ss.label)}${due?` · ${due} more due in 14 days`:""}`)}${tile("q70","Quality 70+",q70,"Very good or excellent quarters")}${tile("p7","PEAD 7+ of 9",p7,"strongest drift set-ups")}${tile("both","Both strong",both,"Quality 70+ and PEAD 7+")}</div>
+  ${resEvidence(R.evidence)}
+  <div class="card toolbar">
+    ${S.length>1?`<div class="ctl"><span>Season</span>${seg("r_season",S.map(x=>x.id),sid,Object.fromEntries(S.map(x=>[x.id,x.label])))}</div>`:""}
+    <div class="ctl"><span>View</span>${seg("r_view",["cards","list"],f.view,{cards:"Cards",list:"List"})}</div>
+    <div class="ctl"><span>Search</span><input class="search" type="search" id="rq" placeholder="Symbol or company" value="${esc(f.q)}" aria-label="Search results"></div>
+    ${f.view==="cards"?`<div class="ctl"><span>Sort cards by</span>${seg("r_sort",Object.keys(RSORT),f.sort,Object.fromEntries(Object.entries(RSORT).map(([k,v])=>[k,v[0]])))}</div>`:""}
+    <div class="ctl"><span>Result Quality</span>${seg("r_qmin",["0","55","70","85"],f.qmin,{"0":"Any","55":"55+ good","70":"70+ very good","85":"85+ excellent"})}</div>
+    <div class="ctl"><span>PEAD score</span>${seg("r_pmin",["0","5","7"],f.pmin,{"0":"Any","5":"5+","7":"7+"})}</div>
+    <div class="ctl"><span>Market cap</span>${seg("r_mc",["0","1000","5000","20000"],f.mc,{"0":"All","1000":"₹1,000 Cr+","5000":"₹5,000 Cr+","20000":"₹20,000 Cr+"})}</div>
+    <div class="ctl"><span>Companies</span>${seg("r_fin",["all","nf","f"],f.fin,{all:"All",nf:"Non-financial",f:"Banks & finance"})}</div>
+    <div class="ctl"><span>Also</span><div style="display:flex;flex-wrap:wrap;gap:0 16px"><label class="check"><input type="checkbox" id="rboth" ${f.both?"checked":""}>Revenue and profit both up YoY</label><label class="check"><input type="checkbox" id="rwl" ${f.wl?"checked":""}>In my watchlists</label></div></div>
+  </div><div id="rxT"></div>
+  ${due?`<details class="card evid" id="rdue"><summary>Coming up <span>— ${due} results due in the next 14 days (board meetings announced)</span></summary><div class="evb" id="rdueb"></div></details>`:""}`;
+  const on=(id,k)=>{const el=$(id);if(el)el.addEventListener(el.type==="checkbox"?"change":"input",e=>{f[k]=e.target.type==="checkbox"?e.target.checked:e.target.value;RX_SHOW=60;if(st.tbl.results)st.tbl.results.show=100;store.set("rx",f);drawResults()})};
+  on("#rq","q");on("#rboth","both");on("#rwl","wl");
+  $("#view").querySelector(".evid:not(#rdue)")?.addEventListener("toggle",e=>store.set("rxEv",e.target.open));
+  $("#rdue")?.addEventListener("toggle",e=>{if(e.target.open)drawDue(R)});
+  drawResults()}
+let RX_ROWS=[],RX_SHOW=60;
+function drawResults(){
+  const f=st.rx,rows=rxFilter(RX_ROWS),el=$("#rxT");if(!el)return;
+  const head=`<div class="bxhead"><span><b class="num">${rows.length.toLocaleString("en-IN")}</b> of ${RX_ROWS.length.toLocaleString("en-IN")} results</span>${rows.length?`<button type="button" class="ghost" data-wl-addall="${esc(JSON.stringify(rows.slice(0,200).map(r=>r.s)))}" data-label="Results">☆ Add ${Math.min(200,rows.length)} to a watchlist</button>`:""}</div>`;
+  if(f.view==="list"){
+    if(!st.tbl.results)st.tbl.results={key:"d",dir:-1,show:100};
+    const C_=RCOL,cols=[C_.stock,C_.d,C_.q,C_.qs,C_.pead,C_.rev,C_.rev_y,C_.rev_q,C_.eb,C_.eb_y,C_.m,C_.m_y,C_.np,C_.np_y,C_.np_q,C_.eps,C_.eps_y,C_.ear,C_.since,C_.vr,C_.mc,C_.rs,C_.sec];
+    el.innerHTML=`<div class="card">${head}${dtable("results",rows,cols,{empty:"No results match. Loosen the filters above."})}</div>`;
+    wireTables(el,drawResults);return}
+  const sf=(RSORT[f.sort]||RSORT.new)[1];
+  const sorted=[...rows].sort((a,b)=>{const A=sf(a),B=sf(b);return typeof A==="string"?B.localeCompare(A):B-A});
+  el.innerHTML=head+(sorted.length?`<div class="rgrid">${sorted.slice(0,RX_SHOW).map(resCard).join("")}</div>`+(sorted.length>RX_SHOW?`<div class="rmore"><button type="button" class="btn" data-rmore>Show ${Math.min(60,sorted.length-RX_SHOW)} more results</button></div>`:""):`<div class="card empty">No results match. Loosen the filters above${RX_ROWS.length?"":" — or switch to the previous season while this one's results come in"}.</div>`);
+}
+function drawDue(R){const b=$("#rdueb");if(!b||b.dataset.done)return;b.dataset.done=1;
+  const rows=(R.due||[]).map(([s,d])=>({...(D.by[s]||{s,n:""}),s,dd:d}));
+  st.tbl.rdue=st.tbl.rdue||{key:"dd",dir:1,show:100};
+  const cols=[C.stock,{k:"dd",label:"Results on",fmt:r=>`<span class="num">${esc(fmtDate(r.dd))}</span>`,sort:r=>r.dd},C.px,C.rs,C.mc,C.sec];
+  b.innerHTML=dtable("rdue",rows,cols);wireTables(b,()=>{b.dataset.done="";drawDue(R)})}
+function rPreset(id){const f=st.rx;Object.assign(f,{q:"",qmin:"0",pmin:"0",mc:"0",both:false,wl:false,fin:"all"});
+  if(id==="q70")Object.assign(f,{qmin:"70",sort:"qs"});
+  if(id==="p7")Object.assign(f,{pmin:"7",sort:"pead"});
+  if(id==="both")Object.assign(f,{qmin:"70",pmin:"7",sort:"pead"});
+  if(id==="all")f.sort="new";
+  RX_SHOW=60;store.set("rx",f);renderResults()}
+function resEvidence(E){
+  if(!E)return "";
+  const all=[...E.pead_bands,...E.quality_bands].flatMap(r=>[r.avg,r.a,r.b]).filter(isNum);const mx=Math.max(...all.map(Math.abs),1);
+  const bar=v=>!isNum(v)?"–":`<span class="ebar${v<0?" neg":""}" style="width:${Math.max(2,Math.round(Math.abs(v)/mx*90))}px"></span><span class="num" style="font-weight:700">${sgn(v,1)}</span>`;
+  const t1=`<div class="tscroll"><table class="dt etab"><thead><tr><th class="l">PEAD score</th><th class="l">Avg next ${E.h} sessions vs NIFTY 500</th><th>Median</th><th>Beat the index</th><th class="l">${esc(E.era_a)}</th><th class="l">${esc(E.era_b)}</th><th>Results</th></tr></thead><tbody>`+
+    E.pead_bands.map(r=>`<tr><td class="l"><b>${esc(r.label)}</b></td><td class="l">${bar(r.avg)}</td><td class="num">${sgn(r.med,1)}</td><td class="num">${r.win.toFixed(0)}%</td><td class="l">${bar(r.a)}</td><td class="l">${bar(r.b)}</td><td class="num">${r.n.toLocaleString("en-IN")}</td></tr>`).join("")+`</tbody></table></div>`;
+  const t2=`<div class="tscroll"><table class="dt etab"><thead><tr><th class="l">Result Quality</th><th>Next quarter's operating profit also up on the year</th><th>Two quarters on</th><th class="l">Avg next ${E.h} sessions vs NIFTY 500</th><th>Beat the index</th><th>Results</th></tr></thead><tbody>`+
+    E.quality_bands.map(r=>`<tr><td class="l">${r.g?`<span class="gpill ${GRADE[r.g][2]}">${esc(r.label)}</span>`:`<b>${esc(r.label)}</b>`}</td><td class="num"><b>${r.persist.toFixed(0)}%</b></td><td class="num">${isNum(r.persist2)?r.persist2.toFixed(0)+"%":"–"}</td><td class="l">${bar(r.avg)}</td><td class="num">${r.win.toFixed(0)}%</td><td class="num">${r.n.toLocaleString("en-IN")}</td></tr>`).join("")+`</tbody></table></div>`;
+  const qb=E.grid_q,pb=E.grid_p;
+  const t3=E.grid?`<div class="tscroll"><table class="dt etab"><thead><tr><th class="l">PEAD ↓ · Quality →</th>${qb.map(b=>`<th>${esc(b)}</th>`).join("")}</tr></thead><tbody>`+
+    pb.map(p=>`<tr><td class="l"><b>${esc(p)}</b></td>${qb.map(q=>{const g=E.grid.find(x=>x.p===p&&x.q===q);return g?(g.n<100?`<td class="num" style="color:var(--muted)" title="Too few results to read much into">${sgn(g.avg,1)}<span class="bsub" style="display:block">only ${g.n} results</span></td>`:`<td class="num"><b class="${cls(g.avg)}">${sgn(g.avg,1)}</b><span class="bsub" style="display:block">${g.n.toLocaleString("en-IN")} results</span></td>`):"<td>–</td>"}).join("")}</tr>`).join("")+`</tbody></table></div>`:"";
+  const parts=(title,P)=>`<div><h4>${esc(title)}</h4><div class="tscroll"><table class="dt etab"><thead><tr><th class="l">Part</th><th>Points</th><th class="l">How it is scored</th></tr></thead><tbody>`+
+    P.map(x=>`<tr><td class="l"><b>${esc(x.name)}</b></td><td class="num">${x.max}</td><td class="l wrapcell" style="min-width:260px">${esc(x.rule)}</td></tr>`).join("")+`</tbody></table></div></div>`;
+  return `<details class="card evid"${store.get("rxEv",false)?" open":""}><summary>${esc(E.title)} <span>— how the two scores were built and tested</span></summary><div class="evb">
+    <ul class="fl">${E.findings.map(t=>`<li>${esc(t)}</li>`).join("")}</ul>
+    <h4>PEAD score: what happened after the result (returns from the close of the second session after the result)</h4>${t1}
+    <h4>Result Quality Score: did the quarter's strength last, and how did the stock do?</h4>${t2}
+    ${t3?`<h4>Both scores together (average next ${E.h} sessions vs NIFTY 500)</h4>${t3}`:""}
+    <div class="egrid two">${parts("PEAD score (0–9)",E.pead_parts)}${parts("Result Quality Score (0–100)",E.quality_parts)}</div>
+    <p class="note">${esc(E.data)} ${esc(E.caveats)}</p>
+    <p class="note"><b>Research behind it:</b> ${E.sources.map(s=>`<a href="${esc(s.u)}" target="_blank" rel="noopener">${esc(s.t)}</a>`).join(" · ")}</p></div></details>`}
+
 /* ════════════════════ routing & wiring ════════════════════ */
 function render(){
   renderPulse();
   document.querySelectorAll("#tabs .tab").forEach(b=>b.setAttribute("aria-selected",b.dataset.v===st.tab));
-  ({rotation:renderRotation,breadth:renderBreadth,rs:renderRS,scanners:renderScanners,bases:renderBases,watch:renderWatch,vpci:renderVpci})[st.tab]();
+  ({rotation:renderRotation,breadth:renderBreadth,rs:renderRS,scanners:renderScanners,bases:renderBases,results:renderResults,watch:renderWatch,vpci:renderVpci})[st.tab]();
 }
 function go(tab){
   if(tab==="stage2"){st.scanView="s2";store.set("scanView","s2");tab="scanners"}
@@ -1727,6 +1956,7 @@ document.addEventListener("click",e=>{
   const sb=e.target.closest(".symbtn");if(sb){openDrawer(sb.dataset.sym,sb.dataset.ex);return}
   if(e.target.closest("[data-close]")||e.target.id==="scrim"){closeDrawer();return}
   const jp=e.target.closest("[data-jump]");if(jp){document.getElementById(jp.dataset.jump)?.scrollIntoView({behavior:"smooth",block:"start"});return}
+  if(e.target.closest("[data-res-go]")){closeDrawer(true);go("results");return}
   const sg=e.target.closest("[data-scan-go]");if(sg){closeDrawer(true);st.scan=sg.dataset.scanGo;st.scanView="lib";go("scanners");return}
   const tg=e.target.closest("[data-theme-go]");if(tg){closeDrawer(true);st.group="Themes";st.open=tg.dataset.themeGo;st.view="bars";go("rotation");setTimeout(()=>document.querySelector(`.brow[data-g="${CSS.escape(st.open)}"]`)?.scrollIntoView({block:"center"}),60);return}
   const s=e.target.closest("[data-seg]");
@@ -1737,6 +1967,7 @@ document.addEventListener("click",e=>{
     if(k==="wlview"){st.wl.view=v;drawWatch();return}
     if(k==="scanView"){st.scanView=v;store.set("scanView",v);if(location.hash.slice(1)!==(v==="s2"?"stage2":"scanners"))history.replaceState(null,"","#"+(v==="s2"?"stage2":"scanners"));renderScanners();return}
     if(k.startsWith("s2_")){st.s2[k.slice(3)]=v;store.set("s2",st.s2);if(st.tbl.s2)st.tbl.s2.show=100;s.parentElement.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===s));drawStage2();return}
+    if(k.startsWith("r_")){const kk=k.slice(2);st.rx[kk]=v;store.set("rx",st.rx);RX_SHOW=60;if(st.tbl.results)st.tbl.results.show=100;if(kk==="season"||kk==="view"){renderResults();return}s.parentElement.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===s));drawResults();return}
     if(k.startsWith("b_")){st.bx[k.slice(2)]=v;store.set("bx",st.bx);if(st.tbl.bases)st.tbl.bases.show=100;s.parentElement.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===s));drawBases();return}
     if(k==="scanTop"){st.scanTop=+v;store.set("scanTop",st.scanTop);renderScanners();return}
     if(k==="scanFund"){st.scanFund=+v;store.set("scanFund",st.scanFund);renderScanners();return}
@@ -1746,6 +1977,8 @@ document.addEventListener("click",e=>{
     if(k==="period")renderPulse();renderRotation();return}
   const vt=e.target.closest("[data-vtab]");if(vt){VP.tab=vt.dataset.vtab;document.querySelectorAll("[data-vtab]").forEach(b=>b.setAttribute("aria-pressed",b===vt));vpTab();return}
   const bp=e.target.closest("[data-bpreset]");if(bp){bPreset(bp.dataset.bpreset);return}
+  const rp=e.target.closest("[data-rpreset]");if(rp){rPreset(rp.dataset.rpreset);return}
+  if(e.target.closest("[data-rmore]")){RX_SHOW+=60;drawResults();return}
   const s2p=e.target.closest("[data-s2preset]");if(s2p){s2Preset(s2p.dataset.s2preset);return}
   const sc=e.target.closest("[data-scan]");if(sc){st.scan=sc.dataset.scan;store.set("scan2",st.scan);renderScanners();return}
   const hp=e.target.closest("[data-hp]");if(hp){st.period=hp.dataset.hp;st.sort="ret";renderPulse();renderRotation();return}
@@ -1758,7 +1991,7 @@ document.addEventListener("keydown",e=>{
 });
 window.addEventListener("hashchange",()=>{const t=location.hash.slice(1);if(t==="stage2"){if(st.tab!=="scanners"||st.scanView!=="s2")go("stage2");return}if(TABS.includes(t)&&(t!==st.tab||(t==="scanners"&&st.scanView==="s2"))){if(t==="scanners")st.scanView="lib";go(t)}});
 $("#themeBtn").addEventListener("click",()=>{const d=document.documentElement,cur=d.dataset.theme||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");d.dataset.theme=cur==="dark"?"light":"dark";store.set("theme",d.dataset.theme)});
-(()=>{const t=store.get("theme",null);if(t)document.documentElement.dataset.theme=t;Object.assign(st,store.get("prefs",{}));Object.assign(st.rs,store.get("rs",{}));Object.assign(st.bx,store.get("bx",{}));Object.assign(st.s2,store.get("s2",{}));st.scanView=store.get("scanView","lib");st.scan=store.get("scan2",st.scan);st.scanTop=+store.get("scanTop",0)||0;st.scanFund=+store.get("scanFund",0)||0;
+(()=>{const t=store.get("theme",null);if(t)document.documentElement.dataset.theme=t;Object.assign(st,store.get("prefs",{}));Object.assign(st.rs,store.get("rs",{}));Object.assign(st.bx,store.get("bx",{}));Object.assign(st.s2,store.get("s2",{}));Object.assign(st.rx,store.get("rx",{}));st.rx.q="";st.rx.season="";st.scanView=store.get("scanView","lib");st.scan=store.get("scan2",st.scan);st.scanTop=+store.get("scanTop",0)||0;st.scanFund=+store.get("scanFund",0)||0;
   const h=location.hash.slice(1);if(h==="stage2"){st.scanView="s2";st.tab="scanners"}else{if(h==="scanners")st.scanView="lib";st.tab=TABS.includes(h)?h:store.get("tab","rotation")}})();
 
 load().then(()=>{index();renderHeader();renderFoot();render();updateWlBadge();wlCheckShared();syncPull();vpxLoad().then(()=>{refreshStars();updateWlBadge()})}).catch(err=>{
