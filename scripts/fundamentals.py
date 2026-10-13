@@ -72,10 +72,13 @@ def stock_metrics(q, hold):
         L = q.iloc[-1]
         out["qe"] = last.strftime("%Y-%m-%d")
         out["filed"] = L.get("filed")
+        ff = L.get("first_filed")
+        out["first_filed"] = ff if isinstance(ff, str) and ff else out["filed"]     # original results date
         out["basis"] = L.get("basis")
         out["rev_q"], out["pat_q"] = _num(L["rev"]), _num(L["pat"])
         out["rev_yoy"], out["pat_yoy"] = growth(L["rev"], at(12, "rev")), growth(L["pat"], at(12, "pat"))
         out["rev_qoq"], out["pat_qoq"] = growth(L["rev"], at(3, "rev")), growth(L["pat"], at(3, "pat"))
+        out["pat_q1"], out["pat_q4"] = at(3, "pat"), at(12, "pat")      # previous quarter, same quarter last year
         # YoY PAT growth for the previous two quarters (for acceleration)
         out["pat_yoy1"] = growth(at(3, "pat"), at(15, "pat"))
         out["pat_yoy2"] = growth(at(6, "pat"), at(18, "pat"))
@@ -222,7 +225,7 @@ def build(U, ctx):
             m, d = stock_metrics(pd.DataFrame(columns=res.columns), g)
             M[sym], detail[sym] = m, d
     df = pd.DataFrame.from_dict(M, orient="index").reindex(U)
-    ALL = ["bank", "qe", "filed", "basis", "rev_q", "pat_q", "rev_yoy", "pat_yoy", "rev_qoq", "pat_qoq", "pat_yoy1", "pat_yoy2", "rev_yoy1",
+    ALL = ["bank", "qe", "filed", "first_filed", "pat_q1", "pat_q4", "basis", "rev_q", "pat_q", "rev_yoy", "pat_yoy", "rev_qoq", "pat_qoq", "pat_yoy1", "pat_yoy2", "rev_yoy1",
            "rev_streak", "rev_ttm", "pat_ttm", "rev_ttm_g", "pat_ttm_g", "opm", "opm_chg", "opm_ttm", "opm_ttm_chg", "npm", "equity",
            "bs_date", "roe", "roe_fy", "debt", "cash", "de", "roce", "cwip_pct", "debt_chg", "fy", "ocf", "fcf", "ocf_pat", "shp_q", "holders",
            "holders_1y"] + [c + sfx for c in ("promoter", "fii", "dii", "mf", "retail", "inst") for sfx in ("", "_1q", "_1y")]
@@ -312,10 +315,9 @@ def build(U, ctx):
     add("f_turn", "Turnaround", E,
         "Profitable in the latest quarter and the one before, after a loss in the same quarter last year — and the stock is "
         "above its 50 DMA.",
-        (df.pat_q > 0) & (df.pat_yoy.isna()) & (df.pat_qoq.notna() | (df.pat_q > 0)) & (ctx["a50"].reindex(U) == True)
-        & (pd.Series([M.get(s, {}).get("pat_q") for s in U], index=U) > 0) & (df.pat_ttm.notna()),
+        (df.pat_q > 0) & (df.pat_q1 > 0) & (df.pat_q4 < 0) & (ctx["a50"].reindex(U) == True),
         "Quarter profit ₹Cr", df.pat_q, "num")
-    rec = pd.to_datetime(df["filed"], errors="coerce")
+    rec = pd.to_datetime(df["first_filed"].fillna(df["filed"]), errors="coerce")
     days = (pd.Timestamp(ctx["dates"][-1]) - rec).dt.days
     # price reaction since the results day
     C = ctx["C"]

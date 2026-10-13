@@ -13,55 +13,94 @@ import pandas as pd
 
 
 # ───────────────────────────────────────────────────────────── indicators
-def wilder(x, n):
-    return x.ewm(alpha=1 / n, adjust=False, min_periods=n).mean()
+# These follow TradingView's Pine built-ins exactly (checked bar by bar against a plain-Python copy of
+# the Pine formulas), so values match a TradingView chart of the same prices. Missing bars (a stock
+# that did not trade that day) are skipped, as TradingView has no bar for them.
+def rma(x, n):
+    """ta.rma - Wilder's moving average: alpha 1/n, seeded with the simple average of the first n values."""
+    a = x.to_numpy(dtype=float)
+    T, N = a.shape
+    out = np.full((T, N), np.nan)
+    prev = np.full(N, np.nan)
+    acc, cnt = np.zeros(N), np.zeros(N)
+    for t in range(T):
+        v = a[t]
+        ok = np.isfinite(v)
+        had = np.isfinite(prev)
+        upd = ok & had
+        prev[upd] = (v[upd] + (n - 1) * prev[upd]) / n
+        seed = ok & ~had
+        acc[seed] += v[seed]
+        cnt[seed] += 1
+        done = seed & (cnt == n)
+        prev[done] = acc[done] / n
+        out[t] = prev
+    return pd.DataFrame(out, index=x.index, columns=x.columns)
+
+
+wilder = rma            # older name kept for other modules
+
+
+def ema(x, n):
+    """ta.ema: alpha 2/(n+1), seeded with the first value; missing bars skipped."""
+    return x.ewm(span=n, adjust=False, ignore_na=True).mean().where(x.ffill().notna())
 
 
 def rsi(C, n=14):
-    d = C.diff()
-    up, dn = d.clip(lower=0), (-d).clip(lower=0)
-    rs = wilder(up, n) / wilder(dn, n)
-    return 100 - 100 / (1 + rs)
+    """ta.rsi"""
+    d = C - C.ffill().shift(1)                  # change from the previous bar, even across a missing day
+    up, dn = rma(d.clip(lower=0), n), rma((-d).clip(lower=0), n)
+    out = 100 - 100 / (1 + up / dn)
+    out = out.mask(dn == 0, 100.0).mask((up == 0) & (dn > 0), 0.0)
+    return out.where(up.notna() & dn.notna())
 
 
 def true_range(H, L, C):
-    pc = C.shift(1)
+    """ta.tr(true): high-low on the first bar, then the largest of the three gaps."""
+    pc = C.ffill().shift(1)
     tr = np.fmax(np.fmax((H - L).to_numpy(), (H - pc).abs().to_numpy()), (L - pc).abs().to_numpy())
+    tr = np.where(np.isfinite(H.to_numpy()) & np.isfinite(L.to_numpy()), tr, np.nan)
     return pd.DataFrame(tr, index=C.index, columns=C.columns)
 
 
 def adx(H, L, C, n=14):
-    up, dn = H.diff(), -L.diff()
-    pdm = up.where((up > dn) & (up > 0), 0.0)
-    ndm = dn.where((dn > up) & (dn > 0), 0.0)
-    atr = wilder(true_range(H, L, C), n)
-    pdi = 100 * wilder(pdm, n) / atr
-    ndi = 100 * wilder(ndm, n) / atr
-    dx = 100 * (pdi - ndi).abs() / (pdi + ndi)
-    return wilder(dx, n), pdi, ndi
+    """ta.dmi(n, n) -> (ADX, +DI, -DI)"""
+    up, dn = H - H.ffill().shift(1), L.ffill().shift(1) - L
+    pdm = up.where((up > dn) & (up > 0), 0.0).where(up.notna() & dn.notna())
+    ndm = dn.where((dn > up) & (dn > 0), 0.0).where(up.notna() & dn.notna())
+    atr = rma(true_range(H, L, C), n)
+    pdi = 100 * rma(pdm, n) / atr
+    ndi = 100 * rma(ndm, n) / atr
+    s_ = (pdi + ndi)
+    dx = (pdi - ndi).abs() / s_.where(s_ != 0, 1)
+    return 100 * rma(dx, n), pdi, ndi
 
 
 def supertrend_dir(H, L, C, n=10, mult=3.0):
-    """+1 = uptrend, -1 = downtrend (standard ATR(RMA) supertrend)."""
-    atr = wilder(true_range(H, L, C), n).to_numpy()
+    """ta.supertrend(mult, n) direction: +1 = uptrend, -1 = downtrend (Pine returns -1 for up).
+    Bar-by-bar port of the Pine source; a stock's missing bars leave its state unchanged."""
+    atr = rma(true_range(H, L, C), n).to_numpy()
     hl2 = ((H + L) / 2).to_numpy()
-    c = C.to_numpy()
-    ub, lb = hl2 + mult * atr, hl2 - mult * atr
+    c = C.to_numpy(dtype=float)
     T, N = c.shape
-    fu, fl = np.full((T, N), np.nan), np.full((T, N), np.nan)
-    d = np.zeros((T, N))
-    for t in range(T):
-        if t == 0:
-            fu[t], fl[t], d[t] = ub[t], lb[t], 1
-            continue
-        pfu, pfl, pc = fu[t - 1], fl[t - 1], c[t - 1]
-        fu[t] = np.where(np.isnan(pfu) | (ub[t] < pfu) | (pc > pfu), ub[t], pfu)
-        fl[t] = np.where(np.isnan(pfl) | (lb[t] > pfl) | (pc < pfl), lb[t], pfl)
-        pd_ = d[t - 1]
-        nd = np.where((pd_ <= 0) & (c[t] > pfu), 1, np.where((pd_ >= 0) & (c[t] < pfl), -1, pd_))
-        nd = np.where(nd == 0, 1, nd)
-        d[t] = np.where(np.isnan(atr[t]) | np.isnan(c[t]), pd_, nd)
-    return pd.DataFrame(d, index=C.index, columns=C.columns)
+    out = np.full((T, N), np.nan)
+    pub, plb, pst = np.full(N, np.nan), np.full(N, np.nan), np.full(N, np.nan)
+    patr, pc = np.full(N, np.nan), np.full(N, np.nan)
+    pdir = np.full(N, np.nan)
+    with np.errstate(invalid="ignore"):
+        for t in range(T):
+            ok = np.isfinite(hl2[t]) & np.isfinite(c[t])
+            ub, lb = hl2[t] + mult * atr[t], hl2[t] - mult * atr[t]
+            plb0, pub0 = np.nan_to_num(plb, nan=0.0), np.nan_to_num(pub, nan=0.0)
+            lb = np.where((lb > plb0) | (pc < plb0), lb, plb0)
+            ub = np.where((ub < pub0) | (pc > pub0), ub, pub0)
+            d = np.where(np.isnan(patr), 1, np.where(pst == pub, np.where(c[t] > ub, -1, 1), np.where(c[t] < lb, 1, -1)))
+            stv = np.where(d == -1, lb, ub)
+            pub, plb, pst = np.where(ok, ub, pub), np.where(ok, lb, plb), np.where(ok, stv, pst)
+            patr, pc = np.where(ok, atr[t], patr), np.where(ok, c[t], pc)
+            pdir = np.where(ok, d, pdir)
+            out[t] = -pdir
+    return pd.DataFrame(out, index=C.index, columns=C.columns)
 
 
 def crossed_up(a, b, k=1):
@@ -110,33 +149,34 @@ def run_all(x):
     R = rsi(C)
     rsi_l, rsi_p = R.iloc[-1], R.iloc[-2]
     TR = true_range(H, L, C)
-    atr14 = wilder(TR, 14)
+    atr14 = rma(TR, 14)
     atrp = atr14.iloc[-1] / c * 100
     A, PDI, NDI = adx(H, L, C)
     adx_l = A.iloc[-1]
-    macd = C.ewm(span=12, adjust=False).mean() - C.ewm(span=26, adjust=False).mean()
-    sig = macd.ewm(span=9, adjust=False).mean()
-    bb_mid, bb_sd = s20, C.rolling(20, min_periods=20).std()
+    macd = ema(C, 12) - ema(C, 26)
+    sig = ema(macd, 9)
+    bb_mid, bb_sd = s20, C.rolling(20, min_periods=20).std(ddof=0)     # ta.stdev is the population figure
     bb_up = bb_mid + 2 * bb_sd
     bb_w = (4 * bb_sd) / bb_mid
     st = supertrend_dir(H, L, C)
     rng = (H - L)
     rsl = C.div(x["bench"], axis=0)                       # RS line vs benchmark
-    e10, e21 = C.ewm(span=10, adjust=False).mean(), C.ewm(span=21, adjust=False).mean()
+    e10, e21, e65 = ema(C, 10), ema(C, 21), ema(C, 65)
     e10l, e21l = e10.iloc[-1], e21.iloc[-1]
     rng_l = (h - l)
     dcr = ((c - l) / rng_l.where(rng_l > 0) * 100).fillna(50)   # daily closing range, 0 = low, 100 = high
     adr = ((H / L - 1) * 100).iloc[-20:].mean()                  # average daily range %, 20 sessions
-    atr_prev = atr14.iloc[-2]
     first_bar = C.apply(lambda s_: s_.first_valid_index())
     pos = {d: i for i, d in enumerate(C.index)}
-    age = pd.Series({k: (len(C) - 1 - pos[d]) if d is not None else np.nan for k, d in first_bar.items()})
+    age = pd.Series({k: (len(C) - 1 - pos[d]) if (d is not None and pd.notna(d) and d in pos) else np.nan for k, d in first_bar.items()})
     young = age < 252                                            # listed within the last year
 
     hits, metric, meta = {}, {}, []
 
+    traded = (v > 0) & h.notna() & l.notna()                     # a stock with no trade today can't fire
+
     def add(id_, name, cat, desc, mask, m_label=None, m_vals=None, m_fmt="num", sort="rs"):
-        mask = mask.fillna(False).astype(bool)
+        mask = mask.fillna(False).astype(bool) & traded.reindex(mask.index).fillna(False)
         syms = sorted(mask.index[mask])
         hits[id_] = syms
         if m_label is not None:
@@ -162,20 +202,23 @@ def run_all(x):
     add("leaders", "Leaders near highs", "Momentum",
         "RS 90+ and within 5% of the 52-week high.", (rs_now >= 90) & (c >= 0.95 * hi52))
     lowp = L.iloc[-10:].gt(e21.iloc[-10:]).all()
+    e21_over50 = e21.iloc[-5:].gt(s50.iloc[-5:]).all()
     add("power_trend", "Power trend", "Momentum",
-        "Low above the 21 EMA for 10 straight sessions, 21 EMA above the 50 DMA, 50 DMA rising for 5 sessions, "
-        "and an up close today (Morales & Kacher). The strongest kind of trend — buy pullbacks, don't short it.",
-        lowp & (e21l > s50l) & (s50l > s50.iloc[-6]) & (c > pc), "ADR %", adr, "pct")
+        "Low above the 21 EMA for 10 sessions in a row, 21 EMA above the 50 DMA for 5 sessions in a row, 50 DMA higher "
+        "than yesterday, and an up close today (IBD's Power Trend, Mike Webster). The strongest kind of trend — buy "
+        "pullbacks, don't short it.",
+        lowp & e21_over50 & (s50l > s50.iloc[-2]) & (c > pc), "ADR %", adr, "pct")
     r15 = C.iloc[-1] / C.iloc[-16] - 1
     ups15 = (C.diff() > 0).iloc[-15:].sum()
     v15 = V.iloc[-15:].mean() / V.iloc[-65:-15].mean()
     add("ants", "Ants (steady accumulation)", "Momentum",
         "Up on 12 or more of the last 15 sessions, +20% over those 15 sessions, with average volume 20%+ above "
-        "the prior 50 sessions (Morales & Kacher) — institutions buying day after day.",
+        "the prior 50 sessions (David Ryan's Ants) — institutions buying day after day.",
         (ups15 >= 12) & (r15 >= 0.20) & (v15 >= 1.2), "15-day %", r15 * 100, "pct", "metric")
     add("high_octane", "High-octane leaders", "Momentum",
         "Average daily range 5% or more, RS 90+, above the 21 EMA and 50 DMA and within 10% of the 52-week high — "
-        "the fast movers swing traders want (Deepvue 'High Octane RS'; thresholds raised for Indian small caps).",
+        "the fast movers swing traders want (Deepvue's 'High Octane RS' uses ADR above 3%; raised to 5% here because "
+        "Indian small caps swing more).",
         (adr >= 5) & (rs_now >= 90) & (c > e21l) & (c > s50l) & (pct_from_hi >= -10), "ADR %", adr, "pct", "metric")
     rr3, rr6, rr12 = (C.iloc[-1] / C.iloc[-n - 1] - 1 for n in (63, 126, 252))
     top = lambda r_: r_.rank(pct=True) >= 0.90
@@ -190,10 +233,12 @@ def run_all(x):
         "usually news-driven; check the news.",
         (ep_gap >= 0.10) & (vr >= 3) & (c >= o * 0.98) & ((C.iloc[-2] / C.iloc[-65] - 1) <= 0.30),
         "Gap %", ep_gap * 100, "pct", "metric")
-    gap_atr = (o - ph) / atr_prev
+    atr40_prev = rma(TR, 40).iloc[-2]
+    gap_atr = (o - ph) / atr40_prev
     add("bgu", "Buyable gap up", "Momentum",
-        "Opened above yesterday's high by at least 0.75 × ATR, volume 1.5× average or more, closed in the upper half "
-        "of the day's range and not below the open by more than 1% (Gil Morales). Stop just under the gap-day low.",
+        "Opened above yesterday's high by at least 0.75 × the 40-day ATR, volume 1.5× the 50-day average or more, "
+        "closed in the upper half of the day's range and not more than 1% below the open (Gil Morales). Stop just "
+        "under the gap-day low.",
         (gap_atr >= 0.75) & (vr >= 1.5) & (dcr >= 50) & (c >= o * 0.99), "Gap / ATR", gap_atr, "x", "metric")
 
     # ── Breakouts
@@ -222,13 +267,17 @@ def run_all(x):
         "The last three weekly closes (this week's so far included) within 1.5% of each other, in a Stage-2 "
         "uptrend (William O'Neil). Buy point: above the high of the tight area.",
         (w3 <= 1.5) & uptrend, "3-week spread %", w3, "pct", "metric_asc")
-    mx = np.fmax(np.fmax(e10l, e21l), s50l)
-    mn = np.fmin(np.fmin(e10l, e21l), s50l)
-    spread = (mx / mn - 1) * 100
+    mx = np.maximum(np.maximum(e10l, e21l), s50l)      # used by Power of 3 below (NaN if any average is missing)
+    mn = np.minimum(np.minimum(e10l, e21l), s50l)
+    s21 = C.rolling(21, min_periods=21).mean()
+    s21l, e65l = s21.iloc[-1], e65.iloc[-1]
+    lp_far = pd.concat([(c / s21l - 1).abs(), (c / s50l - 1).abs(), (c / e65l - 1).abs()], axis=1).max(axis=1) * 100
+    lp_rising = (s21l > s21.iloc[-6]) & (s50l > s50.iloc[-6]) & (e65l > e65.iloc[-6])
     add("launchpad", "Launch pad", "Breakouts",
-        "10 EMA, 21 EMA and 50 DMA bunched within 2% of each other with price above the 21 EMA, 50 DMA above the "
-        "200 DMA and within 10% of the 52-week high — energy stored before a move (Deepvue).",
-        (spread <= 2) & (c > e21l) & (s50l > s200l) & (pct_from_hi >= -10), "MA spread %", spread, "pct", "metric_asc")
+        "Close within 3% of the 21-day SMA, the 50-day SMA and the 65-day EMA, with the three averages stacked "
+        "21 above 50 above 65 and all three rising over the last week — a tight bunch of rising averages under "
+        "price, the moment before a move (Deepvue's Launch Pad).",
+        (lp_far <= 3) & (s21l > s50l) & (s50l > e65l) & lp_rising, "Farthest MA %", lp_far, "pct", "metric_asc")
     ipo_hi = pd.Series({k: H[k].iloc[-int(age[k]) - 1:-1].max() if young.get(k) and age[k] >= 10 else np.nan
                         for k in C.columns})
     add("ipo_bo", "IPO high breakout", "Breakouts",
@@ -244,9 +293,11 @@ def run_all(x):
         (c > bb_up.iloc[-1]) & (vr >= 1.5), "Vol ×", vr, "x")
     cross150 = crossed_up(C, s150, 5)
     s150_flat_up = s150l >= s150.iloc[-21] * 0.995
+    vr5 = (V.iloc[-5:] / x["avgv50"].iloc[-5:]).max()
     add("stage2_bo", "Stage 2 breakout (Weinstein)", "Breakouts",
-        "Crossed above the 30-week (150-day) average in the last 5 sessions, average flat or rising, close above 50 DMA.",
-        cross150 & s150_flat_up & (c > s50l), "Vol ×", vr, "x")
+        "Crossed above the 30-week (150-day) average in the last 5 sessions, the average flat or rising, close above "
+        "the 50 DMA, and volume at least 1.5× average on one of those days (Stan Weinstein: no breakout without volume).",
+        cross150 & s150_flat_up & (c > s50l) & (vr5 >= 1.5), "Best vol × (5d)", vr5, "x")
     def win_range(a, b):
         hh = H.iloc[-a:-b] if b else H.iloc[-a:]
         ll = L.iloc[-a:-b] if b else L.iloc[-a:]
@@ -265,10 +316,13 @@ def run_all(x):
         "Volume at least 3× the 50-day average and price up 2% or more today.",
         (vr >= 3) & (d1 >= 0.02), "Vol ×", vr, "x", "metric")
     down_vol10 = V.where(C < C.shift(1)).iloc[-11:-1].max()
+    s10l = s10.iloc[-1]
     add("pocket_pivot", "Pocket pivot", "Volume",
         "Up day whose volume beats the largest down-day volume of the prior 10 sessions, closing above the 10 and 50 DMA "
-        "within 15% of the 52-week high (Morales & Kacher).",
-        (c > pc) & (v > down_vol10) & (c > s10.iloc[-1]) & (c > s50l) & (pct_from_hi >= -15), "Vol ×", vr, "x")
+        "but no more than 5% above the 10 DMA (not extended), with the 50 DMA not falling and price within 15% of the "
+        "52-week high (Chris Kacher & Gil Morales).",
+        (c > pc) & (v > down_vol10) & (c > s10l) & (c <= s10l * 1.05) & (c > s50l) & (s50l >= s50.iloc[-6])
+        & (pct_from_hi >= -15), "Vol ×", vr, "x")
     add("vol_high", "Highest volume in a year (up day)", "Volume",
         "Today's volume is the largest of the past 252 sessions and the stock closed up.",
         (v >= V.iloc[-252:].max()) & (d1 > 0) & (bars >= 200), "Vol ×", vr, "x", "metric")
@@ -304,16 +358,16 @@ def run_all(x):
         nr7 & uptrend, "Range %", rng.iloc[-1] / c * 100, "pct")
     add("inside", "Inside day in uptrend", "Trend & pullbacks",
         "Today's high and low sit inside yesterday's range, in a Stage-2 stock with RS ≥ 70.",
-        (h <= ph) & (l >= pl) & uptrend & (rs_now >= 70))
+        (h <= ph) & (l >= pl) & ((h < ph) | (l > pl)) & uptrend & (rs_now >= 70))
     add("power3", "Power of 3", "Trend & pullbacks",
         "In one up session the stock started below the 10 EMA, 21 EMA and 50 DMA (low under all three) and closed "
         "above all three — a decisive reclaim (Deepvue).",
         (l <= mn) & (c > mx) & (c > pc), "Vol ×", vr, "x")
-    below21 = C.iloc[-6:-1].lt(e21.iloc[-6:-1]).sum()
+    below20 = C.iloc[-6:-1].lt(ema20.iloc[-6:-1]).sum()
     add("wedge_pop", "EMA reclaim (wedge pop)", "Trend & pullbacks",
-        "Closed back above the 10 and 21 EMA after at least 3 of the previous 5 closes below the 21 EMA, on 1.5× "
-        "average volume, with the 50 DMA above the 200 DMA (Oliver Kell's wedge pop / EMA crossback).",
-        (below21 >= 3) & (c > e10l) & (c > e21l) & (vr >= 1.5) & (s50l > s200l), "Vol ×", vr, "x", "metric")
+        "Closed back above the 10 and 20 EMA after at least 3 of the previous 5 closes below the 20 EMA, on 1.5× "
+        "average volume, with the 50 DMA above the 200 DMA (Oliver Kell's wedge pop, which uses the 10 and 20 EMA).",
+        (below20 >= 3) & (c > e10l) & (c > ema20.iloc[-1]) & (vr >= 1.5) & (s50l > s200l), "Vol ×", vr, "x", "metric")
 
     # ── Price action (single- and two-bar signals)
     add("outside_day", "Bullish outside day", "Price action",
@@ -331,14 +385,14 @@ def run_all(x):
         "closed above it, in a Stage-2 uptrend — support confirmed.",
         (lw >= 2 * body) & (uw <= body) & (l <= s50l * 1.01) & (c > s50l) & uptrend,
         "Dist to 50DMA %", (c / s50l - 1) * 100, "pct")
-    ins = (H < H.shift(1)) & (L > L.shift(1))
+    ins = (H <= H.shift(1)) & (L >= L.shift(1)) & ((H < H.shift(1)) | (L > L.shift(1)))
     add("inside2", "Double inside day", "Price action",
         "Two inside days in a row in a Stage-2 uptrend — a tighter coil than a single inside day. Buy the break "
         "of the mother bar's high.", ins.iloc[-1] & ins.iloc[-2] & uptrend, "Range %", rng.iloc[-1] / c * 100, "pct")
     dn3 = (C.diff() < 0).iloc[-4:-1].sum()
     add("bull_snort", "Bull snort", "Price action",
         "After 2+ down closes in the prior 3 sessions, a 3%+ up day on at least 2× average volume closing in the "
-        "top quarter of its range, above the 200 DMA (Oliver Kell) — a forceful turn.",
+        "top quarter of its range, above the 200 DMA — a 'power candle': a forceful turn with heavy buying.",
         (dn3 >= 2) & (d1 >= 0.03) & (vr >= 2) & (dcr >= 75) & (c > s200l), "Vol ×", vr, "x", "metric")
 
     # ── Oscillators

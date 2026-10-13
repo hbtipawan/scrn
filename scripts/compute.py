@@ -175,7 +175,7 @@ def main():
 
     # ---------------- indicators
     sma = {n: Cu.rolling(n, min_periods=n).mean() for n in (20, 50, 150, 200)}
-    ema20, ema50 = Cu.ewm(span=20, adjust=False).mean(), Cu.ewm(span=50, adjust=False).mean()
+    ema20, ema50 = SC.ema(Cu, 20), SC.ema(Cu, 50)
     hi52 = Hu.rolling(252, min_periods=60).max()
     lo52 = Lu.rolling(252, min_periods=60).min()
     avgv50 = Vu.rolling(50, min_periods=20).mean().shift(1)
@@ -395,6 +395,17 @@ def main():
         import traceback
         traceback.print_exc()
         print(f"results skipped: {e}")
+    # detailed documentation for every scanner (shown in a collapsible panel on the site)
+    try:
+        import scan_docs as SD
+        for m_ in sc_meta:
+            if m_["id"] in SD.DOCS:
+                m_["doc"] = SD.DOCS[m_["id"]]
+        missing = [m_["id"] for m_ in sc_meta if "doc" not in m_]
+        if missing:
+            print(f"scanner docs missing for: {', '.join(missing)}")
+    except Exception as e:  # docs are optional
+        print(f"scanner docs skipped: {e}")
     scans = {"cats": cats, "meta": sc_meta, "hits": sc_hits, "metric": sc_metric}
 
     ist = timezone(timedelta(hours=5, minutes=30))
