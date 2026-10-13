@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>PKC Radar</title>
+<title>PKC Sector Radar</title>
 <meta name="theme-color" content="#10233D">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -387,19 +387,66 @@ svg text{fill:var(--muted);font:500 13px var(--body)}
 .tip b{font-weight:700}
 
 /* ── Scanners ─────────────────────────────────────────── */
-.scan-layout{display:grid;grid-template-columns:300px minmax(0,1fr);gap:16px;align-items:start}
-.rail{position:sticky;top:72px;max-height:calc(100vh - 90px);overflow:auto;padding:8px 0}
-.rail h4{font-size:14px;font-weight:700;color:var(--muted);font-family:var(--body);padding:12px 16px 4px;letter-spacing:.02em}
-.rail button{display:flex;width:100%;justify-content:space-between;gap:10px;align-items:center;border:0;background:none;padding:8px 16px;text-align:left;cursor:pointer;font-size:16px;color:var(--ink);border-left:3px solid transparent}
-.rail button:hover{background:var(--soft)}
-.rail button[aria-current="true"]{background:var(--soft);border-left-color:var(--accent);font-weight:700}
-.rail button .c{font-size:14px;font-weight:700;min-width:30px;text-align:center;padding:0 7px;border-radius:999px;background:var(--soft);border:1px solid var(--line);color:var(--muted)}
-.rail button .c.z{opacity:.55}
+/* Each scanner group carries its own colour in --g (set inline). --gv is the version used for lines,
+   beads and tints: the colour itself on light, a lifted mix on dark so it stays visible on navy. */
+[style*="--g"]{--gv:var(--g)}
+.scan-layout{display:grid;grid-template-columns:320px minmax(0,1fr);gap:18px;align-items:start}
+.rail-wrap{position:sticky;top:72px;max-height:calc(100vh - 90px);display:flex;flex-direction:column;overflow:hidden}
+.rail-search{padding:14px 14px 10px;border-bottom:1px solid var(--track);display:flex;flex-direction:column;gap:6px}
+.rail-search .search{width:100%;font-size:16px;padding-left:40px;background:var(--card) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'%3E%3Ccircle cx='11' cy='11' r='6.5' fill='none' stroke='%234D5868' stroke-width='2.2'/%3E%3Cpath stroke='%234D5868' stroke-width='2.4' stroke-linecap='round' d='M16 16l4.5 4.5'/%3E%3C/svg%3E") no-repeat 12px 50%;box-shadow:inset 0 2px 3px rgba(15,26,42,.08)}
+.rail-search .search:focus{outline:none;border-color:var(--accent);box-shadow:inset 0 2px 3px rgba(15,26,42,.08),0 0 0 3px color-mix(in srgb,var(--accent) 30%,transparent)}
+.rail-search .note{margin:0 2px;font-size:14.5px}
+.rail{flex:1 1 auto;min-height:0;overflow:auto;padding:0 0 10px;overscroll-behavior:contain}
+.rail h4{position:sticky;top:0;z-index:1;display:flex;align-items:center;gap:10px;font-family:var(--body);font-size:15.5px;font-weight:700;color:var(--ink);padding:14px 16px 7px;background:var(--card);box-shadow:0 1px 0 var(--track)}
+.rail h4 span{flex:1;min-width:0}
+.rail h4 b{font-size:13.5px;font-weight:700;color:var(--muted)}
+.rail button{display:flex;width:100%;justify-content:space-between;gap:10px;align-items:center;border:0;background:none;padding:9px 14px 9px 13px;text-align:left;cursor:pointer;font-size:16px;color:var(--ink);border-left:5px solid color-mix(in srgb,var(--gv) 32%,transparent);line-height:1.3}
+.rail button:hover{background:color-mix(in srgb,var(--gv) 9%,transparent);border-left-color:var(--gv)}
+.rail button[aria-current="true"]{background:linear-gradient(90deg,color-mix(in srgb,var(--gv) 20%,var(--card)),color-mix(in srgb,var(--gv) 6%,var(--card)));border-left-color:var(--gv);font-weight:700;box-shadow:inset 0 1px 0 color-mix(in srgb,var(--gv) 25%,transparent),inset 0 -1px 0 color-mix(in srgb,var(--gv) 25%,transparent)}
+.rail button .c{flex:none;font-size:14px;font-weight:700;min-width:34px;text-align:center;padding:1px 8px;border-radius:999px;background:color-mix(in srgb,var(--gv) 12%,var(--card));border:1px solid color-mix(in srgb,var(--gv) 35%,var(--line));color:var(--ink)}
+.rail button[aria-current="true"] .c{background:var(--g);border-color:var(--g);color:#fff;box-shadow:0 2px 0 color-mix(in srgb,var(--g) 55%,#000)}
+.rail button .c.z{opacity:.6}
 .scan-pick{display:none}
-.scan-head{padding:16px 18px 12px;border-bottom:1px solid var(--track)}
-.scan-head h3{font-size:24px;font-weight:800}
-.scan-head .cnt{font-family:var(--display);font-weight:800;font-size:24px;color:var(--accent-ink);margin-left:8px}
-.scan-head p{margin:6px 0 0;color:var(--muted);max-width:80ch}
+/* 3D bead: a lit sphere in the group colour */
+.gdot{display:inline-block;flex:none;width:15px;height:15px;border-radius:50%;vertical-align:-2px;
+  background:radial-gradient(circle at 34% 30%,color-mix(in srgb,var(--gv) 25%,#fff) 0 14%,var(--gv) 52%,color-mix(in srgb,var(--gv) 60%,#000) 100%);
+  box-shadow:0 1px 2px rgba(0,0,0,.35),inset 0 -1px 1px rgba(0,0,0,.2)}
+.scan-main{overflow:hidden}
+.scan-head{padding:20px 20px 16px;border-bottom:1px solid var(--track);background:linear-gradient(180deg,color-mix(in srgb,var(--gv) 11%,var(--card)) 0%,var(--card) 78%);box-shadow:inset 0 6px 0 var(--gv)}
+.sh-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:2px 0 10px}
+.gchip{display:inline-flex;align-items:center;gap:8px;padding:5px 14px 5px 7px;border-radius:999px;font-size:15px;font-weight:700;color:#fff;
+  background:linear-gradient(180deg,var(--g),color-mix(in srgb,var(--g) 78%,#000));box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 2px 0 color-mix(in srgb,var(--g) 55%,#000),0 6px 14px -4px color-mix(in srgb,var(--g) 55%,transparent);text-shadow:0 1px 0 rgba(0,0,0,.22)}
+.gchip .gdot{background:radial-gradient(circle at 34% 30%,#fff 0 22%,rgba(255,255,255,.72) 70%);box-shadow:0 0 0 2px rgba(255,255,255,.22)}
+.sh-cnt{display:inline-flex;align-items:baseline;gap:6px;font-family:var(--display);font-weight:800;font-stretch:108%;font-size:32px;line-height:1;padding:8px 14px 9px;border-radius:12px;color:var(--ink);
+  background:linear-gradient(180deg,var(--card),color-mix(in srgb,var(--gv) 7%,var(--card)));border:1.5px solid color-mix(in srgb,var(--gv) 45%,var(--line));box-shadow:0 3px 0 color-mix(in srgb,var(--gv) 45%,var(--line)),0 8px 16px -8px rgba(15,26,42,.3)}
+.sh-cnt small{font-family:var(--body);font-size:14.5px;font-weight:600;color:var(--muted);font-stretch:100%}
+.scan-head h3{font-size:27px;font-weight:800}
+.scan-head>p{margin:8px 0 0;color:var(--muted);max-width:80ch;font-size:17px}
+.sh-ctl{display:flex;flex-wrap:wrap;gap:12px 22px;align-items:flex-end;margin-top:16px}
+/* "How this scanner works" — collapsed by default, remembers the reader's choice */
+.sdoc{margin-top:14px;border:1.5px solid color-mix(in srgb,var(--gv) 40%,var(--line));border-radius:12px;background:var(--card);box-shadow:0 2px 0 color-mix(in srgb,var(--gv) 28%,var(--line))}
+.sdoc>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:11px 14px;font-weight:700;font-size:16.5px;color:var(--ink);border-radius:11px}
+.sdoc>summary::-webkit-details-marker{display:none}
+.sdoc>summary::before{content:"";flex:none;width:24px;height:24px;border-radius:7px;background:var(--g) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24'%3E%3Cpath d='M9 5l7 7-7 7' fill='none' stroke='%23fff' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 2px 0 color-mix(in srgb,var(--g) 55%,#000)}
+.sdoc[open]>summary::before{transform:rotate(90deg)}
+.sdoc>summary:hover{background:color-mix(in srgb,var(--gv) 7%,transparent)}
+.sdoc>summary::after{content:"Rules, use and caveats";margin-left:auto;font-weight:500;font-size:14.5px;color:var(--muted)}
+.sdoc[open]>summary::after{content:"Hide"}
+.sdoc[open]>summary{border-bottom:1px solid var(--track);border-radius:11px 11px 0 0}
+.sdoc-b{padding:14px 16px 16px}
+.sd-what{margin:0 0 12px;font-size:17px;line-height:1.55;max-width:78ch;color:var(--ink)}
+.sdoc h5{margin:0 0 8px;font-family:var(--body);font-size:15.5px;font-weight:700;color:var(--ink)}
+.sd-rules{list-style:none;margin:0 0 14px;padding:0;display:grid;gap:7px}
+.sd-rules li{display:grid;grid-template-columns:26px minmax(0,1fr);gap:10px;align-items:start;font-size:16.5px;line-height:1.45;padding:8px 10px;border-radius:9px;background:color-mix(in srgb,var(--gv) 6%,var(--card));border:1px solid color-mix(in srgb,var(--gv) 18%,var(--line))}
+.sd-rules li::before{content:"✓";width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:14px;font-weight:800;color:#fff;
+  background:radial-gradient(circle at 34% 30%,color-mix(in srgb,var(--g) 55%,#fff) 0 10%,var(--g) 60%,color-mix(in srgb,var(--g) 70%,#000) 100%);box-shadow:0 1px 2px rgba(0,0,0,.3)}
+.sd-two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+.sd-two>div{border-radius:10px;padding:11px 13px;border:1px solid var(--line);background:var(--soft)}
+.sd-two>div:last-child{background:var(--warn-bg);border-color:color-mix(in srgb,var(--warn) 45%,transparent)}
+.sd-two p{margin:0;font-size:16px;line-height:1.5}
+.sd-src{margin:12px 0 0;font-size:14.5px;color:var(--muted)}
+.chipbtn.sc{display:inline-flex;align-items:center;gap:8px;border-color:color-mix(in srgb,var(--gv) 50%,var(--line));background:linear-gradient(180deg,color-mix(in srgb,var(--gv) 9%,var(--card)),color-mix(in srgb,var(--gv) 16%,var(--card)));box-shadow:0 2px 0 color-mix(in srgb,var(--gv) 35%,var(--line))}
+.chipbtn.sc:hover{border-color:var(--gv)}
 .catchips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
 
 /* ── VPCI ─────────────────────────────────────────────── */
@@ -500,8 +547,11 @@ footer.foot p{margin:4px 0;max-width:110ch}
 @media (max-width:1000px){
   .pulse{grid-template-columns:minmax(0,1fr)}
   .scan-layout{grid-template-columns:minmax(0,1fr)}
+  .rail-wrap{position:static;max-height:none;overflow:visible}
   .rail{display:none}
-  .scan-pick{display:block;margin-bottom:12px}
+  #scanWrap.q .rail{display:block;max-height:55vh;border-top:1px solid var(--track)}
+  #scanWrap.q .scan-pick{display:none}
+  .scan-pick{display:block;padding:0 14px 14px}
   .vstats{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:720px){
@@ -556,6 +606,136 @@ footer.foot p{margin:4px 0;max-width:110ch}
   .fill,.meter i,.tile .bar i,.frow .bar{transition:width .35s ease,left .35s ease}
   .drawer{animation:slidein .2s ease}
   @keyframes slidein{from{transform:translateY(24px);opacity:.4}to{transform:none;opacity:1}}
+}
+
+/* ══ Lit instrument panel ═══════════════════════════════════
+   Panels are raised plates (lit top edge, contact + ambient shadow), controls are keycaps
+   (darker bottom edge, pressed state), sections and scanner groups carry their own colour.
+   Kept last so it layers over the base rules above. */
+:root{
+  --face:linear-gradient(180deg,#FFFFFF 0%,#FBFCFE 100%);
+  --d1:inset 0 1px 0 #fff,0 1px 2px rgba(15,26,42,.07),0 8px 20px -8px rgba(15,26,42,.16),0 22px 40px -24px rgba(15,26,42,.22);
+  --d2:inset 0 1px 0 #fff,0 2px 4px rgba(15,26,42,.08),0 14px 28px -10px rgba(15,26,42,.22),0 30px 50px -28px rgba(15,26,42,.28);
+  --key-top:#2A4A78; --key-bot:#10233D; --key-edge:#06111F;
+  --groove:linear-gradient(180deg,#E3E8EF,#EEF2F6);
+  --wash:radial-gradient(1100px 520px at 0% 0%,rgba(29,78,216,.07),transparent 62%),radial-gradient(900px 480px at 100% 8%,rgba(162,28,175,.06),transparent 60%),radial-gradient(1000px 600px at 50% 100%,rgba(15,118,110,.06),transparent 60%);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --face:linear-gradient(180deg,#17233A 0%,#131D2C 100%);
+  --d1:inset 0 1px 0 rgba(255,255,255,.07),0 1px 2px rgba(0,0,0,.55),0 12px 28px -12px rgba(0,0,0,.7);
+  --d2:inset 0 1px 0 rgba(255,255,255,.09),0 2px 4px rgba(0,0,0,.55),0 18px 36px -12px rgba(0,0,0,.8);
+  --key-top:#F4F7FB; --key-bot:#C9D5E6; --key-edge:#7E90A9;
+  --groove:linear-gradient(180deg,#0F1826,#172235);
+  --wash:radial-gradient(1100px 520px at 0% 0%,rgba(76,139,216,.10),transparent 62%),radial-gradient(900px 480px at 100% 8%,rgba(213,81,129,.07),transparent 60%),radial-gradient(1000px 600px at 50% 100%,rgba(31,161,132,.07),transparent 60%);}
+  :root:not([data-theme="light"]) [style*="--g"]{--gv:color-mix(in srgb,var(--g) 62%,#fff)}}
+:root[data-theme="dark"]{
+  --face:linear-gradient(180deg,#17233A 0%,#131D2C 100%);
+  --d1:inset 0 1px 0 rgba(255,255,255,.07),0 1px 2px rgba(0,0,0,.55),0 12px 28px -12px rgba(0,0,0,.7);
+  --d2:inset 0 1px 0 rgba(255,255,255,.09),0 2px 4px rgba(0,0,0,.55),0 18px 36px -12px rgba(0,0,0,.8);
+  --key-top:#F4F7FB; --key-bot:#C9D5E6; --key-edge:#7E90A9;
+  --groove:linear-gradient(180deg,#0F1826,#172235);
+  --wash:radial-gradient(1100px 520px at 0% 0%,rgba(76,139,216,.10),transparent 62%),radial-gradient(900px 480px at 100% 8%,rgba(213,81,129,.07),transparent 60%),radial-gradient(1000px 600px at 50% 100%,rgba(31,161,132,.07),transparent 60%);}
+:root[data-theme="dark"] [style*="--g"]{--gv:color-mix(in srgb,var(--g) 62%,#fff)}
+
+body{background:var(--wash),var(--desk);background-attachment:scroll;min-height:100vh}
+
+/* Section colours: the tab's icon key and the section heading share one hue */
+.tab[data-v="rotation"],#view[data-v="rotation"]{--t:#1D4ED8}
+.tab[data-v="breadth"],#view[data-v="breadth"]{--t:#0F766E}
+.tab[data-v="rs"],#view[data-v="rs"]{--t:#15803D}
+.tab[data-v="scanners"],#view[data-v="scanners"]{--t:#C2410C}
+.tab[data-v="bases"],#view[data-v="bases"]{--t:#4338CA}
+.tab[data-v="results"],#view[data-v="results"]{--t:#A21CAF}
+.tab[data-v="watch"],#view[data-v="watch"]{--t:#A16207}
+.tab[data-v="vpci"],#view[data-v="vpci"]{--t:#BE185D}
+
+/* Band: deeper, two-tone night sky with raised glass instruments */
+.band{background:radial-gradient(900px 300px at 85% -20%,rgba(162,28,175,.32),transparent 70%),radial-gradient(800px 320px at 0% 120%,rgba(14,138,110,.28),transparent 70%),linear-gradient(160deg,#0C1D38 0%,#13305A 55%,#1B2A5E 100%);position:relative}
+.band::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,rgba(240,180,86,.55),transparent)}
+.hero-idx,.health{background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.03));border-color:rgba(255,255,255,.14);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16),inset 0 -1px 0 rgba(0,0,0,.25),0 14px 30px -14px rgba(0,0,0,.65)}
+.brand svg{filter:drop-shadow(0 2px 6px rgba(240,180,86,.35))}
+.iconbtn{background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.03));border-color:rgba(255,255,255,.2);box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 2px 0 rgba(0,0,0,.35)}
+.iconbtn:active{transform:translateY(1px);box-shadow:inset 0 1px 2px rgba(0,0,0,.4)}
+.meter{box-shadow:inset 0 1px 2px rgba(0,0,0,.45);background:rgba(0,0,0,.28)}
+.meter i{background:linear-gradient(180deg,#FFD58A 0%,var(--accent) 45%,#B97814 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.45)}
+.meter.split i{background:linear-gradient(180deg,#7BE3C4,#2FB48E 50%,#1E8A6C)}
+.meter.split i+i{background:linear-gradient(180deg,#FFA48E,#EE6247 50%,#BF4029)}
+
+/* Tab bar: each section has a colour key behind its icon; the open one lights up */
+.tabbar{background:linear-gradient(180deg,var(--card),var(--soft));box-shadow:0 1px 0 var(--line),0 10px 22px -14px rgba(15,26,42,.35)}
+.tab{--tv:var(--t);padding-inline:12px;gap:8px}
+:root[data-theme="dark"] .tab{--tv:color-mix(in srgb,var(--t) 58%,#fff)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tab{--tv:color-mix(in srgb,var(--t) 58%,#fff)}}
+.tab svg{box-sizing:content-box;padding:5px;border-radius:9px;color:var(--tv);background:color-mix(in srgb,var(--tv) 13%,var(--card));box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--tv) 30%,transparent)}
+.tab[aria-selected="true"]{background:linear-gradient(180deg,color-mix(in srgb,var(--tv) 13%,var(--card)),transparent);border-bottom-color:var(--tv)}
+.tab[aria-selected="true"] svg{color:#fff;background:linear-gradient(180deg,color-mix(in srgb,var(--t) 82%,#fff),var(--t) 55%,color-mix(in srgb,var(--t) 75%,#000));box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 2px 0 color-mix(in srgb,var(--t) 50%,#000),0 4px 10px -2px color-mix(in srgb,var(--t) 60%,transparent)}
+.tab .cnt{background:color-mix(in srgb,var(--tv) 13%,var(--card));border-color:color-mix(in srgb,var(--tv) 35%,var(--line));color:var(--ink)}
+.tab[aria-selected="true"] .cnt{background:var(--t);border-color:var(--t);color:#fff}
+.sec-head h2{display:flex;align-items:center;gap:12px}
+.sec-head h2::before{content:"";flex:none;width:12px;height:30px;border-radius:6px;background:linear-gradient(180deg,color-mix(in srgb,var(--t,var(--accent)) 70%,#fff),var(--t,var(--accent)) 50%,color-mix(in srgb,var(--t,var(--accent)) 70%,#000));box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 2px 6px -1px color-mix(in srgb,var(--t,var(--accent)) 60%,transparent)}
+
+/* Raised plates */
+.card{background:var(--face);border-color:color-mix(in srgb,var(--line) 75%,transparent);box-shadow:var(--d1)}
+.dcol .dsec,details.exp,.drawer header{background:var(--face)}
+.dcol .dsec{box-shadow:var(--d1);border-color:color-mix(in srgb,var(--line) 75%,transparent)}
+.rcard{box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 2px 4px rgba(5,15,30,.2),0 16px 30px -14px rgba(5,15,30,.55);background:linear-gradient(170deg,#132A4B 0%,var(--rc) 60%)}
+.rc-t{box-shadow:inset 0 1px 0 rgba(255,255,255,.06),inset 0 -1px 0 rgba(0,0,0,.25)}
+.dgrid div{box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 1px 0 var(--line)}
+:root[data-theme="dark"] .dgrid div{box-shadow:inset 0 1px 0 rgba(255,255,255,.04),0 1px 0 rgba(0,0,0,.4)}
+.dt th,.dt th:first-child,.dt td:first-child{background:var(--card)}
+
+/* KPI tiles: a coloured light strip on top, cycling through the section palette */
+.tile{position:relative;overflow:hidden}
+.tile::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:linear-gradient(90deg,var(--tc,#1D4ED8),color-mix(in srgb,var(--tc,#1D4ED8) 55%,#fff))}
+.tiles>.tile:nth-child(6n+1){--tc:#1D4ED8}.tiles>.tile:nth-child(6n+2){--tc:#0F766E}.tiles>.tile:nth-child(6n+3){--tc:#C2410C}
+.tiles>.tile:nth-child(6n+4){--tc:#A21CAF}.tiles>.tile:nth-child(6n+5){--tc:#A16207}.tiles>.tile:nth-child(6n+6){--tc:#4338CA}
+.btile.t-e::before{--tc:var(--up)}.btile.t-m::before{--tc:var(--accent)}.btile.t-l::before{--tc:var(--down)}
+.btile.t-e,.btile.t-m,.btile.t-l{box-shadow:var(--d1)}
+.tile .bar,.btrack{border-radius:5px}
+.tile .bar{box-shadow:inset 0 1px 2px rgba(15,26,42,.18)}
+.tile .bar i{background:linear-gradient(180deg,color-mix(in srgb,var(--s1) 65%,#fff),var(--s1) 55%,color-mix(in srgb,var(--s1) 75%,#000))}
+
+/* Bars read as solid rods: light on top, shade below */
+.fill.pos{background:linear-gradient(180deg,#3CC9A2 0%,var(--up) 50%,#0A6C56 100%);box-shadow:0 2px 4px -1px rgba(14,138,110,.45)}
+.fill.neg{background:linear-gradient(180deg,#F27D61 0%,var(--down) 50%,#A8341F 100%);box-shadow:0 2px 4px -1px rgba(212,70,44,.45)}
+.frow .bar,.sbar{background:linear-gradient(180deg,color-mix(in srgb,var(--s1) 60%,#fff),var(--s1) 55%,color-mix(in srgb,var(--s1) 75%,#000))}
+.hbar .b{background:linear-gradient(180deg,#3CC9A2,var(--up) 55%,#0A6C56)}
+
+/* Keycap controls */
+.seg{background:var(--groove);border-color:color-mix(in srgb,var(--line) 85%,#000 0%);box-shadow:inset 0 2px 4px rgba(15,26,42,.14),inset 0 -1px 0 rgba(255,255,255,.5);padding:4px;gap:3px}
+.seg button{border-radius:7px}
+.seg button:hover{background:color-mix(in srgb,var(--card) 70%,transparent)}
+.seg button[aria-pressed="true"]{background:linear-gradient(180deg,var(--key-top),var(--key-bot));color:var(--sel-ink);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 2px 0 var(--key-edge),0 4px 8px -2px rgba(15,26,42,.45)}
+.subtabs button{background:linear-gradient(180deg,var(--card),var(--soft));box-shadow:0 2px 0 var(--line),0 4px 10px -6px rgba(15,26,42,.25)}
+.subtabs button[aria-pressed="true"]{background:linear-gradient(180deg,var(--key-top),var(--key-bot));border-color:var(--key-edge);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 2px 0 var(--key-edge),0 6px 12px -6px rgba(15,26,42,.5)}
+.btn{background:linear-gradient(180deg,var(--key-top),var(--key-bot));box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 3px 0 var(--key-edge),0 8px 16px -8px rgba(15,26,42,.55)}
+.btn.alt,.ghost,.chipbtn,.wlchip,.rowact button,.dnav button{background:linear-gradient(180deg,var(--card),var(--soft));box-shadow:0 2px 0 var(--line),0 3px 8px -4px rgba(15,26,42,.18)}
+.btn:active,.ghost:active,.chipbtn:active,.wlchip:active,.rowact button:active,.dnav button:active,.subtabs button:active,.seg button:active{transform:translateY(2px);box-shadow:inset 0 1px 3px rgba(15,26,42,.3)}
+.select,.search{box-shadow:inset 0 2px 3px rgba(15,26,42,.07)}
+.pill,.rs,.badge{box-shadow:0 1px 0 rgba(15,26,42,.08)}
+.rs-a{background:linear-gradient(180deg,#22A882,var(--up) 60%,#0A6C56);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 1px 0 #075441}
+
+/* Interactive plates lift a little under the pointer */
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  button.btile,.scard,.rcard{transition:transform .16s ease,box-shadow .16s ease}
+  button.btile:hover,.scard:hover{transform:translateY(-2px);box-shadow:var(--d2)}
+  .rcard:hover{transform:translateY(-2px)}
+  .rail button{transition:background .12s ease,border-color .12s ease}
+}
+@media (max-width:720px){
+  .tabbar{box-shadow:0 -1px 0 var(--line),0 -10px 22px -14px rgba(15,26,42,.35);background:linear-gradient(0deg,var(--card),var(--soft))}
+  .tab svg{padding:4px;width:20px;height:20px}
+  .tab[aria-selected="true"]{background:linear-gradient(0deg,color-mix(in srgb,var(--tv) 13%,var(--card)),transparent);border-top-color:var(--tv)}
+  .tab{padding-inline:1px;gap:3px}
+  .sec-head h2::before{height:26px;width:10px}
+  .sh-cnt{font-size:27px;padding:7px 12px 8px}
+  .scan-head{padding:16px 14px 14px}
+  .scan-head h3{font-size:24px}
+  .sd-two{grid-template-columns:minmax(0,1fr)}
+  .sdoc>summary::after{display:none}
+  .sdoc-b{padding:12px 12px 14px}
+  .sd-rules li{font-size:16px;padding:7px 9px}
 }
 </style>
 </head>
@@ -873,12 +1053,47 @@ function drawRS(){
 /* ════════════════════ SCANNERS ════════════════════ */
 function fmtMetric(m,v){if(!isNum(v))return "–";return m.fmt==="pct"?(v>=999?"≥999%":sgn(v,1)):m.fmt==="x"?v.toFixed(1)+"×":m.fmt==="int"?v.toFixed(0):v.toFixed(Math.abs(v)<100?1:0)}
 const scanViewSeg=()=>`<div class="subtabs">${seg("scanView",["lib","s2"],st.scanView,{lib:"Scanner library",s2:"Stage 2: early · mid · late"})}</div>`;
+/* Scanner groups: each has its own colour, used wherever the group appears (rail, scan header, stock card) */
+const GRP={"Confluence":"#A16207","Momentum":"#1E3A8A","Breakouts":"#C2410C","Bases":"#4338CA","Stage 2":"#0F766E","Results":"#A21CAF",
+  "Volume":"#92400E","Trend & pullbacks":"#1D4ED8","Price action":"#BE185D","Oscillators":"#6D28D9","Relative strength":"#15803D",
+  "Earnings & growth":"#0369A1","Quality & value":"#7E22CE","Ownership":"#047857","Weakness":"#B91C1C","Fundamental red flags":"#86198F"};
+/* order matters: neighbours in the list were checked to stay distinct for normal and colour-blind vision */
+const gcol=c=>GRP[c]||"#475569";
+const bead=c=>`<i class="gdot" style="--g:${gcol(c)}" aria-hidden="true"></i>`;
+const TECH_CATS=["Confluence","Momentum","Breakouts","Volume","Trend & pullbacks","Price action","Oscillators","Relative strength","Weakness"];
+/* Scanner search: every typed word must start a word somewhere in the scanner's name, group or write-up
+   ("ema" finds "20 EMA", not "remains"). Name hits rank first, so Enter opens the closest scanner. */
+const wordsOf=t=>String(t||"").toLowerCase().split(/[^a-z0-9%×]+/).filter(Boolean);
+function scanIdx(x){if(!x._w){const d=x.doc||{};x._n=wordsOf(x.name+" "+x.cat);x._w=new Set([...x._n,...wordsOf([x.desc,x.metric,d.what,d.use,d.watch,d.src,...(d.rules||[])].join(" "))])}return x}
+const SCAN_SYN={eps:["eps","earnings"],pat:["pat","profit"],profit:["profit","earnings"],sales:["sales","revenue"],revenue:["revenue","sales"],
+  dma:["dma","sma"],sma:["sma","dma"],ma:["ma","average","sma","ema","dma"],vol:["vol","volume"]};
+function scanScore(x,qs){scanIdx(x);let sc=0;for(const w of qs){const alts=SCAN_SYN[w]||[w],hit=t=>alts.some(a=>t.startsWith(a));
+  if(x._n.some(hit))sc+=3;else if([...x._w].some(hit))sc+=1;else return 0}return sc}
+function scanMatches(q,ranked){const S=D.scans,qs=wordsOf(q);if(!qs.length)return S.meta;
+  const r=S.meta.map((x,i)=>[x,scanScore(x,qs),i]).filter(a=>a[1]>0);if(ranked)r.sort((a,b)=>b[1]-a[1]||a[2]-b[2]);return r.map(a=>a[0])}
+function drawRail(){
+  const S=D.scans,m=D.scanMeta[st.scan],list=scanMatches(st.scanQ),ids=new Set(list.map(x=>x.id));
+  const rail=$("#scanRail");if(!rail)return;
+  const html=S.cats.map(c=>{const items=S.meta.filter(x=>x.cat===c&&ids.has(x.id));if(!items.length)return "";
+    return `<h4 style="--g:${gcol(c)}">${bead(c)}<span>${esc(c)}</span><b>${items.length}</b></h4>`+items.map(x=>{const n=(S.hits[x.id]||[]).length;
+      return `<button type="button" data-scan="${x.id}" style="--g:${gcol(x.cat)}" aria-current="${x.id===m.id}"><span>${esc(x.name)}</span><span class="c ${n?"":"z"}">${n}</span></button>`}).join("")}).join("");
+  rail.innerHTML=html||`<p class="note" style="margin:10px 16px">No scanner matches “${esc(st.scanQ)}”. Try a shorter word, like “volume” or “EMA”.</p>`;
+  const n=$("#scanQn");if(n)n.textContent=st.scanQ?`${list.length} of ${S.meta.length} scanners`:`${S.meta.length} scanners in ${S.cats.length} groups`;
+  $("#scanWrap")?.classList.toggle("q",!!st.scanQ);
+}
+function scanDoc(m){
+  const d=m.doc;if(!d)return "";
+  return `<details class="sdoc"${store.get("scanDoc",false)?" open":""}><summary>How this scanner works</summary><div class="sdoc-b">
+    <p class="sd-what">${esc(d.what)}</p>
+    <h5>Rules — all must be true today</h5><ul class="sd-rules">${(d.rules||[]).map(r=>`<li>${esc(r)}</li>`).join("")}</ul>
+    <div class="sd-two"><div><h5>How traders use it</h5><p>${esc(d.use)}</p></div><div><h5>Watch out</h5><p>${esc(d.watch)}</p></div></div>
+    <p class="sd-src">Source: ${esc(d.src)}</p></div></details>`}
 function renderScanners(){
   if(st.scanView==="s2"){renderStage2(scanViewSeg());return}
   const S=D.scans;if(!S?.meta){$("#view").innerHTML=`<div class="err">Scanner data is in an older format. Run “Daily update” once.</div>`;return}
   if(!D.scanMeta[st.scan])st.scan=S.meta[0].id;
-  const m=D.scanMeta[st.scan],hits=S.hits[m.id]||[];
-  const rail=S.cats.map(c=>`<h4>${esc(c)}</h4>`+S.meta.filter(x=>x.cat===c).map(x=>{const n=(S.hits[x.id]||[]).length;return `<button type="button" data-scan="${x.id}" aria-current="${x.id===m.id}"><span>${esc(x.name)}</span><span class="c ${n?"":"z"}">${n}</span></button>`}).join("")).join("");
+  if(st.scanQ==null)st.scanQ="";
+  const m=D.scanMeta[st.scan],hits=S.hits[m.id]||[],g=gcol(m.cat);
   const pick=`<select class="select" id="scanSel" style="width:100%" aria-label="Choose a scanner">${S.cats.map(c=>`<optgroup label="${esc(c)}">${S.meta.filter(x=>x.cat===c).map(x=>`<option value="${x.id}" ${x.id===m.id?"selected":""}>${esc(x.name)} (${(S.hits[x.id]||[]).length})</option>`).join("")}</optgroup>`).join("")}</select>`;
   let rows=hits.map(s=>D.by[s]).filter(Boolean);const metric=S.metric?.[m.id]||{};
   let topNote="";
@@ -894,15 +1109,24 @@ function renderScanners(){
   else cols.push(C.ret("1M"),C.vr,C.dcr,C.adr,C.rs,C.fr,C.h52,C.st,C.sec,C.themes);
   const tid="scan_"+m.id,mk=dup||"metric";
   if(!st.tbl[tid])st.tbl[tid]={key:m.sort==="metric"||m.sort==="metric_asc"?mk:"rs",dir:m.sort==="metric_asc"?1:-1,show:100};
-  $("#view").innerHTML=scanViewSeg()+`<div class="sec-head"><div><h2>Scanner library</h2><p>${S.meta.length} scans run on every stock after the close${D.meta.fund?` — ${S.meta.filter(x=>!x.id.startsWith("f_")).length} technical and ${S.meta.filter(x=>x.id.startsWith("f_")).length} fundamental (from NSE filings)`:""}. Tap any stock for its detail card, including every other scan it appears in.</p></div></div>
-  <div class="scan-pick">${pick}</div>
-  <div class="scan-layout"><nav class="card rail" aria-label="Scanners">${rail}</nav>
-  <section class="card"><div class="scan-head"><h3>${esc(m.name)}<span class="cnt num">${hits.length}</span></h3><p>${esc(m.desc)}</p><div class="catchips"><span class="pill p-acc">${esc(m.cat)}</span>${rows.length?`<button type="button" class="ghost" data-wl-addall="${esc(JSON.stringify(rows.map(r=>r.s)))}" data-label="${esc(m.name)} stocks" style="margin-left:6px">☆ Add all ${rows.length} to a watchlist</button>`:""}</div>
-  <div style="display:flex;flex-wrap:wrap;gap:12px 22px;margin-top:12px"><div class="ctl"><span>Stocks shown</span>${seg("scanTop",["0","5","10"],String(st.scanTop),{"0":"All","5":"Top 5 themes","10":"Top 10 themes"})}</div>
-  ${D.meta.fund?`<div class="ctl"><span>Fundamentals</span>${seg("scanFund",["0","60","80"],String(st.scanFund),{"0":"Any","60":"Fund 60+","80":"Fund 80+"})}</div>`:""}</div>${topNote?`<p class="note" style="margin:8px 0 0">${esc(topNote)}</p>`:""}</div>
+  const nT=S.meta.filter(x=>TECH_CATS.includes(x.cat)).length,nF=S.meta.filter(x=>FCATS.includes(x.cat)).length,nM=S.meta.length-nT-nF;
+  $("#view").innerHTML=scanViewSeg()+`<div class="sec-head"><div><h2>Scanner library</h2><p>${S.meta.length} scanners in ${S.cats.length} colour-coded groups run on every stock after the close: ${nT} technical, ${nF} from NSE filings${nM?` and ${nM} from the long-base, Stage 2 and results models`:""}. Each one opens with its exact rules. Tap any stock for its detail card, including every other scan it appears in.</p></div></div>
+  <div class="scan-layout"><aside class="card rail-wrap" id="scanWrap"><div class="rail-search"><input class="search" type="search" id="scanQ" placeholder="Find a scanner: EMA, volume…" value="${esc(st.scanQ)}" aria-label="Find a scanner" autocomplete="off"><span id="scanQn" class="note"></span></div>
+    <div class="scan-pick">${pick}</div><nav class="rail" id="scanRail" aria-label="Scanners"></nav></aside>
+  <section class="card scan-main" style="--g:${g}"><div class="scan-head"><div class="sh-top"><span class="gchip">${bead(m.cat)}${esc(m.cat)}</span><span class="sh-cnt num" title="Stocks in this scan today">${hits.length}<small>${hits.length===1?"stock":"stocks"}</small></span></div>
+    <h3>${esc(m.name)}</h3><p>${esc(m.desc)}</p>${scanDoc(m)}
+  <div class="sh-ctl"><div class="ctl"><span>Stocks shown</span>${seg("scanTop",["0","5","10"],String(st.scanTop),{"0":"All","5":"Top 5 themes","10":"Top 10 themes"})}</div>
+  ${D.meta.fund?`<div class="ctl"><span>Fundamentals</span>${seg("scanFund",["0","60","80"],String(st.scanFund),{"0":"Any","60":"Fund 60+","80":"Fund 80+"})}</div>`:""}
+  ${rows.length?`<div class="ctl"><span>&nbsp;</span><button type="button" class="ghost" data-wl-addall="${esc(JSON.stringify(rows.map(r=>r.s)))}" data-label="${esc(m.name)} stocks">☆ Add all ${rows.length} to a watchlist</button></div>`:""}</div>${topNote?`<p class="note" style="margin:8px 0 0">${esc(topNote)}</p>`:""}</div>
   <div id="scanT">${dtable(tid,rows,cols,{empty:"No stocks triggered this scan today."})}</div></section></div>`;
+  drawRail();
   wireTables($("#scanT"),renderScanners);
   $("#scanSel").addEventListener("change",e=>{st.scan=e.target.value;store.set("scan2",st.scan);renderScanners()});
+  const q=$("#scanQ");
+  q.addEventListener("input",()=>{st.scanQ=q.value;drawRail()});
+  q.addEventListener("keydown",e=>{if(e.key==="Enter"){const f=scanMatches(st.scanQ,true)[0];if(f){st.scan=f.id;store.set("scan2",f.id);renderScanners();$("#scanQ")?.focus()}}if(e.key==="Escape"){st.scanQ="";renderScanners()}});
+  $("#view").querySelector(".sdoc")?.addEventListener("toggle",e=>store.set("scanDoc",e.target.open));
+  $("#scanRail [aria-current=true]")?.scrollIntoView({block:"nearest"});
 }
 
 /* ════════════════════ LONG BASES ════════════════════
@@ -1316,7 +1540,7 @@ async function openDrawer(sym,ex,focusWl){
       <dl class="dgrid">${kv("Gates",vr.gate_count+"/7")}${kv("VPCI",isNum(vr.vpci)?vr.vpci.toFixed(2):"–")}${kv("Trail stop","₹"+inr(vr.trail_stop))}${kv("Risk",isNum(vr.risk_pct)?vr.risk_pct.toFixed(1)+"%":"–")}</dl>
       ${vrun?`<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px"><span style="color:var(--muted);font-weight:600">Running week (live, pro-rated):</span>${statusPill(vrun.status)}${gateDots(vrun)}<span class="num">${vrun.gate_count}/7</span></div>`:""}</div>`:""}
     ${(D.themesOf[sym]||[]).length||x?.sec?`<div class="dsec"><h4>Groups · rank by ${esc(PL[st.period]||st.period)} return</h4><div class="chips">${(D.themesOf[sym]||[]).map(t=>{const r=thR[t];return `<button type="button" class="chipbtn" data-theme-go="${esc(t)}">${esc(t)}${r?` · #${r.rank} of ${r.of} <span class="num ${cls(r.v)}">${sgn(r.v,1)}</span>`:""}</button>`}).join("")}${x?.sec&&secR[x.sec]?`<span class="chipbtn" style="cursor:default">Sector: ${esc(x.sec)} · #${secR[x.sec].rank} of ${secR[x.sec].of} <span class="num ${cls(secR[x.sec].v)}">${sgn(secR[x.sec].v,1)}</span></span>`:""}</div></div>`:""}
-    <div class="dsec" id="scansec"><h4>In today's scanners</h4>${scans.length?`<div class="chips">${scans.map(m=>`<button type="button" class="chipbtn" data-scan-go="${m.id}">${esc(m.name)}</button>`).join("")}</div>`:`<p class="note" style="margin:0">None today.</p>`}</div>
+    <div class="dsec" id="scansec"><h4>In today's scanners</h4>${scans.length?`<div class="chips">${scans.map(m=>`<button type="button" class="chipbtn sc" style="--g:${gcol(m.cat)}" data-scan-go="${m.id}" title="${esc(m.cat)}">${bead(m.cat)}${esc(m.name)}</button>`).join("")}</div>`:`<p class="note" style="margin:0">None today.</p>`}</div>
     <div><a class="btn" href="${tv(sym,ex||vr?.exchange)}" target="_blank" rel="noopener">Open chart on TradingView ↗</a></div>
   </div></div></div>`;
   $("#drawer").hidden=false;$("#scrim").hidden=false;document.body.style.overflow="hidden";
@@ -1877,7 +2101,7 @@ function resEvidence(E){
 
 /* ════════════════════ routing & wiring ════════════════════ */
 function render(){
-  renderPulse();
+  renderPulse();$("#view").dataset.v=st.tab;
   document.querySelectorAll("#tabs .tab").forEach(b=>b.setAttribute("aria-selected",b.dataset.v===st.tab));
   ({rotation:renderRotation,breadth:renderBreadth,rs:renderRS,scanners:renderScanners,bases:renderBases,results:renderResults,watch:renderWatch,vpci:renderVpci})[st.tab]();
 }
@@ -1980,7 +2204,9 @@ document.addEventListener("click",e=>{
   const rp=e.target.closest("[data-rpreset]");if(rp){rPreset(rp.dataset.rpreset);return}
   if(e.target.closest("[data-rmore]")){RX_SHOW+=60;drawResults();return}
   const s2p=e.target.closest("[data-s2preset]");if(s2p){s2Preset(s2p.dataset.s2preset);return}
-  const sc=e.target.closest("[data-scan]");if(sc){st.scan=sc.dataset.scan;store.set("scan2",st.scan);renderScanners();return}
+  const sc=e.target.closest("[data-scan]");if(sc){st.scan=sc.dataset.scan;store.set("scan2",st.scan);
+    const phone=matchMedia("(max-width:1000px)").matches;if(phone)st.scanQ="";renderScanners();
+    if(phone)$(".scan-main")?.scrollIntoView({block:"start",behavior:"smooth"});return}
   const hp=e.target.closest("[data-hp]");if(hp){st.period=hp.dataset.hp;st.sort="ret";renderPulse();renderRotation();return}
   if(e.target.closest(".members")||e.target.closest("details")||e.target.closest("#drawer"))return;
   const r=e.target.closest(".brow,.heat tr.hr");if(r){st.open=st.open===r.dataset.g?null:r.dataset.g;renderRotation();return}
