@@ -5,7 +5,7 @@ A free, ScreeningMantis-style dashboard for NSE stocks:
 - **Rotation** – theme / sector / NSE-index returns for Today, 1W, 1M, 3M, 6M, YTD, 1Y, with mean or median, rank change vs last week, and a click-through list of the stocks in each group.
 - **Breadth** – % of stocks above 20/50/200 DMA, advance/decline, 52-week highs/lows, 4% movers, one year of history.
 - **RS ranking** – every stock ranked 1–99 by relative strength, filterable by sector, theme, Stage 2, Minervini trend template.
-- **Scanners** – 59 scans in 9 groups (`scripts/scanners.py`), led by a **Confluence** list (stocks firing in 4+ of the 7 bullish groups). Momentum (4% day, burst, gap-up, RS jump, power trend, ants, high-octane, 3/6/12-month swing leaders, episodic pivot, buyable gap-up), breakouts (52-week / 2-year / all-time highs, strong-close highs, Darvas, Bollinger, Stage 2, VCP, 3 weeks tight, launch pad, IPO high), volume, trend & pullbacks (incl. power of 3, wedge pop), price action (outside day, open = low, hammer at 50 DMA, double inside day, bull snort), oscillators, RS-line new highs (1/3/6/12 months) and weakness (incl. leader down on volume). Any scan can be limited to the top 5 or 10 themes.
+- **Scanners** – 84 scanners in 16 colour-coded groups: 59 technical (`scripts/scanners.py`), 18 from NSE filings and 7 from the long-base, Stage 2 and results models, led by a **Confluence** list (stocks firing in 4+ of the 7 bullish technical groups). Every scanner opens with a collapsible **How this scanner works** panel — what it looks for, the exact rules, how traders use it, what to watch out for and the source (`scripts/scan_docs.py`). A search box finds scanners by any word in their name or write-up ("EMA", "volume", "Minervini"); Enter opens the closest match. Any scan can be limited to the top 5 or 10 themes or by Fund rating.
 - **Watchlists** – multiple lists, return since added, pivot/stop/target with buy-zone alerts, notes, flags, track record, import/export, phone ↔ PC sync.
 - **VPCI Screener** – your Streamlit screener (`vpci/` folder, files unchanged) run every evening: Fresh Signals, Buyable, Watchlist, All Results, Ranked, G4 Pending, New Listings, Sector Leadership, Sector Rotation — for both completed weeks and the running week.
 
@@ -261,6 +261,33 @@ Kite isn't used here (it needs a fresh token every day). Sector-rotation history
 - **Trend template** = Minervini's 8 conditions with RS ≥ 70.
 - **Darvas breakout** = prior 20-session range ≤ 15%, close above its high, volume ≥ 1.5× the 50-day average.
 - **Breadth** uses today's universe for the whole history.
+
+## Scanner audit (October 2026)
+
+Every scanner was checked against its published definition and against a second, independent implementation.
+
+**Indicators now match TradingView exactly.** RSI, ATR, ADX and ±DI use Wilder's average seeded with a simple average (Pine `ta.rma`); EMAs start from the first close (`ta.ema`); Bollinger bands use the population standard deviation (`ta.stdev`); Supertrend is a line-by-line port of Pine's `ta.supertrend`. Days a stock did not trade (suspensions) are skipped, as TradingView has no bar for them. All 11 indicators were compared bar by bar on 417 stocks against a separate reference: identical.
+
+**Every technical scan was rebuilt from scratch** in plain Python, one stock at a time, straight from the published rules, and compared with the site's code on 9 dates across the last year: 0 differences on all 57 scans.
+
+What changed (counts are for 12 Oct 2026, before → after):
+
+| Scanner | Change | Count |
+|---|---|---|
+| Launch pad | Now Deepvue's definition: close within 3% of the 21-day SMA, 50-day SMA and 65-day EMA, stacked 21 > 50 > 65, all three rising over the week. The old version bunched the 10 EMA, 21 EMA and 50 DMA within 2%. | 32 → 12 |
+| Pocket pivot | Added Kacher & Morales' "not extended" rule (close no more than 5% above the 10-day SMA) and a 50-day SMA that is not falling. All 41 removed stocks were more than 5% above the 10-day. | 55 → 14 |
+| Power trend | Follows IBD: low above the 21-day EMA for 10 sessions, 21 EMA above the 50-day SMA for 5 sessions, 50-day rising, up close. | — |
+| Buyable gap-up | Gap measured in 40-day ATR as of the day before the gap (Morales & Kacher). | — |
+| Stage 2 breakout | Added Weinstein's volume confirmation, which was missing: at least 1.5× average volume on one of the last 5 sessions, so the day of the 150-day cross counts. | 18 → 15 |
+| Wedge pop | Uses the 10- and 20-day EMAs, as Oliver Kell defines it (it used the 21-day). | — |
+| Power of 3 | No longer fires on new listings that don't have a 50-day average yet. | — |
+| Inside day, double inside day | A bar that touches yesterday's high or low still counts as inside, as long as its range is smaller. | — |
+| Bollinger breakout, strong ADX | Exact TradingView maths. | +1 each |
+| Turnaround | Needs a profit this quarter and the last one after a loss a year ago; recent IPOs with no year-ago quarter are left out. | 31 → 17 |
+| Post-results drift | Uses the date results were first filed, not a later revised filing. | — |
+| Confluence | Follows from the changes above. | 56 → 42 |
+
+Attributions were corrected too: Ants is David Ryan's indicator; the bull snort is a trader's term for a power candle, not Oliver Kell's; the high-octane list notes that Deepvue uses ADR above 3% while the site asks for 5%.
 
 ## Troubleshooting
 
