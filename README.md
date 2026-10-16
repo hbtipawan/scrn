@@ -2,10 +2,12 @@
 
 A free, ScreeningMantis-style dashboard for NSE stocks:
 
-- **Rotation** – theme / sector / NSE-index returns for Today, 1W, 1M, 3M, 6M, YTD, 1Y, with mean or median, rank change vs last week, and a click-through list of the stocks in each group.
-- **Breadth** – % of stocks above 20/50/200 DMA, advance/decline, 52-week highs/lows, 4% movers, one year of history.
-- **RS ranking** – every stock ranked 1–99 by relative strength, filterable by sector, theme, Stage 2, Minervini trend template.
-- **Scanners** – 84 scanners in 16 colour-coded groups: 59 technical (`scripts/scanners.py`), 18 from NSE filings and 7 from the long-base, Stage 2 and results models, led by a **Confluence** list (stocks firing in 4+ of the 7 bullish technical groups). Every scanner opens with a collapsible **How this scanner works** panel — what it looks for, the exact rules, how traders use it, what to watch out for and the source (`scripts/scan_docs.py`). A search box finds scanners by any word in their name or write-up ("EMA", "volume", "Minervini"); Enter opens the closest match. Any scan can be limited to the top 5 or 10 themes or by Fund rating.
+- **Rotation** – theme / sector / industry / NSE-index returns for Today, 1W, 1M, 3M, 6M, YTD, 1Y, with mean or median, rank change vs last week, and a click-through list of the stocks in each group. Uses **every NSE stock** by default (switch to the liquid universe with *Stocks: All / Liquid*). A **Rotation map (RRG)** view plots NSE's sector, theme and size indices against Nifty 500, week by week.
+- **Breadth** – every NSE main-board stock (no liquidity filter, or the liquid universe with the switch): % above 20/50/200 DMA, advance/decline and the A/D line, McClellan oscillator, 52-week highs/lows, 4% movers, one year of history. Below it, **valuation and volatility**: NSE's own P/E, P/B and dividend yield for 50 indices against their history, and India VIX.
+- **RS ranking** – every stock ranked 1–99 by relative strength, with where the rating is **coming from** (▲ from 70 / ▼ from 99 over 12 weeks), a 52-week RS path, RS 4 and 12 weeks ago, and **blue dots** (RS line at a 52-week high). Filterable by sector, theme, direction, blue dot, Stage 2, Minervini trend template.
+- **Stock window** – price chart, **relative strength** (RS line with every blue dot of the year + the RS rating week by week), **delivery** (NSE delivery % and value delivered for 3 months), **corporate actions** (splits, bonuses, dividends coming up), plus bases, Stage 2, results, fundamentals and mutual funds.
+- **Scanners** – 99 scanners in 18 colour-coded groups: 59 technical (`scripts/scanners.py`), 4 from the RS history (`scripts/rs_history.py`), 5 from NSE delivery data (`scripts/delivery.py`), 18 from NSE filings, 6 from mutual-fund portfolios and 7 from the long-base, Stage 2 and results models, led by a **Confluence** list (stocks firing in 4+ of the 7 bullish technical groups). Every scanner opens with a collapsible **How this scanner works** panel — what it looks for, the exact rules, how traders use it, what to watch out for and the source (`scripts/scan_docs.py`). A search box finds scanners by any word in their name or write-up ("EMA", "volume", "Minervini"); Enter opens the closest match. Any scan can be limited to the top 5 or 10 themes or by Fund rating.
+- **Fund flows** – what mutual funds bought and sold each month, stock by stock, from every scheme's month-end portfolio (Scanners → Fund flows).
 - **Watchlists** – multiple lists, return since added, pivot/stop/target with buy-zone alerts, notes, flags, track record, import/export, phone ↔ PC sync.
 - **VPCI Screener** – your Streamlit screener (`vpci/` folder, files unchanged) run every evening: Fresh Signals, Buyable, Watchlist, All Results, Ranked, G4 Pending, New Listings, Sector Leadership, Sector Rotation — for both completed weeks and the running week.
 
@@ -15,8 +17,11 @@ A free, ScreeningMantis-style dashboard for NSE stocks:
 GitHub Actions (6:40 PM IST, Mon–Fri, free)
    ├─ update_reference.py   sector + NSE index lists      (niftyindices.com)
    ├─ fetch_prices.py       2 years of daily candles       (Upstox → NSE bhavcopy for today; Yahoo backup)
-   ├─ compute.py            returns, RS, breadth, scans    → docs/data/*.json
+   ├─ fetch_nse_daily.py    NSE delivery, index P/E-P/B-yield + VIX, corporate actions, holidays (config/nse/);
+   │                        corrects any close that differs from NSE's official close
+   ├─ compute.py            returns, RS + RS history, breadth, delivery, index data, scans → docs/data/*.json
    ├─ fetch_fundamentals.py new NSE results + shareholding (config/fund_*.csv)
+   ├─ fetch_mf.py + mf_flows.py  fund portfolios, 1st–20th of each month (config/mf/)
    └─ publish docs/ to Pages → website updates itself
 ```
 
@@ -193,12 +198,70 @@ The code is `scripts/stage2.py`. It uses the long-base breakouts from `bases.py`
 
 The code is `scripts/results.py` (it reads `config/fund_results.csv` from the fundamentals step).
 
+## Fund flows (what mutual funds bought)
+
+**Scanners → Fund flows** (address `#fundflows`) shows, stock by stock, what active mutual funds bought and sold each month: net ₹ Cr bought, the share of the company that is, a bar for each of the last 12 months, how many schemes and fund houses bought vs sold, new positions and exits, how many schemes hold it, ₹ held, and the buying streak. Filter by size (Large / Mid / Small, AMFI's method) and period (last month, 3, 6, 12 months); sort by most bought, most schemes buying, most fund houses, streak, % of company or most sold. Every stock window has a **Mutual funds** section with the monthly bars and the schemes that moved most (NEW / EXIT marked). Six scanners use it (group *Fund flows*): most bought, buying streak, broad buying, new entries, buying in leaders, most sold. The Telegram digest adds a short note when a new month is in.
+
+**Where it comes from.** SEBI makes every fund house publish each scheme's full portfolio for the last day of the month within 10 days. `scripts/fetch_mf.py` reads those files straight from the fund houses' own websites (`scripts/mf_sources.py` has one reader per fund house; `scripts/mf_browser.py` opens Bandhan's site in a headless browser because its file list is encrypted) and saves a compact copy per fund house per month in `config/mf/YYYY-MM/`. `scripts/mf_flows.py` turns the months into flows (`config/mf/site/mf.json`).
+
+**How a flow is measured — the accuracy rules**
+
+- *Shares, not rupees.* Net buying = change in shares held × the month's average price. Value changes from price moves are not buying.
+- *Same scheme, both months.* A scheme counts only when it is in both months' files — matched by name, or, when a scheme was renamed (many were renamed in Aug 2026), by an almost identical portfolio. A fund house counts only when both of its months were read completely; a fund house that suddenly shows 20% fewer schemes is treated as not yet complete. So a file that failed to download never looks like a sale.
+- *Bonus issues and splits* are put on today's share basis from the price inside the file itself (value ÷ quantity) against the split-adjusted close.
+- *Left out:* new schemes investing their NFO money (two months from allotment, from AMFI's scheme list), a scheme whose money more than doubles in a month (a merger into it — a merger found in the files is added back instead), and IPO allotments in the month a stock lists (shown, not counted).
+- *Active funds only* in the table and scanners. Index funds/ETFs, arbitrage funds and hedged hybrids (balanced advantage, equity savings, multi-asset) are shown separately in the stock window.
+- Units (₹ lakh vs crore) are checked against NSE closing prices for every file: across the year, 99.98% of 916,595 holdings agree with the close within 3% (every fund-house month at least 99.4%).
+
+**Checked against independent data** (October 2026; the same text is in the *How this is counted* panel):
+
+- NSE shareholding filings name every fund house that holds 1%+ of a company. For 5,031 such positions named in consecutive quarter-end filings (Dec 2025 → Sep 2026), the change in shares found here matched the company's own filing within 1% of the position in 93% of cases; for the 2,929 positions that moved 2% or more, the direction matched in 100% and the size within 10% in 89%.
+- Scheme by scheme against AMFI NAVs (Oct 2025 – Sep 2026, ~456 active schemes a month): buying plus the change in cash came within ±1% of the money that went into the scheme (worked out from its NAV and AUM) for 91% of schemes; correlation 0.96. The gap is mostly dividends the funds received, largest in July–September.
+- The checking tools are not part of the daily run; they were run once on the full year.
+
+**Coverage.** 34 fund houses — every large one; together they hold about 95% of the stocks owned by active equity funds (₹35 lakh Cr in September 2026, against AMFI's industry totals). Not read yet (their sites block automated reading or encrypt the list): Edelweiss, Mahindra Manulife, JM Financial, ITI, Union, Navi, Jio BlackRock, Quantum and a few very small ones. Bandhan takes ~5 minutes in a browser each month.
+
+**Does it work as a signal?** The panel *Does following fund buying pay?* measures it point-in-time (returns from the 11th of the next month, when the files are public) and updates itself every month. With the first year of data there is **no reliable edge** from fund buying on its own — use it as context with price, RS and results.
+
+**Daily workflow.** From the 1st to the 20th of each month the daily job installs `requirements-mf.txt`, reads any new files (a fund house read before the 12th is checked again until its file list stops changing), downloads AMFI's scheme list and rebuilds the flows. On other days it does nothing. Each month adds about 2 MB to `config/mf/`. (The first year of portfolios came packed in `config/mf_seed/`; the first run after the update unpacks it into `config/mf/` and removes the packed copy.) To rebuild by hand: **Actions → Daily update → Run workflow → Rebuild mutual-fund flows**.
+
+## NSE daily data (delivery, index valuations, India VIX, corporate actions)
+
+`scripts/fetch_nse_daily.py` keeps NSE's own end-of-day files in `config/nse/` (the idea and the early index history come from [EOD2](https://github.com/BennyThadikaran/eod2), which builds the same data from the same NSE reports):
+
+| File | What | From |
+|---|---|---|
+| `dlv/YYYY-MM.csv.gz` | every stock's traded shares, number of trades and **delivered shares** (EQ, BE, BZ, SME), since Jan 2024 | `sec_bhavdata_full_DDMMYYYY.csv` |
+| `idx/YYYY.csv.gz` | every NSE index incl. **India VIX**: open, high, low, close, **P/E, P/B, dividend yield**, since 2012 | `ind_close_all_DDMMYYYY.csv` |
+| `corp_actions.json` | splits, bonuses, dividends, rights, demergers, buybacks — last 10 days to 60 days ahead | NSE corporate-actions list |
+| `holidays.json`, `symbol_changes.json` | trading holidays; old → new symbols | NSE |
+
+Each evening it adds every session not stored yet (it catches up after a missed day, and tries weekends too, for budget-day sessions). NSE serves the previous day's file under a holiday's name, so the date *inside* each file is checked. Past months never change, so the repository grows by about 10 MB a year.
+
+**Checks made when it was built (Oct 2026):** delivered shares, volume and trades equal NSE's file for 100% of stocks on five test days from 2024 to 2026; delivery % matches NSE's published `DELIV_PER` to rounding for all 2,343 EQ stocks; index closes and P/E agree with EOD2 for all 167 indices. The price file is checked every evening: the last session's close of every stock is compared with NSE's official close and corrected if it differs by more than 0.1% (unless more than a fifth differ, which would mean a wrong file).
+
+**Delivery (stock window + 5 scanners, group *Delivery*).** NSE's quantities are raw, so delivered shares are put on the split-adjusted basis of the price file (NSE delivery % × adjusted volume); value per trade (₹) needs no adjustment. BE/BZ stocks trade for delivery only, so their delivery % is left out. Tested point-in-time on Mar 2021 – Jul 2026 (weekly signals, against the average stock): *quiet delivery build-up* +1.7% over 3 months (54% beat the median stock), *delivery accumulation* +1.1%, *heavy delivery selling* −0.7%; plain *delivery spikes* and *big-ticket trades* showed **no edge** — information, not signals.
+
+**Index valuations.** NSE moved index P/E, P/B and yield to consolidated earnings on 31 Mar 2021 (Nifty 50 P/E fell from 40.4 to 33.2 overnight with the index flat), so each index is compared only with its readings since then. The Breadth tab shows the P/E of Nifty 50 / 500 / Midcap 150 / Smallcap 250 week by week, India VIX for a year, and a table of 50 indices; the header shows India VIX and the Nifty 50 P/E.
+
+**Rotation map (RRG).** Weekly closes of NSE's sector, theme and size indices against Nifty 500. The original RRG formulas are not published; the site uses a smoothed approximation (`scripts/indices.py`): RS-Ratio = 100 × 10-week ÷ 30-week EMA of index/Nifty 500, RS-Momentum = 100 × RS-Ratio ÷ its 10-week EMA. Leading → weakening → lagging → improving, clockwise.
+
+To rebuild the history: `python scripts/fetch_nse_daily.py --backfill 2024-01-01 2026-10-13` (delivery) and `--backfill-idx 2016-01-01 2026-10-13` (indices).
+
+## Breadth and rotation on every stock
+
+Breadth and rotation count **every NSE main-board stock that traded** (about 2,570 a day) — as NSE counts advances and declines — instead of only the ~1,440 liquid ones. The liquid universe still drives the scanners and the RS ranking; stocks outside it appear in rotation, breadth, search and the stock window, with a note. *Stocks: All / Liquid* switches Rotation, Breadth and the header. Checked: the all-stock % above the 50 and 200 DMA matches EOD2's independent market tracker within 0.3–0.4 points on average over a year, and advances/declines agree with NSE's daily file within a few stocks. NSE lists a sector only for the ~750 stocks of its broad indices; other stocks take the NSE sector their industry belongs to (the two agree for 91% of stocks where both are known), marked in the data. Small, thinly traded stocks swing more, so the median is steadier than the mean in *All* mode.
+
+## RS history and blue dots
+
+`scripts/rs_history.py` computes the RS rating for every session of the last year (the same formula and universe as today's rating — checked identical for 100% of stocks today). So a 90 can be read: **▲ from 70** (climbing — the 12-week low is 10+ points below) or **▼ from 99** (slipping — the 12-week high is 10+ points above; the more recent swing wins when both). A **blue dot** marks a session on which the RS line (stock ÷ Nifty 500) closed at a 52-week high (MarketSmith). Four scanners: *RS line at a 52-week high*, *RS rating climbing* (80+, up 20+ in 4 weeks), *RS 90+ for 8 weeks*, *Leader losing RS* (95+ within 8 weeks, now 80 or lower). Tested Jul 2021 – Jul 2026: holding 90+ for 8 weeks +4.2% over 3 months against the average stock; blue dot +1.7%; leader losing RS −0.7%; ratings of 85–95 that came from ≤75 and those that came down from 99 did about the same (+1.6% / +2.9%), so the path is context, not a signal on its own.
+
 ## Telegram alerts
 
 Two kinds of message, both sent by your own Telegram bot:
 
-- **Evening digest** (after each daily update, ~6:50 PM): NIFTY 500 and breadth verdict, top themes, every watchlist alert from the Watchlists tab (stop, breakout, buy zone, near pivot, target, warnings, results due, fresh VPCI) and today's key scanner hits, with TradingView links.
-- **Live alerts** (every 15 minutes, 9:15 AM–3:30 PM on weekdays): for each stock in your watchlists, today's live price from Upstox is checked against your levels — **crossed your pivot** (with volume pace vs the 50-day average and an "extended" warning above +5%), **within 1% of pivot**, **below your stop**, **target hit**, and **±5% move today**. Each alert is sent once per stock per day.
+- **Evening digest** (after each daily update, ~6:50 PM; not sent on NSE holidays): NIFTY 500 and breadth verdict (all stocks), India VIX and the Nifty 50 P/E, top themes, every watchlist alert from the Watchlists tab (stop, breakout, buy zone, near pivot, target, warnings incl. leader losing RS and heavy delivery selling, blue dots, results due, ex-dates of splits/bonuses/dividends in the next 7 days, fresh VPCI) and today's key scanner hits, with TradingView links. If the day's prices did not arrive it says so. When a new month of mutual-fund portfolios is in, it adds what funds bought and sold most, and any of your watchlist stocks they traded.
+- **Live alerts** (every 15 minutes, 9:15 AM–3:30 PM on weekdays, skipped on NSE holidays): for each stock in your watchlists, today's live price from Upstox is checked against your levels — **crossed your pivot** (with volume pace vs the 50-day average and an "extended" warning above +5%), **within 1% of pivot**, **below your stop**, **target hit**, and **±5% move today**. Each alert is sent once per stock per day.
 
 Setup (10 minutes, once):
 
@@ -260,7 +323,7 @@ Kite isn't used here (it needs a fresh token every day). Sector-rotation history
 - **Stage** = price vs the 150-day SMA (30-week) and its 20-day slope: above and rising = Stage 2, below and falling = Stage 4.
 - **Trend template** = Minervini's 8 conditions with RS ≥ 70.
 - **Darvas breakout** = prior 20-session range ≤ 15%, close above its high, volume ≥ 1.5× the 50-day average.
-- **Breadth** uses today's universe for the whole history.
+- **Breadth** counts every main-board stock that traded on each day (the liquid version uses today's liquid universe across the history). McClellan oscillator = 19-day minus 39-day EMA of daily (advances − declines) per 1,000 issues; A/D line = running total of advances − declines over the year shown.
 
 ## Scanner audit (October 2026)
 
