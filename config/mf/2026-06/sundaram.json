@@ -1,0 +1,288 @@
+{
+ "code": "sundaram",
+ "amc": "Sundaram Mutual Fund",
+ "month": "2026-06",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-10-16 00:54",
+ "files": [
+  {
+   "name": "Monthly Portfolio Disclosure Equity & Fund of Funds - Jun 2026",
+   "url": "https://www.sundarammutual.com/uploaddir/MonthlyPortfolio/monthlyportfolio_090726191301.xlsx",
+   "schemes": 30,
+   "eq_rows": 1462
+  },
+  {
+   "name": "Monthly Portfolio Disclosure Fixed Income - Jun 2026",
+   "url": "https://www.sundarammutual.com/uploaddir/MonthlyPortfolio/monthlyportfolio_090726180824.xlsx",
+   "schemes": 10,
+   "eq_rows": 22
+  }
+ ],
+ "schemes": {
+  "Sundaram Infrastructure Advantage Fund": {
+   "eq": 53,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 0.962,
+   "eq_cr": 971.14,
+   "total_cr": 999.72
+  },
+  "Sundaram Mid Cap Fund": {
+   "eq": 76,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 13507.14,
+   "total_cr": 14026.07
+  },
+  "Sundaram Large And Mid Cap Fund": {
+   "eq": 43,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 0.977,
+   "eq_cr": 6983.48,
+   "total_cr": 6990.73
+  },
+  "Sundaram Long Term Advantage Fund Series III": {
+   "eq": 41,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 33.48,
+   "total_cr": 34.84
+  },
+  "Sundaram Long Term Advantage Fund Series IV": {
+   "eq": 40,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 22.22,
+   "total_cr": 23.09
+  },
+  "Sundaram Long Term Micro Cap Tax Advantage Fund Series III": {
+   "eq": 39,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 75.41,
+   "total_cr": 78.05
+  },
+  "Sundaram Long Term Micro Cap Tax Advantage Fund Series IV": {
+   "eq": 39,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 36.06,
+   "total_cr": 37.28
+  },
+  "Sundaram Long Term Micro Cap Tax Advantage Fund Series V": {
+   "eq": 40,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 30.57,
+   "total_cr": 31.62
+  },
+  "Sundaram Long Term Micro Cap Tax Advantage Fund Series VI": {
+   "eq": 39,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 36.03,
+   "total_cr": 37.07
+  },
+  "Sundaram Small Cap Fund": {
+   "eq": 71,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 0.986,
+   "eq_cr": 3643.9,
+   "total_cr": 3871.8
+  },
+  "Sundaram Aggressive Hybrid Fund": {
+   "eq": 56,
+   "fut": 4,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 6176.51,
+   "total_cr": 8940.52
+  },
+  "Sundaram Arbitrage Fund": {
+   "eq": 47,
+   "fut": 101,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 460.96,
+   "total_cr": 649.72
+  },
+  "Sundaram Balanced Advantage Fund": {
+   "eq": 65,
+   "fut": 36,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1232.19,
+   "total_cr": 1663.71
+  },
+  "Sundaram Dividend Yield Fund": {
+   "eq": 56,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 746.24,
+   "total_cr": 819.54
+  },
+  "Sundaram Equity Savings Fund": {
+   "eq": 66,
+   "fut": 42,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 824.97,
+   "total_cr": 1044.03
+  },
+  "Sundaram Focused Fund": {
+   "eq": 28,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 987.38,
+   "total_cr": 1053.04
+  },
+  "Sundaram Multi Cap Fund": {
+   "eq": 78,
+   "fut": 3,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2843.9,
+   "total_cr": 2914.87
+  },
+  "Sundaram NIFTY 100 Equal Weight Fund": {
+   "eq": 104,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 140.43,
+   "total_cr": 142.37
+  },
+  "Sundaram ELSS Tax Saver Fund": {
+   "eq": 56,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1256.67,
+   "total_cr": 1280.74
+  },
+  "Sundaram Consumption Fund": {
+   "eq": 37,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1364.68,
+   "total_cr": 1422.23
+  },
+  "Sundaram Services Fund": {
+   "eq": 52,
+   "fut": 3,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 4647.58,
+   "total_cr": 4933.98
+  },
+  "Sundaram Value Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1279.39,
+   "total_cr": 1300.32
+  },
+  "Sundaram Large Cap Fund": {
+   "eq": 38,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2926.22,
+   "total_cr": 3062.98
+  },
+  "Sundaram Business Cycle Fund": {
+   "eq": 34,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 0.941,
+   "eq_cr": 1611.12,
+   "total_cr": 1650.24
+  },
+  "Sundaram Flexi Cap Fund": {
+   "eq": 54,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1936.67,
+   "total_cr": 1990.15
+  },
+  "Sundaram Financial Services Opportunities Fund": {
+   "eq": 28,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1617.03,
+   "total_cr": 1681.38
+  },
+  "Sundaram Multi Asset Allocation Fund": {
+   "eq": 58,
+   "fut": 18,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2269.68,
+   "total_cr": 3268.22
+  },
+  "Sundaram Multi-Factor Fund": {
+   "eq": 74,
+   "fut": 3,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 890.36,
+   "total_cr": 917.22
+  },
+  "Sundaram Conservative Hybrid Fund": {
+   "eq": 22,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 3.68,
+   "total_cr": 18.69
+  }
+ },
+ "rows": 1694,
+ "eq_cr": 58555.1,
+ "warn": []
+}

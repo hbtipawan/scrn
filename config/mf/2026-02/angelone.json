@@ -1,0 +1,138 @@
+{
+ "code": "angelone",
+ "amc": "Angel One Mutual Fund",
+ "month": "2026-02",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-10-16 00:33",
+ "files": [
+  {
+   "name": "Monthly-Portfolio-Feb-2026-Angel-One-Nifty-1D-Rate-Liquid-ETF-Growth.xlsx",
+   "url": "https://cms.angelonemf.com/amc-cms/wp-content/uploads/formidable/20/Monthly-Portfolio-Feb-2026-Angel-One-Nifty-1D-Rate-Liquid-ETF-Growth.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Monthly-Portfolio-Feb-2026-Angel-One-Nifty-50-ETF.xlsx",
+   "url": "https://cms.angelonemf.com/amc-cms/wp-content/uploads/formidable/20/Monthly-Portfolio-Feb-2026-Angel-One-Nifty-50-ETF.xlsx",
+   "schemes": 1,
+   "eq_rows": 50
+  },
+  {
+   "name": "Monthly-Portfolio-Feb-2026-Angel-One-Nifty-50-Index-Fund.xlsx",
+   "url": "https://cms.angelonemf.com/amc-cms/wp-content/uploads/formidable/20/Monthly-Portfolio-Feb-2026-Angel-One-Nifty-50-Index-Fund.xlsx",
+   "schemes": 1,
+   "eq_rows": 50
+  },
+  {
+   "name": "Monthly-Portfolio-Feb-2026-Angel-One-Gold-ETF.xlsx",
+   "url": "https://cms.angelonemf.com/amc-cms/wp-content/uploads/formidable/20/Monthly-Portfolio-Feb-2026-Angel-One-Gold-ETF.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Monthly-Portfolio-Feb-2026-Angel-One-Nifty-Total-Market-Index-Fund.xlsx",
+   "url": "https://cms.angelonemf.com/amc-cms/wp-content/uploads/formidable/20/Monthly-Portfolio-Feb-2026-Angel-One-Nifty-Total-Market-Index-Fund.xlsx",
+   "schemes": 1,
+   "eq_rows": 751
+  },
+  {
+   "name": "Monthly-Portfolio-Feb-2026-Angel-One-Nifty-Total-Market-ETF.xlsx",
+   "url": "https://cms.angelonemf.com/amc-cms/wp-content/uploads/formidable/20/Monthly-Portfolio-Feb-2026-Angel-One-Nifty-Total-Market-ETF.xlsx",
+   "schemes": 1,
+   "eq_rows": 751
+  },
+  {
+   "name": "Monthly-Portfolio-Feb-2026-Angel-One-Nifty-Total-Market-Momentum-Quality-50-ETF.xlsx",
+   "url": "https://cms.angelonemf.com/amc-cms/wp-content/uploads/formidable/20/Monthly-Portfolio-Feb-2026-Angel-One-Nifty-Total-Market-Momentum-Quality-50-ETF.xlsx",
+   "schemes": 1,
+   "eq_rows": 50
+  },
+  {
+   "name": "Monthly-Portfolio-Feb-2026-Angel-One-Nifty-Total-Market-Momentum-Quality-50-Index.xlsx",
+   "url": "https://cms.angelonemf.com/amc-cms/wp-content/uploads/formidable/20/Monthly-Portfolio-Feb-2026-Angel-One-Nifty-Total-Market-Momentum-Quality-50-Index.xlsx",
+   "schemes": 1,
+   "eq_rows": 50
+  },
+  {
+   "name": "Monthly-Portfolio-Feb-2026-Angel-One-Silver-ETF.xlsx",
+   "url": "https://cms.angelonemf.com/amc-cms/wp-content/uploads/formidable/20/Monthly-Portfolio-Feb-2026-Angel-One-Silver-ETF.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Monthly-Portfolio-Feb-2026-Angel-One-Gold-ETF-FOF.xlsx",
+   "url": "https://cms.angelonemf.com/amc-cms/wp-content/uploads/formidable/20/Monthly-Portfolio-Feb-2026-Angel-One-Gold-ETF-FOF.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  }
+ ],
+ "schemes": {
+  "Angel One Nifty 50 ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 16.59,
+   "total_cr": 16.63
+  },
+  "Angel One Nifty 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 31.4,
+   "total_cr": 31.44
+  },
+  "Angel One Nifty Total Market Index Fund": {
+   "eq": 751,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.983,
+   "eq_cr": 55.08,
+   "total_cr": 55.12
+  },
+  "Angel One Nifty Total Market ETF": {
+   "eq": 751,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.983,
+   "eq_cr": 42.71,
+   "total_cr": 42.75
+  },
+  "AO Nifty Total Mkt Momentum Qlty 50 ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.939,
+   "eq_cr": 6.64,
+   "total_cr": 6.66
+  },
+  "Monthly": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.939,
+   "eq_cr": 32.28,
+   "total_cr": 32.29
+  },
+  "Angel One Silver ETF": {
+   "eq": 0,
+   "fut": 1,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0,
+   "eq_cr": 0,
+   "total_cr": 5.47
+  }
+ },
+ "rows": 1703,
+ "eq_cr": 184.7,
+ "warn": []
+}

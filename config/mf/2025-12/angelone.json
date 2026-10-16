@@ -1,0 +1,123 @@
+{
+ "code": "angelone",
+ "amc": "Angel One Mutual Fund",
+ "month": "2025-12",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-10-15 21:17",
+ "files": [
+  {
+   "name": "Monthly-Portfolio-Dec-2025-Angel-One-Nifty-1D-Rate-Liquid-ETF-GROWTH.xlsx",
+   "url": "https://cms.angelonemf.com/amc-cms/wp-content/uploads/formidable/20/Monthly-Portfolio-Dec-2025-Angel-One-Nifty-1D-Rate-Liquid-ETF-GROWTH.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Monthly-Portfolio-Dec-2025-Angel-One-Nifty-50-ETF.xlsx",
+   "url": "https://cms.angelonemf.com/amc-cms/wp-content/uploads/formidable/20/Monthly-Portfolio-Dec-2025-Angel-One-Nifty-50-ETF.xlsx",
+   "schemes": 1,
+   "eq_rows": 51
+  },
+  {
+   "name": "Monthly-Portfolio-Dec-2025-Angel-One-Nifty-50-Index-Fund.xlsx",
+   "url": "https://cms.angelonemf.com/amc-cms/wp-content/uploads/formidable/20/Monthly-Portfolio-Dec-2025-Angel-One-Nifty-50-Index-Fund.xlsx",
+   "schemes": 1,
+   "eq_rows": 51
+  },
+  {
+   "name": "Monthly-Portfolio-Dec-2025-Angel-One-Gold-ETF.xlsx",
+   "url": "https://cms.angelonemf.com/amc-cms/wp-content/uploads/formidable/20/Monthly-Portfolio-Dec-2025-Angel-One-Gold-ETF.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Monthly-Portfolio-Dec-2025-Angel-One-Gold-ETF-FOF.xlsx",
+   "url": "https://cms.angelonemf.com/amc-cms/wp-content/uploads/formidable/20/Monthly-Portfolio-Dec-2025-Angel-One-Gold-ETF-FOF.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Monthly-Portfolio-Dec-2025-Angel-One-Nifty-Total-Market-Index-Fund.xlsx",
+   "url": "https://cms.angelonemf.com/amc-cms/wp-content/uploads/formidable/20/Monthly-Portfolio-Dec-2025-Angel-One-Nifty-Total-Market-Index-Fund.xlsx",
+   "schemes": 1,
+   "eq_rows": 752
+  },
+  {
+   "name": "Monthly-Portfolio-Dec-2025-Angel-One-Nifty-Total-Market-ETF.xlsx",
+   "url": "https://cms.angelonemf.com/amc-cms/wp-content/uploads/formidable/20/Monthly-Portfolio-Dec-2025-Angel-One-Nifty-Total-Market-ETF.xlsx",
+   "schemes": 1,
+   "eq_rows": 752
+  },
+  {
+   "name": "Monthly-Portfolio-Dec-2025-Angel-One-Nifty-Total-Market-Momentum-Quality-50-ETF.xlsx",
+   "url": "https://cms.angelonemf.com/amc-cms/wp-content/uploads/formidable/20/Monthly-Portfolio-Dec-2025-Angel-One-Nifty-Total-Market-Momentum-Quality-50-ETF.xlsx",
+   "schemes": 1,
+   "eq_rows": 50
+  },
+  {
+   "name": "Monthly-Portfolio-Dec-2025-Angel-One-Nifty-Total-Market-Momentum-Quality-50-Index.xlsx",
+   "url": "https://cms.angelonemf.com/amc-cms/wp-content/uploads/formidable/20/Monthly-Portfolio-Dec-2025-Angel-One-Nifty-Total-Market-Momentum-Quality-50-Index.xlsx",
+   "schemes": 1,
+   "eq_rows": 50
+  }
+ ],
+ "schemes": {
+  "Angel One Nifty 50 ETF": {
+   "eq": 51,
+   "fut": 0,
+   "date": "2025-12-31",
+   "unit": "lakh",
+   "price_match": 0.96,
+   "eq_cr": 14.34,
+   "total_cr": 14.35
+  },
+  "Angel One Nifty 50 Index Fund": {
+   "eq": 51,
+   "fut": 0,
+   "date": "2025-12-31",
+   "unit": "lakh",
+   "price_match": 0.96,
+   "eq_cr": 31.87,
+   "total_cr": 31.91
+  },
+  "Angel One Nifty Total Market Index Fund": {
+   "eq": 752,
+   "fut": 0,
+   "date": "2025-12-31",
+   "unit": "lakh",
+   "price_match": 0.977,
+   "eq_cr": 54.07,
+   "total_cr": 54.22
+  },
+  "Angel One Nifty Total Market ETF": {
+   "eq": 752,
+   "fut": 0,
+   "date": "2025-12-31",
+   "unit": "lakh",
+   "price_match": 0.977,
+   "eq_cr": 44.04,
+   "total_cr": 44.06
+  },
+  "AO Nifty Total Mkt Momentum Qlty 50 ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2025-12-31",
+   "unit": "lakh",
+   "price_match": 0.918,
+   "eq_cr": 5.83,
+   "total_cr": 5.84
+  },
+  "Monthly": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2025-12-31",
+   "unit": "lakh",
+   "price_match": 0.918,
+   "eq_cr": 31.91,
+   "total_cr": 31.92
+  }
+ },
+ "rows": 1706,
+ "eq_cr": 182.1,
+ "warn": []
+}

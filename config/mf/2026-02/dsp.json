@@ -1,0 +1,489 @@
+{
+ "code": "dsp",
+ "amc": "DSP Mutual Fund",
+ "month": "2026-02",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-10-16 00:30",
+ "files": [
+  {
+   "name": "Portfolio Details as on February 28, 2026",
+   "url": "https://www.dspim.com/media/pages/mandatory-disclosures/portfolio-disclosures/1c747fb85f-1773156944/monthend-portfolio-february-28-2026.zip",
+   "schemes": 87,
+   "eq_rows": 3376
+  }
+ ],
+ "schemes": {
+  "DSP Regular Savings Fund": {
+   "eq": 31,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 35.41,
+   "total_cr": 184.49
+  },
+  "DSP Aggressive Hybrid Fund": {
+   "eq": 41,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 7952.19,
+   "total_cr": 11928.12
+  },
+  "DSP Flexi Cap Fund": {
+   "eq": 64,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 11638.01,
+   "total_cr": 12165.06
+  },
+  "DSP Large Cap Fund": {
+   "eq": 32,
+   "fut": 1,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.969,
+   "eq_cr": 6499.87,
+   "total_cr": 7269.64
+  },
+  "DSP Large & Mid Cap Fund": {
+   "eq": 78,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 17138.87,
+   "total_cr": 17652.61
+  },
+  "DSP India T.I.G.E.R. Fund (The Infrastructure Growth and Economic Reforms Fund)": {
+   "eq": 68,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.985,
+   "eq_cr": 5197.86,
+   "total_cr": 5459.77
+  },
+  "DSP Mid Cap Fund": {
+   "eq": 63,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 18813.05,
+   "total_cr": 19640.75
+  },
+  "DSP ELSS Tax Saver Fund": {
+   "eq": 63,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 16859.27,
+   "total_cr": 17249.79
+  },
+  "DSP Small Cap Fund": {
+   "eq": 83,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.964,
+   "eq_cr": 15984.84,
+   "total_cr": 16885.54
+  },
+  "DSP Natural Resources & New Energy Fund": {
+   "eq": 23,
+   "fut": 1,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1450.47,
+   "total_cr": 1989.64
+  },
+  "DSP Focused Fund": {
+   "eq": 29,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2384.08,
+   "total_cr": 2607.17
+  },
+  "DSP Dynamic Asset Allocation Fund": {
+   "eq": 57,
+   "fut": 21,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.982,
+   "eq_cr": 2503.97,
+   "total_cr": 3731.96
+  },
+  "DSP Equity Savings Fund": {
+   "eq": 77,
+   "fut": 58,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2625.67,
+   "total_cr": 3758.43
+  },
+  "DSP Nifty 50 Equal Weight Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 2466.89,
+   "total_cr": 2471.39
+  },
+  "DSP Arbitrage Fund": {
+   "eq": 153,
+   "fut": 162,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.993,
+   "eq_cr": 4705.17,
+   "total_cr": 6923.2
+  },
+  "DSP Healthcare Fund": {
+   "eq": 25,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.958,
+   "eq_cr": 2421.45,
+   "total_cr": 3033.42
+  },
+  "DSP Nifty 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 981.77,
+   "total_cr": 983.23
+  },
+  "DSP Nifty Next 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 1192.41,
+   "total_cr": 1194.46
+  },
+  "DSP Quant Fund": {
+   "eq": 41,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 805.75,
+   "total_cr": 837.86
+  },
+  "DSP Nifty 50 Equal Weight ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 1163.55,
+   "total_cr": 1165.43
+  },
+  "DSP NIFTY 50 ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 214.42,
+   "total_cr": 214.74
+  },
+  "DSP NIFTY MIDCAP 150 QUALITY 50 ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 100.57,
+   "total_cr": 100.77
+  },
+  "DSP Nifty Midcap 150 Qlty 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 461.42,
+   "total_cr": 462.43
+  },
+  "DSP NIFTY BANK ETF": {
+   "eq": 14,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 732.57,
+   "total_cr": 732.67
+  },
+  "DSP NIFTY IT ETF": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 96.88,
+   "total_cr": 96.92
+  },
+  "DSP BSE SENSEX ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.967,
+   "eq_cr": 8.58,
+   "total_cr": 8.6
+  },
+  "DSP NIFTY PSU BANK ETF": {
+   "eq": 12,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 258.15,
+   "total_cr": 258.19
+  },
+  "DSP Nifty Private Bank ETF": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 524.63,
+   "total_cr": 524.66
+  },
+  "DSP Multi Asset Allocation Fund": {
+   "eq": 35,
+   "fut": 3,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2496.4,
+   "total_cr": 8504.08
+  },
+  "DSP Banking & Financial Services Fund": {
+   "eq": 37,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.946,
+   "eq_cr": 1689.06,
+   "total_cr": 1729.36
+  },
+  "DSP Nifty Smallcap250 Quality 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.958,
+   "eq_cr": 282.45,
+   "total_cr": 283.12
+  },
+  "DSP Multicap Fund": {
+   "eq": 69,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2531.84,
+   "total_cr": 2635.35
+  },
+  "DSP Nifty Healthcare ETF": {
+   "eq": 20,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 12.8,
+   "total_cr": 12.82
+  },
+  "DSP Nifty Bank Index Fund": {
+   "eq": 14,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 59.05,
+   "total_cr": 59.11
+  },
+  "DSP Nifty Top 10 Equal Weight Index Fund": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1304.34,
+   "total_cr": 1307.14
+  },
+  "DSP Nifty Top 10 Equal Weight ETF": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 838.78,
+   "total_cr": 840.37
+  },
+  "DSP Business Cycle Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1075.36,
+   "total_cr": 1155.15
+  },
+  "DSP BSE Sensex Next 30 ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 44.4,
+   "total_cr": 44.5
+  },
+  "DSP BSE Sensex Next 30 Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 15.8,
+   "total_cr": 15.92
+  },
+  "DSP Nifty Private Bank Index Fund": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 59.71,
+   "total_cr": 59.69
+  },
+  "DSP Nifty Healthcare Index Fund": {
+   "eq": 20,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 17.15,
+   "total_cr": 17.19
+  },
+  "DSP Nifty IT Index Fund": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 57.45,
+   "total_cr": 57.94
+  },
+  "DSP Nifty500 Flexicap Quality 30 Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 128.82,
+   "total_cr": 129.28
+  },
+  "DSP Nifty500 Flexicap Quality 30 ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 11.32,
+   "total_cr": 11.34
+  },
+  "DSP MSCI India ETF": {
+   "eq": 164,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.994,
+   "eq_cr": 3.36,
+   "total_cr": 3.38
+  },
+  "DSP Nifty Midcap 150 Index Fund": {
+   "eq": 150,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.993,
+   "eq_cr": 9.85,
+   "total_cr": 9.88
+  },
+  "DSP Nifty Smallcap 250 ETF": {
+   "eq": 250,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.976,
+   "eq_cr": 6.6,
+   "total_cr": 6.61
+  },
+  "DSP Nifty Smallcap 250 Index Fund": {
+   "eq": 250,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.976,
+   "eq_cr": 9.38,
+   "total_cr": 9.41
+  },
+  "DSP Nifty Midcap 150 ETF": {
+   "eq": 150,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.993,
+   "eq_cr": 8.74,
+   "total_cr": 8.75
+  },
+  "DSP Nifty 500 Index Fund": {
+   "eq": 500,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.982,
+   "eq_cr": 11.05,
+   "total_cr": 11.08
+  },
+  "DSP Nifty Next 50 ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 7.12,
+   "total_cr": 7.13
+  },
+  "DSP Value Fund": {
+   "eq": 53,
+   "fut": 3,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 970.24,
+   "total_cr": 1483.87
+  }
+ },
+ "rows": 3625,
+ "eq_cr": 136868.8,
+ "warn": []
+}

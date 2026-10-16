@@ -1,0 +1,300 @@
+{
+ "code": "canara",
+ "amc": "Canara Robeco Mutual Fund",
+ "month": "2026-01",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-10-16 00:18",
+ "files": [
+  {
+   "name": "IN \u2013 Canara Robeco Infrastructure \u2013 Jan-2026",
+   "url": "https://www.canararobeco.com/wp-content/uploads/2026/02/IN-\u2013-Canara-Robeco-Infrastructure-\u2013-Jan-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 45
+  },
+  {
+   "name": "VF \u2013 Canara Robeco Value Fund \u2013 Jan-2026",
+   "url": "https://www.canararobeco.com/wp-content/uploads/2026/02/VF-\u2013-Canara-Robeco-Value-Fund-\u2013-Jan-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 56
+  },
+  {
+   "name": "TA \u2013 Canara Robeco Ultra Short Term Fund \u2013 Jan-2026",
+   "url": "https://www.canararobeco.com/wp-content/uploads/2026/02/TA-\u2013-Canara-Robeco-Ultra-Short-Term-Fund-\u2013-Jan-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "SC \u2013 Canara Robeco Small Cap Fund \u2013 Jan-2026",
+   "url": "https://www.canararobeco.com/wp-content/uploads/2026/02/SC-\u2013-Canara-Robeco-Small-Cap-Fund-\u2013-Jan-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 91
+  },
+  {
+   "name": "OF \u2013 Canara Robeco Overnight Fund \u2013 Jan-2026",
+   "url": "https://www.canararobeco.com/wp-content/uploads/2026/02/OF-\u2013-Canara-Robeco-Overnight-Fund-\u2013-Jan-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "MO \u2013 Canara Robeco Corporate Bond Fund \u2013 Jan-2026",
+   "url": "https://www.canararobeco.com/wp-content/uploads/2026/02/MO-\u2013-Canara-Robeco-Corporate-Bond-Fund-\u2013-Jan-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "MN \u2013 Canara Robeco Manufacturing Fund \u2013 Jan-2026",
+   "url": "https://www.canararobeco.com/wp-content/uploads/2026/02/MN-\u2013-Canara-Robeco-Manufacturing-Fund-\u2013-Jan-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 52
+  },
+  {
+   "name": "MI \u2013 Canara Robeco Conservative Hybrid Fund \u2013 Jan-2026",
+   "url": "https://www.canararobeco.com/wp-content/uploads/2026/02/MI-\u2013-Canara-Robeco-Conservative-Hybrid-Fund-\u2013-Jan-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 50
+  },
+  {
+   "name": "MF \u2013 Canara Robeco Multi Cap Fund \u2013 Jan-2026",
+   "url": "https://www.canararobeco.com/wp-content/uploads/2026/02/MF-\u2013-Canara-Robeco-Multi-Cap-Fund-\u2013-Jan-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 105
+  },
+  {
+   "name": "MD- Canara Robeco Mid Cap Fund \u2013 Jan-2026",
+   "url": "https://www.canararobeco.com/wp-content/uploads/2026/02/MD-Canara-Robeco-Mid-Cap-Fund-\u2013-Jan-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 59
+  },
+  {
+   "name": "MA \u2013 Canara Robeco Multi Asset Allocation Fund \u2013 Jan-2026",
+   "url": "https://www.canararobeco.com/wp-content/uploads/2026/02/MA-\u2013-Canara-Robeco-Multi-Asset-Allocation-Fund-\u2013-Jan-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 40
+  },
+  {
+   "name": "LI \u2013 Canara Robeco Liquid Fund \u2013 Jan-2026",
+   "url": "https://www.canararobeco.com/wp-content/uploads/2026/02/LI-\u2013-Canara-Robeco-Liquid-Fund-\u2013-Jan-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "LC \u2013 Canara Robeco Large Cap Fund \u2013 Jan-2026",
+   "url": "https://www.canararobeco.com/wp-content/uploads/2026/02/LC-\u2013-Canara-Robeco-Large-Cap-Fund-\u2013-Jan-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 59
+  },
+  {
+   "name": "BA \u2013 Canara Robeco Balanced Advantage Fund \u2013 Jan-2026",
+   "url": "https://www.canararobeco.com/wp-content/uploads/2026/02/BA-\u2013-Canara-Robeco-Balanced-Advantage-Fund-\u2013-Jan-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 59
+  },
+  {
+   "name": "IF \u2013 Canara Robeco Income Fund \u2013 Jan-2026",
+   "url": "https://www.canararobeco.com/wp-content/uploads/2026/02/IF-\u2013-Canara-Robeco-Income-Fund-\u2013-Jan-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "GL \u2013 Canara Robeco GILT Fund \u2013 Jan-2026",
+   "url": "https://www.canararobeco.com/wp-content/uploads/2026/02/GL-\u2013-Canara-Robeco-GILT-Fund-\u2013-Jan-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "FR \u2013 Canara Robeco Savings Fund \u2013 Jan-2026",
+   "url": "https://www.canararobeco.com/wp-content/uploads/2026/02/FR-\u2013-Canara-Robeco-Savings-Fund-\u2013-Jan-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "FE \u2013 Canara Robeco Focused Fund \u2013 Jan-2026",
+   "url": "https://www.canararobeco.com/wp-content/uploads/2026/02/FE-\u2013-Canara-Robeco-Focused-Fund-\u2013-Jan-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 30
+  },
+  {
+   "name": "ET \u2013 Canara Robeco ELSS Tax Saver \u2013 Jan-2026",
+   "url": "https://www.canararobeco.com/wp-content/uploads/2026/02/ET-\u2013-Canara-Robeco-Equity-Tax-Saver-Fund-\u2013-Jan-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 71
+  },
+  {
+   "name": "EQ \u2013 Canara Robeco Large and Mid Cap Fund \u2013 Jan-2026",
+   "url": "https://www.canararobeco.com/wp-content/uploads/2026/02/EQ-\u2013-Canara-Robeco-Large-and-Mid-Cap-Fund-\u2013-Jan-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 97
+  },
+  {
+   "name": "DV \u2013 Canara Robeco Flexi cap Fund \u2013 Jan-2026",
+   "url": "https://www.canararobeco.com/wp-content/uploads/2026/02/DV-\u2013-Canara-Robeco-Flexi-cap-Fund-\u2013-Jan-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 71
+  },
+  {
+   "name": "DB \u2013 Canara Robeco Dynamic Bond Fund \u2013 Jan-2026",
+   "url": "https://www.canararobeco.com/wp-content/uploads/2026/02/DB-\u2013-Canara-Robeco-Dynamic-Bond-Fund-\u2013-Jan-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "CY \u2013 Canara Robeco Short Duration Fund \u2013 Jan-2026",
+   "url": "https://www.canararobeco.com/wp-content/uploads/2026/02/CY-\u2013-Canara-Robeco-Short-Duration-Fund-\u2013-Jan-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "CF \u2013 Canara Robeco Consumer Trends Fund \u2013 Jan-2026",
+   "url": "https://www.canararobeco.com/wp-content/uploads/2026/02/CF-\u2013-Canara-Robeco-Consumer-Trends-Fund-\u2013-Jan-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 46
+  },
+  {
+   "name": "BP \u2013 Canara Robeco Banking and PSU Debt Fund \u2013 Jan-2026",
+   "url": "https://www.canararobeco.com/wp-content/uploads/2026/02/BP-\u2013-Canara-Robeco-Banking-and-PSU-Debt-Fund-\u2013-Jan-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  }
+ ],
+ "schemes": {
+  "IN \u2013 Canara Robeco Infrastructure \u2013 Jan-2026": {
+   "eq": 45,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.978,
+   "eq_cr": 845.63,
+   "total_cr": 878.33
+  },
+  "CANARA ROBECO VALUE FUND": {
+   "eq": 56,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.982,
+   "eq_cr": 1244.67,
+   "total_cr": 1300.74
+  },
+  "CANARA ROBECO SMALL CAP FUND": {
+   "eq": 91,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.944,
+   "eq_cr": 12328.92,
+   "total_cr": 12670.71
+  },
+  "CANARA ROBECO MANUFACTURING FUND": {
+   "eq": 52,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1488.66,
+   "total_cr": 1508.9
+  },
+  "CANARA ROBECO CONSERVATIVE HYBRID FUND": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 196.32,
+   "total_cr": 893.18
+  },
+  "CANARA ROBECO MULTI CAP FUND": {
+   "eq": 105,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.962,
+   "eq_cr": 4926.91,
+   "total_cr": 5079.31
+  },
+  "CANARA ROBECO MID CAP FUND": {
+   "eq": 59,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.983,
+   "eq_cr": 3928.84,
+   "total_cr": 4060.68
+  },
+  "CANARA ROBECO MULTI ASSET ALLOCATION FUND": {
+   "eq": 40,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.975,
+   "eq_cr": 830.79,
+   "total_cr": 1267.95
+  },
+  "CANARA ROBECO LARGE CAP FUND": {
+   "eq": 59,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.983,
+   "eq_cr": 16641.44,
+   "total_cr": 17092.2
+  },
+  "CANARA ROBECO BALANCED ADVANTAGE FUND": {
+   "eq": 59,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.966,
+   "eq_cr": 904.68,
+   "total_cr": 1271.58
+  },
+  "CANARA ROBECO FOCUSED FUND": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.967,
+   "eq_cr": 2673.8,
+   "total_cr": 2793.28
+  },
+  "ET \u2013 Canara Robeco ELSS Tax Saver \u2013 Jan-2026": {
+   "eq": 71,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.986,
+   "eq_cr": 8480.82,
+   "total_cr": 8721.21
+  },
+  "CANARA ROBECO LARGE AND MID CAP FUND": {
+   "eq": 97,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.979,
+   "eq_cr": 24120.76,
+   "total_cr": 24643.67
+  },
+  "CANARA ROBECO FLEXICAP FUND": {
+   "eq": 71,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.986,
+   "eq_cr": 12759.33,
+   "total_cr": 13327.37
+  },
+  "CANARA ROBECO CONSUMER TRENDS FUND": {
+   "eq": 46,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.956,
+   "eq_cr": 1851.25,
+   "total_cr": 1909.25
+  }
+ },
+ "rows": 931,
+ "eq_cr": 93222.8,
+ "warn": []
+}

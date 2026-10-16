@@ -1,0 +1,426 @@
+{
+ "code": "dsp",
+ "amc": "DSP Mutual Fund",
+ "month": "2025-10",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-10-15 20:52",
+ "files": [
+  {
+   "name": "Portfolio Details as on October 31, 2025",
+   "url": "https://www.dspim.com/media/pages/mandatory-disclosures/portfolio-disclosures/d155b953f0-1765445657/monthend-portfolio-october-2025.zip",
+   "schemes": 79,
+   "eq_rows": 1856
+  }
+ ],
+ "schemes": {
+  "DSP Aggressive Hybrid Fund": {
+   "eq": 41,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.974,
+   "eq_cr": 8179.82,
+   "total_cr": 11909.72
+  },
+  "DSP Flexi Cap Fund": {
+   "eq": 60,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 11940.44,
+   "total_cr": 12197.68
+  },
+  "DSP Large Cap Fund": {
+   "eq": 31,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.933,
+   "eq_cr": 6271.86,
+   "total_cr": 6933.59
+  },
+  "DSP Large & Mid Cap Fund": {
+   "eq": 75,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.986,
+   "eq_cr": 16148.46,
+   "total_cr": 16530.07
+  },
+  "DSP ELSS Tax Saver Fund": {
+   "eq": 63,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.983,
+   "eq_cr": 17110.44,
+   "total_cr": 17241.31
+  },
+  "DSP Small Cap Fund": {
+   "eq": 82,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.951,
+   "eq_cr": 15650.36,
+   "total_cr": 16867.93
+  },
+  "DSP Natural Resources & New Energy Fund": {
+   "eq": 22,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1253.29,
+   "total_cr": 1474.17
+  },
+  "DSP Focused Fund": {
+   "eq": 29,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.966,
+   "eq_cr": 2437.06,
+   "total_cr": 2637.79
+  },
+  "DSP Dynamic Asset Allocation Fund": {
+   "eq": 54,
+   "fut": 27,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.943,
+   "eq_cr": 2450.8,
+   "total_cr": 3635.61
+  },
+  "DSP Equity Savings Fund": {
+   "eq": 82,
+   "fut": 65,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.976,
+   "eq_cr": 2667.06,
+   "total_cr": 3840.57
+  },
+  "DSP Nifty 50 Equal Weight Index Fund": {
+   "eq": 51,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.96,
+   "eq_cr": 2390.51,
+   "total_cr": 2390.58
+  },
+  "DSP Arbitrage Fund": {
+   "eq": 164,
+   "fut": 192,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.957,
+   "eq_cr": 4391.76,
+   "total_cr": 6447.92
+  },
+  "DSP Healthcare Fund": {
+   "eq": 24,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.913,
+   "eq_cr": 2627.59,
+   "total_cr": 3143.91
+  },
+  "DSP Nifty 50 Index Fund": {
+   "eq": 51,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.96,
+   "eq_cr": 868.59,
+   "total_cr": 869.6
+  },
+  "DSP Nifty Next 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 1179.01,
+   "total_cr": 1180.28
+  },
+  "DSP Quant Fund": {
+   "eq": 40,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.975,
+   "eq_cr": 885.53,
+   "total_cr": 920.66
+  },
+  "DSP Nifty 50 Equal Weight ETF": {
+   "eq": 51,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.96,
+   "eq_cr": 887.0,
+   "total_cr": 887.64
+  },
+  "DSP NIFTY 50 ETF": {
+   "eq": 51,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.96,
+   "eq_cr": 160.24,
+   "total_cr": 160.45
+  },
+  "DSP NIFTY MIDCAP 150 QUALITY 50 ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 104.3,
+   "total_cr": 104.35
+  },
+  "DSP Nifty Midcap 150 Qlty 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 476.86,
+   "total_cr": 477.06
+  },
+  "DSP NIFTY BANK ETF": {
+   "eq": 12,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.917,
+   "eq_cr": 727.01,
+   "total_cr": 727.27
+  },
+  "DSP NIFTY IT ETF": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 41.6,
+   "total_cr": 41.88
+  },
+  "DSP BSE SENSEX ETF": {
+   "eq": 31,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.933,
+   "eq_cr": 8.86,
+   "total_cr": 8.87
+  },
+  "DSP NIFTY PSU BANK ETF": {
+   "eq": 12,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 178.91,
+   "total_cr": 178.96
+  },
+  "DSP Nifty Private Bank ETF": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.9,
+   "eq_cr": 442.5,
+   "total_cr": 442.56
+  },
+  "DSP Multi Asset Allocation Fund": {
+   "eq": 35,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.971,
+   "eq_cr": 1838.4,
+   "total_cr": 4985.07
+  },
+  "DSP Banking & Financial Services Fund": {
+   "eq": 33,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.879,
+   "eq_cr": 1425.68,
+   "total_cr": 1518.73
+  },
+  "DSP Nifty Smallcap250 Quality 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.875,
+   "eq_cr": 286.39,
+   "total_cr": 286.77
+  },
+  "DSP Multicap Fund": {
+   "eq": 68,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2499.68,
+   "total_cr": 2627.88
+  },
+  "DSP Nifty Healthcare ETF": {
+   "eq": 20,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 11.05,
+   "total_cr": 11.05
+  },
+  "DSP Nifty Bank Index Fund": {
+   "eq": 12,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.917,
+   "eq_cr": 55.45,
+   "total_cr": 55.51
+  },
+  "DSP Nifty Top 10 Equal Weight Index Fund": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.9,
+   "eq_cr": 1438.38,
+   "total_cr": 1441.04
+  },
+  "DSP Nifty Top 10 Equal Weight ETF": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.9,
+   "eq_cr": 781.51,
+   "total_cr": 783.24
+  },
+  "DSP Business Cycle Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.939,
+   "eq_cr": 1061.71,
+   "total_cr": 1181.1
+  },
+  "DSP BSE Sensex Next 30 ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 36.8,
+   "total_cr": 36.81
+  },
+  "DSP BSE Sensex Next 30 Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 13.1,
+   "total_cr": 13.1
+  },
+  "DSP Nifty Private Bank Index Fund": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.9,
+   "eq_cr": 43.79,
+   "total_cr": 43.88
+  },
+  "DSP Nifty Healthcare Index Fund": {
+   "eq": 20,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 13.86,
+   "total_cr": 13.87
+  },
+  "DSP Nifty IT Index Fund": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 23.4,
+   "total_cr": 23.42
+  },
+  "DSP Nifty500 Flexicap Quality 30 Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.893,
+   "eq_cr": 80.38,
+   "total_cr": 80.54
+  },
+  "DSP Nifty500 Flexicap Quality 30 ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.893,
+   "eq_cr": 9.09,
+   "total_cr": 9.12
+  },
+  "DSP India T.I.G.E.R. Fund (The Infrastructure Growth and Economic Reforms Fund)": {
+   "eq": 69,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.955,
+   "eq_cr": 5109.19,
+   "total_cr": 5506.48
+  },
+  "DSP Mid Cap Fund": {
+   "eq": 61,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.983,
+   "eq_cr": 18829.9,
+   "total_cr": 19609.01
+  },
+  "DSP Value Fund": {
+   "eq": 51,
+   "fut": 1,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 793.36,
+   "total_cr": 1196.61
+  },
+  "DSP Regular Savings Fund": {
+   "eq": 31,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.968,
+   "eq_cr": 33.24,
+   "total_cr": 179.58
+  }
+ },
+ "rows": 2141,
+ "eq_cr": 133864.2,
+ "warn": []
+}

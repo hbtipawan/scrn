@@ -1,0 +1,183 @@
+{
+ "code": "boi",
+ "amc": "Bank of India Mutual Fund",
+ "month": "2026-08",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-10-16 00:57",
+ "files": [
+  {
+   "name": "MONTHLY-PORTFOLIO - 31-AUGUST-2026",
+   "url": "https://www.boimf.in/docs/default-source/investorcorner/monthly-portfolio/monthly-portfolio---31-august-2026.xlsx?sfvrsn=63f438_4",
+   "schemes": 24,
+   "eq_rows": 937
+  }
+ ],
+ "schemes": {
+  "Bank of India Large & Mid Cap Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 512.89,
+   "total_cr": 529.09
+  },
+  "Bank Of India Conservative Hybrid Fund": {
+   "eq": 26,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 13.28,
+   "total_cr": 65.22
+  },
+  "Bank of India ELSS Tax Saver Fund": {
+   "eq": 56,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1199.56,
+   "total_cr": 1414.43
+  },
+  "Bank Of India Manufacturing and Infrastructure Fund": {
+   "eq": 54,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 872.65,
+   "total_cr": 948.65
+  },
+  "Bank Of India Balanced Advantage Fund": {
+   "eq": 58,
+   "fut": 2,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 92.23,
+   "total_cr": 175.65
+  },
+  "Bank of India Aggressive Hybrid Fund": {
+   "eq": 63,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1372.37,
+   "total_cr": 2050.58
+  },
+  "Bank Of India Mid Cap Tax Fund Series 1 (A 10 Year Close-ended Equity Linked Savings Scheme)": {
+   "eq": 51,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 67.21,
+   "total_cr": 68.18
+  },
+  "Bank Of India Arbitrage Fund": {
+   "eq": 33,
+   "fut": 66,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 95.36,
+   "total_cr": 134.0
+  },
+  "Bank Of India Mid Cap Tax Fund Series 2 (A 10 Year Close-ended Equity Linked Savings Scheme)": {
+   "eq": 53,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 33.31,
+   "total_cr": 33.76
+  },
+  "Bank Of India Small Cap Fund": {
+   "eq": 87,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2847.71,
+   "total_cr": 3307.18
+  },
+  "Bank Of India Flexi Cap Fund": {
+   "eq": 65,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2626.39,
+   "total_cr": 2953.0
+  },
+  "Bank of India Large Cap Fund": {
+   "eq": 53,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 226.04,
+   "total_cr": 231.06
+  },
+  "Bank Of India Multi Cap Fund": {
+   "eq": 63,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1259.9,
+   "total_cr": 1335.04
+  },
+  "Bank of India Multi Asset Allocation Fund": {
+   "eq": 46,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 210.84,
+   "total_cr": 379.31
+  },
+  "Bank of India Business Cycle Fund": {
+   "eq": 52,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 447.34,
+   "total_cr": 463.16
+  },
+  "Bank of India Consumption Fund": {
+   "eq": 36,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 361.64,
+   "total_cr": 369.81
+  },
+  "Bank of India Mid Cap Fund": {
+   "eq": 56,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 754.47,
+   "total_cr": 766.6
+  },
+  "Bank of India Banking & Financial Services Fund": {
+   "eq": 35,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 269.02,
+   "total_cr": 272.89
+  }
+ },
+ "rows": 1005,
+ "eq_cr": 13262.2,
+ "warn": []
+}

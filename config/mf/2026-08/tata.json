@@ -1,0 +1,451 @@
+{
+ "code": "tata",
+ "amc": "Tata Mutual Fund",
+ "month": "2026-08",
+ "fetched": "2026-10-15 20:04",
+ "files": [
+  {
+   "name": "Portfolio as on 31st August, 2026",
+   "url": "https://betacms.tatamutualfund.com/system/files/2026-09/Monthly%20Portfolio%20as%20on%2031st%20August%202026.xlsx",
+   "schemes": 67,
+   "eq_rows": 2450
+  }
+ ],
+ "schemes": {
+  "TATA VALUE FUND": {
+   "eq": 39,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 8195.53,
+   "total_cr": 8655.69
+  },
+  "TATA SMALL CAP FUND": {
+   "eq": 64,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 12254.0,
+   "total_cr": 13093.88
+  },
+  "TATA RETIREMENT SAVINGS FUND-PROGRESSIVE PLAN": {
+   "eq": 53,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2134.34,
+   "total_cr": 2254.57
+  },
+  "TATA RETIREMENT SAVINGS FUND-MODERATE PLAN": {
+   "eq": 53,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1817.57,
+   "total_cr": 2251.23
+  },
+  "TATA RESOURCES & ENERGY FUND": {
+   "eq": 45,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1389.38,
+   "total_cr": 1409.15
+  },
+  "TATA NIFTY500 MULTICAP INFRASTRUCTURE 50-30-20 INDEX FUND": {
+   "eq": 75,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 76.84,
+   "total_cr": 76.96
+  },
+  "TATA NIFTY500 MULTICAP INDIA MANUFACTURING 50-30-20 INDEX FUND": {
+   "eq": 75,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 140.73,
+   "total_cr": 140.79
+  },
+  "TATA NIFTY200 ALPHA 30 INDEX FUND": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 212.99,
+   "total_cr": 213.28
+  },
+  "TATA NIFTY REALTY INDEX FUND": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 63.72,
+   "total_cr": 63.8
+  },
+  "TATA NIFTY PRIVATE BANK EXCHANGE TRADED FUND": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 19.81,
+   "total_cr": 19.87
+  },
+  "TATA NIFTY NEXT 50 INDEX FUND": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 125.58,
+   "total_cr": 125.42
+  },
+  "TATA NIFTY MIDSMALL HEALTHCARE INDEX FUND": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 219.37,
+   "total_cr": 219.09
+  },
+  "TATA NIFTY MIDCAP 150 MOMENTUM 50 INDEX FUND": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1274.5,
+   "total_cr": 1274.02
+  },
+  "TATA NIFTY MIDCAP 150 INDEX FUND": {
+   "eq": 150,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 332.86,
+   "total_cr": 332.44
+  },
+  "TATA NIFTY INDIA TOURISM INDEX FUND": {
+   "eq": 15,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 263.88,
+   "total_cr": 263.95
+  },
+  "TATA NIFTY INDIA DIGITAL EXCHANGE TRADED FUND": {
+   "eq": 51,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 176.04,
+   "total_cr": 176.1
+  },
+  "TATA NIFTY FINANCIAL SERVICES INDEX FUND": {
+   "eq": 20,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 72.22,
+   "total_cr": 70.96
+  },
+  "TATA NIFTY CAPITAL MARKETS INDEX FUND": {
+   "eq": 17,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 983.48,
+   "total_cr": 979.6
+  },
+  "TATA NIFTY AUTO INDEX FUND": {
+   "eq": 15,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 108.95,
+   "total_cr": 109.14
+  },
+  "TATA NIFTY 50 INDEX FUND": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1706.59,
+   "total_cr": 1706.66
+  },
+  "TATA NIFTY 50 EXCHANGE TRADED FUND": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 715.77,
+   "total_cr": 716.58
+  },
+  "TATA MULTICAP FUND": {
+   "eq": 81,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 0.988,
+   "eq_cr": 3432.52,
+   "total_cr": 3575.98
+  },
+  "TATA MULTI ASSET ALLOCATION FUND": {
+   "eq": 72,
+   "fut": 8,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 3451.51,
+   "total_cr": 5241.6
+  },
+  "TATA MID CAP FUND": {
+   "eq": 61,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 6166.77,
+   "total_cr": 6240.29
+  },
+  "TATA LARGE CAP FUND": {
+   "eq": 45,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2696.77,
+   "total_cr": 2764.89
+  },
+  "TATA LARGE & MID CAP FUND": {
+   "eq": 49,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 7260.37,
+   "total_cr": 7679.32
+  },
+  "TATA INFRASTRUCTURE FUND": {
+   "eq": 53,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1906.91,
+   "total_cr": 2021.88
+  },
+  "TATA INDIA PHARMA & HEALTHCARE FUND": {
+   "eq": 41,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1557.64,
+   "total_cr": 1565.28
+  },
+  "TATA INDIA INNOVATION FUND": {
+   "eq": 60,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1252.41,
+   "total_cr": 1345.73
+  },
+  "TATA INDIA CONSUMER FUND": {
+   "eq": 36,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2743.43,
+   "total_cr": 2900.93
+  },
+  "TATA HOUSING OPPORTUNITIES FUND": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 452.16,
+   "total_cr": 478.37
+  },
+  "TATA FOCUSED FUND": {
+   "eq": 28,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1658.12,
+   "total_cr": 1755.1
+  },
+  "TATA FLEXI CAP FUND": {
+   "eq": 65,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 3436.93,
+   "total_cr": 3663.05
+  },
+  "TATA ETHICAL FUND": {
+   "eq": 56,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 3701.93,
+   "total_cr": 3860.81
+  },
+  "TATA ELSS - TAX SAVER FUND": {
+   "eq": 60,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 4569.83,
+   "total_cr": 4746.75
+  },
+  "TATA DIVIDEND YIELD FUND": {
+   "eq": 74,
+   "fut": 1,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 0.986,
+   "eq_cr": 1085.2,
+   "total_cr": 1156.47
+  },
+  "TATA DIGITAL INDIA FUND": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 9990.54,
+   "total_cr": 10322.02
+  },
+  "TATA CHILDRENS FUND": {
+   "eq": 51,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 319.68,
+   "total_cr": 331.18
+  },
+  "TATA BUSINESS CYCLE FUND": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2533.23,
+   "total_cr": 2602.35
+  },
+  "TATA BSE SENSEX INDEX FUND": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 386.99,
+   "total_cr": 387.15
+  },
+  "TATA BSE SELECT BUSINESS GROUPS INDEX FUND": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 225.23,
+   "total_cr": 225.25
+  },
+  "TATA BSE QUALITY INDEX FUND": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 57.21,
+   "total_cr": 57.28
+  },
+  "TATA BSE MULTICAP CONSUMPTION 50-30-20 INDEX FUND": {
+   "eq": 100,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 42.55,
+   "total_cr": 42.49
+  },
+  "TATA BANKING & FINANCIAL SERVICES FUND": {
+   "eq": 36,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 3293.31,
+   "total_cr": 3300.88
+  },
+  "TATA BALANCED ADVANTAGE FUND": {
+   "eq": 60,
+   "fut": 10,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 0.967,
+   "eq_cr": 5574.37,
+   "total_cr": 8538.57
+  },
+  "TATA ARBITRAGE FUND": {
+   "eq": 151,
+   "fut": 229,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 16473.5,
+   "total_cr": 24949.62
+  },
+  "TATA AGGRESSIVE HYBRID FUND": {
+   "eq": 49,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 3019.45,
+   "total_cr": 4069.01
+  },
+  "TATA RETIREMENT SAVINGS FUND-CONSERVATIVE PLAN": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 48.94,
+   "total_cr": 171.11
+  }
+ },
+ "rows": 2698,
+ "eq_cr": 119621.6,
+ "warn": []
+}

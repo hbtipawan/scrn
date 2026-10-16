@@ -1,0 +1,480 @@
+{
+ "code": "uti",
+ "amc": "UTI Mutual Fund",
+ "month": "2025-10",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-10-15 20:50",
+ "files": [
+  {
+   "name": "Consolidated Portfolio October 2025",
+   "url": "https://d3ce1o48hc5oli.cloudfront.net/s3fs-public/2026-09/fw_uti_mf_portfolios_31.10.2025.zip?VersionId=xJpDwIXVsJ9N4CEf59cV7AG8a2ced.Ka",
+   "schemes": 85,
+   "eq_rows": 2899
+  }
+ ],
+ "schemes": {
+  "UTI - Unit Linked Insurance Plan": {
+   "eq": 58,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.94,
+   "eq_cr": 2077.72,
+   "total_cr": null
+  },
+  "UTI - Large Cap Fund": {
+   "eq": 57,
+   "fut": 2,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.929,
+   "eq_cr": 12734.02,
+   "total_cr": null
+  },
+  "UTI - Flexi Cap Fund.": {
+   "eq": 58,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.945,
+   "eq_cr": 24883.54,
+   "total_cr": null
+  },
+  "UTI Large & Mid Cap Fund": {
+   "eq": 72,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.971,
+   "eq_cr": 5124.68,
+   "total_cr": null
+  },
+  "UTI Children's Hybrid Fund": {
+   "eq": 58,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.982,
+   "eq_cr": 1779.01,
+   "total_cr": null
+  },
+  "UTI Retirement Fund": {
+   "eq": 64,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.968,
+   "eq_cr": 1782.88,
+   "total_cr": null
+  },
+  "UTI Aggressive Hybrid Fund": {
+   "eq": 62,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.967,
+   "eq_cr": 4580.18,
+   "total_cr": null
+  },
+  "UTI - MNC Fund": {
+   "eq": 53,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2838.88,
+   "total_cr": null
+  },
+  "UTI - Healthcare Fund": {
+   "eq": 42,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.929,
+   "eq_cr": 1103.73,
+   "total_cr": null
+  },
+  "UTI ELSS Tax Saver Fund": {
+   "eq": 59,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.966,
+   "eq_cr": 3767.4,
+   "total_cr": null
+  },
+  "UTI Nifty 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.96,
+   "eq_cr": 25611.6,
+   "total_cr": null
+  },
+  "UTI - Master Equity Plan Unit Scheme": {
+   "eq": 59,
+   "fut": 1,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.93,
+   "eq_cr": 2887.35,
+   "total_cr": null
+  },
+  "UTI Children's Equity Fund": {
+   "eq": 57,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.982,
+   "eq_cr": 1120.09,
+   "total_cr": null
+  },
+  "UTI - Mid Cap Fund": {
+   "eq": 92,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.978,
+   "eq_cr": 11913.55,
+   "total_cr": null
+  },
+  "UTI - Infrastructure Fund": {
+   "eq": 61,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.915,
+   "eq_cr": 2122.37,
+   "total_cr": null
+  },
+  "UTI - Transportation and Logistics Fund": {
+   "eq": 38,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.974,
+   "eq_cr": 3727.15,
+   "total_cr": null
+  },
+  "UTI - Banking and Financial Services Fund": {
+   "eq": 32,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.903,
+   "eq_cr": 1333.96,
+   "total_cr": null
+  },
+  "UTI Conservative Hybrid Fund": {
+   "eq": 63,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.948,
+   "eq_cr": 416.76,
+   "total_cr": null
+  },
+  "UTI - Dividend Yield Fund": {
+   "eq": 49,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.939,
+   "eq_cr": 3645.17,
+   "total_cr": null
+  },
+  "UTI Value Fund": {
+   "eq": 60,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.948,
+   "eq_cr": 9939.33,
+   "total_cr": null
+  },
+  "UTI - Arbitrage Fund": {
+   "eq": 155,
+   "fut": 163,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.968,
+   "eq_cr": 7998.67,
+   "total_cr": null
+  },
+  "UTI - India Consumer Fund": {
+   "eq": 46,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.978,
+   "eq_cr": 719.44,
+   "total_cr": null
+  },
+  "UTI Multi Asset Allocation Fund": {
+   "eq": 94,
+   "fut": 30,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.947,
+   "eq_cr": 4188.18,
+   "total_cr": null
+  },
+  "UTI Nifty 50 ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.96,
+   "eq_cr": 67213.95,
+   "total_cr": null
+  },
+  "UTI BSE Sensex ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.933,
+   "eq_cr": 52627.03,
+   "total_cr": null
+  },
+  "UTI - Nifty Next 50 Exchange Traded Fund.": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 2118.26,
+   "total_cr": null
+  },
+  "UTI - Nifty Next 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 5937.62,
+   "total_cr": null
+  },
+  "UTI - Equity Savings Fund": {
+   "eq": 42,
+   "fut": 25,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.951,
+   "eq_cr": 502.55,
+   "total_cr": null
+  },
+  "UTI - BSE Sensex Next 50 Exchange Traded Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 28.92,
+   "total_cr": null
+  },
+  "UTI Nifty Bank ETF": {
+   "eq": 12,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.917,
+   "eq_cr": 3817.78,
+   "total_cr": null
+  },
+  "UTI Small Cap Fund": {
+   "eq": 90,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.911,
+   "eq_cr": 4665.59,
+   "total_cr": null
+  },
+  "UTI Nifty 200 Momentum 30 Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.967,
+   "eq_cr": 8704.7,
+   "total_cr": null
+  },
+  "UTI Focused Fund": {
+   "eq": 29,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2595.45,
+   "total_cr": null
+  },
+  "UTI BSE Sensex Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.933,
+   "eq_cr": 208.74,
+   "total_cr": null
+  },
+  "UTI BSE Low Volatility Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 568.43,
+   "total_cr": null
+  },
+  "UTI Nifty Midcap 150 Quality 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 258.88,
+   "total_cr": null
+  },
+  "UTI Nifty 500 Value 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 533.65,
+   "total_cr": null
+  },
+  "UTI Nifty50 Equal Weight Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.96,
+   "eq_cr": 114.88,
+   "total_cr": null
+  },
+  "UTI BSE Housing Index Fund": {
+   "eq": 25,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 25.74,
+   "total_cr": null
+  },
+  "UTI Balanced Advantage Fund": {
+   "eq": 61,
+   "fut": 14,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.967,
+   "eq_cr": 2221.22,
+   "total_cr": null
+  },
+  "UTI Nifty Midcap 150 Exchange Traded Fund": {
+   "eq": 150,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.987,
+   "eq_cr": 11.03,
+   "total_cr": null
+  },
+  "UTI Innovation Fund": {
+   "eq": 27,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 839.37,
+   "total_cr": null
+  },
+  "UTI Nifty IT ETF": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 6.34,
+   "total_cr": null
+  },
+  "UTI Nifty 200 Quality 30 Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.967,
+   "eq_cr": 656.73,
+   "total_cr": null
+  },
+  "UTI Nifty Private Bank Index Fund": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.9,
+   "eq_cr": 225.31,
+   "total_cr": null
+  },
+  "UTI Nifty Alpha Low-Volatility 30 Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.967,
+   "eq_cr": 81.41,
+   "total_cr": null
+  },
+  "UTI Nifty Midcap 150 Index Fund": {
+   "eq": 150,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.987,
+   "eq_cr": 60.97,
+   "total_cr": null
+  },
+  "UTI Quant Fund": {
+   "eq": 76,
+   "fut": 8,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.934,
+   "eq_cr": 1717.0,
+   "total_cr": null
+  },
+  "UTI Nifty Midsmallcap 400 Momentum Quality 100 Index Fund": {
+   "eq": 100,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.95,
+   "eq_cr": 89.88,
+   "total_cr": null
+  },
+  "UTI Nifty India Manufacturing Index Fund": {
+   "eq": 74,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 24.16,
+   "total_cr": null
+  },
+  "UTI Multi Cap Fund": {
+   "eq": 74,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.945,
+   "eq_cr": 1658.32,
+   "total_cr": null
+  }
+ },
+ "rows": 3142,
+ "eq_cr": 293809.6,
+ "warn": []
+}

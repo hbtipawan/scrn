@@ -1,0 +1,615 @@
+{
+ "code": "motilal",
+ "amc": "Motilal Oswal Mutual Fund",
+ "month": "2026-01",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-10-16 00:17",
+ "files": [
+  {
+   "name": " scheme portfolio details january 2026 ",
+   "url": "https://www.motilaloswalmf.com/content/dam/motilal-mf/downloads/mf/month-end-portfolio/2026/feb/b5209-scheme-portfolio-details-january-2026-2-.xlsx",
+   "schemes": 81,
+   "eq_rows": 5131
+  }
+ ],
+ "schemes": {
+  "Motilal Oswal Nifty 50 ETF": {
+   "eq": 51,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 57.84,
+   "total_cr": 57.89
+  },
+  "Motilal Oswal Nifty Midcap 100 ETF": {
+   "eq": 100,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.99,
+   "eq_cr": 744.33,
+   "total_cr": 744.14
+  },
+  "Motilal Oswal Focused Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1338.97,
+   "total_cr": 1445.37
+  },
+  "Motilal Oswal Midcap Fund": {
+   "eq": 26,
+   "fut": 2,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.962,
+   "eq_cr": 29809.06,
+   "total_cr": 34432.18
+  },
+  "Motilal Oswal Flexi Cap Fund": {
+   "eq": 17,
+   "fut": 2,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 10439.4,
+   "total_cr": 13180.03
+  },
+  "Motilal Oswal ELSS Tax Saver Fund": {
+   "eq": 29,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.966,
+   "eq_cr": 4144.86,
+   "total_cr": 4188.13
+  },
+  "Motilal Oswal Balanced Advantage Fund": {
+   "eq": 17,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 555.6,
+   "total_cr": 797.36
+  },
+  "Motilal Oswal Nifty Midcap 150 Index Fund": {
+   "eq": 150,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.993,
+   "eq_cr": 3005.04,
+   "total_cr": 3004.72
+  },
+  "Motilal Oswal Nifty Smallcap 250 Index Fund": {
+   "eq": 250,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.972,
+   "eq_cr": 984.14,
+   "total_cr": 983.99
+  },
+  "Motilal Oswal Nifty 500 Index Fund": {
+   "eq": 501,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 2829.76,
+   "total_cr": 2831.91
+  },
+  "Motilal Oswal Nifty Bank Index Fund": {
+   "eq": 14,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 668.48,
+   "total_cr": 668.69
+  },
+  "Motilal Oswal Large and Midcap Fund": {
+   "eq": 34,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.941,
+   "eq_cr": 14457.07,
+   "total_cr": 14601.65
+  },
+  "Motilal Oswal Nifty 50 Index Fund": {
+   "eq": 51,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 846.42,
+   "total_cr": 847.16
+  },
+  "Motilal Oswal Nifty Next 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 401.45,
+   "total_cr": 400.69
+  },
+  "Motilal Oswal Nifty 200 Momentum 30 ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 122.04,
+   "total_cr": 122.05
+  },
+  "Motilal Oswal Nifty 200 Momentum 30 Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 926.91,
+   "total_cr": 930.81
+  },
+  "Motilal OswalBSE Low Volatility ETF": {
+   "eq": 31,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 69.7,
+   "total_cr": 69.74
+  },
+  "Motilal OswalBSE Low Volatility Index Fund": {
+   "eq": 31,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 109.5,
+   "total_cr": 109.57
+  },
+  "Motilal OswalBSE Financials ex Bank 30 Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.967,
+   "eq_cr": 29.59,
+   "total_cr": 29.65
+  },
+  "Motilal OswalBSE Healthcare ETF": {
+   "eq": 119,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.982,
+   "eq_cr": 40.18,
+   "total_cr": 40.21
+  },
+  "Motilal OswalBSE Enhanced Value ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.967,
+   "eq_cr": 123.96,
+   "total_cr": 123.94
+  },
+  "Motilal OswalBSE Enhanced Value Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.967,
+   "eq_cr": 1451.68,
+   "total_cr": 1454.07
+  },
+  "Motilal OswalBSE Quality ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 18.78,
+   "total_cr": 18.8
+  },
+  "Motilal OswalBSE Quality Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 61.52,
+   "total_cr": 61.56
+  },
+  "Motilal Oswal Nifty Microcap 250 Index Fund": {
+   "eq": 251,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.984,
+   "eq_cr": 2345.93,
+   "total_cr": 2345.05
+  },
+  "Motilal Oswal Nifty 500 ETF": {
+   "eq": 501,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 197.9,
+   "total_cr": 197.98
+  },
+  "Motilal Oswal Small Cap Fund": {
+   "eq": 55,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.945,
+   "eq_cr": 5263.5,
+   "total_cr": 5510.44
+  },
+  "Motilal Oswal Large Cap Fund": {
+   "eq": 54,
+   "fut": 1,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.981,
+   "eq_cr": 2944.66,
+   "total_cr": 3061.47
+  },
+  "Motilal Oswal Nifty Realty ETF": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.9,
+   "eq_cr": 278.79,
+   "total_cr": 278.7
+  },
+  "Motilal Oswal Nifty Smallcap 250 ETF": {
+   "eq": 250,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.972,
+   "eq_cr": 156.0,
+   "total_cr": 156.01
+  },
+  "Motilal Oswal Quant Fund": {
+   "eq": 46,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.978,
+   "eq_cr": 123.36,
+   "total_cr": 143.83
+  },
+  "Motilal Oswal Multicap Fund": {
+   "eq": 20,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 3580.88,
+   "total_cr": 4113.69
+  },
+  "Motilal Oswal Nifty India Defence Index Fund": {
+   "eq": 18,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 4060.67,
+   "total_cr": 4062.11
+  },
+  "Motilal Oswal Manufacturing Fund": {
+   "eq": 31,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 613.25,
+   "total_cr": 667.86
+  },
+  "Motilal Oswal Business Cycle Fund": {
+   "eq": 19,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1722.87,
+   "total_cr": 1868.99
+  },
+  "Motilal Oswal Nifty India Defence ETF": {
+   "eq": 18,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1399.21,
+   "total_cr": 1398.83
+  },
+  "Motilal Oswal Nifty 500 Momentum 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.96,
+   "eq_cr": 722.99,
+   "total_cr": 723.22
+  },
+  "Motilal Oswal Nifty 500 Momentum 50 ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.96,
+   "eq_cr": 266.54,
+   "total_cr": 266.45
+  },
+  "Motilal Oswal Digital India Fund": {
+   "eq": 26,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.962,
+   "eq_cr": 798.06,
+   "total_cr": 845.89
+  },
+  "Motilal Oswal Nifty MidSmall Fin Servs Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.967,
+   "eq_cr": 89.18,
+   "total_cr": 89.16
+  },
+  "MO Nifty MidSmall India Consumption Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.967,
+   "eq_cr": 20.41,
+   "total_cr": 20.41
+  },
+  "Motilal Oswal Nifty MidSmall Healthcare Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 26.64,
+   "total_cr": 26.71
+  },
+  "MO Nifty MidSmall IT and Telecom Index Fund": {
+   "eq": 20,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 35.98,
+   "total_cr": 36.13
+  },
+  "MO Nifty Capital Market Index Fund": {
+   "eq": 15,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.867,
+   "eq_cr": 337.7,
+   "total_cr": 337.89
+  },
+  "Motilal Oswal Arbitrage Fund": {
+   "eq": 98,
+   "fut": 99,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.99,
+   "eq_cr": 1666.94,
+   "total_cr": 2206.6
+  },
+  "Motilal Oswal Innovation Opportunities Fund": {
+   "eq": 29,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 444.88,
+   "total_cr": 469.62
+  },
+  "Motilal Oswal Active Momentum Fund": {
+   "eq": 26,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.962,
+   "eq_cr": 340.98,
+   "total_cr": 360.18
+  },
+  "Motilal Oswal Nifty Capital Market ETF": {
+   "eq": 15,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.867,
+   "eq_cr": 114.46,
+   "total_cr": 114.44
+  },
+  "Motilal Oswal Infrastructure Fund": {
+   "eq": 24,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 100.56,
+   "total_cr": 111.29
+  },
+  "Motilal Oswal Nifty 50 Equal Weight ETF": {
+   "eq": 51,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 77.46,
+   "total_cr": 77.52
+  },
+  "Motilal Oswal Nifty Next 50 ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 1.88,
+   "total_cr": 1.89
+  },
+  "Motilal Oswal BSE India Infrastructure ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.966,
+   "eq_cr": 1.88,
+   "total_cr": 1.88
+  },
+  "Motilal Oswal Services Fund": {
+   "eq": 39,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.974,
+   "eq_cr": 91.61,
+   "total_cr": 101.63
+  },
+  "Motilal Oswal Nifty India Manufacturing ETF": {
+   "eq": 74,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1.87,
+   "total_cr": 1.87
+  },
+  "Motilal Oswal Nifty PSE ETF": {
+   "eq": 20,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1.22,
+   "total_cr": 1.23
+  },
+  "Motilal Oswal Nifty India Tourism ETF": {
+   "eq": 16,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 7.08,
+   "total_cr": 7.09
+  },
+  "Motilal Oswal Nifty Midcap 150 Momentum 50 ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 22.94,
+   "total_cr": 22.94
+  },
+  "Motilal Oswal Nifty Alpha 50 ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 5.45,
+   "total_cr": 5.45
+  },
+  "Motilal Oswal BSE 1000 Index Fund": {
+   "eq": 1002,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.981,
+   "eq_cr": 56.04,
+   "total_cr": 56.19
+  },
+  "Motilal Oswal Special Opportunities Fund": {
+   "eq": 25,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.92,
+   "eq_cr": 57.35,
+   "total_cr": 65.5
+  },
+  "Motilal Oswal Consumption Fund": {
+   "eq": 29,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.964,
+   "eq_cr": 982.65,
+   "total_cr": 1055.15
+  },
+  "Motilal Oswal Nifty 100 ETF": {
+   "eq": 101,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 9.34,
+   "total_cr": 9.34
+  },
+  "Motilal Oswal Nifty Energy ETF": {
+   "eq": 40,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 32.62,
+   "total_cr": 32.62
+  },
+  "Motilal Oswal BSE Select IPO ETF": {
+   "eq": 66,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.969,
+   "eq_cr": 4.68,
+   "total_cr": 4.68
+  },
+  "Motilal Oswal Nifty Services Sector ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 5.22,
+   "total_cr": 5.22
+  },
+  "Motilal Oswal Nifty MNC ETF": {
+   "eq": 31,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2.27,
+   "total_cr": 2.27
+  }
+ },
+ "rows": 5235,
+ "eq_cr": 102250.1,
+ "warn": []
+}

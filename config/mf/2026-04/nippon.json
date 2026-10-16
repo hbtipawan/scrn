@@ -1,0 +1,561 @@
+{
+ "code": "nippon",
+ "amc": "Nippon India Mutual Fund",
+ "month": "2026-04",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-10-16 00:46",
+ "files": [
+  {
+   "name": "D\u200bownload",
+   "url": "https://mf.nipponindiaim.com/InvestorServices/FactsheetsDocuments/NIMF-MONTHLY-PORTFOLIO-30-April-26.xls",
+   "schemes": 109,
+   "eq_rows": 4006
+  }
+ ],
+ "schemes": {
+  "Nippon India Growth Mid Cap Fund (Mid Cap Fund": {
+   "eq": 98,
+   "fut": 4,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.979,
+   "eq_cr": 45139.3,
+   "total_cr": 45820.33
+  },
+  "Nippon India Vision Large & Mid Cap Fund": {
+   "eq": 102,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.99,
+   "eq_cr": 6969.94,
+   "total_cr": 7080.91
+  },
+  "NIPPON INDIA BANKING & FINANCIAL SERVICES FUND": {
+   "eq": 37,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 7289.42,
+   "total_cr": 7469.77
+  },
+  "Nippon India Conservative Hybrid Fund": {
+   "eq": 48,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 110.49,
+   "total_cr": 951.13
+  },
+  "NIPPON INDIA POWER & INFRA FUND": {
+   "eq": 79,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.975,
+   "eq_cr": 7650.46,
+   "total_cr": 7707.34
+  },
+  "NIPPON INDIA PHARMA FUND": {
+   "eq": 34,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 8255.15,
+   "total_cr": 8365.4
+  },
+  "NIPPON INDIA CONSUMPTION FUND": {
+   "eq": 42,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.976,
+   "eq_cr": 2368.48,
+   "total_cr": 2442.86
+  },
+  "NIPPON INDIA BALANCED ADVANTAGE FUND": {
+   "eq": 78,
+   "fut": 86,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.986,
+   "eq_cr": 6733.16,
+   "total_cr": 9620.3
+  },
+  "NIPPON INDIA MULTI CAP FUND (Multi Cap Fund": {
+   "eq": 125,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.984,
+   "eq_cr": 52399.77,
+   "total_cr": 52634.04
+  },
+  "NIPPON INDIA VALUE FUND": {
+   "eq": 82,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.987,
+   "eq_cr": 8870.45,
+   "total_cr": 8918.8
+  },
+  "Nippon India Aggressive Hybrid Fund": {
+   "eq": 76,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.987,
+   "eq_cr": 2881.71,
+   "total_cr": 3958.21
+  },
+  "Nippon India ELSS Tax Saver Fund": {
+   "eq": 62,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 14486.22,
+   "total_cr": 14742.47
+  },
+  "Nippon India Focused Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.967,
+   "eq_cr": 8019.7,
+   "total_cr": 8343.44
+  },
+  "NIPPON INDIA LARGE CAP FUND": {
+   "eq": 64,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.983,
+   "eq_cr": 49847.54,
+   "total_cr": 51690.28
+  },
+  "NIPPON INDIA QUANT FUND": {
+   "eq": 39,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 109.41,
+   "total_cr": 111.89
+  },
+  "NIPPON INDIA INDEX FUND - NIFTY 50 PLAN": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 3668.16,
+   "total_cr": 3663.36
+  },
+  "NIPPON INDIA SMALL CAP FUND": {
+   "eq": 249,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.979,
+   "eq_cr": 70531.91,
+   "total_cr": 72672.99
+  },
+  "Nippon India Index Fund - BSE Sensex Plan": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.967,
+   "eq_cr": 915.98,
+   "total_cr": 916.18
+  },
+  "NIPPON INDIA ARBITRAGE FUND": {
+   "eq": 165,
+   "fut": 460,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.988,
+   "eq_cr": 11352.92,
+   "total_cr": 16332.45
+  },
+  "Nippon India ETF Nifty 100": {
+   "eq": 104,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.99,
+   "eq_cr": 346.35,
+   "total_cr": 346.75
+  },
+  "NIPPON INDIA ETF NIFTY INDIA CONSUMPTION": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.967,
+   "eq_cr": 202.68,
+   "total_cr": 202.72
+  },
+  "NIPPON INDIA ETF NIFTY DIVIDEND OPPORTUNITIES 50": {
+   "eq": 54,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 69.61,
+   "total_cr": 69.72
+  },
+  "Nippon India ETF BSE Sensex": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.967,
+   "eq_cr": 25538.2,
+   "total_cr": 25544.08
+  },
+  "NIPPON INDIA RETIREMENT FUND - WEALTH CREATION SCHEME": {
+   "eq": 77,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2954.01,
+   "total_cr": 3055.82
+  },
+  "NIPPON INDIA RETIREMENT FUND - INCOME GENERATION SCHEME": {
+   "eq": 22,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 27.65,
+   "total_cr": 141.12
+  },
+  "NIPPON INDIA EQUITY SAVINGS FUND": {
+   "eq": 53,
+   "fut": 54,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 597.78,
+   "total_cr": 853.22
+  },
+  "NIPPON INDIA ETF NIFTY 50 VALUE 20": {
+   "eq": 20,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 152.67,
+   "total_cr": 152.79
+  },
+  "NIPPON INDIA ETF NIFTY 50 BEES": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 62868.12,
+   "total_cr": 62881.14
+  },
+  "NIPPON INDIA ETF NIFTY NEXT 50 JUNIOR BEES": {
+   "eq": 54,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 7808.09,
+   "total_cr": 7811.98
+  },
+  "NIPPON INDIA ETF NIFTY PSU BANK BEES": {
+   "eq": 12,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 3913.83,
+   "total_cr": 3914.49
+  },
+  "NIPPON INDIA ETF NIFTY BANK BEES": {
+   "eq": 14,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 7916.34,
+   "total_cr": 7917.58
+  },
+  "Nippon India ETF Nifty 50 Shariah BeES": {
+   "eq": 17,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.941,
+   "eq_cr": 54.48,
+   "total_cr": 54.56
+  },
+  "NIPPON INDIA ETF NIFTY INFRASTRUCTURE BEES": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 189.37,
+   "total_cr": 189.78
+  },
+  "CPSE ETF": {
+   "eq": 11,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 22271.77,
+   "total_cr": 22275.18
+  },
+  "Nippon India ETF Nifty Midcap 150": {
+   "eq": 149,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.993,
+   "eq_cr": 3321.75,
+   "total_cr": 3322.95
+  },
+  "Nippon India ETF BSE Sensex Next 50": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 145.18,
+   "total_cr": 145.26
+  },
+  "Nippon India ETF Nifty IT": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 3470.93,
+   "total_cr": 3478.52
+  },
+  "Nippon India Multi Asset Allocation Fund": {
+   "eq": 98,
+   "fut": 4,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.979,
+   "eq_cr": 8124.38,
+   "total_cr": 14737.58
+  },
+  "Nippon India Nifty Smallcap 250 Index Fund": {
+   "eq": 250,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.984,
+   "eq_cr": 3033.31,
+   "total_cr": 3031.62
+  },
+  "Nippon India Nifty Midcap 150 Index Fund": {
+   "eq": 149,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.993,
+   "eq_cr": 2337.75,
+   "total_cr": 2336.8
+  },
+  "Nippon India Nifty 50 Value 20 Index Fund": {
+   "eq": 20,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 946.93,
+   "total_cr": 947.49
+  },
+  "Nippon India Nifty Pharma ETF": {
+   "eq": 20,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1356.07,
+   "total_cr": 1356.27
+  },
+  "Nippon India Flexi Cap Fund": {
+   "eq": 89,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.976,
+   "eq_cr": 9169.17,
+   "total_cr": 9306.72
+  },
+  "Nippon India Nifty Auto ETF": {
+   "eq": 15,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 431.22,
+   "total_cr": 431.42
+  },
+  "Nippon India Nifty Alpha Low Volatility 30 Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1328.27,
+   "total_cr": 1328.67
+  },
+  "Nippon India Innovation Fund": {
+   "eq": 54,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.963,
+   "eq_cr": 2732.74,
+   "total_cr": 2778.33
+  },
+  "Nippon India Nifty IT Index Fund": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 195.67,
+   "total_cr": 195.33
+  },
+  "Nippon India Nifty Bank Index Fund": {
+   "eq": 14,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 195.86,
+   "total_cr": 195.84
+  },
+  "Nippon India Nifty 500 Equal Weight Index Fund": {
+   "eq": 503,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.988,
+   "eq_cr": 434.72,
+   "total_cr": 434.79
+  },
+  "Nippon India Nifty 500 Momentum 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.96,
+   "eq_cr": 1152.68,
+   "total_cr": 1152.19
+  },
+  "Nippon India Nifty Auto Index Fund": {
+   "eq": 15,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 40.81,
+   "total_cr": 40.82
+  },
+  "Nippon India Nifty Realty Index Fund": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.9,
+   "eq_cr": 45.86,
+   "total_cr": 45.57
+  },
+  "Nippon India Active Momentum Fund": {
+   "eq": 45,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 383.6,
+   "total_cr": 402.86
+  },
+  "Nippon India Nifty 500 Low Volatility 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 32.85,
+   "total_cr": 32.9
+  },
+  "Nippon India Nifty 500 Quality 50 Index Fund": {
+   "eq": 49,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 47.28,
+   "total_cr": 47.31
+  },
+  "Nippon India BSE Sensex Next 30 Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 79.2,
+   "total_cr": 79.09
+  },
+  "Nippon India BSE Sensex Next 30 ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 5.8,
+   "total_cr": 5.81
+  },
+  "Nippon India MNC Fund": {
+   "eq": 38,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 411.5,
+   "total_cr": 418.01
+  },
+  "Nippon India Nifty India Manufacturing Index Fund": {
+   "eq": 80,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 37.73,
+   "total_cr": 37.73
+  },
+  "Nippon India Nifty India Manufacturing ETF": {
+   "eq": 80,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 9.37,
+   "total_cr": 9.38
+  }
+ },
+ "rows": 4614,
+ "eq_cr": 481981.7,
+ "warn": []
+}

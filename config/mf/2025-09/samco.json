@@ -1,0 +1,165 @@
+{
+ "code": "samco",
+ "amc": "Samco Mutual Fund",
+ "month": "2025-09",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-10-15 20:47",
+ "files": [
+  {
+   "name": "IN_MF_MONTHLY_PORTFOLIO_September2025_Samco_Special_Opportunities_Fund_1760012184.xlsx",
+   "url": "https://www.samcomf.com/amc-document-download/IN_MF_MONTHLY_PORTFOLIO_September2025_Samco_Special_Opportunities_Fund_1760012184.xlsx",
+   "schemes": 1,
+   "eq_rows": 38
+  },
+  {
+   "name": "IN_MF_MONTHLY_PORTFOLIO_September2025_Samco_Multi_Cap_Fund_1760012176.xlsx",
+   "url": "https://www.samcomf.com/amc-document-download/IN_MF_MONTHLY_PORTFOLIO_September2025_Samco_Multi_Cap_Fund_1760012176.xlsx",
+   "schemes": 1,
+   "eq_rows": 45
+  },
+  {
+   "name": "IN_MF_MONTHLY_PORTFOLIO_September2025_Samco_Multi_Asset_Allocation_Fund_1760012174.xlsx",
+   "url": "https://www.samcomf.com/amc-document-download/IN_MF_MONTHLY_PORTFOLIO_September2025_Samco_Multi_Asset_Allocation_Fund_1760012174.xlsx",
+   "schemes": 1,
+   "eq_rows": 33
+  },
+  {
+   "name": "IN_MF_MONTHLY_PORTFOLIO_September2025_Samco_Large_Cap_Fund_1760012161.xlsx",
+   "url": "https://www.samcomf.com/amc-document-download/IN_MF_MONTHLY_PORTFOLIO_September2025_Samco_Large_Cap_Fund_1760012161.xlsx",
+   "schemes": 1,
+   "eq_rows": 25
+  },
+  {
+   "name": "IN_MF_MONTHLY_PORTFOLIO_September2025_Samco_LargeMid_Cap_Fund_1760012159.xlsx",
+   "url": "https://www.samcomf.com/amc-document-download/IN_MF_MONTHLY_PORTFOLIO_September2025_Samco_LargeMid_Cap_Fund_1760012159.xlsx",
+   "schemes": 1,
+   "eq_rows": 25
+  },
+  {
+   "name": "IN_MF_MONTHLY_PORTFOLIO_September2025_Samco_Flexicap_Fund_1760012157.xlsx",
+   "url": "https://www.samcomf.com/amc-document-download/IN_MF_MONTHLY_PORTFOLIO_September2025_Samco_Flexicap_Fund_1760012157.xlsx",
+   "schemes": 1,
+   "eq_rows": 26
+  },
+  {
+   "name": "IN_MF_MONTHLY_PORTFOLIO_September2025_Samco_ELSS_Tax_Saver_Fund_1760012154.xlsx",
+   "url": "https://www.samcomf.com/amc-document-download/IN_MF_MONTHLY_PORTFOLIO_September2025_Samco_ELSS_Tax_Saver_Fund_1760012154.xlsx",
+   "schemes": 1,
+   "eq_rows": 33
+  },
+  {
+   "name": "IN_MF_MONTHLY_PORTFOLIO_September2025_Samco_Arbitrage_Fund_1760012151.xlsx",
+   "url": "https://www.samcomf.com/amc-document-download/IN_MF_MONTHLY_PORTFOLIO_September2025_Samco_Arbitrage_Fund_1760012151.xlsx",
+   "schemes": 1,
+   "eq_rows": 8
+  },
+  {
+   "name": "IN_MF_MONTHLY_PORTFOLIO_September2025_Samco_Active_Momentum_Fund_1760012148.xlsx",
+   "url": "https://www.samcomf.com/amc-document-download/IN_MF_MONTHLY_PORTFOLIO_September2025_Samco_Active_Momentum_Fund_1760012148.xlsx",
+   "schemes": 1,
+   "eq_rows": 52
+  },
+  {
+   "name": "IN_MF_MONTHLY_PORTFOLIO_September2025_SamcoDynamicAssetAllocationFund_1760012134.xlsx",
+   "url": "https://www.samcomf.com/amc-document-download/IN_MF_MONTHLY_PORTFOLIO_September2025_SamcoDynamicAssetAllocationFund_1760012134.xlsx",
+   "schemes": 1,
+   "eq_rows": 57
+  }
+ ],
+ "schemes": {
+  "Samco Special Opportunities Fund": {
+   "eq": 38,
+   "fut": 0,
+   "date": "2025-09-30",
+   "unit": "lakh",
+   "price_match": 0.947,
+   "eq_cr": 159.77,
+   "total_cr": 160.76
+  },
+  "Samco Multi Cap Fund": {
+   "eq": 45,
+   "fut": 23,
+   "date": "2025-09-30",
+   "unit": "lakh",
+   "price_match": 0.889,
+   "eq_cr": 233.08,
+   "total_cr": 343.23
+  },
+  "Samco Multi Asset Allocation Fund": {
+   "eq": 33,
+   "fut": 25,
+   "date": "2025-09-30",
+   "unit": "lakh",
+   "price_match": 0.909,
+   "eq_cr": 57.28,
+   "total_cr": 338.3
+  },
+  "Samco Large Cap Fund": {
+   "eq": 25,
+   "fut": 24,
+   "date": "2025-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 93.62,
+   "total_cr": 143.66
+  },
+  "Samco Large & Mid Cap Fund": {
+   "eq": 25,
+   "fut": 23,
+   "date": "2025-09-30",
+   "unit": "lakh",
+   "price_match": 0.96,
+   "eq_cr": 76.41,
+   "total_cr": 146.59
+  },
+  "SAMCO FLEXICAP FUND": {
+   "eq": 26,
+   "fut": 0,
+   "date": "2025-09-30",
+   "unit": "lakh",
+   "price_match": 0.885,
+   "eq_cr": 363.82,
+   "total_cr": 371.94
+  },
+  "SAMCO ELSS TAX SAVER FUND": {
+   "eq": 33,
+   "fut": 0,
+   "date": "2025-09-30",
+   "unit": "lakh",
+   "price_match": 0.879,
+   "eq_cr": 108.14,
+   "total_cr": 120.06
+  },
+  "Samco Arbitrage Fund": {
+   "eq": 8,
+   "fut": 8,
+   "date": "2025-09-30",
+   "unit": "lakh",
+   "price_match": 0.875,
+   "eq_cr": 15.47,
+   "total_cr": 21.79
+  },
+  "Samco Active Momentum Fund": {
+   "eq": 52,
+   "fut": 23,
+   "date": "2025-09-30",
+   "unit": "lakh",
+   "price_match": 0.961,
+   "eq_cr": 523.09,
+   "total_cr": 788.13
+  },
+  "Samco Dynamic Asset Allocation Fund": {
+   "eq": 57,
+   "fut": 42,
+   "date": "2025-09-30",
+   "unit": "lakh",
+   "price_match": 0.982,
+   "eq_cr": 275.87,
+   "total_cr": 328.4
+  }
+ },
+ "rows": 510,
+ "eq_cr": 1906.5,
+ "warn": []
+}

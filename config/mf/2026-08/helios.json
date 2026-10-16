@@ -1,0 +1,124 @@
+{
+ "code": "helios",
+ "amc": "Helios Mutual Fund",
+ "month": "2026-08",
+ "fetched": "2026-10-15 20:06",
+ "files": [
+  {
+   "name": "helios-small-cap-fund-monthly-portfolio-as-on-31st-august-2026.xlsx",
+   "url": "https://www.heliosmf.in/wp-content/uploads/2026/09/helios-small-cap-fund-monthly-portfolio-as-on-31st-august-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 94
+  },
+  {
+   "name": "helios-overnight-fund-monthly-portfolio-as-on-31st-august-2026.xlsx",
+   "url": "https://www.heliosmf.in/wp-content/uploads/2026/09/helios-overnight-fund-monthly-portfolio-as-on-31st-august-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "helios-flexi-cap-fund-monthly-portfolio-as-on-31st-august-2026.xlsx",
+   "url": "https://www.heliosmf.in/wp-content/uploads/2026/09/helios-flexi-cap-fund-monthly-portfolio-as-on-31st-august-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 68
+  },
+  {
+   "name": "helios-balanced-advantage-fund-monthly-portfolio-as-on-31st-august-2026.xlsx",
+   "url": "https://www.heliosmf.in/wp-content/uploads/2026/09/helios-balanced-advantage-fund-monthly-portfolio-as-on-31st-august-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 50
+  },
+  {
+   "name": "helios-financial-services-fund-monthly-portfolio-as-on-31st-august-2026.xlsx",
+   "url": "https://www.heliosmf.in/wp-content/uploads/2026/09/helios-financial-services-fund-monthly-portfolio-as-on-31st-august-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 28
+  },
+  {
+   "name": "helios-large-mid-cap-fund-monthly-portfolio-as-on-31st-august-2026.xlsx",
+   "url": "https://www.heliosmf.in/wp-content/uploads/2026/09/helios-large-mid-cap-fund-monthly-portfolio-as-on-31st-august-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 60
+  },
+  {
+   "name": "helios-mid-cap-fund-monthly-portfolio-as-on-31st-august-2026.xlsx",
+   "url": "https://www.heliosmf.in/wp-content/uploads/2026/09/helios-mid-cap-fund-monthly-portfolio-as-on-31st-august-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 72
+  },
+  {
+   "name": "helios-arbitrage-fund-monthly-portfolio-as-on-31st-august-2026.xlsx",
+   "url": "https://www.heliosmf.in/wp-content/uploads/2026/09/helios-arbitrage-fund-monthly-portfolio-as-on-31st-august-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 29
+  }
+ ],
+ "schemes": {
+  "Helios Small Cap Fund": {
+   "eq": 94,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1694.82,
+   "total_cr": 1736.52
+  },
+  "Helios Flexi Cap Fund": {
+   "eq": 68,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 8479.66,
+   "total_cr": 8747.55
+  },
+  "Helios Balanced Advantage Fund": {
+   "eq": 50,
+   "fut": 26,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 243.85,
+   "total_cr": 288.35
+  },
+  "Helios Financial Services Fund": {
+   "eq": 28,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 209.5,
+   "total_cr": 210.94
+  },
+  "Helios Large & Mid Cap Fund": {
+   "eq": 60,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1462.69,
+   "total_cr": 1473.18
+  },
+  "Helios Mid Cap Fund": {
+   "eq": 72,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2218.34,
+   "total_cr": 2228.71
+  },
+  "Helios Arbitrage Fund": {
+   "eq": 29,
+   "fut": 58,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 95.18,
+   "total_cr": 134.44
+  }
+ },
+ "rows": 485,
+ "eq_cr": 14404.0,
+ "warn": []
+}

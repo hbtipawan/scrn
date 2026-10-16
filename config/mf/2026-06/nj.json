@@ -1,0 +1,79 @@
+{
+ "code": "nj",
+ "amc": "NJ Mutual Fund",
+ "month": "2026-06",
+ "fetched": "2026-10-15 19:49",
+ "files": [
+  {
+   "name": "NJ_MF_Monthly_Portfolio_NJBAF_June 2026",
+   "url": "https://downloads.njmutualfund.com/viewfile.php?file=NJ-MF-Monthly-Portfolio-NJBAF-June-2026-20260709111501.xlsx",
+   "schemes": 1,
+   "eq_rows": 128
+  },
+  {
+   "name": "NJ_MF_Monthly_Portfolio_NJOVERFD_June 2026",
+   "url": "https://downloads.njmutualfund.com/viewfile.php?file=NJ-MF-Monthly-Portfolio-NJOVERFD-June-2026-20260709111431.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "NJ_MF_Monthly_Portfolio_NJABF_June 2026",
+   "url": "https://downloads.njmutualfund.com/viewfile.php?file=NJ-MF-Monthly-Portfolio-NJABF-June-2026-20260709111340.xlsx",
+   "schemes": 1,
+   "eq_rows": 61
+  },
+  {
+   "name": "NJ_MF_Monthly_Portfolio_NJFCP_June 2026",
+   "url": "https://downloads.njmutualfund.com/viewfile.php?file=NJ-MF-Monthly-Portfolio-NJFCP-June-2026-20260709111308.xlsx",
+   "schemes": 1,
+   "eq_rows": 50
+  },
+  {
+   "name": "NJ_MF_Monthly_Portfolio_NJELSTCH_June 2026",
+   "url": "https://downloads.njmutualfund.com/viewfile.php?file=NJ-MF-Monthly-Portfolio-NJELSTCH-June-2026-20260709111208.xlsx",
+   "schemes": 1,
+   "eq_rows": 25
+  }
+ ],
+ "schemes": {
+  "NJ Balanced Advantage Fund": {
+   "eq": 128,
+   "fut": 208,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 3067.74,
+   "total_cr": null
+  },
+  "NJ Arbitrage Fund": {
+   "eq": 61,
+   "fut": 130,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 210.88,
+   "total_cr": null
+  },
+  "NJ Flexi Cap Fund": {
+   "eq": 50,
+   "fut": 6,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2496.64,
+   "total_cr": null
+  },
+  "NJ ELSS Tax Saver Scheme": {
+   "eq": 25,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 331.8,
+   "total_cr": null
+  }
+ },
+ "rows": 608,
+ "eq_cr": 6107.0,
+ "warn": []
+}

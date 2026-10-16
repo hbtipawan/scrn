@@ -1,0 +1,570 @@
+{
+ "code": "absl",
+ "amc": "Aditya Birla Sun Life Mutual Fund",
+ "month": "2026-01",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-10-15 21:20",
+ "files": [
+  {
+   "name": "Monthly Portfolios as on January 31, 2026",
+   "url": "https://mutualfund.adityabirlacapital.com/-/media/bsl/files/resources/monthly-portfolio/2026/sebi_monthly_portfolio-31-jan-2026.zip",
+   "schemes": 108,
+   "eq_rows": 2932
+  }
+ ],
+ "schemes": {
+  "ADITYA BIRLA SUN LIFE BSE INDIA INFRASTRUCTURE INDEX FUND": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.966,
+   "eq_cr": 26.74,
+   "total_cr": 26.69
+  },
+  "ADITYA BIRLA SUN LIFE BUSINESS CYCLE FUND": {
+   "eq": 68,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.985,
+   "eq_cr": 1679.31,
+   "total_cr": 1734.47
+  },
+  "ADITYA BIRLA SUN LIFE CONGLOMERATE FUND": {
+   "eq": 42,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.976,
+   "eq_cr": 1642.13,
+   "total_cr": 1657.63
+  },
+  "ADITYA BIRLA SUN LIFE ESG INTEGRATION STRATEGY FUND": {
+   "eq": 55,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 596.77,
+   "total_cr": 600.47
+  },
+  "ADITYA BIRLA SUN LIFE MULTI ASSET ALLOCATION FUND": {
+   "eq": 69,
+   "fut": 6,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.971,
+   "eq_cr": 3709.21,
+   "total_cr": 6111.84
+  },
+  "ADITYA BIRLA SUN LIFE MULTI-CAP FUND": {
+   "eq": 81,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.926,
+   "eq_cr": 6192.25,
+   "total_cr": 6504.26
+  },
+  "ADITYA BIRLA SUN LIFE QUANT FUND": {
+   "eq": 41,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2123.39,
+   "total_cr": 2133.98
+  },
+  "ADITYA BIRLA SUN LIFE SPECIAL OPPORTUNITIES FUND": {
+   "eq": 65,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 885.25,
+   "total_cr": 918.86
+  },
+  "ADITYA BIRLA SUN LIFE TRANSPORTATION AND LOGISTICS FUND": {
+   "eq": 33,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.97,
+   "eq_cr": 1478.72,
+   "total_cr": 1490.82
+  },
+  "ADITYA BIRLA SUN LIFE LARGE & MID CAP FUND": {
+   "eq": 70,
+   "fut": 2,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.971,
+   "eq_cr": 5565.64,
+   "total_cr": 5653.83
+  },
+  "ADITYA BIRLA SUN LIFE NIFTY BANK ETF": {
+   "eq": 14,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2874.15,
+   "total_cr": 2874.34
+  },
+  "ADITYA BIRLA SUN LIFE SHORT TERM FUND": {
+   "eq": 0,
+   "fut": 25,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0,
+   "eq_cr": 0,
+   "total_cr": 9747.73
+  },
+  "ADITYA BIRLA SUN LIFE SAVINGS FUND": {
+   "eq": 0,
+   "fut": 72,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0,
+   "eq_cr": 0,
+   "total_cr": 22856.8
+  },
+  "ADITYA BIRLA SUN LIFE DYNAMIC BOND FUND": {
+   "eq": 0,
+   "fut": 3,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0,
+   "eq_cr": 0,
+   "total_cr": 1856.7
+  },
+  "ADITYA BIRLA SUN LIFE DIVIDEND YIELD FUND": {
+   "eq": 53,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.981,
+   "eq_cr": 1424.87,
+   "total_cr": 1523.56
+  },
+  "ADITYA BIRLA SUN LIFE FLOATING RATE FUND": {
+   "eq": 0,
+   "fut": 50,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0,
+   "eq_cr": 0,
+   "total_cr": 13349.84
+  },
+  "ADITYA BIRLA SUN LIFE INFRASTRUCTURE FUND": {
+   "eq": 58,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.965,
+   "eq_cr": 1042.64,
+   "total_cr": 1075.29
+  },
+  "ADITYA BIRLA SUN LIFE BSE 500 MOMENTUM 50 INDEX FUND": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.96,
+   "eq_cr": 62.76,
+   "total_cr": 62.52
+  },
+  "ADITYA BIRLA SUN LIFE BSE 500 QUALITY 50 INDEX FUND": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 71.34,
+   "total_cr": 71.67
+  },
+  "ADITYA BIRLA SUN LIFE EQUITY HYBRID '95 FUND": {
+   "eq": 79,
+   "fut": 1,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.987,
+   "eq_cr": 5615.84,
+   "total_cr": 7334.37
+  },
+  "SEBI_Monthly_Portfolio 31 JAN 2026.xls::BSLBBYW": {
+   "eq": 70,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.971,
+   "eq_cr": 1161.04,
+   "total_cr": 1170.48
+  },
+  "ADITYA BIRLA SUN LIFE BANKING AND FINANCIAL SERVICES FUND": {
+   "eq": 38,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.974,
+   "eq_cr": 3482.06,
+   "total_cr": 3640.65
+  },
+  "ADITYA BIRLA SUN LIFE LOW DURATION FUND": {
+   "eq": 0,
+   "fut": 39,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0,
+   "eq_cr": 0,
+   "total_cr": 14455.78
+  },
+  "ADITYA BIRLA SUN LIFE BALANCED ADVANTAGE FUND": {
+   "eq": 85,
+   "fut": 30,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.976,
+   "eq_cr": 6195.84,
+   "total_cr": 8899.24
+  },
+  "ADITYA BIRLA SUN LIFE ARBITRAGE FUND": {
+   "eq": 183,
+   "fut": 223,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.983,
+   "eq_cr": 19399.71,
+   "total_cr": 26735.75
+  },
+  "ADITYA BIRLA SUN LIFE EQUITY SAVINGS FUND": {
+   "eq": 83,
+   "fut": 38,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.988,
+   "eq_cr": 699.62,
+   "total_cr": 1047.02
+  },
+  "ADITYA BIRLA SUN LIFE FLEXI CAP FUND": {
+   "eq": 76,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.96,
+   "eq_cr": 24332.63,
+   "total_cr": 24700.43
+  },
+  "ADITYA BIRLA SUN LIFE LARGE CAP FUND": {
+   "eq": 79,
+   "fut": 3,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.974,
+   "eq_cr": 29235.67,
+   "total_cr": 30392.05
+  },
+  "ADITYA BIRLA SUN LIFE CORPORATE BOND FUND": {
+   "eq": 0,
+   "fut": 47,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0,
+   "eq_cr": 0,
+   "total_cr": 28252.62
+  },
+  "ADITYA BIRLA SUN LIFE MANUFACTURING EQUITY FUND": {
+   "eq": 61,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.984,
+   "eq_cr": 1039.37,
+   "total_cr": 1050.65
+  },
+  "ADITYA BIRLA SUN LIFE DIGITAL INDIA FUND": {
+   "eq": 35,
+   "fut": 1,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.971,
+   "eq_cr": 4402.67,
+   "total_cr": 4722.93
+  },
+  "ADITYA BIRLA SUN LIFE PHARMA & HEALTHCARE FUND": {
+   "eq": 36,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.943,
+   "eq_cr": 795.59,
+   "total_cr": 812.03
+  },
+  "ADITYA BIRLA SUN LIFE ELSS TAX SAVER FUND": {
+   "eq": 59,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.983,
+   "eq_cr": 14841.0,
+   "total_cr": 14992.71
+  },
+  "ADITYA BIRLA SUN LIFE RETIREMENT FUND - THE 30S PLAN": {
+   "eq": 75,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.986,
+   "eq_cr": 408.31,
+   "total_cr": 419.29
+  },
+  "ADITYA BIRLA SUN LIFE RETIREMENT FUND - THE 40S PLAN": {
+   "eq": 53,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.962,
+   "eq_cr": 89.15,
+   "total_cr": 113.54
+  },
+  "ADITYA BIRLA SUN LIFE RETIREMENT FUND - THE 50S PLAN": {
+   "eq": 40,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.95,
+   "eq_cr": 6.44,
+   "total_cr": 26.34
+  },
+  "ADITYA BIRLA SUN LIFE BANKING & PSU DEBT FUND": {
+   "eq": 0,
+   "fut": 5,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0,
+   "eq_cr": 0,
+   "total_cr": 8979.27
+  },
+  "ADITYA BIRLA SUN LIFE SMALL CAP FUND": {
+   "eq": 89,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.966,
+   "eq_cr": 4564.14,
+   "total_cr": 4778.12
+  },
+  "ADITYA BIRLA SUN LIFE FOCUSED FUND": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.967,
+   "eq_cr": 7861.02,
+   "total_cr": 8068.13
+  },
+  "ADITYA BIRLA SUN LIFE CONSUMPTION FUND": {
+   "eq": 78,
+   "fut": 1,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.987,
+   "eq_cr": 6098.32,
+   "total_cr": 6141.19
+  },
+  "ADITYA BIRLA SUN LIFE GOVERNMENT SECURITIES FUND": {
+   "eq": 0,
+   "fut": 1,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0,
+   "eq_cr": 0,
+   "total_cr": 1613.4
+  },
+  "ADITYA BIRLA SUN LIFE MIDCAP FUND": {
+   "eq": 78,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.987,
+   "eq_cr": 5923.95,
+   "total_cr": 6040.73
+  },
+  "ADITYA BIRLA SUN LIFE REGULAR SAVINGS FUND": {
+   "eq": 41,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.951,
+   "eq_cr": 313.2,
+   "total_cr": 1533.28
+  },
+  "ADITYA BIRLA SUN LIFE MNC FUND": {
+   "eq": 69,
+   "fut": 1,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.985,
+   "eq_cr": 3370.92,
+   "total_cr": 3418.67
+  },
+  "ADITYA BIRLA SUN LIFE NIFTY 200 MOMENTUM 30 ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 42.81,
+   "total_cr": 42.83
+  },
+  "ADITYA BIRLA SUN LIFE NIFTY 200 QUALITY 30 ETF": {
+   "eq": 31,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 25.35,
+   "total_cr": 25.35
+  },
+  "ADITYA BIRLA SUN LIFE NIFTY 50 EQUAL WEIGHT INDEX FUND": {
+   "eq": 51,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 466.39,
+   "total_cr": 466.81
+  },
+  "ADITYA BIRLA SUN LIFE NIFTY HEALTHCARE ETF": {
+   "eq": 20,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 49.64,
+   "total_cr": 49.65
+  },
+  "ADITYA BIRLA SUN LIFE NIFTY 50 INDEX FUND": {
+   "eq": 51,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 1272.5,
+   "total_cr": 1274.91
+  },
+  "ADITYA BIRLA SUN LIFE NIFTY 50 ETF": {
+   "eq": 51,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 3231.08,
+   "total_cr": 3232.69
+  },
+  "ADITYA BIRLA SUN LIFE NIFTY NEXT 50 ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 98.7,
+   "total_cr": 98.78
+  },
+  "ADITYA BIRLA SUN LIFE NIFTY INDIA DEFENCE INDEX FUND": {
+   "eq": 18,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 851.37,
+   "total_cr": 855.8
+  },
+  "ADITYA BIRLA SUN LIFE NIFTY IT ETF": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 223.05,
+   "total_cr": 224.17
+  },
+  "ADITYA BIRLA SUN LIFE NIFTY MIDCAP 150 INDEX FUND": {
+   "eq": 150,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.993,
+   "eq_cr": 407.95,
+   "total_cr": 408.21
+  },
+  "ADITYA BIRLA SUN LIFE NIFTY PSE ETF": {
+   "eq": 20,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 31.21,
+   "total_cr": 31.21
+  },
+  "ADITYA BIRLA SUN LIFE NIFTY SMALLCAP 50 INDEX FUND": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 245.97,
+   "total_cr": 245.83
+  },
+  "ADITYA BIRLA SUN LIFE NIFTY NEXT 50 INDEX FUND": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 233.63,
+   "total_cr": 234.11
+  },
+  "ADITYA BIRLA SUN LIFE INCOME FUND": {
+   "eq": 0,
+   "fut": 3,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0,
+   "eq_cr": 0,
+   "total_cr": 1976.76
+  },
+  "ADITYA BIRLA SUN LIFE PSU EQUITY FUND": {
+   "eq": 32,
+   "fut": 3,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.969,
+   "eq_cr": 5602.19,
+   "total_cr": 5713.52
+  },
+  "ADITYA BIRLA SUN LIFE VALUE FUND": {
+   "eq": 71,
+   "fut": 3,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.986,
+   "eq_cr": 6041.27,
+   "total_cr": 6245.99
+  },
+  "ADITYA BIRLA SUN LIFE BSE SENSEX ETF": {
+   "eq": 31,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.967,
+   "eq_cr": 285.07,
+   "total_cr": 285.26
+  }
+ },
+ "rows": 3489,
+ "eq_cr": 188319.8,
+ "warn": []
+}

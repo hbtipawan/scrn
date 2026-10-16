@@ -1,0 +1,60 @@
+{
+ "code": "oldbridge",
+ "amc": "Old Bridge Mutual Fund",
+ "month": "2026-07",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-10-16 00:56",
+ "files": [
+  {
+   "name": "Old_Bridge_Flexi_Cap_Fund_Portfolio_July_26_ca0b230896.xlsx",
+   "url": "https://oldbridgemf.com/uploads/Old_Bridge_Flexi_Cap_Fund_Portfolio_July_26_ca0b230896.xlsx",
+   "schemes": 1,
+   "eq_rows": 35
+  },
+  {
+   "name": "Old_Bridge_Arbitrage_Fund_Portfolio_July_26_fef858ffff.xls",
+   "url": "https://oldbridgemf.com/uploads/Old_Bridge_Arbitrage_Fund_Portfolio_July_26_fef858ffff.xls",
+   "schemes": 1,
+   "eq_rows": 81
+  },
+  {
+   "name": "Old_Bridge_Focused_Fund_Portfolio_July_26_1729091a89.xlsx",
+   "url": "https://oldbridgemf.com/uploads/Old_Bridge_Focused_Fund_Portfolio_July_26_1729091a89.xlsx",
+   "schemes": 1,
+   "eq_rows": 24
+  }
+ ],
+ "schemes": {
+  "Old Bridge Flexi Cap Fund": {
+   "eq": 35,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 237.72,
+   "total_cr": 256.39
+  },
+  "Old Bridge Arbitrage Fund": {
+   "eq": 81,
+   "fut": 219,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 163.47,
+   "total_cr": 203.86
+  },
+  "Old Bridge Focused Fund": {
+   "eq": 24,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 3664.56,
+   "total_cr": 3994.77
+  }
+ },
+ "rows": 359,
+ "eq_cr": 4065.7,
+ "warn": []
+}

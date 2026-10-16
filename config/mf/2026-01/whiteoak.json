@@ -1,0 +1,282 @@
+{
+ "code": "whiteoak",
+ "amc": "WhiteOak Capital Mutual Fund",
+ "month": "2026-01",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-10-16 00:22",
+ "files": [
+  {
+   "name": "WhiteOak Capital Multi Asset Allocation Fund Monthly Portfolio Disclosure - 31st January2026",
+   "url": "https://content.whiteoakamc.com/WOC_Multi_Asset_Allocation_Fund_Jan26_a2edbff198.xlsx",
+   "schemes": 1,
+   "eq_rows": 119
+  },
+  {
+   "name": "WhiteOak Capital Ultra Short Duration Fund Monthly Portfolio Disclosure - 31st January2026",
+   "url": "https://content.whiteoakamc.com/WOC_Ultra_Short_Duration_Fund_Jan26_e42d454ea8.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "WhiteOak Capital Special Opportunities Fund Monthly Portfolio Disclosure - 31st January2026",
+   "url": "https://content.whiteoakamc.com/WOC_Special_Opportunities_Fund_Jan26_e20f22872d.xlsx",
+   "schemes": 1,
+   "eq_rows": 69
+  },
+  {
+   "name": "WhiteOak Capital Quality Equity Fund Monthly Portfolio Disclosure - 31st January2026",
+   "url": "https://content.whiteoakamc.com/WOC_Quality_Equity_Fund_Jan26_5011559af5.xlsx",
+   "schemes": 1,
+   "eq_rows": 67
+  },
+  {
+   "name": "WhiteOak Capital Pharma and Healthcare Fund Monthly Portfolio Disclosure - 31st January2026",
+   "url": "https://content.whiteoakamc.com/WOC_Pharma_and_Healthcare_Fund_Jan26_b7292e4d38.xlsx",
+   "schemes": 1,
+   "eq_rows": 41
+  },
+  {
+   "name": "WhiteOak Capital Multi Cap Fund Monthly Portfolio Disclosure - 31st January2026",
+   "url": "https://content.whiteoakamc.com/WOC_Multi_Cap_Fund_Jan26_4d128e6398.xlsx",
+   "schemes": 1,
+   "eq_rows": 169
+  },
+  {
+   "name": "WhiteOak Capital Mid Cap Fund Monthly Portfolio Disclosure - 31st January2026",
+   "url": "https://content.whiteoakamc.com/WOC_Midcap_Fund_Jan26_ab8663c92b.xlsx",
+   "schemes": 1,
+   "eq_rows": 105
+  },
+  {
+   "name": "WhiteOak Capital Liquid Fund Monthly Portfolio Disclosure - 31st January2026",
+   "url": "https://content.whiteoakamc.com/WOC_Liquid_Fund_Jan26_688e863e9b.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "WhiteOak Capital Large Cap Fund Monthly Portfolio Disclosure - 31st January2026",
+   "url": "https://content.whiteoakamc.com/WOC_Largecap_Fund_Jan26_23581905a3.xlsx",
+   "schemes": 1,
+   "eq_rows": 54
+  },
+  {
+   "name": "WhiteOak Capital Large & Mid Cap Fund Monthly Portfolio Disclosure - 31st January2026",
+   "url": "https://content.whiteoakamc.com/WOC_Large_and_Midcap_Fund_Jan26_0f9749cc0c.xlsx",
+   "schemes": 1,
+   "eq_rows": 108
+  },
+  {
+   "name": "WhiteOak Capital Flexi Cap Fund Monthly Portfolio Disclosure - 31st January2026",
+   "url": "https://content.whiteoakamc.com/WOC_Flexicap_Fund_Jan26_c7b8bbd3aa.xlsx",
+   "schemes": 1,
+   "eq_rows": 136
+  },
+  {
+   "name": "WhiteOak Capital ESG Best-In-Class Strategy Fund Monthly Portfolio Disclosure - 31st January2026",
+   "url": "https://content.whiteoakamc.com/WOC_ESG_BIC_Fund_Jan26_046234dfd1.xlsx",
+   "schemes": 1,
+   "eq_rows": 65
+  },
+  {
+   "name": "WhiteOak Capital Equity Savings Fund Monthly Portfolio Disclosure - 31st January2026",
+   "url": "https://content.whiteoakamc.com/WOC_Equity_Savings_Fund_Jan26_e348f48dce.xlsx",
+   "schemes": 1,
+   "eq_rows": 117
+  },
+  {
+   "name": "WhiteOak Capital ELSS Tax Saver Fund Monthly Portfolio Disclosure - 31st January2026",
+   "url": "https://content.whiteoakamc.com/WOC_ELSS_Tax_Saver_Fund_Jan26_5b0c563fc2.xlsx",
+   "schemes": 1,
+   "eq_rows": 131
+  },
+  {
+   "name": "WhiteOak Capital Digital Bharat Fund Monthly Portfolio Disclosure - 31st January2026",
+   "url": "https://content.whiteoakamc.com/WOC_Digital_Bharat_Fund_Jan26_d2435fd47f.xlsx",
+   "schemes": 1,
+   "eq_rows": 40
+  },
+  {
+   "name": "WhiteOak Capital Banking & Financial Services Fund Monthly Portfolio Disclosure - 31st January2026",
+   "url": "https://content.whiteoakamc.com/WOC_Banking_and_Financial_Services_Fund_Jan26_50accb4961.xlsx",
+   "schemes": 1,
+   "eq_rows": 38
+  },
+  {
+   "name": "WhiteOak Capital Balanced Hybrid Fund Monthly Portfolio Disclosure - 31st January2026",
+   "url": "https://content.whiteoakamc.com/WOC_Balanced_Hybrid_Fund_Jan26_3c4a977bf6.xlsx",
+   "schemes": 1,
+   "eq_rows": 110
+  },
+  {
+   "name": "WhiteOak Capital Balanced Advantage Fund Monthly Portfolio Disclosure - 31st January2026",
+   "url": "https://content.whiteoakamc.com/WOC_Balanced_Advantage_Fund_Jan26_392c164a2b.xlsx",
+   "schemes": 1,
+   "eq_rows": 108
+  },
+  {
+   "name": "WhiteOak Capital Arbitrage Fund Monthly Portfolio Disclosure - 31st January2026",
+   "url": "https://content.whiteoakamc.com/WOC_Arbitrage_Fund_Jan26_06f7f823f3.xlsx",
+   "schemes": 1,
+   "eq_rows": 108
+  }
+ ],
+ "schemes": {
+  "WhiteOak Capital Multi Asset Allocation Fund": {
+   "eq": 119,
+   "fut": 15,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.974,
+   "eq_cr": 1728.26,
+   "total_cr": 6147.1
+  },
+  "WhiteOak Capital Special Opportunities Fund": {
+   "eq": 69,
+   "fut": 4,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.955,
+   "eq_cr": 1233.77,
+   "total_cr": 1385.07
+  },
+  "WhiteOak Capital Quality Equity Fund": {
+   "eq": 67,
+   "fut": 5,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.952,
+   "eq_cr": 563.1,
+   "total_cr": 638.49
+  },
+  "WhiteOak Capital Pharma and Healthcare Fund": {
+   "eq": 41,
+   "fut": 7,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.974,
+   "eq_cr": 468.51,
+   "total_cr": 491.85
+  },
+  "WhiteOak Capital Multi Cap Fund": {
+   "eq": 169,
+   "fut": 16,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.969,
+   "eq_cr": 2580.83,
+   "total_cr": 2984.94
+  },
+  "WhiteOak Capital Mid Cap Fund": {
+   "eq": 105,
+   "fut": 16,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 3916.67,
+   "total_cr": 4467.89
+  },
+  "WhiteOak Capital Large Cap Fund": {
+   "eq": 54,
+   "fut": 5,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 1003.89,
+   "total_cr": 1142.03
+  },
+  "WhiteOak Capital Large & Mid Cap Fund": {
+   "eq": 108,
+   "fut": 16,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.99,
+   "eq_cr": 1760.75,
+   "total_cr": 2056.98
+  },
+  "WhiteOak Capital Flexi Cap Fund": {
+   "eq": 136,
+   "fut": 11,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.955,
+   "eq_cr": 6325.14,
+   "total_cr": 7131.81
+  },
+  "WhiteOak Capital ESG Best-In-Class Strategy Fund": {
+   "eq": 65,
+   "fut": 3,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.968,
+   "eq_cr": 52.25,
+   "total_cr": 56.57
+  },
+  "WhiteOak Capital Equity Savings Fund": {
+   "eq": 117,
+   "fut": 46,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.965,
+   "eq_cr": 147.37,
+   "total_cr": 224.9
+  },
+  "WhiteOak Capital ELSS Tax Saver Fund": {
+   "eq": 131,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.96,
+   "eq_cr": 426.6,
+   "total_cr": 437.94
+  },
+  "WhiteOak Capital Digital Bharat Fund": {
+   "eq": 40,
+   "fut": 5,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.973,
+   "eq_cr": 408.61,
+   "total_cr": 440.04
+  },
+  "WhiteOak Capital Banking & Financial Services Fund": {
+   "eq": 38,
+   "fut": 6,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.946,
+   "eq_cr": 522.66,
+   "total_cr": 568.57
+  },
+  "WhiteOak Capital Balanced Hybrid Fund": {
+   "eq": 110,
+   "fut": 2,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.972,
+   "eq_cr": 139.44,
+   "total_cr": 268.86
+  },
+  "WhiteOak Capital Balanced Advantage Fund": {
+   "eq": 108,
+   "fut": 15,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.962,
+   "eq_cr": 1446.09,
+   "total_cr": 2130.44
+  },
+  "WhiteOak Capital Arbitrage Fund": {
+   "eq": 108,
+   "fut": 110,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.981,
+   "eq_cr": 628.26,
+   "total_cr": 956.62
+  }
+ },
+ "rows": 1867,
+ "eq_cr": 23352.2,
+ "warn": []
+}

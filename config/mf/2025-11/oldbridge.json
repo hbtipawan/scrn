@@ -1,0 +1,45 @@
+{
+ "code": "oldbridge",
+ "amc": "Old Bridge Mutual Fund",
+ "month": "2025-11",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-10-15 21:06",
+ "files": [
+  {
+   "name": "Arbitrage_Fund_Monthly_Portfolio_Nov_25_dfc88d9a08.xlsx",
+   "url": "https://oldbridgemf.com/uploads/Arbitrage_Fund_Monthly_Portfolio_Nov_25_dfc88d9a08.xlsx",
+   "schemes": 1,
+   "eq_rows": 45
+  },
+  {
+   "name": "Focused_Fund_Monthly_Portfolio_Nov_25_10a5645f6e.xlsx",
+   "url": "https://oldbridgemf.com/uploads/Focused_Fund_Monthly_Portfolio_Nov_25_10a5645f6e.xlsx",
+   "schemes": 1,
+   "eq_rows": 24
+  }
+ ],
+ "schemes": {
+  "Old Bridge Arbitrage Fund": {
+   "eq": 45,
+   "fut": 53,
+   "date": "2025-11-30",
+   "unit": "lakh",
+   "price_match": 0.978,
+   "eq_cr": 48.11,
+   "total_cr": 66.44
+  },
+  "Old Bridge Focused Fund": {
+   "eq": 24,
+   "fut": 0,
+   "date": "2025-11-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2119.17,
+   "total_cr": 2285.98
+  }
+ },
+ "rows": 122,
+ "eq_cr": 2167.3,
+ "warn": []
+}

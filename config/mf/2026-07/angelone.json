@@ -1,0 +1,153 @@
+{
+ "code": "angelone",
+ "amc": "Angel One Mutual Fund",
+ "month": "2026-07",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-10-16 00:56",
+ "files": [
+  {
+   "name": "Monthly-Portfolio-July-2026-Angel-One-Nifty-1D-Rate-Liquid-ETF-GROWTH.xlsx",
+   "url": "https://cms.angelonemf.com/amc-cms/wp-content/uploads/formidable/20/Monthly-Portfolio-July-2026-Angel-One-Nifty-1D-Rate-Liquid-ETF-GROWTH.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Monthly-Portfolio-July-2026-Angel-One-Nifty-50-ETF.xlsx",
+   "url": "https://cms.angelonemf.com/amc-cms/wp-content/uploads/formidable/20/Monthly-Portfolio-July-2026-Angel-One-Nifty-50-ETF.xlsx",
+   "schemes": 1,
+   "eq_rows": 50
+  },
+  {
+   "name": "Monthly-Portfolio-July-2026-Angel-One-Nifty-50-Index-Fund.xlsx",
+   "url": "https://cms.angelonemf.com/amc-cms/wp-content/uploads/formidable/20/Monthly-Portfolio-July-2026-Angel-One-Nifty-50-Index-Fund.xlsx",
+   "schemes": 1,
+   "eq_rows": 50
+  },
+  {
+   "name": "Monthly-Portfolio-July-2026-Angel-One-Gold-ETF.xlsx",
+   "url": "https://cms.angelonemf.com/amc-cms/wp-content/uploads/formidable/20/Monthly-Portfolio-July-2026-Angel-One-Gold-ETF.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Monthly-Portfolio-July-2026-Angel-One-Gold-ETF-FOF.xlsx",
+   "url": "https://cms.angelonemf.com/amc-cms/wp-content/uploads/formidable/20/Monthly-Portfolio-July-2026-Angel-One-Gold-ETF-FOF.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Monthly-Portfolio-July-2026-Angel-One-Silver-ETF.xlsx",
+   "url": "https://cms.angelonemf.com/amc-cms/wp-content/uploads/formidable/20/Monthly-Portfolio-July-2026-Angel-One-Silver-ETF.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Monthly-Portfolio-July-2026-Angel-One-Silver-ETF-FOF.xlsx",
+   "url": "https://cms.angelonemf.com/amc-cms/wp-content/uploads/formidable/20/Monthly-Portfolio-July-2026-Angel-One-Silver-ETF-FOF.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Monthly-Portfolio-July-2026-Angel-One-Nifty-Total-Market-Index-Fund.xlsx",
+   "url": "https://cms.angelonemf.com/amc-cms/wp-content/uploads/formidable/20/Monthly-Portfolio-July-2026-Angel-One-Nifty-Total-Market-Index-Fund.xlsx",
+   "schemes": 1,
+   "eq_rows": 750
+  },
+  {
+   "name": "Monthly-Portfolio-July-2026-Angel-One-Nifty-Total-Market-ETF.xlsx",
+   "url": "https://cms.angelonemf.com/amc-cms/wp-content/uploads/formidable/20/Monthly-Portfolio-July-2026-Angel-One-Nifty-Total-Market-ETF.xlsx",
+   "schemes": 1,
+   "eq_rows": 750
+  },
+  {
+   "name": "Monthly-Portfolio-July-2026-Angel-One-Nifty-Total-Market-Momentum-Quality-50-ETF.xlsx",
+   "url": "https://cms.angelonemf.com/amc-cms/wp-content/uploads/formidable/20/Monthly-Portfolio-July-2026-Angel-One-Nifty-Total-Market-Momentum-Quality-50-ETF.xlsx",
+   "schemes": 1,
+   "eq_rows": 50
+  },
+  {
+   "name": "Monthly-Portfolio-July-2026-Angel-One-Nifty-Total-Market-Momentum-Quality-50-Index-Fund.xlsx",
+   "url": "https://cms.angelonemf.com/amc-cms/wp-content/uploads/formidable/20/Monthly-Portfolio-July-2026-Angel-One-Nifty-Total-Market-Momentum-Quality-50-Index-Fund.xlsx",
+   "schemes": 1,
+   "eq_rows": 50
+  }
+ ],
+ "schemes": {
+  "Angel One Nifty 50 ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 22.45,
+   "total_cr": 22.55
+  },
+  "Angel One Nifty 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 33.33,
+   "total_cr": 33.51
+  },
+  "Angel One Gold ETF": {
+   "eq": 0,
+   "fut": 2,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 0,
+   "eq_cr": 0,
+   "total_cr": 82.11
+  },
+  "Angel One Silver ETF": {
+   "eq": 0,
+   "fut": 2,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 0,
+   "eq_cr": 0,
+   "total_cr": 31.32
+  },
+  "Angel One Nifty Total Market Index Fund": {
+   "eq": 750,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 0.996,
+   "eq_cr": 61.85,
+   "total_cr": 61.99
+  },
+  "Angel One Nifty Total Market ETF": {
+   "eq": 750,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 0.996,
+   "eq_cr": 43.62,
+   "total_cr": 43.74
+  },
+  "Angel One Nifty Total Market Momentum Quality 50 ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 15.61,
+   "total_cr": 15.66
+  },
+  "Angel One Nifty Total Market Momentum Quality 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 36.46,
+   "total_cr": 36.54
+  }
+ },
+ "rows": 1704,
+ "eq_cr": 213.3,
+ "warn": []
+}

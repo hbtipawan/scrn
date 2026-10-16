@@ -1,0 +1,174 @@
+{
+ "code": "bajaj",
+ "amc": "Bajaj Finserv Mutual Fund",
+ "month": "2026-02",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-10-16 00:59",
+ "files": [
+  {
+   "name": "bajaj_finserv_mutual_fund_monthly_portfolio_as_on_28_feb_2026",
+   "url": "https://media.bajajamc.com/wp-content/uploads/2026/03/bajaj_finserv_mutual_fund_monthly_portfolio_as_on_28_feb_2026.xls",
+   "schemes": 24,
+   "eq_rows": 903
+  }
+ ],
+ "schemes": {
+  "Bajaj Finserv Arbitrage Fund": {
+   "eq": 108,
+   "fut": 182,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.991,
+   "eq_cr": 830.17,
+   "total_cr": 1217.35
+  },
+  "Bajaj Finserv Balanced Advantage Fund": {
+   "eq": 57,
+   "fut": 5,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.982,
+   "eq_cr": 1052.65,
+   "total_cr": 1281.43
+  },
+  "Bajaj Finserv Banking and Financial Services Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 397.11,
+   "total_cr": 413.78
+  },
+  "Bajaj Finserv Consumption Fund": {
+   "eq": 52,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 602.45,
+   "total_cr": 617.46
+  },
+  "Bajaj Finserv ELSS Tax Saver Fund": {
+   "eq": 49,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.918,
+   "eq_cr": 73.44,
+   "total_cr": 76.19
+  },
+  "Bajaj Finserv Equity Savings Fund": {
+   "eq": 51,
+   "fut": 27,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 21.09,
+   "total_cr": 30.65
+  },
+  "Bajaj Finserv Flexi Cap Fund": {
+   "eq": 62,
+   "fut": 1,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.984,
+   "eq_cr": 6263.9,
+   "total_cr": 6501.1
+  },
+  "Bajaj Finserv Healthcare Fund": {
+   "eq": 36,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 306.98,
+   "total_cr": 314.74
+  },
+  "Bajaj Finserv Large Cap Fund": {
+   "eq": 29,
+   "fut": 2,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1490.64,
+   "total_cr": 1540.02
+  },
+  "Bajaj Finserv Large and Midcap Fund": {
+   "eq": 63,
+   "fut": 1,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.984,
+   "eq_cr": 2273.6,
+   "total_cr": 2324.66
+  },
+  "Bajaj Finserv Multi Asset Allocation Fund": {
+   "eq": 54,
+   "fut": 2,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.981,
+   "eq_cr": 1129.8,
+   "total_cr": 1763.98
+  },
+  "Bajaj Finserv Multi Cap Fund": {
+   "eq": 72,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.986,
+   "eq_cr": 1141.68,
+   "total_cr": 1161.99
+  },
+  "Bajaj Finserv Nifty 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 42.95,
+   "total_cr": 42.98
+  },
+  "Bajaj Finserv Nifty Next 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 28.67,
+   "total_cr": 28.68
+  },
+  "Bajaj Finserv Small Cap Fund": {
+   "eq": 76,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.961,
+   "eq_cr": 1598.5,
+   "total_cr": 1633.74
+  },
+  "Bajaj Finserv Nifty 50 ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 193.01,
+   "total_cr": 193.31
+  },
+  "Bajaj Finserv Nifty Bank ETF": {
+   "eq": 14,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 425.37,
+   "total_cr": 425.55
+  }
+ },
+ "rows": 1123,
+ "eq_cr": 17872.0,
+ "warn": []
+}

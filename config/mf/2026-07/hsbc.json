@@ -1,0 +1,481 @@
+{
+ "code": "hsbc",
+ "amc": "HSBC Mutual Fund",
+ "month": "2026-07",
+ "fetched": "2026-10-15 19:58",
+ "files": [
+  {
+   "name": "HSBC Aggressive Hybrid Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-aggressive-hybrid-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 63
+  },
+  {
+   "name": "HSBC Arbitrage Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-arbitrage-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 104
+  },
+  {
+   "name": "HSBC Asia Pacific (Ex Japan) Dividend Yield Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-asia-pacific-ex-japan-div-yieldfund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "HSBC Balanced Advantage Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-balanced-advantage-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 57
+  },
+  {
+   "name": "HSBC Brazil Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-brazil-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "HSBC Business Cycles Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-business-cycles-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 72
+  },
+  {
+   "name": "HSBC ELSS Tax Saver Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-elss-tax-saver-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 81
+  },
+  {
+   "name": "HSBC Equity Savings Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-equity-savings-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 91
+  },
+  {
+   "name": "HSBC Flexi Cap Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-flexi-cap-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 85
+  },
+  {
+   "name": "HSBC Aggressive Hybrid Active FOF 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-aggressive-hybrid-active-fof-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "HSBC Multi Asset Active FOF 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-multi-asset-active-fof-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "HSBC Infrastructure Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-infrastructure-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 51
+  },
+  {
+   "name": "HSBC Focused Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-focused-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 28
+  },
+  {
+   "name": "HSBC Global Emerging Markets Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-global-emerging-markets-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "HSBC Large Cap Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-large-cap-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 37
+  },
+  {
+   "name": "HSBC Large & Mid Cap Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-large-and-mid-cap-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 81
+  },
+  {
+   "name": "HSBC Mid Cap Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-midcap-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 79
+  },
+  {
+   "name": "HSBC Nifty Next 50 Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-nifty-next-50-index-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 50
+  },
+  {
+   "name": "HSBC Nifty 50 Index Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-nifty-50-index-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 50
+  },
+  {
+   "name": "HSBC Small Cap Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-small-cap-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 108
+  },
+  {
+   "name": "HSBC Value Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-value-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 84
+  },
+  {
+   "name": "HSBC Multi Cap Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-multi-cap-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 101
+  },
+  {
+   "name": "HSBC Consumption Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-consumption-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 50
+  },
+  {
+   "name": "HSBC Multi Asset Allocation Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-multi-asset-allocation-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 64
+  },
+  {
+   "name": "HSBC India Export Opportunities Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-india-export-opportunities-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 47
+  },
+  {
+   "name": "HSBC Financial Services Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-financial-services-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 37
+  },
+  {
+   "name": "HSBC Banking and PSU Debt Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-banking-and-psu-debt-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "HSBC Conservative Hybrid Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-conservative-hybrid-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 24
+  },
+  {
+   "name": "HSBC Corporate Bond Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-corporate-bond-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "HSBC Credit Risk Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-credit-risk-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "HSBC CRL IBX 50 50 Gl SDL Ap28 Indx Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-crl-ibx-50-50-gl-sdl-ap28-indx-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "HSBC CRL IBX Gilt June27 Index Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-crisil-ibx-gilt-june-2027-index-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "HSBC Dynamic Bond Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-dynamic-bond-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "HSBC Gilt Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-gilt-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "HSBC Liquid Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-liquid-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "HSBC Low Duration Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-low-duration-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "HSBC Medium Duration Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-medium-duration-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "HSBC Medium to Long Duration Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-medium-to-long-duration-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "HSBC Money Market Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-money-market-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "HSBC Overnight Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-overnight-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "HSBC Short Duration Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-short-duration-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "HSBC Ultra Short Duration Fund 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-ultra-short-duration-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "HSBC Income Plus Arbitrage Active FOF 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-income-plus-arbitrage-active-fof-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "HSBC GOLD ETF 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-gold-etf-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "HSBC GOLD ETF FOF 31 July 2026",
+   "url": "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/-/media/files/attachments/india/mutual-funds/portfolios/document-31072026/hsbc-gold-etf-fund-of-fund-31-jul-2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  }
+ ],
+ "schemes": {
+  "HSBC Mutual Fund HSBC Aggressive Hybrid Fund HSBC Aggressive Hybrid Fund": {
+   "eq": 63,
+   "fut": 0,
+   "date": null,
+   "unit": "lakh",
+   "price_match": 0.984,
+   "eq_cr": 4222.83,
+   "total_cr": 5690.54
+  },
+  "HSBC Mutual Fund HSBC Arbitrage Fund HSBC Arbitrage Fund": {
+   "eq": 104,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2063.1,
+   "total_cr": 2997.62
+  },
+  "HSBC Mutual Fund HSBC Balanced Advantage Fund HSBC Balanced Advantage Fund": {
+   "eq": 57,
+   "fut": 0,
+   "date": null,
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1094.52,
+   "total_cr": 1527.05
+  },
+  "HSBC Mutual Fund HSBC Business Cycles Fund HSBC Business Cycles Fund": {
+   "eq": 72,
+   "fut": 0,
+   "date": null,
+   "unit": "lakh",
+   "price_match": 0.986,
+   "eq_cr": 1156.37,
+   "total_cr": 1182.34
+  },
+  "HSBC Mutual Fund HSBC ELSS Tax saver Fund HSBC ELSS Tax saver Fund": {
+   "eq": 81,
+   "fut": 0,
+   "date": null,
+   "unit": "lakh",
+   "price_match": 0.987,
+   "eq_cr": 4048.6,
+   "total_cr": 4114.68
+  },
+  "HSBC Mutual Fund HSBC Equity Savings Fund HSBC Equity Savings Fund": {
+   "eq": 91,
+   "fut": 0,
+   "date": null,
+   "unit": "lakh",
+   "price_match": 0.989,
+   "eq_cr": 1034.96,
+   "total_cr": 1326.06
+  },
+  "HSBC Mutual Fund HSBC Flexi Cap Fund HSBC Flexi Cap Fund": {
+   "eq": 85,
+   "fut": 0,
+   "date": null,
+   "unit": "lakh",
+   "price_match": 0.976,
+   "eq_cr": 5557.3,
+   "total_cr": 5717.88
+  },
+  "HSBC Mutual Fund HSBC Infrastructure Fund HSBC Infrastructure Fund": {
+   "eq": 51,
+   "fut": 0,
+   "date": null,
+   "unit": "lakh",
+   "price_match": 0.96,
+   "eq_cr": 2262.16,
+   "total_cr": 2362.47
+  },
+  "HSBC Mutual Fund HSBC Focused Fund HSBC Focused Fund": {
+   "eq": 28,
+   "fut": 0,
+   "date": null,
+   "unit": "lakh",
+   "price_match": 0.963,
+   "eq_cr": 1642.63,
+   "total_cr": 1772.71
+  },
+  "HSBC Mutual Fund HSBC Large Cap Fund HSBC Large Cap Fund": {
+   "eq": 37,
+   "fut": 0,
+   "date": null,
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1786.64,
+   "total_cr": 1839.33
+  },
+  "HSBC Mutual Fund HSBC Large & Mid Cap Fund HSBC Large & Mid Cap Fund": {
+   "eq": 81,
+   "fut": 0,
+   "date": null,
+   "unit": "lakh",
+   "price_match": 0.988,
+   "eq_cr": 5434.54,
+   "total_cr": 5479.11
+  },
+  "HSBC Mutual Fund HSBC Midcap Fund HSBC Midcap Fund": {
+   "eq": 79,
+   "fut": 0,
+   "date": null,
+   "unit": "lakh",
+   "price_match": 0.987,
+   "eq_cr": 15389.06,
+   "total_cr": 15578.18
+  },
+  "HSBC Mutual Fund HSBC Nifty Next 50 Index Fund HSBC Nifty Next 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": null,
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 175.62,
+   "total_cr": 175.96
+  },
+  "HSBC Mutual Fund HSBC Nifty 50 Index Fund HSBC Nifty 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": null,
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 395.58,
+   "total_cr": 395.67
+  },
+  "HSBC Mutual Fund HSBC Small Cap Fund HSBC Small Cap Fund": {
+   "eq": 108,
+   "fut": 0,
+   "date": null,
+   "unit": "lakh",
+   "price_match": 0.991,
+   "eq_cr": 17402.11,
+   "total_cr": 17783.74
+  },
+  "HSBC Mutual Fund HSBC Value Fund HSBC Value Fund": {
+   "eq": 84,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 0.988,
+   "eq_cr": 14612.43,
+   "total_cr": 14987.5
+  },
+  "HSBC Mutual Fund HSBC Multi Cap Fund HSBC Multi Cap Fund": {
+   "eq": 101,
+   "fut": 0,
+   "date": null,
+   "unit": "lakh",
+   "price_match": 0.99,
+   "eq_cr": 5880.21,
+   "total_cr": 6067.77
+  },
+  "HSBC Mutual Fund HSBC Consumption Fund HSBC Consumption Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 1711.87,
+   "total_cr": 1761.84
+  },
+  "HSBC Mutual Fund HSBC Multi Asset Allocation Fund HSBC Multi Asset Allocation Fund": {
+   "eq": 64,
+   "fut": 0,
+   "date": null,
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2271.21,
+   "total_cr": 3098.03
+  },
+  "HSBC Mutual Fund HSBC India Export Opportunities Fund HSBC India Export Opportunities Fund": {
+   "eq": 47,
+   "fut": 0,
+   "date": null,
+   "unit": "lakh",
+   "price_match": 0.957,
+   "eq_cr": 1205.34,
+   "total_cr": 1233.48
+  },
+  "HSBC Mutual Fund HSBC Financial Services Fund HSBC Financial Services Fund": {
+   "eq": 37,
+   "fut": 0,
+   "date": null,
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 900.09,
+   "total_cr": 928.8
+  },
+  "HSBC Mutual Fund HSBC Conservative Hybrid Fund HSBC Conservative Hybrid Fund": {
+   "eq": 24,
+   "fut": 0,
+   "date": null,
+   "unit": "lakh",
+   "price_match": 0.958,
+   "eq_cr": 25.22,
+   "total_cr": 153.93
+  }
+ },
+ "rows": 1444,
+ "eq_cr": 90272.4,
+ "warn": []
+}

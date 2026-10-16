@@ -1,0 +1,630 @@
+{
+ "code": "bandhan",
+ "amc": "Bandhan Mutual Fund",
+ "month": "2025-10",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-10-16 01:32",
+ "files": [
+  {
+   "name": "Bandhan Balanced Advantage Fund 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/0ab62935-bandhan-balanced-advantage-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 121
+  },
+  {
+   "name": "Bandhan Nifty Smallcap 250 Index Fund 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/d219a48d-bandhan-nifty-smallcap250-index-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 253
+  },
+  {
+   "name": "Bandhan Nifty Total Market Index Fund 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/95bdb260-bandhan-nifty-total-market-index-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 753
+  },
+  {
+   "name": "Bandhan Financial Services Fund 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/0d617019-bandhan-financial-services-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 44
+  },
+  {
+   "name": "Bandhan Infrastructure Fund 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/6d39bd5d-bandhan-infrastructure-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 66
+  },
+  {
+   "name": "Bandhan Small Cap Fund 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/a594d3d4-bandhan-small-cap-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 228
+  },
+  {
+   "name": "Bandhan Innovation Fund 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/0a193311-bandhan-innovation-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 74
+  },
+  {
+   "name": "Bandhan Multi Asset Allocation Fund 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/af25d592-bandhan-multi-asset-allocation-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 111
+  },
+  {
+   "name": "Bandhan Value Fund 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/3e1d1a62-bandhan-value-fund-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 60
+  },
+  {
+   "name": "Bandhan Aggressive Hybrid Fund 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/f0bbb848-bandhan-aggressive-hybrid-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 74
+  },
+  {
+   "name": "Bandhan Retirement Fund 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/c19809a4-bandhan-retirement-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 56
+  },
+  {
+   "name": "Bandhan Equity Savings Fund 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/6984ed28-bandhan-equity-savings-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 46
+  },
+  {
+   "name": "Bandhan Arbitrage Fund 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/b746da67-bandhan-arbitrage-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 156
+  },
+  {
+   "name": "Bandhan Large & Mid Cap Fund 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/19dfc6f1-bandhan-large-mid-cap-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 108
+  },
+  {
+   "name": "Bandhan BSE Healthcare Index Fund 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/3f6e3789-bandhan-bse-healthcare-index-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 119
+  },
+  {
+   "name": "Bandhan Nifty IT Index Fund 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/ff53f305-bandhan-nifty-it-index-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 10
+  },
+  {
+   "name": "Bandhan Nifty 500 Value 50 Index Fund 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/006dc2f0-bandhan-nifty500-value50-index-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 51
+  },
+  {
+   "name": "Bandhan Nifty 50 Index Fund 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/6d3da95d-bandhan-nifty-50-index-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 51
+  },
+  {
+   "name": "Bandhan ELSS Tax Saver Fund 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/95cac384-bandhan-elss-tax-saver-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 62
+  },
+  {
+   "name": "Bandhan Nifty Bank Index Fund 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/0de0bab1-bandhan-nifty-bank-index-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 12
+  },
+  {
+   "name": "Bandhan Nifty Alpha Low Volatility 30 Index Fund 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/d4bdb454-bandhan-nifty-alpha-lv30-index-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 30
+  },
+  {
+   "name": "Bandhan BSE India Sector Leaders Index Fund 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/78ecc6de-bandhan-bse-india-sector-leaders-index-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 62
+  },
+  {
+   "name": "Bandhan Nifty 200 Quality 30 Index Fund 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/0ac022fb-bandhan-nifty-200-quality-30-index-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 30
+  },
+  {
+   "name": "Bandhan Multi-Factor Fund 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/edd382d6-bandhan-multi-factor-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 55
+  },
+  {
+   "name": "Bandhan Nifty Alpha 50 Index Fund 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/21f54f12-bandhan-nifty-alpha50-index-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 50
+  },
+  {
+   "name": "Bandhan TRANSPORTATION AND LOGISTICS FUND 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/eb351ad7-bandhan-transportation-and-logistics-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 39
+  },
+  {
+   "name": "Bandhan Nifty200 Momentum 30 Index Fund 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/4a1e48fd-bandhan-nifty200-mom-30-index-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 30
+  },
+  {
+   "name": "Bandhan Nifty 100 Index Fund 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/67349fa5-bandhan-nifty-100-index-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 101
+  },
+  {
+   "name": "Bandhan Business Cycle Fund 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/0321e4bd-bandhan-business-cycle-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 90
+  },
+  {
+   "name": "Bandhan NIFTY100 LOW VOLATILITY 30 INDEX FUND 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/f5e2e198-bandhan-nifty-100-lv-30-index-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 30
+  },
+  {
+   "name": "Bandhan Large Cap Fund 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/fb791524-bandhan-large-cap-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 62
+  },
+  {
+   "name": "Bandhan Conservative Hybrid Fund 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/cfc9ec94-bandhan-conservative-hybrid-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 9
+  },
+  {
+   "name": "Bandhan Nifty Next 50 Index Fund 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/2da66dc5-bandhan-nifty-next-50-index-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 50
+  },
+  {
+   "name": "Bandhan Focused Fund 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/6c5ac686-bandhan-focused-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 29
+  },
+  {
+   "name": "Bandhan Flexi Cap Fund 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/c0791fa9-bandhan-flexi-cap-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 77
+  },
+  {
+   "name": "Bandhan Nifty Midcap 150 Index Fund 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/4bfb7a93-bandhan-nifty-midcap-150-index-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 150
+  },
+  {
+   "name": "Bandhan MULTI CAP FUND 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/ed5539cd-bandhan-multi-cap-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 90
+  },
+  {
+   "name": "Bandhan BSE Sensex ETF 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/20874fbe-bandhan-bse-sensex-etf-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 31
+  },
+  {
+   "name": "Bandhan Midcap Fund 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/d41fe35d-bandhan-midcap-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 87
+  },
+  {
+   "name": "Bandhan Nifty 500 Momentum 50 Index Fund 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/51c0c81f-bandhan-nifty500-mom50-index-fund-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 50
+  },
+  {
+   "name": "Bandhan Nifty 50 ETF 31 October 2025",
+   "url": "https://storage.googleapis.com/nonprod-static-assets-121to59kaawfgfi7bol/2025/11/bd48736d-bandhan-nifty-50-etf-31-october-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 51
+  }
+ ],
+ "schemes": {
+  "Bandhan Balanced Advantage Fund": {
+   "eq": 121,
+   "fut": 67,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.95,
+   "eq_cr": 1846.11,
+   "total_cr": 2320.22
+  },
+  "Bandhan Nifty Smallcap 250 Index Fund": {
+   "eq": 253,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.948,
+   "eq_cr": 63.19,
+   "total_cr": 63.23
+  },
+  "Bandhan Nifty Total Market Index Fund": {
+   "eq": 753,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.966,
+   "eq_cr": 40.67,
+   "total_cr": 40.67
+  },
+  "Bandhan Financial Services Fund": {
+   "eq": 44,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.886,
+   "eq_cr": 1047.83,
+   "total_cr": 1104.52
+  },
+  "Bandhan Infrastructure Fund": {
+   "eq": 66,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.969,
+   "eq_cr": 1527.05,
+   "total_cr": 1624.68
+  },
+  "Bandhan Small Cap Fund": {
+   "eq": 228,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.96,
+   "eq_cr": 15469.59,
+   "total_cr": 17380.29
+  },
+  "Bandhan Innovation Fund": {
+   "eq": 74,
+   "fut": 1,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.959,
+   "eq_cr": 1891.01,
+   "total_cr": 1915.0
+  },
+  "Bandhan Multi Asset Allocation Fund": {
+   "eq": 111,
+   "fut": 29,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.982,
+   "eq_cr": 1560.95,
+   "total_cr": 2396.69
+  },
+  "Bandhan Value Fund": {
+   "eq": 60,
+   "fut": 4,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.983,
+   "eq_cr": 9431.04,
+   "total_cr": 10302.01
+  },
+  "Bandhan Aggressive Hybrid Fund": {
+   "eq": 74,
+   "fut": 1,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.945,
+   "eq_cr": 1049.56,
+   "total_cr": 1365.21
+  },
+  "Bandhan Retirement Fund": {
+   "eq": 56,
+   "fut": 8,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.982,
+   "eq_cr": 139.96,
+   "total_cr": 186.48
+  },
+  "Bandhan Equity Savings Fund": {
+   "eq": 46,
+   "fut": 35,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.935,
+   "eq_cr": 235.62,
+   "total_cr": 356.45
+  },
+  "Bandhan Arbitrage Fund": {
+   "eq": 156,
+   "fut": 156,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.968,
+   "eq_cr": 6579.34,
+   "total_cr": 8747.55
+  },
+  "Bandhan Large & Mid Cap Fund": {
+   "eq": 108,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.981,
+   "eq_cr": 11255.78,
+   "total_cr": 11799.16
+  },
+  "Bandhan BSE Healthcare Index Fund": {
+   "eq": 119,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.964,
+   "eq_cr": 18.45,
+   "total_cr": 18.3
+  },
+  "Bandhan Nifty IT Index Fund": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 26.36,
+   "total_cr": 26.48
+  },
+  "Bandhan Nifty 500 Value 50 Index Fund": {
+   "eq": 51,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 17.71,
+   "total_cr": 17.66
+  },
+  "Bandhan Nifty 50 Index Fund": {
+   "eq": 51,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.96,
+   "eq_cr": 2110.39,
+   "total_cr": 2111.38
+  },
+  "Bandhan ELSS Tax Saver Fund": {
+   "eq": 62,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.983,
+   "eq_cr": 6891.04,
+   "total_cr": 7214.53
+  },
+  "Bandhan Nifty Bank Index Fund": {
+   "eq": 12,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.917,
+   "eq_cr": 20.19,
+   "total_cr": 20.18
+  },
+  "Bandhan Nifty Alpha Low Volatility 30 Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.967,
+   "eq_cr": 8.99,
+   "total_cr": 8.99
+  },
+  "Bandhan BSE India Sector Leaders Index Fund": {
+   "eq": 62,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.967,
+   "eq_cr": 33.72,
+   "total_cr": 33.63
+  },
+  "Bandhan Nifty 200 Quality 30 Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.967,
+   "eq_cr": 11.7,
+   "total_cr": 11.69
+  },
+  "Bandhan Multi-Factor Fund": {
+   "eq": 55,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.982,
+   "eq_cr": 519.05,
+   "total_cr": 543.89
+  },
+  "Bandhan Nifty Alpha 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.96,
+   "eq_cr": 510.84,
+   "total_cr": 510.34
+  },
+  "Bandhan Transportation and Logistics Fund": {
+   "eq": 39,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 610.01,
+   "total_cr": 658.41
+  },
+  "Bandhan Nifty200 Momentum 30 Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.967,
+   "eq_cr": 137.81,
+   "total_cr": 137.88
+  },
+  "Bandhan Nifty 100 Index Fund": {
+   "eq": 101,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.97,
+   "eq_cr": 211.65,
+   "total_cr": 211.32
+  },
+  "Bandhan Business Cycle Fund": {
+   "eq": 90,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.955,
+   "eq_cr": 1550.47,
+   "total_cr": 1566.54
+  },
+  "Bandhan Nifty100 Low Volatility 30 Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.967,
+   "eq_cr": 1839.22,
+   "total_cr": 1835.92
+  },
+  "Bandhan Large Cap Fund": {
+   "eq": 62,
+   "fut": 1,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.968,
+   "eq_cr": 1995.77,
+   "total_cr": 2016.94
+  },
+  "Bandhan Conservative Hybrid Fund": {
+   "eq": 9,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 12.52,
+   "total_cr": 102.06
+  },
+  "Bandhan Nifty Next 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 23.55,
+   "total_cr": 23.55
+  },
+  "Bandhan Focused Fund": {
+   "eq": 29,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.929,
+   "eq_cr": 2054.22,
+   "total_cr": 2086.32
+  },
+  "Bandhan Flexi Cap Fund": {
+   "eq": 77,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.974,
+   "eq_cr": 7470.17,
+   "total_cr": 7645.0
+  },
+  "Bandhan Nifty Midcap 150 Index Fund": {
+   "eq": 150,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.987,
+   "eq_cr": 29.63,
+   "total_cr": 29.62
+  },
+  "Bandhan Multi Cap Fund": {
+   "eq": 90,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.989,
+   "eq_cr": 2727.33,
+   "total_cr": 2841.67
+  },
+  "Bandhan BSE Sensex ETF": {
+   "eq": 31,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.933,
+   "eq_cr": 1.28,
+   "total_cr": 1.28
+  },
+  "Bandhan Midcap Fund": {
+   "eq": 87,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.977,
+   "eq_cr": 1922.24,
+   "total_cr": 1957.21
+  },
+  "Bandhan Nifty 500 Momentum 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.96,
+   "eq_cr": 30.12,
+   "total_cr": 30.06
+  },
+  "Bandhan Nifty 50 ETF": {
+   "eq": 51,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.96,
+   "eq_cr": 22.33,
+   "total_cr": 22.36
+  }
+ },
+ "rows": 3960,
+ "eq_cr": 82944.5,
+ "warn": []
+}

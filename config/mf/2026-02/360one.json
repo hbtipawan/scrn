@@ -1,0 +1,75 @@
+{
+ "code": "360one",
+ "amc": "360 ONE Mutual Fund",
+ "month": "2026-02",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-10-16 00:32",
+ "files": [
+  {
+   "name": "IN_MF_MONTHLY_PORTFOLIO_feb2026_final_File_94ba3ed6e0.xlsx",
+   "url": "https://s3.ap-south-1.amazonaws.com/x-web-s3.360.one/IN_MF_MONTHLY_PORTFOLIO_feb2026_final_File_94ba3ed6e0.xlsx",
+   "schemes": 11,
+   "eq_rows": 243
+  }
+ ],
+ "schemes": {
+  "360 ONE Focused Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 6548.4,
+   "total_cr": 6837.07
+  },
+  "360 ONE QUANT FUND": {
+   "eq": 37,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 913.42,
+   "total_cr": 924.72
+  },
+  "360 ONE ELSS Tax Saver Nifty 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 76.06,
+   "total_cr": 76.54
+  },
+  "360 ONE Balanced Hybrid Fund": {
+   "eq": 45,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 340.96,
+   "total_cr": 780.04
+  },
+  "360 ONE FLEXICAP FUND": {
+   "eq": 48,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1964.92,
+   "total_cr": 2010.53
+  },
+  "360 ONE Multi Asset Allocation Fund": {
+   "eq": 33,
+   "fut": 2,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 92.67,
+   "total_cr": 388.26
+  }
+ },
+ "rows": 245,
+ "eq_cr": 9936.4,
+ "warn": []
+}

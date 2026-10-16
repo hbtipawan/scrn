@@ -1,0 +1,460 @@
+{
+ "code": "axis",
+ "amc": "Axis Mutual Fund",
+ "month": "2026-06",
+ "fetched": "2026-10-15 19:46",
+ "files": [
+  {
+   "name": "Monthly Portfolio-30 06 26",
+   "url": "https://www.axismf.com/1/5/464/560/3622/4325/Monthly_Portfolio30_06_26.xlsx.xlsx",
+   "schemes": 86,
+   "eq_rows": 3260
+  }
+ ],
+ "schemes": {
+  "Axis Nifty 500 Index Fund": {
+   "eq": 500,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 309.34,
+   "total_cr": 310.0
+  },
+  "Axis Business Cycles Fund": {
+   "eq": 78,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2031.97,
+   "total_cr": 2088.6
+  },
+  "Axis NIFTY Bank ETF": {
+   "eq": 14,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 330.88,
+   "total_cr": 332.72
+  },
+  "Axis BSE India Sector Leaders Index Fund": {
+   "eq": 60,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 32.2,
+   "total_cr": 32.28
+  },
+  "Axis BSE Sensex ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 126.41,
+   "total_cr": 126.92
+  },
+  "Axis NIFTY India Consumption ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 13.6,
+   "total_cr": 13.66
+  },
+  "Axis Children\u2019s Fund": {
+   "eq": 92,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 623.12,
+   "total_cr": 892.24
+  },
+  "Axis Nifty Capital Markets Index Fund": {
+   "eq": 17,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 99.83,
+   "total_cr": 99.52
+  },
+  "Axis Consumption Fund": {
+   "eq": 56,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2733.26,
+   "total_cr": 2750.01
+  },
+  "Axis Balanced Advantage Fund": {
+   "eq": 108,
+   "fut": 110,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2764.05,
+   "total_cr": 3814.4
+  },
+  "Axis Arbitrage Fund": {
+   "eq": 156,
+   "fut": 316,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 7203.42,
+   "total_cr": 10362.38
+  },
+  "Axis Aggressive Hybrid Fund": {
+   "eq": 92,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1044.95,
+   "total_cr": 1455.75
+  },
+  "Axis Large Cap Fund": {
+   "eq": 44,
+   "fut": 4,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 29575.64,
+   "total_cr": 30912.59
+  },
+  "Axis Equity Savings Fund": {
+   "eq": 89,
+   "fut": 112,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 605.08,
+   "total_cr": 875.02
+  },
+  "Axis ESG Integration Strategy Fund": {
+   "eq": 42,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 0.976,
+   "eq_cr": 1009.1,
+   "total_cr": 1077.2
+  },
+  "Axis Focused Fund": {
+   "eq": 28,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 0.964,
+   "eq_cr": 10389.52,
+   "total_cr": 11078.39
+  },
+  "Axis Large & Mid Cap Fund": {
+   "eq": 81,
+   "fut": 2,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 0.988,
+   "eq_cr": 14597.66,
+   "total_cr": 16469.27
+  },
+  "Axis NIFTY Healthcare ETF": {
+   "eq": 20,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 23.84,
+   "total_cr": 23.87
+  },
+  "Axis India Manufacturing Fund": {
+   "eq": 78,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 0.987,
+   "eq_cr": 5150.23,
+   "total_cr": 5377.75
+  },
+  "Axis Conservative Hybrid Fund": {
+   "eq": 32,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 40.96,
+   "total_cr": 220.72
+  },
+  "Axis Midcap Fund": {
+   "eq": 84,
+   "fut": 2,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 29348.92,
+   "total_cr": 33803.0
+  },
+  "Axis Momentum Fund": {
+   "eq": 48,
+   "fut": 18,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 832.35,
+   "total_cr": 958.35
+  },
+  "Axis Multicap Fund": {
+   "eq": 105,
+   "fut": 2,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 0.99,
+   "eq_cr": 9966.23,
+   "total_cr": 10457.27
+  },
+  "Axis Flexi Cap Fund": {
+   "eq": 63,
+   "fut": 2,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 12352.21,
+   "total_cr": 13327.81
+  },
+  "Axis Nifty 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 997.0,
+   "total_cr": 1001.15
+  },
+  "Axis Nifty500 Momentum 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 162.68,
+   "total_cr": 162.59
+  },
+  "Axis Nifty Bank Index Fund": {
+   "eq": 14,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 174.47,
+   "total_cr": 175.22
+  },
+  "Axis Nifty India Defence Index Fund": {
+   "eq": 19,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 290.76,
+   "total_cr": 290.15
+  },
+  "Axis NIFTY 50 ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1273.48,
+   "total_cr": 1277.9
+  },
+  "Axis Nifty 100 Index Fund": {
+   "eq": 100,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2018.62,
+   "total_cr": 2023.81
+  },
+  "Axis Nifty IT Index Fund": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 112.22,
+   "total_cr": 112.02
+  },
+  "AXIS NIFTY MIDCAP 50 INDEX FUND": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 701.46,
+   "total_cr": 700.89
+  },
+  "Axis Nifty Next 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 509.19,
+   "total_cr": 509.91
+  },
+  "AXIS NIFTY SMALLCAP 50 INDEX FUND": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 677.18,
+   "total_cr": 675.7
+  },
+  "Axis Nifty500 Value 50 ETF": {
+   "eq": 51,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 34.19,
+   "total_cr": 34.3
+  },
+  "Axis Nifty500 Quality 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 77.23,
+   "total_cr": 77.04
+  },
+  "Axis Quant Fund": {
+   "eq": 25,
+   "fut": 12,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 731.55,
+   "total_cr": 835.4
+  },
+  "Axis Retirement Fund - Aggressive Plan": {
+   "eq": 87,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 529.46,
+   "total_cr": 704.41
+  },
+  "Axis Retirement Fund - Conservative Plan": {
+   "eq": 28,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 17.21,
+   "total_cr": 47.81
+  },
+  "Axis Retirement Fund - Dynamic Plan": {
+   "eq": 93,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 234.28,
+   "total_cr": 282.85
+  },
+  "Axis BSE Sensex Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 54.24,
+   "total_cr": 54.46
+  },
+  "Axis Small Cap Fund": {
+   "eq": 129,
+   "fut": 4,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 26803.09,
+   "total_cr": 29393.79
+  },
+  "Axis Services Opportunities Fund": {
+   "eq": 38,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1593.13,
+   "total_cr": 1625.0
+  },
+  "Axis Innovation Fund": {
+   "eq": 46,
+   "fut": 2,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 976.34,
+   "total_cr": 1199.19
+  },
+  "Axis Multi Asset Allocation Fund": {
+   "eq": 78,
+   "fut": 8,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1580.32,
+   "total_cr": 2384.12
+  },
+  "Axis NIFTY IT ETF": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 142.78,
+   "total_cr": 142.8
+  },
+  "Axis ELSS Tax Saver Fund": {
+   "eq": 68,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 31149.95,
+   "total_cr": 31869.32
+  },
+  "Axis Value Fund": {
+   "eq": 86,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 0.988,
+   "eq_cr": 1622.57,
+   "total_cr": 1668.17
+  },
+  "Axis Nifty500 Value 50 Index Fund": {
+   "eq": 51,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 218.82,
+   "total_cr": 218.49
+  }
+ },
+ "rows": 3854,
+ "eq_cr": 203887.0,
+ "warn": []
+}

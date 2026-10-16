@@ -1,5 +1,5 @@
 {
- "run": "2026-10-16 11:19",
+ "run": "2026-10-16 12:22",
  "delivery": {
   "added": [],
   "not_published": [],
@@ -11,10 +11,15 @@
   "last": "2026-10-15"
  },
  "close_check": {
-  "date": "2026-10-12",
-  "checked": 2569,
-  "corrected": 0,
-  "disagree": 0,
-  "examples": {}
+  "date": "2026-10-15",
+  "checked": 2565,
+  "corrected": 1,
+  "disagree": 1,
+  "examples": {
+   "BANSALWIRE": [
+    63.1,
+    315.6
+   ]
+  }
  }
 }

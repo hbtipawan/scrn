@@ -1,0 +1,81 @@
+{
+ "code": "nj",
+ "amc": "NJ Mutual Fund",
+ "month": "2026-02",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-10-16 00:33",
+ "files": [
+  {
+   "name": "Monthly Portfolio - February 28, 2026 - NJ Balanced Advantage Fund",
+   "url": "https://downloads.njmutualfund.com/viewfile.php?file=NJ-MF-Monthly-Portfolio-NJBAF-February-2026-20260307085141.xlsx",
+   "schemes": 1,
+   "eq_rows": 104
+  },
+  {
+   "name": "Monthly Portfolio - February 28, 2026 - NJ Overnight Fund",
+   "url": "https://downloads.njmutualfund.com/viewfile.php?file=NJ-MF-Monthly-Portfolio-NJOVERFD-February-2026-20260307085106.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Monthly Portfolio - February 28, 2026 - NJ Arbitrage Fund",
+   "url": "https://downloads.njmutualfund.com/viewfile.php?file=NJ-MF-Monthly-Portfolio-NJABF-February-2026-20260307085033.xlsx",
+   "schemes": 1,
+   "eq_rows": 54
+  },
+  {
+   "name": "Monthly Portfolio - February 28, 2026 - NJ ELSS Tax Saver Scheme",
+   "url": "https://downloads.njmutualfund.com/viewfile.php?file=NJ-MF-Monthly-Portfolio-NJELSTCH-February-2026-20260307084954.xlsx",
+   "schemes": 1,
+   "eq_rows": 26
+  },
+  {
+   "name": "Monthly Portfolio - February 28, 2026 - NJ Flexi Cap Fund",
+   "url": "https://downloads.njmutualfund.com/viewfile.php?file=NJ-MF-Monthly-Portfolio-NJFCP-February-2026-20260307084827.xlsx",
+   "schemes": 1,
+   "eq_rows": 51
+  }
+ ],
+ "schemes": {
+  "NJ Balanced Advantage Fund": {
+   "eq": 104,
+   "fut": 222,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.99,
+   "eq_cr": 3173.0,
+   "total_cr": null
+  },
+  "NJ Arbitrage Fund": {
+   "eq": 54,
+   "fut": 166,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.981,
+   "eq_cr": 205.24,
+   "total_cr": null
+  },
+  "NJ ELSS Tax Saver Scheme": {
+   "eq": 26,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.962,
+   "eq_cr": 312.63,
+   "total_cr": null
+  },
+  "NJ Flexi Cap Fund": {
+   "eq": 51,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2482.49,
+   "total_cr": null
+  }
+ },
+ "rows": 623,
+ "eq_cr": 6173.4,
+ "warn": []
+}

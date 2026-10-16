@@ -1,0 +1,366 @@
+{
+ "code": "invesco",
+ "amc": "Invesco Mutual Fund",
+ "month": "2025-10",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-10-15 20:53",
+ "files": [
+  {
+   "name": "Invesco India Invesco India ELSS Tax Saver Fund October 2025",
+   "url": "https://www.invescomutualfund.com/docs/default-source/completes-monthly-holding/elss-tax-saver4e11fa07eee8616aaa28ff00007d74af.xlsx?sfvrsn=59f99bc2_0",
+   "schemes": 1,
+   "eq_rows": 56
+  },
+  {
+   "name": "Invesco India Invesco India Contra Fund October 2025",
+   "url": "https://www.invescomutualfund.com/docs/default-source/completes-monthly-holding/contra-fund6f0ffa07eee8616aaa28ff00007d74af.xlsx?sfvrsn=78e79bc2_0",
+   "schemes": 1,
+   "eq_rows": 71
+  },
+  {
+   "name": "Invesco India Invesco India Mid Cap Fund October 2025",
+   "url": "https://www.invescomutualfund.com/docs/default-source/completes-monthly-holding/midcap-fund750efa07eee8616aaa28ff00007d74af.xlsx?sfvrsn=7ee69bc2_0",
+   "schemes": 1,
+   "eq_rows": 49
+  },
+  {
+   "name": "Invesco India Invesco India Large & Mid Cap Fund October 2025",
+   "url": "https://www.invescomutualfund.com/docs/default-source/completes-monthly-holding/large-mid-cap4715fa07eee8616aaa28ff00007d74af.xlsx?sfvrsn=50fd9bc2_0",
+   "schemes": 1,
+   "eq_rows": 42
+  },
+  {
+   "name": "Invesco India Invesco India Financial Services Fund October 2025",
+   "url": "https://www.invescomutualfund.com/docs/default-source/completes-monthly-holding/financial-services5b0efa07eee8616aaa28ff00007d74af.xlsx?sfvrsn=44e69bc2_0",
+   "schemes": 1,
+   "eq_rows": 29
+  },
+  {
+   "name": "Invesco India Invesco India Large Cap Fund October 2025",
+   "url": "https://www.invescomutualfund.com/docs/default-source/completes-monthly-holding/large-cap150ffa07eee8616aaa28ff00007d74af.xlsx?sfvrsn=1ee79bc2_0",
+   "schemes": 1,
+   "eq_rows": 49
+  },
+  {
+   "name": "Invesco India Invesco India PSU Equity Fund October 2025",
+   "url": "https://www.invescomutualfund.com/docs/default-source/completes-monthly-holding/psu-equity-fund3d0efa07eee8616aaa28ff00007d74af.xlsx?sfvrsn=26e69bc2_0",
+   "schemes": 1,
+   "eq_rows": 23
+  },
+  {
+   "name": "Invesco India Invesco India Multi Cap Fund October 2025",
+   "url": "https://www.invescomutualfund.com/docs/default-source/completes-monthly-holding/multi-cap330ffa07eee8616aaa28ff00007d74af.xlsx?sfvrsn=3ce79bc2_0",
+   "schemes": 1,
+   "eq_rows": 57
+  },
+  {
+   "name": "Invesco India Invesco India Infrastructure Fund October 2025",
+   "url": "https://www.invescomutualfund.com/docs/default-source/completes-monthly-holding/infrastructure-fundbc10fa07eee8616aaa28ff00007d74af.xlsx?sfvrsn=a7f89bc2_0",
+   "schemes": 1,
+   "eq_rows": 48
+  },
+  {
+   "name": "Invesco India Invesco India Small Cap Fund October 2025",
+   "url": "https://www.invescomutualfund.com/docs/default-source/completes-monthly-holding/smallcap8010fa07eee8616aaa28ff00007d74af.xlsx?sfvrsn=6bf89bc2_0",
+   "schemes": 1,
+   "eq_rows": 64
+  },
+  {
+   "name": "Invesco India Invesco India Focused Fund October 2025",
+   "url": "https://www.invescomutualfund.com/docs/default-source/completes-monthly-holding/focused-fund9010fa07eee8616aaa28ff00007d74af.xlsx?sfvrsn=9bf89bc2_0",
+   "schemes": 1,
+   "eq_rows": 20
+  },
+  {
+   "name": "Invesco India Invesco India ESG Integration Strategy Fund October 2025",
+   "url": "https://www.invescomutualfund.com/docs/default-source/completes-monthly-holding/esg-integrationc80ffa07eee8616aaa28ff00007d74af.xlsx?sfvrsn=d3e79bc2_0",
+   "schemes": 1,
+   "eq_rows": 36
+  },
+  {
+   "name": "Invesco India Invesco India Flexi Cap Fund October 2025",
+   "url": "https://www.invescomutualfund.com/docs/default-source/completes-monthly-holding/flexi-capca11fa07eee8616aaa28ff00007d74af.xlsx?sfvrsn=d5f99bc2_0",
+   "schemes": 1,
+   "eq_rows": 57
+  },
+  {
+   "name": "Invesco India Invesco India Manufacturing Fund October 2025",
+   "url": "https://www.invescomutualfund.com/docs/default-source/completes-monthly-holding/manufacturing-fund4410fa07eee8616aaa28ff00007d74af.xlsx?sfvrsn=2ff89bc2_0",
+   "schemes": 1,
+   "eq_rows": 54
+  },
+  {
+   "name": "Invesco India Invesco India Technology Fund October 2025",
+   "url": "https://www.invescomutualfund.com/docs/default-source/completes-monthly-holding/technology-fund0810fa07eee8616aaa28ff00007d74af.xlsx?sfvrsn=13f89bc2_0",
+   "schemes": 1,
+   "eq_rows": 24
+  },
+  {
+   "name": "Invesco India Invesco India Business Cycle Fund October 2025",
+   "url": "https://www.invescomutualfund.com/docs/default-source/completes-monthly-holding/business-cycle-fund2412fa07eee8616aaa28ff00007d74af.xlsx?sfvrsn=ffa9bc2_0",
+   "schemes": 1,
+   "eq_rows": 36
+  },
+  {
+   "name": "Invesco India Invesco India Consumption Fund October 2025",
+   "url": "https://www.invescomutualfund.com/docs/default-source/completes-monthly-holding/consumption-fund.xlsx?sfvrsn=76fb9bc2_0",
+   "schemes": 1,
+   "eq_rows": 22
+  },
+  {
+   "name": "Invesco India Invesco India Arbitrage Fund October 2025",
+   "url": "https://www.invescomutualfund.com/docs/default-source/completes-monthly-holding/arbitrage-fund7012fa07eee8616aaa28ff00007d74af.xlsx?sfvrsn=7bfa9bc2_0",
+   "schemes": 1,
+   "eq_rows": 182
+  },
+  {
+   "name": "Invesco India Invesco India Balanced Advantage Fund October 2025",
+   "url": "https://www.invescomutualfund.com/docs/default-source/completes-monthly-holding/balanced-advantage-fund0b13fa07eee8616aaa28ff00007d74af.xlsx?sfvrsn=14fb9bc2_0",
+   "schemes": 1,
+   "eq_rows": 35
+  },
+  {
+   "name": "Invesco India Invesco India Aggressive Hybrid Fund October 2025",
+   "url": "https://www.invescomutualfund.com/docs/default-source/completes-monthly-holding/aggressive-hybridf70efa07eee8616aaa28ff00007d74af.xlsx?sfvrsn=e0e69bc2_0",
+   "schemes": 1,
+   "eq_rows": 49
+  },
+  {
+   "name": "Invesco India Invesco India Equity Savings Fund October 2025",
+   "url": "https://www.invescomutualfund.com/docs/default-source/completes-monthly-holding/equity-savings4212fa07eee8616aaa28ff00007d74af.xlsx?sfvrsn=2dfa9bc2_0",
+   "schemes": 1,
+   "eq_rows": 65
+  },
+  {
+   "name": "Invesco India Invesco India Multi Asset Allocation Fund October 2025",
+   "url": "https://www.invescomutualfund.com/docs/default-source/completes-monthly-holding/multi-asset-allocation970efa07eee8616aaa28ff00007d74af.xlsx?sfvrsn=80e69bc2_0",
+   "schemes": 1,
+   "eq_rows": 71
+  },
+  {
+   "name": "Invesco India Invesco India Nifty 50 Exchange Traded Fund October 2025",
+   "url": "https://www.invescomutualfund.com/docs/default-source/default-document-library/rnifty.xlsx?sfvrsn=fdfa9bc2_0",
+   "schemes": 1,
+   "eq_rows": 51
+  },
+  {
+   "name": "Invesco India Invesco India Gold Exchange Traded Fund October 2025",
+   "url": "https://www.invescomutualfund.com/docs/default-source/completes-monthly-holding/gold-etfa811fa07eee8616aaa28ff00007d74af.xlsx?sfvrsn=b3f99bc2_0",
+   "schemes": 0,
+   "eq_rows": 0
+  }
+ ],
+ "schemes": {
+  "Invesco India ELSS Tax Saver Fund": {
+   "eq": 56,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.911,
+   "eq_cr": 2846.13,
+   "total_cr": 2865.79
+  },
+  "Invesco India Contra Fund": {
+   "eq": 71,
+   "fut": 22,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.971,
+   "eq_cr": 19357.82,
+   "total_cr": 20173.03
+  },
+  "Invesco India Midcap Fund (Mid Cap Fund": {
+   "eq": 49,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.939,
+   "eq_cr": 9267.6,
+   "total_cr": 9319.87
+  },
+  "Invesco India Large & Mid Cap Fund (Large & Mid Cap Fund": {
+   "eq": 42,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.951,
+   "eq_cr": 8968.26,
+   "total_cr": 9034.16
+  },
+  "Invesco India Financial Services Fund": {
+   "eq": 29,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.862,
+   "eq_cr": 1503.3,
+   "total_cr": 1515.61
+  },
+  "Invesco India Largecap Fund (Large Cap Fund": {
+   "eq": 49,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.939,
+   "eq_cr": 1667.51,
+   "total_cr": 1686.04
+  },
+  "Invesco India PSU Equity Fund": {
+   "eq": 23,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.957,
+   "eq_cr": 1413.19,
+   "total_cr": 1465.99
+  },
+  "Invesco India Multicap Fund (Multi Cap Fund": {
+   "eq": 57,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.964,
+   "eq_cr": 4170.75,
+   "total_cr": 4228.18
+  },
+  "Invesco India Infrastructure Fund": {
+   "eq": 48,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.938,
+   "eq_cr": 1510.07,
+   "total_cr": 1527.21
+  },
+  "Invesco India Smallcap Fund (Small Cap Fund": {
+   "eq": 64,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.875,
+   "eq_cr": 8490.19,
+   "total_cr": 8720.48
+  },
+  "Invesco India Focused Fund": {
+   "eq": 20,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.85,
+   "eq_cr": 4180.36,
+   "total_cr": 4453.93
+  },
+  "Invesco India ESG Integration Strategy Fund": {
+   "eq": 36,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.917,
+   "eq_cr": 442.59,
+   "total_cr": 453.71
+  },
+  "Invesco India Flexi Cap Fund": {
+   "eq": 57,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.929,
+   "eq_cr": 4156.45,
+   "total_cr": 4380.43
+  },
+  "Invesco India Manufacturing Fund": {
+   "eq": 54,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.981,
+   "eq_cr": 747.15,
+   "total_cr": 758.89
+  },
+  "Invesco India Technology Fund": {
+   "eq": 24,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.958,
+   "eq_cr": 335.72,
+   "total_cr": 336.83
+  },
+  "Invesco India Business Cycle Fund": {
+   "eq": 36,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.917,
+   "eq_cr": 857.65,
+   "total_cr": 863.83
+  },
+  "Invesco India Consumption Fund": {
+   "eq": 22,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.955,
+   "eq_cr": 259.36,
+   "total_cr": 511.94
+  },
+  "Invesco India Arbitrage Fund": {
+   "eq": 182,
+   "fut": 499,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.967,
+   "eq_cr": 21558.39,
+   "total_cr": 27150.96
+  },
+  "Invesco India Balanced Advantage Fund": {
+   "eq": 35,
+   "fut": 6,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.941,
+   "eq_cr": 713.49,
+   "total_cr": 1090.97
+  },
+  "Invesco India Aggressive Hybrid Fund": {
+   "eq": 49,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.938,
+   "eq_cr": 533.29,
+   "total_cr": 818.23
+  },
+  "Invesco India Equity Savings Fund": {
+   "eq": 65,
+   "fut": 62,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.954,
+   "eq_cr": 288.66,
+   "total_cr": 438.49
+  },
+  "Invesco India Multi Asset Allocation Fund": {
+   "eq": 71,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.971,
+   "eq_cr": 199.76,
+   "total_cr": 554.16
+  },
+  "Invesco India Nifty 50 Exchange Traded Fund": {
+   "eq": 51,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.96,
+   "eq_cr": 97.21,
+   "total_cr": 97.32
+  }
+ },
+ "rows": 1779,
+ "eq_cr": 93564.9,
+ "warn": []
+}

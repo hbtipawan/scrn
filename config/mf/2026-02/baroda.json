@@ -1,0 +1,291 @@
+{
+ "code": "baroda",
+ "amc": "Baroda BNP Paribas Mutual Fund",
+ "month": "2026-02",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-10-16 00:59",
+ "files": [
+  {
+   "name": "BOBBNPMF_Monthly_Portfolio_28-02-2026_17113.xls",
+   "url": "https://www.barodabnpparibasmf.in/assets/download_documents/BOBBNPMF_Monthly_Portfolio_28-02-2026_17113.xls",
+   "schemes": 47,
+   "eq_rows": 1506
+  }
+ ],
+ "schemes": {
+  "Baroda BNP Paribas Mid Cap Fund": {
+   "eq": 64,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.984,
+   "eq_cr": 2236.11,
+   "total_cr": 2340.6
+  },
+  "Baroda BNP Paribas Large Cap Fund": {
+   "eq": 50,
+   "fut": 6,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2535.95,
+   "total_cr": 2638.64
+  },
+  "Baroda BNP Paribas ELSS Tax Saver Fund": {
+   "eq": 48,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 874.88,
+   "total_cr": 906.22
+  },
+  "Baroda BNP Paribas Conservative Hybrid Fund": {
+   "eq": 48,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 191.12,
+   "total_cr": 816.78
+  },
+  "Baroda BNP Paribas Arbitrage Fund": {
+   "eq": 97,
+   "fut": 194,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.979,
+   "eq_cr": 924.56,
+   "total_cr": 1361.87
+  },
+  "Baroda BNP Paribas Aggressive Hybrid Fund": {
+   "eq": 53,
+   "fut": 4,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 875.95,
+   "total_cr": 1249.9
+  },
+  "Baroda BNP Paribas Focused Fund": {
+   "eq": 27,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 631.6,
+   "total_cr": 674.97
+  },
+  "Baroda BNP Paribas India Consumption Fund": {
+   "eq": 41,
+   "fut": 2,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.976,
+   "eq_cr": 1403.29,
+   "total_cr": 1455.46
+  },
+  "Baroda BNP Paribas Flexi Cap Fund": {
+   "eq": 44,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.977,
+   "eq_cr": 1136.84,
+   "total_cr": 1226.44
+  },
+  "Baroda BNP Paribas Multi Asset Fund": {
+   "eq": 49,
+   "fut": 2,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 957.29,
+   "total_cr": 1403.04
+  },
+  "Baroda BNP Paribas Value Fund": {
+   "eq": 52,
+   "fut": 2,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1047.58,
+   "total_cr": 1109.17
+  },
+  "Baroda BNP Paribas Small Cap Fund": {
+   "eq": 49,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.957,
+   "eq_cr": 1078.19,
+   "total_cr": 1152.69
+  },
+  "Baroda BNP Paribas Nifty 50 Index Fund": {
+   "eq": 51,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 63.13,
+   "total_cr": 63.02
+  },
+  "Baroda BNP Paribas Innovation Fund": {
+   "eq": 42,
+   "fut": 2,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 800.52,
+   "total_cr": 865.46
+  },
+  "Baroda BNP Paribas Retirement Fund": {
+   "eq": 52,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.981,
+   "eq_cr": 284.21,
+   "total_cr": 394.7
+  },
+  "Baroda BNP Paribas NIFTY BANK ETF": {
+   "eq": 14,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 3.87,
+   "total_cr": 3.87
+  },
+  "Baroda BNP Paribas Manufacturing Fund": {
+   "eq": 44,
+   "fut": 2,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.977,
+   "eq_cr": 872.71,
+   "total_cr": 907.24
+  },
+  "Baroda BNP Paribas Dividend Yield Fund": {
+   "eq": 47,
+   "fut": 2,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 670.1,
+   "total_cr": 693.11
+  },
+  "Baroda BNP Paribas Nifty200 Momentum 30 Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 23.64,
+   "total_cr": 23.47
+  },
+  "Baroda BNP Paribas NIFTY Midcap 150 Index Fund": {
+   "eq": 150,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.993,
+   "eq_cr": 9.12,
+   "total_cr": 9.17
+  },
+  "Baroda BNP Paribas Childrens Fund": {
+   "eq": 55,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 103.79,
+   "total_cr": 112.56
+  },
+  "Baroda BNP Paribas Energy Opportunities Fund": {
+   "eq": 29,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 677.8,
+   "total_cr": 714.77
+  },
+  "Baroda BNP Paribas Health and Wellness Fund": {
+   "eq": 29,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.929,
+   "eq_cr": 541.1,
+   "total_cr": 564.85
+  },
+  "Baroda BNP Paribas Business Conglomerates Fund": {
+   "eq": 43,
+   "fut": 2,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 675.83,
+   "total_cr": 713.9
+  },
+  "Baroda BNP Paribas Multi Cap Fund": {
+   "eq": 57,
+   "fut": 2,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2953.91,
+   "total_cr": 3095.99
+  },
+  "Baroda BNP Paribas Banking & Financial Services Fund": {
+   "eq": 27,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 363.2,
+   "total_cr": 396.53
+  },
+  "Baroda BNP Paribas Balanced Advantage Fund": {
+   "eq": 54,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.981,
+   "eq_cr": 3493.68,
+   "total_cr": 4766.56
+  },
+  "Baroda BNP Paribas Equity Savings Fund": {
+   "eq": 56,
+   "fut": 36,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 187.91,
+   "total_cr": 281.85
+  },
+  "Baroda BNP Paribas Large & Mid Cap Fund": {
+   "eq": 47,
+   "fut": 0,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.979,
+   "eq_cr": 1611.11,
+   "total_cr": 1726.34
+  },
+  "Baroda BNP Paribas Business Cycle Fund": {
+   "eq": 57,
+   "fut": 4,
+   "date": "2026-02-28",
+   "unit": "lakh",
+   "price_match": 0.982,
+   "eq_cr": 536.34,
+   "total_cr": 567.58
+  }
+ },
+ "rows": 1766,
+ "eq_cr": 27765.3,
+ "warn": []
+}

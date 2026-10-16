@@ -1,0 +1,379 @@
+{
+ "code": "groww",
+ "amc": "Groww Mutual Fund",
+ "month": "2026-06",
+ "fetched": "2026-10-15 19:49",
+ "files": [
+  {
+   "name": "Monthly Portfolio- June 30, 2026.xlsx",
+   "url": "https://assets-netstorage.growwmf.in/compliance_docs/Statutory%20Disclosure/Portfolio/2026%20-2027/Monthly%20Portfolio-%20June%2030,%202026.xlsx",
+   "schemes": 61,
+   "eq_rows": 3094
+  }
+ ],
+ "schemes": {
+  "Groww Large Cap Fund": {
+   "eq": 39,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 125.45,
+   "total_cr": 132.25
+  },
+  "Groww Aggressive Hybrid Fund": {
+   "eq": 86,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 37.47,
+   "total_cr": 51.02
+  },
+  "Groww ELSS Tax Saver Fund": {
+   "eq": 64,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 48.84,
+   "total_cr": 50.59
+  },
+  "Groww Value Fund": {
+   "eq": 67,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 65.04,
+   "total_cr": 70.77
+  },
+  "Groww Nifty Total Market Index Fund": {
+   "eq": 751,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 0.995,
+   "eq_cr": 362.71,
+   "total_cr": 362.7
+  },
+  "Groww Banking & Financial Services Fund": {
+   "eq": 32,
+   "fut": 1,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 73.67,
+   "total_cr": 75.51
+  },
+  "Groww Nifty Smallcap 250 Index Fund": {
+   "eq": 250,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 133.1,
+   "total_cr": 132.89
+  },
+  "Groww Nifty Non-Cyclical Consumer Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 41.41,
+   "total_cr": 41.49
+  },
+  "GROWW NIFTY EV & NEW AGE AUTOMOTIVE ETF": {
+   "eq": 38,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 280.76,
+   "total_cr": 280.95
+  },
+  "Groww Nifty India Defence ETF": {
+   "eq": 19,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 343.16,
+   "total_cr": 342.53
+  },
+  "Groww Multicap Fund": {
+   "eq": 71,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 0.986,
+   "eq_cr": 691.37,
+   "total_cr": 708.92
+  },
+  "Groww Nifty India Railways PSU Index Fund": {
+   "eq": 17,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 54.29,
+   "total_cr": 54.18
+  },
+  "Groww Nifty India Railways PSU ETF": {
+   "eq": 17,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 143.51,
+   "total_cr": 143.35
+  },
+  "GROWW NIFTY 200 ETF": {
+   "eq": 200,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 18.36,
+   "total_cr": 18.38
+  },
+  "Groww Nifty 500 Momentum 50 ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 27.42,
+   "total_cr": 27.46
+  },
+  "Groww Nifty 500 Low Volatility 50 ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 4.0,
+   "total_cr": 4.02
+  },
+  "Groww Nifty India Internet ETF": {
+   "eq": 27,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 33.73,
+   "total_cr": 33.72
+  },
+  "Groww Nifty 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 25.63,
+   "total_cr": 25.75
+  },
+  "Groww Nifty 50 ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 33.12,
+   "total_cr": 33.26
+  },
+  "Groww BSE Power ETF": {
+   "eq": 17,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 263.72,
+   "total_cr": 263.68
+  },
+  "Groww Nifty Next 50 ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 8.71,
+   "total_cr": 8.73
+  },
+  "Groww Nifty Next 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 9.91,
+   "total_cr": 9.96
+  },
+  "Groww Multi Asset Allocation Fund": {
+   "eq": 75,
+   "fut": 15,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 271.26,
+   "total_cr": 403.47
+  },
+  "Groww Nifty Realty ETF": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 14.02,
+   "total_cr": 14.01
+  },
+  "Groww Nifty Capital Markets ETF": {
+   "eq": 17,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 42.37,
+   "total_cr": 42.37
+  },
+  "Groww Nifty Smallcap 250 ETF": {
+   "eq": 250,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 15.81,
+   "total_cr": 15.82
+  },
+  "Groww Nifty Midcap 150 ETF": {
+   "eq": 150,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 5.99,
+   "total_cr": 6.01
+  },
+  "Groww Nifty Midcap 150 Index Fund": {
+   "eq": 150,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 15.1,
+   "total_cr": 15.11
+  },
+  "Groww Nifty Metal ETF": {
+   "eq": 15,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 41.07,
+   "total_cr": 41.19
+  },
+  "Groww Nifty Chemicals ETF": {
+   "eq": 20,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 11.54,
+   "total_cr": 11.55
+  },
+  "Groww Small Cap Fund": {
+   "eq": 51,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 386.87,
+   "total_cr": 439.7
+  },
+  "Groww Nifty PSE ETF": {
+   "eq": 20,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 17.42,
+   "total_cr": 17.41
+  },
+  "Groww BSE Hospitals ETF": {
+   "eq": 17,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 0.941,
+   "eq_cr": 64.25,
+   "total_cr": 64.22
+  },
+  "Groww Nifty PSU Bank Index Fund": {
+   "eq": 12,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 7.69,
+   "total_cr": 7.79
+  },
+  "Groww Nifty PSU Bank ETF": {
+   "eq": 12,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 6.3,
+   "total_cr": 6.37
+  },
+  "Groww Arbitrage Fund": {
+   "eq": 50,
+   "fut": 83,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 71.13,
+   "total_cr": 92.62
+  },
+  "Groww Nifty Private Bank ETF": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 6.89,
+   "total_cr": 6.92
+  },
+  "Groww Nifty Private Bank Index Fund": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 7.05,
+   "total_cr": 7.08
+  },
+  "Groww Nifty Smallcap 250 Momentum Quality 100 ETF": {
+   "eq": 100,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 6.14,
+   "total_cr": 6.15
+  },
+  "Groww Nifty Smallcap 250 Momentum Quality 100 Index Fund": {
+   "eq": 100,
+   "fut": 0,
+   "date": "2026-06-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 7.01,
+   "total_cr": 7.01
+  }
+ },
+ "rows": 3193,
+ "eq_cr": 3823.3,
+ "warn": []
+}

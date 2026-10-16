@@ -1,0 +1,66 @@
+{
+ "code": "capitalmind",
+ "amc": "Capitalmind Mutual Fund",
+ "month": "2026-03",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-10-16 00:43",
+ "files": [
+  {
+   "name": "CMFLEXI_Monthly_Portfolio_Disclosure_March_2026_1_Updated_a63d02ae53.xlsx",
+   "url": "https://capitalmindmf.com/uploads/CMFLEXI_Monthly_Portfolio_Disclosure_March_2026_1_Updated_a63d02ae53.xlsx",
+   "schemes": 1,
+   "eq_rows": 35
+  },
+  {
+   "name": "CMLIQ_Monthly_Portfolio_Disclosure_31st_Mar_2026_9908ee0f9b.xlsx",
+   "url": "https://capitalmindmf.com/uploads/CMLIQ_Monthly_Portfolio_Disclosure_31st_Mar_2026_9908ee0f9b.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "CMMAAF_Capitalmind_Monthly_Portfolio_Disclosure_March_2026_9dbb189fff.xlsx",
+   "url": "https://capitalmindmf.com/uploads/CMMAAF_Capitalmind_Monthly_Portfolio_Disclosure_March_2026_9dbb189fff.xlsx",
+   "schemes": 1,
+   "eq_rows": 25
+  },
+  {
+   "name": "CMARB_Capitalmind_Monthly_Portfolio_Disclosure_March_2026_5f8d47d82a.xlsx",
+   "url": "https://capitalmindmf.com/uploads/CMARB_Capitalmind_Monthly_Portfolio_Disclosure_March_2026_5f8d47d82a.xlsx",
+   "schemes": 1,
+   "eq_rows": 45
+  }
+ ],
+ "schemes": {
+  "Capitalmind Flexi Cap Fund": {
+   "eq": 35,
+   "fut": 0,
+   "date": "2025-08-04",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 247.29,
+   "total_cr": 373.21
+  },
+  "Capitalmind Multi Asset Allocation Fund": {
+   "eq": 25,
+   "fut": 4,
+   "date": "2026-03-16",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 6.99,
+   "total_cr": 18.4
+  },
+  "Capitalmind Arbitrage Fund": {
+   "eq": 45,
+   "fut": 45,
+   "date": "2026-03-16",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 9.57,
+   "total_cr": 14.67
+  }
+ },
+ "rows": 154,
+ "eq_cr": 263.8,
+ "warn": []
+}

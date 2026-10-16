@@ -1,0 +1,642 @@
+{
+ "code": "sbi",
+ "amc": "SBI Mutual Fund",
+ "month": "2026-03",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-10-16 00:33",
+ "files": [
+  {
+   "name": "All Schemes Monthly Portfolio - as on 31st March 2026",
+   "url": "https://www.sbimf.com/docs/default-source/scheme-portfolios/all-schemes-monthly-portfolio---as-on-31st-march-2026.xlsx?sfvrsn=e7c44034_2",
+   "schemes": 128,
+   "eq_rows": 3913
+  }
+ ],
+ "schemes": {
+  "SBI ESG Exclusionary Strategy Fund": {
+   "eq": 41,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 4739.87,
+   "total_cr": 4810.38
+  },
+  "SBI Large and Midcap Fund": {
+   "eq": 83,
+   "fut": 1,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 0.987,
+   "eq_cr": 32435.79,
+   "total_cr": 34870.7
+  },
+  "SBI ELSS Tax Saver Fund": {
+   "eq": 76,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 0.986,
+   "eq_cr": 27620.09,
+   "total_cr": 28441.43
+  },
+  "SBI MNC Fund": {
+   "eq": 38,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 0.973,
+   "eq_cr": 5243.15,
+   "total_cr": 5328.8
+  },
+  "SBI Equity Hybrid Fund": {
+   "eq": 49,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 57220.11,
+   "total_cr": 76291.79
+  },
+  "SBI Consumption Opportunities Fund": {
+   "eq": 46,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2554.44,
+   "total_cr": 2644.07
+  },
+  "SBI Technology Opportunities Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 3297.76,
+   "total_cr": 4026.52
+  },
+  "SBI Healthcare Opportunities Fund": {
+   "eq": 33,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 0.97,
+   "eq_cr": 3867.74,
+   "total_cr": 4063.64
+  },
+  "SBI Contra Fund": {
+   "eq": 80,
+   "fut": 2,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 0.987,
+   "eq_cr": 35401.02,
+   "total_cr": 43753.59
+  },
+  "SBI Nifty Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 11225.27,
+   "total_cr": 11216.86
+  },
+  "SBI Children's Fund - Savings Plan": {
+   "eq": 22,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 28.96,
+   "total_cr": 131.72
+  },
+  "SBI Focused Fund": {
+   "eq": 24,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 30568.96,
+   "total_cr": 39738.73
+  },
+  "SBI Conservative Hybrid Fund": {
+   "eq": 38,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2081.08,
+   "total_cr": 9545.66
+  },
+  "SBI Midcap Fund": {
+   "eq": 52,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 19328.05,
+   "total_cr": 20576.46
+  },
+  "SBI Comma Fund": {
+   "eq": 32,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 883.02,
+   "total_cr": 938.81
+  },
+  "SBI Flexicap Fund": {
+   "eq": 68,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 0.985,
+   "eq_cr": 19364.63,
+   "total_cr": 20625.69
+  },
+  "SBI Multi Asset Allocation Fund": {
+   "eq": 68,
+   "fut": 1,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 0.971,
+   "eq_cr": 6364.78,
+   "total_cr": 16149.83
+  },
+  "SBI Large Cap Fund": {
+   "eq": 45,
+   "fut": 1,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 47208.51,
+   "total_cr": 48925.69
+  },
+  "SBI Arbitrage Opportunities Fund": {
+   "eq": 174,
+   "fut": 306,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 0.989,
+   "eq_cr": 27872.35,
+   "total_cr": 41059.15
+  },
+  "SBI Infrastructure Fund": {
+   "eq": 31,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 3740.17,
+   "total_cr": 4108.96
+  },
+  "SBI PSU Fund": {
+   "eq": 20,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 0.947,
+   "eq_cr": 5603.92,
+   "total_cr": 5891.3
+  },
+  "SBI BSE Sensex ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 0.967,
+   "eq_cr": 109849.67,
+   "total_cr": 109849.9
+  },
+  "SBI Smallcap Fund": {
+   "eq": 68,
+   "fut": 1,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 0.94,
+   "eq_cr": 28488.29,
+   "total_cr": 32285.56
+  },
+  "SBI Banking And Financial Services Fund": {
+   "eq": 32,
+   "fut": 2,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 8479.39,
+   "total_cr": 9379.89
+  },
+  "SBI Nifty Next 50 ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2579.04,
+   "total_cr": 2582.6
+  },
+  "SBI Nifty Bank ETF": {
+   "eq": 14,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 3374.16,
+   "total_cr": 3374.29
+  },
+  "SBI BSE 100 ETF": {
+   "eq": 100,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 0.99,
+   "eq_cr": 8.67,
+   "total_cr": 8.67
+  },
+  "SBI Equity Savings Fund": {
+   "eq": 103,
+   "fut": 129,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 0.99,
+   "eq_cr": 3724.79,
+   "total_cr": 5609.29
+  },
+  "SBI Nifty 50 ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 191908.75,
+   "total_cr": 191909.36
+  },
+  "SBI Long Term Advantage Fund - Series IV": {
+   "eq": 28,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 168.25,
+   "total_cr": 180.82
+  },
+  "SBI Long Term Advantage Fund - Series V": {
+   "eq": 29,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 303.66,
+   "total_cr": 319.57
+  },
+  "SBI Long Term Advantage Fund - Series VI": {
+   "eq": 35,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 0.971,
+   "eq_cr": 217.41,
+   "total_cr": 223.5
+  },
+  "SBI BSE Sensex Next 50 ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 21.81,
+   "total_cr": 21.82
+  },
+  "SBI NIFTY 200 Quality 30 ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 69.79,
+   "total_cr": 69.79
+  },
+  "SBI Equity Minimum Variance Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 189.91,
+   "total_cr": 193.41
+  },
+  "SBI Children's Fund - Investment Plan": {
+   "eq": 35,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 3639.26,
+   "total_cr": 5157.53
+  },
+  "SBI Nifty IT ETF": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 65.3,
+   "total_cr": 65.31
+  },
+  "SBI Nifty Private Bank ETF": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 365.58,
+   "total_cr": 365.58
+  },
+  "SBI RETIREMENT BENEFIT FUND - AGGRESSIVE PLAN": {
+   "eq": 53,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 0.981,
+   "eq_cr": 2658.46,
+   "total_cr": 2718.98
+  },
+  "SBI RETIREMENT BENEFIT FUND - AGGRESSIVE HYBRID PLAN": {
+   "eq": 53,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 0.981,
+   "eq_cr": 1151.39,
+   "total_cr": 1465.87
+  },
+  "SBI RETIREMENT BENEFIT FUND - CONSERVATIVE HYBRID PLAN": {
+   "eq": 53,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 0.981,
+   "eq_cr": 93.22,
+   "total_cr": 248.15
+  },
+  "SBI RETIREMENT BENEFIT FUND - CONSERVATIVE PLAN": {
+   "eq": 53,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 0.981,
+   "eq_cr": 28.04,
+   "total_cr": 146.27
+  },
+  "SBI Nifty Next 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1709.23,
+   "total_cr": 1711.4
+  },
+  "SBI Nifty Consumption ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 0.967,
+   "eq_cr": 21.4,
+   "total_cr": 21.4
+  },
+  "SBI Balanced Advantage Fund": {
+   "eq": 93,
+   "fut": 58,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 0.989,
+   "eq_cr": 25611.37,
+   "total_cr": 38487.87
+  },
+  "SBI MultiCap Fund": {
+   "eq": 58,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 0.983,
+   "eq_cr": 19304.5,
+   "total_cr": 20778.77
+  },
+  "SBI Nifty Midcap 150 Index Fund": {
+   "eq": 150,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 0.993,
+   "eq_cr": 885.06,
+   "total_cr": 885.3
+  },
+  "SBI Nifty Smallcap 250 Index Fund": {
+   "eq": 251,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 0.984,
+   "eq_cr": 1305.31,
+   "total_cr": 1305.68
+  },
+  "SBI Dividend Yield Fund": {
+   "eq": 42,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 7031.0,
+   "total_cr": 7875.35
+  },
+  "SBI BSE Sensex Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 0.967,
+   "eq_cr": 282.4,
+   "total_cr": 285.54
+  },
+  "SBI Nifty50 Equal Weight Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 953.16,
+   "total_cr": 952.47
+  },
+  "SBI Energy Opportunities Fund": {
+   "eq": 34,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 7386.32,
+   "total_cr": 7804.52
+  },
+  "SBI Automotive Opportunities Fund": {
+   "eq": 32,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 0.969,
+   "eq_cr": 4572.39,
+   "total_cr": 4616.45
+  },
+  "SBI Nifty50 Equal Weight ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 33.43,
+   "total_cr": 33.43
+  },
+  "SBI Innovative Opportunities Fund": {
+   "eq": 37,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 4237.01,
+   "total_cr": 4503.58
+  },
+  "SBI Nifty 500 Index Fund": {
+   "eq": 501,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 0.988,
+   "eq_cr": 702.29,
+   "total_cr": 701.91
+  },
+  "SBI Nifty India Consumption Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 0.967,
+   "eq_cr": 246.46,
+   "total_cr": 246.25
+  },
+  "SBI Quant Fund": {
+   "eq": 29,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2880.48,
+   "total_cr": 2971.51
+  },
+  "SBI Nifty Bank Index Fund": {
+   "eq": 14,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 123.91,
+   "total_cr": 139.69
+  },
+  "SBI Nifty IT Index Fund": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 76.94,
+   "total_cr": 76.98
+  },
+  "SBI BSE PSU Bank ETF": {
+   "eq": 11,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1274.06,
+   "total_cr": 1274.08
+  },
+  "SBI BSE PSU Bank Index Fund": {
+   "eq": 11,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 258.54,
+   "total_cr": 259.45
+  },
+  "SBI Nifty200 Quality 30 Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 275.65,
+   "total_cr": 275.93
+  },
+  "SBI Nifty200 Momentum 30 Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 97.97,
+   "total_cr": 98.07
+  },
+  "SBI Nifty100 Low Volatility 30 Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 56.2,
+   "total_cr": 56.26
+  },
+  "SBI Quality Fund": {
+   "eq": 42,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 0.976,
+   "eq_cr": 1996.58,
+   "total_cr": 2095.53
+  },
+  "SBI Nifty Midcap 150 Momentum 50 ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 6.68,
+   "total_cr": 6.68
+  },
+  "SBI Nifty Midcap150 ETF": {
+   "eq": 150,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 0.993,
+   "eq_cr": 6.95,
+   "total_cr": 6.98
+  },
+  "SBI Resurgent India Opportunities Scheme": {
+   "eq": 32,
+   "fut": 0,
+   "date": "2026-03-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 537.01,
+   "total_cr": 582.32
+  }
+ },
+ "rows": 4414,
+ "eq_cr": 785906.8,
+ "warn": []
+}

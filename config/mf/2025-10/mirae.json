@@ -1,0 +1,876 @@
+{
+ "code": "mirae",
+ "amc": "Mirae Asset Mutual Fund",
+ "month": "2025-10",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-10-15 20:52",
+ "files": [
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Nifty 100 ESG Sector Leaders Fund of Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/maslf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Nifty50 Equal Weight ETF",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/50ew-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 51
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Income plus Arbitrage Active FoF",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/ipafof-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Nifty 100 Low Volatility 30 ETF",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/manv30f-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 30
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Focused Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/maff-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 31
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Nifty 100 ESG Sector Leaders ETF",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/maetf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 60
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Ultra Short Duration Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/mausf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Nifty 8-13 yr G-Sec ETF",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/mang813f-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Gold ETF Fund of Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/mgoldfof-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Nifty IT ETF",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/itetf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 10
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset BSE 200 Equal Weight ETF Fund of Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/200ewfof-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Nifty 1D Rate Liquid ETF - Growth",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/1dgrowth-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Banking and PSU Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/mabpf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Hang Seng TECH ETF Fund of Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/mahsf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Healthcare Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/mahcf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 31
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Corporate Bond Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/macbf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Balanced Advantage Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/mabaf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 109
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Diversified Equity Allocator Passive FOF",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/maeaf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Nifty Smallcap 250 Momentum Quality 100 ETF",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/smqetf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 100
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Nifty MidSmallcap400 Momentum Quality 100 ETF Fund of Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/mnsfof-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Global Electric & Autonomous Vehicles Equity Passive FOF",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/magef-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Nifty India Internet ETF",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/internet-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 21
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Nifty India Manufacturing ETF Fund of Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/mamfof-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Nifty Smallcap 250 Momentum Quality 100 ETF Fund of Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/smqfof-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset BSE Sensex ETF",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/sensex-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 31
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset NYSE FANG+ ETF",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/maftf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Overnight Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/maonf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Midcap Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/mamcf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 69
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Short Duration Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/masht-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Dynamic Bond Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/mdbf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset CRISIL IBX Gilt Index - April 2033 Index Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/macif-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Nifty 1D Rate Liquid ETF-IDCW",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/man1dltf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Liquid Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/macmf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Flexi Cap Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/mafcf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 88
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Nifty Bank ETF",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/manbt-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 12
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Long Duration Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/maldf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Nifty 200 Alpha 30 ETF",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/alpha-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 30
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Nifty SDL June 2028 Index Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/mansj28f-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Large & Midcap Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/maebf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 90
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Nifty Midsmallcap400 Momentum Quality 100 ETF",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/midsmall-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 100
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Aggressive Hybrid Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/maipf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 79
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Nifty 50 Index Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/n50if-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 51
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Nifty India Manufacturing ETF",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/mtetf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 75
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Nifty Midcap 150 ETF",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/manmf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 150
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset S&P 500 Top 50 ETF",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/matpf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Silver ETF",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/masef-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Nifty500 Multicap 50:25:25 ETF",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/multietf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 503
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Nifty PSU Bank ETF",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/psubetf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 12
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Hang Seng TECH ETF",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/mahtf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Nifty200 Alpha 30 ETF Fund of Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/alphafof-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Banking and Financial Services Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/mabff-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 28
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Nifty Total Market Index Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/tm750-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 753
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Low Duration Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/milpf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Equity Savings Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/maesf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 120
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset NYSE FANG + ETF Fund of Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/mafpf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Nifty EV and New Age Automotive ETF",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/evetf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 36
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Nifty LargeMidcap 250 Index Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/lm250-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 251
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Nifty 50 ETF",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/man50etf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 51
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset BSE Select IPO ETF Fund of Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/ipofof-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Gold Silver Passive FoF",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/glslfof-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset S&P 500 Top 50 ETF Fund of Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/maspf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset CRISIL-IBX Financial Services 9-12 Months Debt Index Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/912ibxfs-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Nifty SDL Jun 2027 Index Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/manjf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Money Market Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/mammf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset BSE 200 Equal Weight ETF",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/200ewetf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 201
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Multicap Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/mampf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 79
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Nifty Financial Services ETF",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/mantf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 20
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Multi Factor Passive FOF",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/smartfof-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Nifty Next 50 ETF",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/mannf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 50
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset BSE Select IPO ETF",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/ipoetf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 65
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Gold ETF",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/mafgf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Great Consumer Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/miccf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 41
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Arbitrage Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/maaf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 177
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Nifty AAA PSU Bond Plus SDL Apr 2026 50:50 Index Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/manpf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Nifty India New Age Consumption ETF Fund of Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/b2cetfof-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Global X Artificial Intelligence & Technology ETF Fund of Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/maaif-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Multi Asset Allocation Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/mamaaf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 121
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset ELSS Tax Saver Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/matsf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 76
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Nifty Metal ETF",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/metaletf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 15
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Nifty India New Age Consumption ETF",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/b2cetf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 76
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Small Cap Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/mascf-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 77
+  },
+  {
+   "name": "Portfolio Details as on 31st October 2025 for Mirae Asset Large Cap Fund",
+   "url": "https://www.miraeassetmf.co.in/docs/default-source/portfolios/miiof-oct2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 85
+  }
+ ],
+ "schemes": {
+  "Mirae Asset Nifty50 Equal Weight ETF": {
+   "eq": 51,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.96,
+   "eq_cr": 92.24,
+   "total_cr": 92.29
+  },
+  "Mirae Asset Nifty 100 Low Volatility 30 ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.967,
+   "eq_cr": 48.82,
+   "total_cr": 48.84
+  },
+  "Mirae Asset Focused Fund": {
+   "eq": 31,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 7937.14,
+   "total_cr": 7979.98
+  },
+  "Mirae Asset Nifty 100 ESG Sector Leaders ETF": {
+   "eq": 60,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.983,
+   "eq_cr": 117.24,
+   "total_cr": 117.37
+  },
+  "Mirae Asset Nifty IT ETF": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 147.85,
+   "total_cr": 148.8
+  },
+  "Mirae Asset Healthcare Fund": {
+   "eq": 31,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2801.79,
+   "total_cr": 2821.22
+  },
+  "Mirae Asset Balanced Advantage Fund": {
+   "eq": 109,
+   "fut": 45,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.953,
+   "eq_cr": 1319.84,
+   "total_cr": 1980.91
+  },
+  "Mirae Asset Nifty Smallcap 250 Momentum Quality 100 ETF": {
+   "eq": 100,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.92,
+   "eq_cr": 715.1,
+   "total_cr": 714.95
+  },
+  "Mirae Asset Nifty India Internet ETF": {
+   "eq": 21,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.952,
+   "eq_cr": 16.52,
+   "total_cr": 16.52
+  },
+  "Mirae Asset BSE Sensex ETF": {
+   "eq": 31,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.933,
+   "eq_cr": 20.12,
+   "total_cr": 20.16
+  },
+  "Mirae Asset Midcap Fund": {
+   "eq": 69,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.97,
+   "eq_cr": 17676.35,
+   "total_cr": 18112.14
+  },
+  "Mirae Asset Flexi Cap Fund": {
+   "eq": 88,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.953,
+   "eq_cr": 3254.87,
+   "total_cr": 3303.69
+  },
+  "Mirae Asset Nifty Bank ETF": {
+   "eq": 12,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.917,
+   "eq_cr": 267.37,
+   "total_cr": 267.34
+  },
+  "Mirae Asset Nifty 200 Alpha 30 ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.967,
+   "eq_cr": 432.14,
+   "total_cr": 432.02
+  },
+  "Mirae Asset Large & Midcap Fund": {
+   "eq": 90,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.954,
+   "eq_cr": 42565.53,
+   "total_cr": 42980.74
+  },
+  "Mirae Asset Nifty Midsmallcap400 Momentum Quality 100 ETF": {
+   "eq": 100,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.95,
+   "eq_cr": 386.07,
+   "total_cr": 385.99
+  },
+  "Mirae Asset Aggressive Hybrid Fund": {
+   "eq": 79,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.948,
+   "eq_cr": 7160.64,
+   "total_cr": 9424.67
+  },
+  "Mirae Asset Nifty 50 Index Fund": {
+   "eq": 51,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.96,
+   "eq_cr": 37.9,
+   "total_cr": 37.93
+  },
+  "Mirae Asset Nifty India Manufacturing ETF": {
+   "eq": 75,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 218.16,
+   "total_cr": 218.17
+  },
+  "Mirae Asset Nifty Midcap 150 ETF": {
+   "eq": 150,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.987,
+   "eq_cr": 1254.4,
+   "total_cr": 1254.47
+  },
+  "Mirae Asset Nifty500 Multicap 50:25:25 ETF": {
+   "eq": 503,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.964,
+   "eq_cr": 51.77,
+   "total_cr": 51.9
+  },
+  "Mirae Asset Nifty PSU Bank ETF": {
+   "eq": 12,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 53.61,
+   "total_cr": 53.61
+  },
+  "Mirae Asset Banking and Financial Services Fund": {
+   "eq": 28,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.929,
+   "eq_cr": 2082.48,
+   "total_cr": 2130.33
+  },
+  "Mirae Asset Nifty Total Market Index Fund": {
+   "eq": 753,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.966,
+   "eq_cr": 47.04,
+   "total_cr": 47.23
+  },
+  "Mirae Asset Equity Savings Fund": {
+   "eq": 120,
+   "fut": 69,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.958,
+   "eq_cr": 1143.42,
+   "total_cr": 1732.38
+  },
+  "Mirae Asset Nifty EV and New Age Automotive ETF": {
+   "eq": 36,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 170.95,
+   "total_cr": 170.93
+  },
+  "Mirae Asset Nifty LargeMidcap 250 Index Fund": {
+   "eq": 251,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 29.25,
+   "total_cr": 29.29
+  },
+  "Mirae Asset Nifty 50 ETF": {
+   "eq": 51,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.96,
+   "eq_cr": 4710.72,
+   "total_cr": 4714.74
+  },
+  "Mirae Asset BSE 200 Equal Weight ETF": {
+   "eq": 201,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 14.92,
+   "total_cr": 14.94
+  },
+  "Mirae Asset Multicap Fund": {
+   "eq": 79,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.948,
+   "eq_cr": 4311.23,
+   "total_cr": 4388.81
+  },
+  "Mirae Asset Nifty Financial Services ETF": {
+   "eq": 20,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.95,
+   "eq_cr": 438.27,
+   "total_cr": 438.29
+  },
+  "Mirae Asset Nifty Next 50 ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 871.8,
+   "total_cr": 872.47
+  },
+  "Mirae Asset BSE Select IPO ETF": {
+   "eq": 65,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.938,
+   "eq_cr": 18.17,
+   "total_cr": 18.16
+  },
+  "Mirae Asset Great Consumer Fund": {
+   "eq": 41,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.975,
+   "eq_cr": 4733.14,
+   "total_cr": 4769.48
+  },
+  "Mirae Asset Arbitrage Fund": {
+   "eq": 177,
+   "fut": 180,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.96,
+   "eq_cr": 2803.49,
+   "total_cr": 3422.28
+  },
+  "Mirae Asset Multi Asset Allocation Fund": {
+   "eq": 121,
+   "fut": 61,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.949,
+   "eq_cr": 1701.26,
+   "total_cr": 2514.99
+  },
+  "Mirae Asset ELSS Tax Saver Fund": {
+   "eq": 76,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.958,
+   "eq_cr": 26646.95,
+   "total_cr": 27069.09
+  },
+  "Mirae Asset Nifty Metal ETF": {
+   "eq": 15,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 93.03,
+   "total_cr": 93.01
+  },
+  "Mirae Asset Nifty India New Age Consumption ETF": {
+   "eq": 76,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.933,
+   "eq_cr": 38.02,
+   "total_cr": 38.04
+  },
+  "Mirae Asset Small Cap Fund": {
+   "eq": 77,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.934,
+   "eq_cr": 2566.72,
+   "total_cr": 2729.09
+  },
+  "Mirae Asset Large Cap Fund": {
+   "eq": 85,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.951,
+   "eq_cr": 40942.95,
+   "total_cr": 41087.55
+  }
+ },
+ "rows": 4410,
+ "eq_cr": 179939.3,
+ "warn": []
+}

@@ -1,0 +1,109 @@
+{
+ "code": "nj",
+ "amc": "NJ Mutual Fund",
+ "month": "2026-08",
+ "fetched": "2026-10-15 20:07",
+ "files": [
+  {
+   "name": "NJ_MF_Monthly_Portfolio_NJVAF_August_2026",
+   "url": "https://downloads.njmutualfund.com/viewfile.php?file=NJ-MF-Monthly-Portfolio-NJVAF-August-2026-20260910041959.xlsx",
+   "schemes": 1,
+   "eq_rows": 75
+  },
+  {
+   "name": "NJ_MF_Monthly_Portfolio_NJMOF_August_2026",
+   "url": "https://downloads.njmutualfund.com/viewfile.php?file=NJ-MF-Monthly-Portfolio-NJMOF-August-2026-20260910041934.xlsx",
+   "schemes": 1,
+   "eq_rows": 40
+  },
+  {
+   "name": "NJ_MF_Monthly_Portfolio_NJELSTCH_August_2026",
+   "url": "https://downloads.njmutualfund.com/viewfile.php?file=NJ-MF-Monthly-Portfolio-NJELSTCH-August-2026-20260910041907.xlsx",
+   "schemes": 1,
+   "eq_rows": 25
+  },
+  {
+   "name": "NJ_MF_Monthly_Portfolio_NJFCP_August_2026",
+   "url": "https://downloads.njmutualfund.com/viewfile.php?file=NJ-MF-Monthly-Portfolio-NJFCP-August-2026-20260910041845.xlsx",
+   "schemes": 1,
+   "eq_rows": 49
+  },
+  {
+   "name": "NJ_MF_Monthly_Portfolio_NJABF_August_2026",
+   "url": "https://downloads.njmutualfund.com/viewfile.php?file=NJ-MF-Monthly-Portfolio-NJABF-August-2026-20260910041826.xlsx",
+   "schemes": 1,
+   "eq_rows": 61
+  },
+  {
+   "name": "NJ_MF_Monthly_Portfolio_NJOVERFD_August_2026",
+   "url": "https://downloads.njmutualfund.com/viewfile.php?file=NJ-MF-Monthly-Portfolio-NJOVERFD-August-2026-20260910041806.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "NJ_MF_Monthly_Portfolio_NJBAF_August_2026",
+   "url": "https://downloads.njmutualfund.com/viewfile.php?file=NJ-MF-Monthly-Portfolio-NJBAF-August-2026-20260910041738.xlsx",
+   "schemes": 1,
+   "eq_rows": 120
+  }
+ ],
+ "schemes": {
+  "NJ Value Fund": {
+   "eq": 75,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 198.83,
+   "total_cr": null
+  },
+  "NJ Momentum Fund": {
+   "eq": 40,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 340.23,
+   "total_cr": null
+  },
+  "NJ ELSS Tax Saver Fund": {
+   "eq": 25,
+   "fut": 0,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 347.31,
+   "total_cr": null
+  },
+  "NJ Flexi Cap Fund": {
+   "eq": 49,
+   "fut": 4,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2624.17,
+   "total_cr": null
+  },
+  "NJ Arbitrage Fund": {
+   "eq": 61,
+   "fut": 206,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 196.01,
+   "total_cr": null
+  },
+  "NJ Balanced Advantage Fund": {
+   "eq": 120,
+   "fut": 222,
+   "date": "2026-08-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 3138.93,
+   "total_cr": null
+  }
+ },
+ "rows": 802,
+ "eq_cr": 6845.5,
+ "warn": []
+}

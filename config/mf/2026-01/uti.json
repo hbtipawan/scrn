@@ -1,0 +1,480 @@
+{
+ "code": "uti",
+ "amc": "UTI Mutual Fund",
+ "month": "2026-01",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-10-15 21:20",
+ "files": [
+  {
+   "name": "Consolidated Portfolio January 2026",
+   "url": "https://d3ce1o48hc5oli.cloudfront.net/s3fs-public/2026-02/fw_uti_mf_scheme_portfolios_31.01.2026_1.zip?VersionId=xkJ3oDaGr6oBLeRnpY_d.ZaVg5vLenyU",
+   "schemes": 85,
+   "eq_rows": 2919
+  }
+ ],
+ "schemes": {
+  "UTI - Unit Linked Insurance Plan": {
+   "eq": 58,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 1935.21,
+   "total_cr": null
+  },
+  "UTI - Large Cap Fund": {
+   "eq": 59,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.966,
+   "eq_cr": 12348.62,
+   "total_cr": null
+  },
+  "UTI - Flexi Cap Fund.": {
+   "eq": 58,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.982,
+   "eq_cr": 22802.04,
+   "total_cr": null
+  },
+  "UTI Large & Mid Cap Fund": {
+   "eq": 74,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.986,
+   "eq_cr": 5316.1,
+   "total_cr": null
+  },
+  "UTI Children's Hybrid Fund": {
+   "eq": 63,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.984,
+   "eq_cr": 1689.31,
+   "total_cr": null
+  },
+  "UTI Retirement Fund": {
+   "eq": 66,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.984,
+   "eq_cr": 1763.26,
+   "total_cr": null
+  },
+  "UTI Aggressive Hybrid Fund": {
+   "eq": 64,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.984,
+   "eq_cr": 4548.92,
+   "total_cr": null
+  },
+  "UTI - MNC Fund": {
+   "eq": 54,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2706.7,
+   "total_cr": null
+  },
+  "UTI - Healthcare Fund": {
+   "eq": 43,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.953,
+   "eq_cr": 1042.21,
+   "total_cr": null
+  },
+  "UTI ELSS Tax Saver Fund": {
+   "eq": 59,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.966,
+   "eq_cr": 3607.48,
+   "total_cr": null
+  },
+  "UTI Nifty 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 26489.93,
+   "total_cr": null
+  },
+  "UTI - Master Equity Plan Unit Scheme": {
+   "eq": 62,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.967,
+   "eq_cr": 2788.15,
+   "total_cr": null
+  },
+  "UTI Children's Equity Fund": {
+   "eq": 61,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.984,
+   "eq_cr": 1065.93,
+   "total_cr": null
+  },
+  "UTI - Mid Cap Fund": {
+   "eq": 89,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 11308.59,
+   "total_cr": null
+  },
+  "UTI - Infrastructure Fund": {
+   "eq": 63,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.918,
+   "eq_cr": 2044.15,
+   "total_cr": null
+  },
+  "UTI - Transportation and Logistics Fund": {
+   "eq": 42,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.976,
+   "eq_cr": 3749.23,
+   "total_cr": null
+  },
+  "UTI - Banking and Financial Services Fund": {
+   "eq": 31,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1363.15,
+   "total_cr": null
+  },
+  "UTI Conservative Hybrid Fund": {
+   "eq": 63,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.966,
+   "eq_cr": 404.98,
+   "total_cr": null
+  },
+  "UTI - Dividend Yield Fund": {
+   "eq": 52,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.981,
+   "eq_cr": 3613.09,
+   "total_cr": null
+  },
+  "UTI Value Fund": {
+   "eq": 60,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.966,
+   "eq_cr": 9730.33,
+   "total_cr": null
+  },
+  "UTI - Arbitrage Fund": {
+   "eq": 149,
+   "fut": 164,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.987,
+   "eq_cr": 7753.57,
+   "total_cr": null
+  },
+  "UTI - India Consumer Fund": {
+   "eq": 45,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.978,
+   "eq_cr": 671.62,
+   "total_cr": null
+  },
+  "UTI Multi Asset Allocation Fund": {
+   "eq": 80,
+   "fut": 16,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 4428.95,
+   "total_cr": null
+  },
+  "UTI Nifty 50 ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 68796.42,
+   "total_cr": null
+  },
+  "UTI BSE Sensex ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.967,
+   "eq_cr": 53547.83,
+   "total_cr": null
+  },
+  "UTI - Nifty Next 50 Exchange Traded Fund.": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 2179.48,
+   "total_cr": null
+  },
+  "UTI - Nifty Next 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 6006.61,
+   "total_cr": null
+  },
+  "UTI - Equity Savings Fund": {
+   "eq": 46,
+   "fut": 27,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.978,
+   "eq_cr": 538.92,
+   "total_cr": null
+  },
+  "UTI - BSE Sensex Next 50 Exchange Traded Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 29.62,
+   "total_cr": null
+  },
+  "UTI Nifty Bank ETF": {
+   "eq": 14,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 3977.61,
+   "total_cr": null
+  },
+  "UTI Small Cap Fund": {
+   "eq": 91,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.923,
+   "eq_cr": 4329.6,
+   "total_cr": null
+  },
+  "UTI Nifty 200 Momentum 30 Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 8444.05,
+   "total_cr": null
+  },
+  "UTI Focused Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2449.83,
+   "total_cr": null
+  },
+  "UTI BSE Sensex Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.967,
+   "eq_cr": 207.22,
+   "total_cr": null
+  },
+  "UTI BSE Low Volatility Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 534.83,
+   "total_cr": null
+  },
+  "UTI Nifty Midcap 150 Quality 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 234.27,
+   "total_cr": null
+  },
+  "UTI Nifty 500 Value 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 588.18,
+   "total_cr": null
+  },
+  "UTI Nifty50 Equal Weight Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 122.35,
+   "total_cr": null
+  },
+  "UTI BSE Housing Index Fund": {
+   "eq": 25,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 23.98,
+   "total_cr": null
+  },
+  "UTI Balanced Advantage Fund": {
+   "eq": 63,
+   "fut": 23,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2164.79,
+   "total_cr": null
+  },
+  "UTI Nifty Midcap 150 Exchange Traded Fund": {
+   "eq": 150,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.993,
+   "eq_cr": 12.27,
+   "total_cr": null
+  },
+  "UTI Innovation Fund": {
+   "eq": 28,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 721.47,
+   "total_cr": null
+  },
+  "UTI Nifty IT ETF": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 5.42,
+   "total_cr": null
+  },
+  "UTI Nifty 200 Quality 30 Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 640.98,
+   "total_cr": null
+  },
+  "UTI Nifty Private Bank Index Fund": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 226.75,
+   "total_cr": null
+  },
+  "UTI Nifty Alpha Low-Volatility 30 Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 71.77,
+   "total_cr": null
+  },
+  "UTI Nifty Midcap 150 Index Fund": {
+   "eq": 150,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.993,
+   "eq_cr": 59.89,
+   "total_cr": null
+  },
+  "UTI Quant Fund": {
+   "eq": 76,
+   "fut": 3,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1763.63,
+   "total_cr": null
+  },
+  "UTI Nifty Midsmallcap 400 Momentum Quality 100 Index Fund": {
+   "eq": 100,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.96,
+   "eq_cr": 92.87,
+   "total_cr": null
+  },
+  "UTI Nifty India Manufacturing Index Fund": {
+   "eq": 74,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 26.13,
+   "total_cr": null
+  },
+  "UTI Multi Cap Fund": {
+   "eq": 77,
+   "fut": 0,
+   "date": "2026-01-31",
+   "unit": "lakh",
+   "price_match": 0.987,
+   "eq_cr": 1709.37,
+   "total_cr": null
+  }
+ },
+ "rows": 3152,
+ "eq_cr": 292677.7,
+ "warn": []
+}

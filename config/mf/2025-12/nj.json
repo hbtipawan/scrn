@@ -1,0 +1,81 @@
+{
+ "code": "nj",
+ "amc": "NJ Mutual Fund",
+ "month": "2025-12",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-10-15 21:16",
+ "files": [
+  {
+   "name": "Monthly Portfolio - December 31, 2025 - NJ Overnight Fund",
+   "url": "https://downloads.njmutualfund.com/viewfile.php?file=NJ-MF-Monthly-Portfolio-NJOVERFD-December-2025-20260108045342.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Monthly Portfolio - December 31, 2025 - NJ Flexi Cap Fund",
+   "url": "https://downloads.njmutualfund.com/viewfile.php?file=NJ-MF-Monthly-Portfolio-NJFCP-December-2025-20260108045319.xlsx",
+   "schemes": 1,
+   "eq_rows": 52
+  },
+  {
+   "name": "Monthly Portfolio - December 31, 2025 - NJ Balanced Advantage Fund",
+   "url": "https://downloads.njmutualfund.com/viewfile.php?file=NJ-MF-Monthly-Portfolio-NJBAF-December-2025-20260108045258.xlsx",
+   "schemes": 1,
+   "eq_rows": 97
+  },
+  {
+   "name": "Monthly Portfolio - December 31, 2025 - NJ Arbitrage Fund",
+   "url": "https://downloads.njmutualfund.com/viewfile.php?file=NJ-MF-Monthly-Portfolio-NJABF-December-2025-20260108045236.xlsx",
+   "schemes": 1,
+   "eq_rows": 44
+  },
+  {
+   "name": "Monthly Portfolio - December 31, 2025 - NJ ELSS Tax Saver Scheme",
+   "url": "https://downloads.njmutualfund.com/viewfile.php?file=NJ-MF-Monthly-Portfolio-NJELSTCH-December-2025-20260108045210.xlsx",
+   "schemes": 1,
+   "eq_rows": 26
+  }
+ ],
+ "schemes": {
+  "NJ Flexi Cap Fund": {
+   "eq": 52,
+   "fut": 0,
+   "date": "2025-12-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 2495.63,
+   "total_cr": null
+  },
+  "NJ Balanced Advantage Fund": {
+   "eq": 97,
+   "fut": 120,
+   "date": "2025-12-31",
+   "unit": "lakh",
+   "price_match": 0.979,
+   "eq_cr": 3455.52,
+   "total_cr": null
+  },
+  "NJ Arbitrage Fund": {
+   "eq": 44,
+   "fut": 98,
+   "date": "2025-12-31",
+   "unit": "lakh",
+   "price_match": 0.955,
+   "eq_cr": 210.53,
+   "total_cr": null
+  },
+  "NJ ELSS Tax Saver Scheme": {
+   "eq": 26,
+   "fut": 0,
+   "date": "2025-12-31",
+   "unit": "lakh",
+   "price_match": 0.962,
+   "eq_cr": 313.42,
+   "total_cr": null
+  }
+ },
+ "rows": 437,
+ "eq_cr": 6475.1,
+ "warn": []
+}

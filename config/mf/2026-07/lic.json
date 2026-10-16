@@ -1,0 +1,306 @@
+{
+ "code": "lic",
+ "amc": "LIC Mutual Fund",
+ "month": "2026-07",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-10-16 00:55",
+ "files": [
+  {
+   "name": "LIC MF Monthly Debt Portfolio_Jul-26.xlsx",
+   "url": "https://www.licmf.com/assets/pdf/statuary_disclosure_new/21/LIC%20MF%20Monthly%20Debt%20Portfolio_Jul-26.xlsx",
+   "schemes": 11,
+   "eq_rows": 23
+  },
+  {
+   "name": "LIC MF Monthly Equity Portfolio_Jul-26.xlsx",
+   "url": "https://www.licmf.com/assets/pdf/statuary_disclosure_new/21/LIC%20MF%20Monthly%20Equity%20Portfolio_Jul-26.xlsx",
+   "schemes": 32,
+   "eq_rows": 1440
+  }
+ ],
+ "schemes": {
+  "LIC MF Conservative Hybrid Fund": {
+   "eq": 23,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 8.95,
+   "total_cr": 46.99
+  },
+  "LIC MF Arbitrage Fund": {
+   "eq": 37,
+   "fut": 46,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 227.94,
+   "total_cr": 265.17
+  },
+  "LIC MF Balanced Advantage Fund": {
+   "eq": 47,
+   "fut": 3,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 537.23,
+   "total_cr": 685.96
+  },
+  "LIC MF Aggressive Hybrid Fund": {
+   "eq": 43,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 381.38,
+   "total_cr": 540.08
+  },
+  "LIC MF Banking and Financial Services Fund": {
+   "eq": 25,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 264.34,
+   "total_cr": 269.81
+  },
+  "LIC MF Children\u2019s Fund": {
+   "eq": 37,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 12.93,
+   "total_cr": 15.99
+  },
+  "LIC MF Consumption Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 469.19,
+   "total_cr": 478.56
+  },
+  "LIC MF Dividend Yield Fund": {
+   "eq": 57,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 699.39,
+   "total_cr": 730.55
+  },
+  "LIC MF Healthcare Fund": {
+   "eq": 22,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 94.66,
+   "total_cr": 97.66
+  },
+  "LIC MF Mid cap Fund": {
+   "eq": 52,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 365.41,
+   "total_cr": 375.9
+  },
+  "LIC MF Equity Savings Fund": {
+   "eq": 58,
+   "fut": 27,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 25.57,
+   "total_cr": 37.69
+  },
+  "LIC MF Flexi Cap Fund": {
+   "eq": 42,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1042.88,
+   "total_cr": 1074.74
+  },
+  "LIC MF Small Cap Fund": {
+   "eq": 57,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 729.79,
+   "total_cr": 758.09
+  },
+  "LIC MF Focused Fund": {
+   "eq": 28,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 161.91,
+   "total_cr": 172.68
+  },
+  "LIC MF Large Cap Fund": {
+   "eq": 44,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1362.3,
+   "total_cr": 1387.49
+  },
+  "LIC MF Infrastructure Fund": {
+   "eq": 53,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1083.86,
+   "total_cr": 1144.81
+  },
+  "LIC MF Nifty 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 368.29,
+   "total_cr": 370.79
+  },
+  "LIC MF BSE Sensex Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 91.87,
+   "total_cr": 92.62
+  },
+  "LIC MF Value Fund": {
+   "eq": 49,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 249.0,
+   "total_cr": 261.47
+  },
+  "LIC MF Multi Asset Allocation Fund": {
+   "eq": 48,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 681.21,
+   "total_cr": 978.04
+  },
+  "LIC MF Nifty Midcap 100 ETF": {
+   "eq": 100,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 667.56,
+   "total_cr": 669.26
+  },
+  "LIC MF Manufacturing Fund": {
+   "eq": 52,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 747.0,
+   "total_cr": 782.04
+  },
+  "LIC MF Large & Mid Cap Fund": {
+   "eq": 40,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 3095.68,
+   "total_cr": 3132.53
+  },
+  "LIC MF Multi Cap Fund": {
+   "eq": 64,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2033.47,
+   "total_cr": 2130.39
+  },
+  "LIC MF Nifty Next 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 110.44,
+   "total_cr": 110.6
+  },
+  "LIC MF Nifty 100 ETF": {
+   "eq": 100,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 744.92,
+   "total_cr": 748.55
+  },
+  "LIC MF Monthly Equity Portfolio_Jul-26": {
+   "eq": 54,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 997.65,
+   "total_cr": 1030.39
+  },
+  "LIC MF Technology Fund": {
+   "eq": 31,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 85.39,
+   "total_cr": 92.79
+  },
+  "LIC MF Nifty 50 ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 872.9,
+   "total_cr": 877.74
+  },
+  "LIC MF BSE Sensex ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 723.25,
+   "total_cr": 727.33
+  },
+  "LIC MF Unit Linked Insurance Scheme": {
+   "eq": 40,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 337.95,
+   "total_cr": 442.93
+  }
+ },
+ "rows": 1539,
+ "eq_cr": 19274.3,
+ "warn": []
+}

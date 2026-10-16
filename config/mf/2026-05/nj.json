@@ -1,0 +1,81 @@
+{
+ "code": "nj",
+ "amc": "NJ Mutual Fund",
+ "month": "2026-05",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-10-16 01:03",
+ "files": [
+  {
+   "name": "NJ_MF_Monthly_Portfolio_NJELSTCH_May 2026",
+   "url": "https://downloads.njmutualfund.com/viewfile.php?file=NJ-MF-Monthly-Portfolio-NJELSTCH-May-2026-20260609110444.xlsx",
+   "schemes": 1,
+   "eq_rows": 25
+  },
+  {
+   "name": "NJ_MF_Monthly_Portfolio_NJFCP_May 2026",
+   "url": "https://downloads.njmutualfund.com/viewfile.php?file=NJ-MF-Monthly-Portfolio-NJFCP-May-2026-20260609110402.xlsx",
+   "schemes": 1,
+   "eq_rows": 50
+  },
+  {
+   "name": "NJ_MF_Monthly_Portfolio_NJABF_May 2026",
+   "url": "https://downloads.njmutualfund.com/viewfile.php?file=NJ-MF-Monthly-Portfolio-NJABF-May-2026-20260609110333.xlsx",
+   "schemes": 1,
+   "eq_rows": 63
+  },
+  {
+   "name": "NJ_MF_Monthly_Portfolio_NJOVERFD_May 2026",
+   "url": "https://downloads.njmutualfund.com/viewfile.php?file=NJ-MF-Monthly-Portfolio-NJOVERFD-May-2026-20260609110307.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "NJ_MF_Monthly_Portfolio_NJBAF_May 2026",
+   "url": "https://downloads.njmutualfund.com/viewfile.php?file=NJ-MF-Monthly-Portfolio-NJBAF-May-2026-20260609110237.xlsx",
+   "schemes": 1,
+   "eq_rows": 124
+  }
+ ],
+ "schemes": {
+  "NJ ELSS Tax Saver Scheme": {
+   "eq": 25,
+   "fut": 0,
+   "date": "2026-05-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 326.03,
+   "total_cr": null
+  },
+  "NJ Flexi Cap Fund": {
+   "eq": 50,
+   "fut": 4,
+   "date": "2026-05-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2480.77,
+   "total_cr": null
+  },
+  "NJ Arbitrage Fund": {
+   "eq": 63,
+   "fut": 142,
+   "date": "2026-05-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 225.07,
+   "total_cr": null
+  },
+  "NJ Balanced Advantage Fund": {
+   "eq": 124,
+   "fut": 232,
+   "date": "2026-05-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 3090.81,
+   "total_cr": null
+  }
+ },
+ "rows": 640,
+ "eq_cr": 6122.7,
+ "warn": []
+}

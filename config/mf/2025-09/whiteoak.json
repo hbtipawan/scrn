@@ -1,0 +1,282 @@
+{
+ "code": "whiteoak",
+ "amc": "WhiteOak Capital Mutual Fund",
+ "month": "2025-09",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-10-15 20:45",
+ "files": [
+  {
+   "name": "WhiteOak Capital Ultra Short Duration Fund Monthly Portfolio Disclosure - 30th September2025",
+   "url": "https://content.whiteoakamc.com/WOC_Ultra_Short_Duration_Fund_Sep25_45020b4765.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "WhiteOak Capital Special Opportunities Fund Monthly Portfolio Disclosure - 30th September2025",
+   "url": "https://content.whiteoakamc.com/WOC_Special_Opportunities_Fund_Sep25_50c475a60c.xlsx",
+   "schemes": 1,
+   "eq_rows": 68
+  },
+  {
+   "name": "WhiteOak Capital Quality Equity Fund Monthly Portfolio Disclosure - 30th September2025",
+   "url": "https://content.whiteoakamc.com/WOC_Quality_Equity_Fund_Sep25_e42bbc5d49.xlsx",
+   "schemes": 1,
+   "eq_rows": 64
+  },
+  {
+   "name": "WhiteOak Capital Pharma and Healthcare Fund Monthly Portfolio Disclosure - 30th September2025",
+   "url": "https://content.whiteoakamc.com/WOC_Pharma_and_Healthcare_Fund_Sep25_1ad3980033.xlsx",
+   "schemes": 1,
+   "eq_rows": 44
+  },
+  {
+   "name": "WhiteOak Capital Multi Cap Fund Monthly Portfolio Disclosure - 30th September2025",
+   "url": "https://content.whiteoakamc.com/WOC_Multi_Cap_Fund_Sep25_9fc379d01f.xlsx",
+   "schemes": 1,
+   "eq_rows": 180
+  },
+  {
+   "name": "WhiteOak Capital Multi Asset Allocation Fund Monthly Portfolio Disclosure - 30th September2025",
+   "url": "https://content.whiteoakamc.com/WOC_Multi_Asset_Allocation_Fund_Sep25_2a65f4229d.xlsx",
+   "schemes": 1,
+   "eq_rows": 104
+  },
+  {
+   "name": "WhiteOak Capital Mid Cap Fund Monthly Portfolio Disclosure - 30th September2025",
+   "url": "https://content.whiteoakamc.com/WOC_Midcap_Fund_Sep25_6158b29c86.xlsx",
+   "schemes": 1,
+   "eq_rows": 120
+  },
+  {
+   "name": "WhiteOak Capital Liquid Fund Monthly Portfolio Disclosure - 30th September2025",
+   "url": "https://content.whiteoakamc.com/WOC_Liquid_Fund_Sep25_47cde29826.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "WhiteOak Capital Large Cap Fund Monthly Portfolio Disclosure - 30th September2025",
+   "url": "https://content.whiteoakamc.com/WOC_Largecap_Fund_Sep25_24f89e69e0.xlsx",
+   "schemes": 1,
+   "eq_rows": 63
+  },
+  {
+   "name": "WhiteOak Capital Large & Mid Cap Fund Monthly Portfolio Disclosure - 30th September2025",
+   "url": "https://content.whiteoakamc.com/WOC_Large_and_Midcap_Fund_Sep25_ab2fd20859.xlsx",
+   "schemes": 1,
+   "eq_rows": 111
+  },
+  {
+   "name": "WhiteOak Capital Flexi Cap Fund Monthly Portfolio Disclosure - 30th September2025",
+   "url": "https://content.whiteoakamc.com/WOC_Flexicap_Fund_Sep25_dfea221835.xlsx",
+   "schemes": 1,
+   "eq_rows": 126
+  },
+  {
+   "name": "WhiteOak Capital ESG Best-In-Class Strategy Fund Monthly Portfolio Disclosure - 30th September2025",
+   "url": "https://content.whiteoakamc.com/WOC_ESG_BIC_Fund_Sep2025_6f9957980a.xlsx",
+   "schemes": 1,
+   "eq_rows": 62
+  },
+  {
+   "name": "WhiteOak Capital Equity Savings Fund Monthly Portfolio Disclosure - 30th September2025",
+   "url": "https://content.whiteoakamc.com/WOC_Equity_Savings_Fund_Sep25_b3c685eeeb.xlsx",
+   "schemes": 1,
+   "eq_rows": 118
+  },
+  {
+   "name": "WhiteOak Capital ELSS Tax Saver Fund Monthly Portfolio Disclosure - 30th September2025",
+   "url": "https://content.whiteoakamc.com/WOC_ELSS_Tax_Saver_Fund_Sep25_da69e861be.xlsx",
+   "schemes": 1,
+   "eq_rows": 138
+  },
+  {
+   "name": "WhiteOak Capital Digital Bharat Fund Monthly Portfolio Disclosure - 30th September2025",
+   "url": "https://content.whiteoakamc.com/WOC_Digital_Bharat_Fund_Sep25_2dfac99f1e.xlsx",
+   "schemes": 1,
+   "eq_rows": 39
+  },
+  {
+   "name": "WhiteOak Capital Banking & Financial Services Fund Monthly Portfolio Disclosure - 30th September2025",
+   "url": "https://content.whiteoakamc.com/WOC_Banking_and_Financial_Services_Fund_Sep25_bf9905f731.xlsx",
+   "schemes": 1,
+   "eq_rows": 38
+  },
+  {
+   "name": "WhiteOak Capital Balanced Hybrid Fund Monthly Portfolio Disclosure - 30th September2025",
+   "url": "https://content.whiteoakamc.com/WOC_Balanced_Hybrid_Fund_Sep25_9e5f851cf4.xlsx",
+   "schemes": 1,
+   "eq_rows": 101
+  },
+  {
+   "name": "WhiteOak Capital Balanced Advantage Fund Monthly Portfolio Disclosure - 30th September2025",
+   "url": "https://content.whiteoakamc.com/WOC_Balanced_Advantage_Fund_Sep25_ff5965e502.xlsx",
+   "schemes": 1,
+   "eq_rows": 99
+  },
+  {
+   "name": "WhiteOak Capital Arbitrage Fund Monthly Portfolio Disclosure - 30th September2025",
+   "url": "https://content.whiteoakamc.com/WOC_Arbitrage_Fund_Sep25_ac05801328.xlsx",
+   "schemes": 1,
+   "eq_rows": 117
+  }
+ ],
+ "schemes": {
+  "WhiteOak Capital Special Opportunities Fund": {
+   "eq": 68,
+   "fut": 5,
+   "date": "2025-09-30",
+   "unit": "lakh",
+   "price_match": 0.922,
+   "eq_cr": 1022.54,
+   "total_cr": 1186.55
+  },
+  "WhiteOak Capital Quality Equity Fund": {
+   "eq": 64,
+   "fut": 6,
+   "date": "2025-09-30",
+   "unit": "lakh",
+   "price_match": 0.918,
+   "eq_cr": 521.02,
+   "total_cr": 608.38
+  },
+  "WhiteOak Capital Pharma and Healthcare Fund": {
+   "eq": 44,
+   "fut": 7,
+   "date": "2025-09-30",
+   "unit": "lakh",
+   "price_match": 0.927,
+   "eq_cr": 394.28,
+   "total_cr": 442.67
+  },
+  "WhiteOak Capital Multi Cap Fund": {
+   "eq": 180,
+   "fut": 13,
+   "date": "2025-09-30",
+   "unit": "lakh",
+   "price_match": 0.936,
+   "eq_cr": 2109.2,
+   "total_cr": 2405.4
+  },
+  "WhiteOak Capital Multi Asset Allocation Fund": {
+   "eq": 104,
+   "fut": 19,
+   "date": "2025-09-30",
+   "unit": "lakh",
+   "price_match": 0.94,
+   "eq_cr": 1435.8,
+   "total_cr": 3942.58
+  },
+  "WhiteOak Capital Mid Cap Fund": {
+   "eq": 120,
+   "fut": 8,
+   "date": "2025-09-30",
+   "unit": "lakh",
+   "price_match": 0.931,
+   "eq_cr": 3283.19,
+   "total_cr": 3731.43
+  },
+  "WhiteOak Capital Large Cap Fund": {
+   "eq": 63,
+   "fut": 8,
+   "date": "2025-09-30",
+   "unit": "lakh",
+   "price_match": 0.933,
+   "eq_cr": 906.0,
+   "total_cr": 1046.93
+  },
+  "WhiteOak Capital Large & Mid Cap Fund": {
+   "eq": 111,
+   "fut": 12,
+   "date": "2025-09-30",
+   "unit": "lakh",
+   "price_match": 0.963,
+   "eq_cr": 1602.62,
+   "total_cr": 1840.29
+  },
+  "WhiteOak Capital Flexi Cap Fund": {
+   "eq": 126,
+   "fut": 9,
+   "date": "2025-09-30",
+   "unit": "lakh",
+   "price_match": 0.926,
+   "eq_cr": 5273.27,
+   "total_cr": 6003.13
+  },
+  "WhiteOak Capital ESG Best-In-Class Strategy Fund": {
+   "eq": 62,
+   "fut": 6,
+   "date": "2025-09-30",
+   "unit": "lakh",
+   "price_match": 0.949,
+   "eq_cr": 61.86,
+   "total_cr": 68.37
+  },
+  "WhiteOak Capital Equity Savings Fund": {
+   "eq": 118,
+   "fut": 43,
+   "date": "2025-09-30",
+   "unit": "lakh",
+   "price_match": 0.948,
+   "eq_cr": 103.68,
+   "total_cr": 155.21
+  },
+  "WhiteOak Capital ELSS Tax Saver Fund": {
+   "eq": 138,
+   "fut": 0,
+   "date": "2025-09-30",
+   "unit": "lakh",
+   "price_match": 0.931,
+   "eq_cr": 401.2,
+   "total_cr": 414.27
+  },
+  "WhiteOak Capital Digital Bharat Fund": {
+   "eq": 39,
+   "fut": 4,
+   "date": "2025-09-30",
+   "unit": "lakh",
+   "price_match": 0.889,
+   "eq_cr": 336.46,
+   "total_cr": 367.05
+  },
+  "WhiteOak Capital Banking & Financial Services Fund": {
+   "eq": 38,
+   "fut": 4,
+   "date": "2025-09-30",
+   "unit": "lakh",
+   "price_match": 0.865,
+   "eq_cr": 449.41,
+   "total_cr": 483.64
+  },
+  "WhiteOak Capital Balanced Hybrid Fund": {
+   "eq": 101,
+   "fut": 1,
+   "date": "2025-09-30",
+   "unit": "lakh",
+   "price_match": 0.939,
+   "eq_cr": 117.47,
+   "total_cr": 225.13
+  },
+  "WhiteOak Capital Balanced Advantage Fund": {
+   "eq": 99,
+   "fut": 14,
+   "date": "2025-09-30",
+   "unit": "lakh",
+   "price_match": 0.936,
+   "eq_cr": 1277.0,
+   "total_cr": 1897.02
+  },
+  "WhiteOak Capital Arbitrage Fund": {
+   "eq": 117,
+   "fut": 118,
+   "date": "2025-09-30",
+   "unit": "lakh",
+   "price_match": 0.94,
+   "eq_cr": 508.81,
+   "total_cr": 665.18
+  }
+ },
+ "rows": 1869,
+ "eq_cr": 19803.8,
+ "warn": []
+}

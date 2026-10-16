@@ -1,0 +1,79 @@
+{
+ "code": "samco",
+ "amc": "Samco Mutual Fund",
+ "month": "2026-04",
+ "complete": false,
+ "failed_files": [
+  "scheme count 4 < 80% of 12"
+ ],
+ "fetched": "2026-10-16 01:10",
+ "files": [
+  {
+   "name": "IN_MF_MONTHLY_PORTFOLIO_April_2026_Samco_Flexicap_Fund_1778319427.xlsx",
+   "url": "https://www.samcomf.com/amc-document-download/IN_MF_MONTHLY_PORTFOLIO_April_2026_Samco_Flexicap_Fund_1778319427.xlsx",
+   "schemes": 1,
+   "eq_rows": 25
+  },
+  {
+   "name": "IN_MF_MONTHLY_PORTFOLIO_April_2026_SamcoLargeCapFund_1778319425.xlsx",
+   "url": "https://www.samcomf.com/amc-document-download/IN_MF_MONTHLY_PORTFOLIO_April_2026_SamcoLargeCapFund_1778319425.xlsx",
+   "schemes": 1,
+   "eq_rows": 29
+  },
+  {
+   "name": "IN_MF_MONTHLY_PORTFOLIO_April_2026_SamcoDynamicAssetAllocationFund_1778319361.xlsx",
+   "url": "https://www.samcomf.com/amc-document-download/IN_MF_MONTHLY_PORTFOLIO_April_2026_SamcoDynamicAssetAllocationFund_1778319361.xlsx",
+   "schemes": 1,
+   "eq_rows": 80
+  },
+  {
+   "name": "IN_MF_MONTHLY_PORTFOLIO_April_2026_Samco_Active_Momentum_Fund_1778319358.xlsx",
+   "url": "https://www.samcomf.com/amc-document-download/IN_MF_MONTHLY_PORTFOLIO_April_2026_Samco_Active_Momentum_Fund_1778319358.xlsx",
+   "schemes": 1,
+   "eq_rows": 55
+  }
+ ],
+ "schemes": {
+  "SAMCO FLEXICAP FUND": {
+   "eq": 25,
+   "fut": 0,
+   "date": null,
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 285.22,
+   "total_cr": 286.44
+  },
+  "SAMCO LARGE CAP FUND": {
+   "eq": 29,
+   "fut": 32,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 79.41,
+   "total_cr": 108.63
+  },
+  "SAMCO DYNAMIC ASSET ALLOCATION FUND": {
+   "eq": 80,
+   "fut": 62,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.973,
+   "eq_cr": 137.45,
+   "total_cr": 198.99
+  },
+  "SAMCO ACTIVE MOMENTUM FUND": {
+   "eq": 55,
+   "fut": 46,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.961,
+   "eq_cr": 546.6,
+   "total_cr": 646.61
+  }
+ },
+ "rows": 329,
+ "eq_cr": 1048.7,
+ "warn": [
+  "only 4 schemes against 12 last month \u2014 marked incomplete"
+ ]
+}

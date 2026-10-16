@@ -1,0 +1,111 @@
+{
+ "code": "helios",
+ "amc": "Helios Mutual Fund",
+ "month": "2025-12",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-10-15 21:16",
+ "files": [
+  {
+   "name": "December 2025",
+   "url": "https://www.heliosmf.in/wp-content/uploads/2026/01/Helios-Small-Cap-Fund-Monthly-Portfolio-as-on-31st-December-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 70
+  },
+  {
+   "name": "December 2025",
+   "url": "https://www.heliosmf.in/wp-content/uploads/2026/01/Helios-Overnight-Fund-Monthly-Portfolio-as-on-31st-December-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "December 2025",
+   "url": "https://www.heliosmf.in/wp-content/uploads/2026/01/Helios-Flexi-Cap-Fund-Monthly-Portfolio-as-on-31st-December-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 69
+  },
+  {
+   "name": "December 2025",
+   "url": "https://www.heliosmf.in/wp-content/uploads/2026/01/Helios-Balanced-Advantage-Fund-Monthly-Portfolio-as-on-31st-December-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 57
+  },
+  {
+   "name": "December 2025",
+   "url": "https://www.heliosmf.in/wp-content/uploads/2026/01/Helios-Financial-Services-Fund-Monthly-Portfolio-as-on-31st-December-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 26
+  },
+  {
+   "name": "December 2025",
+   "url": "https://www.heliosmf.in/wp-content/uploads/2026/01/Helios-Large-Mid-Cap-Fund-Monthly-Portfolio-as-on-31st-December-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 55
+  },
+  {
+   "name": "December 2025",
+   "url": "https://www.heliosmf.in/wp-content/uploads/2026/01/Helios-Mid-Cap-Fund-Monthly-Portfolio-as-on-31st-December-2025.xlsx",
+   "schemes": 1,
+   "eq_rows": 77
+  }
+ ],
+ "schemes": {
+  "Helios Small Cap Fund (Small Cap Fund": {
+   "eq": 70,
+   "fut": 0,
+   "date": "2025-12-31",
+   "unit": "lakh",
+   "price_match": 0.913,
+   "eq_cr": 605.91,
+   "total_cr": 621.21
+  },
+  "Helios Flexi Cap Fund": {
+   "eq": 69,
+   "fut": 0,
+   "date": "2025-12-31",
+   "unit": "lakh",
+   "price_match": 0.957,
+   "eq_cr": 5895.0,
+   "total_cr": 5932.48
+  },
+  "Helios Balanced Advantage Fund": {
+   "eq": 57,
+   "fut": 40,
+   "date": "2025-12-31",
+   "unit": "lakh",
+   "price_match": 0.965,
+   "eq_cr": 292.38,
+   "total_cr": 323.11
+  },
+  "Helios Financial Services Fund": {
+   "eq": 26,
+   "fut": 0,
+   "date": "2025-12-31",
+   "unit": "lakh",
+   "price_match": 0.885,
+   "eq_cr": 211.56,
+   "total_cr": 212.91
+  },
+  "Helios Large & Mid Cap Fund (Large & Mid Cap Fund": {
+   "eq": 55,
+   "fut": 0,
+   "date": "2025-12-31",
+   "unit": "lakh",
+   "price_match": 0.964,
+   "eq_cr": 657.16,
+   "total_cr": 670.85
+  },
+  "Helios Mid Cap Fund (Mid Cap Fund": {
+   "eq": 77,
+   "fut": 0,
+   "date": "2025-12-31",
+   "unit": "lakh",
+   "price_match": 0.934,
+   "eq_cr": 1142.33,
+   "total_cr": 1157.07
+  }
+ },
+ "rows": 394,
+ "eq_cr": 8804.3,
+ "warn": []
+}

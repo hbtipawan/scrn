@@ -1,0 +1,36 @@
+{
+ "code": "capitalmind",
+ "amc": "Capitalmind Mutual Fund",
+ "month": "2025-11",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-10-15 21:05",
+ "files": [
+  {
+   "name": "Capitalmind_Monthly_Portfolio_Disclosure_Nov_2025_42bf76fb73.xlsx",
+   "url": "https://capitalmindmf.com/uploads/Capitalmind_Monthly_Portfolio_Disclosure_Nov_2025_42bf76fb73.xlsx",
+   "schemes": 1,
+   "eq_rows": 53
+  },
+  {
+   "name": "Capitalmind_Liquid_Fund_Monthly_Portfolio_Disclosure_30th_Nov_2025_804866568f.xlsx",
+   "url": "https://capitalmindmf.com/uploads/Capitalmind_Liquid_Fund_Monthly_Portfolio_Disclosure_30th_Nov_2025_804866568f.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  }
+ ],
+ "schemes": {
+  "Capitalmind Flexi Cap Fund": {
+   "eq": 53,
+   "fut": 2,
+   "date": "2025-08-04",
+   "unit": "lakh",
+   "price_match": 0.962,
+   "eq_cr": 211.69,
+   "total_cr": 234.12
+  }
+ },
+ "rows": 55,
+ "eq_cr": 211.7,
+ "warn": []
+}

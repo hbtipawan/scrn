@@ -1,0 +1,81 @@
+{
+ "code": "nj",
+ "amc": "NJ Mutual Fund",
+ "month": "2026-04",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-10-16 00:53",
+ "files": [
+  {
+   "name": "NJ_MF_Monthly_Portfolio_NJBAF_April 2026",
+   "url": "https://downloads.njmutualfund.com/viewfile.php?file=NJ-MF-Monthly-Portfolio-NJBAF-April-2026-20260508105400.xlsx",
+   "schemes": 1,
+   "eq_rows": 121
+  },
+  {
+   "name": "NJ_MF_Monthly_Portfolio_NJOVERFD_April 2026",
+   "url": "https://downloads.njmutualfund.com/viewfile.php?file=NJ-MF-Monthly-Portfolio-NJOVERFD-April-2026-20260508105332.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "NJ_MF_Monthly_Portfolio_NJABF_April 2026",
+   "url": "https://downloads.njmutualfund.com/viewfile.php?file=NJ-MF-Monthly-Portfolio-NJABF-April-2026-20260508105301.xlsx",
+   "schemes": 1,
+   "eq_rows": 66
+  },
+  {
+   "name": "NJ_MF_Monthly_Portfolio_NJFCP_April 2026",
+   "url": "https://downloads.njmutualfund.com/viewfile.php?file=NJ-MF-Monthly-Portfolio-NJFCP-April-2026-20260508105235.xlsx",
+   "schemes": 1,
+   "eq_rows": 50
+  },
+  {
+   "name": "NJ_MF_Monthly_Portfolio_NJELSTCH_April 2026",
+   "url": "https://downloads.njmutualfund.com/viewfile.php?file=NJ-MF-Monthly-Portfolio-NJELSTCH-April-2026-20260508105148.xlsx",
+   "schemes": 1,
+   "eq_rows": 26
+  }
+ ],
+ "schemes": {
+  "NJ Balanced Advantage Fund": {
+   "eq": 121,
+   "fut": 234,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.992,
+   "eq_cr": 3094.62,
+   "total_cr": null
+  },
+  "NJ Arbitrage Fund": {
+   "eq": 66,
+   "fut": 170,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 216.81,
+   "total_cr": null
+  },
+  "NJ Flexi Cap Fund": {
+   "eq": 50,
+   "fut": 6,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2467.61,
+   "total_cr": null
+  },
+  "NJ ELSS Tax Saver Scheme": {
+   "eq": 26,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 320.9,
+   "total_cr": null
+  }
+ },
+ "rows": 673,
+ "eq_cr": 6099.9,
+ "warn": []
+}

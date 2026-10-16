@@ -1,0 +1,694 @@
+{
+ "code": "kotak",
+ "amc": "Kotak Mahindra Mutual Fund",
+ "month": "2026-07",
+ "fetched": "2026-10-15 19:53",
+ "files": [
+  {
+   "name": "Consolidated SEBI Portfolio as on July 31, 2026",
+   "url": "https://vatseelabs-s3.kotakmf.com/FormsDownloads/Portfolios/Consolidated-SEBI-Portfolio-as-on-July-31%2C-2026/ConsolidatedSEBIPortfolioJuly2026.xlsx",
+   "schemes": 117,
+   "eq_rows": 4043
+  }
+ ],
+ "schemes": {
+  "Kotak Nifty200 Value 30 Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": null,
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 13.52,
+   "total_cr": 13.57
+  },
+  "Kotak Nifty India Tourism Index Fund": {
+   "eq": 15,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 37.5,
+   "total_cr": 37.52
+  },
+  "Kotak Technology Fund": {
+   "eq": 23,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 540.67,
+   "total_cr": 570.71
+  },
+  "Kotak Transportation & Logistics Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 512.44,
+   "total_cr": 531.7
+  },
+  "Kotak BSE Sensex ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 24.48,
+   "total_cr": 24.59
+  },
+  "Kotak Services Fund": {
+   "eq": 44,
+   "fut": 1,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 697.31,
+   "total_cr": 758.75
+  },
+  "Kotak Special Opportunities Fund": {
+   "eq": 40,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1469.88,
+   "total_cr": 1478.53
+  },
+  "Kotak Nifty Smallcap 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 228.72,
+   "total_cr": 229.09
+  },
+  "Kotak Flexicap Fund": {
+   "eq": 59,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 55110.52,
+   "total_cr": 56118.9
+  },
+  "Kotak Rural Opportunities Fund": {
+   "eq": 47,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 794.21,
+   "total_cr": 806.95
+  },
+  "Kotak Nifty200 Quality 30 ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": null,
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2.85,
+   "total_cr": 2.86
+  },
+  "Kotak Nifty 200 Quality 30 Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": null,
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 17.56,
+   "total_cr": 17.6
+  },
+  "Kotak Nifty Private Bank ETF": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 16.41,
+   "total_cr": 16.42
+  },
+  "Kotak Nifty 50 Value 20 ETF": {
+   "eq": 20,
+   "fut": 0,
+   "date": null,
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 78.57,
+   "total_cr": 78.64
+  },
+  "Kotak Nifty 50 ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 3530.53,
+   "total_cr": 3544.02
+  },
+  "Kotak Nifty Smallcap 250 Index Fund": {
+   "eq": 250,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 65.7,
+   "total_cr": 65.8
+  },
+  "Kotak Nifty Next 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1219.9,
+   "total_cr": 1222.07
+  },
+  "Kotak Nifty Next 50 ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 18.94,
+   "total_cr": 19.0
+  },
+  "Kotak Nifty Midcap 150 Index Fund": {
+   "eq": 150,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 42.13,
+   "total_cr": 42.16
+  },
+  "Kotak Nifty Midcap 150 ETF": {
+   "eq": 150,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 13.33,
+   "total_cr": 13.35
+  },
+  "Kotak Nifty 100 Low Volatility 30 ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 278.22,
+   "total_cr": 279.2
+  },
+  "Kotak Nifty 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1168.47,
+   "total_cr": 1172.49
+  },
+  "Kotak Nifty Financial Services Ex-Bank Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 99.15,
+   "total_cr": 99.35
+  },
+  "Kotak Nifty 100 Equal Weight ETF": {
+   "eq": 100,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 32.05,
+   "total_cr": 32.14
+  },
+  "Kotak Nifty Commodities Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 294.87,
+   "total_cr": 295.52
+  },
+  "Kotak Nifty Top 10 Equal Weight Index Fund": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 39.82,
+   "total_cr": 39.96
+  },
+  "Kotak Nifty 50 Equal Weight Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 64.05,
+   "total_cr": 64.19
+  },
+  "Kotak Nifty 100 Equal Weight Index Fund": {
+   "eq": 100,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 47.19,
+   "total_cr": 47.28
+  },
+  "Kotak Multicap Fund": {
+   "eq": 71,
+   "fut": 1,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 28990.5,
+   "total_cr": 29274.39
+  },
+  "Kotak Nifty Midcap 50 ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 206.24,
+   "total_cr": 206.59
+  },
+  "Kotak MSCI India ETF": {
+   "eq": 165,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1865.56,
+   "total_cr": 1871.51
+  },
+  "Kotak Nifty MNC ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 46.34,
+   "total_cr": 46.48
+  },
+  "Kotak Nifty Midcap 150 Momentum 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": null,
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 442.58,
+   "total_cr": 442.91
+  },
+  "Kotak Nifty 200 Momentum 30 Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": null,
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 587.19,
+   "total_cr": 587.73
+  },
+  "Kotak Small Cap Fund": {
+   "eq": 79,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 18894.33,
+   "total_cr": 18932.78
+  },
+  "Kotak Nifty Midcap 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 81.2,
+   "total_cr": 81.3
+  },
+  "Kotak Multi Asset Allocation Fund": {
+   "eq": 68,
+   "fut": 7,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 10479.79,
+   "total_cr": 14770.1
+  },
+  "Kotak Nifty500 Momentum 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": null,
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 24.43,
+   "total_cr": 24.45
+  },
+  "Kotak Nifty 200 Momentum 30 ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": null,
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 32.27,
+   "total_cr": 32.3
+  },
+  "Kotak Nifty 100 Low Volatility 30 Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 114.8,
+   "total_cr": 115.16
+  },
+  "Kotak Equity Savings Fund": {
+   "eq": 94,
+   "fut": 76,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 7017.14,
+   "total_cr": 10409.45
+  },
+  "Kotak Quant Fund": {
+   "eq": 56,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 487.8,
+   "total_cr": 490.27
+  },
+  "Kotak Pioneer Fund": {
+   "eq": 51,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 3239.57,
+   "total_cr": 4022.58
+  },
+  "Kotak Large & Midcap Fund": {
+   "eq": 68,
+   "fut": 3,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 31497.89,
+   "total_cr": 32050.32
+  },
+  "Kotak MNC Fund": {
+   "eq": 43,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2233.9,
+   "total_cr": 2236.88
+  },
+  "Kotak Manufacture In India Fund": {
+   "eq": 57,
+   "fut": 1,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2911.88,
+   "total_cr": 2951.35
+  },
+  "Kotak Debt Hybrid Fund": {
+   "eq": 47,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 663.72,
+   "total_cr": 2860.04
+  },
+  "Kotak Infrastructure and Economic Reform Fund": {
+   "eq": 48,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2404.56,
+   "total_cr": 2429.85
+  },
+  "Kotak Focused Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 4267.95,
+   "total_cr": 4457.06
+  },
+  "Kotak Energy Opportunities Fund": {
+   "eq": 38,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 268.22,
+   "total_cr": 275.37
+  },
+  "Kotak Business Cycle Fund": {
+   "eq": 51,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 3389.41,
+   "total_cr": 3411.09
+  },
+  "Kotak Balanced Advantage Fund": {
+   "eq": 134,
+   "fut": 60,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 12099.04,
+   "total_cr": 17428.74
+  },
+  "Kotak Active Momentum Fund": {
+   "eq": 46,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1531.01,
+   "total_cr": 1624.76
+  },
+  "Kotak Large Cap Fund": {
+   "eq": 61,
+   "fut": 4,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 10630.86,
+   "total_cr": 11028.06
+  },
+  "Kotak Nifty IT ETF": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 325.55,
+   "total_cr": 326.18
+  },
+  "Kotak Healthcare Fund": {
+   "eq": 32,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 673.72,
+   "total_cr": 682.39
+  },
+  "Kotak ESG Exclusionary Strategy Fund": {
+   "eq": 46,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 726.8,
+   "total_cr": 756.9
+  },
+  "Kotak Midcap Fund": {
+   "eq": 67,
+   "fut": 4,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 67841.42,
+   "total_cr": 69282.83
+  },
+  "Kotak ELSS Tax Saver Fund": {
+   "eq": 52,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 6308.72,
+   "total_cr": 6341.9
+  },
+  "Kotak Dividend Yield Fund": {
+   "eq": 51,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 234.98,
+   "total_cr": 240.91
+  },
+  "Kotak Nifty India Consumption ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 35.85,
+   "total_cr": 35.98
+  },
+  "Kotak Arbitrage Fund": {
+   "eq": 182,
+   "fut": 259,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 50964.21,
+   "total_cr": 74398.69
+  },
+  "Kotak Contra Fund": {
+   "eq": 61,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 5375.29,
+   "total_cr": 5449.89
+  },
+  "Kotak Consumption Fund": {
+   "eq": 42,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1745.38,
+   "total_cr": 1758.97
+  },
+  "Kotak Nifty Chemicals ETF": {
+   "eq": 20,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 105.82,
+   "total_cr": 106.09
+  },
+  "Kotak Nifty PSU Bank ETF": {
+   "eq": 12,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2432.69,
+   "total_cr": 2432.96
+  },
+  "Kotak BSE Sensex Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 23.66,
+   "total_cr": 23.76
+  },
+  "Kotak BSE PSU Index Fund": {
+   "eq": 61,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 82.37,
+   "total_cr": 82.42
+  },
+  "Kotak BSE Housing Index Fund": {
+   "eq": 26,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 13.4,
+   "total_cr": 13.41
+  },
+  "Kotak Banking and Financial Services Fund": {
+   "eq": 34,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1511.0,
+   "total_cr": 1556.24
+  },
+  "Kotak Nifty Bank ETF": {
+   "eq": 14,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 4669.75,
+   "total_cr": 4685.26
+  },
+  "Kotak Aggressive Hybrid Fund": {
+   "eq": 58,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 7216.58,
+   "total_cr": 9204.97
+  },
+  "Kotak Nifty Alpha 50 ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 872.97,
+   "total_cr": 873.8
+  },
+  "KOTAK NIFTY ALPHA LOW VOLATILITY 30 INDEX FUND": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 6.97,
+   "total_cr": 7.02
+  },
+  "Kotak Nifty Alpha 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 40.75,
+   "total_cr": 40.77
+  }
+ },
+ "rows": 4459,
+ "eq_cr": 362075.0,
+ "warn": []
+}

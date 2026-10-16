@@ -1,0 +1,193 @@
+{
+ "code": "samco",
+ "amc": "Samco Mutual Fund",
+ "month": "2026-09",
+ "fetched": "2026-10-15 19:45",
+ "files": [
+  {
+   "name": "IN_MF_MONTHLY_PORTFOLIO_September_2026_SamcoMultiCapFund_1791537560.xlsx",
+   "url": "https://www.samcomf.com/amc-document-download/IN_MF_MONTHLY_PORTFOLIO_September_2026_SamcoMultiCapFund_1791537560.xlsx",
+   "schemes": 1,
+   "eq_rows": 93
+  },
+  {
+   "name": "IN_MF_MONTHLY_PORTFOLIO_September_2026_Samco_Special_Opportunities_Fund_1791526366.xlsx",
+   "url": "https://www.samcomf.com/amc-document-download/IN_MF_MONTHLY_PORTFOLIO_September_2026_Samco_Special_Opportunities_Fund_1791526366.xlsx",
+   "schemes": 1,
+   "eq_rows": 49
+  },
+  {
+   "name": "IN_MF_MONTHLY_PORTFOLIO_September_2026_Samco_Flexicap_Fund_1791526364.xlsx",
+   "url": "https://www.samcomf.com/amc-document-download/IN_MF_MONTHLY_PORTFOLIO_September_2026_Samco_Flexicap_Fund_1791526364.xlsx",
+   "schemes": 1,
+   "eq_rows": 24
+  },
+  {
+   "name": "IN_MF_MONTHLY_PORTFOLIO_September_2026_Samco_Small_Cap_Fund_1791526287.xlsx",
+   "url": "https://www.samcomf.com/amc-document-download/IN_MF_MONTHLY_PORTFOLIO_September_2026_Samco_Small_Cap_Fund_1791526287.xlsx",
+   "schemes": 1,
+   "eq_rows": 62
+  },
+  {
+   "name": "IN_MF_MONTHLY_PORTFOLIO_September_2026_SamcoMultiAssetAllocationFund_1791526282.xlsx",
+   "url": "https://www.samcomf.com/amc-document-download/IN_MF_MONTHLY_PORTFOLIO_September_2026_SamcoMultiAssetAllocationFund_1791526282.xlsx",
+   "schemes": 1,
+   "eq_rows": 76
+  },
+  {
+   "name": "IN_MF_MONTHLY_PORTFOLIO_September_2026_SamcoMid_CapFund_1791526280.xlsx",
+   "url": "https://www.samcomf.com/amc-document-download/IN_MF_MONTHLY_PORTFOLIO_September_2026_SamcoMid_CapFund_1791526280.xlsx",
+   "schemes": 1,
+   "eq_rows": 30
+  },
+  {
+   "name": "IN_MF_MONTHLY_PORTFOLIO_September_2026_SamcoLargeCapFund_1791526277.xlsx",
+   "url": "https://www.samcomf.com/amc-document-download/IN_MF_MONTHLY_PORTFOLIO_September_2026_SamcoLargeCapFund_1791526277.xlsx",
+   "schemes": 1,
+   "eq_rows": 21
+  },
+  {
+   "name": "IN_MF_MONTHLY_PORTFOLIO_September_2026_SamcoLargeMidCapFund_1791526275.xlsx",
+   "url": "https://www.samcomf.com/amc-document-download/IN_MF_MONTHLY_PORTFOLIO_September_2026_SamcoLargeMidCapFund_1791526275.xlsx",
+   "schemes": 1,
+   "eq_rows": 32
+  },
+  {
+   "name": "IN_MF_MONTHLY_PORTFOLIO_September_2026_SamcoELSSTaxSaverFund_1791526273.xlsx",
+   "url": "https://www.samcomf.com/amc-document-download/IN_MF_MONTHLY_PORTFOLIO_September_2026_SamcoELSSTaxSaverFund_1791526273.xlsx",
+   "schemes": 1,
+   "eq_rows": 35
+  },
+  {
+   "name": "IN_MF_MONTHLY_PORTFOLIO_September_2026_SamcoDynamicAssetAllocationFund_1791526270.xlsx",
+   "url": "https://www.samcomf.com/amc-document-download/IN_MF_MONTHLY_PORTFOLIO_September_2026_SamcoDynamicAssetAllocationFund_1791526270.xlsx",
+   "schemes": 1,
+   "eq_rows": 78
+  },
+  {
+   "name": "IN_MF_MONTHLY_PORTFOLIO_September_2026_Samco_Arbitrage_Fund_1791526268.xlsx",
+   "url": "https://www.samcomf.com/amc-document-download/IN_MF_MONTHLY_PORTFOLIO_September_2026_Samco_Arbitrage_Fund_1791526268.xlsx",
+   "schemes": 1,
+   "eq_rows": 17
+  },
+  {
+   "name": "IN_MF_MONTHLY_PORTFOLIO_September_2026_Samco_Active_Momentum_Fund_1791526265.xlsx",
+   "url": "https://www.samcomf.com/amc-document-download/IN_MF_MONTHLY_PORTFOLIO_September_2026_Samco_Active_Momentum_Fund_1791526265.xlsx",
+   "schemes": 1,
+   "eq_rows": 55
+  }
+ ],
+ "schemes": {
+  "SAMCO MULTI CAP FUND": {
+   "eq": 93,
+   "fut": 56,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 186.75,
+   "total_cr": 219.73
+  },
+  "SAMCO SPECIAL OPPORTUNITIES FUND": {
+   "eq": 49,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 123.96,
+   "total_cr": 124.19
+  },
+  "SAMCO FLEXICAP FUND": {
+   "eq": 24,
+   "fut": 0,
+   "date": null,
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 221.01,
+   "total_cr": 238.75
+  },
+  "SAMCO SMALL CAP FUND": {
+   "eq": 62,
+   "fut": 27,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 209.2,
+   "total_cr": 269.83
+  },
+  "SAMCO MULTI ASSET ALLOCATION FUND": {
+   "eq": 76,
+   "fut": 98,
+   "date": null,
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 160.84,
+   "total_cr": 379.59
+  },
+  "SAMCO MID CAP FUND": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 60.37,
+   "total_cr": 75.43
+  },
+  "SAMCO LARGE CAP FUND": {
+   "eq": 21,
+   "fut": 42,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 69.89,
+   "total_cr": 86.0
+  },
+  "SAMCO LARGE & MID CAP FUND": {
+   "eq": 32,
+   "fut": 60,
+   "date": null,
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 73.18,
+   "total_cr": 90.83
+  },
+  "SAMCO ELSS TAX SAVER FUND": {
+   "eq": 35,
+   "fut": 0,
+   "date": null,
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 101.25,
+   "total_cr": 103.85
+  },
+  "SAMCO DYNAMIC ASSET ALLOCATION FUND": {
+   "eq": 78,
+   "fut": 106,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 111.94,
+   "total_cr": 156.86
+  },
+  "SAMCO ARBITRAGE FUND": {
+   "eq": 17,
+   "fut": 35,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 19.97,
+   "total_cr": 25.98
+  },
+  "SAMCO ACTIVE MOMENTUM FUND": {
+   "eq": 55,
+   "fut": 18,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 598.93,
+   "total_cr": 774.74
+  }
+ },
+ "rows": 1014,
+ "eq_cr": 1937.3,
+ "warn": []
+}

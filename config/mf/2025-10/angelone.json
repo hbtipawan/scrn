@@ -1,0 +1,93 @@
+{
+ "code": "angelone",
+ "amc": "Angel One Mutual Fund",
+ "month": "2025-10",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-10-15 20:56",
+ "files": [
+  {
+   "name": "Monthly-Portfolio-Oct-2025-Angel-One-Nifty-1D-Rate-Liquid-ETF-GROWTH-1-1.xlsx",
+   "url": "https://cms.angelonemf.com/amc-cms/wp-content/uploads/formidable/20/Monthly-Portfolio-Oct-2025-Angel-One-Nifty-1D-Rate-Liquid-ETF-GROWTH-1-1.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Monthly-Portfolio-Oct-2025-Angel-One-Nifty-50-ETF-1-1.xlsx",
+   "url": "https://cms.angelonemf.com/amc-cms/wp-content/uploads/formidable/20/Monthly-Portfolio-Oct-2025-Angel-One-Nifty-50-ETF-1-1.xlsx",
+   "schemes": 1,
+   "eq_rows": 51
+  },
+  {
+   "name": "Monthly-Portfolio-Oct-2025-Angel-One-Nifty-50-Index-Fund-1-1.xlsx",
+   "url": "https://cms.angelonemf.com/amc-cms/wp-content/uploads/formidable/20/Monthly-Portfolio-Oct-2025-Angel-One-Nifty-50-Index-Fund-1-1.xlsx",
+   "schemes": 1,
+   "eq_rows": 51
+  },
+  {
+   "name": "Monthly-Portfolio-Oct-2025-Angel-One-Gold-ETF-1-1.xlsx",
+   "url": "https://cms.angelonemf.com/amc-cms/wp-content/uploads/formidable/20/Monthly-Portfolio-Oct-2025-Angel-One-Gold-ETF-1-1.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Monthly-Portfolio-Oct-2025-Angel-One-Gold-ETF-FOF-1-2.xlsx",
+   "url": "https://cms.angelonemf.com/amc-cms/wp-content/uploads/formidable/20/Monthly-Portfolio-Oct-2025-Angel-One-Gold-ETF-FOF-1-2.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "Monthly-Portfolio-Oct-2025-Angel-One-Nifty-Total-Market-Index-Fund-2-1.xlsx",
+   "url": "https://cms.angelonemf.com/amc-cms/wp-content/uploads/formidable/20/Monthly-Portfolio-Oct-2025-Angel-One-Nifty-Total-Market-Index-Fund-2-1.xlsx",
+   "schemes": 1,
+   "eq_rows": 753
+  },
+  {
+   "name": "Monthly-Portfolio-Oct-2025-Angel-One-Nifty-Total-Market-ETF-1-1.xlsx",
+   "url": "https://cms.angelonemf.com/amc-cms/wp-content/uploads/formidable/20/Monthly-Portfolio-Oct-2025-Angel-One-Nifty-Total-Market-ETF-1-1.xlsx",
+   "schemes": 1,
+   "eq_rows": 753
+  }
+ ],
+ "schemes": {
+  "Angel One Nifty 50 ETF": {
+   "eq": 51,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.96,
+   "eq_cr": 13.78,
+   "total_cr": 13.8
+  },
+  "Angel One Nifty 50 Index Fund": {
+   "eq": 51,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.96,
+   "eq_cr": 37.01,
+   "total_cr": 37.03
+  },
+  "Angel One Nifty Total Market Index Fund": {
+   "eq": 753,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.966,
+   "eq_cr": 51.14,
+   "total_cr": 51.22
+  },
+  "Angel One Nifty Total Market ETF": {
+   "eq": 753,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.966,
+   "eq_cr": 43.82,
+   "total_cr": 43.86
+  }
+ },
+ "rows": 1608,
+ "eq_cr": 145.7,
+ "warn": []
+}

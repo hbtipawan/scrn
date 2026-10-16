@@ -1,0 +1,288 @@
+{
+ "code": "lic",
+ "amc": "LIC Mutual Fund",
+ "month": "2025-10",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-10-15 20:55",
+ "files": [
+  {
+   "name": "LIC MF Monthly Debt Portfolio_Oct_25.xlsx",
+   "url": "https://www.licmf.com/assets/pdf/statuary_disclosure_new/21/LIC%20MF%20Monthly%20Debt%20Portfolio_Oct_25.xlsx",
+   "schemes": 11,
+   "eq_rows": 9
+  },
+  {
+   "name": "LIC MF Monthly Equity Portfolio_Oct-25.xlsx",
+   "url": "https://www.licmf.com/assets/pdf/statuary_disclosure_new/21/LIC%20MF%20Monthly%20Equity%20Portfolio_Oct-25.xlsx",
+   "schemes": 30,
+   "eq_rows": 1690
+  }
+ ],
+ "schemes": {
+  "LIC MF Conservative Hybrid Fund": {
+   "eq": 9,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 9.35,
+   "total_cr": 49.21
+  },
+  "LIC MF Arbitrage Fund": {
+   "eq": 51,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.941,
+   "eq_cr": 194.98,
+   "total_cr": 288.55
+  },
+  "LIC MF Balanced Advantage Fund": {
+   "eq": 75,
+   "fut": 1,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.986,
+   "eq_cr": 546.62,
+   "total_cr": 766.92
+  },
+  "LIC MF Aggressive Hybrid Fund": {
+   "eq": 54,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.926,
+   "eq_cr": 404.16,
+   "total_cr": 537.06
+  },
+  "LIC MF Banking and Financial Services Fund": {
+   "eq": 33,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.879,
+   "eq_cr": 275.97,
+   "total_cr": 284.71
+  },
+  "LIC MF Children\u2019s Fund": {
+   "eq": 56,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.946,
+   "eq_cr": 13.63,
+   "total_cr": 15.6
+  },
+  "LIC MF Dividend Yield Fund": {
+   "eq": 64,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.953,
+   "eq_cr": 684.86,
+   "total_cr": 697.98
+  },
+  "LIC MF Healthcare Fund": {
+   "eq": 28,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.964,
+   "eq_cr": 85.05,
+   "total_cr": 87.59
+  },
+  "LIC MF Mid cap Fund": {
+   "eq": 65,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.969,
+   "eq_cr": 340.56,
+   "total_cr": 347.67
+  },
+  "LIC MF Equity Savings Fund": {
+   "eq": 74,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.958,
+   "eq_cr": 22.32,
+   "total_cr": 30.8
+  },
+  "LIC MF Flexi Cap Fund": {
+   "eq": 67,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.985,
+   "eq_cr": 1018.04,
+   "total_cr": 1075.06
+  },
+  "LIC MF Small Cap Fund": {
+   "eq": 76,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.945,
+   "eq_cr": 626.98,
+   "total_cr": 647.11
+  },
+  "LIC MF Focused Fund": {
+   "eq": 29,
+   "fut": 1,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.966,
+   "eq_cr": 161.81,
+   "total_cr": 175.82
+  },
+  "LIC MF Large Cap Fund": {
+   "eq": 56,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.964,
+   "eq_cr": 1451.15,
+   "total_cr": 1498.5
+  },
+  "LIC MF Infrastructure Fund": {
+   "eq": 73,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.971,
+   "eq_cr": 995.51,
+   "total_cr": 1054.1
+  },
+  "LIC MF Nifty 50 Index Fund": {
+   "eq": 51,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.96,
+   "eq_cr": 345.2,
+   "total_cr": 345.54
+  },
+  "LIC MF BSE Sensex Index Fund": {
+   "eq": 31,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.933,
+   "eq_cr": 91.78,
+   "total_cr": 91.99
+  },
+  "LIC MF Value Fund": {
+   "eq": 68,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.985,
+   "eq_cr": 189.86,
+   "total_cr": 210.92
+  },
+  "LIC MF Multi Asset Allocation Fund": {
+   "eq": 69,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.97,
+   "eq_cr": 540.67,
+   "total_cr": 802.27
+  },
+  "LIC MF Nifty Midcap 100 ETF": {
+   "eq": 100,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 744.31,
+   "total_cr": 744.78
+  },
+  "LIC MF Manufacturing Fund": {
+   "eq": 73,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.971,
+   "eq_cr": 799.95,
+   "total_cr": 838.65
+  },
+  "LIC MF Large & Mid Cap Fund": {
+   "eq": 82,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.95,
+   "eq_cr": 3049.7,
+   "total_cr": 3151.53
+  },
+  "LIC MF Multi Cap Fund": {
+   "eq": 78,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.961,
+   "eq_cr": 1736.64,
+   "total_cr": 1796.57
+  },
+  "LIC MF Nifty Next 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 101.6,
+   "total_cr": 101.81
+  },
+  "LIC MF Nifty 100 ETF": {
+   "eq": 101,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.97,
+   "eq_cr": 768.72,
+   "total_cr": 769.66
+  },
+  "LIC MF Monthly Equity Portfolio_Oct-25.xlsx": {
+   "eq": 59,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.949,
+   "eq_cr": 1094.99,
+   "total_cr": 1113.63
+  },
+  "LIC MF Nifty 50 ETF": {
+   "eq": 51,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.96,
+   "eq_cr": 901.74,
+   "total_cr": 902.77
+  },
+  "LIC MF BSE Sensex ETF": {
+   "eq": 31,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.933,
+   "eq_cr": 774.68,
+   "total_cr": 775.96
+  },
+  "LIC MF Unit Linked Insurance Scheme": {
+   "eq": 45,
+   "fut": 0,
+   "date": "2025-10-31",
+   "unit": "lakh",
+   "price_match": 0.955,
+   "eq_cr": 365.82,
+   "total_cr": 470.06
+  }
+ },
+ "rows": 1701,
+ "eq_cr": 18336.6,
+ "warn": []
+}

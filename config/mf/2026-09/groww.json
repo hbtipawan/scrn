@@ -1,0 +1,436 @@
+{
+ "code": "groww",
+ "amc": "Groww Mutual Fund",
+ "month": "2026-09",
+ "fetched": "2026-10-15 19:44",
+ "files": [
+  {
+   "name": "Monthly Portfolio- Sep 30 2026.xlsx",
+   "url": "https://assets-netstorage.growwmf.in/compliance_docs/Statutory%20Disclosure/Portfolio/2026%20-2027/Monthly%20Portfolio-%20Sep%2030%202026.xlsx",
+   "schemes": 62,
+   "eq_rows": 3140
+  },
+  {
+   "name": "Monthly Portfolio - September 30, 2026.xlsx",
+   "url": "https://assets-netstorage.growwmf.in/compliance_docs/Statutory%20Disclosure/Portfolio/2026%20-2027/Monthly%20Portfolio%20-%20September%2030,%202026.xlsx",
+   "schemes": 62,
+   "eq_rows": 0
+  }
+ ],
+ "schemes": {
+  "Groww Large Cap Fund": {
+   "eq": 45,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 117.88,
+   "total_cr": 132.67
+  },
+  "Groww Aggressive Hybrid Fund": {
+   "eq": 83,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 35.68,
+   "total_cr": 51.17
+  },
+  "Groww ELSS Tax Saver Fund": {
+   "eq": 99,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 47.58,
+   "total_cr": 48.25
+  },
+  "Groww Value Fund": {
+   "eq": 51,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 66.96,
+   "total_cr": 79.57
+  },
+  "Groww Nifty Total Market Index Fund": {
+   "eq": 752,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 354.15,
+   "total_cr": 355.34
+  },
+  "Groww Banking & Financial Services Fund": {
+   "eq": 41,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 101.65,
+   "total_cr": 106.79
+  },
+  "Groww Nifty Smallcap 250 Index Fund": {
+   "eq": 249,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 133.87,
+   "total_cr": 135.84
+  },
+  "Groww Nifty Non-Cyclical Consumer Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 38.11,
+   "total_cr": 38.09
+  },
+  "Groww Nifty EV & New Age Automotive ETF": {
+   "eq": 37,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 278.89,
+   "total_cr": 278.87
+  },
+  "Groww Nifty India Defence ETF": {
+   "eq": 22,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 360.26,
+   "total_cr": 360.29
+  },
+  "Groww Multicap Fund": {
+   "eq": 81,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1620.48,
+   "total_cr": 1687.35
+  },
+  "Groww Nifty India Railways PSU Index": {
+   "eq": 17,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 62.21,
+   "total_cr": 62.1
+  },
+  "Groww Nifty India Railways PSU ETF": {
+   "eq": 17,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 170.82,
+   "total_cr": 171.01
+  },
+  "GROWW NIFTY 200 ETF": {
+   "eq": 200,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 15.68,
+   "total_cr": 15.7
+  },
+  "Groww Nifty 500 Momentum 50 ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 29.32,
+   "total_cr": 29.36
+  },
+  "Groww Nifty 500 Low Volatility 50 ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 3.8,
+   "total_cr": 3.81
+  },
+  "Groww Nifty India Internet ETF": {
+   "eq": 24,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 41.82,
+   "total_cr": 41.82
+  },
+  "Groww Nifty 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 26.55,
+   "total_cr": 26.56
+  },
+  "Groww Nifty 50 ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 42.05,
+   "total_cr": 42.09
+  },
+  "Groww BSE Power ETF": {
+   "eq": 17,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 281.5,
+   "total_cr": 281.31
+  },
+  "Groww Nifty Next 50 ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 8.83,
+   "total_cr": 8.84
+  },
+  "Groww Nifty Next 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 10.8,
+   "total_cr": 10.81
+  },
+  "Groww Multi Asset Allocation Fund": {
+   "eq": 67,
+   "fut": 20,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 246.79,
+   "total_cr": 372.75
+  },
+  "Groww Nifty Realty ETF": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 15.59,
+   "total_cr": 15.6
+  },
+  "Groww Nifty Capital Markets ETF": {
+   "eq": 17,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 50.38,
+   "total_cr": 50.33
+  },
+  "Groww Nifty Smallcap 250 ETF": {
+   "eq": 248,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 16.59,
+   "total_cr": 16.98
+  },
+  "Groww Nifty Midcap 150 ETF": {
+   "eq": 149,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 5.97,
+   "total_cr": 6.04
+  },
+  "Groww Nifty Midcap 150 Index Fund": {
+   "eq": 149,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 14.72,
+   "total_cr": 14.85
+  },
+  "Groww Nifty Metal ETF": {
+   "eq": 15,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 40.82,
+   "total_cr": 40.85
+  },
+  "Groww Nifty Chemicals ETF": {
+   "eq": 20,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 10.95,
+   "total_cr": 10.95
+  },
+  "Groww Small Cap Fund": {
+   "eq": 67,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 845.93,
+   "total_cr": 965.96
+  },
+  "Groww Nifty PSE ETF": {
+   "eq": 20,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 17.45,
+   "total_cr": 17.45
+  },
+  "Groww BSE Hospitals ETF": {
+   "eq": 17,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 160.0,
+   "total_cr": 159.92
+  },
+  "Groww Nifty PSU Bank Index Fund": {
+   "eq": 12,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 5.44,
+   "total_cr": 5.43
+  },
+  "Groww Nifty PSU Bank ETF": {
+   "eq": 12,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 6.01,
+   "total_cr": 6.01
+  },
+  "Groww Arbitrage Fund": {
+   "eq": 40,
+   "fut": 82,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 50.87,
+   "total_cr": 69.63
+  },
+  "Groww Nifty Private Bank ETF": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 6.62,
+   "total_cr": 6.62
+  },
+  "Groww Nifty Private Bank Index Fund": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 5.69,
+   "total_cr": 5.68
+  },
+  "Groww Nifty Smallcap 250 Momentum Quality 100 ETF": {
+   "eq": 100,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 7.5,
+   "total_cr": 7.51
+  },
+  "Groww Nifty Smallcap 250 Momentum Quality 100 Index Fund": {
+   "eq": 100,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 9.26,
+   "total_cr": 9.27
+  },
+  "Groww Nifty Cements ETF": {
+   "eq": 12,
+   "fut": 0,
+   "date": "2026-09-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 9.03,
+   "total_cr": 9.04
+  }
+ },
+ "rows": 3242,
+ "eq_cr": 5374.5,
+ "warn": [
+  "IB01-Groww Large Cap Fund: identical to IB01-Groww Large Cap Fund \u2014 skipped duplicate",
+  "IB03-Groww Aggressive Hybrid Fund: identical to IB03-Groww Aggressive Hybrid Fund \u2014 skipped duplicate",
+  "IB11-Groww ELSS Tax Saver Fund: identical to IB11-Groww ELSS Tax Saver Fund \u2014 skipped duplicate",
+  "IB13-Groww Value Fund: identical to IB13-Groww Value Fund \u2014 skipped duplicate",
+  "IB18-Groww Nifty Total Market Index Fund: identical to IB18-Groww Nifty Total Market Index Fund \u2014 skipped duplicate",
+  "IB19-Groww Banking & Financial Services Fund: identical to IB19-Groww Banking & Financial Services Fund \u2014 skipped duplicate",
+  "IB20-Groww Nifty Smallcap 250 Index Fund: identical to IB20-Groww Nifty Smallcap 250 Index Fund \u2014 skipped duplicate",
+  "IB21-Groww Nifty Non-Cyclical Consumer Index Fund: identical to IB21-Groww Nifty Non-Cyclical Consumer Index Fund \u2014 skipped duplicate",
+  "IB23-Groww Nifty EV & New Age Automotive ETF: identical to IB23-Groww Nifty EV & New Age Automotive ETF \u2014 skipped duplicate",
+  "IB25-Groww Nifty India Defence ETF: identical to IB25-Groww Nifty India Defence ETF \u2014 skipped duplicate",
+  "IB29-Groww Multicap Fund: identical to IB29-Groww Multicap Fund \u2014 skipped duplicate",
+  "IB31-Groww Nifty India Railways PSU Index: identical to IB31-Groww Nifty India Railways PSU Index \u2014 skipped duplicate",
+  "IB32-Groww Nifty India Railways PSU ETF: identical to IB32-Groww Nifty India Railways PSU ETF \u2014 skipped duplicate",
+  "IB33-GROWW NIFTY 200 ETF: identical to IB33-GROWW NIFTY 200 ETF \u2014 skipped duplicate",
+  "IB35-Groww Nifty 500 Momentum 50 ETF: identical to IB35-Groww Nifty 500 Momentum 50 ETF \u2014 skipped duplicate",
+  "IB40-Groww Nifty 500 Low Volatility 50 ETF: identical to IB40-Groww Nifty 500 Low Volatility 50 ETF \u2014 skipped duplicate",
+  "IB41-Groww Nifty India Internet ETF: identical to IB41-Groww Nifty India Internet ETF \u2014 skipped duplicate",
+  "IB43-Groww Nifty 50 Index Fund: identical to IB43-Groww Nifty 50 Index Fund \u2014 skipped duplicate",
+  "IB44-Groww Nifty 50 ETF: identical to IB44-Groww Nifty 50 ETF \u2014 skipped duplicate",
+  "IB45-Groww BSE Power ETF: identical to IB45-Groww BSE Power ETF \u2014 skipped duplicate",
+  "IB47-Groww Nifty Next 50 ETF: identical to IB47-Groww Nifty Next 50 ETF \u2014 skipped duplicate",
+  "IB48-Groww Nifty Next 50 Index Fund: identical to IB48-Groww Nifty Next 50 Index Fund \u2014 skipped duplicate",
+  "IB49-Groww Multi Asset Allocation Fund: identical to IB49-Groww Multi Asset Allocation Fund \u2014 skipped duplicate",
+  "IB50-Groww Nifty Realty ETF: identical to IB50-Groww Nifty Realty ETF \u2014 skipped duplicate",
+  "IB51-Groww Nifty Capital Markets ETF: identical to IB51-Groww Nifty Capital Markets ETF \u2014 skipped duplicate",
+  "IB52-Groww Nifty Smallcap 250 ETF: identical to IB52-Groww Nifty Smallcap 250 ETF \u2014 skipped duplicate",
+  "IB53-Groww Nifty Midcap 150 ETF: identical to IB53-Groww Nifty Midcap 150 ETF \u2014 skipped duplicate",
+  "IB54-Groww Nifty Midcap 150 Index Fund: identical to IB54-Groww Nifty Midcap 150 Index Fund \u2014 skipped duplicate",
+  "IB57-Groww Nifty Metal ETF: identical to IB57-Groww Nifty Metal ETF \u2014 skipped duplicate",
+  "IB59-Groww Nifty Chemicals ETF: identical to IB59-Groww Nifty Chemicals ETF \u2014 skipped duplicate",
+  "IB60-Groww Small Cap Fund: identical to IB60-Groww Small Cap Fund \u2014 skipped duplicate",
+  "IB61-Groww Nifty PSE ETF: identical to IB61-Groww Nifty PSE ETF \u2014 skipped duplicate",
+  "IB63-Groww BSE Hospitals ETF: identical to IB63-Groww BSE Hospitals ETF \u2014 skipped duplicate",
+  "IB65-Groww Nifty PSU Bank Index Fund: identical to IB65-Groww Nifty PSU Bank Index Fund \u2014 skipped duplicate",
+  "IB66-Groww Nifty PSU Bank ETF: identical to IB66-Groww Nifty PSU Bank ETF \u2014 skipped duplicate",
+  "IB67-Groww Arbitrage Fund: identical to IB67-Groww Arbitrage Fund \u2014 skipped duplicate",
+  "IB68-Groww Nifty Private Bank ETF: identical to IB68-Groww Nifty Private Bank ETF \u2014 skipped duplicate",
+  "IB69-Groww Nifty Private Bank Index Fund: identical to IB69-Groww Nifty Private Bank Index Fund \u2014 skipped duplicate",
+  "IB70-Groww Nifty Smallcap 250 Momentum Quality 100: identical to IB70-Groww Nifty Smallcap 250 Momentum Quality 100 \u2014 skipped duplicate",
+  "IB71-Groww Nifty Smallcap 250 Momentum Quality 100: identical to IB71-Groww Nifty Smallcap 250 Momentum Quality 100 \u2014 skipped duplicate",
+  "IB72-Groww Nifty Cements ETF: identical to IB72-Groww Nifty Cements ETF \u2014 skipped duplicate"
+ ]
+}

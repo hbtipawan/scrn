@@ -1,0 +1,183 @@
+{
+ "code": "boi",
+ "amc": "Bank of India Mutual Fund",
+ "month": "2026-04",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-10-16 00:52",
+ "files": [
+  {
+   "name": "MONTHLY-PORTFOLIO - 30-APRIL-2026",
+   "url": "https://www.boimf.in/docs/default-source/investorcorner/monthly-portfolio/monthly-portfolio---30-april-2026.xlsx?sfvrsn=9c76e768_6",
+   "schemes": 24,
+   "eq_rows": 943
+  }
+ ],
+ "schemes": {
+  "Bank Of India Large & Mid Cap Fund": {
+   "eq": 54,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 444.77,
+   "total_cr": 468.3
+  },
+  "Bank Of India Conservative Hybrid Fund": {
+   "eq": 32,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 14.54,
+   "total_cr": 65.35
+  },
+  "Bank of India ELSS Tax Saver": {
+   "eq": 58,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.981,
+   "eq_cr": 1350.97,
+   "total_cr": 1402.59
+  },
+  "Bank Of India Manufacturing and Infrastructure Fund": {
+   "eq": 55,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.961,
+   "eq_cr": 737.69,
+   "total_cr": 755.26
+  },
+  "Bank Of India Balanced Advantage Fund": {
+   "eq": 56,
+   "fut": 2,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.982,
+   "eq_cr": 90.56,
+   "total_cr": 152.71
+  },
+  "Bank Of India Mid & Small Cap Equity & Debt Fund": {
+   "eq": 67,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.97,
+   "eq_cr": 1181.13,
+   "total_cr": 1481.51
+  },
+  "Bank Of India Mid Cap Tax Fund Series 1 (A 10 Year Close-ended Equity Linked Savings Scheme)": {
+   "eq": 54,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 62.53,
+   "total_cr": 63.23
+  },
+  "Bank Of India Arbitrage Fund": {
+   "eq": 29,
+   "fut": 58,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 31.66,
+   "total_cr": 44.91
+  },
+  "Bank Of India Mid Cap Tax Fund Series 2 (A 10 Year Close-ended Equity Linked Savings Scheme)": {
+   "eq": 52,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 30.5,
+   "total_cr": 31.77
+  },
+  "Bank Of India Small Cap Fund": {
+   "eq": 82,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.939,
+   "eq_cr": 2070.77,
+   "total_cr": 2167.57
+  },
+  "Bank Of India Flexi Cap Fund": {
+   "eq": 65,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.984,
+   "eq_cr": 2311.82,
+   "total_cr": 2387.56
+  },
+  "Bank of India Large Cap Fund": {
+   "eq": 52,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.979,
+   "eq_cr": 206.89,
+   "total_cr": 212.6
+  },
+  "Bank Of India Multi Cap FUND": {
+   "eq": 61,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1054.24,
+   "total_cr": 1074.39
+  },
+  "Bank of India Multi Asset Allocation Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.978,
+   "eq_cr": 141.84,
+   "total_cr": 357.41
+  },
+  "Bank of India Business Cycle Fund": {
+   "eq": 58,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.981,
+   "eq_cr": 458.08,
+   "total_cr": 466.61
+  },
+  "Bank of India Consumption Fund": {
+   "eq": 36,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 363.08,
+   "total_cr": 375.33
+  },
+  "Bank of India Mid Cap Fund (Mid Cap Fund": {
+   "eq": 52,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 702.82,
+   "total_cr": 719.78
+  },
+  "Bank of India Banking & Financial Services Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-04-30",
+   "unit": "lakh",
+   "price_match": 0.967,
+   "eq_cr": 267.52,
+   "total_cr": 274.82
+  }
+ },
+ "rows": 1003,
+ "eq_cr": 11521.4,
+ "warn": []
+}

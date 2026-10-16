@@ -1,0 +1,79 @@
+{
+ "code": "nj",
+ "amc": "NJ Mutual Fund",
+ "month": "2026-07",
+ "fetched": "2026-10-15 19:59",
+ "files": [
+  {
+   "name": "NJ_MF_Monthly_Portfolio_NJBAF_July 2026",
+   "url": "https://downloads.njmutualfund.com/viewfile.php?file=NJ-MF-Monthly-Portfolio-NJBAF-July-2026-20260810061147.xlsx",
+   "schemes": 1,
+   "eq_rows": 119
+  },
+  {
+   "name": "NJ_MF_Monthly_Portfolio_NJOVERFD_July 2026",
+   "url": "https://downloads.njmutualfund.com/viewfile.php?file=NJ-MF-Monthly-Portfolio-NJOVERFD-July-2026-20260810061120.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "NJ_MF_Monthly_Portfolio_NJABF_July 2026",
+   "url": "https://downloads.njmutualfund.com/viewfile.php?file=NJ-MF-Monthly-Portfolio-NJABF-July-2026-20260810061042.xlsx",
+   "schemes": 1,
+   "eq_rows": 66
+  },
+  {
+   "name": "NJ_MF_Monthly_Portfolio_NJFCP_July 2026",
+   "url": "https://downloads.njmutualfund.com/viewfile.php?file=NJ-MF-Monthly-Portfolio-NJFCP-July-2026-20260810061004.xlsx",
+   "schemes": 1,
+   "eq_rows": 49
+  },
+  {
+   "name": "NJ_MF_Monthly_Portfolio_NJELSTCH_July 2026",
+   "url": "https://downloads.njmutualfund.com/viewfile.php?file=NJ-MF-Monthly-Portfolio-NJELSTCH-July-2026-20260810060934.xlsx",
+   "schemes": 1,
+   "eq_rows": 25
+  }
+ ],
+ "schemes": {
+  "NJ Balanced Advantage Fund": {
+   "eq": 119,
+   "fut": 226,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 3094.1,
+   "total_cr": null
+  },
+  "NJ Arbitrage Fund": {
+   "eq": 66,
+   "fut": 158,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 223.48,
+   "total_cr": null
+  },
+  "NJ Flexi Cap Fund": {
+   "eq": 49,
+   "fut": 4,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2618.45,
+   "total_cr": null
+  },
+  "NJ ELSS Tax Saver Scheme": {
+   "eq": 25,
+   "fut": 0,
+   "date": "2026-07-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 342.94,
+   "total_cr": null
+  }
+ },
+ "rows": 647,
+ "eq_cr": 6279.0,
+ "warn": []
+}
