@@ -124,8 +124,9 @@ def lists_of(wl, s):
 
 # ───────────────────────────────────────────── evening digest
 BULL = ["combo3", "up4", "high52_dcr", "ath", "vcp", "pocket_pivot", "tight3w", "power3", "bgu", "episodic_pivot", "darvas",
-        "stage2_bo", "bull_snort", "wedge_pop", "f_post", "f_accel", "lb_breakout", "lb_near", "s2_early", "res_strong"]
-BEAR = ["down4", "leader_down", "below200", "ema_down", "death", "gap_down", "f_red"]
+        "stage2_bo", "bull_snort", "wedge_pop", "f_post", "f_accel", "lb_breakout", "lb_near", "s2_early", "res_strong",
+        "rs_bluedot", "dlv_quiet"]
+BEAR = ["down4", "leader_down", "below200", "ema_down", "death", "gap_down", "f_red", "rs_fade", "dlv_dist"]
 ICON = {"crit": "🛑", "warn": "⚠️", "good": "🚀", "info": "📅"}
 
 
@@ -141,9 +142,12 @@ def sma50(c, i):
     return None if any(v is None for v in w) else sum(w) / 50
 
 
-def watch_alerts(wl, by, scans_of, scan_name, closes, vp, asof):
+def watch_alerts(wl, by, scans_of, scan_name, closes, vp, asof, corp=None):
     """Python twin of wlAlerts() in docs/index.html."""
     out = []
+    ca = {}
+    for r in (corp or {}).get("rows", []):
+        ca.setdefault(r.get("symbol"), []).append(r)
     meta = wl.get("meta", {})
     for s in wl_symbols(wl):
         x, m = by.get(s), meta.get(s, {}) or {}
@@ -192,14 +196,32 @@ def watch_alerts(wl, by, scans_of, scan_name, closes, vp, asof):
                 add("info", f"results on {datetime.strptime(nr, '%Y-%m-%d'):%a %d %b} ({'today' if dd == 0 else 'tomorrow' if dd == 1 else f'in {dd} days'})", 9)
         if "FRESH" in str((vp.get(s) or {}).get("status", "")):
             add("good", "fresh VPCI buy signal this week", 6)
+        for r in ca.get(s, []):
+            dd = (datetime.strptime(r["ex"], "%Y-%m-%d") - datetime.strptime(asof, "%Y-%m-%d")).days
+            if 0 <= dd <= 7:
+                add("info", f"{r['label']} — ex-date {datetime.strptime(r['ex'], '%Y-%m-%d'):%a %d %b}"
+                    + (" (price will adjust)" if r.get("kind") in ("split", "bonus") else ""), 9)
     order = {"crit": 0, "warn": 1, "good": 2, "info": 3}
     return sorted(out, key=lambda a: (order[a[0]], a[1], a[2]))
+
+
+def ordinal(n):
+    return f"{n}{'th' if 11 <= n % 100 <= 13 else {1: 'st', 2: 'nd', 3: 'rd'}.get(n % 10, 'th')}"
 
 
 def evening():
     meta, stocks, scans, breadth, groups = (load(n) for n in ("meta.json", "stocks.json", "scans.json", "breadth.json", "groups.json"))
     if not meta or not stocks:
         print("No dashboard data - run compute.py first")
+        return
+    now_ist = datetime.now(IST)
+    today = now_ist.strftime("%Y-%m-%d")
+    try:
+        hol = {h["date"]: h.get("name", "") for h in json.loads((CFG / "nse" / "holidays.json").read_text()).get("trading", [])}
+    except (OSError, ValueError):
+        hol = {}
+    if today in hol and meta.get("asof") != today:
+        print(f"NSE holiday today ({hol[today]}): no evening digest")
         return
     closes = load("closes.json")
     vpj = load("vpci/completed.json")
@@ -220,7 +242,19 @@ def evening():
     verdict = "Strong" if a50 >= 60 else "Mixed" if a50 >= 40 else "Weak"
     lines = [f"<b>📊 PKC Sector Radar · {datetime.strptime(asof, '%Y-%m-%d'):%d %b %Y}</b>",
              f"{E(bname)} {inr(bi.get('px'))} ({sgn((bi.get('r') or {}).get('1D'), 2)}) · Breadth <b>{verdict}</b>: {a50:.1f}% above 50 DMA ({sgn(a50 - a50w, 1, ' pts')} in a week)",
-             f"Advances/declines {breadth['adv'][L]}/{breadth['dec'][L]} · 52W highs/lows {breadth['nh'][L]}/{breadth['nl'][L]}"]
+             f"Advances/declines {breadth['adv'][L]}/{breadth['dec'][L]} · 52W highs/lows {breadth['nh'][L]}/{breadth['nl'][L]}"
+             + (f" ({breadth['n'][L]:,} stocks)" if breadth.get("n") else "")]
+    ix = meta.get("idx") or {}
+    vx, pe = ix.get("vix") or {}, ix.get("pe50") or {}
+    if vx.get("v") is not None or pe.get("pe") is not None:
+        bits = []
+        if vx.get("v") is not None:
+            bits.append(f"India VIX {vx['v']:.2f} ({sgn(vx.get('d1'), 1)})")
+        if pe.get("pe") is not None:
+            bits.append(f"Nifty 50 P/E {pe['pe']:.1f}" + (f" ({'lowest since Apr 2021' if pe['p'] == 0 else ordinal(pe['p']) + ' percentile since Apr 2021'})" if pe.get("p") is not None else ""))
+        lines.append(" · ".join(bits))
+    if meta.get("asof") != today and now_ist.weekday() < 5 and now_ist.hour >= 18 and today not in hol:
+        lines.append(f"⚠️ Prices are still from {datetime.strptime(meta['asof'], '%Y-%m-%d'):%d %b} — today's data did not arrive")
     th = []
     for name, syms in (groups or {}).get("Themes", {}).items():
         v = [by[s]["r"]["1M"] for s in syms if s in by and by[s]["r"].get("1M") is not None]
@@ -230,9 +264,9 @@ def evening():
     if th:
         lines.append("Leading themes (1M): " + " · ".join(f"{E(n)} {sgn(v, 1)}" for v, n in th[:3]))
 
-    gid, wl, _ = (None, None, {})
+    gid, wl, state = (None, None, {})
     try:
-        gid, wl, _ = gist_load()
+        gid, wl, state = gist_load()
     except Exception as e:
         lines += ["", f"⚠️ Couldn't read your watchlists: {E(str(e))}"]
     if wl:
@@ -243,7 +277,7 @@ def evening():
                 px = (by.get(it["s"]) or {}).get("px")
                 if px and it.get("p"):
                     rets.append((px / it["p"] - 1) * 100)
-        al = watch_alerts(wl, by, scans_of, scan_name, closes, vp, asof)
+        al = watch_alerts(wl, by, scans_of, scan_name, closes, vp, asof, load("corp.json"))
         lines += ["", f"<b>⭐ Your watchlists</b> — {len(syms)} stocks" + (f" · average since added {sgn(sum(rets) / len(rets))}" if rets else "")]
         if al:
             for lvl, _, s, txt in al[:40]:
@@ -264,10 +298,59 @@ def evening():
     fresh = [s for s, r in vp.items() if "FRESH" in str(r.get("status", ""))]
     if fresh:
         lines.append(f"Fresh VPCI buys: <b>{len(fresh)}</b> — " + ", ".join(sym(s, vp[s].get("exchange") or "NSE") for s in fresh[:10]))
+    mf_lines, mf_key = fund_flow_note(by, wl, state if gid else None)
+    if mf_lines:
+        lines += [""] + mf_lines
     if site_url():
         lines += ["", f'<a href="{site_url()}">Open the dashboard</a>']
     tg_send("\n".join(lines))
+    if mf_key and gid:
+        try:
+            state["mf"] = mf_key
+            state_save(gid, state)
+        except Exception as e:
+            print(f"could not save alert state: {e}")
     print(f"Evening digest sent ({len(lines)} lines)")
+
+
+def fund_flow_note(by, wl, state):
+    """A few lines on mutual-fund buying when a new month of fund portfolios is in (or many more fund houses were
+    added to it). Returns (lines, key to remember) — nothing on other days."""
+    M = load("mf.json")
+    if not M or not M.get("stocks"):
+        return [], None
+    meta = M["meta"]
+    latest, houses = meta.get("latest"), len(meta.get("coverage_latest", {}).get("amcs", []))
+    if not latest or houses < 15:
+        return [], None
+    if state is not None:
+        old = state.get("mf") or {}
+        if old.get("m") == latest and houses < (old.get("n") or 0) + 5:
+            return [], None
+    elif meta.get("built") != datetime.now(IST).strftime("%Y-%m-%d"):
+        return [], None
+    y, m = latest.split("-")
+    mon = datetime(int(y), int(m), 1).strftime("%B %Y")
+    A = (meta.get("audit") or [{}])[-1]
+    S = [z for z in M["stocks"] if z["net"]]
+    last = lambda z: z["net"][-1]
+    buy = sorted((z for z in S if not z.get("ipo") and last(z) > 0), key=lambda z: -last(z))[:6]
+    sell = sorted((z for z in S if last(z) < 0), key=lambda z: last(z))[:6]
+    cr = lambda v: f"₹{abs(v):,.0f} Cr"
+    out = [f"<b>🏦 Mutual-fund portfolios · {mon}</b> ({houses} fund houses read)"]
+    if A.get("active_net") is not None:
+        out.append(f"Active funds net {'bought' if A['active_net'] >= 0 else 'sold'} {cr(A['active_net'])} of Indian stocks")
+    if buy:
+        out.append("Most bought: " + ", ".join(f"{sym(z['s'])} {cr(last(z))}" for z in buy))
+    if sell:
+        out.append("Most sold: " + ", ".join(f"{sym(z['s'])} {cr(last(z))}" for z in sell))
+    if wl:
+        by_mf = {z["s"]: z for z in S}
+        mine = [(s, by_mf[s]) for s in wl_symbols(wl) if s in by_mf and abs(by_mf[s].get("bp") or 0) >= 0.1]
+        if mine:
+            out.append("Your watchlists: " + ", ".join(
+                f"{sym(s)} {'bought' if last(z) > 0 else 'sold'} {cr(last(z))} ({sgn(z.get('bp'), 2)} of the company)" for s, z in mine[:10]))
+    return out, {"m": latest, "n": houses}
 
 
 # ───────────────────────────────────────────── live (market hours)
@@ -292,6 +375,13 @@ def live(force=False):
     open_, close_ = now.replace(hour=9, minute=15, second=0), now.replace(hour=15, minute=35, second=0)
     if not force and (now.weekday() >= 5 or not open_ <= now <= close_):
         print(f"{now:%a %H:%M} IST - market closed, nothing to do")
+        return
+    try:
+        hol = {h["date"]: h.get("name", "") for h in json.loads((CFG / "nse" / "holidays.json").read_text()).get("trading", [])}
+    except (OSError, ValueError):
+        hol = {}
+    if not force and now.strftime("%Y-%m-%d") in hol:
+        print(f"NSE holiday today ({hol[now.strftime('%Y-%m-%d')]}) - nothing to do")
         return
     gid, wl, state = gist_load()
     if not wl:

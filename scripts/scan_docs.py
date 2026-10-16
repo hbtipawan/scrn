@@ -388,6 +388,100 @@ DOCS = {
         use="Watch closely for the price breakout; these often become the cycle's leaders.",
         watch="No RS-rating floor here, so a few weak stocks in a falling market can appear.",
         src="William O'Neil / IBD — RS line blue dot"),
+    # ── Delivery (NSE security-wise delivery position)
+    "dlv_spike": dict(
+        what="A day when far more shares than usual were taken into delivery, on a strong up day in an up-trending "
+             "stock. Delivery is volume that was not squared off the same day — buyers kept the shares.",
+        rules=["Delivered shares today ≥ 3× the average of the previous 50 sessions (split-adjusted)",
+               "Close at least 2% above yesterday's", "Close above the 50-day SMA"],
+        use="Information about who is buying, not a buy signal by itself — check whether the stock is breaking out of a base.",
+        watch="Block deals, index rebalancing and results days all create one-day delivery spikes that mean little.",
+        evid="Mar 2021 – Jul 2026, 6,285 weekly signals: no edge. Over 3 months these stocks did +0.3% better than the "
+             "average stock, while all 2%-up days above the 50-day average did +0.7%, and they beat the median stock "
+             "49% of the time. Delivery spikes alone did not predict returns.",
+        src="NSE delivery data (sec_bhavdata_full); site's own rule"),
+    "dlv_accum": dict(
+        what="Repeated heavy delivery on up days with little on down days over the last month — the pattern of steady "
+             "accumulation rather than one big day.",
+        rules=["Accumulation day: close up on the day and delivered shares ≥ 1.5× the 50-session average",
+               "Distribution day: the same on a down close",
+               "4 or more accumulation days and at most 1 distribution day in the last 20 sessions",
+               "Close above the 50-day SMA"],
+        use="A shortlist of stocks with persistent delivery buying. Combine with a base or a Stage 2 setup.",
+        watch="Counts can build up in a strong rally across the whole market; compare with the stock's own history.",
+        evid="Mar 2021 – Jul 2026, 25,851 weekly signals: +1.1% over 3 months against the average stock, beating the "
+             "median stock 51% of the time — a small edge.",
+        src="NSE delivery data; idea after O'Neil's accumulation/distribution days, applied to delivered shares"),
+    "dlv_quiet": dict(
+        what="Delivery share rising while the price goes nowhere: over the last 20 sessions a clearly larger part of the "
+             "volume is being delivered than over the last 6 months, inside a tight range above the 50-day average.",
+        rules=["Delivery % over 20 sessions (shares delivered ÷ shares traded) ≥ 1.25× the same over 120 sessions",
+               "Delivery % over 20 sessions at least 40%", "Highest close ÷ lowest close of the last 20 sessions ≤ 1.12",
+               "Close above the 50-day SMA", "BE/BZ-series stocks left out (every trade there is delivered)"],
+        use="Holders adding quietly before a move. Set an alert at the top of the range.",
+        watch="A falling share of intraday trading (e.g. after a stock leaves the F&O list) also raises delivery %.",
+        evid="Mar 2021 – Jul 2026, 5,711 weekly signals: +1.7% over 3 months against the average stock and 54% beat "
+             "the median stock — the best of the delivery scanners, still a modest edge.",
+        src="NSE delivery data; site's own rule"),
+    "dlv_bigticket": dict(
+        what="Unusually large trades: the average value per trade today was several times the stock's normal, on an up "
+             "day with heavy delivery — bigger orders than the stock usually sees.",
+        rules=["Value per trade (close × volume ÷ number of trades) ≥ 3× its median of the previous 50 sessions",
+               "Close at least 1% above yesterday's", "Delivered shares ≥ 1.5× the 50-session average"],
+        use="A pointer to check the bulk/block deal list for the day.",
+        watch="Rare, and one block deal can trip it. Testing found no lasting edge.",
+        evid="Mar 2021 – Jul 2026, 1,409 weekly signals: +0.4% over 3 months against the average stock, 48% beat the "
+             "median — no edge.",
+        src="NSE trade counts; site's own rule"),
+    "dlv_dist": dict(
+        what="Heavy delivery selling: far more shares than usual delivered on a sharp down day, below the 50-day average.",
+        rules=["Delivered shares today ≥ 3× the 50-session average", "Close at least 2% below yesterday's",
+               "Close below the 50-day SMA"],
+        use="A check for stocks you hold — holders, not just traders, are leaving.",
+        watch="Capitulation days look the same and sometimes mark the low.",
+        evid="Mar 2021 – Jul 2026, 1,372 weekly signals: −0.7% over 3 months against the average stock (all 2%-down "
+             "days below the 50-day average: +0.1%). A mild warning.",
+        src="NSE delivery data; site's own rule"),
+    "rs_bluedot": dict(
+        what="Every stock whose RS line set a 52-week high today — the blue dot on MarketSmith charts. The stock is ahead "
+             "of the market by more than at any point in the last year, whether or not its price is at a high.",
+        rules=["RS line = close ÷ NIFTY 500 close", "Today's RS line is the highest of the last 252 sessions",
+               "At least 200 sessions of history"],
+        use="A list of today's leaders by relative strength. Open the stock window: the Relative strength chart shows every "
+            "blue dot of the year, so you can see whether the dots are clustering (persistent leadership) or a one-off.",
+        watch="In a falling market a stock can make an RS-line high just by falling less than the index — check that the "
+              "price trend is also up.",
+        evid="Sampled weekly from Jul 2021 to Jul 2026 on stocks passing the site's price and turnover filters at the time "
+             "(7,967 signals): the next 3 months beat the average stock by +1.7% on average and beat the median stock 54% "
+             "of the time. A real but small edge — the median signal still lagged slightly, so the gain comes from a few "
+             "big winners. Today's listed stocks only, so delisted losers are missing.",
+        src="William O'Neil / MarketSmith — RS line blue dot"),
+    "rs_climb": dict(
+        what="Stocks moving up the RS leaderboard: rated 80+ today and at least 20 points higher than four weeks ago "
+             "— a 90 that came from 70, not one sliding down from 99.",
+        rules=["RS rating 80 or higher today", "RS rating at least 20 points above its value 20 sessions ago"],
+        use="New leadership often shows up here first. Look for a base or a pullback to buy from rather than chasing.",
+        watch="A fast climb can come from one big result-day gap. Check the chart and the news behind the jump.",
+        evid="Jul 2021 – Jul 2026, 4,021 weekly signals: +1.0% over 1 month and +1.7% over 3 months above the average "
+             "stock, beating the median stock about half the time (51–52%). Treat it as a watch list, not a buy signal.",
+        src="IBD-style RS rating (site's own rule)"),
+    "rs_top_hold": dict(
+        what="Persistent leaders: RS rating 90 or higher on every one of the last 40 sessions (8 weeks).",
+        rules=["Daily RS rating ≥ 90 on each of the last 40 sessions"],
+        use="The market's most consistent outperformers. Buy them on pullbacks to the 21-day or 50-day average.",
+        watch="Long leadership runs end — watch for a close below the 50-day average on heavy volume.",
+        evid="Jul 2021 – Jul 2026, 10,886 weekly signals: +1.2% over 1 month and +4.2% over 3 months above the average "
+             "stock; 53% beat the median stock over 3 months — the strongest of the RS-history scanners.",
+        src="IBD / O'Neil leadership — site's own rule"),
+    "rs_fade": dict(
+        what="Former leaders losing ground: rated 95+ at some point in the last 8 weeks, now 80 or lower.",
+        rules=["Highest daily RS rating of the last 40 sessions is 95 or more", "RS rating today is 80 or lower"],
+        use="A check for stocks you hold: a leader that has dropped this far is no longer leading. Tighten the stop or "
+            "look for the reason.",
+        watch="Some leaders reset in a normal correction and resume. Look at the price — still above the 200-day average?",
+        evid="Jul 2021 – Jul 2026, 2,092 weekly signals: −0.4% over 1 month and −0.7% over 3 months against the average "
+             "stock; 49–50% beat the median. A mild lag rather than a collapse.",
+        src="IBD-style RS rating (site's own rule)"),
     "rs_up_mkt_down": dict(
         what="A strong stock rising on a day the market fell — buyers absorbing selling pressure.",
         rules=["Up 1% or more today", "NIFTY 500 down today", "RS rating 80 or higher", "Volume at least the 50-day average"],
@@ -621,4 +715,50 @@ DOCS = {
         use="Next quarter's operating profit was also up 91% of the time after such results in the backtest.",
         watch="Quality says the quarter was good; the PEAD score says whether the price is likely to follow.",
         src="Results tab — Result Quality Score"),
+    # ── Fund flows (mf_flows.py → mf_scans.py): every scheme's month-end portfolio, month against month
+    "mf_top": dict(
+        what="The stocks active mutual funds bought most in the latest month, measured against the size of the company.",
+        rules=["Active funds' net buying = change in shares held, scheme by scheme, same scheme in both months",
+               "Net bought 0.25%+ of the company's shares in the month",
+               "At least 3 schemes bought, and more schemes bought than sold",
+               "Not a new listing (IPO allotments are not counted as buying)"],
+        use="Funds put serious money behind these names last month; open the stock card to see which schemes and how much.",
+        watch="Portfolios are published up to 10 days after month end, so the buying is 2–6 weeks old. "
+              "A month of buying is not proven to beat the market on its own — use it with price and RS.",
+        src="Fund-house monthly portfolio disclosures (SEBI), read by this site"),
+    "mf_streak": dict(
+        what="Steady accumulation: active funds have been net buyers month after month.",
+        rules=["Active funds net bought the stock in each of the last 3 or more months",
+               "Net bought 0.1%+ of the company in the latest month"],
+        use="Persistent buying often comes from funds building a position over time — a supply overhang is being absorbed.",
+        watch="Large inflows into funds can force buying in their existing holdings; check that more than one fund house is involved.",
+        src="Fund-house monthly portfolio disclosures"),
+    "mf_broad": dict(
+        what="Many independent fund houses adding the same stock in the same month.",
+        rules=["5+ fund houses increased their total holding (all their active schemes together)",
+               "At least three times as many fund houses bought as sold", "Net buying overall"],
+        use="Breadth of buying is harder to explain away than one big scheme — a sign of a widely shared view.",
+        watch="Sector-wide moves (e.g. a rate cut) can make every fund buy the same group.",
+        src="Fund-house monthly portfolio disclosures"),
+    "mf_new": dict(
+        what="Fresh positions: schemes that held none of the stock a month earlier.",
+        rules=["2+ fund houses started a new position in the latest month (none of their active schemes held it before)",
+               "3+ schemes in all bought it for the first time", "Not a new listing"],
+        use="New entries are often where a fund's research has just reached a decision — worth a look before the position is built out.",
+        watch="A new scheme (NFO) investing its money is left out for its first two months, but sector funds launched "
+              "earlier can still add many names at once.",
+        src="Fund-house monthly portfolio disclosures"),
+    "mf_lead": dict(
+        what="Institutional buying behind stocks that are already leading.",
+        rules=["Active funds net bought 0.1%+ of the company in the latest month, more buyers than sellers",
+               "Stage 2 (above a rising 150-day line)", "RS rating 70+"],
+        use="Combines demand from the people with the deepest pockets with a stock that is already acting well.",
+        watch="Fund buying is reported with a lag — check the chart has not already run far since month end.",
+        src="Fund-house monthly portfolio disclosures + this site's trend and RS models"),
+    "mf_sold": dict(
+        what="The stocks active mutual funds sold most in the latest month, measured against the size of the company.",
+        rules=["Net sold 0.25%+ of the company's shares in the month", "More schemes sold than bought"],
+        use="A check for holdings: heavy, broad fund selling is supply that can weigh on the price.",
+        watch="Funds also sell to meet redemptions or to trim a position that grew too big — not always a view on the stock.",
+        src="Fund-house monthly portfolio disclosures"),
 }
