@@ -11,6 +11,10 @@ on:
         type: choice
         options: [upstox, yahoo]
         default: upstox
+      mf_rebuild:
+        description: "Rebuild mutual-fund flows"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -24,7 +28,7 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 130
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -51,6 +55,14 @@ jobs:
         if: steps.upstox.outcome != 'success'
         run: python scripts/fetch_prices.py --source yahoo
 
+      # NSE's own daily files, kept in config/nse/: delivery quantities, every index's close / P/E / P/B /
+      # dividend yield and India VIX, corporate actions, the holiday list. Also checks the last session's
+      # closes in the price file against NSE's official closes and corrects any that differ.
+      - name: NSE daily files (delivery, index valuations, VIX, corporate actions, holidays) + official-close check
+        continue-on-error: true
+        timeout-minutes: 15
+        run: python scripts/fetch_nse_daily.py --wait 10
+
       - name: Older BSE prices for stocks recently listed on NSE (for the long-base identifier)
         continue-on-error: true
         timeout-minutes: 10
@@ -60,6 +72,38 @@ jobs:
         continue-on-error: true
         timeout-minutes: 45
         run: python scripts/fetch_fundamentals.py
+
+      # One time only: the first year of fund portfolios arrives packed (config/mf_seed/*.tar.gz, one per month,
+      # so it can be uploaded through the GitHub website). Unpack it into config/mf/ and drop the packed copy.
+      - name: Unpack the starting fund-portfolio data (first run after the Fund flows update)
+        if: hashFiles('config/mf_seed/*.tar.gz') != ''
+        run: |
+          mkdir -p config/mf
+          for f in config/mf_seed/*.tar.gz; do tar -xzf "$f" -C config/mf; done
+          git rm -r -q config/mf_seed
+          ls config/mf
+
+      # Mutual-fund portfolios: every fund house publishes each scheme's month-end holdings within 10 days.
+      # From the 1st to the 20th the job reads any new files (config/mf/YYYY-MM/), then rebuilds the flows.
+      - name: Mutual-fund portfolios (1st–20th of each month)
+        id: mf
+        continue-on-error: true
+        timeout-minutes: 45
+        run: |
+          if [ "$(date -u +%-d)" -gt 20 ] && [ "${{ inputs.mf_rebuild }}" != "true" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"; echo "Not the 1st–20th of the month: skipped"; exit 0
+          fi
+          pip install -r requirements-mf.txt
+          python -m playwright install --with-deps chromium
+          python scripts/fetch_mf.py --auto
+
+      - name: Mutual-fund flows (when new portfolios were saved)
+        if: steps.mf.outputs.changed == 'true' || inputs.mf_rebuild
+        continue-on-error: true
+        timeout-minutes: 15
+        run: |
+          curl -sSfL --retry 3 -o cache/amfi_schemes.csv "https://portal.amfiindia.com/DownloadSchemeData_Po.aspx?mf=0" || echo "AMFI scheme list not downloaded"
+          python scripts/mf_flows.py
 
       - name: All-time-high reference (rebuilt weekly, ~5 min)
         continue-on-error: true
