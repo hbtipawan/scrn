@@ -423,6 +423,7 @@ table.dt{border-collapse:separate;border-spacing:0;width:100%;font-size:16px}
 #rrgc svg text.ql{font-size:16px;font-weight:700;font-family:var(--display)}
 #rrgc svg text.rl{fill:var(--ink);font-weight:600;font-size:13.5px;paint-order:stroke;stroke:var(--card);stroke-width:3px}
 #rrgc svg.dim .rrs,#rrgc svg.dim text.rl{opacity:.15}#rrgc svg.dim .rrs.on,#rrgc svg.dim text.rl.on{opacity:1}
+#rrgc .rdr .rtail{opacity:0;transition:opacity .12s}#rrgc .rdr.on .rtail{opacity:.85}
 .qpill{display:inline-block;border-radius:8px;padding:2px 9px;font-weight:700;font-size:15px;color:var(--q);border:1.5px solid var(--q)}
 .pbar{display:inline-block;width:70px;height:8px;border-radius:4px;background:var(--track);vertical-align:middle;position:relative;overflow:hidden}
 .pbar i{position:absolute;inset:0 auto 0 0;border-radius:4px}
@@ -547,6 +548,72 @@ details.exp{margin:12px 0;background:var(--card);border:1px solid var(--line);bo
 details.exp>summary{cursor:pointer;padding:12px 16px;font-weight:600}
 details.exp>div{padding:0 0 8px}
 
+
+/* ── Group chart window (above the page, below the stock window) ── */
+.gscrim{position:fixed;inset:0;background:rgba(5,12,22,.62);z-index:54}
+.gmodal{position:fixed;z-index:55;top:2vh;left:0;right:0;margin-inline:auto;width:min(1440px,97vw);height:96vh;background:var(--card);color:var(--ink);border-radius:16px;box-shadow:0 28px 80px rgba(0,0,0,.45);display:flex;flex-direction:column;overflow:hidden}
+.ghead{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:16px 22px 10px;border-bottom:1px solid var(--line)}
+.ghead h2{font-size:34px;font-weight:800;line-height:1.05}
+.gkind{font-size:15px;font-weight:700;color:var(--muted);margin-bottom:2px}
+.gmodal .close{display:inline-flex;align-items:center;gap:8px;border:2px solid var(--ink);background:var(--card);color:var(--ink);border-radius:10px;min-height:44px;padding:0 16px;cursor:pointer;font-size:17px;font-weight:800;flex:none}
+.gmodal .close:hover{background:var(--ink);color:var(--card)}
+.gmodal .close b{font-size:22px;line-height:1}
+.gbody{overflow:auto;overscroll-behavior:contain;padding:12px 22px calc(26px + env(safe-area-inset-bottom,0px))}
+.gsrc{color:var(--muted);font-size:15px;margin:0 0 10px}
+.gstats{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:8px;margin:0 0 10px}
+.gstats div{background:var(--soft);border-radius:8px;padding:8px 10px;min-width:0}
+.gstats dt{font-size:13px;color:var(--muted);font-weight:600}
+.gstats dd{margin:2px 0 0;font-weight:700;font-size:18px}
+.gpath{font-size:16px;margin:0 0 8px}
+.gsigrow{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}
+.gsc{display:inline-flex;align-items:center;gap:4px;border-radius:7px;padding:1px 7px;font-size:13.5px;font-weight:700;border:1.5px solid currentColor;white-space:nowrap;line-height:1.5}
+.gsc.t{color:var(--up-t);background:color-mix(in srgb,var(--up) 10%,transparent)}
+.gsc.b{color:var(--s1);background:color-mix(in srgb,var(--s1) 8%,transparent)}
+.gsc.w{color:var(--down-t);background:color-mix(in srgb,var(--down) 9%,transparent)}
+.gtools{display:flex;flex-wrap:wrap;gap:10px 20px;align-items:flex-end;margin:4px 0 10px}
+.gtools .select{min-width:200px}
+.gmore{flex:1 1 100%}
+.gmore>summary{cursor:pointer;font-weight:700;font-size:15px;color:var(--muted);margin:2px 0 6px;list-style-position:inside}
+.gmore[open]>summary{display:none}
+.gmore .gtools{margin:0}
+.gread{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:15px;color:var(--muted);min-height:26px;padding:4px 2px;border-top:1px solid var(--track)}
+.gread b{color:var(--ink)}
+.gchart{position:relative;height:clamp(560px,74vh,980px);margin-top:4px}
+.gplab{position:absolute;inset:0;pointer-events:none;z-index:3}
+#ghist td.gw{white-space:normal;min-width:150px}
+.gplab span{position:absolute;left:8px;max-width:calc(100% - 84px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:13.5px;font-weight:700;color:var(--muted);background:color-mix(in srgb,var(--card) 82%,transparent);padding:0 6px;border-radius:4px}
+.glegend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:15px;color:var(--muted);margin:10px 2px 16px}
+.glegend span{display:inline-flex;align-items:center;gap:7px}
+.glegend i{display:inline-block;width:18px;height:3px;border-radius:2px;background:var(--c)}
+.gcols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:16px;align-items:start}
+.gcols .dsec,.gbody>.dsec{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.gevl{margin:0;padding-left:0;list-style:none;display:grid;gap:10px;font-size:15.5px;line-height:1.5}
+.gev{display:block;color:var(--muted);font-size:15px}
+.gbody details summary{cursor:pointer;font-weight:700;margin:8px 0}
+@media (max-width:1100px){.gstats{grid-template-columns:repeat(3,minmax(0,1fr))}.gcols{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:700px){.gmodal{top:0;width:100%;height:100%;height:100dvh;border-radius:0}.ghead h2{font-size:27px}.gchart{height:max(560px,78vh)}.gbody{padding:10px 12px 26px}.gtools .ctl{width:100%}}
+/* mini chart in an opened rotation row */
+.gmini{position:relative;border:1px solid var(--line);border-radius:12px;padding:8px 10px 6px;margin:4px 0 12px;cursor:pointer;background:var(--card)}
+.gmini:hover,.gmini:focus-visible{border-color:var(--accent)}
+.gmh{font-size:15px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center}
+.gmh b{color:var(--ink)}
+.gmc{height:220px;margin-top:4px}
+.gmo{position:absolute;right:12px;top:8px;font-weight:700;font-size:15px;color:var(--ink);background:var(--soft);border:1.5px solid var(--line);border-radius:8px;padding:2px 10px}
+/* rotation-row badges and chart button */
+.gbadges{display:inline-flex;flex-wrap:wrap;gap:4px;margin-left:8px;vertical-align:2px}
+.gbrk{font-size:13px;font-weight:700;border-radius:6px;padding:0 6px;background:var(--soft);color:var(--ink);border:1px solid var(--line)}
+.gbtn{display:inline-flex;align-items:center;justify-content:center;width:32px;height:28px;margin-left:6px;border:1.5px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);cursor:pointer;vertical-align:-6px}
+.gbtn svg{width:18px;height:18px}
+.gbtn:hover{border-color:var(--accent)}
+/* group signals view */
+.gblk{font-size:21px;margin:18px 2px 10px}
+.gcard{padding:12px 14px;margin-bottom:12px}
+.gch{display:flex;gap:10px;align-items:flex-start;margin-bottom:6px}
+.gch b{font-size:17px}
+.gcnt{display:inline-block;min-width:26px;text-align:center;font-weight:700;font-size:14px;background:var(--soft);border-radius:999px;padding:0 8px;margin-left:4px}
+.gdesc{color:var(--muted);font-size:15px;margin-top:2px;line-height:1.45}
+.gtab tr.grow{cursor:pointer}
+.gtab tr.grow:hover td{background:var(--soft)}
 /* ── Drawer ───────────────────────────────────────────── */
 .scrim{position:fixed;inset:0;background:rgba(5,12,22,.62);z-index:60}
 /* Stock window: a large centred window on PC, full screen on phones */
@@ -911,7 +978,7 @@ function renderPulse(){
     <div class="lab"><span>${esc(bn)}</span><span>${st.period==="1D"?"Today":PL[st.period]+" change"}</span></div>
     <div><span class="val num">${main?inr(main.px):"–"}</span><span class="chg num ${cls(r)}">${sgn(r)}</span></div>
     ${spark}
-    <div class="minis">${others.map(([k,v])=>`<div class="mini"><span>${esc(k.replace("NIFTY ","Nifty ").replace("SMLCAP","Smallcap").replace("MIDCAP","Midcap").replace("MICROCAP","Microcap "))}</span><b class="num ${cls(v.r[st.period])}">${sgn(v.r[st.period])}</b></div>`).join("")}${m.idx?.vix?`<div class="mini" title="India VIX: expected volatility for the next 30 days; ${ordp(m.idx.vix.p1y)} of the last year"><span>India VIX</span><b class="num">${m.idx.vix.v.toFixed(2)} <span class="${cls(-m.idx.vix.d1)}">${m.idx.vix.d1>0?"+":""}${m.idx.vix.d1}%</span></b></div>`:""}${isNum(m.idx?.pe50?.pe)?`<div class="mini" title="NSE's Nifty 50 P/E; percentile among daily readings since ${esc(m.idx.basis)} (consolidated earnings); median ${m.idx.pe50.m}"><span>Nifty 50 P/E</span><b class="num">${m.idx.pe50.pe.toFixed(1)}${isNum(m.idx.pe50.p)?` <span style="font-weight:500;color:var(--band-muted)">· ${m.idx.pe50.p===0?"lowest since 2021":ordp(m.idx.pe50.p).replace(" percentile"," pct")}</span>`:""}</b></div>`:""}</div>
+    <div class="minis">${others.map(([k,v])=>`<div class="mini"><span>${esc(k.replace("NIFTY ","Nifty ").replace("SMLCAP","Smallcap").replace("MIDCAP","Midcap").replace("MICROCAP","Microcap "))}</span><b class="num ${cls(v.r[st.period])}">${sgn(v.r[st.period])}</b></div>`).join("")}${m.idx?.vix?`<div class="mini" title="India VIX: expected volatility for the next 30 days; ${ordp(m.idx.vix.p1y)} of the last year"><span>India VIX</span><b class="num">${m.idx.vix.v.toFixed(2)} <span class="${cls(-m.idx.vix.d1)}">${m.idx.vix.d1>0?"+":""}${m.idx.vix.d1}%</span></b></div>`:""}${isNum(m.idx?.pe50?.pe)?`<div class="mini" title="NSE's Nifty 50 P/E; percentile among daily readings since ${esc(m.idx.basis)} (consolidated earnings); median ${m.idx.pe50.m}"><span>Nifty 50 P/E</span><b class="num">${m.idx.pe50.pe.toFixed(1)}${isNum(m.idx.pe50.p)?` <span style="font-weight:500;color:var(--band-muted)">· ${m.idx.pe50.p===0?"low since 2021":ordp(m.idx.pe50.p).replace(" percentile"," pct")}</span>`:""}</b></div>`:""}</div>
   </div>
   <div class="health">
     <div class="verdict"><span class="k">Breadth reading</span><span class="v ${vd[1]}" style="${vd[1]?"":"color:var(--accent)"}">${vd[0]}</span>
@@ -926,7 +993,7 @@ function renderPulse(){
 }
 function renderFoot(){
   const m=D.meta,f=m.filters||{};
-  $("#foot").innerHTML=`<p>Breadth and rotation: ${m.all_stocks?`all ${m.all_stocks.toLocaleString("en-IN")} NSE main-board stocks that traded in the last 3 sessions (no liquidity filter), or the liquid universe with the switch. `:""}Scanners and RS ranking: ${m.universe.toLocaleString("en-IN")} liquid NSE stocks (price ≥ ₹${f.min_price}, median daily turnover ≥ ₹${f.min_median_turnover_cr} Cr${f.min_market_cap_cr?`, market cap ≥ ₹${f.min_market_cap_cr} Cr`:""}). Prices from ${m.source==="upstox"?"Upstox (split- and bonus-adjusted), with today's candle checked against the NSE bhavcopy":m.source==="yahoo"?"Yahoo Finance (backup source)":esc(m.source)}. Refreshed every weekday evening.</p><p>For personal research. Not investment advice.</p>`;
+  $("#foot").innerHTML=`<p>Breadth and rotation: ${m.all_stocks?`all ${m.all_stocks.toLocaleString("en-IN")} NSE main-board stocks that traded in the last 3 sessions (no liquidity filter), or the liquid universe with the switch. `:""}Scanners and RS ranking: ${m.universe.toLocaleString("en-IN")} liquid NSE stocks (price ≥ ₹${f.min_price}, median daily turnover ≥ ₹${f.min_median_turnover_cr} Cr${f.min_market_cap_cr?`, market cap ≥ ₹${f.min_market_cap_cr} Cr`:""}). Prices from ${m.source==="upstox"?"Upstox (split- and bonus-adjusted), with today's candle checked against the NSE bhavcopy":m.source==="yahoo"?"Yahoo Finance (backup source)":esc(m.source)}. Refreshed every weekday evening.</p><p>For personal research. Not investment advice.${D.meta.grp?` Group charts by <a href="https://www.tradingview.com/" target="_blank" rel="noopener">TradingView</a> Lightweight Charts™ (Apache 2.0).`:""}</p>`;
 }
 
 /* ════════════════════ generic table ════════════════════ */
@@ -1012,6 +1079,10 @@ function groupStats(prev,period=st.period,group=st.group){
 function renderRotation(){
   if(st.view==="rrg"&&D.meta.idx){renderRRG();return}
   if(st.view==="rrg")st.view="bars";
+  if((st.view==="radar"||st.view==="gsig")&&!D.meta.grp)st.view="bars";
+  if(st.view==="radar"){renderRadar();return}
+  if(st.view==="gsig"){renderGroupSignals();return}
+  if(D.meta.grp&&!GXD){grpLoad().then(()=>{if(st.tab==="rotation")renderRotation()})}
   const now=groupStats(false),prev=groupStats(true);
   const prank={};[...prev].sort((a,b)=>b.v-a.v).forEach((g,i)=>prank[g.name]=i+1);
   const ranked=[...now].sort((a,b)=>b.v-a.v);ranked.forEach((g,i)=>g.rank=i+1);
@@ -1027,7 +1098,7 @@ function renderRotation(){
     ${viewSeg()}
   </div>`;
   if(!rows.length){$("#view").innerHTML=h+`<div class="card empty">No group has ${D.meta.min_group_size}+ stocks with data for this period.</div>`;return}
-  if(st.view==="heat"){$("#view").innerHTML=h+heatmap(rows);wireTables($("#view"),renderRotation);return}
+  if(st.view==="heat"){$("#view").innerHTML=h+heatmap(rows);wireTables($("#view"),renderRotation);if(D.meta.grp)gMountMini();return}
   const mx=Math.max(1,...now.map(g=>Math.abs(g.v))),showRank=st.period!=="1D";
   h+=`<div class="card rows">`;
   for(const g of rows){
@@ -1035,16 +1106,16 @@ function renderRotation(){
     const rk=!showRank||!pr?"<span></span>":dr>0?`<span class="rk gain" title="Rank a week ago: ${pr}">▲${dr}</span>`:dr<0?`<span class="rk loss" title="Rank a week ago: ${pr}">▼${-dr}</span>`:`<span class="rk" title="Rank unchanged">=</span>`;
     const open=st.open===g.name;
     h+=`<div class="brow" tabindex="0" role="button" aria-expanded="${open}" data-g="${esc(g.name)}">
-      <div class="bname">${esc(g.name)}<span class="cnt">${g.n}</span><span class="lead">Top: ${g.top.map(([s,v])=>`${esc(s)} ${sgn(v,1)}`).join(" · ")}</span></div>
+      <div class="bname">${esc(g.name)}<span class="cnt">${g.n}</span>${D.meta.grp?`${gBadges(st.group,g.name)}<button type="button" class="gbtn" data-gopen="${esc(st.group+"|"+g.name)}" aria-label="Chart of ${esc(g.name)}" title="Chart"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 19h18v2H3zm2-3 4-5 3 3 5-7 2 1.4-6.6 9.3-3-3L6.6 17z"/></svg></button>`:""}<span class="lead">Top: ${g.top.map(([s,v])=>`${esc(s)} ${sgn(v,1)}`).join(" · ")}</span></div>
       <div class="btrack" aria-hidden="true"><div class="zero"></div><div class="fill ${g.v>=0?"pos":"neg"}" style="left:${left}%;width:${w}%"></div></div>
       <div class="bval num ${cls(g.v)}">${sgn(g.v)}</div>${rk}
       ${open?members(g):""}</div>`;
   }
   const sx=D.meta.sector_from_industry;
   h+=`</div><p class="note">Bars are the ${st.agg} ${st.period==="1D"?"today's":PL[st.period]} return of stocks in each group, using ${uniWord()} (groups need ${D.meta.min_group_size}+ stocks).${st.uni!=="lq"?" Small, thinly traded stocks swing more — the median is steadier than the mean.":""}${st.group==="Sector"&&sx?` NSE lists a sector only for the ~750 stocks of its broad indices; ${sx.derived.toLocaleString("en-IN")} other stocks take the sector that their industry belongs to (the two agree for ${sx.agree}% of stocks where both are known).`:""}</p>`;
-  $("#view").innerHTML=h;wireTables($("#view"),renderRotation);
+  $("#view").innerHTML=h;wireTables($("#view"),renderRotation);if(D.meta.grp)gMountMini();
 }
-const viewSeg=()=>`<div class="ctl"><span>View</span>${seg("view",D.meta.idx?["bars","heat","rrg"]:["bars","heat"],st.view,{bars:"Bars",heat:"Heatmap",rrg:"Rotation map (RRG)"})}</div>`;
+const viewSeg=()=>`<div class="ctl"><span>View</span>${seg("view",["bars","heat",...(D.meta.grp?["radar","gsig"]:[]),...(D.meta.idx?["rrg"]:[])],st.view,{bars:"Bars",heat:"Heatmap",radar:"Rotation radar",gsig:"Group signals",rrg:"NSE index map (RRG)"})}</div>`;
 /* ── NSE index data (indices.json, loaded when needed): valuations, India VIX, RRG ── */
 let IXD=null;
 async function ixLoad(){if(IXD)return IXD;let j=window.EMBED?.indices||null;
@@ -1105,7 +1176,7 @@ const ord=n=>{const v=n%100;return n+(v>=11&&v<=13?"th":({1:"st",2:"nd",3:"rd"})
 const ordp=p=>p===0?"lowest reading":p>=100?"highest reading":`${ord(p)} percentile`;
 function pctBar(p){if(!isNum(p))return "–";const c=p>=80?"var(--down)":p<=20?"var(--up)":"var(--muted)";return `<span class="pbar" title="${ordp(p)}"><i style="width:${Math.max(3,p)}%;background:${c}"></i></span><span class="num" style="margin-left:6px">${p}</span>`}
 function members(g){
-  return `<div class="members"><div class="meta">${g.adv.toFixed(0)}% of stocks up over ${st.period==="1D"?"today":PL[st.period]} · ${g.br==null?"–":g.br.toFixed(0)+"%"} above 50 DMA</div>${dtable("grp_"+g.name,g.syms.map(s=>D.by[s]),[C.stock,C.ret(st.period),C.px,C.mc,C.rs,C.fr,C.pe,C.h52,C.st,C.vr],{limit:60,csv:false})}</div>`;
+  return `<div class="members">${D.meta.grp?gMiniHtml(st.group,g.name):""}<div class="meta">${g.adv.toFixed(0)}% of stocks up over ${st.period==="1D"?"today":PL[st.period]} · ${g.br==null?"–":g.br.toFixed(0)+"%"} above 50 DMA</div>${dtable("grp_"+g.name,g.syms.map(s=>D.by[s]),[C.stock,C.ret(st.period),C.px,C.mc,C.rs,C.fr,C.pe,C.h52,C.st,C.vr],{limit:60,csv:false})}</div>`;
 }
 function heatmap(rows){
   const stats=Object.fromEntries(PERIODS.map(p=>[p,Object.fromEntries(groupStats(false,p).map(g=>[g.name,g.v]))]));
@@ -1232,6 +1303,276 @@ function wireVal(){const box=$("#chpe");const ph=IXD.pe_hist;
       const bx=vb.getBoundingClientRect();let left=sx/W*r.width+(r.left-bx.left)+12;if(left+tip.offsetWidth>bx.width-8)left-=tip.offsetWidth+24;tip.style.left=Math.max(4,left)+"px";tip.style.top="48px"};
     svg.addEventListener("mousemove",mv);svg.addEventListener("touchmove",mv,{passive:true});svg.addEventListener("touchstart",mv,{passive:true});svg.addEventListener("mouseleave",()=>{tip.hidden=true;xh.setAttribute("opacity","0")})}
   wireTables($("#valsec"),()=>{const sl=$("#valsec");if(sl){sl.outerHTML=valSection();wireVal()}})}
+
+/* ════════════════════ GROUP CHARTS & GROUP SIGNALS ════════════════════
+   grp.json        one row per theme / sector / NSE index / industry: latest readings, signals, 26-week sparklines
+   grp/<id>.json   the group's daily history (open/high/low/close, turnover, breadth, group RS rating, signal days),
+                   loaded when its chart opens;  grp/_common.json  dates + NIFTY 500
+   Charts: TradingView Lightweight Charts (docs/vendor, Apache 2.0), loaded on first use. */
+let GXD=null,GCOM=null,LWCP=null,GCH=null,GMINI=null;const GXF={};
+const GKIND={Themes:"Theme",Sector:"Sector","NSE Index":"NSE index",Industry:"Industry"};
+const GCODE={g_rank:"RS↑",g_stage2:"S2",g_stage2m:"S2₹",g_money:"₹",g_high:"52W",g_base:"BO",g_rsfirst:"RS1",g_thrust:"BT",g_nhx:"NH",g_coil:"Coil",g_low:"52L",g_bcollapse:"BC",g_rslow:"RS↓"};
+const GTESTED=["g_rank","g_stage2m","g_stage2","g_money"];            // a tested edge, 2021–26
+const GBREAK=["g_high","g_base","g_coil","g_nhx","g_thrust","g_rsfirst"];
+const GWEAK=["g_rslow","g_low","g_bcollapse"];
+const gv=()=>encodeURIComponent(D.meta.generated||"");
+async function grpLoad(){if(GXD)return GXD;let j=window.EMBED?.grp||null;
+  if(!j){try{const r=await fetch(`data/grp.json?v=${gv()}`);j=r.ok?await r.json():null}catch(e){}}
+  j=j||{rows:[],sig:{},kinds:{}};j.by={};j.id={};for(const r of j.rows){j.by[r.k+"|"+r.n]=r;j.id[r.id]=r}return GXD=j}
+async function gcomLoad(){if(GCOM)return GCOM;let j=window.EMBED?.grpCommon||null;
+  if(!j){let r=null;try{r=await fetch(`data/grp/_common.json?v=${gv()}`)}catch(e){}
+    if(!r||!r.ok)throw new Error("Could not load the group chart data. Check the connection and try again.");j=await r.json()}
+  return GCOM=j}
+async function gfileLoad(id){if(GXF[id])return GXF[id];let j=window.EMBED?.grpFiles?.[id]||null;
+  if(!j){let r=null;try{r=await fetch(`data/grp/${id}.json?v=${gv()}`)}catch(e){}
+    if(!r||!r.ok)throw new Error(window.EMBED?.grpFiles?"This group's chart is not in the offline preview — it works on the website.":"Could not load this group's chart data. Check the connection and try again.");j=await r.json()}
+  return GXF[id]=j}
+function lwcLoad(){if(window.LightweightCharts)return Promise.resolve(window.LightweightCharts);
+  return LWCP=LWCP||new Promise((res,rej)=>{const s=document.createElement("script");s.src="vendor/lightweight-charts-5.2.1.js";s.onload=()=>res(window.LightweightCharts);s.onerror=()=>{LWCP=null;rej(new Error("The chart library did not load. Check the connection and try again."))};document.head.appendChild(s)})}
+const gU=r=>st.uni==="lq"&&r&&r.l?"l":"a";
+const gRow=(kind,name)=>GXD?.by?.[kind+"|"+name]||null;
+const cssv=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+function rgba(hex,a){const h=hex.replace("#","");if(h.length<6)return hex;const n=parseInt(h.slice(0,6),16);return `rgba(${n>>16&255},${n>>8&255},${n&255},${a})`}
+function gpal(){return {card:cssv("--card"),ink:cssv("--ink"),muted:cssv("--muted"),line:cssv("--line"),track:cssv("--track"),up:cssv("--up"),down:cssv("--down"),
+  s1:cssv("--s1"),s2:cssv("--s2"),s3:cssv("--s3"),s4:cssv("--s4"),bdot:cssv("--bdot"),accent:cssv("--accent")}}
+const sma=(a,n)=>{const o=new Array(a.length).fill(null);let s=0,k=0;for(let i=0;i<a.length;i++){const v=a[i];if(isNum(v)){s+=v;k++}if(i>=n){const w=a[i-n];if(isNum(w)){s-=w;k--}}if(i>=n-1&&k===n)o[i]=s/n}return o};
+const ema=(a,n)=>{const o=new Array(a.length).fill(null),al=2/(n+1);let e=null,c=0;for(let i=0;i<a.length;i++){const v=a[i];if(!isNum(v))continue;c++;e=e===null?v:e+al*(v-e);if(c>=n)o[i]=e}return o};
+/* daily rows of one group (one universe), or weekly bars built from them */
+function gRows(F,u,weekly){const S=F[u]||F.a,dates=GCOM.dates,b=GCOM.bench,i0=F.i0,out=[];
+  for(let i=0;i<S.c.length;i++){const c=S.c[i];if(!isNum(c))continue;
+    out.push({t:dates[i0+i],o:S.o[i],h:S.h[i],l:S.l[i],c,v:S.v[i],b50:S.b50[i],b200:S.b200[i],rk:S.rk[i],nh:S.nh[i],cnt:S.cnt[i],bx:b[i0+i],i})}
+  if(!weekly)return out;
+  const wk=[],key=t=>{const d=new Date(t+"T00:00:00Z"),k=(d.getUTCDay()+6)%7;d.setUTCDate(d.getUTCDate()-k);return d.toISOString().slice(0,10)};
+  let cur=null,ck=null;for(const r of out){const k=key(r.t);if(k!==ck){if(cur)wk.push(cur);ck=k;cur={...r,v:r.v||0,i0:r.i}}else{cur.h=Math.max(cur.h,r.h);cur.l=Math.min(cur.l,r.l);cur.c=r.c;cur.v+=r.v||0;cur.t=r.t;cur.b50=r.b50;cur.b200=r.b200;cur.rk=r.rk;cur.nh=r.nh;cur.cnt=r.cnt;cur.bx=r.bx;cur.i=r.i}}
+  if(cur)wk.push(cur);return wk}
+/* ── the big chart window ── */
+const GST={range:"1Y",int:"D",sig:"tested",scale:"lin",cmp:"",ma:true};
+function gmodalEl(){let m=$("#gmodal");if(m)return m;
+  document.body.insertAdjacentHTML("beforeend",`<div class="gscrim" id="gscrim" hidden></div><section class="gmodal" id="gmodal" hidden role="dialog" aria-modal="true" aria-labelledby="gTitle"></section>`);
+  $("#gscrim").addEventListener("click",()=>closeGroupChart());
+  m=$("#gmodal");m.addEventListener("click",gModalClick);
+  return m}
+async function openGroupChart(kind,name){
+  Object.assign(GST,store.get("gchart",{}));GST.cmp="";
+  const m=gmodalEl(),wasOpen=!m.hidden;m.dataset.k=kind;m.dataset.n=name;
+  m.innerHTML=`<header class="ghead"><div><div class="gkind">${esc(GKIND[kind]||kind)}</div><h2 id="gTitle">${esc(name)}</h2></div><button class="close" type="button" data-gclose aria-label="Close chart"><b aria-hidden="true">✕</b> Close</button></header><div class="gbody"><div class="empty" style="padding:40px">Loading chart…</div></div>`;
+  m.hidden=false;$("#gscrim").hidden=false;document.body.style.overflow="hidden";
+  if(!wasOpen&&!history.state?.gchart)history.pushState({...(history.state||{}),gchart:1},"",location.href);
+  try{await Promise.all([grpLoad(),gcomLoad(),lwcLoad()]);
+    const r=gRow(kind,name);if(!r)throw new Error("No chart for this group yet (it needs 3 or more stocks with prices).");
+    await gfileLoad(r.id);if(m.hidden||m.dataset.n!==name)return;drawGroupChart()}
+  catch(e){m.querySelector(".gbody").innerHTML=`<div class="empty" style="padding:40px">${esc(e.message||String(e))}</div>`}
+  m.querySelector("[data-gclose]")?.focus()}
+let GCH_BACK=false;
+function closeGroupChart(fromPop){const m=$("#gmodal");if(!m||m.hidden)return;if(GCH){GCH.ro?.disconnect();GCH.chart.remove();GCH=null}
+  m.hidden=true;$("#gscrim").hidden=true;if($("#drawer").hidden)document.body.style.overflow="";
+  if(!fromPop&&history.state?.gchart){GCH_BACK=true;history.back()}}
+window.addEventListener("popstate",()=>{if(GCH_BACK){GCH_BACK=false;return}if(!history.state?.gchart&&$("#gmodal")&&!$("#gmodal").hidden&&$("#drawer").hidden)closeGroupChart(true)});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&$("#gmodal")&&!$("#gmodal").hidden&&$("#drawer").hidden&&$("#mdl").hidden){e.stopImmediatePropagation();closeGroupChart()}},true);
+function gpill(r,u){const x=r[u];if(!x||!isNum(x.rk))return "–";const d=isNum(x.rk4)?x.rk-x.rk4:null;
+  return `${rsPill(x.rk)}${d!=null&&Math.abs(d)>=5?` <span class="num ${cls(d)}" style="font-size:15px">${d>0?"▲":"▼"}${Math.abs(d)}</span>`:""}`}
+function gsigChips(r,u,maxAgo=19,big){const x=r[u];if(!x)return "";const ids=(x.sig||[]).filter(k=>x.ago[k]<=maxAgo);
+  return ids.map(k=>{const m=GXD.sig[k]||{},t=GTESTED.includes(k)?"t":GWEAK.includes(k)?"w":"b";return `<span class="gsc ${t}" title="${esc(m.name||k)} — ${x.ago[k]===0?"today":x.ago[k]+" sessions ago"}">${esc(GCODE[k]||k)}${big?` ${esc(m.name||k)} · ${x.ago[k]===0?"today":x.ago[k]+"d ago"}`:""}</span>`}).join("")}
+function drawGroupChart(){
+  const m=$("#gmodal"),kind=m.dataset.k,name=m.dataset.n,r=gRow(kind,name),F=GXF[r.id],u=gU(r),x=r[u],P=gpal();
+  const src=r.src==="nse"?`NSE's official index · breadth and turnover from its ${u==="l"?r.ml+" liquid":r.m} member stocks`:`Equal-weight index of ${u==="l"?r.ml+" liquid":r.m} member stocks, built by the site (base 100)`;
+  const path=isNum(x.rk4)?(x.rk-x.rk4>=10?`climbing from ${x.rk4} four weeks ago`:x.rk4-x.rk>=10?`slipping from ${x.rk4} four weeks ago`:`steady (${x.rk4} four weeks ago)`):"";
+  const stx={2:"Stage 2",4:"Stage 4",1:"Stage 1",3:"Stage 3"}[x.st]||"–";
+  const kv=(k,v,c)=>`<div><dt>${k}</dt><dd class="num ${c||""}">${v}</dd></div>`;
+  const peers=(GXD.kinds[kind]||[]).map(id=>GXD.id[id]).filter(p=>p&&p.n!==name).sort((a,b)=>a.n.localeCompare(b.n));
+  const segG=(name_,opts,cur,labels)=>`<div class="seg" role="group" aria-label="${esc(name_)}">`+opts.map(o=>`<button type="button" data-gs="${name_}" data-val="${esc(o)}" aria-pressed="${o===cur}">${esc(labels?labels[o]:o)}</button>`).join("")+`</div>`;
+  m.querySelector(".gbody").innerHTML=`
+   <p class="gsrc">${esc(src)}${r.l?"":` · fewer than 3 liquid members, so the liquid view shows all members`}</p>
+   <dl class="gstats">${kv("Group RS rating",`${gpill(r,u)}`)}${kv("Stage",stx)}${kv("1 month",sgn(x.r["1M"],1),cls(x.r["1M"]))}${kv("3 months",sgn(x.r["3M"],1),cls(x.r["3M"]))}${kv("1 year",sgn(x.r["1Y"],1),cls(x.r["1Y"]))}${kv("From 52W high",sgn(x.h52,1))}${kv("Above 50 DMA",isNum(x.b50)?x.b50+"%":"–")}${kv("At 52W highs",isNum(x.nh)?`${x.nh} of ${x.cnt}`:"–")}${kv("Turnover vs usual",isNum(x.mr)?x.mr.toFixed(2)+"×":"–",x.mr>=1.5?"up":"")}</dl>
+   ${path?`<p class="gpath">Group RS rating ${x.rk}: ${path} · ranked against the other ${(GXD.kinds[kind]||[]).length-1} ${({Themes:"themes",Sector:"sectors","NSE Index":"NSE indices",Industry:"industries"})[kind]||"groups"}.</p>`:""}
+   ${(x.sig||[]).length?`<div class="gsigrow">${gsigChips(r,u,19,true)}</div>`:""}
+   <div class="gtools">
+     <div class="ctl"><span>Range</span>${segG("range",["3M","6M","1Y","2Y","5Y","All"],GST.range)}</div>
+     <div class="ctl"><span>Bars</span>${segG("int",["D","W"],GST.int,{D:"Daily",W:"Weekly"})}</div>
+     <details class="gmore" ${matchMedia("(max-width:700px)").matches?"":"open"}><summary>Chart options</summary><div class="gtools">
+     <div class="ctl"><span>Signals on chart</span>${segG("sig",["tested","all","off"],GST.sig,{tested:"Tested",all:"All",off:"Off"})}</div>
+     <div class="ctl"><span>Scale</span>${segG("scale",["lin","log"],GST.scale,{lin:"Linear",log:"Log"})}</div>
+     ${D.breadth?.universe?`<div class="ctl"><span>Stocks</span>${segG("uni",["all","lq"],st.uni,{all:"All",lq:"Liquid"})}</div>`:""}
+     <div class="ctl"><span>Compare (% change from the left edge)</span><select class="select" id="gcmp" aria-label="Compare with"><option value="">None</option><option value="__bench" ${GST.cmp==="__bench"?"selected":""}>NIFTY 500</option>${peers.map(p=>`<option value="${esc(p.id)}" ${GST.cmp===p.id?"selected":""}>${esc(p.n)}</option>`).join("")}</select></div>
+   </div></details></div>
+   <div class="gread" id="gread" aria-live="off"></div>
+   <div class="gchart" id="gchart"><div class="gplab" id="gplab"></div></div>
+   <div class="glegend"><span><i style="--c:${P.s3}"></i>${GST.int==="W"?"10-week":"21-day"} EMA</span><span><i style="--c:${P.s1}"></i>${GST.int==="W"?"30-week":"50-day"} average</span><span><i style="--c:${P.s2}"></i>${GST.int==="W"?"40-week":"200-day"} average</span><span><span class="bd" aria-hidden="true"></span>RS line at a ${GST.int==="W"?"52-week":"52-week"} high</span><span><span class="gsc t">▲</span>tested signal</span><span><span class="gsc b">●</span>breakout / other</span><span><span class="gsc w">▼</span>weakness</span></div>
+   <div class="gcols"><div class="dsec"><h4>This group's signals and what followed</h4><div id="ghist"></div></div>
+     <div class="dsec"><h4>What the signals mean — tested on 2021–26</h4>${gEvidence(u)}</div></div>
+   <div class="dsec" style="margin-top:16px"><h4>Member stocks</h4><div id="gmem"></div></div>`;
+  $("#gcmp").addEventListener("change",e=>{GST.cmp=e.target.value;gRenderChart()});
+  gRenderChart();gHistory();gMembers()}
+function gModalClick(e){
+  if(e.target.closest("[data-gclose]")){closeGroupChart();return}
+  const s=e.target.closest("[data-gs]");if(s){const k=s.dataset.gs,v=s.dataset.val;
+    if(k==="uni"){st.uni=v;store.set("uni",v);drawGroupChart();if(["rotation","breadth"].includes(st.tab))render();return}
+    GST[k]=v;store.set("gchart",{range:GST.range,int:GST.int,sig:GST.sig,scale:GST.scale});
+    s.parentElement.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===s));
+    if(k==="range"&&GCH){gSetRange();return}
+    if(k==="int"){drawGroupChart();return}
+    gRenderChart();return}
+  const go=e.target.closest("[data-gopen]");if(go){const [k,n]=go.dataset.gopen.split("|");openGroupChart(k,n);return}
+}
+function gSetRange(){if(!GCH)return;const n=GCH.rows.length,per={"3M":63,"6M":126,"1Y":252,"2Y":504,"5Y":1260}[GST.range];
+  const bars=per?Math.round(per/(GST.int==="W"?5:1)):n;GCH.chart.timeScale().setVisibleLogicalRange({from:Math.max(-1,n-bars),to:n+2})}
+async function gRenderChart(){
+  const m=$("#gmodal"),r=gRow(m.dataset.k,m.dataset.n),F=GXF[r.id],u=gU(r),L=window.LightweightCharts,P=gpal(),W=GST.int==="W";
+  const box=$("#gchart");if(!box)return;if(GCH){GCH.ro?.disconnect();GCH.chart.remove();GCH=null}
+  const rows=gRows(F,u,W);if(rows.length<5){box.innerHTML=`<div class="empty">Not enough history yet.</div>`;return}
+  let cmpRows=null;if(GST.cmp&&GST.cmp!=="__bench"){try{const CF=await gfileLoad(GST.cmp);const cr=gRows(CF,gU(GXD.id[GST.cmp]),W);cmpRows=new Map(cr.map(q=>[q.t,q.c]))}catch(e){}}
+  const phone=matchMedia("(max-width:700px)").matches;
+  const chart=L.createChart(box,{autoSize:true,layout:{background:{type:"solid",color:P.card},textColor:P.muted,fontFamily:"IBM Plex Sans, system-ui, sans-serif",fontSize:phone?12:13,attributionLogo:true,panes:{separatorColor:P.line,separatorHoverColor:rgba(P.accent,.35),enableResize:true}},
+    grid:{vertLines:{color:rgba(P.track.length>6?P.track:P.line,.6)},horzLines:{color:P.track}},rightPriceScale:{borderColor:P.line,minimumWidth:phone?52:64},
+    timeScale:{borderColor:P.line,rightOffset:3,minBarSpacing:0.5},crosshair:{mode:L.CrosshairMode.Normal},localization:{locale:"en-IN"},handleScale:{axisPressedMouseMove:{time:true,price:false}}});
+  const T=rows.map(q=>q.t),C=rows.map(q=>q.c),line=(o)=>({priceLineVisible:false,lastValueVisible:false,crosshairMarkerVisible:false,lineWidth:2,...o});
+  /* pane 0: candles + averages (+ comparison) */
+  const cs=chart.addSeries(L.CandlestickSeries,{upColor:P.up,downColor:P.down,borderUpColor:P.up,borderDownColor:P.down,wickUpColor:P.up,wickDownColor:P.down,priceLineVisible:false},0);
+  cs.setData(rows.map(q=>({time:q.t,open:q.o,high:q.h,low:q.l,close:q.c})));
+  const mas=W?[[ema(C,10),P.s3],[sma(C,30),P.s1],[sma(C,40),P.s2]]:[[ema(C,21),P.s3],[sma(C,50),P.s1],[sma(C,200),P.s2]];
+  for(const [a,c] of mas){const sr=chart.addSeries(L.LineSeries,line({color:c,lineWidth:1.6}),0);sr.setData(a.map((v,i)=>isNum(v)?{time:T[i],value:v}:{time:T[i]}))}
+  let cmpS=null;
+  if(GST.cmp){const vals=GST.cmp==="__bench"?rows.map(q=>q.bx):rows.map(q=>cmpRows?.get(q.t)??null);
+    cmpS=chart.addSeries(L.LineSeries,line({color:P.ink,lineWidth:1.6,lineStyle:L.LineStyle.Dashed,lastValueVisible:true,title:GST.cmp==="__bench"?"NIFTY 500":GXD.id[GST.cmp]?.n||""}),0);
+    cmpS.setData(vals.map((v,i)=>isNum(v)?{time:T[i],value:v}:{time:T[i]}))}
+  /* signal markers */
+  if(GST.sig!=="off"){const ev=(F.ev?.[u]||F.ev?.a||[]),want=GST.sig==="tested"?new Set(GTESTED):null,byT=new Map();
+    const tOf=i=>{const d=GCOM.dates[F.i0+i];if(!W)return d;const k=rows.find(q=>q.t>=d);return k?k.t:null};
+    for(const [i,k] of ev){if(want&&!want.has(k))continue;const t=tOf(i);if(!t)continue;const a=byT.get(t)||[];if(!a.includes(k))a.push(k);byT.set(t,a)}
+    const mk=[];for(const [t,ks] of byT){const w=ks.filter(k=>GWEAK.includes(k)),g=ks.filter(k=>!GWEAK.includes(k));
+      if(g.length)mk.push({time:t,position:"belowBar",shape:g.some(k=>GTESTED.includes(k))?"arrowUp":"circle",color:g.some(k=>GTESTED.includes(k))?P.up:P.s1,text:g.map(k=>GCODE[k]).join(" "),size:1});
+      if(w.length)mk.push({time:t,position:"aboveBar",shape:"arrowDown",color:P.down,text:w.map(k=>GCODE[k]).join(" "),size:1})}
+    mk.sort((a,b)=>a.time<b.time?-1:a.time>b.time?1:0);L.createSeriesMarkers(cs,mk)}
+  /* pane 1: turnover */
+  const vs=chart.addSeries(L.HistogramSeries,{priceFormat:{type:"volume"},priceLineVisible:false,lastValueVisible:false},1);
+  vs.setData(rows.map((q,i)=>({time:q.t,value:q.v||0,color:rgba(i&&q.c<rows[i-1].c?P.down:P.up,.55)})));
+  /* pane 2: RS line vs NIFTY 500 + blue dots */
+  const rs0=rows[0].c/rows[0].bx,rsv=rows.map(q=>isNum(q.bx)?q.c/q.bx/rs0*100:null),win=W?52:252,minh=W?40:200;
+  const rsS=chart.addSeries(L.LineSeries,line({color:P.ink,lineWidth:1.6,lastValueVisible:true,priceFormat:{type:"price",precision:1,minMove:0.1}}),2);rsS.setData(rsv.map((v,i)=>isNum(v)?{time:T[i],value:v}:{time:T[i]}));
+  const dots=[];for(let i=minh-1;i<rsv.length;i++){if(!isNum(rsv[i]))continue;let mx=-Infinity;for(let j=Math.max(0,i-win+1);j<=i;j++)if(isNum(rsv[j])&&rsv[j]>mx)mx=rsv[j];if(rsv[i]>=mx-1e-9)dots.push({time:T[i],position:"inBar",shape:"circle",color:P.bdot,size:0.6})}
+  L.createSeriesMarkers(rsS,dots);
+  /* pane 3: breadth */
+  const fix=()=>({priceRange:{minValue:0,maxValue:100}});
+  const pf0={type:"price",precision:0,minMove:1};
+  const b5=chart.addSeries(L.LineSeries,line({color:P.s1,lastValueVisible:true,autoscaleInfoProvider:fix,priceFormat:pf0}),3);b5.setData(rows.map(q=>isNum(q.b50)?{time:q.t,value:q.b50}:{time:q.t}));
+  const b2=chart.addSeries(L.LineSeries,line({color:P.s2,lastValueVisible:true,autoscaleInfoProvider:fix,priceFormat:pf0}),3);b2.setData(rows.map(q=>isNum(q.b200)?{time:q.t,value:q.b200}:{time:q.t}));
+  b5.createPriceLine({price:50,color:P.muted,lineWidth:1,lineStyle:L.LineStyle.Dashed,axisLabelVisible:false});
+  /* pane 4: group RS rating */
+  const rk=chart.addSeries(L.LineSeries,line({color:P.s3,lineWidth:2,lastValueVisible:true,priceFormat:pf0,autoscaleInfoProvider:()=>({priceRange:{minValue:1,maxValue:99}})}),4);
+  rk.setData(rows.map(q=>isNum(q.rk)?{time:q.t,value:q.rk}:{time:q.t}));
+  rk.createPriceLine({price:80,color:P.up,lineWidth:1,lineStyle:L.LineStyle.Dashed,axisLabelVisible:true,title:"80"});
+  const panes=chart.panes(),sf=phone?[46,9,15,15,15]:[50,9,14,14,13];panes.forEach((p,i)=>p.setStretchFactor(sf[i]||10));
+  /* scale modes, set once every pane exists (a new pane copies the options of the last one changed):
+     price = linear / log / % from the left edge when comparing; RS line = 100 at the left edge; the rest linear */
+  [GST.cmp?2:GST.scale==="log"?1:0,0,3,0,0].forEach((md,i)=>chart.priceScale("right",i).applyOptions({mode:md}));
+  GCH={chart,rows,cs,rsv};
+  gSetRange();
+  /* pane titles */
+  const labels=phone?["Index"+(GST.cmp?" · % from left edge":""),"Turnover (₹ Cr)","RS line vs NIFTY 500","% above 50 & 200 DMA","Group RS rating"]
+    :["Index"+(GST.cmp?" · % change from left edge":""),"Turnover of members (₹ Cr)","RS line vs NIFTY 500 (100 = left edge of the chart)","% of members above 50-day (blue) and 200-day (amber) average","Group RS rating (1–99)"];
+  const placeLabels=()=>{const lab=$("#gplab");if(!lab||!GCH)return;let top=0;lab.innerHTML=GCH.chart.panes().map((p,i)=>{const h=`<span style="top:${top+4}px">${esc(labels[i]||"")}</span>`;top+=p.getHeight()+1;return h}).join("")};
+  requestAnimationFrame(placeLabels);GCH.ro=new ResizeObserver(()=>requestAnimationFrame(placeLabels));GCH.ro.observe(box);
+  chart.subscribeCrosshairMove(prm=>{GCH.lastT=prm.time;gReadout(prm.time)});
+  chart.timeScale().subscribeVisibleLogicalRangeChange(()=>{if(GCH)gReadout(GCH.lastT)});gReadout(null)}
+function gReadout(t){const el=$("#gread");if(!el||!GCH)return;const rows=GCH.rows;let i=t?rows.findIndex(q=>q.t===t):rows.length-1;if(i<0)i=rows.length-1;const q=rows[i],p=rows[i-1];
+  const ch=p?(q.c/p.c-1)*100:null;
+  el.innerHTML=`<b>${fmtDate(q.t)}</b><span>O <b class="num">${inr(q.o)}</b></span><span>H <b class="num">${inr(q.h)}</b></span><span>L <b class="num">${inr(q.l)}</b></span><span>C <b class="num">${inr(q.c)}</b> <span class="num ${cls(ch)}">${sgn(ch,2)}</span></span><span>Turnover <b class="num">₹${isNum(q.v)?Math.round(q.v).toLocaleString("en-IN"):"–"} Cr</b></span><span>RS line ${(()=>{const L_=GCH.chart.timeScale().getVisibleLogicalRange(),f=L_?Math.max(0,Math.ceil(L_.from)):0,b=GCH.rsv[f];return isNum(GCH.rsv[i])&&isNum(b)?`<b class="num ${cls(GCH.rsv[i]/b-1)}">${sgn((GCH.rsv[i]/b-1)*100,1)}</b> vs NIFTY 500 since left edge`:"–"})()}</span><span>&gt;50 DMA <b class="num">${isNum(q.b50)?q.b50+"%":"–"}</b></span><span>&gt;200 DMA <b class="num">${isNum(q.b200)?q.b200+"%":"–"}</b></span><span>52W highs <b class="num">${isNum(q.nh)?q.nh:"–"}</b></span><span>RS rating <b class="num">${isNum(q.rk)?q.rk:"–"}</b></span>`}
+function gHistory(){const m=$("#gmodal"),r=gRow(m.dataset.k,m.dataset.n),F=GXF[r.id],u=gU(r),S=F[u]||F.a,b=GCOM.bench,ev=(F.ev?.[u]||F.ev?.a||[]).slice(-14).reverse(),n=S.c.length-1;
+  if(!ev.length){$("#ghist").innerHTML=`<p class="note" style="margin:0">No signals in this group's history.</p>`;return}
+  const rows=ev.map(([i,k])=>{const c0=S.c[i],c1=S.c[n],b0=b[F.i0+i],b1=b[F.i0+n],g=isNum(c0)&&isNum(c1)?(c1/c0-1)*100:null,bm=isNum(b0)&&isNum(b1)?(b1/b0-1)*100:null;
+    return {d:GCOM.dates[F.i0+i],k,g,rel:isNum(g)&&isNum(bm)?g-bm:null}});
+  $("#ghist").innerHTML=`<div class="tscroll"><table class="dt"><thead><tr><th class="l">Date</th><th class="l">Signal</th><th>Since</th><th>vs NIFTY 500</th></tr></thead><tbody>${rows.map(x=>`<tr><td class="l">${fmtDate(x.d)}</td><td class="l gw"><span class="gsc ${GTESTED.includes(x.k)?"t":GWEAK.includes(x.k)?"w":"b"}">${esc(GCODE[x.k])}</span> ${esc(GXD.sig[x.k]?.name||x.k)}</td><td><span class="num ${cls(x.g)}">${sgn(x.g,1)}</span></td><td><span class="num ${cls(x.rel)}">${sgn(x.rel,1)}</span></td></tr>`).join("")}</tbody></table></div><p class="note">Latest 14 signal days. "Since" is the group's move from that day to the last close; "vs NIFTY 500" takes away NIFTY 500's move over the same days.</p>`}
+function gEvidence(u){const E=GXD.evidence;if(!E)return `<p class="note">Test results not available.</p>`;const uu=u==="l"?"l":"a";
+  const line=(k)=>{const e=E.signals?.[k]?.[uu];if(!e)return "";const both=isNum(e.ex63_a)&&isNum(e.ex63_b)?(e.ex63_a>0&&e.ex63_b>0?"positive in both 2021–23 and 2024–26":e.ex63_a<0&&e.ex63_b<0?"negative in both periods":"mixed between periods"):"";
+    return `<li><span class="gsc ${GTESTED.includes(k)?"t":GWEAK.includes(k)?"w":"b"}">${esc(GCODE[k]||"")}</span> <b>${esc(GXD.sig[k]?.name||k)}</b> — ${esc(GXD.sig[k]?.desc||"")} <span class="gev">Next 3 months vs the average group: <b class="num ${cls(e.ex63)}">${sgn(e.ex63,1)}</b>, beat the median group ${e.beat63}% of the time (${e.n.toLocaleString("en-IN")} signals${e.n<100?" — a small sample":""}; ${both}).</span></li>`};
+  const lead=E.signals?.lead80?.[uu],lag=E.signals?.lag20?.[uu];
+  return `<ul class="gevl">${GTESTED.map(line).join("")}</ul>${lead?`<p class="note" style="margin:6px 0 10px">Groups simply rated 80+ beat the average group by <b>${sgn(lead.ex63,1)}</b> over the next 3 months (${lead.beat63}% of the time); groups rated 20 or lower lagged by <b>${sgn(lag.ex63,1)}</b>. Leadership tends to persist.</p>`:""}
+    <details><summary>Breakout and weakness signals (no reliable edge on their own)</summary><ul class="gevl">${[...GBREAK,...GWEAK].map(line).join("")}</ul></details>
+    <p class="note">${esc(E.method||"")}</p>`}
+function gMembers(){const m=$("#gmodal"),kind=m.dataset.k,name=m.dataset.n,syms=(D.groups[kind]?.[name]||[]).filter(s=>D.by[s]&&inUni(s));
+  if(!st.tbl.gmem)st.tbl.gmem={key:"r.1M",dir:-1,show:60};
+  $("#gmem").innerHTML=dtable("gmem",syms.map(s=>D.by[s]),[C.stock,C.ret("1D"),C.ret("1M"),C.ret("3M"),C.ret("1Y"),C.rs,...(D.meta.rs?[C.rsfrom]:[]),C.st,C.h52,...(D.meta.dlv?[C.dp20]:[]),C.mc],{limit:60,csv:true});
+  wireTables($("#gmem"),gMembers)}
+/* ── small chart inside an opened rotation row ── */
+async function gMountMini(){const el=document.querySelector(".gmini[data-gopen]");if(GMINI){GMINI.remove();GMINI=null}if(!el)return;
+  const [k,n]=el.dataset.gopen.split("|");
+  try{await Promise.all([grpLoad(),gcomLoad(),lwcLoad()]);const r=gRow(k,n);if(!r){el.innerHTML=`<p class="note" style="margin:8px">No chart for this group (it needs 3 or more stocks with prices).</p>`;return}
+    const F=await gfileLoad(r.id);if(!document.body.contains(el))return;const u=gU(r),rows=gRows(F,u,false).slice(-260),L=window.LightweightCharts,P=gpal();
+    el.querySelector(".gmc").innerHTML="";
+    const ch=L.createChart(el.querySelector(".gmc"),{autoSize:true,layout:{background:{type:"solid",color:P.card},textColor:P.muted,fontFamily:"IBM Plex Sans, system-ui, sans-serif",fontSize:12,attributionLogo:true},
+      grid:{vertLines:{visible:false},horzLines:{color:P.track}},rightPriceScale:{borderColor:P.line},timeScale:{borderColor:P.line},handleScroll:false,handleScale:false,crosshair:{mode:L.CrosshairMode.Magnet},localization:{locale:"en-IN"}});
+    const a=ch.addSeries(L.AreaSeries,{lineColor:P.s1,topColor:rgba(P.s1,.22),bottomColor:rgba(P.s1,.02),lineWidth:2,priceLineVisible:false});
+    a.setData(rows.map(q=>({time:q.t,value:q.c})));
+    const s50=sma(rows.map(q=>q.c),50),ml=ch.addSeries(L.LineSeries,{color:P.s2,lineWidth:1.5,priceLineVisible:false,lastValueVisible:false,crosshairMarkerVisible:false});
+    ml.setData(s50.map((v,i)=>isNum(v)?{time:rows[i].t,value:v}:{time:rows[i].t}));ch.timeScale().fitContent();GMINI=ch;
+    const x=r[u];el.querySelector(".gmh").innerHTML=`<b>${esc(n)}</b> · last 12 months · group RS rating ${gpill(r,u)} · ${{2:"Stage 2",4:"Stage 4",1:"Stage 1",3:"Stage 3"}[x.st]||""} ${gsigChips(r,u,19)}`}
+  catch(e){el.querySelector(".gmc").innerHTML=`<p class="note" style="margin:8px">${esc(e.message||String(e))}</p>`}}
+function gMiniHtml(kind,name){return `<div class="gmini" data-gopen="${esc(kind+"|"+name)}" role="button" tabindex="0" aria-label="Open the full chart of ${esc(name)}"><div class="gmh">Loading chart…</div><div class="gmc"></div><span class="gmo">Open full chart ⤢</span></div>`}
+/* ── badges on the rotation rows ── */
+function gBadges(kind,name){const r=gRow(kind,name);if(!r)return "";const u=gU(r),x=r[u];if(!x)return "";
+  return `<span class="gbadges">${isNum(x.rk)?`<span class="gbrk" title="Group RS rating ${x.rk}${isNum(x.rk4)?`, ${x.rk4} four weeks ago`:""}">RS ${x.rk}${isNum(x.rk4)&&Math.abs(x.rk-x.rk4)>=5?(x.rk>x.rk4?" ▲":" ▼"):""}</span>`:""}${gsigChips(r,u,4)}</span>`}
+/* ── Group signals view ── */
+function renderGroupSignals(){
+  if(!GXD){$("#view").innerHTML=`<div class="card empty">Loading group data…</div>`;grpLoad().then(()=>{if(st.tab==="rotation"&&st.view==="gsig")renderGroupSignals()});return}
+  const f=st.gsig||(st.gsig={kind:"all",win:"5"});const kinds=Object.keys(GXD.kinds||{});
+  let h=`<div class="sec-head"><div><h2>Group signals</h2><p>Every theme, sector, NSE index and industry is turned into a daily index and checked for the early signs of a rotation. The first block held up in testing on 2021–26 data; breakouts are listed because traders watch them, but on their own they did not beat other groups. Tap a group for its chart.</p></div></div>
+  <div class="card toolbar"><div class="ctl"><span>Groups</span>${seg("gsig_kind",["all",...kinds],f.kind,Object.fromEntries([["all","All kinds"],...kinds.map(k=>[k,k])]))}</div>${uniSeg()}<div class="ctl"><span>Fired</span>${seg("gsig_win",["0","5","20"],f.win,{"0":"Today","5":"Last 5 sessions","20":"Last 4 weeks"})}</div>${viewSeg()}</div>`;
+  const rowsAll=GXD.rows.filter(r=>f.kind==="all"||r.k===f.kind);
+  const block=(title,ids,note)=>{let out=`<h3 class="gblk">${esc(title)}</h3>`;if(note)out+=`<p class="note" style="margin:0 2px 10px">${note}</p>`;
+    for(const k of ids){const m=GXD.sig[k];if(!m)continue;const hits=rowsAll.map(r=>({r,x:r[gU(r)]})).filter(o=>o.x&&o.x.ago&&isNum(o.x.ago[k])&&o.x.ago[k]<=+f.win);
+      const ev=GXD.evidence?.signals?.[k]?.[st.uni==="lq"?"l":"a"];
+      out+=`<div class="card gcard"><div class="gch"><span class="gsc ${GTESTED.includes(k)?"t":GWEAK.includes(k)?"w":"b"}">${esc(GCODE[k])}</span><div><b>${esc(m.name)}</b> <span class="gcnt">${hits.length}</span><div class="gdesc">${esc(m.desc)}${ev?` <span class="gev">Tested: ${sgn(ev.ex63,1)} vs the average group over the next 3 months, ${ev.beat63}% beat the median${ev.n<100?` — only ${ev.n} signals, so treat it as a lead`:""}.</span>`:""}</div></div></div>`;
+      if(hits.length){hits.sort((a,b)=>a.x.ago[k]-b.x.ago[k]||(b.x.rk??0)-(a.x.rk??0));
+        out+=`<div class="tscroll"><table class="dt gtab"><thead><tr><th class="l">Group</th><th class="l">Kind</th><th>Fired</th><th>RS rating</th><th class="l">RS rating, 26 weeks</th><th>1M</th><th>3M</th><th>&gt;50 DMA</th><th>Turnover ×</th><th class="l">Index, 26 weeks</th></tr></thead><tbody>${hits.map(({r,x})=>`<tr class="grow" data-gopen="${esc(r.k+"|"+r.n)}" tabindex="0"><td class="l"><b>${esc(r.n)}</b></td><td class="l">${esc(GKIND[r.k]||r.k)}</td><td><span class="num">${x.ago[k]===0?"Today":x.ago[k]+"d ago"}</span></td><td>${gpill(r,gU(r))}</td><td class="l">${gSpark(x.rkp,true)}</td><td><span class="num ${cls(x.r["1M"])}">${sgn(x.r["1M"],1)}</span></td><td><span class="num ${cls(x.r["3M"])}">${sgn(x.r["3M"],1)}</span></td><td><span class="num">${isNum(x.b50)?x.b50+"%":"–"}</span></td><td><span class="num">${isNum(x.mr)?x.mr.toFixed(2):"–"}</span></td><td class="l">${gSpark(x.sp)}</td></tr>`).join("")}</tbody></table></div>`}
+      else out+=`<p class="note" style="margin:4px 2px 2px">No group ${f.win==="0"?"today":"in this window"}.</p>`;
+      out+=`</div>`}
+    return out};
+  h+=block("Early rotation — tested",GTESTED)+block("Breakouts and other patterns — watch only",GBREAK,"These did not beat other groups on their own in 2021–26 (details on any group's chart). Use them with the RS rating and money flow.")+block("Weakness",GWEAK);
+  $("#view").innerHTML=h}
+function gSpark(a,rk){a=(a||[]).filter(v=>v!==undefined);const v=a.filter(isNum);if(v.length<3)return "–";const W=110,H=30,lo=rk?1:Math.min(...v),hi=rk?99:Math.max(...v);
+  const x=i=>2+i*(W-4)/(a.length-1),y=t=>H-3-(t-lo)/((hi-lo)||1)*(H-6),pts=a.map((t,i)=>isNum(t)?`${x(i).toFixed(1)},${y(t).toFixed(1)}`:null).filter(Boolean).join(" ");
+  const up=v[v.length-1]>=v[0];return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" aria-hidden="true">${rk?`<rect x="0" y="${y(99)}" width="${W}" height="${y(80)-y(99)}" fill="color-mix(in srgb,var(--up) 12%,transparent)"/>`:""}<polyline points="${pts}" fill="none" stroke="${rk?"var(--s3)":up?"var(--up)":"var(--down)"}" stroke-width="1.8" stroke-linejoin="round"/></svg>`}
+/* ── Rotation radar: group RS rating (x) against its change over 4 weeks (y), 8-week tails ── */
+function renderRadar(){
+  if(!GXD){$("#view").innerHTML=`<div class="card empty">Loading group data…</div>`;grpLoad().then(()=>{if(st.tab==="rotation"&&st.view==="radar")renderRadar()});return}
+  const kind=GXD.kinds[st.group]?st.group:"Themes",rowsK=(GXD.kinds[kind]||[]).map(id=>GXD.id[id]).filter(Boolean);
+  let h=`<div class="sec-head"><div><h2>Rotation radar</h2><p>Each dot is a ${esc((GKIND[kind]||kind).toLowerCase())}: how strong it is (group RS rating, across) and how fast that is changing (points gained over 4 weeks, up). Tails show the last 8 weeks. In 2021–26 tests, groups entering the shaded corner — rated 70+ and up 20+ points in 4 weeks — beat the average group over the next 3 months; leaders stayed leaders more often than not.</p></div></div>
+  <div class="card toolbar"><div class="ctl"><span>Group by</span>${seg("group",Object.keys(D.groups),kind)}</div>${uniSeg()}${viewSeg()}</div>`;
+  const pts=rowsK.map(r=>{const x=r[gU(r)];if(!x||!x.rkp)return null;const a=x.rkp,tail=[];for(let j=Math.max(4,a.length-8);j<a.length;j++)if(isNum(a[j])&&isNum(a[j-4]))tail.push([a[j],Math.max(-60,Math.min(60,a[j]-a[j-4]))]);
+    return tail.length?{r,x,tail}:null}).filter(Boolean);
+  const Wd=Math.min(980,Math.max(340,($("#view").clientWidth||900)-40)),Hd=Math.round(Math.min(620,Math.max(360,Wd*.66))),pl=46,pr=14,pt=14,pb=40;
+  const ym=Math.max(30,Math.ceil(Math.max(...pts.map(p=>Math.abs(p.tail.at(-1)[1])),0)/10)*10+5);   // fit today's dots; trails are clipped to the frame
+  const X=v=>pl+(v-1)/98*(Wd-pl-pr),Y=v=>pt+(1-(Math.max(-ym,Math.min(ym,v))+ym)/(2*ym))*(Hd-pt-pb);
+  let g=`<rect x="${X(70)}" y="${Y(ym)}" width="${X(99)-X(70)}" height="${Y(20)-Y(ym)}" fill="color-mix(in srgb,var(--up) 14%,transparent)"/>
+    <line x1="${X(50)}" x2="${X(50)}" y1="${pt}" y2="${Hd-pb}" stroke="var(--muted)" stroke-width="1.2"/><line x1="${pl}" x2="${Wd-pr}" y1="${Y(0)}" y2="${Y(0)}" stroke="var(--muted)" stroke-width="1.2"/>
+    <text x="${Wd-pr-8}" y="${pt+20}" text-anchor="end" class="ql" style="fill:var(--up-t)">Leaders gaining</text><text x="${Wd-pr-8}" y="${Hd-pb-10}" text-anchor="end" class="ql" style="fill:var(--accent-ink)">Leaders fading</text>
+    <text x="${pl+8}" y="${Hd-pb-10}" class="ql" style="fill:var(--down-t)">Laggards</text><text x="${pl+8}" y="${pt+20}" class="ql" style="fill:var(--s1)">Rising from below</text>
+    <text x="${(pl+Wd-pr)/2}" y="${Hd-8}" text-anchor="middle">Group RS rating →</text><text transform="translate(14 ${(pt+Hd-pb)/2}) rotate(-90)" text-anchor="middle">Points gained over 4 weeks →</text>`;
+  for(const t of [1,25,50,75,99])g+=`<text x="${X(t)}" y="${Hd-pb+16}" text-anchor="middle">${t}</text>`;
+  for(let t=-Math.floor(ym/10)*10;t<=ym;t+=10)g+=`<line x1="${pl}" x2="${Wd-pr}" y1="${Y(t)}" y2="${Y(t)}" stroke="var(--track)" stroke-width="${t?1:0}"/><text x="${pl-6}" y="${Y(t)+4}" text-anchor="end">${t>0?"+":""}${t}</text>`;
+  const col=(x,y)=>x>=50&&y>=0?"var(--up)":x>=50?"var(--accent-ink)":y<0?"var(--down)":"var(--s1)";
+  /* label the most telling groups (far from the centre, or in the shaded corner) up to a limit; the rest show on hover */
+  const score=p=>{const [x,y]=p.tail.at(-1);return (x>=70&&y>=20?1000:0)+Math.abs(x-50)+1.6*Math.abs(y)};
+  const boxes=[],cw=7.4,lh=16,hit=b=>boxes.some(o=>b.x<o.x+o.w&&b.x+b.w>o.x&&b.y<o.y+o.h&&b.y+b.h>o.y),lab={},maxLab=pts.length<=50?pts.length:28;
+  for(const p of [...pts].sort((a,b)=>score(b)-score(a)).slice(0,maxLab)){const [hx,hy]=p.tail.at(-1),px=X(hx),py=Y(hy),t=p.r.n.length>22?p.r.n.slice(0,21)+"…":p.r.n,w=t.length*cw;let pick=null;
+    place:for(const dy of [0,-lh,lh,-2*lh,2*lh])for(const side of [1,-1]){const b={x:side>0?px+8:px-8-w,y:py-11+dy,w,h:lh};if(b.x<pl||b.x+w>Wd-pr)continue;if(!hit(b)){pick={...b,side};break place}}
+    if(pick){boxes.push(pick);lab[p.r.id]={...pick,t}}}
+  for(const p of pts){const c=col(...p.tail.at(-1)),pp=p.tail.map(([a,b])=>`${X(a).toFixed(1)},${Y(b).toFixed(1)}`).join(" "),hd=p.tail.at(-1);
+    g+=`<g class="rrs rdr" data-gopen="${esc(p.r.k+"|"+p.r.n)}" data-ix="${esc(p.r.id)}" style="cursor:pointer"><polyline class="rtail" points="${pp}" fill="none" stroke="${c}" stroke-width="2"/>${p.tail.slice(0,-1).map(([a,b])=>`<circle class="rtail" cx="${X(a).toFixed(1)}" cy="${Y(b).toFixed(1)}" r="2.6" fill="${c}"/>`).join("")}<circle cx="${X(hd[0]).toFixed(1)}" cy="${Y(hd[1]).toFixed(1)}" r="6.5" fill="${c}" stroke="var(--card)" stroke-width="2"/></g>`}
+  for(const p of pts){const L_=lab[p.r.id];if(L_)g+=`<text x="${(L_.side>0?L_.x:L_.x+L_.w).toFixed(1)}" y="${(L_.y+12).toFixed(1)}" text-anchor="${L_.side>0?"start":"end"}" class="rl" data-ixl="${esc(p.r.id)}">${esc(L_.t)}</text>`}
+  h+=`<div class="card chart" id="rrgc"><div class="legend"><span>Shaded: rated 70+ and up 20+ points in 4 weeks — the tested "RS rating climbing" signal. Hover a dot for its 8-week trail; tap it for the chart.${pts.length>maxLab?` The ${maxLab} most telling groups are labelled — the table has them all.`:""}</span></div><svg viewBox="0 0 ${Wd} ${Hd}" width="100%" role="img" aria-label="Rotation radar of groups" style="display:block">${g}</svg><div class="tip" hidden></div></div>`;
+  const tr=pts.map(p=>({n:p.r.n,k:p.r.k,rk:p.x.rk,d:isNum(p.x.rk4)?p.x.rk-p.x.rk4:null,r1:p.x.r["1M"],r3:p.x.r["3M"],b50:p.x.b50,mr:p.x.mr,sig:p.r,u:gU(p.r)}));
+  if(!st.tbl.radar)st.tbl.radar={key:"d",dir:-1,show:60};
+  h+=`<div class="card">${dtable("radar",tr,[{k:"n",label:"Group",l:1,fmt:r=>`<button type="button" class="linkbtn" data-gopen="${esc(r.k+"|"+r.n)}">${esc(r.n)}</button>`,sort:r=>r.n},{k:"rk",label:"RS rating",fmt:r=>rsPill(r.rk)},{k:"d",label:"Δ 4 weeks",fmt:r=>`<span class="num ${cls(r.d)}">${r.d==null?"–":(r.d>0?"+":"")+r.d}</span>`},{k:"r1",label:"1M",fmt:r=>`<span class="num ${cls(r.r1)}">${sgn(r.r1,1)}</span>`},{k:"r3",label:"3M",fmt:r=>`<span class="num ${cls(r.r3)}">${sgn(r.r3,1)}</span>`},{k:"b50",label:">50 DMA",fmt:r=>`<span class="num">${isNum(r.b50)?r.b50+"%":"–"}</span>`},{k:"mr",label:"Turnover ×",fmt:r=>`<span class="num">${isNum(r.mr)?r.mr.toFixed(2):"–"}</span>`},{k:"sg",label:"Signals (5 days)",l:1,fmt:r=>gsigChips(r.sig,r.u,4)||"–",sort:r=>(r.sig[r.u]?.sig||[]).length}],{limit:60})}</div>`;
+  $("#view").innerHTML=h;wireTables($("#view"),renderRadar);
+  const box=$("#rrgc"),svg=box.querySelector("svg"),tip=box.querySelector(".tip");
+  svg.querySelectorAll(".rrs").forEach(el=>{const p=pts.find(z=>z.r.id===el.dataset.ix),hd=p.tail.at(-1),tl=svg.querySelector(`text[data-ixl="${CSS.escape(p.r.id)}"]`);
+    const on=e=>{svg.classList.add("dim");el.classList.add("on");tl?.classList.add("on");tip.hidden=false;tip.innerHTML=`<b>${esc(p.r.n)}</b><br>RS rating <b>${hd[0]}</b> · ${hd[1]>=0?"+":""}${hd[1]} in 4 weeks<br>1M ${sgn(p.x.r["1M"],1)} · 3M ${sgn(p.x.r["3M"],1)}<br><i>Click for the chart</i>`;
+      const r=box.getBoundingClientRect(),cx=(e.touches?e.touches[0].clientX:e.clientX)-r.left;tip.style.left=Math.max(4,Math.min(cx+12,r.width-tip.offsetWidth-6))+"px";tip.style.top="40px"};
+    const off=()=>{svg.classList.remove("dim");el.classList.remove("on");tl?.classList.remove("on");tip.hidden=true};
+    el.addEventListener("mouseenter",on);el.addEventListener("mousemove",on);el.addEventListener("mouseleave",off)})}
+/* re-draw an open chart when the colour theme changes */
+new MutationObserver(()=>{if($("#gmodal")&&!$("#gmodal").hidden&&GCH)gRenderChart();if(GMINI)gMountMini()}).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
 
 /* ════════════════════ RS RANKING ════════════════════ */
 function renderRS(){
@@ -2016,7 +2357,8 @@ async function openDrawer(sym,ex,focusWl){
     ${vr?`<div class="dsec" id="vpcisec"><h4>VPCI screener · completed weeks</h4><div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px">${statusPill(vr.status)}${gateDots(vr)}<span style="color:var(--muted)">${esc(vr.position_state||"")}</span></div>
       <dl class="dgrid">${kv("Gates",vr.gate_count+"/7")}${kv("VPCI",isNum(vr.vpci)?vr.vpci.toFixed(2):"–")}${kv("Trail stop","₹"+inr(vr.trail_stop))}${kv("Risk",isNum(vr.risk_pct)?vr.risk_pct.toFixed(1)+"%":"–")}</dl>
       ${vrun?`<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px"><span style="color:var(--muted);font-weight:600">Running week (live, pro-rated):</span>${statusPill(vrun.status)}${gateDots(vrun)}<span class="num">${vrun.gate_count}/7</span></div>`:""}</div>`:""}
-    ${(D.themesOf[sym]||[]).length||x?.sec?`<div class="dsec"><h4>Groups · rank by ${esc(PL[st.period]||st.period)} return</h4><div class="chips">${(D.themesOf[sym]||[]).map(t=>{const r=thR[t];return `<button type="button" class="chipbtn" data-theme-go="${esc(t)}">${esc(t)}${r?` · #${r.rank} of ${r.of} <span class="num ${cls(r.v)}">${sgn(r.v,1)}</span>`:""}</button>`}).join("")}${x?.sec&&secR[x.sec]?`<span class="chipbtn" style="cursor:default">Sector: ${esc(x.sec)} · #${secR[x.sec].rank} of ${secR[x.sec].of} <span class="num ${cls(secR[x.sec].v)}">${sgn(secR[x.sec].v,1)}</span></span>`:""}</div></div>`:""}
+    ${(D.themesOf[sym]||[]).length||x?.sec?`<div class="dsec"><h4>Groups · rank by ${esc(PL[st.period]||st.period)} return</h4><div class="chips">${(D.themesOf[sym]||[]).map(t=>{const r=thR[t];return `<button type="button" class="chipbtn" data-theme-go="${esc(t)}">${esc(t)}${r?` · #${r.rank} of ${r.of} <span class="num ${cls(r.v)}">${sgn(r.v,1)}</span>`:""}</button>`}).join("")}${x?.sec&&secR[x.sec]?`<span class="chipbtn" style="cursor:default">Sector: ${esc(x.sec)} · #${secR[x.sec].rank} of ${secR[x.sec].of} <span class="num ${cls(secR[x.sec].v)}">${sgn(secR[x.sec].v,1)}</span></span>`:""}</div>
+      ${D.meta.grp?`<div class="chips" style="margin-top:8px"><span style="color:var(--muted);font-weight:600;align-self:center">Group charts:</span>${[...(D.themesOf[sym]||[]).map(t=>["Themes",t]),...(x?.sec?[["Sector",x.sec]]:[]),...(x?.ind?[["Industry",x.ind]]:[]),...Object.entries(D.groups["NSE Index"]||{}).filter(([,m])=>m.includes(sym)).slice(0,4).map(([n])=>["NSE Index",n])].map(([k,n])=>`<button type="button" class="chipbtn" data-gopen="${esc(k+"|"+n)}" title="${esc(GKIND[k]||k)} chart">📈 ${esc(n)}</button>`).join("")}</div>`:""}</div>`:""}
     <div class="dsec" id="scansec"><h4>In today's scanners</h4>${scans.length?`<div class="chips">${scans.map(m=>`<button type="button" class="chipbtn sc" style="--g:${gcol(m.cat)}" data-scan-go="${m.id}" title="${esc(m.cat)}">${bead(m.cat)}${esc(m.name)}</button>`).join("")}</div>`:`<p class="note" style="margin:0">None today.</p>`}</div>
     <div><a class="btn" href="${tv(sym,ex||vr?.exchange)}" target="_blank" rel="noopener">Open chart on TradingView ↗</a></div>
   </div></div></div>`;
@@ -2036,11 +2378,11 @@ async function openDrawer(sym,ex,focusWl){
   if(x&&D.meta.rs)Promise.all([clLoad(),rshLoad()]).then(()=>{const sl=$("#rsSlot");if(sl&&$("#dTitle")?.textContent===sym){sl.outerHTML=rsChart(sym);wireRsChart(sym)}});
 }
 /* nav: true when closing because the user picked a link inside the window (keeps history tidy) */
-function closeDrawer(nav){if($("#drawer").hidden)return;$("#drawer").hidden=true;$("#scrim").hidden=true;document.body.style.overflow="";
+function closeDrawer(nav){if($("#drawer").hidden)return;$("#drawer").hidden=true;$("#scrim").hidden=true;document.body.style.overflow=$("#gmodal")&&!$("#gmodal").hidden?"hidden":"";
   if(history.state?.card){const {card,...rest}=history.state;if(nav)history.replaceState(Object.keys(rest).length?rest:null,"",location.href);else{DRAWER_BACK=true;history.back()}}
   if(!nav)lastFocus?.focus?.()}
 let DRAWER_BACK=false;
-window.addEventListener("popstate",()=>{if(DRAWER_BACK){DRAWER_BACK=false;return}if(!$("#drawer").hidden&&!history.state?.card){$("#drawer").hidden=true;$("#scrim").hidden=true;document.body.style.overflow=""}});
+window.addEventListener("popstate",()=>{if(DRAWER_BACK){DRAWER_BACK=false;return}if(!$("#drawer").hidden&&!history.state?.card){$("#drawer").hidden=true;$("#scrim").hidden=true;document.body.style.overflow=$("#gmodal")&&!$("#gmodal").hidden?"hidden":""}});
 
 /* ════════════════════ WATCHLISTS ════════════════════
    Stored in this browser (localStorage). Optional sync between devices through a private
@@ -2666,8 +3008,10 @@ document.addEventListener("click",e=>{
   if(e.target.closest("[data-res-go]")){closeDrawer(true);go("results");return}
   const sg=e.target.closest("[data-scan-go]");if(sg){closeDrawer(true);st.scan=sg.dataset.scanGo;st.scanView="lib";go("scanners");return}
   const tg=e.target.closest("[data-theme-go]");if(tg){closeDrawer(true);st.group="Themes";st.open=tg.dataset.themeGo;st.view="bars";go("rotation");setTimeout(()=>document.querySelector(`.brow[data-g="${CSS.escape(st.open)}"]`)?.scrollIntoView({block:"center"}),60);return}
+  const gop=e.target.closest("[data-gopen]");if(gop&&!e.target.closest("#gmodal")){const [gk,gn]=gop.dataset.gopen.split("|");if(!$("#drawer").hidden)closeDrawer(true);openGroupChart(gk,gn);return}
   const s=e.target.closest("[data-seg]");
   if(s){const k=s.dataset.seg,v=s.dataset.val;
+    if(k==="gsig_kind"||k==="gsig_win"){st.gsig=st.gsig||{kind:"all",win:"5"};st.gsig[k.slice(5)]=v;store.set("gsig",st.gsig);renderGroupSignals();return}
     if(k==="vpmode"){VP.mode=v;renderVpci();return}
     if(k==="vpprorate"){VP.prorate=v==="on";renderVpci();return}
     if(k==="vview"){VP.view=v;vpTab();return}
@@ -2700,11 +3044,12 @@ document.addEventListener("click",e=>{
 });
 document.addEventListener("keydown",e=>{
   if(e.key==="Escape"){closeDrawer();return}
+  if((e.key==="Enter"||e.key===" ")&&e.target.matches?.("tr[data-gopen],.gmini[data-gopen]")){e.preventDefault();e.target.click();return}
   const r=e.target.closest?.(".brow,.heat tr.hr,[data-hp]");if(r&&e.target===r&&(e.key==="Enter"||e.key===" ")){e.preventDefault();r.click();document.querySelector(`[data-g="${CSS.escape(r.dataset.g||"")}"]`)?.focus()}
 });
 window.addEventListener("hashchange",()=>{const t=location.hash.slice(1);if(HASHVIEW[t]){if(st.tab!=="scanners"||st.scanView!==HASHVIEW[t])go(t);return}if(TABS.includes(t)&&(t!==st.tab||(t==="scanners"&&VIEWHASH[st.scanView]))){if(t==="scanners")st.scanView="lib";go(t)}});
 $("#themeBtn").addEventListener("click",()=>{const d=document.documentElement,cur=d.dataset.theme||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");d.dataset.theme=cur==="dark"?"light":"dark";store.set("theme",d.dataset.theme)});
-(()=>{const t=store.get("theme",null);if(t)document.documentElement.dataset.theme=t;Object.assign(st,store.get("prefs",{}));st.uni=store.get("uni","all");st.rrgset=store.get("rrgset","sector");Object.assign(st.rs,store.get("rs",{}));Object.assign(st.bx,store.get("bx",{}));Object.assign(st.s2,store.get("s2",{}));Object.assign(st.rx,store.get("rx",{}));st.rx.q="";st.rx.season="";st.scanView=store.get("scanView","lib");st.scan=store.get("scan2",st.scan);st.scanTop=+store.get("scanTop",0)||0;st.scanFund=+store.get("scanFund",0)||0;
+(()=>{const t=store.get("theme",null);if(t)document.documentElement.dataset.theme=t;Object.assign(st,store.get("prefs",{}));st.uni=store.get("uni","all");st.rrgset=store.get("rrgset","sector");st.gsig=store.get("gsig",{kind:"all",win:"5"});Object.assign(st.rs,store.get("rs",{}));Object.assign(st.bx,store.get("bx",{}));Object.assign(st.s2,store.get("s2",{}));Object.assign(st.rx,store.get("rx",{}));st.rx.q="";st.rx.season="";st.scanView=store.get("scanView","lib");st.scan=store.get("scan2",st.scan);st.scanTop=+store.get("scanTop",0)||0;st.scanFund=+store.get("scanFund",0)||0;
   Object.assign(st.mf,store.get("mf",{}));st.mf.q="";
   const h=location.hash.slice(1);if(HASHVIEW[h]){st.scanView=HASHVIEW[h];st.tab="scanners"}else{if(h==="scanners")st.scanView="lib";st.tab=TABS.includes(h)?h:store.get("tab","rotation")}})();
 
