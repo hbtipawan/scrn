@@ -3,10 +3,11 @@
 A free, ScreeningMantis-style dashboard for NSE stocks:
 
 - **Rotation** – theme / sector / industry / NSE-index returns for Today, 1W, 1M, 3M, 6M, YTD, 1Y, with mean or median, rank change vs last week, and a click-through list of the stocks in each group. Uses **every NSE stock** by default (switch to the liquid universe with *Stocks: All / Liquid*). A **Rotation map (RRG)** view plots NSE's sector, theme and size indices against Nifty 500, week by week.
+- **Group charts** – every theme, sector, NSE index and industry has its own daily index. Open a group in Rotation for a 12-month chart; tap it (or 📈) for a full-screen chart: candles with 21/50/200-day averages, members' turnover, RS line vs Nifty 500 with blue dots, % of members above their 50/200-day averages, and the group RS rating — with past signals marked and what followed. Rotation also has a **Rotation radar** (group RS rating against its 4-week change) and **Group signals** (early-rotation signals that held up in testing, plus breakouts and weakness).
 - **Breadth** – every NSE main-board stock (no liquidity filter, or the liquid universe with the switch): % above 20/50/200 DMA, advance/decline and the A/D line, McClellan oscillator, 52-week highs/lows, 4% movers, one year of history. Below it, **valuation and volatility**: NSE's own P/E, P/B and dividend yield for 50 indices against their history, and India VIX.
 - **RS ranking** – every stock ranked 1–99 by relative strength, with where the rating is **coming from** (▲ from 70 / ▼ from 99 over 12 weeks), a 52-week RS path, RS 4 and 12 weeks ago, and **blue dots** (RS line at a 52-week high). Filterable by sector, theme, direction, blue dot, Stage 2, Minervini trend template.
 - **Stock window** – price chart, **relative strength** (RS line with every blue dot of the year + the RS rating week by week), **delivery** (NSE delivery % and value delivered for 3 months), **corporate actions** (splits, bonuses, dividends coming up), plus bases, Stage 2, results, fundamentals and mutual funds.
-- **Scanners** – 99 scanners in 18 colour-coded groups: 59 technical (`scripts/scanners.py`), 4 from the RS history (`scripts/rs_history.py`), 5 from NSE delivery data (`scripts/delivery.py`), 18 from NSE filings, 6 from mutual-fund portfolios and 7 from the long-base, Stage 2 and results models, led by a **Confluence** list (stocks firing in 4+ of the 7 bullish technical groups). Every scanner opens with a collapsible **How this scanner works** panel — what it looks for, the exact rules, how traders use it, what to watch out for and the source (`scripts/scan_docs.py`). A search box finds scanners by any word in their name or write-up ("EMA", "volume", "Minervini"); Enter opens the closest match. Any scan can be limited to the top 5 or 10 themes or by Fund rating.
+- **Scanners** – 99 stock scanners in 18 colour-coded groups (group signals live in Rotation): 59 technical (`scripts/scanners.py`), 4 from the RS history (`scripts/rs_history.py`), 5 from NSE delivery data (`scripts/delivery.py`), 18 from NSE filings, 6 from mutual-fund portfolios and 7 from the long-base, Stage 2 and results models, led by a **Confluence** list (stocks firing in 4+ of the 7 bullish technical groups). Every scanner opens with a collapsible **How this scanner works** panel — what it looks for, the exact rules, how traders use it, what to watch out for and the source (`scripts/scan_docs.py`). A search box finds scanners by any word in their name or write-up ("EMA", "volume", "Minervini"); Enter opens the closest match. Any scan can be limited to the top 5 or 10 themes or by Fund rating.
 - **Fund flows** – what mutual funds bought and sold each month, stock by stock, from every scheme's month-end portfolio (Scanners → Fund flows).
 - **Watchlists** – multiple lists, return since added, pivot/stop/target with buy-zone alerts, notes, flags, track record, import/export, phone ↔ PC sync.
 - **VPCI Screener** – your Streamlit screener (`vpci/` folder, files unchanged) run every evening: Fresh Signals, Buyable, Watchlist, All Results, Ranked, G4 Pending, New Listings, Sector Leadership, Sector Rotation — for both completed weeks and the running week.
@@ -19,7 +20,7 @@ GitHub Actions (6:40 PM IST, Mon–Fri, free)
    ├─ fetch_prices.py       2 years of daily candles       (Upstox → NSE bhavcopy for today; Yahoo backup)
    ├─ fetch_nse_daily.py    NSE delivery, index P/E-P/B-yield + VIX, corporate actions, holidays (config/nse/);
    │                        corrects any close that differs from NSE's official close
-   ├─ compute.py            returns, RS + RS history, breadth, delivery, index data, scans → docs/data/*.json
+   ├─ compute.py            returns, RS + RS history, breadth, delivery, index data, group indices, scans → docs/data/*.json
    ├─ fetch_fundamentals.py new NSE results + shareholding (config/fund_*.csv)
    ├─ fetch_mf.py + mf_flows.py  fund portfolios, 1st–20th of each month (config/mf/)
    └─ publish docs/ to Pages → website updates itself
@@ -248,6 +249,28 @@ Each evening it adds every session not stored yet (it catches up after a missed 
 
 To rebuild the history: `python scripts/fetch_nse_daily.py --backfill 2024-01-01 2026-10-13` (delivery) and `--backfill-idx 2016-01-01 2026-10-13` (indices).
 
+## Group charts and group signals (spotting rotation early)
+
+`scripts/group_index.py` builds a daily price series for every group on the site (about 200: themes, sectors, NSE indices, industries), for all member stocks and for the liquid members only:
+
+- **Price.** NSE's official index (open/high/low/close from `config/nse/idx`) for the NSE-index groups whose history NSE publishes in full (20 of them); for everything else an **equal-weight index** of the members — each day the index moves by the average of the members' daily returns (base 100); open, high and low are the averages of each member's open, high and low against its previous close, so every candle is a real candle. A member counts only on days it traded; a move over ±40% in a day is treated as a data error (120 member-days in six years). Membership is today's list. Checked against NSE's own indices: daily returns correlate 0.88–0.96 (equal weight and cap weight differ in level — Nifty Bank's 14 members equal-weighted rose 8.9% in a year while the official index fell 1.2%, because the smaller banks did better).
+- **With it, per day:** members' turnover (₹ Cr), % of members above their 50- and 200-day averages, members at 52-week highs/lows, and the **group RS rating** (1–99): the IBD formula on the group's own index, ranked against the other groups of the same kind.
+- **Website:** `docs/data/grp.json` (latest readings, signals, 26-week sparklines) and one file per group in `docs/data/grp/` (loaded when its chart opens). Charts use TradingView Lightweight Charts™ v5.2.1 (Apache 2.0), kept in `docs/vendor/` so nothing loads from outside.
+
+**Signals, tested point-in-time** on every 5th session from Jul 2021 to Jul 2026 — each group's return over the next 3 months against the average group of the same kind (`config/group_evidence.json`, shown on the site):
+
+| Signal | Rule | Next 3 months vs average group (liquid / all stocks) |
+|---|---|---|
+| RS rating climbing | group RS rating 70+, up 20+ points in 4 weeks | +2.4% / +1.8%, both periods positive |
+| Stage 2 start | index crosses above its rising 150-day average after 3 months mostly below | +2.2% / +1.7% (liquid: both periods positive; all stocks: −0.6% in 2021–23) |
+| Stage 2 start with money | the same with turnover 1.2× its usual | +5.0% / +6.6% (small sample: 45 / 37) |
+| Money flowing in | 20-day turnover 1.5× its 120-day average, index up | +1.4% / +1.1% |
+| Leaders (RS 80+) / laggards (RS 20 or less) | state, not a signal | +2.3% / −2.1% |
+| Fresh 52-week high, base breakout, coiling, breadth thrust, new-highs expansion | breakout patterns | about 0 or negative — no edge on their own |
+| RS line breakdown, 52-week low, breadth collapse | weakness | −0.4% to −1.1% (RS line breakdown); others no edge |
+
+A turn from lagging to improving on a group RRG did *not* help (−1.2%), which is why the Rotation radar uses the group RS rating instead. Groups share stocks and membership is today's, so treat these as tendencies, not guarantees.
+
 ## Breadth and rotation on every stock
 
 Breadth and rotation count **every NSE main-board stock that traded** (about 2,570 a day) — as NSE counts advances and declines — instead of only the ~1,440 liquid ones. The liquid universe still drives the scanners and the RS ranking; stocks outside it appear in rotation, breadth, search and the stock window, with a note. *Stocks: All / Liquid* switches Rotation, Breadth and the header. Checked: the all-stock % above the 50 and 200 DMA matches EOD2's independent market tracker within 0.3–0.4 points on average over a year, and advances/declines agree with NSE's daily file within a few stocks. NSE lists a sector only for the ~750 stocks of its broad indices; other stocks take the NSE sector their industry belongs to (the two agree for 91% of stocks where both are known), marked in the data. Small, thinly traded stocks swing more, so the median is steadier than the mean in *All* mode.
@@ -260,7 +283,7 @@ Breadth and rotation count **every NSE main-board stock that traded** (about 2,5
 
 Two kinds of message, both sent by your own Telegram bot:
 
-- **Evening digest** (after each daily update, ~6:50 PM; not sent on NSE holidays): NIFTY 500 and breadth verdict (all stocks), India VIX and the Nifty 50 P/E, top themes, every watchlist alert from the Watchlists tab (stop, breakout, buy zone, near pivot, target, warnings incl. leader losing RS and heavy delivery selling, blue dots, results due, ex-dates of splits/bonuses/dividends in the next 7 days, fresh VPCI) and today's key scanner hits, with TradingView links. If the day's prices did not arrive it says so. When a new month of mutual-fund portfolios is in, it adds what funds bought and sold most, and any of your watchlist stocks they traded.
+- **Evening digest** (after each daily update, ~6:50 PM; not sent on NSE holidays): NIFTY 500 and breadth verdict (all stocks), India VIX and the Nifty 50 P/E, top themes, today's tested group signals (RS rating climbing, Stage 2 start, money flowing in), every watchlist alert from the Watchlists tab (stop, breakout, buy zone, near pivot, target, warnings incl. leader losing RS and heavy delivery selling, blue dots, results due, ex-dates of splits/bonuses/dividends in the next 7 days, fresh VPCI) and today's key scanner hits, with TradingView links. If the day's prices did not arrive it says so. When a new month of mutual-fund portfolios is in, it adds what funds bought and sold most, and any of your watchlist stocks they traded.
 - **Live alerts** (every 15 minutes, 9:15 AM–3:30 PM on weekdays, skipped on NSE holidays): for each stock in your watchlists, today's live price from Upstox is checked against your levels — **crossed your pivot** (with volume pace vs the 50-day average and an "extended" warning above +5%), **within 1% of pivot**, **below your stop**, **target hit**, and **±5% move today**. Each alert is sent once per stock per day.
 
 Setup (10 minutes, once):
