@@ -263,6 +263,23 @@ def evening():
     th.sort(reverse=True)
     if th:
         lines.append("Leading themes (1M): " + " · ".join(f"{E(n)} {sgn(v, 1)}" for v, n in th[:3]))
+    G = load("grp.json")
+    if G and G.get("rows"):
+        # group signals that fired today and held up in testing (themes, sectors, NSE indices, industries; all stocks)
+        names = {"g_rank": "RS rating climbing", "g_stage2m": "Stage 2 start with money", "g_stage2": "Stage 2 start",
+                 "g_money": "Money flowing in"}
+        kind = {"Themes": "theme", "Sector": "sector", "NSE Index": "index", "Industry": "industry"}
+        got = []
+        for sid, label in names.items():
+            hit = [r for r in G["rows"] if (r.get("a") or {}).get("ago", {}).get(sid) == 0]
+            if sid == "g_stage2":
+                hit = [r for r in hit if (r.get("a") or {}).get("ago", {}).get("g_stage2m") != 0]
+            if hit:
+                hit.sort(key=lambda r: -((r.get("a") or {}).get("rk") or 0))
+                got.append(f"{label}: " + ", ".join(f"{E(r['n'])} ({kind.get(r['k'], '')})" for r in hit[:6])
+                           + (f" +{len(hit) - 6} more" if len(hit) > 6 else ""))
+        if got:
+            lines.append("Group signals today — " + " · ".join(got))
 
     gid, wl, state = (None, None, {})
     try:

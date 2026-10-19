@@ -36,6 +36,7 @@ def r2(x, nd=2):
 
 
 LONG = None  # full download (about 6 years) for the long-base identifier
+PFULL = None  # the same with open/high/low, for the group charts (group_index.py)
 
 
 def load():
@@ -50,6 +51,9 @@ def load():
         p = p[~p.date.isin(stray)]
         print(f"dropped {len(stray)} non-session date(s): {', '.join(sorted(stray)[:5])}")
     LONG = p[["symbol", "date", "close", "volume"]]
+    global PFULL
+    bcal_full = set(p.loc[p.symbol == S["benchmark"], "date"])
+    PFULL = p[p.date.isin(bcal_full)] if bcal_full else p             # full OHLC history for the group charts
     # everything except bases.py works on the usual window, exactly as before the longer download
     cut = (datetime.now(timezone(timedelta(hours=5, minutes=30))).date() - timedelta(days=S["history_calendar_days"])).isoformat()
     p = p[p.date >= cut]
@@ -475,6 +479,21 @@ def main():
         corp_meta = {"n": len(keep_ca), "holidays": nxt}
     except (OSError, ValueError) as e:
         print(f"corporate actions skipped: {e}")
+    # ---------------- group charts and group signals (group_index.py): a price series for every theme, sector,
+    # NSE index and industry, with breadth, money flow, RS line and group RS rating
+    grp_meta = None
+    try:
+        import group_index as GI
+        bench_full = PFULL.loc[PFULL.symbol == bench].set_index("date")["close"].sort_index()
+        ev_f = CFG / "group_evidence.json"
+        GS, gtoday, gfiles = GI.build(PFULL, groups, U, bench_full, OUT / "grp", last,
+                                      json.loads(ev_f.read_text()) if ev_f.exists() else None)
+        dump_later["grp.json"] = GS
+        grp_meta = {"groups": len(GS["rows"]), "today": {u: {k: v for k, v in t.items() if v} for u, t in gtoday.items()}}
+    except Exception as e:  # never break the daily run
+        import traceback
+        traceback.print_exc()
+        print(f"group charts skipped: {e}")
     # ---------------- long-base identifier (bases.py; checked on 20 years of NSE data)
     base_meta = None
     try:
@@ -577,7 +596,7 @@ def main():
             "failed": fm.get("failed_count"), "indices": indices,
             "filters": {"min_price": S["min_price"], "min_median_turnover_cr": S["min_median_turnover_cr"],
                         "min_market_cap_cr": S["min_market_cap_cr"] if mcap is not None else None},
-            "min_group_size": S["min_group_size"], "fund": fund_meta, "bases": base_meta, "stage2": s2_meta, "results": res_meta, "mf": mf_meta, "rs": rs_meta, "dlv": dlv_meta, "idx": idx_meta, "corp": corp_meta}
+            "min_group_size": S["min_group_size"], "fund": fund_meta, "bases": base_meta, "stage2": s2_meta, "results": res_meta, "mf": mf_meta, "rs": rs_meta, "dlv": dlv_meta, "idx": idx_meta, "corp": corp_meta, "grp": grp_meta}
 
     def dump(name, obj):
         (OUT / name).write_text(json.dumps(obj, separators=(",", ":"), allow_nan=False))
