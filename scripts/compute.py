@@ -533,6 +533,29 @@ def main():
         import traceback
         traceback.print_exc()
         print(f"stage 2 phases skipped: {e}")
+    # ---------------- chart patterns: breakouts in the last 10 sessions, patterns about to break out, H&S tops
+    # (patterns.py; every pattern tested on NSE 2005-26, config/pattern_evidence.json)
+    pat_meta = None
+    try:
+        import patterns as PT
+        import time as _time
+        t0 = _time.time()
+        # RS rating on each of the last sessions (the VCP needs 70+ on its breakout day)
+        rs_recent = pd.DataFrame({dates[-1 - k]: rank_vs(rs_score(Ca, -1 - k), U) for k in range(PT.WINDOW + 1)}).T.sort_index()
+        ev_p = CFG / "pattern_evidence.json"
+        PTR, pt_by = PT.build(PFULL, U, rs_recent, last, OUT / "pat", json.loads(ev_p.read_text()) if ev_p.exists() else None)
+        json.dumps(PTR, separators=(",", ":"), allow_nan=False)       # must be writable before anything is attached
+        for r in rows:
+            if r["s"] in pt_by:
+                r["pt"] = pt_by[r["s"]]
+        dump_later["patterns.json"] = PTR
+        cnt = lambda k: sum(1 for x in PTR["rows"] if x["st"] == k)
+        pat_meta = {"bo": cnt("bo"), "fm": cnt("fm"), "bd": cnt("bd"), "scanned": PTR["scanned"]}
+        print(f"patterns done in {_time.time() - t0:.0f}s")
+    except Exception as e:  # never break the daily run
+        import traceback
+        traceback.print_exc()
+        print(f"chart patterns skipped: {e}")
     # ---------------- quarterly results: this season's results, Result Quality and PEAD scores (results.py)
     res_meta = None
     try:
@@ -596,7 +619,7 @@ def main():
             "failed": fm.get("failed_count"), "indices": indices,
             "filters": {"min_price": S["min_price"], "min_median_turnover_cr": S["min_median_turnover_cr"],
                         "min_market_cap_cr": S["min_market_cap_cr"] if mcap is not None else None},
-            "min_group_size": S["min_group_size"], "fund": fund_meta, "bases": base_meta, "stage2": s2_meta, "results": res_meta, "mf": mf_meta, "rs": rs_meta, "dlv": dlv_meta, "idx": idx_meta, "corp": corp_meta, "grp": grp_meta}
+            "min_group_size": S["min_group_size"], "fund": fund_meta, "bases": base_meta, "stage2": s2_meta, "results": res_meta, "mf": mf_meta, "rs": rs_meta, "dlv": dlv_meta, "idx": idx_meta, "corp": corp_meta, "grp": grp_meta, "pat": pat_meta}
 
     def dump(name, obj):
         (OUT / name).write_text(json.dumps(obj, separators=(",", ":"), allow_nan=False))
