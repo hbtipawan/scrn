@@ -148,6 +148,43 @@ The **Long bases** tab lists every stock that is in a base on the daily chart, s
 - `fetch_bse_backfill.py` adds the older BSE closes for stocks that moved from BSE to NSE recently, so their bases are not cut at the NSE listing. Stocks with no older BSE data are remembered in `config/bse_skip.csv`.
 - The detection code is `scripts/bases.py`. It uses numba and runs in a few seconds.
 
+## Chart patterns (Patterns tab)
+
+The **Patterns** tab lists every liquid stock showing one of 13 classic chart patterns, plus head-and-shoulders tops as sell warnings. The patterns are listed in the order they did on NSE from 2005 to 2026, best first.
+
+- **Broke out:** the first close through the pattern's level in the last 10 sessions.
+- **Forming:** everything is in place except that close, and the close it needs is at most 5% above today's. Set an alert at the level.
+- **Sell warnings:** a head-and-shoulders top that closed below its neckline, or is within 5% of it.
+
+**The patterns, in the site's order.** The rules for each are written out in the tab and in `config/pattern_evidence.json`.
+
+| Pattern | Source | On NSE, 2005–26 |
+|---|---|---|
+| VCP (volatility contraction) | Minervini | **beat plain breakouts by 5.0 points over 3 months** (likely +2.0 to +8.2), 118 cases |
+| Inverted descending scallop, inverse head and shoulders, Big W, triple bottom, rectangle bottom, complex head and shoulders bottom, three rising valleys, rectangle top, rounding bottom, bump-and-run reversal bottom | Bulkowski | no better than a plain breakout from the same depth (−1.5 to +1.5 points) |
+| Eve & Eve double bottom, cup with handle | Bulkowski, O'Neil | too few cases to judge (30 and 57) |
+| Head and shoulders top (sell warning) | Bulkowski | stocks lagged the average stock 56% of the time afterwards, against 55% on any random day |
+
+- **How each one was tested.** Every liquid NSE stock, 2005–2026, buying at the next day's open. Each pattern was compared with **plain breakouts**: a close at a 60-day high, from the same distance below the 6-month high, in the same years.
+- **What the tab shows.**
+  - A table of results for every pattern: cases, gain over a plain breakout, how often it beat the average stock, Bulkowski's "fails to move 5%" and "average move" next to his US figures, and how many of 12 random signals looked right on the chart.
+  - The same numbers are in `config/pattern_evidence.json`.
+- **Rounding top is not included.** It showed up only 7 times in 22 years.
+- **What each stock shows:**
+  - a small chart with the pattern drawn on it;
+  - the breakout level (or the close it needs), the stop (the pattern low) and the measured target;
+  - the pattern's height and length, RS rating and stage.
+- **Pattern chart.** Click a chart to open the pattern chart: candles and volume, the pattern's points and lines, the breakout day, stop and target. Below the chart are the rules and the NSE test results for that pattern.
+- **Stock card.** Any stock that has a pattern shows a "Chart pattern" section, whether you open it from search or from anywhere else. The section has the chart, the levels, what the pattern is, and how it did.
+- **How the forming list works.** The code adds one hypothetical session (today's close moved up, or down for the head-and-shoulders top) and asks the same detectors whether that close would confirm a pattern that passes every rule. The lowest such close is the trigger shown.
+- **The VCP's base must start at a peak.** There can be no higher high in the 10 sessions before it, as in Minervini's charts. Without that rule, most "bases" began at a lower high after an earlier, bigger top.
+- **Checks.**
+  - The site's code (`scripts/patterns.py`) reproduces the study's signals exactly: 1,077 of 1,077 on 220 stocks over 2005–26.
+  - Cutting the history at random dates and running only the last 10 sessions gives the same list as a full run, at all 1,014 test dates.
+  - Each signal was also re-checked with the history cut at its own day, to rule out look-ahead.
+- **Run time.** About 2–3 minutes in the evening run, for about 1,500 stocks.
+- **Caveat.** Stocks delisted more than a year ago are missing from the test data. Patterns can overlap: one stock can show two of them at once.
+
 ## Stage 2: early, mid or late
 
 **Scanners → Stage 2: early · mid · late** lists every stock in Stage 2 — the same stocks the Stage column marks as Stage 2, i.e. above a 150-day (30-week) line that rose 1%+ in 20 sessions. Each stock gets a **phase** and a **Stage 2 Score**. The list is sorted Early → Mid → Late, highest score first within each phase.
