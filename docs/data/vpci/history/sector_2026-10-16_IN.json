@@ -1,6 +1,6 @@
 {
  "scan_date": "2026-10-16",
- "scan_timestamp": "2026-10-20T01:05:44+05:30",
+ "scan_timestamp": "2026-10-20T14:46:04+05:30",
  "market": "IN",
  "sector_both": [
   {
@@ -34,12 +34,6 @@
    "hit_rate_%": 15.6
   },
   {
-   "sector": "Capital Goods-Non Electrical Equipment",
-   "stocks_passing": 5,
-   "total_in_universe": 63,
-   "hit_rate_%": 7.9
-  },
-  {
    "sector": "Sugar",
    "stocks_passing": 4,
    "total_in_universe": 15,
@@ -62,6 +56,12 @@
    "stocks_passing": 4,
    "total_in_universe": 60,
    "hit_rate_%": 6.7
+  },
+  {
+   "sector": "Capital Goods-Non Electrical Equipment",
+   "stocks_passing": 4,
+   "total_in_universe": 63,
+   "hit_rate_%": 6.3
   },
   {
    "sector": "Auto Ancillaries",
@@ -679,12 +679,6 @@
   },
   {
    "industry": "Capital Goods - Gensets/Turbines",
-   "stocks_passing": 1,
-   "total_in_universe": 2,
-   "hit_rate_%": 50.0
-  },
-  {
-   "industry": "Engineering - General",
    "stocks_passing": 1,
    "total_in_universe": 2,
    "hit_rate_%": 50.0
@@ -1437,6 +1431,12 @@
    "industry": "Electronics - Others",
    "stocks_passing": 0,
    "total_in_universe": 4,
+   "hit_rate_%": 0.0
+  },
+  {
+   "industry": "Engineering - General",
+   "stocks_passing": 0,
+   "total_in_universe": 2,
    "hit_rate_%": 0.0
   },
   {
@@ -2397,9 +2397,9 @@
   },
   {
    "sector": "Finance",
-   "stocks_passing": 74,
+   "stocks_passing": 75,
    "total_in_universe": 121,
-   "hit_rate_%": 61.2
+   "hit_rate_%": 62.0
   },
   {
    "sector": "Auto Ancillaries",
@@ -2415,9 +2415,9 @@
   },
   {
    "sector": "Textiles",
-   "stocks_passing": 50,
+   "stocks_passing": 51,
    "total_in_universe": 60,
-   "hit_rate_%": 83.3
+   "hit_rate_%": 85.0
   },
   {
    "sector": "Steel",
@@ -2444,16 +2444,16 @@
    "hit_rate_%": 63.3
   },
   {
-   "sector": "Realty",
-   "stocks_passing": 33,
-   "total_in_universe": 48,
-   "hit_rate_%": 68.8
-  },
-  {
    "sector": "Banks",
    "stocks_passing": 32,
    "total_in_universe": 40,
    "hit_rate_%": 80.0
+  },
+  {
+   "sector": "Realty",
+   "stocks_passing": 32,
+   "total_in_universe": 48,
+   "hit_rate_%": 66.7
   },
   {
    "sector": "Aerospace & Defence",
@@ -2546,16 +2546,16 @@
    "hit_rate_%": 92.9
   },
   {
-   "sector": "Infrastructure Investment Trusts",
-   "stocks_passing": 13,
-   "total_in_universe": 14,
-   "hit_rate_%": 92.9
-  },
-  {
    "sector": "Automobile",
    "stocks_passing": 13,
    "total_in_universe": 21,
    "hit_rate_%": 61.9
+  },
+  {
+   "sector": "Infrastructure Investment Trusts",
+   "stocks_passing": 12,
+   "total_in_universe": 14,
+   "hit_rate_%": 85.7
   },
   {
    "sector": "Entertainment",
@@ -2938,6 +2938,12 @@
    "hit_rate_%": 90.0
   },
   {
+   "industry": "Finance & Investments - Others",
+   "stocks_passing": 18,
+   "total_in_universe": 27,
+   "hit_rate_%": 66.7
+  },
+  {
    "industry": "Castings, Forgings & Fastners",
    "stocks_passing": 17,
    "total_in_universe": 19,
@@ -2960,12 +2966,6 @@
    "stocks_passing": 17,
    "total_in_universe": 23,
    "hit_rate_%": 73.9
-  },
-  {
-   "industry": "Finance & Investments - Others",
-   "stocks_passing": 17,
-   "total_in_universe": 27,
-   "hit_rate_%": 63.0
   },
   {
    "industry": "Textiles - Readymade Apparel",
@@ -3244,12 +3244,6 @@
    "hit_rate_%": 85.7
   },
   {
-   "industry": "Realty - Regional",
-   "stocks_passing": 6,
-   "total_in_universe": 7,
-   "hit_rate_%": 85.7
-  },
-  {
    "industry": "Tyres & Tubes",
    "stocks_passing": 6,
    "total_in_universe": 7,
@@ -3370,12 +3364,6 @@
    "hit_rate_%": 71.4
   },
   {
-   "industry": "Infra/Real Estate Investment Trust",
-   "stocks_passing": 5,
-   "total_in_universe": 7,
-   "hit_rate_%": 71.4
-  },
-  {
    "industry": "Pharma - MNC bulk Drugs",
    "stocks_passing": 5,
    "total_in_universe": 7,
@@ -3383,6 +3371,12 @@
   },
   {
    "industry": "Realty - National",
+   "stocks_passing": 5,
+   "total_in_universe": 7,
+   "hit_rate_%": 71.4
+  },
+  {
+   "industry": "Realty - Regional",
    "stocks_passing": 5,
    "total_in_universe": 7,
    "hit_rate_%": 71.4
@@ -3473,6 +3467,12 @@
   },
   {
    "industry": "Stainless Steel",
+   "stocks_passing": 4,
+   "total_in_universe": 4,
+   "hit_rate_%": 100.0
+  },
+  {
+   "industry": "Textiles - Hosiery/Knitwear",
    "stocks_passing": 4,
    "total_in_universe": 4,
    "hit_rate_%": 100.0
@@ -3575,6 +3575,12 @@
   },
   {
    "industry": "FMCG - Dairy Products",
+   "stocks_passing": 4,
+   "total_in_universe": 7,
+   "hit_rate_%": 57.1
+  },
+  {
+   "industry": "Infra/Real Estate Investment Trust",
    "stocks_passing": 4,
    "total_in_universe": 7,
    "hit_rate_%": 57.1
@@ -3761,12 +3767,6 @@
   },
   {
    "industry": "Textiles - General",
-   "stocks_passing": 3,
-   "total_in_universe": 4,
-   "hit_rate_%": 75.0
-  },
-  {
-   "industry": "Textiles - Hosiery/Knitwear",
    "stocks_passing": 3,
    "total_in_universe": 4,
    "hit_rate_%": 75.0

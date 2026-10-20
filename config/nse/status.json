@@ -1,57 +1,20 @@
 {
- "run": "2026-10-20 00:51",
+ "run": "2026-10-20 14:30",
  "delivery": {
-  "added": [
-   "2026-10-19"
-  ],
+  "added": [],
   "not_published": [],
   "last": "2026-10-19"
  },
  "indices": {
-  "added": [
-   "2026-10-19"
-  ],
+  "added": [],
   "not_published": [],
   "last": "2026-10-19"
  },
  "close_check": {
   "date": "2026-10-19",
-  "checked": 2567,
+  "checked": 2563,
   "corrected": 0,
-  "disagree": 996,
-  "examples": {
-   "FILATFASH": [
-    0.19,
-    0.17
-   ],
-   "LEENEE": [
-    7.4,
-    6.96
-   ],
-   "GLFL": [
-    5.4,
-    5.09
-   ],
-   "EBIX": [
-    16.0,
-    15.23
-   ],
-   "BEDMUTHA": [
-    117.8,
-    112.57
-   ],
-   "MCCHRLS-B": [
-    686.35,
-    657.1
-   ],
-   "GTECJAINX": [
-    31.6,
-    30.27
-   ],
-   "ANSALBU": [
-    88.99,
-    85.3
-   ]
-  }
+  "disagree": 0,
+  "examples": {}
  }
 }
