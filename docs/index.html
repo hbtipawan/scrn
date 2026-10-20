@@ -916,6 +916,17 @@ body{background:var(--wash),var(--desk);background-attachment:scroll;min-height:
   .rcard:hover{transform:translateY(-2px)}
   .rail button{transition:background .12s ease,border-color .12s ease}
 }
+/* Nine tabs: on PCs and tablets every tab stays in view - tighter spacing, short names for the three longest
+   (RS, Bases, VPCI); below 1280px every tab uses its short name, below 1100px the counts are dropped */
+@media (min-width:721px){
+  .tab{padding-inline:9px;gap:6px}
+  .tab svg{padding:4px}
+  .tab[data-v="rs"] .lf,.tab[data-v="bases"] .lf,.tab[data-v="vpci"] .lf{display:none}
+  .tab[data-v="rs"] .ls,.tab[data-v="bases"] .ls,.tab[data-v="vpci"] .ls{display:inline}
+}
+@media (min-width:721px) and (max-width:1279px){.tab .lf{display:none}.tab .ls{display:inline}.tab{font-size:16px}}
+@media (min-width:721px) and (max-width:1099px){.tab .cnt{display:none}.tab{padding-inline:7px;gap:5px;font-size:15.5px}.tabbar .wrap{padding-inline:12px}}
+@media (min-width:721px) and (max-width:899px){.tabbar .wrap{justify-content:space-between;gap:0}.tab{flex:1 1 auto;flex-direction:column;gap:3px;padding:8px 2px 7px;font-size:14px;min-width:0}}
 @media (max-width:720px){
   .tabbar{box-shadow:0 -1px 0 var(--line),0 -10px 22px -14px rgba(15,26,42,.35);background:linear-gradient(0deg,var(--card),var(--soft))}
   .tab svg{padding:4px;width:20px;height:20px}
@@ -957,13 +968,13 @@ body{background:var(--wash),var(--desk);background-attachment:scroll;min-height:
   <div class="wrap" role="tablist" id="tabs">
     <button class="tab" role="tab" data-v="rotation" aria-selected="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 5h11v3H3zm0 5.5h16v3H3zM3 16h8v3H3z"/></svg>Rotation</button>
     <button class="tab" role="tab" data-v="breadth" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M3 13h4l2.5-6 4 11 2.5-6H21"/></svg>Breadth</button>
-    <button class="tab" role="tab" data-v="rs" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M4 18l6-6 4 4 6-8M15 8h5v5"/></svg><span class="lf">RS ranking</span><span class="ls">RS</span></button>
-    <button class="tab" role="tab" data-v="scanners" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M16 16l4.5 4.5"/></svg><span class="lf">Scanners</span><span class="ls">Scans</span><span class="cnt" id="scanCnt"></span></button>
-    <button class="tab" role="tab" data-v="bases" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M3 19h18M5 15c2-1 3 1 5 0s3-2 5-1 2 1 4 0"/><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-dasharray="3 2.4" stroke-linecap="round" d="M4 8h16"/></svg><span class="lf">Long bases</span><span class="ls">Bases</span></button>
-    <button class="tab" role="tab" data-v="patterns" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M2.5 7l4 10 5.5-8 5.5 8 4-11"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="2.6 2.4" stroke-linecap="round" d="M8 9.5h8"/></svg><span class="lf">Patterns</span><span class="ls">Patterns</span><span class="cnt" id="patCnt"></span></button>
+    <button class="tab" role="tab" data-v="rs" aria-selected="false" title="RS ranking"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M4 18l6-6 4 4 6-8M15 8h5v5"/></svg><span class="lf">RS ranking</span><span class="ls">RS</span></button>
+    <button class="tab" role="tab" data-v="scanners" aria-selected="false" title="Scanners"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M16 16l4.5 4.5"/></svg><span class="lf">Scanners</span><span class="ls">Scans</span><span class="cnt" id="scanCnt"></span></button>
+    <button class="tab" role="tab" data-v="bases" aria-selected="false" title="Long bases"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M3 19h18M5 15c2-1 3 1 5 0s3-2 5-1 2 1 4 0"/><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-dasharray="3 2.4" stroke-linecap="round" d="M4 8h16"/></svg><span class="lf">Long bases</span><span class="ls">Bases</span></button>
+    <button class="tab" role="tab" data-v="patterns" aria-selected="false" title="Chart patterns"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M2.5 7l4 10 5.5-8 5.5 8 4-11"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="2.6 2.4" stroke-linecap="round" d="M8 9.5h8"/></svg><span class="lf">Patterns</span><span class="ls">Patterns</span><span class="cnt" id="patCnt"></span></button>
     <button class="tab" role="tab" data-v="results" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="3" width="15" height="18" rx="2.2" fill="none" stroke="currentColor" stroke-width="2"/><path stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M8.5 16.5v-3M12 16.5v-6M15.5 16.5V8"/></svg>Results<span class="cnt" id="resCnt"></span></button>
-    <button class="tab" role="tab" data-v="watch" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 3.6l2.5 5.2 5.6.7-4.1 3.9 1 5.6L12 16.3 7 19l1-5.6-4.1-3.9 5.6-.7z"/></svg><span class="lf">Watchlists</span><span class="ls">Lists</span><span class="cnt" id="wlCnt"></span></button>
-    <button class="tab" role="tab" data-v="vpci" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/></svg><span class="lf">VPCI screener</span><span class="ls">VPCI</span></button>
+    <button class="tab" role="tab" data-v="watch" aria-selected="false" title="Watchlists"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 3.6l2.5 5.2 5.6.7-4.1 3.9 1 5.6L12 16.3 7 19l1-5.6-4.1-3.9 5.6-.7z"/></svg><span class="lf">Watchlists</span><span class="ls">Lists</span><span class="cnt" id="wlCnt"></span></button>
+    <button class="tab" role="tab" data-v="vpci" aria-selected="false" title="VPCI screener"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/></svg><span class="lf">VPCI screener</span><span class="ls">VPCI</span></button>
   </div>
 </nav>
 
@@ -3244,6 +3255,7 @@ function resEvidence(E){
 function render(){
   renderPulse();$("#view").dataset.v=st.tab;
   document.querySelectorAll("#tabs .tab").forEach(b=>b.setAttribute("aria-selected",b.dataset.v===st.tab));
+  const tw=$("#tabs"),ta=tw.querySelector('.tab[aria-selected="true"]');if(ta&&tw.scrollWidth>tw.clientWidth+1){const l=ta.offsetLeft-tw.offsetLeft,r=l+ta.offsetWidth;if(l<tw.scrollLeft||r>tw.scrollLeft+tw.clientWidth)tw.scrollLeft=Math.max(0,l-24)}
   ({rotation:renderRotation,breadth:renderBreadth,rs:renderRS,scanners:renderScanners,bases:renderBases,patterns:renderPatterns,results:renderResults,watch:renderWatch,vpci:renderVpci})[st.tab]();
 }
 function go(tab){
