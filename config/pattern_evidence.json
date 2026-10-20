@@ -1,0 +1,763 @@
+{
+ "title": "How each pattern did on NSE, 2005–2026",
+ "order": [
+  "vcp",
+  "scallop",
+  "ihs",
+  "bigw",
+  "tb",
+  "rectb",
+  "chs",
+  "3rv",
+  "rectt",
+  "rb",
+  "barr",
+  "ee",
+  "cwh",
+  "hst"
+ ],
+ "tiers": {
+  "edge": "Beat plain breakouts",
+  "same": "No better than a plain breakout",
+  "few": "Too few to judge",
+  "sell": "Sell warning"
+ },
+ "findings": [
+  "Every pattern was found with the same rules on every liquid NSE stock from 2005 to 2026, buying at the next day's open, and compared with plain breakouts: a close at a 60-day high, from the same distance below the 6-month high, in the same years.",
+  "Only the VCP beat a plain breakout: +5.0 points over the next 3 months (likely range +2.0 to +8.2), beating the average stock 65% of the time against 46%, and ahead in each period (2005–12, 2013–19, 2020–26). Bases of 6 weeks or longer did clearly better than shorter ones.",
+  "The VCP's edge shows up when the stock is held for about 3 months. With a tight −8% stop and a +20% target it won about as often as a plain breakout (32% against 30%).",
+  "This strict VCP is rare: 118 cases in 22 years, 64 of them since 2020. The simpler VCP scan in the Scanners tab fires far more often and showed a small edge: +1.7 points over plain breakouts (likely +1.3 to +2.2) across 26,045 cases.",
+  "The other patterns did about as well as a plain breakout. Bulkowski's US figures (fail 4–16%, average rise 45–55%) did not carry over: on NSE these patterns failed to move 5% in 14–25% of cases and rose 29–40% on average — about the same as plain breakouts from the same depth (18–21% and 32–39%).",
+  "Head-and-shoulders tops: the stock lagged the average stock over the next 3 months 56% of the time, about the same as on any random day (55%). Treat it as a warning to check a holding, not a proven sell signal."
+ ],
+ "method": "Liquid stocks only (median turnover ₹1 Cr+ a day, price ₹10+), split- and bonus-adjusted EOD data, no look-ahead (each signal re-checked with the history cut at its day). 3-month gain is the stock's return minus the average liquid stock's, compared with matched plain breakouts; the likely range is the middle 95% of 3,000 resamples by month. Fails to move 5% and Average move follow Bulkowski: the highest price before a 20% drop. Looked right by eye: 12 random signals from 2005–19 checked on the chart.",
+ "caveats": "Stocks delisted more than a year ago are missing from the data, which flatters every result a little. Eve & Eve (30 cases) and cup with handle (57) are too rare to judge. Patterns overlap: 5–32% of signals sit within a week of another pattern on the same stock.",
+ "patterns": {
+  "vcp": {
+   "name": "VCP (volatility contraction)",
+   "short": "VCP",
+   "tier": "edge",
+   "eye": "11 of 12",
+   "about": "Mark Minervini's volatility contraction pattern. A stock already in a strong uptrend pauses, and each pullback inside the pause is shallower than the one before (for example 16%, then 9%, then 5%) while volume dries up. The shrinking swings show sellers running out. The buy point is a close above the high of the last, tightest pullback.",
+   "rules": [
+    "Strong uptrend first: Minervini's trend template (price above a rising 200-day average, 150-day above the 200-day, 50-day above both, at least 30% above the 52-week low and within 25% of the high) and RS rating 70+",
+    "Base of 6 to 65 weeks that starts at a peak: no higher high in the 10 sessions before it, and the top held for a few sessions (not a one-day spike)",
+    "2 to 6 pullbacks, each shallower than the one before: the first 10–40% deep, the last under 10%",
+    "Every pullback lasts a week or longer, and each low is higher than the one before",
+    "Volume during the last pullback below its 50-day average",
+    "Breakout: the first close above the high of the last pullback"
+   ],
+   "levels": "Stop: the low of the last pullback. No measured target: Minervini sells into strength or trails a stop.",
+   "src": "Mark Minervini, Trade Like a Stock Market Wizard (2013), chapter 10",
+   "url": "https://www.finermarketpoints.com/post/vcp-criteria-complete-checklist",
+   "n": 118,
+   "n_recent": 64,
+   "gap": 5.0,
+   "gap_lo": 2.0,
+   "gap_hi": 8.2,
+   "beat": 65.0,
+   "beat_m": 46.0,
+   "x63": 5.6,
+   "fail": 15.0,
+   "rise": 38.0,
+   "fail_m": 20.0,
+   "rise_m": 33.0,
+   "race": 32.0,
+   "race_m": 30.0,
+   "periods": [
+    [
+     "2005-12",
+     13,
+     7.1
+    ],
+    [
+     "2013-19",
+     41,
+     3.6
+    ],
+    [
+     "2020-26",
+     64,
+     5.6
+    ]
+   ]
+  },
+  "scallop": {
+   "name": "Inverted descending scallop",
+   "short": "Scallop",
+   "tier": "same",
+   "eye": "10 of 12",
+   "bulk": [
+    9,
+    16,
+    47
+   ],
+   "about": "An upside-down J. Price rises from A to a rounded top at B, then slides in a curve to C, below where it started. A close back above B says the selling that followed the top is over.",
+   "rules": [
+    "A rise from A to B, then a rounded slide to C that ends below A (the rise is 30–85% of the slide)",
+    "A rounded top, not a spike: a quarter or more of the bars sit near the top, and the closes follow an arc",
+    "3 to 40 weeks from A to C; the slide from B to C is at least 10%",
+    "Breakout: the first close above B, before price falls below C"
+   ],
+   "levels": "Stop: the low at C. Target: B plus the height from C to B.",
+   "src": "Thomas Bulkowski, Encyclopedia of Chart Patterns (3rd ed.) and thepatternsite.com",
+   "url": "https://thepatternsite.com/idscallops.html",
+   "n": 120,
+   "n_recent": 70,
+   "gap": 1.5,
+   "gap_lo": -2.2,
+   "gap_hi": 5.4,
+   "beat": 50.0,
+   "beat_m": 44.0,
+   "x63": 1.9,
+   "fail": 25.0,
+   "rise": 34.0,
+   "fail_m": 20.0,
+   "rise_m": 33.0,
+   "race": 32.0,
+   "race_m": 29.0,
+   "periods": [
+    [
+     "2005-12",
+     15,
+     2.8
+    ],
+    [
+     "2013-19",
+     34,
+     1.8
+    ],
+    [
+     "2020-26",
+     70,
+     1.1
+    ]
+   ]
+  },
+  "ihs": {
+   "name": "Inverse head and shoulders",
+   "short": "Inverse H&S",
+   "tier": "same",
+   "eye": "11 of 12",
+   "bulk": [
+    13,
+    11,
+    45
+   ],
+   "about": "Three lows after a decline. The middle low (the head) is the deepest; the two shoulders on either side sit at about the same level. The line across the two rally highs is the neckline, and a close above it confirms the bottom.",
+   "rules": [
+    "Price falls into the pattern: the 3-month high before it is at least half a pattern height above the neckline",
+    "Head at least 20% of the pattern height below the higher shoulder; the shoulders within 20% of the height of each other",
+    "Each shoulder a real dip (30–85% as deep as the head); the right side takes 0.5 to 2 times as long as the left",
+    "4 to 50 weeks from shoulder to shoulder; height at least 10%; neckline tilt at most 40% of the height; closes follow the shape",
+    "Breakout: the first close above the neckline (above the right rally high when the neckline slopes up), before price undercuts the head"
+   ],
+   "levels": "Stop: the right shoulder's low. Target: the neckline plus the pattern's height.",
+   "src": "Thomas Bulkowski, Encyclopedia of Chart Patterns (3rd ed.) and thepatternsite.com",
+   "url": "https://thepatternsite.com/hsb.html",
+   "n": 460,
+   "n_recent": 285,
+   "gap": 1.3,
+   "gap_lo": -0.7,
+   "gap_hi": 3.2,
+   "beat": 40.0,
+   "beat_m": 39.0,
+   "x63": -0.8,
+   "fail": 20.0,
+   "rise": 34.0,
+   "fail_m": 21.0,
+   "rise_m": 32.0,
+   "race": 34.0,
+   "race_m": 26.0,
+   "periods": [
+    [
+     "2005-12",
+     47,
+     6.4
+    ],
+    [
+     "2013-19",
+     128,
+     -2.3
+    ],
+    [
+     "2020-26",
+     285,
+     2.0
+    ]
+   ]
+  },
+  "bigw": {
+   "name": "Big W",
+   "short": "Big W",
+   "tier": "same",
+   "eye": "10 of 12",
+   "bulk": [
+    11,
+    9,
+    46
+   ],
+   "about": "A double bottom with a tall, straight fall on its left. Price drops steeply, makes two lows close together, and a close above the rally high between the lows completes the W.",
+   "rules": [
+    "Two lows within 6% of each other, 2 to 12 weeks apart, with a rally of at least 10% between them",
+    "The fall into the first low is at least twice the pattern's height, nearly straight, and 3 to 25 weeks long; the first low is the bottom of that fall",
+    "Height at least 12%",
+    "Breakout: the first close above the rally high between the two lows"
+   ],
+   "levels": "Stop: the lower of the two lows. Target: the breakout level plus the pattern's height.",
+   "src": "Thomas Bulkowski, Encyclopedia of Chart Patterns (3rd ed.) and thepatternsite.com",
+   "url": "https://thepatternsite.com/bigw.html",
+   "n": 210,
+   "n_recent": 118,
+   "gap": 0.5,
+   "gap_lo": -2.7,
+   "gap_hi": 3.7,
+   "beat": 39.0,
+   "beat_m": 37.0,
+   "x63": -3.0,
+   "fail": 21.0,
+   "rise": 31.0,
+   "fail_m": 21.0,
+   "rise_m": 34.0,
+   "race": 29.0,
+   "race_m": 26.0,
+   "periods": [
+    [
+     "2005-12",
+     27,
+     -1.5
+    ],
+    [
+     "2013-19",
+     65,
+     -0.0
+    ],
+    [
+     "2020-26",
+     118,
+     1.0
+    ]
+   ]
+  },
+  "tb": {
+   "name": "Triple bottom",
+   "short": "Triple bottom",
+   "tier": "same",
+   "eye": "10 of 12",
+   "bulk": [
+    12,
+    13,
+    46
+   ],
+   "about": "Three lows at about the same price, separated by two rallies. Buyers step in at the same level three times; a close above the higher of the two rally highs confirms it.",
+   "rules": [
+    "Three lows within 5% of each other (and within a quarter of the pattern's height)",
+    "Each rally between them at least 40% of the height; lows at least 8 sessions apart and all within a year",
+    "Price falls into it; no low more than 2% below the first; height at least 10%",
+    "Breakout: the first close above the highest rally high"
+   ],
+   "levels": "Stop: the lowest of the three lows. Target: the breakout level plus the pattern's height.",
+   "src": "Thomas Bulkowski, Encyclopedia of Chart Patterns (3rd ed.) and thepatternsite.com",
+   "url": "https://thepatternsite.com/tb.html",
+   "n": 255,
+   "n_recent": 166,
+   "gap": 0.2,
+   "gap_lo": -3.3,
+   "gap_hi": 5.5,
+   "beat": 39.0,
+   "beat_m": 40.0,
+   "x63": -1.0,
+   "fail": 19.0,
+   "rise": 39.0,
+   "fail_m": 20.0,
+   "rise_m": 33.0,
+   "race": 27.0,
+   "race_m": 27.0,
+   "periods": [
+    [
+     "2005-12",
+     20,
+     1.3
+    ],
+    [
+     "2013-19",
+     69,
+     -2.1
+    ],
+    [
+     "2020-26",
+     166,
+     1.1
+    ]
+   ]
+  },
+  "rectb": {
+   "name": "Rectangle bottom",
+   "short": "Rectangle bottom",
+   "tier": "same",
+   "eye": "11 of 12",
+   "bulk": [
+    8,
+    15,
+    48
+   ],
+   "about": "After a decline, price moves sideways between two flat lines: a ceiling it touches again and again, and a floor it keeps holding. A close above the ceiling is the upward breakout.",
+   "rules": [
+    "Price fell into the box: the high of the 3 months before is at least half a box height above it",
+    "4 to 50 weeks long and 5–20% tall; at least 3 touches of one line and 2 of the other, in both halves of the box",
+    "Flat: the closes drift by no more than a quarter of the box height from one end to the other",
+    "Breakout: a close above the ceiling that is also a 20-day high"
+   ],
+   "levels": "Stop: the floor. Target: the ceiling plus the box height.",
+   "src": "Thomas Bulkowski, Encyclopedia of Chart Patterns (3rd ed.) and thepatternsite.com",
+   "url": "https://thepatternsite.com/rectbots.html",
+   "n": 1053,
+   "n_recent": 674,
+   "gap": -0.1,
+   "gap_lo": -1.2,
+   "gap_hi": 1.0,
+   "beat": 43.0,
+   "beat_m": 40.0,
+   "x63": -1.0,
+   "fail": 21.0,
+   "rise": 33.0,
+   "fail_m": 21.0,
+   "rise_m": 34.0,
+   "race": 31.0,
+   "race_m": 28.0,
+   "periods": [
+    [
+     "2005-12",
+     89,
+     2.5
+    ],
+    [
+     "2013-19",
+     290,
+     1.3
+    ],
+    [
+     "2020-26",
+     674,
+     -1.0
+    ]
+   ]
+  },
+  "chs": {
+   "name": "Complex head and shoulders bottom",
+   "short": "Complex H&S",
+   "tier": "same",
+   "eye": "11 of 12",
+   "bulk": [
+    9,
+    7,
+    47
+   ],
+   "about": "An inverse head and shoulders with extra parts: two heads side by side, or two or more shoulders on one side. A close above the neckline joining the highest rally points confirms it.",
+   "rules": [
+    "Four or five lows after a decline: a head (one or two lows at the bottom) in the middle, shoulders on both sides",
+    "Head at least 20% of the height below the shoulders; the outer shoulders within 25% of the height of each other",
+    "5 to 50 weeks; height at least 10%; neckline tilt at most 40% of the height",
+    "Breakout: the first close above the neckline, within 4 weeks of the last shoulder"
+   ],
+   "levels": "Stop: the head's low. Target: the neckline plus the pattern's height.",
+   "src": "Thomas Bulkowski, Encyclopedia of Chart Patterns (3rd ed.) and thepatternsite.com",
+   "url": "https://thepatternsite.com/chsb.html",
+   "n": 441,
+   "n_recent": 293,
+   "gap": -0.2,
+   "gap_lo": -2.1,
+   "gap_hi": 1.7,
+   "beat": 38.0,
+   "beat_m": 40.0,
+   "x63": -1.5,
+   "fail": 23.0,
+   "rise": 29.0,
+   "fail_m": 20.0,
+   "rise_m": 35.0,
+   "race": 28.0,
+   "race_m": 28.0,
+   "periods": [
+    [
+     "2005-12",
+     39,
+     7.1
+    ],
+    [
+     "2013-19",
+     103,
+     -2.9
+    ],
+    [
+     "2020-26",
+     293,
+     -0.2
+    ]
+   ]
+  },
+  "3rv": {
+   "name": "Three rising valleys",
+   "short": "3 rising valleys",
+   "tier": "same",
+   "eye": "10 of 12",
+   "bulk": [
+    6,
+    10,
+    48
+   ],
+   "about": "Three dips, each bottoming at least 2% higher than the one before, like steps. Rising lows show buyers paying more each time; the signal is a close above the highest peak between them.",
+   "rules": [
+    "Each low at least 2% above the one before",
+    "Valleys of similar width; each rally between them at least 30% of the height",
+    "At least 6 sessions between lows, all within 40 weeks; height at least 8%",
+    "Breakout: the first close above the highest peak"
+   ],
+   "levels": "Stop: the first (lowest) valley. Target: the breakout level plus the pattern's height.",
+   "src": "Thomas Bulkowski, Encyclopedia of Chart Patterns (3rd ed.) and thepatternsite.com",
+   "url": "https://thepatternsite.com/3rv.html",
+   "n": 1165,
+   "n_recent": 733,
+   "gap": -0.5,
+   "gap_lo": -1.9,
+   "gap_hi": 1.0,
+   "beat": 42.0,
+   "beat_m": 45.0,
+   "x63": 0.2,
+   "fail": 18.0,
+   "rise": 35.0,
+   "fail_m": 18.0,
+   "rise_m": 38.0,
+   "race": 30.0,
+   "race_m": 31.0,
+   "periods": [
+    [
+     "2005-12",
+     147,
+     -0.6
+    ],
+    [
+     "2013-19",
+     282,
+     0.0
+    ],
+    [
+     "2020-26",
+     733,
+     -0.6
+    ]
+   ]
+  },
+  "rectt": {
+   "name": "Rectangle top",
+   "short": "Rectangle top",
+   "tier": "same",
+   "eye": "11 of 12",
+   "bulk": [
+    4,
+    15,
+    51
+   ],
+   "about": "After a rise, price pauses between two flat lines: a ceiling it touches again and again, and a floor it keeps holding. A close above the ceiling continues the uptrend.",
+   "rules": [
+    "Price rose into the box: the low of the 3 months before is at least half a box height below it",
+    "4 to 50 weeks long and 5–20% tall; at least 3 touches of one line and 2 of the other, in both halves of the box",
+    "Flat: the closes drift by no more than a quarter of the box height from one end to the other",
+    "Breakout: a close above the ceiling that is also a 20-day high"
+   ],
+   "levels": "Stop: the floor. Target: the ceiling plus the box height.",
+   "src": "Thomas Bulkowski, Encyclopedia of Chart Patterns (3rd ed.) and thepatternsite.com",
+   "url": "https://thepatternsite.com/recttops.html",
+   "n": 1427,
+   "n_recent": 903,
+   "gap": -0.6,
+   "gap_lo": -1.8,
+   "gap_hi": 0.7,
+   "beat": 45.0,
+   "beat_m": 45.0,
+   "x63": 0.3,
+   "fail": 18.0,
+   "rise": 36.0,
+   "fail_m": 18.0,
+   "rise_m": 37.0,
+   "race": 31.0,
+   "race_m": 32.0,
+   "periods": [
+    [
+     "2005-12",
+     151,
+     0.1
+    ],
+    [
+     "2013-19",
+     373,
+     -1.4
+    ],
+    [
+     "2020-26",
+     903,
+     -0.4
+    ]
+   ]
+  },
+  "rb": {
+   "name": "Rounding bottom",
+   "short": "Rounding bottom",
+   "tier": "same",
+   "eye": "8 of 12",
+   "bulk": [
+    7,
+    4,
+    48
+   ],
+   "about": "A slow, bowl-shaped turn: price declines gradually, flattens out, and climbs back just as gradually. A close above the bowl's left rim completes it.",
+   "rules": [
+    "A bowl 8 to 65 weeks wide and 12–60% deep",
+    "The closes follow a smooth U, checked against an ideal curve; the low sits in the middle 60% of the bowl",
+    "The left rim is a real peak, and the bottom is wide, not a spike",
+    "Breakout: the first close above the left rim (also a 20-day high)"
+   ],
+   "levels": "Stop: the bowl's low. Target: the rim plus the bowl's depth.",
+   "src": "Thomas Bulkowski, Encyclopedia of Chart Patterns (3rd ed.) and thepatternsite.com",
+   "url": "https://thepatternsite.com/roundb.html",
+   "n": 190,
+   "n_recent": 130,
+   "gap": -0.8,
+   "gap_lo": -3.6,
+   "gap_hi": 2.0,
+   "beat": 46.0,
+   "beat_m": 45.0,
+   "x63": 0.3,
+   "fail": 17.0,
+   "rise": 34.0,
+   "fail_m": 18.0,
+   "rise_m": 38.0,
+   "race": 32.0,
+   "race_m": 32.0,
+   "periods": [
+    [
+     "2005-12",
+     11,
+     -5.4
+    ],
+    [
+     "2013-19",
+     49,
+     0.4
+    ],
+    [
+     "2020-26",
+     130,
+     -0.9
+    ]
+   ]
+  },
+  "barr": {
+   "name": "Bump-and-run reversal bottom",
+   "short": "Bump-and-run",
+   "tier": "same",
+   "eye": "9 of 12",
+   "bulk": [
+    1,
+    9,
+    55
+   ],
+   "about": "A gentle decline along a falling trendline (the lead-in), then a sudden, steep plunge (the bump) as selling turns to panic, then a recovery that closes back above the trendline.",
+   "rules": [
+    "Lead-in: a falling trendline through two swing highs, for at least a quarter of the pattern",
+    "The bump drops at least 2.5 times as far below the line as the lead-in did, and falls at least 2.5 times as steeply",
+    "8 to 60 weeks long; the bump at least 15% deep",
+    "Breakout: the first close above the trendline, 5 or more sessions after the bump's low"
+   ],
+   "levels": "Stop: the bump's low. Target: the breakout level plus the bump's depth.",
+   "src": "Thomas Bulkowski, Encyclopedia of Chart Patterns (3rd ed.) and thepatternsite.com",
+   "url": "https://thepatternsite.com/barrb.html",
+   "n": 1546,
+   "n_recent": 992,
+   "gap": -1.5,
+   "gap_lo": -3.0,
+   "gap_hi": -0.2,
+   "beat": 38.0,
+   "beat_m": 41.0,
+   "x63": -2.4,
+   "fail": 22.0,
+   "rise": 35.0,
+   "fail_m": 20.0,
+   "rise_m": 34.0,
+   "race": 26.0,
+   "race_m": 29.0,
+   "periods": [
+    [
+     "2005-12",
+     166,
+     0.2
+    ],
+    [
+     "2013-19",
+     383,
+     -0.9
+    ],
+    [
+     "2020-26",
+     992,
+     -2.0
+    ]
+   ]
+  },
+  "ee": {
+   "name": "Eve & Eve double bottom",
+   "short": "Eve & Eve",
+   "tier": "few",
+   "eye": "10 of 12",
+   "bulk": [
+    5,
+    12,
+    50
+   ],
+   "about": "Two wide, rounded lows at about the same price. Bulkowski calls a wide, rounded bottom an Eve and a narrow spike an Adam. A close above the rally high between them confirms the double bottom.",
+   "rules": [
+    "Two lows within 6% of each other, 2 to 12 weeks apart, with a rally of at least 10% between them",
+    "Both lows wide and rounded: 8 or more sessions near each low",
+    "It follows a decline: the 3-month high before the first low is at least one pattern height above the breakout",
+    "Height at least 12%; breakout: the first close above the rally high between the lows"
+   ],
+   "levels": "Stop: the lower of the two lows. Target: the breakout level plus the pattern's height.",
+   "src": "Thomas Bulkowski, Encyclopedia of Chart Patterns (3rd ed.) and thepatternsite.com",
+   "url": "https://thepatternsite.com/eedb.html",
+   "n": 30,
+   "n_recent": 16,
+   "gap": 2.8,
+   "gap_lo": -7.1,
+   "gap_hi": 13.8,
+   "beat": 55.0,
+   "beat_m": 39.0,
+   "x63": -0.0,
+   "fail": 14.0,
+   "rise": 37.0,
+   "fail_m": 20.0,
+   "rise_m": 39.0,
+   "race": 47.0,
+   "race_m": 27.0,
+   "periods": [
+    [
+     "2005-12",
+     4,
+     14.3
+    ],
+    [
+     "2013-19",
+     10,
+     13.4
+    ],
+    [
+     "2020-26",
+     16,
+     -3.8
+    ]
+   ]
+  },
+  "cwh": {
+   "name": "Cup with handle",
+   "short": "Cup with handle",
+   "tier": "few",
+   "eye": "11 of 12",
+   "bulk": [
+    3,
+    5,
+    54
+   ],
+   "about": "William O'Neil's base. A rounded, U-shaped cup 7 to 65 weeks long, then a short, shallow pullback near the top (the handle). The buy point is a close above the handle's high on strong volume.",
+   "rules": [
+    "A prior uptrend of 30% or more; the cup's left rim within 5% of the 6-month high and not a one-day spike",
+    "Cup 12–35% deep and U-shaped (the closes follow a U); its two rims within −7% to +3% of each other",
+    "Handle 1 to 12 weeks, 2–12% deep, in the upper half of the cup, drifting sideways or down, on volume no more than 1.1 times the 50-day average",
+    "Breakout: the first close above the handle's high, on volume at least 1.4 times the 50-day average"
+   ],
+   "levels": "Stop: the handle's low. Target: the breakout level plus the cup's depth.",
+   "src": "William O'Neil, How to Make Money in Stocks; Thomas Bulkowski, Encyclopedia of Chart Patterns (3rd ed.) and thepatternsite.com",
+   "url": "https://thepatternsite.com/cup.html",
+   "n": 57,
+   "n_recent": 33,
+   "gap": -0.9,
+   "gap_lo": -5.7,
+   "gap_hi": 4.8,
+   "beat": 47.0,
+   "beat_m": 47.0,
+   "x63": 0.4,
+   "fail": 18.0,
+   "rise": 40.0,
+   "fail_m": 18.0,
+   "rise_m": 37.0,
+   "race": 23.0,
+   "race_m": 32.0,
+   "periods": [
+    [
+     "2005-12",
+     2,
+     13.8
+    ],
+    [
+     "2013-19",
+     22,
+     -5.6
+    ],
+    [
+     "2020-26",
+     33,
+     1.3
+    ]
+   ]
+  },
+  "hst": {
+   "name": "Head and shoulders top",
+   "short": "H&S top",
+   "tier": "sell",
+   "eye": "11 of 12",
+   "bulk": [
+    9,
+    19,
+    -16
+   ],
+   "about": "The mirror image of the inverse head and shoulders, at the end of a rise: three peaks, the middle one (the head) the highest. A close below the neckline across the two dips is the classic sell signal.",
+   "rules": [
+    "Price rises into the pattern: the 3-month low before it is at least half a pattern height below the neckline",
+    "Head at least 20% of the height above the higher shoulder; the shoulders within 20% of the height of each other",
+    "4 to 50 weeks from shoulder to shoulder; height at least 10%; neckline tilt at most 40% of the height",
+    "Breakdown: the first close below the neckline, before price goes above the head"
+   ],
+   "levels": "The neckline is the level to watch. Bulkowski's target: the neckline minus the pattern's height.",
+   "src": "Thomas Bulkowski, Encyclopedia of Chart Patterns (3rd ed.) and thepatternsite.com",
+   "url": "https://thepatternsite.com/hst.html",
+   "n": 589,
+   "n_recent": 383,
+   "lagged": 56.0,
+   "lagged_rand": 55,
+   "lagged_bd": 57.0,
+   "x63": 0.5,
+   "x63_lo": -1.7,
+   "x63_hi": 2.7,
+   "fail": 22.0,
+   "fall": -17.0,
+   "fail_rand": 23,
+   "fall_rand": -16,
+   "race": 25.0,
+   "race_rand": 23,
+   "periods": [
+    [
+     "2005-12",
+     67,
+     58.0
+    ],
+    [
+     "2013-19",
+     136,
+     55.0
+    ],
+    [
+     "2020-26",
+     360,
+     56.0
+    ]
+   ]
+  }
+ }
+}
