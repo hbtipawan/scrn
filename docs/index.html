@@ -200,6 +200,73 @@ button.btile:hover{border-color:var(--accent)}
 .egrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px 16px}
 @media (max-width:1000px){.egrid{grid-template-columns:minmax(0,1fr)}}
 
+/* ── Chart patterns ───────────────────────────────────── */
+/* tier = how the pattern did on NSE 2005-26: edge (beat plain breakouts), same, few (too few cases), sell (H&S top) */
+.ptier{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:2px 11px;font-size:14px;font-weight:700;white-space:nowrap;line-height:1.5;border:1.5px solid currentColor}
+.pt-edge{background:var(--up);border-color:var(--up);color:#fff}
+.pt-same{color:var(--muted)}
+.pt-few{color:var(--muted);border-style:dashed}
+.pt-sell{background:var(--down);border-color:var(--down);color:#fff}
+.pfail{display:inline-block;font-size:14px;font-weight:700;border-radius:7px;padding:1px 9px;background:var(--warn-bg);color:var(--warn);border:1px solid color-mix(in srgb,var(--warn) 40%,transparent);white-space:nowrap}
+.pgrp{--pc:var(--s1);margin:0 0 22px}
+.pgrp.t-edge{--pc:var(--up)}.pgrp.t-few{--pc:var(--muted)}.pgrp.t-sell{--pc:var(--down)}
+.pgh{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:8px 16px;padding:14px 18px 12px;margin-bottom:12px;border-radius:12px;background:var(--face,var(--card));border:1px solid color-mix(in srgb,var(--line) 75%,transparent);box-shadow:inset 6px 0 0 var(--pc),var(--d1,var(--shadow))}
+.pgh h3{font-size:23px;font-weight:800;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pgh p{margin:5px 0 0;color:var(--muted);font-size:16px;max-width:92ch;line-height:1.5}
+.pgc{display:inline-block;min-width:30px;text-align:center;font-family:var(--body);font-size:15px;font-weight:700;border-radius:999px;padding:0 9px;background:color-mix(in srgb,var(--pc) 14%,var(--card));border:1px solid color-mix(in srgb,var(--pc) 40%,var(--line));color:var(--ink)}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px}
+.pcard{padding:14px 16px 12px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.pcard.sell{box-shadow:inset 0 4px 0 var(--down),var(--d1,var(--shadow))}
+.pc-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.pc-top .symbtn{font-family:var(--display);font-stretch:108%;font-size:22px;font-weight:800}
+.pc-top .nm{max-width:240px;font-size:15px;white-space:nowrap}
+.pc-px{font-family:var(--display);font-weight:700;font-size:21px;text-align:right;white-space:nowrap}
+.pc-px small{display:block;font-family:var(--body);font-size:14.5px;font-weight:700}
+.pc-st{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.pmini-btn{all:unset;display:block;cursor:pointer;border-radius:10px;background:var(--soft);padding:6px 4px 2px;box-shadow:inset 0 1px 2px rgba(15,26,42,.08)}
+.pmini-btn:hover{box-shadow:inset 0 0 0 1.5px var(--accent)}
+.pmini-btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.pmini{display:block;width:100%;height:auto}
+.pmini text{font:600 13px var(--body);fill:var(--muted)}
+.pmini text.pl{fill:var(--s3);font-weight:800}
+.pmini.big text{font-size:14px}
+.pchwrap{background:var(--soft);border-radius:10px;padding:8px 6px 2px}
+.plev{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0}
+.plev div{background:var(--soft);border-radius:8px;padding:7px 10px;min-width:0}
+.plev dt{font-size:13.5px;color:var(--muted);font-weight:600;line-height:1.3}
+.plev dd{margin:2px 0 0;font-weight:700;font-size:17px;white-space:nowrap}
+.plev dd small{font-size:13.5px;font-weight:600;color:var(--muted);margin-left:3px}
+.pc-foot{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;font-size:15px;color:var(--muted);border-top:1px solid var(--track);padding-top:9px}
+.pc-foot b{color:var(--ink)}
+.pc-open{margin-left:auto}
+.pcs{border-top:1px solid var(--track);padding-top:12px;margin-top:12px;display:flex;flex-direction:column;gap:10px}
+.pcs:first-of-type{border-top:0;padding-top:0;margin-top:0}
+.pcs-h{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:18px}
+.pab{margin:0;font-size:16px;line-height:1.55;max-width:80ch}
+.pev{margin:0;font-size:15.5px;line-height:1.5;color:var(--muted)}
+.pev b{color:var(--ink)}
+.pgap{position:relative;display:inline-block;width:124px;height:12px;vertical-align:-1px;margin-right:8px;border-radius:3px;background:var(--track)}
+.pgap::after{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;width:1.5px;background:var(--muted)}
+.pgap i{position:absolute;top:0;bottom:0;background:var(--up);border-radius:0 3px 3px 0}
+.pgap i.neg{background:var(--down);border-radius:3px 0 0 3px}
+.pevt td.l b{font-size:16.5px}
+.pevt td small{color:var(--muted);font-size:14px;font-weight:500}
+.pevm{width:100%;border-collapse:collapse;font-size:16px}
+.pevm th,.pevm td{padding:7px 8px;border-bottom:1px solid var(--track);text-align:right}
+.pevm th{font-size:14px;color:var(--muted);font-weight:600}
+.pevm th:first-child,.pevm td:first-child{text-align:left}
+.pevm td:not(:first-child){font-weight:700;white-space:nowrap}
+.prules{margin:6px 0 10px;padding-left:22px}.prules li{margin:6px 0;font-size:16px;line-height:1.5}
+.pstat{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 10px}
+.pco{font-family:var(--body);font-size:17px;font-weight:600;color:var(--muted);margin-left:8px;font-stretch:100%}
+.pmodal .gchart{height:clamp(480px,64vh,860px)}
+.pmodal .gstats{grid-template-columns:repeat(8,minmax(0,1fr))}
+.pnote{color:var(--muted);font-size:15px;margin:10px 2px 0;max-width:92ch;line-height:1.5}
+.pempty{padding:26px 22px;font-size:17px;color:var(--muted)}
+@media (max-width:1100px){.pmodal .gstats{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (max-width:720px){.pgrid{grid-template-columns:minmax(0,1fr)}.pgh{padding:12px 14px}.pgh h3{font-size:21px}.plev dd{font-size:16px}.pmodal .gstats{grid-template-columns:repeat(2,minmax(0,1fr))}.pmodal .gchart{height:max(460px,62vh)}}
+@media (max-width:380px){.plev{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.plev div:last-child{grid-column:1/-1}}
+
 /* ── Watchlists ───────────────────────────────────────── */
 .wlbtn{border:0;background:none;cursor:pointer;font-size:19px;line-height:1;color:var(--muted);min-width:30px;min-height:30px;padding:0 6px 0 0;margin:-6px 0 -6px -4px;vertical-align:-2px;border-radius:6px}
 .wlbtn:hover{color:var(--accent-ink)}
@@ -585,6 +652,7 @@ details.exp>div{padding:0 0 8px}
 .glegend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:15px;color:var(--muted);margin:10px 2px 16px}
 .glegend span{display:inline-flex;align-items:center;gap:7px}
 .glegend i{display:inline-block;width:18px;height:3px;border-radius:2px;background:var(--c)}
+.glegend i.dash{background:repeating-linear-gradient(90deg,var(--c) 0 5px,transparent 5px 9px)}
 .gcols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:16px;align-items:start}
 .gcols .dsec,.gbody>.dsec{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
 .gevl{margin:0;padding-left:0;list-style:none;display:grid;gap:10px;font-size:15.5px;line-height:1.5}
@@ -769,6 +837,7 @@ body{background:var(--wash),var(--desk);background-attachment:scroll;min-height:
 .tab[data-v="rs"],#view[data-v="rs"]{--t:#15803D}
 .tab[data-v="scanners"],#view[data-v="scanners"]{--t:#C2410C}
 .tab[data-v="bases"],#view[data-v="bases"]{--t:#4338CA}
+.tab[data-v="patterns"],#view[data-v="patterns"]{--t:#0369A1}
 .tab[data-v="results"],#view[data-v="results"]{--t:#A21CAF}
 .tab[data-v="watch"],#view[data-v="watch"]{--t:#A16207}
 .tab[data-v="vpci"],#view[data-v="vpci"]{--t:#BE185D}
@@ -891,6 +960,7 @@ body{background:var(--wash),var(--desk);background-attachment:scroll;min-height:
     <button class="tab" role="tab" data-v="rs" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M4 18l6-6 4 4 6-8M15 8h5v5"/></svg><span class="lf">RS ranking</span><span class="ls">RS</span></button>
     <button class="tab" role="tab" data-v="scanners" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M16 16l4.5 4.5"/></svg><span class="lf">Scanners</span><span class="ls">Scans</span><span class="cnt" id="scanCnt"></span></button>
     <button class="tab" role="tab" data-v="bases" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M3 19h18M5 15c2-1 3 1 5 0s3-2 5-1 2 1 4 0"/><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-dasharray="3 2.4" stroke-linecap="round" d="M4 8h16"/></svg><span class="lf">Long bases</span><span class="ls">Bases</span></button>
+    <button class="tab" role="tab" data-v="patterns" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M2.5 7l4 10 5.5-8 5.5 8 4-11"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="2.6 2.4" stroke-linecap="round" d="M8 9.5h8"/></svg><span class="lf">Patterns</span><span class="ls">Patterns</span><span class="cnt" id="patCnt"></span></button>
     <button class="tab" role="tab" data-v="results" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="3" width="15" height="18" rx="2.2" fill="none" stroke="currentColor" stroke-width="2"/><path stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M8.5 16.5v-3M12 16.5v-6M15.5 16.5V8"/></svg>Results<span class="cnt" id="resCnt"></span></button>
     <button class="tab" role="tab" data-v="watch" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 3.6l2.5 5.2 5.6.7-4.1 3.9 1 5.6L12 16.3 7 19l1-5.6-4.1-3.9 5.6-.7z"/></svg><span class="lf">Watchlists</span><span class="ls">Lists</span><span class="cnt" id="wlCnt"></span></button>
     <button class="tab" role="tab" data-v="vpci" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/></svg><span class="lf">VPCI screener</span><span class="ls">VPCI</span></button>
@@ -911,7 +981,7 @@ body{background:var(--wash),var(--desk);background-attachment:scroll;min-height:
 /* ════════════════════ state & helpers ════════════════════ */
 const PERIODS=["1D","1W","1M","3M","6M","YTD","1Y"];
 const PL={"1D":"Today","1W":"1W","1M":"1M","3M":"3M","6M":"6M","YTD":"YTD","1Y":"1Y"};
-const TABS=["rotation","breadth","rs","scanners","bases","results","watch","vpci"];
+const TABS=["rotation","breadth","rs","scanners","bases","patterns","results","watch","vpci"];
 const st={tab:"rotation",period:"1M",group:"Themes",agg:"mean",sort:"ret",view:"bars",open:null,scan:"combo3",scanTop:0,scanFund:0,uni:"all",
   rs:{q:"",sec:"",theme:"",min:0,fmin:0,tt:false,s2:false,a50:false,all:false},tbl:{}};
 let D={};
@@ -959,6 +1029,7 @@ function renderHeader(){
   $("#asof").textContent=`Prices to ${fmtDate(m.asof)} · updated ${m.generated.replace(/^\d{4}-\d{2}-\d{2} /,"")}`;
   const n=Object.values(D.scans?.hits||{}).filter(a=>a.length).length;$("#scanCnt").textContent=n||"";
   const rc=D.meta.results?.n;$("#resCnt").textContent=rc||"";
+  const pm=D.meta.pat;$("#patCnt").textContent=pm?(pm.bo+pm.fm+pm.bd)||"":"";
 }
 function renderPulse(){
   const m=D.meta,b=uniB(),L=b.dates.length-1,bn=b.bench_name,ix=m.indices||{},main=ix[bn]||Object.values(ix)[0];
@@ -1918,6 +1989,250 @@ function baseSection(sym,wpx){
     <div class="scorebd"><div class="sbh"><span>Base Score</span>${scorePill(b.sc)}</div>${parts.map(([k,v,mx])=>`<div class="sbr"><span>${k}</span><span class="sbt"><i style="width:${(v||0)/mx*100}%"></i></span><span class="num">${v??0}/${mx}</span></div>`).join("")}</div>
   </div>`}
 
+/* ════════════════════ CHART PATTERNS ════════════════════
+   patterns.json (scripts/patterns.py): one row per stock and pattern - "bo" broke out in the last 10 sessions, "fm" forming
+   (complete except the close through its level, at most 5% away), "bd" a head-and-shoulders top that broke down.
+   evidence = config/pattern_evidence.json: the order (by how each did on NSE 2005-26), verdicts, numbers, write-ups.
+   pat/<n>.json: a stock's candles for the pattern chart, loaded when it opens. */
+let PAT=null,PCH=null,PCH_BACK=false;const PATF={};
+async function patLoad(){
+  if(PAT)return PAT;let j=window.EMBED?.patterns||null;
+  if(!j){if(!D.meta.pat)return null;try{const r=await fetch(`data/patterns.json?v=${gv()}`);j=r.ok?await r.json():null}catch(e){j=null}}
+  if(!j||!Array.isArray(j.rows))return null;
+  j.by={};for(const r of j.rows)(j.by[r.s]=j.by[r.s]||[]).push(r);
+  j.E=j.evidence||{patterns:{},order:[],tiers:{}};
+  return PAT=j}
+async function patFile(sym){const n=PAT?.files?.[sym];if(n==null)throw new Error("No chart data for this stock.");if(PATF[n])return PATF[n];
+  let j=window.EMBED?.patFiles?.[n]||null;
+  if(!j){let r=null;try{r=await fetch(`data/pat/${n}.json?v=${gv()}`)}catch(e){}
+    if(!r||!r.ok)throw new Error(window.EMBED?"This chart is not in the offline preview — it works on the website.":"Could not load the chart data. Check the connection and try again.");j=await r.json()}
+  return PATF[n]=j}
+const pdef=id=>PAT?.E?.patterns?.[id]||{name:id,short:id,tier:"same"};
+const PTIER={edge:"pt-edge",same:"pt-same",few:"pt-few",sell:"pt-sell"};
+const PTLAB={edge:"Beat plain breakouts",same:"No better than a plain breakout",few:"Too few to judge",sell:"Sell warning"};
+function ptier(id){const t=pdef(id).tier||"same";return `<span class="ptier ${PTIER[t]||"pt-same"}">${esc(PAT?.E?.tiers?.[t]||PTLAB[t]||t)}</span>`}
+const pSell=r=>r.id==="hst";
+const pAgo=n=>n===0?"today":n===1?"1 session ago":`${n} sessions ago`;
+function pstatus(r){const sell=pSell(r);
+  if(r.st==="fm")return `<span class="pill ${sell?"p-down":"p-acc"}">${sell?`Neckline ${r.gap.toFixed(1)}% below`:`Forming · ${r.gap.toFixed(1)}% to go`}</span>`;
+  return `<span class="pill ${sell?"p-down":"p-up"}">${sell?"Broke down":"Broke out"} ${pAgo(r.ago)}</span>`+(r.fail?` <span class="pfail">${sell?"Back above the right shoulder":"Back below the stop"}</span>`:"")}
+const pLevelLab=r=>r.st==="fm"?(pSell(r)?"Breaks down below":"Breaks out above"):(pSell(r)?"Neckline":"Breakout level");
+const pLevel=r=>r.st==="fm"?r.trig:r.lvl;
+function pevLine(id){const e=pdef(id);if(!isNum(e.n))return "";const N=e.n.toLocaleString("en-IN");
+  if(e.tier==="sell")return `NSE 2005–26, ${N} cases: over the next 3 months the stock lagged the average stock <b>${e.lagged}%</b> of the time — on a random day, ${e.lagged_rand}%. A warning to check the holding, not a proven sell signal.`;
+  const g=`<b>${sgn(e.gap,1," pts")}</b> against a plain breakout over 3 months (likely ${sgn(e.gap_lo,1,"")} to ${sgn(e.gap_hi,1,"")})`;
+  if(e.tier==="few")return `Only ${N} cases on NSE 2005–26 — too few to judge: ${g}.`;
+  return `NSE 2005–26, ${N} cases: ${g}; beat the average stock ${e.beat}% of the time against ${e.beat_m}% for plain breakouts.`}
+function plevels(r){const sell=pSell(r),px=D.by[r.s]?.px;
+  const pc=v=>isNum(v)&&isNum(px)?`<small class="num">${sgn((v/px-1)*100,1)}</small>`:"";
+  const tgt=isNum(r.tgt)?`₹${inr(r.tgt)}${pc(r.tgt)}`:`<span style="color:var(--muted);font-weight:600">${r.id==="vcp"?"None (trail)":"–"}</span>`;
+  return `<dl class="plev"><div><dt>${pLevelLab(r)}</dt><dd class="num">₹${inr(pLevel(r))}${pc(pLevel(r))}</dd></div><div><dt>${sell?"Right shoulder high":"Stop · pattern low"}</dt><dd class="num">₹${inr(r.stop)}${pc(r.stop)}</dd></div><div><dt>${sell?"Bulkowski target":"Target"}</dt><dd class="num">${tgt}</dd></div></dl>`}
+/* the card's small chart: closes, the pattern's points and lines, stop and level; forming patterns get room on the right */
+function pmini(r,wpx,big){const m=r.m;if(!m||!Array.isArray(m.c))return "";const c=m.c,n=c.length;if(n<3)return "";
+  const sell=pSell(r),fm=r.st==="fm",lv=pLevel(r);
+  const W=big?Math.max(300,Math.min(900,(wpx||460)-12)):360,H=big?Math.round(Math.min(300,Math.max(210,W*.44))):164;
+  const pl=big?62:6,pr=big?12:8,pt=big?22:20,pb=big?30:20,ext=fm?Math.max(4,Math.round(n*.07)):0;
+  const vals=c.filter(isNum).concat((m.p||[]).map(q=>q[1]),[lv,r.stop].filter(isNum));let lo=Math.min(...vals),hi=Math.max(...vals);
+  if(big&&isNum(r.tgt)&&r.tgt<=hi*1.35&&r.tgt>=lo*.7){lo=Math.min(lo,r.tgt);hi=Math.max(hi,r.tgt)}
+  const pad=(hi-lo)*.06||hi*.02;lo-=pad;hi+=pad;
+  const x=i=>pl+i*(W-pl-pr)/Math.max(1,n-1+ext),y=v=>pt+(1-(v-lo)/(hi-lo))*(H-pt-pb),f=v=>v.toFixed(1);
+  const hline=(v,col,dash,w)=>`<line x1="${pl}" x2="${W-pr}" y1="${f(y(v))}" y2="${f(y(v))}" stroke="${col}" stroke-width="${w}" stroke-dasharray="${dash}"/>`;
+  let g="";
+  if(big){for(let k=0;k<=3;k++){const v=lo+(hi-lo)*k/3;g+=`<line x1="${pl}" x2="${W-pr}" y1="${f(y(v))}" y2="${f(y(v))}" stroke="var(--track)"/><text x="${pl-8}" y="${f(y(v)+4)}" text-anchor="end">${v>=1000?Math.round(v).toLocaleString("en-IN"):v.toFixed(v>=100?0:1)}</text>`}
+    const d0=(r.pts||[])[0]?.[0];g+=`<text x="${pl}" y="${H-8}">${esc(bmon(r.start||d0||""))}</text><text x="${W-pr}" y="${H-8}" text-anchor="end">${esc(fmtDate(PAT?.asof||D.meta.asof))}</text>`}
+  if(isNum(r.stop))g+=hline(r.stop,"var(--down)","3 4",1.3);
+  if(big&&isNum(r.tgt)&&r.tgt>=lo&&r.tgt<=hi)g+=hline(r.tgt,"var(--up)","2 5",1.3)+`<text x="${W-pr-4}" y="${f(y(r.tgt)-6)}" text-anchor="end">Target ₹${inr(r.tgt)}</text>`;
+  for(const [[i0,p0],[i1,p1]] of m.l||[]){let j1=i1,q1=p1;
+    if(fm){j1=n-1+ext;q1=i1>i0?Math.exp(Math.log(p0)+(Math.log(p1)-Math.log(p0))*(j1-i0)/(i1-i0)):p1}
+    g+=`<line x1="${f(x(i0))}" x2="${f(x(j1))}" y1="${f(y(p0))}" y2="${f(y(q1))}" stroke="var(--s3)" stroke-width="${big?2.2:1.8}" stroke-dasharray="7 4"/>`}
+  g+=`<polyline points="${c.map((v,i)=>isNum(v)?`${f(x(i))},${f(y(v))}`:null).filter(Boolean).join(" ")}" fill="none" stroke="var(--s1)" stroke-width="${big?2:1.7}" stroke-linejoin="round"/>`;
+  for(const [i,p,lab] of m.p||[]){if(i<0||i>=n||!isNum(p))continue;const low=!isNum(c[i])||p<=c[i];
+    g+=`<circle cx="${f(x(i))}" cy="${f(y(p))}" r="${big?4:3.2}" fill="var(--card)" stroke="var(--s3)" stroke-width="2"/>`;
+    if(lab)g+=`<text class="pl" x="${f(x(i))}" y="${f(low?y(p)+(big?18:15):y(p)-(big?9:7))}" text-anchor="middle">${esc(lab)}</text>`}
+  if(m.b!=null&&m.b>=0&&m.b<n&&isNum(c[m.b]))g+=`<circle cx="${f(x(m.b))}" cy="${f(y(c[m.b]))}" r="${big?6:4.8}" fill="${sell?"var(--down)":"var(--up)"}" stroke="var(--card)" stroke-width="2"/>`;
+  if(fm&&isNum(lv))g+=`<circle cx="${f(x(n-1+ext))}" cy="${f(y(lv))}" r="${big?6:4.8}" fill="var(--card)" stroke="${sell?"var(--down)":"var(--up)"}" stroke-width="2.4"/>`;
+  if(big&&isNum(lv))g+=`<text x="${pl+6}" y="${f(y(lv)-8)}" style="fill:var(--s3);font-weight:700">${pLevelLab(r)} ₹${inr(lv)}</text>`;
+  return `<svg class="pmini${big?" big":""}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(r.s)}: ${esc(pdef(r.id).name)}, ${esc(pLevelLab(r).toLowerCase())} ₹${inr(lv)}, stop ₹${inr(r.stop)}">${g}</svg>`}
+function pcard(r){const x=D.by[r.s]||{},e=pdef(r.id),key=esc(r.s+"|"+r.id),d1=x.r?.["1D"];
+  return `<article class="card pcard${pSell(r)?" sell":""}">
+    <div class="pc-top"><div style="min-width:0">${symBtn(r.s,x.n)}</div><div class="pc-px num">₹${inr(x.px)}<small class="${cls(d1)}">${sgn(d1,1)} today</small></div></div>
+    <div class="pc-st">${pstatus(r)}</div>
+    <button type="button" class="pmini-btn" data-pchart="${key}" aria-label="Open the ${esc(e.name)} chart of ${esc(r.s)}">${pmini(r)}</button>
+    ${plevels(r)}
+    <div class="pc-foot"><span>Height <b class="num">${r.ht.toFixed(0)}%</b></span><span>Length <b class="num">${Math.max(1,Math.round(r.wk))} wk</b></span><span>RS ${rsPill(x.rs)}</span>${x.st?`<span>${stagePill(x.st)}</span>`:""}<button type="button" class="ghost pc-open" data-pchart="${key}">Chart</button></div></article>`}
+/* the evidence card: every pattern's NSE result next to a plain breakout from the same depth */
+function pEvidence(){const E=PAT.E;if(!E||!E.patterns||!(E.order||[]).length)return "";
+  const bar=v=>{if(!isNum(v))return "–";const w=Math.max(2,Math.min(62,Math.abs(v)/6*62));return `<span class="pgap" aria-hidden="true"><i class="${v<0?"neg":""}" style="${v<0?"right":"left"}:50%;width:${w}px"></i></span><b class="num ${cls(v)}">${sgn(v,1,"")}</b>`};
+  const buy=E.order.filter(k=>E.patterns[k]&&E.patterns[k].tier!=="sell"),h=E.patterns.hst;
+  const rows=buy.map(k=>{const e=E.patterns[k],b=e.bulk;return `<tr><td class="l"><b>${esc(e.name)}</b></td><td class="l">${ptier(k)}</td><td class="num">${e.n.toLocaleString("en-IN")}</td>
+    <td class="l">${bar(e.gap)} <small class="num">(${sgn(e.gap_lo,1,"")} to ${sgn(e.gap_hi,1,"")})</small></td><td class="num">${e.beat}% <small>vs ${e.beat_m}%</small></td>
+    <td class="num">${e.fail}% <small>vs ${e.fail_m}%</small></td><td class="num">+${e.rise}% <small>vs +${e.rise_m}%</small></td>
+    <td class="num">${b?`#${b[0]} · ${b[1]}% · +${b[2]}%`:"–"}</td><td class="num">${esc(e.eye||"–")}</td></tr>`}).join("");
+  const t1=`<div class="tscroll"><table class="dt etab pevt"><thead><tr><th class="l">Pattern</th><th class="l">Verdict</th><th>NSE cases</th><th class="l">3-month gain over a plain breakout, pts (likely range)</th><th>Beat the average stock <small>vs plain</small></th><th>Fails to move 5% <small>vs plain</small></th><th>Average move <small>vs plain</small></th><th>Bulkowski, US: rank · fails · move</th><th>Looked right</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+  const t2=h?`<div class="tscroll"><table class="dt etab"><thead><tr><th class="l">Sell warning</th><th>NSE cases</th><th>Lagged the average stock <small>vs random day</small></th><th>Failed to fall 5% <small>vs random</small></th><th>Average fall <small>vs random</small></th><th>Fell 20% before rising 8% <small>vs random</small></th><th>Bulkowski, US: rank · fails · move</th><th>Looked right</th></tr></thead><tbody><tr><td class="l"><b>${esc(h.name)}</b></td><td class="num">${h.n.toLocaleString("en-IN")}</td><td class="num">${h.lagged}% <small>vs ${h.lagged_rand}%</small></td><td class="num">${h.fail}% <small>vs ${h.fail_rand}%</small></td><td class="num">${h.fall}% <small>vs ${h.fall_rand}%</small></td><td class="num">${h.race}% <small>vs ${h.race_rand}%</small></td><td class="num">${h.bulk?`#${h.bulk[0]} · ${h.bulk[1]}% · ${h.bulk[2]}%`:"–"}</td><td class="num">${esc(h.eye||"–")}</td></tr></tbody></table></div>`:"";
+  return `<details class="card evid" id="pev"${store.get("pxEv",false)?" open":""}><summary>${esc(E.title||"How each pattern did on NSE")} <span>— the patterns are listed in this order</span></summary><div class="evb">
+    <ul class="fl">${(E.findings||[]).map(t=>`<li>${esc(t)}</li>`).join("")}</ul>
+    <h4>Buy patterns, next 3 months after the breakout (gain = the stock's return minus the average stock's, compared with plain breakouts)</h4>${t1}
+    <h4>Sell warning</h4>${t2}
+    <p class="note">${esc(E.method||"")} ${esc(E.caveats||"")}</p>
+    <p class="note">Sources: <a href="https://thepatternsite.com/id75.html" target="_blank" rel="noopener">Bulkowski's pattern ranking</a> and his pattern pages; Mark Minervini, <i>Trade Like a Stock Market Wizard</i> (VCP); William O'Neil, <i>How to Make Money in Stocks</i> (cup with handle).</p></div></details>`}
+if(!st.px)st.px={q:"",status:"all",pat:"all",rs70:false,s2:false,nofail:false,view:"cards"};
+function pFilter(rows){const f=st.px,q=f.q.trim().toUpperCase();
+  return rows.filter(r=>{const x=D.by[r.s]||{},sell=pSell(r);
+    if(q&&!r.s.includes(q)&&!String(x.n||"").toUpperCase().includes(q))return false;
+    if(f.status==="bo"&&(r.st!=="bo"))return false;
+    if(f.status==="fm"&&(r.st!=="fm"||sell))return false;
+    if(f.status==="sell"&&!sell)return false;
+    if(f.pat!=="all"&&r.id!==f.pat)return false;
+    if(f.rs70&&!((x.rs??0)>=70))return false;if(f.s2&&x.st!==2)return false;if(f.nofail&&r.fail)return false;
+    return true})}
+const PCOL={
+  pat:{k:"pat",label:"Pattern",l:1,fmt:r=>`<b>${esc(pdef(r.id).name)}</b>`,sort:r=>(PAT.E.order||[]).indexOf(r.id),csv:r=>pdef(r.id).name},
+  st:{k:"pst",label:"Status",l:1,fmt:r=>pstatus(r),sort:r=>r.st==="fm"?100+r.gap:r.ago,csv:r=>r.st==="fm"?`forming, ${r.gap}% away`:`${pSell(r)?"broke down":"broke out"} ${r.ago} sessions ago${r.fail?" (failed since)":""}`},
+  lv:{k:"plv",label:"Level ₹",fmt:r=>`<span class="num">${inr(pLevel(r))}</span>`,sort:r=>pLevel(r)},
+  fr:{k:"pfr",label:"Close vs level",fmt:r=>{const v=r.st==="fm"?(pSell(r)?r.gap:-r.gap):r.since;return `<span class="num ${cls(pSell(r)?-v:v)}">${sgn(v,1)}</span>`},sort:r=>r.st==="fm"?-r.gap:r.since},
+  stop:{k:"pstop",label:"Stop ₹",fmt:r=>`<span class="num">${inr(r.stop)}</span>`,sort:r=>r.stop},
+  tgt:{k:"ptgt",label:"Target ₹",fmt:r=>`<span class="num">${isNum(r.tgt)?inr(r.tgt):"–"}</span>`,sort:r=>r.tgt},
+  ht:{k:"ht",label:"Height %",fmt:r=>`<span class="num">${r.ht.toFixed(1)}</span>`},
+  wk:{k:"wk",label:"Weeks",fmt:r=>`<span class="num">${Math.max(1,Math.round(r.wk))}</span>`},
+  ch:{k:"pch",label:"Chart",l:1,fmt:r=>`<button type="button" class="ghost" data-pchart="${esc(r.s+"|"+r.id)}">Chart</button>`,sort:r=>r.s,csv:r=>""},
+};
+async function renderPatterns(){
+  $("#view").innerHTML=`<div class="empty">Loading patterns…</div>`;
+  const P=await patLoad();if(st.tab!=="patterns")return;
+  if(!P){$("#view").innerHTML=`<div class="err">Pattern data isn't there yet. It is made by the evening “Daily update” run — run it once from the Actions tab, then reload.</div>`;return}
+  const f=st.px,R=P.rows,bo=R.filter(r=>r.st==="bo"),fm=R.filter(r=>r.st==="fm"&&!pSell(r)),sell=R.filter(pSell),vcp=R.filter(r=>r.id==="vcp");
+  const tile=(id,k,v,d)=>`<button type="button" class="card tile btile" data-ppreset="${id}"><div class="k">${k}</div><div class="v num">${v.toLocaleString("en-IN")}</div><div class="d">${d}</div></button>`;
+  const ord=(P.E.order||[]).filter(k=>P.E.patterns?.[k]);
+  $("#view").innerHTML=`<div class="sec-head"><div><h2>Chart patterns</h2><p>Classic chart patterns found by strict rules in the ${(P.scanned||D.meta.universe).toLocaleString("en-IN")} liquid stocks, listed in the order they did on NSE from 2005 to 2026 — best first. <b>Broke out</b>: the first close through the pattern's level in the last ${P.window} sessions. <b>Forming</b>: everything is in place except that close, which is at most ${P.near}% away — set an alert at the level. Head-and-shoulders tops are shown as sell warnings.</p></div></div>
+  <div class="tiles btiles">${tile("bo","Broke out",bo.length,`in the last ${P.window} sessions`)}${tile("fm","Forming",fm.length,`within ${P.near}% of the breakout`)}${tile("sell","Sell warnings",sell.length,"head-and-shoulders tops")}${tile("vcp","VCP",vcp.length,"the one pattern that beat plain breakouts")}</div>
+  ${pEvidence()}
+  <div class="card toolbar">
+    <div class="ctl"><span>Show</span>${seg("p_status",["all","bo","fm","sell"],f.status,{all:"All",bo:"Broke out",fm:"Forming",sell:"Sell warnings"})}</div>
+    <div class="ctl"><span>Pattern</span><select class="select" id="ppat" aria-label="Pattern"><option value="all">All patterns</option>${ord.map(k=>`<option value="${esc(k)}" ${f.pat===k?"selected":""}>${esc(P.E.patterns[k].name)}</option>`).join("")}</select></div>
+    <div class="ctl"><span>Search</span><input class="search" type="search" id="pq" placeholder="Symbol or company" value="${esc(f.q)}" aria-label="Search patterns"></div>
+    <div class="ctl"><span>Also</span><div style="display:flex;flex-wrap:wrap;gap:0 16px"><label class="check"><input type="checkbox" id="prs" ${f.rs70?"checked":""}>RS 70+</label><label class="check"><input type="checkbox" id="ps2" ${f.s2?"checked":""}>Stage 2</label><label class="check"><input type="checkbox" id="pnf" ${f.nofail?"checked":""}>Hide failed</label></div></div>
+    <div class="ctl"><span>View</span>${seg("p_view",["cards","table"],f.view,{cards:"Cards",table:"Table"})}</div>
+  </div><div id="pxT"></div>`;
+  const on=(id,k)=>{const el=$(id);if(el)el.addEventListener(el.type==="checkbox"?"change":el.tagName==="SELECT"?"change":"input",e=>{f[k]=e.target.type==="checkbox"?e.target.checked:e.target.value;if(st.tbl.pat)st.tbl.pat.show=100;store.set("px",{...f,q:""});drawPatterns()})};
+  on("#pq","q");on("#ppat","pat");on("#prs","rs70");on("#ps2","s2");on("#pnf","nofail");
+  $("#pev")?.addEventListener("toggle",e=>store.set("pxEv",e.target.open));
+  drawPatterns()}
+function drawPatterns(){const P=PAT,f=st.px,rows=pFilter(P.rows),box=$("#pxT");if(!box)return;
+  if(!rows.length){const none=!P.rows.length;box.innerHTML=`<div class="card pempty">${none?`No pattern broke out in the last ${P.window} sessions and none is within ${P.near}% of its breakout. Quiet days happen — the list refreshes every evening.`:"No pattern matches these filters. Try “All” or clear the search."}</div>`;return}
+  if(f.view==="table"){if(!st.tbl.pat)st.tbl.pat={key:null,dir:-1,show:100};
+    const data=rows.map(r=>{const x=D.by[r.s]||{};return {...r,n:x.n,rs:x.rs,st_:x.st,sec:x.sec,ind:x.ind,stg:x.st}});
+    const cols=[C.stock,PCOL.pat,PCOL.st,PCOL.lv,PCOL.fr,PCOL.stop,PCOL.tgt,PCOL.ht,PCOL.wk,C.rs,{...C.st,fmt:r=>stagePill(r.stg),sort:r=>r.stg},PCOL.ch,C.sec];
+    box.innerHTML=`<div class="card"><div class="bxhead"><span><b class="num">${rows.length}</b> pattern${rows.length===1?"":"s"} on <b class="num">${new Set(rows.map(r=>r.s)).size}</b> stocks</span><button type="button" class="ghost" data-wl-addall="${esc(JSON.stringify([...new Set(rows.map(r=>r.s))].slice(0,200)))}" data-label="Chart patterns">☆ Add to a watchlist</button></div>${dtable("pat",data,cols,{empty:"No pattern matches."})}</div>`;
+    wireTables(box,drawPatterns);return}
+  const ord=(P.E.order||[]).length?P.E.order:[...new Set(rows.map(r=>r.id))];
+  box.innerHTML=ord.map(id=>{const a=rows.filter(r=>r.id===id);if(!a.length)return "";const e=pdef(id);
+    return `<section class="pgrp t-${esc(e.tier||"same")}" aria-label="${esc(e.name)}"><div class="pgh"><div><h3>${esc(e.name)} <span class="pgc">${a.length}</span></h3><p>${pevLine(id)}</p></div>${ptier(id)}</div><div class="pgrid">${a.map(pcard).join("")}</div></section>`}).join("");}
+function pPreset(id){const f=st.px;Object.assign(f,{q:"",pat:"all",rs70:false,s2:false,nofail:false});
+  if(id==="bo")f.status="bo";if(id==="fm")f.status="fm";if(id==="sell")f.status="sell";if(id==="vcp")Object.assign(f,{status:"all",pat:"vcp"});
+  store.set("px",f);renderPatterns();setTimeout(()=>$("#pxT")?.scrollIntoView({block:"start",behavior:"smooth"}),40)}
+/* stock window: the stock's patterns with their write-up */
+function patSection(sym,wpx){const L=PAT?.by?.[sym];if(!L?.length)return "";
+  return `<div class="dsec" id="patsec"><h4>Chart pattern${L.length>1?"s":""} · from the Patterns tab</h4>${L.map(r=>{const e=pdef(r.id);return `<div class="pcs">
+    <div class="pcs-h"><b>${esc(e.name)}</b>${ptier(r.id)}${pstatus(r)}</div>
+    <div class="pchwrap">${pmini(r,wpx?wpx-30:0,true)}</div>
+    ${plevels(r)}
+    <p class="pab">${esc(e.about||"")}</p>
+    <p class="pev">${pevLine(r.id)}</p>
+    <div><button type="button" class="btn alt" data-pchart="${esc(r.s+"|"+r.id)}">Open the pattern chart</button></div></div>`}).join("")}</div>`}
+/* ── the pattern chart window (candles + the pattern drawn on them) ── */
+function pmodalEl(){let m=$("#pmodal");if(m)return m;
+  document.body.insertAdjacentHTML("beforeend",`<div class="gscrim" id="pscrim" hidden></div><section class="gmodal pmodal" id="pmodal" hidden role="dialog" aria-modal="true" aria-labelledby="pTitle"></section>`);
+  $("#pscrim").addEventListener("click",()=>closePatChart());
+  m=$("#pmodal");m.addEventListener("click",e=>{if(e.target.closest("[data-pclose]")){closePatChart();return}
+    const sw=e.target.closest("[data-pswitch]");if(sw){openPatChart(m.dataset.s,sw.dataset.pswitch);return}});
+  return m}
+async function openPatChart(sym,id){
+  const m=pmodalEl(),wasOpen=!m.hidden;m.dataset.s=sym;m.dataset.id=id;
+  await patLoad();const x=D.by[sym]||{},e=pdef(id);
+  m.innerHTML=`<header class="ghead"><div><div class="gkind">${esc(e.name)}</div><h2 id="pTitle">${esc(sym)}<span class="pco">${esc(x.n||"")}</span></h2></div><button class="close" type="button" data-pclose aria-label="Close chart"><b aria-hidden="true">✕</b> Close</button></header><div class="gbody"><div class="empty" style="padding:40px">Loading chart…</div></div>`;
+  m.hidden=false;$("#pscrim").hidden=false;document.body.style.overflow="hidden";
+  if(!wasOpen&&!history.state?.pchart)history.pushState({...(history.state||{}),pchart:1},"",location.href);
+  try{if(!PAT)throw new Error("Pattern data isn't there yet.");await lwcLoad();
+    const r=(PAT.by[sym]||[]).find(q=>q.id===id);if(!r)throw new Error("This pattern is no longer on the list.");
+    const F=await patFile(sym);if(m.hidden||m.dataset.s!==sym||m.dataset.id!==id)return;drawPatChart(r,F)}
+  catch(err){if(m.dataset.s===sym)m.querySelector(".gbody").innerHTML=`<div class="empty" style="padding:40px">${esc(err.message||String(err))}</div>`}
+  m.querySelector("[data-pclose]")?.focus()}
+function closePatChart(fromPop){const m=$("#pmodal");if(!m||m.hidden)return;if(PCH){PCH.ro?.disconnect();PCH.chart.remove();PCH=null}
+  m.hidden=true;$("#pscrim").hidden=true;if($("#drawer").hidden&&(!$("#gmodal")||$("#gmodal").hidden))document.body.style.overflow="";
+  if(!fromPop&&history.state?.pchart){PCH_BACK=true;history.back()}}
+window.addEventListener("popstate",()=>{if(PCH_BACK){PCH_BACK=false;return}if(!history.state?.pchart&&$("#pmodal")&&!$("#pmodal").hidden&&$("#drawer").hidden)closePatChart(true)});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&$("#pmodal")&&!$("#pmodal").hidden&&$("#drawer").hidden&&$("#mdl").hidden){e.stopImmediatePropagation();closePatChart()}},true);
+function pEvTable(id){const e=pdef(id);if(!isNum(e.n))return `<p class="note" style="margin:0">Test results not available.</p>`;
+  const per=(e.periods||[]).filter(p=>p[1]);
+  if(e.tier==="sell")return `<table class="pevm"><thead><tr><th></th><th>${esc(e.short||e.name)}</th><th>Random day</th></tr></thead><tbody>
+    <tr><td>Lagged the average stock over the next 3 months</td><td>${e.lagged}%</td><td>${e.lagged_rand}%</td></tr>
+    <tr><td>Failed to fall 5% (Bulkowski's failure)</td><td>${e.fail}%</td><td>${e.fail_rand}%</td></tr>
+    <tr><td>Average fall, to the lowest price before a 20% rise</td><td>${e.fall}%</td><td>${e.fall_rand}%</td></tr>
+    <tr><td>Fell 20% before rising 8%</td><td>${e.race}%</td><td>${e.race_rand}%</td></tr></tbody></table>
+    <p class="pnote">${e.n.toLocaleString("en-IN")} cases, 2005–26. Share that lagged, by period: ${per.map(p=>`${esc(p[0])} ${p[2]}% (${p[1]})`).join(" · ")}. Looked right by eye: ${esc(e.eye||"–")}.${e.bulk?` Bulkowski's US figures: rank #${e.bulk[0]} of the down-breakout patterns, fails ${e.bulk[1]}%, average fall ${e.bulk[2]}%.`:""}</p>`;
+  return `<table class="pevm"><thead><tr><th></th><th>${esc(e.short||e.name)}</th><th>Plain breakout</th></tr></thead><tbody>
+    <tr><td>Beat the average stock over the next 3 months</td><td>${e.beat}%</td><td>${e.beat_m}%</td></tr>
+    <tr><td>Failed to rise 5% (Bulkowski's failure)</td><td>${e.fail}%</td><td>${e.fail_m}%</td></tr>
+    <tr><td>Average rise, to the highest price before a 20% drop</td><td>+${e.rise}%</td><td>+${e.rise_m}%</td></tr>
+    <tr><td>Rose 20% before falling 8%</td><td>${isNum(e.race)?e.race+"%":"–"}</td><td>${e.race_m}%</td></tr></tbody></table>
+    <p class="pnote"><b>${sgn(e.gap,1," points")}</b> over 3 months against a plain breakout from the same depth (likely ${sgn(e.gap_lo,1,"")} to ${sgn(e.gap_hi,1,"")}), ${e.n.toLocaleString("en-IN")} cases, 2005–26. By period: ${per.map(p=>`${esc(p[0])} ${sgn(p[2],1,"")} (${p[1]})`).join(" · ")}. Looked right by eye: ${esc(e.eye||"–")}.${e.bulk?` Bulkowski's US figures: rank #${e.bulk[0]}, fails ${e.bulk[1]}%, average rise +${e.bulk[2]}%.`:""}</p>`}
+function drawPatChart(r,F){const m=$("#pmodal"),x=D.by[r.s]||{},e=pdef(r.id),sell=pSell(r),P=gpal(),lv=pLevel(r);
+  const others=(PAT.by[r.s]||[]).filter(q=>q.id!==r.id);
+  const kv=(k,v,c)=>`<div><dt>${k}</dt><dd class="num ${c||""}">${v}</dd></div>`;
+  const ref=r.st==="fm"?lv:x.px,risk=isNum(ref)&&isNum(r.stop)?(r.stop/ref-1)*100:null;
+  const mv=r.st==="fm"?(sell?-r.gap:r.gap):r.since;
+  m.querySelector(".gbody").innerHTML=`
+   <div class="pstat">${ptier(r.id)}${pstatus(r)}</div>
+   <dl class="gstats">${kv(pLevelLab(r),"₹"+inr(lv))}${kv("Last close","₹"+inr(x.px))}${kv(r.st==="fm"?"Move needed":"Close vs level",sgn(mv,1),cls(sell?-mv:mv))}${kv(sell?"Right shoulder high":"Stop · pattern low","₹"+inr(r.stop))}${sell?kv("From 52-week high",sgn(x.h52,1)):kv(r.st==="fm"?"Stop vs the level":"Stop vs last close",sgn(risk,1))}${kv(sell?"Bulkowski target":"Target",isNum(r.tgt)?"₹"+inr(r.tgt):r.id==="vcp"?"None (trail)":"–")}${kv("Height · length",`${r.ht.toFixed(0)}% · ${Math.max(1,Math.round(r.wk))} wk`)}${kv("RS rating",rsPill(x.rs))}</dl>
+   ${r.id==="vcp"&&r.dep?`<p class="gpath">Pullbacks inside the base: ${r.dep.map(v=>v.toFixed(1)+"%").join(" → ")}</p>`:""}
+   ${others.length?`<div class="chips" style="margin:0 0 10px"><span style="color:var(--muted);font-weight:600;align-self:center">Also on this stock:</span>${others.map(q=>`<button type="button" class="chipbtn" data-pswitch="${esc(q.id)}">${esc(pdef(q.id).name)}</button>`).join("")}</div>`:""}
+   <div class="gread" id="pread" aria-live="off"></div>
+   <div class="gchart" id="pchartbox"><div class="gplab" id="pplab"></div></div>
+   <div class="glegend"><span><i class="dash" style="--c:${P.s3}"></i>${sell?"Neckline":r.id==="barr"?"Trendline":/^rect/.test(r.id)?"Ceiling and floor":"Pattern lines"} and points</span><span><i class="dash" style="--c:${P.down}"></i>${sell?"Right shoulder high":"Stop (pattern low)"}</span>${isNum(r.tgt)?`<span><i class="dash" style="--c:${P.up}"></i>Target</span>`:""}<span><i style="--c:${P.s1}"></i>50-day average</span><span><i style="--c:${P.s2}"></i>200-day average</span></div>
+   <div class="gcols"><div class="dsec"><h4>What it is</h4><p class="pab">${esc(e.about||"")}</p><h4 style="margin-top:14px">How the site finds it</h4><ul class="prules">${(e.rules||[]).map(t=>`<li>${esc(t)}</li>`).join("")}</ul><p class="pnote" style="margin-top:0">${esc(e.levels||"")}</p><p class="pnote">Source: ${esc(e.src||"")}${e.url?` · <a href="${esc(e.url)}" target="_blank" rel="noopener">read more</a>`:""}</p></div>
+     <div class="dsec"><h4>How it did on NSE, 2005–26</h4>${pEvTable(r.id)}</div></div>
+   <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap"><button type="button" class="btn" data-sym="${esc(r.s)}" data-popen="1">Open the stock card</button><a class="btn alt" href="${tv(r.s)}" target="_blank" rel="noopener">TradingView ↗</a></div>`;
+  pRenderChart(r,F)}
+function pRenderChart(r,F){const box=$("#pchartbox"),L=window.LightweightCharts,P=gpal(),sell=pSell(r),lv=pLevel(r);if(!box||!L)return;
+  if(PCH){PCH.ro?.disconnect();PCH.chart.remove();PCH=null}
+  const rows=[];for(let i=0;i<(F.d||[]).length;i++){const o=F.o[i],h=F.h[i],l=F.l[i],c=F.c[i];if([o,h,l,c].every(isNum))rows.push({t:F.d[i],o,h,l,c,v:F.v?.[i]||0})}
+  if(rows.length<5){box.innerHTML=`<div class="empty">Not enough history.</div>`;return}
+  const phone=matchMedia("(max-width:700px)").matches;
+  const chart=L.createChart(box,{autoSize:true,layout:{background:{type:"solid",color:P.card},textColor:P.muted,fontFamily:"IBM Plex Sans, system-ui, sans-serif",fontSize:phone?12:13,attributionLogo:true,panes:{separatorColor:P.line,separatorHoverColor:rgba(P.accent,.35),enableResize:true}},
+    grid:{vertLines:{color:rgba(P.track.length>6?P.track:P.line,.6)},horzLines:{color:P.track}},rightPriceScale:{borderColor:P.line,minimumWidth:phone?52:64},
+    timeScale:{borderColor:P.line,rightOffset:r.st==="fm"?8:4,minBarSpacing:0.5},crosshair:{mode:L.CrosshairMode.Normal},localization:{locale:"en-IN"},handleScale:{axisPressedMouseMove:{time:true,price:false}}});
+  const T=rows.map(q=>q.t),C=rows.map(q=>q.c),idx=new Map(T.map((t,i)=>[t,i])),line=o=>({priceLineVisible:false,lastValueVisible:false,crosshairMarkerVisible:false,lineWidth:2,...o});
+  const cs=chart.addSeries(L.CandlestickSeries,{upColor:P.up,downColor:P.down,borderUpColor:P.up,borderDownColor:P.down,wickUpColor:P.up,wickDownColor:P.down,priceLineVisible:false},0);
+  cs.setData(rows.map(q=>({time:q.t,open:q.o,high:q.h,low:q.l,close:q.c})));
+  for(const [a,c] of [[sma(C,50),P.s1],[sma(C,200),P.s2]]){const s=chart.addSeries(L.LineSeries,line({color:c,lineWidth:1.4}),0);s.setData(a.map((v,i)=>isNum(v)?{time:T[i],value:v}:{time:T[i]}))}
+  /* the pattern's lines (dashed); a forming pattern's line runs on to the last session */
+  for(const [[d0,p0],[d1,p1]] of r.lines||[]){const i0=idx.get(d0),i1=idx.get(d1);if(i0==null||i1==null||!isNum(p0)||!isNum(p1))continue;
+    let j1=i1,q1=p1;if(r.st==="fm"&&i1<T.length-1){j1=T.length-1;q1=i1>i0?Math.exp(Math.log(p0)+(Math.log(p1)-Math.log(p0))*(j1-i0)/(i1-i0)):p1}
+    if(j1<=i0)continue;
+    const s=chart.addSeries(L.LineSeries,line({color:P.s3,lineWidth:2.4,lineStyle:L.LineStyle.Dashed}),0);
+    const pts=[];for(let i=i0;i<=j1;i++)pts.push({time:T[i],value:Math.exp(Math.log(p0)+(Math.log(q1)-Math.log(p0))*(i-i0)/(j1-i0))});s.setData(pts)}
+  /* markers: the pattern's swing points, and the breakout day */
+  const mk=[];for(const [d,p,lab] of r.pts||[]){const i=idx.get(d);if(i==null)continue;const q=rows[i],low=Math.abs(p-q.l)<=Math.abs(p-q.h);
+    mk.push({time:d,position:low?"belowBar":"aboveBar",shape:lab?(low?"arrowUp":"arrowDown"):"circle",color:P.s3,text:lab||"",size:lab?1:0.6})}
+  if(r.st!=="fm"&&r.d&&idx.has(r.d))mk.push({time:r.d,position:sell?"aboveBar":"belowBar",shape:sell?"arrowDown":"arrowUp",color:sell?P.down:P.up,text:sell?"Breakdown":"Breakout",size:1.4});
+  mk.sort((a,b)=>a.time<b.time?-1:a.time>b.time?1:0);L.createSeriesMarkers(cs,mk);
+  cs.createPriceLine({price:lv,color:P.s3,lineWidth:2,lineStyle:L.LineStyle.Solid,axisLabelVisible:true,title:r.st==="fm"?(sell?"Breaks down below":"Breaks out above"):(sell?"Neckline":"Breakout")});
+  if(isNum(r.stop))cs.createPriceLine({price:r.stop,color:P.down,lineWidth:1.5,lineStyle:L.LineStyle.Dashed,axisLabelVisible:true,title:sell?"Shoulder":"Stop"});
+  if(isNum(r.tgt))cs.createPriceLine({price:r.tgt,color:P.up,lineWidth:1.5,lineStyle:L.LineStyle.Dashed,axisLabelVisible:true,title:"Target"});
+  const vs=chart.addSeries(L.HistogramSeries,{priceFormat:{type:"volume"},priceLineVisible:false,lastValueVisible:false},1);
+  vs.setData(rows.map((q,i)=>({time:q.t,value:q.v||0,color:rgba(i&&q.c<rows[i-1].c?P.down:P.up,.55)})));
+  const panes=chart.panes();panes[0]?.setStretchFactor(phone?76:80);panes[1]?.setStretchFactor(phone?24:20);
+  const first=Math.min(...(r.pts||[]).map(q=>idx.get(q[0])).filter(i=>i!=null),...(r.lines||[]).map(l=>idx.get(l[0][0])).filter(i=>i!=null),T.length-60);
+  chart.timeScale().setVisibleLogicalRange({from:Math.max(-1,first-30),to:T.length+(r.st==="fm"?6:3)});
+  PCH={chart,rows};
+  const labels=["Price · the pattern is drawn on it","Volume"];
+  const placeLabels=()=>{const lab=$("#pplab");if(!lab||!PCH)return;let top=0;lab.innerHTML=PCH.chart.panes().map((p,i)=>{const h=`<span style="top:${top+4}px">${esc(labels[i]||"")}</span>`;top+=p.getHeight()+1;return h}).join("")};
+  requestAnimationFrame(placeLabels);PCH.ro=new ResizeObserver(()=>requestAnimationFrame(placeLabels));PCH.ro.observe(box);
+  const rd=t=>{const el=$("#pread");if(!el||!PCH)return;let i=t?idx.get(t):rows.length-1;if(i==null)i=rows.length-1;const q=rows[i],p=rows[i-1],ch=p?(q.c/p.c-1)*100:null;
+    el.innerHTML=`<b>${fmtDate(q.t)}</b><span>O <b class="num">${inr(q.o)}</b></span><span>H <b class="num">${inr(q.h)}</b></span><span>L <b class="num">${inr(q.l)}</b></span><span>C <b class="num">${inr(q.c)}</b> <span class="num ${cls(ch)}">${sgn(ch,2)}</span></span><span>Volume <b class="num">${isNum(q.v)?Math.round(q.v).toLocaleString("en-IN"):"–"}</b></span>`};
+  chart.subscribeCrosshairMove(prm=>rd(prm.time));rd(null)}
+
 /* ════════════════════ STAGE 2 PHASES (Scanners → Stage 2 phases) ════════════════════
    stage2.json (scripts/stage2.py): every Stage 2 stock with its phase (E/M/L from maturity
    points mp = [bases, time, gain, slope slowing]) and Stage 2 Score sc (parts sp). */
@@ -2332,16 +2647,16 @@ async function openDrawer(sym,ex,focusWl){
   const kv=(k,v)=>`<div><dt>${k}</dt><dd class="num">${v}</dd></div>`;
   const scans=(D.scansOf[sym]||[]).map(id=>D.scanMeta[id]).filter(Boolean);
   const name=x?.n||vr?.["Company Name"]||"",sector=x?.ind||x?.sec||vr?.Sector||"";
-  const [S2B,BB,RR,MFB]=await Promise.all([s2Load().catch(()=>null),basesLoad().catch(()=>null),resLoad().catch(()=>null),mfLoad().catch(()=>null)]);
-  const hasS2=!!S2B?.by?.[sym],hasB=!!BB?.by?.[sym],rres=RR?.by?.[sym]?.[0]||null,hasMF=!!MFB?.by?.[sym];
-  const navs=[["pchart","Chart"],["wlsec","Watchlist"],hasS2&&["s2sec","Stage 2"],hasB&&["basesec","Base"],rres&&["ressec","Result"],x&&["retsec","Returns"],x&&["trendsec","Trend"],x&&D.meta.rs&&["rssec","RS"],fundHtml&&["fundsec","Fundamentals"],hasMF&&["mfsec","Mutual funds"],x&&D.meta.dlv&&(isNum(x.dq)||x.t2t)&&["dlvsec","Delivery"],vr&&["vpcisec","VPCI"],["scansec","Scanners"]].filter(Boolean);
+  const [S2B,BB,RR,MFB,PTB]=await Promise.all([s2Load().catch(()=>null),basesLoad().catch(()=>null),resLoad().catch(()=>null),mfLoad().catch(()=>null),patLoad().catch(()=>null)]);
+  const hasS2=!!S2B?.by?.[sym],hasB=!!BB?.by?.[sym],rres=RR?.by?.[sym]?.[0]||null,hasMF=!!MFB?.by?.[sym],hasP=!!PTB?.by?.[sym];
+  const navs=[["pchart","Chart"],["wlsec","Watchlist"],hasP&&["patsec","Pattern"],hasS2&&["s2sec","Stage 2"],hasB&&["basesec","Base"],rres&&["ressec","Result"],x&&["retsec","Returns"],x&&["trendsec","Trend"],x&&D.meta.rs&&["rssec","RS"],fundHtml&&["fundsec","Fundamentals"],hasMF&&["mfsec","Mutual funds"],x&&D.meta.dlv&&(isNum(x.dq)||x.t2t)&&["dlvsec","Delivery"],vr&&["vpcisec","VPCI"],["scansec","Scanners"]].filter(Boolean);
   $("#drawer").innerHTML=`<header><div><h2 id="dTitle">${esc(sym)}</h2><div class="co">${esc(name)}${sector?` · ${esc(sector)}`:""}</div></div>
     ${x?`<div class="dprice"><span class="px num">₹${inr(x.px)}</span><span class="chg num ${cls(x.r["1D"])}">${sgn(x.r["1D"])} today</span>${isNum(x.mc)?`<span class="mc num">Mcap ₹${Math.round(x.mc).toLocaleString("en-IN")} Cr</span>`:""}</div>`:`<div></div>`}
     <div class="dacts"><a class="ghost tvl" href="${tv(sym,ex||vr?.exchange)}" target="_blank" rel="noopener">TradingView ↗</a><button class="close" type="button" data-close aria-label="Close ${esc(sym)}"><b aria-hidden="true">✕</b> Close</button></div>
     <nav class="dnav" aria-label="Sections">${navs.map(([id,l])=>`<button type="button" data-jump="${id}">${l}</button>`).join("")}</nav></header>
   <div class="body"><div class="dcols"><div class="dcol">
     ${x?`<div id="pchartSlot"></div>${wlCardHtml(sym)}
-    <div id="s2Slot">${hasS2?stage2Section(sym):""}</div><div id="baseSlot"></div>
+    <div id="patSlot"></div><div id="s2Slot">${hasS2?stage2Section(sym):""}</div><div id="baseSlot"></div>
     ${x.lq===0?`<p class="note" style="margin:0 0 12px">Outside the liquid universe (median turnover under ₹${D.meta.filters?.min_median_turnover_cr??1} Cr a day, price under ₹${D.meta.filters?.min_price??20}${D.meta.filters?.min_market_cap_cr?` or market cap under ₹${D.meta.filters.min_market_cap_cr} Cr`:""}), so it is not in the scanners or the RS ranking. It counts in breadth and sector rotation; its RS rating places it among the liquid stocks.</p>`:""}
     <div class="dsec" id="retsec"><h4>Returns</h4><dl class="dgrid">${per}</dl></div>
     <div class="dsec" id="trendsec"><h4>Trend and strength</h4><dl class="dgrid">${kv("RS rating",rsPill(x.rs))}${kv("RS a week ago",x.rs1w??"–")}${kv("Stage",stagePill(x.st))}${kv("Trend template",x.tt?'<span class="up">Pass</span>':'<span style="color:var(--muted)">No</span>')}
@@ -2372,6 +2687,7 @@ async function openDrawer(sym,ex,focusWl){
   if(focusWl)$("#wlsec")?.scrollIntoView({block:"start"});else if(!reopen)$("#drawer .close").focus();
   const colW=el=>Math.round(el?.parentElement?.getBoundingClientRect().width||0);   // empty slots are hidden, so measure the column
   const bslot=$("#baseSlot");if(BB&&bslot)bslot.outerHTML=baseSection(sym,colW(bslot));
+  const pslot=$("#patSlot");if(pslot)pslot.outerHTML=hasP?patSection(sym,colW(pslot)):"";
   clLoad().then(()=>{const slot=$("#pchartSlot");if(slot&&$("#dTitle")?.textContent===sym){PCW=Math.max(300,Math.min(900,(colW(slot)||494)-34));slot.outerHTML=priceChart(sym);wirePriceChart(sym);if(focusWl)$("#wlsec")?.scrollIntoView({block:"start"})}});
   if(D.meta.corp?.n)caLoad().then(()=>{const sl=$("#caSlot");if(sl&&$("#dTitle")?.textContent===sym)sl.outerHTML=caHtml(sym)});
   if(x&&D.meta.dlv)Promise.all([clLoad(),dlvLoad()]).then(()=>{const sl=$("#dlvSlot");if(sl&&$("#dTitle")?.textContent===sym){sl.outerHTML=dlvSection(sym);wireDlv(sym)}});
@@ -2928,7 +3244,7 @@ function resEvidence(E){
 function render(){
   renderPulse();$("#view").dataset.v=st.tab;
   document.querySelectorAll("#tabs .tab").forEach(b=>b.setAttribute("aria-selected",b.dataset.v===st.tab));
-  ({rotation:renderRotation,breadth:renderBreadth,rs:renderRS,scanners:renderScanners,bases:renderBases,results:renderResults,watch:renderWatch,vpci:renderVpci})[st.tab]();
+  ({rotation:renderRotation,breadth:renderBreadth,rs:renderRS,scanners:renderScanners,bases:renderBases,patterns:renderPatterns,results:renderResults,watch:renderWatch,vpci:renderVpci})[st.tab]();
 }
 function go(tab){
   if(HASHVIEW[tab]){st.scanView=HASHVIEW[tab];store.set("scanView",st.scanView);tab="scanners"}
@@ -3008,6 +3324,8 @@ document.addEventListener("click",e=>{
   if(e.target.closest("[data-res-go]")){closeDrawer(true);go("results");return}
   const sg=e.target.closest("[data-scan-go]");if(sg){closeDrawer(true);st.scan=sg.dataset.scanGo;st.scanView="lib";go("scanners");return}
   const tg=e.target.closest("[data-theme-go]");if(tg){closeDrawer(true);st.group="Themes";st.open=tg.dataset.themeGo;st.view="bars";go("rotation");setTimeout(()=>document.querySelector(`.brow[data-g="${CSS.escape(st.open)}"]`)?.scrollIntoView({block:"center"}),60);return}
+  const pch=e.target.closest("[data-pchart]");if(pch){const i=pch.dataset.pchart.lastIndexOf("|");if(!$("#drawer").hidden)closeDrawer(true);openPatChart(pch.dataset.pchart.slice(0,i),pch.dataset.pchart.slice(i+1));return}
+  const pop_=e.target.closest("[data-popen]");if(pop_){openDrawer(pop_.dataset.sym);return}
   const gop=e.target.closest("[data-gopen]");if(gop&&!e.target.closest("#gmodal")){const [gk,gn]=gop.dataset.gopen.split("|");if(!$("#drawer").hidden)closeDrawer(true);openGroupChart(gk,gn);return}
   const s=e.target.closest("[data-seg]");
   if(s){const k=s.dataset.seg,v=s.dataset.val;
@@ -3020,6 +3338,7 @@ document.addEventListener("click",e=>{
     if(k.startsWith("mf_")){const kk=k.slice(3);st.mf[kk]=v;store.set("mf",st.mf);if(st.tbl.mf)st.tbl.mf.show=100;s.parentElement.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===s));if(kk==="per"&&st.tbl.mf)st.tbl.mf.sortFrom=null;drawMF();return}
     if(k.startsWith("s2_")){st.s2[k.slice(3)]=v;store.set("s2",st.s2);if(st.tbl.s2)st.tbl.s2.show=100;s.parentElement.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===s));drawStage2();return}
     if(k.startsWith("r_")){const kk=k.slice(2);st.rx[kk]=v;store.set("rx",st.rx);RX_SHOW=60;if(st.tbl.results)st.tbl.results.show=100;if(kk==="season"||kk==="view"){renderResults();return}s.parentElement.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===s));drawResults();return}
+    if(k.startsWith("p_")){st.px[k.slice(2)]=v;store.set("px",{...st.px,q:""});if(st.tbl.pat)st.tbl.pat.show=100;s.parentElement.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===s));drawPatterns();return}
     if(k.startsWith("b_")){st.bx[k.slice(2)]=v;store.set("bx",st.bx);if(st.tbl.bases)st.tbl.bases.show=100;s.parentElement.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===s));drawBases();return}
     if(k==="scanTop"){st.scanTop=+v;store.set("scanTop",st.scanTop);renderScanners();return}
     if(k==="scanFund"){st.scanFund=+v;store.set("scanFund",st.scanFund);renderScanners();return}
@@ -3032,6 +3351,7 @@ document.addEventListener("click",e=>{
     if(k==="period")renderPulse();renderRotation();return}
   const vt=e.target.closest("[data-vtab]");if(vt){VP.tab=vt.dataset.vtab;document.querySelectorAll("[data-vtab]").forEach(b=>b.setAttribute("aria-pressed",b===vt));vpTab();return}
   const bp=e.target.closest("[data-bpreset]");if(bp){bPreset(bp.dataset.bpreset);return}
+  const pp=e.target.closest("[data-ppreset]");if(pp){pPreset(pp.dataset.ppreset);return}
   const rp=e.target.closest("[data-rpreset]");if(rp){rPreset(rp.dataset.rpreset);return}
   if(e.target.closest("[data-rmore]")){RX_SHOW+=60;drawResults();return}
   const s2p=e.target.closest("[data-s2preset]");if(s2p){s2Preset(s2p.dataset.s2preset);return}
@@ -3049,7 +3369,7 @@ document.addEventListener("keydown",e=>{
 });
 window.addEventListener("hashchange",()=>{const t=location.hash.slice(1);if(HASHVIEW[t]){if(st.tab!=="scanners"||st.scanView!==HASHVIEW[t])go(t);return}if(TABS.includes(t)&&(t!==st.tab||(t==="scanners"&&VIEWHASH[st.scanView]))){if(t==="scanners")st.scanView="lib";go(t)}});
 $("#themeBtn").addEventListener("click",()=>{const d=document.documentElement,cur=d.dataset.theme||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");d.dataset.theme=cur==="dark"?"light":"dark";store.set("theme",d.dataset.theme)});
-(()=>{const t=store.get("theme",null);if(t)document.documentElement.dataset.theme=t;Object.assign(st,store.get("prefs",{}));st.uni=store.get("uni","all");st.rrgset=store.get("rrgset","sector");st.gsig=store.get("gsig",{kind:"all",win:"5"});Object.assign(st.rs,store.get("rs",{}));Object.assign(st.bx,store.get("bx",{}));Object.assign(st.s2,store.get("s2",{}));Object.assign(st.rx,store.get("rx",{}));st.rx.q="";st.rx.season="";st.scanView=store.get("scanView","lib");st.scan=store.get("scan2",st.scan);st.scanTop=+store.get("scanTop",0)||0;st.scanFund=+store.get("scanFund",0)||0;
+(()=>{const t=store.get("theme",null);if(t)document.documentElement.dataset.theme=t;Object.assign(st,store.get("prefs",{}));st.uni=store.get("uni","all");st.rrgset=store.get("rrgset","sector");st.gsig=store.get("gsig",{kind:"all",win:"5"});Object.assign(st.rs,store.get("rs",{}));Object.assign(st.bx,store.get("bx",{}));Object.assign(st.px,store.get("px",{}));st.px.q="";Object.assign(st.s2,store.get("s2",{}));Object.assign(st.rx,store.get("rx",{}));st.rx.q="";st.rx.season="";st.scanView=store.get("scanView","lib");st.scan=store.get("scan2",st.scan);st.scanTop=+store.get("scanTop",0)||0;st.scanFund=+store.get("scanFund",0)||0;
   Object.assign(st.mf,store.get("mf",{}));st.mf.q="";
   const h=location.hash.slice(1);if(HASHVIEW[h]){st.scanView=HASHVIEW[h];st.tab="scanners"}else{if(h==="scanners")st.scanView="lib";st.tab=TABS.includes(h)?h:store.get("tab","rotation")}})();
 
