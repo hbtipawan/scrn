@@ -146,12 +146,52 @@
 "subject": "Buy Back"
 },
 {
+"symbol": "AEPL",
+"series": "EQ",
+"ex": "2026-10-23",
+"kind": "dividend",
+"label": "Interim dividend \u20b90.006",
+"subject": "Interim Dividend - Re 0.006 Per Share"
+},
+{
 "symbol": "AZADIND",
 "series": "EQ",
 "ex": "2026-10-23",
 "kind": "split",
 "label": "Split \u20b910 \u2192 \u20b92",
 "subject": "Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share"
+},
+{
+"symbol": "GARUDA",
+"series": "EQ",
+"ex": "2026-10-23",
+"kind": "dividend",
+"label": "Interim dividend \u20b90.03",
+"subject": "Interim Dividend - Re 0.03 Per Share"
+},
+{
+"symbol": "IRFC",
+"series": "EQ",
+"ex": "2026-10-23",
+"kind": "dividend",
+"label": "Interim dividend \u20b91.15",
+"subject": "Interim Dividend - Rs 1.15 Per Share"
+},
+{
+"symbol": "LTM",
+"series": "EQ",
+"ex": "2026-10-23",
+"kind": "dividend",
+"label": "Interim dividend \u20b925",
+"subject": "Interim Dividend - Rs 25 Per Share"
+},
+{
+"symbol": "MODISONLTD",
+"series": "EQ",
+"ex": "2026-10-23",
+"kind": "dividend",
+"label": "Interim dividend \u20b94",
+"subject": "Interim Dividend - Rs 4 Per Share"
 },
 {
 "symbol": "TECHM",

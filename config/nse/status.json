@@ -1,18 +1,24 @@
 {
- "run": "2026-10-21 16:56",
+ "run": "2026-10-21 23:34",
  "delivery": {
-  "added": [],
+  "added": [
+   "2026-10-21"
+  ],
   "not_published": [],
-  "last": "2026-10-19"
+  "last": "2026-10-21"
  },
  "indices": {
-  "added": [],
+  "added": [
+   "2026-10-21"
+  ],
   "not_published": [],
-  "last": "2026-10-19"
+  "last": "2026-10-21"
  },
  "close_check": {
   "date": "2026-10-21",
-  "checked": 0,
-  "note": "NSE file not available"
+  "checked": 2562,
+  "corrected": 0,
+  "disagree": 0,
+  "examples": {}
  }
 }
