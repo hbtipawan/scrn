@@ -1,5 +1,5 @@
 {
-"fetched": "2026-10-21",
+"fetched": "2026-10-22",
 "rows": [
 {
 "symbol": "OLAELEC",
@@ -146,6 +146,22 @@
 "subject": "Buy Back"
 },
 {
+"symbol": "360ONE",
+"series": "EQ",
+"ex": "2026-10-23",
+"kind": "dividend",
+"label": "Interim dividend \u20b97.5",
+"subject": "Interim Dividend - Rs 7.50 Per Share"
+},
+{
+"symbol": "772GS2055",
+"series": "GS",
+"ex": "2026-10-23",
+"kind": "other",
+"label": "Interest Payment",
+"subject": "Interest Payment"
+},
+{
 "symbol": "AEPL",
 "series": "EQ",
 "ex": "2026-10-23",
@@ -162,12 +178,36 @@
 "subject": "Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share"
 },
 {
+"symbol": "BEPL",
+"series": "EQ",
+"ex": "2026-10-23",
+"kind": "dividend",
+"label": "Interim dividend \u20b91",
+"subject": "Interim Dividend - Re 1 Per Share"
+},
+{
 "symbol": "GARUDA",
 "series": "EQ",
 "ex": "2026-10-23",
 "kind": "dividend",
 "label": "Interim dividend \u20b90.03",
 "subject": "Interim Dividend - Re 0.03 Per Share"
+},
+{
+"symbol": "HDBFS",
+"series": "EQ",
+"ex": "2026-10-23",
+"kind": "dividend",
+"label": "Interim dividend \u20b92",
+"subject": "Interim Dividend - Rs 2 Per Share"
+},
+{
+"symbol": "ICICIGI",
+"series": "EQ",
+"ex": "2026-10-23",
+"kind": "dividend",
+"label": "Interim dividend \u20b97",
+"subject": "Interim Dividend - Rs 7 Per Share"
 },
 {
 "symbol": "IRFC",
@@ -192,6 +232,22 @@
 "kind": "dividend",
 "label": "Interim dividend \u20b94",
 "subject": "Interim Dividend - Rs 4 Per Share"
+},
+{
+"symbol": "OBEROIRLTY",
+"series": "EQ",
+"ex": "2026-10-23",
+"kind": "dividend",
+"label": "Interim dividend \u20b92",
+"subject": "Interim Dividend - Rs 2 Per Share"
+},
+{
+"symbol": "OSELDEVICE",
+"series": "SM",
+"ex": "2026-10-23",
+"kind": "dividend",
+"label": "Interim dividend \u20b91",
+"subject": "INTERIM DIVIDEND - RE 1 PER SHARE"
 },
 {
 "symbol": "TECHM",
