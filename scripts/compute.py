@@ -556,6 +556,23 @@ def main():
         import traceback
         traceback.print_exc()
         print(f"chart patterns skipped: {e}")
+    # ---------------- VCP scanner (Scanners -> VCP scanner): the VCP breakout scanner of github.com/hbtipawan/VCP-REVERSAL.
+    # vcp_scan.py sends the bars of every stock that could pass under some setting; the scan itself runs in the browser
+    # (docs/vcp-engine.js, an exact port of vcp_core.analyze_vcp) so every setting works live.
+    vcp_meta = None
+    try:
+        import vcp_scan as VS
+        ev_v = CFG / "vcp_evidence.json"
+        VD, VW = VS.build(PFULL, A, U, last, json.loads(ev_v.read_text()) if ev_v.exists() else None)
+        for o_ in (VD, VW):
+            json.dumps(o_, separators=(",", ":"), allow_nan=False)    # must be writable before anything is attached
+        dump_later["vcp.json"] = VD
+        dump_later["vcp_w.json"] = VW
+        vcp_meta = {"d": VD["sent"]["d"], "w": VW["sent"]["w"], "scanned": VD["scanned"]}
+    except Exception as e:  # never break the daily run
+        import traceback
+        traceback.print_exc()
+        print(f"vcp scanner skipped: {e}")
     # ---------------- quarterly results: this season's results, Result Quality and PEAD scores (results.py)
     res_meta = None
     try:
@@ -619,7 +636,7 @@ def main():
             "failed": fm.get("failed_count"), "indices": indices,
             "filters": {"min_price": S["min_price"], "min_median_turnover_cr": S["min_median_turnover_cr"],
                         "min_market_cap_cr": S["min_market_cap_cr"] if mcap is not None else None},
-            "min_group_size": S["min_group_size"], "fund": fund_meta, "bases": base_meta, "stage2": s2_meta, "results": res_meta, "mf": mf_meta, "rs": rs_meta, "dlv": dlv_meta, "idx": idx_meta, "corp": corp_meta, "grp": grp_meta, "pat": pat_meta}
+            "min_group_size": S["min_group_size"], "fund": fund_meta, "bases": base_meta, "stage2": s2_meta, "results": res_meta, "mf": mf_meta, "rs": rs_meta, "dlv": dlv_meta, "idx": idx_meta, "corp": corp_meta, "grp": grp_meta, "pat": pat_meta, "vcp": vcp_meta}
 
     def dump(name, obj):
         (OUT / name).write_text(json.dumps(obj, separators=(",", ":"), allow_nan=False))
