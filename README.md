@@ -218,6 +218,30 @@ The **Patterns** tab lists every liquid stock showing one of 13 classic chart pa
 
 The code is `scripts/stage2.py`. It uses the long-base breakouts from `bases.py` to count bases.
 
+## VCP scanner (Scanners → VCP scanner)
+
+The **VCP scanner** is the VCP breakout scanner from your Streamlit app ([VCP-REVERSAL](https://github.com/hbtipawan/VCP-REVERSAL), `vcp_core.analyze_vcp`), built into the site. The reversal scanner is not included. It is a sub-tab of Scanners only; it adds nothing to the stock card.
+
+- **Same engine, same results.** `docs/vcp-engine.js` is a line-by-line JavaScript port of `vcp_core.analyze_vcp`: the same trend gates, near-high and 52-week-low filters, the flat base and all six extra base types, the score weights and A/B/C grades, and the app's `clean_df` and weekly bars. Even the small Python details that can change a result are reproduced (pandas' rolling mean, numpy's sums and rounding). It was checked bar by bar against your Python on 9,847 signals and 1,500 random non-signal days: identical in every field.
+- **Every setting of the app, live.** Timeframe, trend strictness, within % of the 52-period high, max base tightness, min base length, recent listings, minimum grade, status, base type, the distance-from-52-week-low band, and the wedge / high-tight-flag / cup-with-handle / Darvas / pocket-pivot / episodic-pivot toggles with all their sliders. Change one and the list updates at once — the scan runs in your browser. There are also Sector, Search and "Liquid stocks / All traded" filters.
+- **How the data gets there.** Each evening `scripts/vcp_scan.py` writes `docs/data/vcp.json` (daily) and `docs/data/vcp_w.json` (weekly, loaded only when you pick Weekly). They hold the last 260 sessions (or 80 weeks) of every stock that could pass under *some* slider position — about 900 of the ~2,400 traded stocks. Prices travel as whole paise, so the browser rebuilds exactly the numbers in the data. Stocks that did not trade on the last session are left out, because their last bar would be stale.
+- **The chart.** Click a row (or the chart button) to open:
+  - candles and volume, with the scanner's own moving averages (50/150/200-day, or 10/30/40-week);
+  - the base drawn as the scanner found it — the tight box, wedge lines, the flag and its pole, the cup and handle, or the Darvas box — plus the range of each third of the last 30 sessions, which is the scanner's contraction test;
+  - the pivot, stop and 2R target;
+  - **Why the scanner kept it**: every gate it passed, with the stock's own numbers;
+  - the **score breakdown** (the app's eight parts, out of 100);
+  - how signals like it did on NSE.
+- **What 21 years of NSE data say** (2005–2026, liquid stocks, your default settings; `config/vcp_evidence.json`, shown in the tab):
+  - Coiling bases that filled a buy-stop at the pivot beat plain breakouts by **+1.9 points** over 3 months (likely +1.4 to +2.4). Only 53% broke out within 20 sessions; the rest broke the base low first.
+  - Breakouts on the day: **+1.1 points** (+0.4 to +1.8).
+  - **The biggest lever is your own 52-week-low setting.** At 100%+ above the low: coiling **+3.7**, breakouts **+2.3**; at 150%+ coiling **+5.3**. Below 100% the edge almost disappears. It held in 2005–12, 2013–19 and 2020–26.
+  - **"Use the best tested settings"** changes only that floor, from 30% to 100%. "Reset to the app's defaults" puts everything back.
+  - No other single setting beat the defaults.
+  - Grades separate results only weakly.
+  - The extra base types showed no clear edge over the flat base; high-tight-flag and episodic-pivot breakouts did worse than plain breakouts.
+- **Checks.** The JavaScript engine was run against the Python on every bar of 12 stocks under 5 settings (2018–26) and on random settings across 660 stocks. The exported site data was also checked against the Python on the full price history, for every stock's last bar.
+
 ## Quarterly results (Results tab)
 
 **Results** shows every result announced in the current results season — the calendar quarter in which it was announced: 1 Oct – 31 Dec, 1 Jan – 31 Mar, and so on (the Oct–Dec season is mostly the September quarter, Q2). The season before it is one tap away, and the next 14 days of announced results dates are listed at the bottom. Each result is a card (revenue, EBITDA, net profit and EPS with YoY and QoQ change, EBITDA margin and its change in points) or a row in a sortable list.
