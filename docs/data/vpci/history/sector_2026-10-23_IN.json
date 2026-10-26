@@ -1,6 +1,6 @@
 {
  "scan_date": "2026-10-23",
- "scan_timestamp": "2026-10-25T21:02:10+05:30",
+ "scan_timestamp": "2026-10-26T17:08:39+05:30",
  "market": "IN",
  "sector_both": [
   {
@@ -2648,6 +2648,12 @@
    "hit_rate_%": 70.0
   },
   {
+   "sector": "Insurance",
+   "stocks_passing": 7,
+   "total_in_universe": 11,
+   "hit_rate_%": 63.6
+  },
+  {
    "sector": "Alcoholic Beverages",
    "stocks_passing": 7,
    "total_in_universe": 16,
@@ -2676,12 +2682,6 @@
    "stocks_passing": 6,
    "total_in_universe": 9,
    "hit_rate_%": 66.7
-  },
-  {
-   "sector": "Insurance",
-   "stocks_passing": 6,
-   "total_in_universe": 11,
-   "hit_rate_%": 54.5
   },
   {
    "sector": "Cement - Products",
@@ -3802,6 +3802,12 @@
    "hit_rate_%": 37.5
   },
   {
+   "industry": "Finance - Insurance",
+   "stocks_passing": 3,
+   "total_in_universe": 8,
+   "hit_rate_%": 37.5
+  },
+  {
    "industry": "Infra - Engineering - General",
    "stocks_passing": 3,
    "total_in_universe": 8,
@@ -4160,12 +4166,6 @@
    "stocks_passing": 2,
    "total_in_universe": 6,
    "hit_rate_%": 33.3
-  },
-  {
-   "industry": "Finance - Insurance",
-   "stocks_passing": 2,
-   "total_in_universe": 8,
-   "hit_rate_%": 25.0
   },
   {
    "industry": "Aluminium - Sheets/Coils/Wires/Others",
