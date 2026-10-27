@@ -1,57 +1,20 @@
 {
- "run": "2026-10-27 00:48",
+ "run": "2026-10-27 17:28",
  "delivery": {
-  "added": [
-   "2026-10-26"
-  ],
+  "added": [],
   "not_published": [],
   "last": "2026-10-26"
  },
  "indices": {
-  "added": [
-   "2026-10-26"
-  ],
+  "added": [],
   "not_published": [],
   "last": "2026-10-26"
  },
  "close_check": {
-  "date": "2026-10-26",
-  "checked": 2577,
+  "date": "2026-10-27",
+  "checked": 2569,
   "corrected": 0,
-  "disagree": 1028,
-  "examples": {
-   "BLUECOAST": [
-    24.43,
-    21.91
-   ],
-   "SUPERSPIN": [
-    6.67,
-    6.16
-   ],
-   "SHAHALLOYS": [
-    71.0,
-    65.85
-   ],
-   "ARIHANT": [
-    900.0,
-    840.8
-   ],
-   "RRECL": [
-    136.0,
-    127.42
-   ],
-   "WELINV": [
-    1730.0,
-    1621.8
-   ],
-   "FILATFASH": [
-    0.18,
-    0.17
-   ],
-   "CELEBRITY": [
-    6.14,
-    5.83
-   ]
-  }
+  "disagree": 0,
+  "examples": {}
  }
 }

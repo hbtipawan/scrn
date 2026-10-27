@@ -210,6 +210,14 @@
 "subject": "Interim Dividend - Rs 20 Per Share"
 },
 {
+"symbol": "CYIENT",
+"series": "EQ",
+"ex": "2026-10-28",
+"kind": "dividend",
+"label": "Interim dividend \u20b912",
+"subject": "Interim Dividend - Rs 12 Per Share"
+},
+{
 "symbol": "NAM-INDIA",
 "series": "EQ",
 "ex": "2026-10-28",
@@ -218,12 +226,60 @@
 "subject": "Interim Dividend - Rs 9.50 Per Share"
 },
 {
+"symbol": "URBAN",
+"series": "SM",
+"ex": "2026-10-28",
+"kind": "rights",
+"label": "Rights 1:1",
+"subject": "RIGHTS 1:1 @ PREMIUM RS 70/-"
+},
+{
+"symbol": "CMPDI",
+"series": "EQ",
+"ex": "2026-10-29",
+"kind": "dividend",
+"label": "Interim dividend \u20b91.05",
+"subject": "Interim Dividend - Rs  1.05 Per Share"
+},
+{
+"symbol": "CRISIL",
+"series": "EQ",
+"ex": "2026-10-29",
+"kind": "dividend",
+"label": "Interim dividend \u20b917",
+"subject": "Interim Dividend - Rs 17 Per Share"
+},
+{
+"symbol": "KAJARIACER",
+"series": "EQ",
+"ex": "2026-10-29",
+"kind": "dividend",
+"label": "Interim dividend \u20b912",
+"subject": "Interim Dividend - Rs 12 Per Share"
+},
+{
+"symbol": "SHRIRAMFIN",
+"series": "EQ",
+"ex": "2026-10-29",
+"kind": "dividend",
+"label": "Interim dividend \u20b96.5",
+"subject": "Interim Dividend - Rs 6.50 Per Share"
+},
+{
 "symbol": "CHENNPETRO",
 "series": "EQ",
 "ex": "2026-10-30",
 "kind": "dividend",
 "label": "Interim dividend \u20b925",
 "subject": "Interim Dividend - Rs 25 Per Share"
+},
+{
+"symbol": "KMEW",
+"series": "EQ",
+"ex": "2026-11-06",
+"kind": "split",
+"label": "Split \u20b95 \u2192 \u20b91",
+"subject": "Face Value Split (Sub-Division) - From Rs 5/- Per Share To Re 1/- Per Share"
 }
 ]
 }
