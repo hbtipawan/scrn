@@ -1,5 +1,5 @@
 {
-"fetched": "2026-10-27",
+"fetched": "2026-10-28",
 "rows": [
 {
 "symbol": "ELECON",
@@ -210,6 +210,14 @@
 "subject": "Interim Dividend - Rs 20 Per Share"
 },
 {
+"symbol": "ACGL",
+"series": "EQ",
+"ex": "2026-10-28",
+"kind": "buyback",
+"label": "Buyback",
+"subject": "Buy Back"
+},
+{
 "symbol": "CYIENT",
 "series": "EQ",
 "ex": "2026-10-28",
@@ -258,6 +266,14 @@
 "subject": "Interim Dividend - Rs 12 Per Share"
 },
 {
+"symbol": "KSOLVES",
+"series": "EQ",
+"ex": "2026-10-29",
+"kind": "dividend",
+"label": "Interim dividend \u20b91",
+"subject": "Interim Dividend - Re  1 Per Share"
+},
+{
 "symbol": "SHRIRAMFIN",
 "series": "EQ",
 "ex": "2026-10-29",
@@ -266,12 +282,92 @@
 "subject": "Interim Dividend - Rs 6.50 Per Share"
 },
 {
+"symbol": "ADOR",
+"series": "EQ",
+"ex": "2026-10-30",
+"kind": "dividend",
+"label": "Interim dividend \u20b97.5",
+"subject": "Interim Dividend - Rs 7.50 Per Share"
+},
+{
 "symbol": "CHENNPETRO",
 "series": "EQ",
 "ex": "2026-10-30",
 "kind": "dividend",
 "label": "Interim dividend \u20b925",
 "subject": "Interim Dividend - Rs 25 Per Share"
+},
+{
+"symbol": "DALBHARAT",
+"series": "EQ",
+"ex": "2026-10-30",
+"kind": "dividend",
+"label": "Interim dividend \u20b94",
+"subject": "Interim Dividend - Rs 4 Per Share"
+},
+{
+"symbol": "DCMSHRIRAM",
+"series": "EQ",
+"ex": "2026-10-30",
+"kind": "dividend",
+"label": "Interim dividend \u20b94",
+"subject": "Interim Dividend - Rs 4 Per Share"
+},
+{
+"symbol": "GENUSPOWER",
+"series": "EQ",
+"ex": "2026-10-30",
+"kind": "buyback",
+"label": "Buyback",
+"subject": "Buy Back"
+},
+{
+"symbol": "RAILTEL",
+"series": "EQ",
+"ex": "2026-10-30",
+"kind": "dividend",
+"label": "Interim dividend \u20b91",
+"subject": "Interim Dividend - Re 1 Per Share"
+},
+{
+"symbol": "RECLTD",
+"series": "EQ",
+"ex": "2026-10-30",
+"kind": "dividend",
+"label": "Interim dividend \u20b93.5",
+"subject": "Interim Dividend - Rs 3.50 Per Share"
+},
+{
+"symbol": "SAGILITY",
+"series": "EQ",
+"ex": "2026-10-30",
+"kind": "dividend",
+"label": "Interim dividend \u20b90.15",
+"subject": "Interim Dividend - Re 0.15 Per Share"
+},
+{
+"symbol": "SPLPETRO",
+"series": "EQ",
+"ex": "2026-10-30",
+"kind": "dividend",
+"label": "Interim dividend \u20b92.5",
+"subject": "Interim Dividend - Rs 2.50 Per Share"
+},
+{
+"symbol": "SSWL",
+"series": "EQ",
+"ex": "2026-10-30",
+"kind": "dividend",
+"label": "Interim dividend \u20b91.5",
+"subject": "Interim Dividend - Rs 1.50 Per Share"
+},
+{
+"symbol": "SUPREMEIND",
+"series": "EQ",
+"ex": "2026-10-30",
+"kind": "dividend",
+"label": "Interim dividend \u20b912",
+"subject": "Interim Dividend - Rs 12 Per Share"
 },
 {
 "symbol": "KMEW",

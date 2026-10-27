@@ -1,20 +1,57 @@
 {
- "run": "2026-10-27 17:28",
+ "run": "2026-10-28 00:14",
  "delivery": {
-  "added": [],
+  "added": [
+   "2026-10-27"
+  ],
   "not_published": [],
-  "last": "2026-10-26"
+  "last": "2026-10-27"
  },
  "indices": {
-  "added": [],
+  "added": [
+   "2026-10-27"
+  ],
   "not_published": [],
-  "last": "2026-10-26"
+  "last": "2026-10-27"
  },
  "close_check": {
   "date": "2026-10-27",
-  "checked": 2569,
+  "checked": 2571,
   "corrected": 0,
-  "disagree": 0,
-  "examples": {}
+  "disagree": 1035,
+  "examples": {
+   "BLUECOAST": [
+    22.59,
+    21.1
+   ],
+   "ADL": [
+    60.06,
+    64.46
+   ],
+   "ADDIND": [
+    74.5,
+    70.06
+   ],
+   "ORTINGLOBE": [
+    13.55,
+    12.75
+   ],
+   "VITAL": [
+    52.39,
+    49.31
+   ],
+   "FILATFASH": [
+    0.18,
+    0.17
+   ],
+   "UNIVPHOTO": [
+    448.85,
+    424.0
+   ],
+   "APCL": [
+    89.31,
+    85.24
+   ]
+  }
  }
 }
