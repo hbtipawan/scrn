@@ -1,5 +1,5 @@
 {
-"fetched": "2026-10-28",
+"fetched": "2026-10-29",
 "rows": [
 {
 "symbol": "ELECON",
@@ -346,6 +346,14 @@
 "subject": "Interim Dividend - Re 0.15 Per Share"
 },
 {
+"symbol": "SIYSIL",
+"series": "EQ",
+"ex": "2026-10-30",
+"kind": "dividend",
+"label": "Interim dividend \u20b94",
+"subject": "Interim Dividend - Rs 4 Per Share"
+},
+{
 "symbol": "SPLPETRO",
 "series": "EQ",
 "ex": "2026-10-30",
@@ -368,6 +376,14 @@
 "kind": "dividend",
 "label": "Interim dividend \u20b912",
 "subject": "Interim Dividend - Rs 12 Per Share"
+},
+{
+"symbol": "CONCORDBIO",
+"series": "EQ",
+"ex": "2026-11-04",
+"kind": "bonus",
+"label": "Bonus 1:1",
+"subject": "Bonus 1:1"
 },
 {
 "symbol": "KMEW",
