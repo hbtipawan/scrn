@@ -1,5 +1,5 @@
 {
-"fetched": "2026-10-29",
+"fetched": "2026-10-30",
 "rows": [
 {
 "symbol": "ELECON",
@@ -298,6 +298,14 @@
 "subject": "Interim Dividend - Rs 25 Per Share"
 },
 {
+"symbol": "CUBEINVIT",
+"series": "IV",
+"ex": "2026-10-30",
+"kind": "dividend",
+"label": "Dividend \u20b97.58",
+"subject": "Distribution - Rs 3.79 Per Unit Consisting Of Rs 1.76 Per Unit As Interest/Re 0.32 Per Unit As Dividend/Rs 1.71 Per Unit"
+},
+{
 "symbol": "DALBHARAT",
 "series": "EQ",
 "ex": "2026-10-30",
@@ -312,6 +320,14 @@
 "kind": "dividend",
 "label": "Interim dividend \u20b94",
 "subject": "Interim Dividend - Rs 4 Per Share"
+},
+{
+"symbol": "EMBASSY",
+"series": "RR",
+"ex": "2026-10-30",
+"kind": "dividend",
+"label": "Dividend \u20b914.14",
+"subject": "Distribution - Rs 7.07 Per Unit Consisting Of Re 0.14 Per Unit As Interest/ Re 0.86 Per Unit As Dividend/ Rs 6.07 Per Un"
 },
 {
 "symbol": "GENUSPOWER",
@@ -346,6 +362,14 @@
 "subject": "Interim Dividend - Re 0.15 Per Share"
 },
 {
+"symbol": "SEITINVIT",
+"series": "IV",
+"ex": "2026-10-30",
+"kind": "other",
+"label": "Distributn - Rs 3.13984 Per Unit Consist",
+"subject": "Distributn - Rs 3.13984 Per Unit Consist Of Rs 3.13797 Per Unit As Interest / Re 0.00187 Per Unit As Other Income"
+},
+{
 "symbol": "SIYSIL",
 "series": "EQ",
 "ex": "2026-10-30",
@@ -378,6 +402,38 @@
 "subject": "Interim Dividend - Rs 12 Per Share"
 },
 {
+"symbol": "COLPAL",
+"series": "EQ",
+"ex": "2026-11-02",
+"kind": "dividend",
+"label": "Interim dividend \u20b924",
+"subject": "Interim Dividend - Rs 24 Per Share"
+},
+{
+"symbol": "PITTIENG",
+"series": "EQ",
+"ex": "2026-11-02",
+"kind": "dividend",
+"label": "Interim dividend \u20b92",
+"subject": "Interim Dividend - Rs 2 Per Share"
+},
+{
+"symbol": "ROUTE",
+"series": "EQ",
+"ex": "2026-11-02",
+"kind": "dividend",
+"label": "Interim dividend \u20b94",
+"subject": "Interim Dividend - Rs 4 Per Share"
+},
+{
+"symbol": "TANLA",
+"series": "EQ",
+"ex": "2026-11-02",
+"kind": "dividend",
+"label": "Interim dividend \u20b96",
+"subject": "Interim Dividend - Rs 6 Per Share"
+},
+{
 "symbol": "CONCORDBIO",
 "series": "EQ",
 "ex": "2026-11-04",
@@ -392,6 +448,30 @@
 "kind": "split",
 "label": "Split \u20b95 \u2192 \u20b91",
 "subject": "Face Value Split (Sub-Division) - From Rs 5/- Per Share To Re 1/- Per Share"
+},
+{
+"symbol": "574GS2026",
+"series": "GS",
+"ex": "2026-11-11",
+"kind": "other",
+"label": "Redemption",
+"subject": "Redemption"
+},
+{
+"symbol": "SGBNOV26",
+"series": "GB",
+"ex": "2026-11-11",
+"kind": "other",
+"label": "Redemption",
+"subject": "Redemption"
+},
+{
+"symbol": "815GS2026",
+"series": "GS",
+"ex": "2026-11-20",
+"kind": "other",
+"label": "Redemption",
+"subject": "Redemption"
 }
 ]
 }
