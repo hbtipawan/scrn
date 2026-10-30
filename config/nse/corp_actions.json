@@ -1,5 +1,5 @@
 {
-"fetched": "2026-10-30",
+"fetched": "2026-10-31",
 "rows": [
 {
 "symbol": "ELECON",
@@ -402,6 +402,14 @@
 "subject": "Interim Dividend - Rs 12 Per Share"
 },
 {
+"symbol": "ANLON",
+"series": "SM",
+"ex": "2026-11-02",
+"kind": "bonus",
+"label": "Bonus 2:5",
+"subject": "BONUS 2:5"
+},
+{
 "symbol": "COLPAL",
 "series": "EQ",
 "ex": "2026-11-02",
@@ -434,12 +442,132 @@
 "subject": "Interim Dividend - Rs 6 Per Share"
 },
 {
+"symbol": "GRAVITA",
+"series": "EQ",
+"ex": "2026-11-03",
+"kind": "dividend",
+"label": "Interim dividend \u20b97.7",
+"subject": "Interim Dividend - Rs   7.70 Per Share"
+},
+{
+"symbol": "INFY",
+"series": "EQ",
+"ex": "2026-11-03",
+"kind": "dividend",
+"label": "Interim dividend \u20b926",
+"subject": "Interim Dividend - Rs 26 Per Share"
+},
+{
+"symbol": "MAZDOCK",
+"series": "EQ",
+"ex": "2026-11-03",
+"kind": "dividend",
+"label": "Interim dividend \u20b95",
+"subject": "Interim Dividend - Rs 5 Per Share"
+},
+{
+"symbol": "RRKABEL",
+"series": "EQ",
+"ex": "2026-11-03",
+"kind": "dividend",
+"label": "Interim dividend \u20b96.5",
+"subject": "Interim Dividend - Rs 6.50 Per Share"
+},
+{
+"symbol": "SASKEN",
+"series": "EQ",
+"ex": "2026-11-03",
+"kind": "dividend",
+"label": "Interim dividend \u20b912",
+"subject": "Interim Dividend - Rs 12 Per Share"
+},
+{
+"symbol": "ASIANPAINT",
+"series": "EQ",
+"ex": "2026-11-04",
+"kind": "dividend",
+"label": "Interim dividend \u20b95.75",
+"subject": "Interim Dividend - Rs 5.75 Per Share"
+},
+{
+"symbol": "COALINDIA",
+"series": "EQ",
+"ex": "2026-11-04",
+"kind": "dividend",
+"label": "Interim dividend \u20b910.25",
+"subject": "Interim Dividend - Rs 10.25 Per Share"
+},
+{
 "symbol": "CONCORDBIO",
 "series": "EQ",
 "ex": "2026-11-04",
 "kind": "bonus",
 "label": "Bonus 1:1",
 "subject": "Bonus 1:1"
+},
+{
+"symbol": "GODREJCP",
+"series": "EQ",
+"ex": "2026-11-04",
+"kind": "dividend",
+"label": "Interim dividend \u20b95",
+"subject": "Interim Dividend - Rs 5 Per Share"
+},
+{
+"symbol": "PRIVISCL",
+"series": "EQ",
+"ex": "2026-11-04",
+"kind": "dividend",
+"label": "Interim dividend \u20b95",
+"subject": "Interim Dividend - Rs 5 Per Share"
+},
+{
+"symbol": "SYMPHONY",
+"series": "EQ",
+"ex": "2026-11-04",
+"kind": "dividend",
+"label": "Interim dividend \u20b92",
+"subject": "Interim Dividend - Rs 2 Per Share"
+},
+{
+"symbol": "VAIBHAVGBL",
+"series": "EQ",
+"ex": "2026-11-04",
+"kind": "dividend",
+"label": "Interim dividend \u20b91.5",
+"subject": "Interim Dividend - Rs 1.50 Per Share"
+},
+{
+"symbol": "BSOFT",
+"series": "EQ",
+"ex": "2026-11-05",
+"kind": "dividend",
+"label": "Interim dividend \u20b93",
+"subject": "Interim Dividend - Rs 3 Per Share"
+},
+{
+"symbol": "SANOFI",
+"series": "EQ",
+"ex": "2026-11-05",
+"kind": "dividend",
+"label": "Interim dividend \u20b975",
+"subject": "Interim Dividend - Rs 75 Per Share"
+},
+{
+"symbol": "VBL",
+"series": "EQ",
+"ex": "2026-11-05",
+"kind": "dividend",
+"label": "Interim dividend \u20b90.5",
+"subject": "Interim Dividend - Re 0.50 Per Share"
+},
+{
+"symbol": "CARERATING",
+"series": "EQ",
+"ex": "2026-11-06",
+"kind": "dividend",
+"label": "Interim dividend \u20b910",
+"subject": "Interim Dividend - Rs 10 Per Share"
 },
 {
 "symbol": "KMEW",
@@ -450,28 +578,36 @@
 "subject": "Face Value Split (Sub-Division) - From Rs 5/- Per Share To Re 1/- Per Share"
 },
 {
-"symbol": "574GS2026",
-"series": "GS",
-"ex": "2026-11-11",
-"kind": "other",
-"label": "Redemption",
-"subject": "Redemption"
+"symbol": "KSCL",
+"series": "EQ",
+"ex": "2026-11-06",
+"kind": "dividend",
+"label": "Interim dividend \u20b95",
+"subject": "Interim Dividend - Rs  5 Per Share"
 },
 {
-"symbol": "SGBNOV26",
-"series": "GB",
-"ex": "2026-11-11",
-"kind": "other",
-"label": "Redemption",
-"subject": "Redemption"
+"symbol": "LAURUSLABS",
+"series": "EQ",
+"ex": "2026-11-06",
+"kind": "dividend",
+"label": "Interim dividend \u20b91",
+"subject": "Interim Dividend - Re 1 Per Share"
 },
 {
-"symbol": "815GS2026",
-"series": "GS",
-"ex": "2026-11-20",
-"kind": "other",
-"label": "Redemption",
-"subject": "Redemption"
+"symbol": "NAUKRI",
+"series": "EQ",
+"ex": "2026-11-06",
+"kind": "dividend",
+"label": "Interim dividend \u20b93",
+"subject": "Interim Dividend - Rs 3 Per Share"
+},
+{
+"symbol": "SUNDRMFAST",
+"series": "EQ",
+"ex": "2026-11-06",
+"kind": "dividend",
+"label": "Interim dividend \u20b94.05",
+"subject": "Interim Dividend - Rs 4.05 Per Share"
 }
 ]
 }
