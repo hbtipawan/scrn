@@ -1,20 +1,57 @@
 {
- "run": "2026-11-02 06:16",
+ "run": "2026-11-03 03:53",
  "delivery": {
-  "added": [],
+  "added": [
+   "2026-11-02"
+  ],
   "not_published": [],
-  "last": "2026-10-30"
+  "last": "2026-11-02"
  },
  "indices": {
-  "added": [],
+  "added": [
+   "2026-11-02"
+  ],
   "not_published": [],
-  "last": "2026-10-30"
+  "last": "2026-11-02"
  },
  "close_check": {
-  "date": "2026-10-30",
-  "checked": 2563,
+  "date": "2026-11-02",
+  "checked": 2572,
   "corrected": 0,
-  "disagree": 0,
-  "examples": {}
+  "disagree": 971,
+  "examples": {
+   "BLUECOAST": [
+    21.5,
+    20.17
+   ],
+   "RRECL": [
+    139.85,
+    131.82
+   ],
+   "RAJTV": [
+    7.47,
+    7.06
+   ],
+   "KJMCFIN": [
+    59.0,
+    55.87
+   ],
+   "ADL": [
+    63.45,
+    66.84
+   ],
+   "VIRTUALG": [
+    0.42,
+    0.4
+   ],
+   "GATECHDVR": [
+    0.43,
+    0.41
+   ],
+   "SGLRES": [
+    2.18,
+    2.08
+   ]
+  }
  }
 }
