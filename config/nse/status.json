@@ -1,57 +1,20 @@
 {
- "run": "2026-10-31 00:09",
+ "run": "2026-11-02 06:16",
  "delivery": {
-  "added": [
-   "2026-10-30"
-  ],
+  "added": [],
   "not_published": [],
   "last": "2026-10-30"
  },
  "indices": {
-  "added": [
-   "2026-10-30"
-  ],
+  "added": [],
   "not_published": [],
   "last": "2026-10-30"
  },
  "close_check": {
   "date": "2026-10-30",
-  "checked": 2564,
+  "checked": 2563,
   "corrected": 0,
-  "disagree": 978,
-  "examples": {
-   "KJMCFIN": [
-    60.44,
-    56.73
-   ],
-   "BNAGROCHEM": [
-    116.6,
-    110.04
-   ],
-   "UNIINFO": [
-    11.4,
-    10.8
-   ],
-   "IIRM": [
-    110.0,
-    104.48
-   ],
-   "SVGLOBAL": [
-    135.0,
-    128.54
-   ],
-   "RADAAN": [
-    2.78,
-    2.65
-   ],
-   "ADDIND": [
-    73.99,
-    70.63
-   ],
-   "ORTINGLOBE": [
-    13.98,
-    13.35
-   ]
-  }
+  "disagree": 0,
+  "examples": {}
  }
 }

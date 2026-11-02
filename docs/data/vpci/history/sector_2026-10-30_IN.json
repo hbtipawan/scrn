@@ -1,6 +1,6 @@
 {
  "scan_date": "2026-10-30",
- "scan_timestamp": "2026-10-31T00:24:30+05:30",
+ "scan_timestamp": "2026-11-02T06:41:13+05:30",
  "market": "IN",
  "sector_both": [
   {
@@ -2385,15 +2385,15 @@
   },
   {
    "sector": "Finance",
-   "stocks_passing": 74,
+   "stocks_passing": 75,
    "total_in_universe": 122,
-   "hit_rate_%": 60.7
+   "hit_rate_%": 61.5
   },
   {
    "sector": "Chemicals",
-   "stocks_passing": 68,
+   "stocks_passing": 69,
    "total_in_universe": 94,
-   "hit_rate_%": 72.3
+   "hit_rate_%": 73.4
   },
   {
    "sector": "IT - Software",
@@ -2414,10 +2414,10 @@
    "hit_rate_%": 76.7
   },
   {
-   "sector": "Capital Goods-Non Electrical Equipment",
+   "sector": "Capital Goods - Electrical Equipment",
    "stocks_passing": 40,
-   "total_in_universe": 63,
-   "hit_rate_%": 63.5
+   "total_in_universe": 61,
+   "hit_rate_%": 65.6
   },
   {
    "sector": "FMCG",
@@ -2426,16 +2426,16 @@
    "hit_rate_%": 65.0
   },
   {
-   "sector": "Capital Goods - Electrical Equipment",
+   "sector": "Capital Goods-Non Electrical Equipment",
    "stocks_passing": 39,
-   "total_in_universe": 61,
-   "hit_rate_%": 63.9
+   "total_in_universe": 63,
+   "hit_rate_%": 61.9
   },
   {
    "sector": "Steel",
-   "stocks_passing": 35,
+   "stocks_passing": 36,
    "total_in_universe": 53,
-   "hit_rate_%": 66.0
+   "hit_rate_%": 67.9
   },
   {
    "sector": "Infrastructure Developers & Operators",
@@ -2445,9 +2445,9 @@
   },
   {
    "sector": "Realty",
-   "stocks_passing": 30,
+   "stocks_passing": 29,
    "total_in_universe": 48,
-   "hit_rate_%": 62.5
+   "hit_rate_%": 60.4
   },
   {
    "sector": "Healthcare",
@@ -2956,10 +2956,10 @@
    "hit_rate_%": 66.7
   },
   {
-   "industry": "Finance - Capital Markets - Brokers",
+   "industry": "Chemicals - Organic",
    "stocks_passing": 14,
-   "total_in_universe": 16,
-   "hit_rate_%": 87.5
+   "total_in_universe": 17,
+   "hit_rate_%": 82.4
   },
   {
    "industry": "Entertainment & Media",
@@ -2980,10 +2980,10 @@
    "hit_rate_%": 100.0
   },
   {
-   "industry": "Chemicals - Organic",
+   "industry": "Finance - Capital Markets - Brokers",
    "stocks_passing": 13,
-   "total_in_universe": 17,
-   "hit_rate_%": 76.5
+   "total_in_universe": 16,
+   "hit_rate_%": 81.2
   },
   {
    "industry": "Realty - Construction & Contracting",
@@ -3292,6 +3292,12 @@
    "hit_rate_%": 71.4
   },
   {
+   "industry": "Finance - AMC",
+   "stocks_passing": 5,
+   "total_in_universe": 7,
+   "hit_rate_%": 71.4
+  },
+  {
    "industry": "Infra/Real Estate Investment Trust",
    "stocks_passing": 5,
    "total_in_universe": 7,
@@ -3455,12 +3461,6 @@
   },
   {
    "industry": "Finance & Investments - Microfinance",
-   "stocks_passing": 4,
-   "total_in_universe": 7,
-   "hit_rate_%": 57.1
-  },
-  {
-   "industry": "Finance - AMC",
    "stocks_passing": 4,
    "total_in_universe": 7,
    "hit_rate_%": 57.1
@@ -3653,12 +3653,6 @@
   },
   {
    "industry": "Auto Ancillaries - Spare Parts Accessories",
-   "stocks_passing": 3,
-   "total_in_universe": 4,
-   "hit_rate_%": 75.0
-  },
-  {
-   "industry": "Capital Goods - EPC/Cranes",
    "stocks_passing": 3,
    "total_in_universe": 4,
    "hit_rate_%": 75.0
@@ -3892,6 +3886,12 @@
    "hit_rate_%": 100.0
   },
   {
+   "industry": "Electric Equipment - Transformers",
+   "stocks_passing": 2,
+   "total_in_universe": 2,
+   "hit_rate_%": 100.0
+  },
+  {
    "industry": "Electrodes - Welding Equipment",
    "stocks_passing": 2,
    "total_in_universe": 2,
@@ -4085,6 +4085,12 @@
   },
   {
    "industry": "Auto - Tractors",
+   "stocks_passing": 2,
+   "total_in_universe": 4,
+   "hit_rate_%": 50.0
+  },
+  {
+   "industry": "Capital Goods - EPC/Cranes",
    "stocks_passing": 2,
    "total_in_universe": 4,
    "hit_rate_%": 50.0
@@ -4360,6 +4366,12 @@
    "hit_rate_%": 100.0
   },
   {
+   "industry": "Scaffolding",
+   "stocks_passing": 1,
+   "total_in_universe": 1,
+   "hit_rate_%": 100.0
+  },
+  {
    "industry": "Solvent Extraction",
    "stocks_passing": 1,
    "total_in_universe": 1,
@@ -4451,12 +4463,6 @@
   },
   {
    "industry": "E-Commerce - Platform - Food",
-   "stocks_passing": 1,
-   "total_in_universe": 2,
-   "hit_rate_%": 50.0
-  },
-  {
-   "industry": "Electric Equipment - Transformers",
    "stocks_passing": 1,
    "total_in_universe": 2,
    "hit_rate_%": 50.0
@@ -4711,12 +4717,6 @@
    "industry": "Refrigeration",
    "stocks_passing": 0,
    "total_in_universe": 2,
-   "hit_rate_%": 0.0
-  },
-  {
-   "industry": "Scaffolding",
-   "stocks_passing": 0,
-   "total_in_universe": 1,
    "hit_rate_%": 0.0
   },
   {
