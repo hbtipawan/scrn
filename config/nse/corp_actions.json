@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-03",
+"fetched": "2026-11-04",
 "rows": [
 {
 "symbol": "750GS2056",
@@ -434,6 +434,14 @@
 "subject": "Interim Dividend - Re 0.75 Per Share"
 },
 {
+"symbol": "MINDSPACE",
+"series": "RR",
+"ex": "2026-11-05",
+"kind": "dividend",
+"label": "Dividend \u20b913.34",
+"subject": "Distribution - Rs 6.67 Per Unit Consisting Of Dividend - Rs 4.17 Per Unit/ Repayment Of Spv Debt - Rs 2.50 Per Unit"
+},
+{
 "symbol": "NAVINFLUOR",
 "series": "EQ",
 "ex": "2026-11-05",
@@ -474,6 +482,22 @@
 "subject": "Interim Dividend - Re 0.50 Per Share"
 },
 {
+"symbol": "761GS2030",
+"series": "GS",
+"ex": "2026-11-06",
+"kind": "other",
+"label": "Interest Payment",
+"subject": "Interest Payment"
+},
+{
+"symbol": "ARE&M",
+"series": "EQ",
+"ex": "2026-11-06",
+"kind": "dividend",
+"label": "Interim dividend \u20b94.3",
+"subject": "Interim Dividend - Rs 4.30 Per Share"
+},
+{
 "symbol": "CARERATING",
 "series": "EQ",
 "ex": "2026-11-06",
@@ -498,12 +522,44 @@
 "subject": "Interim Dividend - Rs 4 Per Share"
 },
 {
+"symbol": "FLAIR",
+"series": "EQ",
+"ex": "2026-11-06",
+"kind": "dividend",
+"label": "Interim dividend \u20b90.5",
+"subject": "Interim Dividend - Re 0.50 Per Share"
+},
+{
 "symbol": "GABRIEL",
 "series": "EQ",
 "ex": "2026-11-06",
 "kind": "dividend",
 "label": "Interim dividend \u20b92.15",
 "subject": "Interim Dividend - Rs 2.15 Per Share"
+},
+{
+"symbol": "GOPAL",
+"series": "EQ",
+"ex": "2026-11-06",
+"kind": "dividend",
+"label": "Interim dividend \u20b90.5",
+"subject": "Interim Dividend - Re 0.50 Per Share"
+},
+{
+"symbol": "HAPPSTMNDS",
+"series": "EQ",
+"ex": "2026-11-06",
+"kind": "dividend",
+"label": "Interim dividend \u20b93.05",
+"subject": "Interim Dividend - Rs 3.05 Per Share"
+},
+{
+"symbol": "KKCL",
+"series": "EQ",
+"ex": "2026-11-06",
+"kind": "dividend",
+"label": "Interim dividend \u20b92",
+"subject": "Interim Dividend - Rs 2 Per Share"
 },
 {
 "symbol": "KMEW",
@@ -538,6 +594,22 @@
 "subject": "Interim Dividend - Re 0.25 Per Share"
 },
 {
+"symbol": "MOIL",
+"series": "EQ",
+"ex": "2026-11-06",
+"kind": "dividend",
+"label": "Interim dividend \u20b92.2",
+"subject": "Interim Dividend - Rs 2.20 Per Share"
+},
+{
+"symbol": "NATIONALUM",
+"series": "EQ",
+"ex": "2026-11-06",
+"kind": "dividend",
+"label": "Interim dividend \u20b94.5",
+"subject": "Interim Dividend - Rs 4.50 Per Share"
+},
+{
 "symbol": "NAUKRI",
 "series": "EQ",
 "ex": "2026-11-06",
@@ -552,6 +624,14 @@
 "kind": "dividend",
 "label": "Interim dividend \u20b93",
 "subject": "Interim Dividend - Rs 3 Per Share"
+},
+{
+"symbol": "PETRONET",
+"series": "EQ",
+"ex": "2026-11-06",
+"kind": "dividend",
+"label": "Interim dividend \u20b97",
+"subject": "Interim Dividend - Rs 7 Per Share"
 },
 {
 "symbol": "POWERGRID",
@@ -586,6 +666,14 @@
 "subject": "Interim Dividend - Rs 4.05 Per Share"
 },
 {
+"symbol": "CONCOR",
+"series": "EQ",
+"ex": "2026-11-11",
+"kind": "dividend",
+"label": "Interim dividend \u20b91.9",
+"subject": "Interim Dividend - Rs 1.90 Per Share"
+},
+{
 "symbol": "HINDUNILVR",
 "series": "EQ",
 "ex": "2026-11-12",
@@ -600,6 +688,22 @@
 "kind": "dividend",
 "label": "Interim dividend \u20b93.25",
 "subject": "Interim Dividend - Rs 3.25 Per Share"
+},
+{
+"symbol": "FDC",
+"series": "EQ",
+"ex": "2026-11-13",
+"kind": "buyback",
+"label": "Buyback",
+"subject": "Buy Back"
+},
+{
+"symbol": "MEDIASSIST",
+"series": "EQ",
+"ex": "2026-11-20",
+"kind": "buyback",
+"label": "Buyback",
+"subject": "Buy Back"
 }
 ]
 }
