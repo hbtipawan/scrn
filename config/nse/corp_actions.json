@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-04",
+"fetched": "2026-11-05",
 "rows": [
 {
 "symbol": "750GS2056",
@@ -402,6 +402,22 @@
 "subject": "Interim Dividend - Rs 1.50 Per Share"
 },
 {
+"symbol": "BAGMANE",
+"series": "RR",
+"ex": "2026-11-05",
+"kind": "dividend",
+"label": "Dividend \u20b93.1",
+"subject": "Distribution - Rs 1.55 Per Unit Consists Of Rs 1.22 Per Unit As Dividend & Re 0.33 Per Unit As Interest"
+},
+{
+"symbol": "BIRET",
+"series": "RR",
+"ex": "2026-11-05",
+"kind": "dividend",
+"label": "Dividend \u20b911.4",
+"subject": "Distribution - Rs 5.70 Per Unit Consists Of Rs 1.72 Per Unit As Dividend/ Rs 1.54 Per Unit As Interest/Rs 2.24 Per Unit "
+},
+{
 "symbol": "BSOFT",
 "series": "EQ",
 "ex": "2026-11-05",
@@ -424,6 +440,14 @@
 "kind": "split",
 "label": "Split \u20b910 \u2192 \u20b91",
 "subject": "Face Value Split (Sub-Division) - From Rs 10/- Per Share To Re 1/- Per Share"
+},
+{
+"symbol": "INDTONER",
+"series": "EQ",
+"ex": "2026-11-05",
+"kind": "dividend",
+"label": "Interim dividend \u20b91.2",
+"subject": "Interim Dividend - Rs 1.20 Per Share"
 },
 {
 "symbol": "KRISHNADEF",
@@ -666,12 +690,52 @@
 "subject": "Interim Dividend - Rs 4.05 Per Share"
 },
 {
+"symbol": "694GS2036",
+"series": "GS",
+"ex": "2026-11-09",
+"kind": "other",
+"label": "Interest Payment",
+"subject": "Interest Payment"
+},
+{
+"symbol": "824GS2033",
+"series": "GS",
+"ex": "2026-11-09",
+"kind": "other",
+"label": "Interest Payment",
+"subject": "Interest Payment"
+},
+{
+"symbol": "GANESHCP",
+"series": "EQ",
+"ex": "2026-11-09",
+"kind": "dividend",
+"label": "Interim dividend \u20b93.7",
+"subject": "Interim Dividend - Rs 3.70 Per Share"
+},
+{
+"symbol": "METROPOLIS",
+"series": "EQ",
+"ex": "2026-11-09",
+"kind": "dividend",
+"label": "Interim dividend \u20b91",
+"subject": "Interim Dividend - Re 1 Per Share"
+},
+{
 "symbol": "CONCOR",
 "series": "EQ",
 "ex": "2026-11-11",
 "kind": "dividend",
 "label": "Interim dividend \u20b91.9",
 "subject": "Interim Dividend - Rs 1.90 Per Share"
+},
+{
+"symbol": "JYOTHYLAB",
+"series": "EQ",
+"ex": "2026-11-11",
+"kind": "buyback",
+"label": "Buyback",
+"subject": "Buy Back"
 },
 {
 "symbol": "HINDUNILVR",
