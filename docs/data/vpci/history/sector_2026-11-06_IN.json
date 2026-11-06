@@ -1,31 +1,37 @@
 {
  "scan_date": "2026-11-06",
- "scan_timestamp": "2026-11-06T02:39:11+05:30",
+ "scan_timestamp": "2026-11-07T02:12:05+05:30",
  "market": "IN",
  "sector_both": [
   {
    "sector": "Pharmaceuticals",
-   "stocks_passing": 15,
+   "stocks_passing": 19,
    "total_in_universe": 101,
-   "hit_rate_%": 14.9
+   "hit_rate_%": 18.8
+  },
+  {
+   "sector": "Finance",
+   "stocks_passing": 10,
+   "total_in_universe": 122,
+   "hit_rate_%": 8.2
   },
   {
    "sector": "FMCG",
-   "stocks_passing": 8,
+   "stocks_passing": 7,
    "total_in_universe": 60,
-   "hit_rate_%": 13.3
-  },
-  {
-   "sector": "Textiles",
-   "stocks_passing": 8,
-   "total_in_universe": 60,
-   "hit_rate_%": 13.3
+   "hit_rate_%": 11.7
   },
   {
    "sector": "Auto Ancillaries",
-   "stocks_passing": 6,
+   "stocks_passing": 7,
    "total_in_universe": 68,
-   "hit_rate_%": 8.8
+   "hit_rate_%": 10.3
+  },
+  {
+   "sector": "Textiles",
+   "stocks_passing": 6,
+   "total_in_universe": 60,
+   "hit_rate_%": 10.0
   },
   {
    "sector": "Chemicals",
@@ -40,10 +46,22 @@
    "hit_rate_%": 9.4
   },
   {
-   "sector": "Finance",
-   "stocks_passing": 5,
-   "total_in_universe": 122,
-   "hit_rate_%": 4.1
+   "sector": "Non Ferrous Metals",
+   "stocks_passing": 4,
+   "total_in_universe": 19,
+   "hit_rate_%": 21.1
+  },
+  {
+   "sector": "Castings, Forgings & Fastners",
+   "stocks_passing": 4,
+   "total_in_universe": 21,
+   "hit_rate_%": 19.0
+  },
+  {
+   "sector": "Realty",
+   "stocks_passing": 4,
+   "total_in_universe": 48,
+   "hit_rate_%": 8.3
   },
   {
    "sector": "Capital Goods - Electrical Equipment",
@@ -52,40 +70,64 @@
    "hit_rate_%": 6.5
   },
   {
-   "sector": "Non Ferrous Metals",
-   "stocks_passing": 3,
-   "total_in_universe": 19,
-   "hit_rate_%": 15.8
-  },
-  {
-   "sector": "Castings, Forgings & Fastners",
-   "stocks_passing": 3,
-   "total_in_universe": 21,
-   "hit_rate_%": 14.3
-  },
-  {
-   "sector": "Trading",
-   "stocks_passing": 3,
-   "total_in_universe": 31,
-   "hit_rate_%": 9.7
-  },
-  {
    "sector": "Capital Goods-Non Electrical Equipment",
-   "stocks_passing": 3,
+   "stocks_passing": 4,
    "total_in_universe": 63,
-   "hit_rate_%": 4.8
+   "hit_rate_%": 6.3
+  },
+  {
+   "sector": "IT - Software",
+   "stocks_passing": 4,
+   "total_in_universe": 96,
+   "hit_rate_%": 4.2
+  },
+  {
+   "sector": "Marine Port & Services",
+   "stocks_passing": 3,
+   "total_in_universe": 4,
+   "hit_rate_%": 75.0
+  },
+  {
+   "sector": "Stock/ Commodity Brokers",
+   "stocks_passing": 3,
+   "total_in_universe": 18,
+   "hit_rate_%": 16.7
+  },
+  {
+   "sector": "Hotels & Restaurants",
+   "stocks_passing": 3,
+   "total_in_universe": 24,
+   "hit_rate_%": 12.5
+  },
+  {
+   "sector": "Logistics",
+   "stocks_passing": 3,
+   "total_in_universe": 24,
+   "hit_rate_%": 12.5
+  },
+  {
+   "sector": "Consumer Durables",
+   "stocks_passing": 3,
+   "total_in_universe": 38,
+   "hit_rate_%": 7.9
+  },
+  {
+   "sector": "Banks",
+   "stocks_passing": 3,
+   "total_in_universe": 40,
+   "hit_rate_%": 7.5
+  },
+  {
+   "sector": "Healthcare",
+   "stocks_passing": 3,
+   "total_in_universe": 40,
+   "hit_rate_%": 7.5
   },
   {
    "sector": "Infrastructure Developers & Operators",
    "stocks_passing": 3,
    "total_in_universe": 64,
    "hit_rate_%": 4.7
-  },
-  {
-   "sector": "Marine Port & Services",
-   "stocks_passing": 2,
-   "total_in_universe": 4,
-   "hit_rate_%": 50.0
   },
   {
    "sector": "Gas Distribution",
@@ -112,58 +154,40 @@
    "hit_rate_%": 13.3
   },
   {
-   "sector": "Stock/ Commodity Brokers",
+   "sector": "Entertainment",
    "stocks_passing": 2,
    "total_in_universe": 18,
    "hit_rate_%": 11.1
   },
   {
-   "sector": "E-Commerce/App based Aggregator",
+   "sector": "Packaging",
    "stocks_passing": 2,
-   "total_in_universe": 19,
-   "hit_rate_%": 10.5
+   "total_in_universe": 23,
+   "hit_rate_%": 8.7
   },
   {
-   "sector": "Hotels & Restaurants",
+   "sector": "Diamond, Gems and Jewellery",
    "stocks_passing": 2,
    "total_in_universe": 24,
    "hit_rate_%": 8.3
   },
   {
-   "sector": "Logistics",
+   "sector": "Retail",
    "stocks_passing": 2,
-   "total_in_universe": 24,
-   "hit_rate_%": 8.3
+   "total_in_universe": 30,
+   "hit_rate_%": 6.7
+  },
+  {
+   "sector": "Trading",
+   "stocks_passing": 2,
+   "total_in_universe": 31,
+   "hit_rate_%": 6.5
   },
   {
    "sector": "Aerospace & Defence",
    "stocks_passing": 2,
    "total_in_universe": 32,
    "hit_rate_%": 6.2
-  },
-  {
-   "sector": "Consumer Durables",
-   "stocks_passing": 2,
-   "total_in_universe": 38,
-   "hit_rate_%": 5.3
-  },
-  {
-   "sector": "Banks",
-   "stocks_passing": 2,
-   "total_in_universe": 40,
-   "hit_rate_%": 5.0
-  },
-  {
-   "sector": "Miscellaneous",
-   "stocks_passing": 2,
-   "total_in_universe": 40,
-   "hit_rate_%": 5.0
-  },
-  {
-   "sector": "IT - Software",
-   "stocks_passing": 2,
-   "total_in_universe": 96,
-   "hit_rate_%": 2.1
   },
   {
    "sector": "Air Transport Service",
@@ -176,18 +200,6 @@
    "stocks_passing": 1,
    "total_in_universe": 4,
    "hit_rate_%": 25.0
-  },
-  {
-   "sector": "Education",
-   "stocks_passing": 1,
-   "total_in_universe": 6,
-   "hit_rate_%": 16.7
-  },
-  {
-   "sector": "Leather",
-   "stocks_passing": 1,
-   "total_in_universe": 6,
-   "hit_rate_%": 16.7
   },
   {
    "sector": "Refractories",
@@ -206,12 +218,6 @@
    "stocks_passing": 1,
    "total_in_universe": 7,
    "hit_rate_%": 14.3
-  },
-  {
-   "sector": "Engineering",
-   "stocks_passing": 1,
-   "total_in_universe": 9,
-   "hit_rate_%": 11.1
   },
   {
    "sector": "Telecom Equipment & Infra Services",
@@ -244,10 +250,10 @@
    "hit_rate_%": 6.2
   },
   {
-   "sector": "Entertainment",
+   "sector": "E-Commerce/App based Aggregator",
    "stocks_passing": 1,
-   "total_in_universe": 18,
-   "hit_rate_%": 5.6
+   "total_in_universe": 19,
+   "hit_rate_%": 5.3
   },
   {
    "sector": "Plastic products",
@@ -256,34 +262,16 @@
    "hit_rate_%": 5.3
   },
   {
-   "sector": "Packaging",
+   "sector": "Power Generation & Distribution",
    "stocks_passing": 1,
-   "total_in_universe": 23,
-   "hit_rate_%": 4.3
+   "total_in_universe": 21,
+   "hit_rate_%": 4.8
   },
   {
-   "sector": "Diamond, Gems and Jewellery",
-   "stocks_passing": 1,
-   "total_in_universe": 24,
-   "hit_rate_%": 4.2
-  },
-  {
-   "sector": "Retail",
-   "stocks_passing": 1,
-   "total_in_universe": 30,
-   "hit_rate_%": 3.3
-  },
-  {
-   "sector": "Healthcare",
+   "sector": "Miscellaneous",
    "stocks_passing": 1,
    "total_in_universe": 40,
    "hit_rate_%": 2.5
-  },
-  {
-   "sector": "Realty",
-   "stocks_passing": 1,
-   "total_in_universe": 48,
-   "hit_rate_%": 2.1
   },
   {
    "sector": "Agro Chemicals",
@@ -370,6 +358,18 @@
    "hit_rate_%": 0.0
   },
   {
+   "sector": "Education",
+   "stocks_passing": 0,
+   "total_in_universe": 6,
+   "hit_rate_%": 0.0
+  },
+  {
+   "sector": "Engineering",
+   "stocks_passing": 0,
+   "total_in_universe": 9,
+   "hit_rate_%": 0.0
+  },
+  {
    "sector": "Ferro Alloys",
    "stocks_passing": 0,
    "total_in_universe": 3,
@@ -394,6 +394,12 @@
    "hit_rate_%": 0.0
   },
   {
+   "sector": "Leather",
+   "stocks_passing": 0,
+   "total_in_universe": 6,
+   "hit_rate_%": 0.0
+  },
+  {
    "sector": "Media - Print/Television/Radio",
    "stocks_passing": 0,
    "total_in_universe": 8,
@@ -402,7 +408,7 @@
   {
    "sector": "Mining & Mineral products",
    "stocks_passing": 0,
-   "total_in_universe": 11,
+   "total_in_universe": 12,
    "hit_rate_%": 0.0
   },
   {
@@ -439,12 +445,6 @@
    "sector": "Plywood Boards/Laminates",
    "stocks_passing": 0,
    "total_in_universe": 6,
-   "hit_rate_%": 0.0
-  },
-  {
-   "sector": "Power Generation & Distribution",
-   "stocks_passing": 0,
-   "total_in_universe": 21,
    "hit_rate_%": 0.0
   },
   {
@@ -516,34 +516,52 @@
    "hit_rate_%": 22.5
   },
   {
+   "industry": "Pharma - API & CRAMS",
+   "stocks_passing": 5,
+   "total_in_universe": 24,
+   "hit_rate_%": 20.8
+  },
+  {
+   "industry": "IT - Software",
+   "stocks_passing": 5,
+   "total_in_universe": 52,
+   "hit_rate_%": 9.6
+  },
+  {
+   "industry": "Castings, Forgings & Fastners",
+   "stocks_passing": 4,
+   "total_in_universe": 19,
+   "hit_rate_%": 21.1
+  },
+  {
+   "industry": "Finance & Investments - Others",
+   "stocks_passing": 4,
+   "total_in_universe": 28,
+   "hit_rate_%": 14.3
+  },
+  {
    "industry": "Pharmaceuticals Bulk Drugs & Formulation",
    "stocks_passing": 3,
    "total_in_universe": 3,
    "hit_rate_%": 100.0
   },
   {
-   "industry": "Textiles - Spinning",
+   "industry": "Steel Products",
    "stocks_passing": 3,
-   "total_in_universe": 12,
-   "hit_rate_%": 25.0
+   "total_in_universe": 14,
+   "hit_rate_%": 21.4
   },
   {
-   "industry": "Castings, Forgings & Fastners",
+   "industry": "Hotels",
    "stocks_passing": 3,
-   "total_in_universe": 19,
-   "hit_rate_%": 15.8
+   "total_in_universe": 21,
+   "hit_rate_%": 14.3
   },
   {
-   "industry": "Finance & Investments - Others",
+   "industry": "Trading",
    "stocks_passing": 3,
-   "total_in_universe": 28,
-   "hit_rate_%": 10.7
-  },
-  {
-   "industry": "IT - Software",
-   "stocks_passing": 3,
-   "total_in_universe": 52,
-   "hit_rate_%": 5.8
+   "total_in_universe": 33,
+   "hit_rate_%": 9.1
   },
   {
    "industry": "CCTV Camera",
@@ -552,13 +570,19 @@
    "hit_rate_%": 100.0
   },
   {
-   "industry": "Aluminium Products",
+   "industry": "Shunt Resistors",
    "stocks_passing": 2,
-   "total_in_universe": 4,
-   "hit_rate_%": 50.0
+   "total_in_universe": 2,
+   "hit_rate_%": 100.0
   },
   {
-   "industry": "FMCG - Contract Mfg",
+   "industry": "Marine Port & Services",
+   "stocks_passing": 2,
+   "total_in_universe": 3,
+   "hit_rate_%": 66.7
+  },
+  {
+   "industry": "Aluminium Products",
    "stocks_passing": 2,
    "total_in_universe": 4,
    "hit_rate_%": 50.0
@@ -588,13 +612,7 @@
    "hit_rate_%": 40.0
   },
   {
-   "industry": "Electrical Equipments/HVDC",
-   "stocks_passing": 2,
-   "total_in_universe": 6,
-   "hit_rate_%": 33.3
-  },
-  {
-   "industry": "New age - Platform - E-Retail",
+   "industry": "Finance & Investments - Gold Loan",
    "stocks_passing": 2,
    "total_in_universe": 6,
    "hit_rate_%": 33.3
@@ -606,7 +624,19 @@
    "hit_rate_%": 28.6
   },
   {
+   "industry": "Finance & Investments - Microfinance",
+   "stocks_passing": 2,
+   "total_in_universe": 7,
+   "hit_rate_%": 28.6
+  },
+  {
    "industry": "Logistics - Warehousing/Supply Chain",
+   "stocks_passing": 2,
+   "total_in_universe": 7,
+   "hit_rate_%": 28.6
+  },
+  {
+   "industry": "Realty - National",
    "stocks_passing": 2,
    "total_in_universe": 7,
    "hit_rate_%": 28.6
@@ -618,13 +648,31 @@
    "hit_rate_%": 25.0
   },
   {
-   "industry": "Steel Products",
+   "industry": "Consumer Electronics",
    "stocks_passing": 2,
-   "total_in_universe": 14,
-   "hit_rate_%": 14.3
+   "total_in_universe": 12,
+   "hit_rate_%": 16.7
+  },
+  {
+   "industry": "Textiles - Spinning",
+   "stocks_passing": 2,
+   "total_in_universe": 12,
+   "hit_rate_%": 16.7
+  },
+  {
+   "industry": "Diversified",
+   "stocks_passing": 2,
+   "total_in_universe": 16,
+   "hit_rate_%": 12.5
   },
   {
    "industry": "Finance - Capital Markets - Brokers",
+   "stocks_passing": 2,
+   "total_in_universe": 16,
+   "hit_rate_%": 12.5
+  },
+  {
+   "industry": "Logistics",
    "stocks_passing": 2,
    "total_in_universe": 16,
    "hit_rate_%": 12.5
@@ -636,22 +684,22 @@
    "hit_rate_%": 12.5
   },
   {
-   "industry": "Hotels",
+   "industry": "Banks - Private",
    "stocks_passing": 2,
-   "total_in_universe": 21,
-   "hit_rate_%": 9.5
+   "total_in_universe": 18,
+   "hit_rate_%": 11.1
   },
   {
-   "industry": "Aerospace & Defence - Equipments",
+   "industry": "Auto Ancillaries - Diversified",
    "stocks_passing": 2,
-   "total_in_universe": 23,
-   "hit_rate_%": 8.7
+   "total_in_universe": 19,
+   "hit_rate_%": 10.5
   },
   {
-   "industry": "Pharma - API & CRAMS",
+   "industry": "Diamond, Gems & Jewellery",
    "stocks_passing": 2,
-   "total_in_universe": 24,
-   "hit_rate_%": 8.3
+   "total_in_universe": 20,
+   "hit_rate_%": 10.0
   },
   {
    "industry": "Aluminium - Sheets/Coils/Wires/Others",
@@ -708,12 +756,6 @@
    "hit_rate_%": 50.0
   },
   {
-   "industry": "Shunt Resistors",
-   "stocks_passing": 1,
-   "total_in_universe": 2,
-   "hit_rate_%": 50.0
-  },
-  {
    "industry": "Auto Ancillaries - Wheels",
    "stocks_passing": 1,
    "total_in_universe": 3,
@@ -732,25 +774,13 @@
    "hit_rate_%": 33.3
   },
   {
-   "industry": "Lab Grown Diamonds",
-   "stocks_passing": 1,
-   "total_in_universe": 3,
-   "hit_rate_%": 33.3
-  },
-  {
-   "industry": "Marine Port & Services",
-   "stocks_passing": 1,
-   "total_in_universe": 3,
-   "hit_rate_%": 33.3
-  },
-  {
    "industry": "Opalware",
    "stocks_passing": 1,
    "total_in_universe": 3,
    "hit_rate_%": 33.3
   },
   {
-   "industry": "Platform - Education",
+   "industry": "Packaging - Films",
    "stocks_passing": 1,
    "total_in_universe": 3,
    "hit_rate_%": 33.3
@@ -762,25 +792,37 @@
    "hit_rate_%": 33.3
   },
   {
+   "industry": "Shipping - Proxy",
+   "stocks_passing": 1,
+   "total_in_universe": 3,
+   "hit_rate_%": 33.3
+  },
+  {
    "industry": "Chemicals - Others",
    "stocks_passing": 1,
    "total_in_universe": 4,
    "hit_rate_%": 25.0
   },
   {
-   "industry": "Computer - Hardware",
+   "industry": "FMCG - Contract Mfg",
+   "stocks_passing": 1,
+   "total_in_universe": 4,
+   "hit_rate_%": 25.0
+  },
+  {
+   "industry": "Finance - Capital Markets - Wealth Management",
+   "stocks_passing": 1,
+   "total_in_universe": 4,
+   "hit_rate_%": 25.0
+  },
+  {
+   "industry": "Pharmacy Distribution",
    "stocks_passing": 1,
    "total_in_universe": 4,
    "hit_rate_%": 25.0
   },
   {
    "industry": "Stainless Steel",
-   "stocks_passing": 1,
-   "total_in_universe": 4,
-   "hit_rate_%": 25.0
-  },
-  {
-   "industry": "Textiles - Manmade Fibre - PFY/PSF",
    "stocks_passing": 1,
    "total_in_universe": 4,
    "hit_rate_%": 25.0
@@ -816,6 +858,12 @@
    "hit_rate_%": 20.0
   },
   {
+   "industry": "Electrical Equipments/HVDC",
+   "stocks_passing": 1,
+   "total_in_universe": 6,
+   "hit_rate_%": 16.7
+  },
+  {
    "industry": "Finance - Capital Markets",
    "stocks_passing": 1,
    "total_in_universe": 6,
@@ -834,22 +882,28 @@
    "hit_rate_%": 16.7
   },
   {
+   "industry": "New age - Platform - E-Retail",
+   "stocks_passing": 1,
+   "total_in_universe": 6,
+   "hit_rate_%": 16.7
+  },
+  {
    "industry": "FMCG - Dairy Products",
    "stocks_passing": 1,
    "total_in_universe": 7,
    "hit_rate_%": 14.3
   },
   {
-   "industry": "Finance & Investments - Microfinance",
+   "industry": "Conglomerate Backed NBFC",
    "stocks_passing": 1,
-   "total_in_universe": 7,
-   "hit_rate_%": 14.3
+   "total_in_universe": 8,
+   "hit_rate_%": 12.5
   },
   {
-   "industry": "Plastics - Plastic & Plastic Products",
+   "industry": "Diagnostics",
    "stocks_passing": 1,
-   "total_in_universe": 7,
-   "hit_rate_%": 14.3
+   "total_in_universe": 8,
+   "hit_rate_%": 12.5
   },
   {
    "industry": "Engineering - Turnkey Services",
@@ -912,19 +966,7 @@
    "hit_rate_%": 9.1
   },
   {
-   "industry": "Consumer Electronics",
-   "stocks_passing": 1,
-   "total_in_universe": 12,
-   "hit_rate_%": 8.3
-  },
-  {
    "industry": "Banks - PSU",
-   "stocks_passing": 1,
-   "total_in_universe": 13,
-   "hit_rate_%": 7.7
-  },
-  {
-   "industry": "E-Commerce - Platform - Utility",
    "stocks_passing": 1,
    "total_in_universe": 13,
    "hit_rate_%": 7.7
@@ -948,16 +990,10 @@
    "hit_rate_%": 6.7
   },
   {
-   "industry": "Diversified",
+   "industry": "Power - Generation/Distribution",
    "stocks_passing": 1,
-   "total_in_universe": 16,
-   "hit_rate_%": 6.2
-  },
-  {
-   "industry": "Logistics",
-   "stocks_passing": 1,
-   "total_in_universe": 16,
-   "hit_rate_%": 6.2
+   "total_in_universe": 15,
+   "hit_rate_%": 6.7
   },
   {
    "industry": "Chemicals - Organic",
@@ -972,28 +1008,28 @@
    "hit_rate_%": 5.9
   },
   {
-   "industry": "Banks - Private",
-   "stocks_passing": 1,
-   "total_in_universe": 18,
-   "hit_rate_%": 5.6
-  },
-  {
    "industry": "Capital Goods - Electric General",
    "stocks_passing": 1,
    "total_in_universe": 18,
    "hit_rate_%": 5.6
   },
   {
-   "industry": "Auto Ancillaries - Diversified",
+   "industry": "Entertainment & Media",
    "stocks_passing": 1,
    "total_in_universe": 19,
    "hit_rate_%": 5.3
   },
   {
-   "industry": "Diamond, Gems & Jewellery",
+   "industry": "Pesticides/Agrochemicals",
    "stocks_passing": 1,
-   "total_in_universe": 20,
-   "hit_rate_%": 5.0
+   "total_in_universe": 22,
+   "hit_rate_%": 4.5
+  },
+  {
+   "industry": "Aerospace & Defence - Equipments",
+   "stocks_passing": 1,
+   "total_in_universe": 23,
+   "hit_rate_%": 4.3
   },
   {
    "industry": "Textiles - Readymade Apparel",
@@ -1006,12 +1042,6 @@
    "stocks_passing": 1,
    "total_in_universe": 25,
    "hit_rate_%": 4.0
-  },
-  {
-   "industry": "Trading",
-   "stocks_passing": 1,
-   "total_in_universe": 33,
-   "hit_rate_%": 3.0
   },
   {
    "industry": "Abrasives & Grinding Wheels",
@@ -1320,6 +1350,12 @@
    "hit_rate_%": 0.0
   },
   {
+   "industry": "Computer - Hardware",
+   "stocks_passing": 0,
+   "total_in_universe": 4,
+   "hit_rate_%": 0.0
+  },
+  {
    "industry": "Computer - Peripherals/Accessories",
    "stocks_passing": 0,
    "total_in_universe": 1,
@@ -1329,12 +1365,6 @@
    "industry": "Computer Education",
    "stocks_passing": 0,
    "total_in_universe": 6,
-   "hit_rate_%": 0.0
-  },
-  {
-   "industry": "Conglomerate Backed NBFC",
-   "stocks_passing": 0,
-   "total_in_universe": 8,
    "hit_rate_%": 0.0
   },
   {
@@ -1404,12 +1434,6 @@
    "hit_rate_%": 0.0
   },
   {
-   "industry": "Diagnostics",
-   "stocks_passing": 0,
-   "total_in_universe": 8,
-   "hit_rate_%": 0.0
-  },
-  {
    "industry": "Domestic Appliances",
    "stocks_passing": 0,
    "total_in_universe": 5,
@@ -1425,6 +1449,12 @@
    "industry": "E-Commerce - Platform - Travel",
    "stocks_passing": 0,
    "total_in_universe": 3,
+   "hit_rate_%": 0.0
+  },
+  {
+   "industry": "E-Commerce - Platform - Utility",
+   "stocks_passing": 0,
+   "total_in_universe": 13,
    "hit_rate_%": 0.0
   },
   {
@@ -1506,12 +1536,6 @@
    "hit_rate_%": 0.0
   },
   {
-   "industry": "Entertainment & Media",
-   "stocks_passing": 0,
-   "total_in_universe": 19,
-   "hit_rate_%": 0.0
-  },
-  {
    "industry": "Exchanges",
    "stocks_passing": 0,
    "total_in_universe": 3,
@@ -1578,12 +1602,6 @@
    "hit_rate_%": 0.0
   },
   {
-   "industry": "Finance & Investments - Gold Loan",
-   "stocks_passing": 0,
-   "total_in_universe": 6,
-   "hit_rate_%": 0.0
-  },
-  {
    "industry": "Finance & Investments - MSME Lending",
    "stocks_passing": 0,
    "total_in_universe": 5,
@@ -1605,12 +1623,6 @@
    "industry": "Finance - Capital Markets - RTA",
    "stocks_passing": 0,
    "total_in_universe": 2,
-   "hit_rate_%": 0.0
-  },
-  {
-   "industry": "Finance - Capital Markets - Wealth Management",
-   "stocks_passing": 0,
-   "total_in_universe": 4,
    "hit_rate_%": 0.0
   },
   {
@@ -1830,6 +1842,12 @@
    "hit_rate_%": 0.0
   },
   {
+   "industry": "Lab Grown Diamonds",
+   "stocks_passing": 0,
+   "total_in_universe": 3,
+   "hit_rate_%": 0.0
+  },
+  {
    "industry": "Leather Products - Others",
    "stocks_passing": 0,
    "total_in_universe": 1,
@@ -1868,7 +1886,7 @@
   {
    "industry": "Mining/Minerals",
    "stocks_passing": 0,
-   "total_in_universe": 10,
+   "total_in_universe": 11,
    "hit_rate_%": 0.0
   },
   {
@@ -1920,12 +1938,6 @@
    "hit_rate_%": 0.0
   },
   {
-   "industry": "Packaging - Films",
-   "stocks_passing": 0,
-   "total_in_universe": 3,
-   "hit_rate_%": 0.0
-  },
-  {
    "industry": "Packaging - Others",
    "stocks_passing": 0,
    "total_in_universe": 1,
@@ -1947,12 +1959,6 @@
    "industry": "Paper",
    "stocks_passing": 0,
    "total_in_universe": 10,
-   "hit_rate_%": 0.0
-  },
-  {
-   "industry": "Pesticides/Agrochemicals",
-   "stocks_passing": 0,
-   "total_in_universe": 22,
    "hit_rate_%": 0.0
   },
   {
@@ -1992,12 +1998,6 @@
    "hit_rate_%": 0.0
   },
   {
-   "industry": "Pharmacy Distribution",
-   "stocks_passing": 0,
-   "total_in_universe": 4,
-   "hit_rate_%": 0.0
-  },
-  {
    "industry": "Plastics - Others",
    "stocks_passing": 0,
    "total_in_universe": 2,
@@ -2010,6 +2010,12 @@
    "hit_rate_%": 0.0
   },
   {
+   "industry": "Plastics - Plastic & Plastic Products",
+   "stocks_passing": 0,
+   "total_in_universe": 7,
+   "hit_rate_%": 0.0
+  },
+  {
    "industry": "Plastics - Plastic Containers",
    "stocks_passing": 0,
    "total_in_universe": 1,
@@ -2019,6 +2025,12 @@
    "industry": "Plastics - Sheets/Films",
    "stocks_passing": 0,
    "total_in_universe": 1,
+   "hit_rate_%": 0.0
+  },
+  {
+   "industry": "Platform - Education",
+   "stocks_passing": 0,
+   "total_in_universe": 3,
    "hit_rate_%": 0.0
   },
   {
@@ -2043,12 +2055,6 @@
    "industry": "Pollution Control Equipment",
    "stocks_passing": 0,
    "total_in_universe": 1,
-   "hit_rate_%": 0.0
-  },
-  {
-   "industry": "Power - Generation/Distribution",
-   "stocks_passing": 0,
-   "total_in_universe": 15,
    "hit_rate_%": 0.0
   },
   {
@@ -2121,12 +2127,6 @@
    "industry": "Realty - Construction & Contracting",
    "stocks_passing": 0,
    "total_in_universe": 23,
-   "hit_rate_%": 0.0
-  },
-  {
-   "industry": "Realty - National",
-   "stocks_passing": 0,
-   "total_in_universe": 7,
    "hit_rate_%": 0.0
   },
   {
@@ -2211,12 +2211,6 @@
    "industry": "Shipping",
    "stocks_passing": 0,
    "total_in_universe": 5,
-   "hit_rate_%": 0.0
-  },
-  {
-   "industry": "Shipping - Proxy",
-   "stocks_passing": 0,
-   "total_in_universe": 3,
    "hit_rate_%": 0.0
   },
   {
@@ -2316,6 +2310,12 @@
    "hit_rate_%": 0.0
   },
   {
+   "industry": "Textiles - Manmade Fibre - PFY/PSF",
+   "stocks_passing": 0,
+   "total_in_universe": 4,
+   "hit_rate_%": 0.0
+  },
+  {
    "industry": "Textiles - Processing/Texturising",
    "stocks_passing": 0,
    "total_in_universe": 6,
@@ -2379,123 +2379,111 @@
  "sector_either": [
   {
    "sector": "Pharmaceuticals",
-   "stocks_passing": 90,
+   "stocks_passing": 85,
    "total_in_universe": 101,
-   "hit_rate_%": 89.1
+   "hit_rate_%": 84.2
   },
   {
    "sector": "Finance",
-   "stocks_passing": 77,
+   "stocks_passing": 79,
    "total_in_universe": 122,
-   "hit_rate_%": 63.1
-  },
-  {
-   "sector": "IT - Software",
-   "stocks_passing": 71,
-   "total_in_universe": 96,
-   "hit_rate_%": 74.0
+   "hit_rate_%": 64.8
   },
   {
    "sector": "Chemicals",
-   "stocks_passing": 70,
+   "stocks_passing": 72,
    "total_in_universe": 94,
-   "hit_rate_%": 74.5
+   "hit_rate_%": 76.6
+  },
+  {
+   "sector": "IT - Software",
+   "stocks_passing": 69,
+   "total_in_universe": 96,
+   "hit_rate_%": 71.9
   },
   {
    "sector": "Auto Ancillaries",
-   "stocks_passing": 55,
+   "stocks_passing": 54,
    "total_in_universe": 68,
-   "hit_rate_%": 80.9
+   "hit_rate_%": 79.4
   },
   {
    "sector": "Textiles",
-   "stocks_passing": 45,
+   "stocks_passing": 48,
    "total_in_universe": 60,
-   "hit_rate_%": 75.0
+   "hit_rate_%": 80.0
   },
   {
    "sector": "Capital Goods-Non Electrical Equipment",
-   "stocks_passing": 45,
+   "stocks_passing": 43,
    "total_in_universe": 63,
-   "hit_rate_%": 71.4
+   "hit_rate_%": 68.3
   },
   {
    "sector": "FMCG",
-   "stocks_passing": 42,
+   "stocks_passing": 39,
    "total_in_universe": 60,
-   "hit_rate_%": 70.0
+   "hit_rate_%": 65.0
   },
   {
    "sector": "Steel",
-   "stocks_passing": 39,
-   "total_in_universe": 53,
-   "hit_rate_%": 73.6
-  },
-  {
-   "sector": "Capital Goods - Electrical Equipment",
    "stocks_passing": 37,
-   "total_in_universe": 62,
-   "hit_rate_%": 59.7
+   "total_in_universe": 53,
+   "hit_rate_%": 69.8
   },
   {
    "sector": "Infrastructure Developers & Operators",
-   "stocks_passing": 37,
+   "stocks_passing": 35,
    "total_in_universe": 64,
-   "hit_rate_%": 57.8
+   "hit_rate_%": 54.7
   },
   {
    "sector": "Realty",
-   "stocks_passing": 32,
+   "stocks_passing": 33,
    "total_in_universe": 48,
-   "hit_rate_%": 66.7
-  },
-  {
-   "sector": "Healthcare",
-   "stocks_passing": 26,
-   "total_in_universe": 40,
-   "hit_rate_%": 65.0
-  },
-  {
-   "sector": "Miscellaneous",
-   "stocks_passing": 26,
-   "total_in_universe": 40,
-   "hit_rate_%": 65.0
-  },
-  {
-   "sector": "Banks",
-   "stocks_passing": 25,
-   "total_in_universe": 40,
-   "hit_rate_%": 62.5
-  },
-  {
-   "sector": "Consumer Durables",
-   "stocks_passing": 24,
-   "total_in_universe": 38,
-   "hit_rate_%": 63.2
-  },
-  {
-   "sector": "Aerospace & Defence",
-   "stocks_passing": 22,
-   "total_in_universe": 32,
    "hit_rate_%": 68.8
   },
   {
-   "sector": "Packaging",
+   "sector": "Capital Goods - Electrical Equipment",
+   "stocks_passing": 33,
+   "total_in_universe": 62,
+   "hit_rate_%": 53.2
+  },
+  {
+   "sector": "Healthcare",
+   "stocks_passing": 27,
+   "total_in_universe": 40,
+   "hit_rate_%": 67.5
+  },
+  {
+   "sector": "Miscellaneous",
+   "stocks_passing": 27,
+   "total_in_universe": 40,
+   "hit_rate_%": 67.5
+  },
+  {
+   "sector": "Banks",
+   "stocks_passing": 26,
+   "total_in_universe": 40,
+   "hit_rate_%": 65.0
+  },
+  {
+   "sector": "Consumer Durables",
+   "stocks_passing": 23,
+   "total_in_universe": 38,
+   "hit_rate_%": 60.5
+  },
+  {
+   "sector": "Aerospace & Defence",
    "stocks_passing": 21,
+   "total_in_universe": 32,
+   "hit_rate_%": 65.6
+  },
+  {
+   "sector": "Packaging",
+   "stocks_passing": 20,
    "total_in_universe": 23,
-   "hit_rate_%": 91.3
-  },
-  {
-   "sector": "Diamond, Gems and Jewellery",
-   "stocks_passing": 20,
-   "total_in_universe": 24,
-   "hit_rate_%": 83.3
-  },
-  {
-   "sector": "Hotels & Restaurants",
-   "stocks_passing": 20,
-   "total_in_universe": 24,
-   "hit_rate_%": 83.3
+   "hit_rate_%": 87.0
   },
   {
    "sector": "Trading",
@@ -2504,10 +2492,22 @@
    "hit_rate_%": 64.5
   },
   {
+   "sector": "Diamond, Gems and Jewellery",
+   "stocks_passing": 19,
+   "total_in_universe": 24,
+   "hit_rate_%": 79.2
+  },
+  {
    "sector": "Retail",
    "stocks_passing": 19,
    "total_in_universe": 30,
    "hit_rate_%": 63.3
+  },
+  {
+   "sector": "Hotels & Restaurants",
+   "stocks_passing": 18,
+   "total_in_universe": 24,
+   "hit_rate_%": 75.0
   },
   {
    "sector": "Castings, Forgings & Fastners",
@@ -2516,22 +2516,22 @@
    "hit_rate_%": 81.0
   },
   {
+   "sector": "Logistics",
+   "stocks_passing": 17,
+   "total_in_universe": 24,
+   "hit_rate_%": 70.8
+  },
+  {
+   "sector": "Stock/ Commodity Brokers",
+   "stocks_passing": 16,
+   "total_in_universe": 18,
+   "hit_rate_%": 88.9
+  },
+  {
    "sector": "E-Commerce/App based Aggregator",
    "stocks_passing": 16,
    "total_in_universe": 19,
    "hit_rate_%": 84.2
-  },
-  {
-   "sector": "Stock/ Commodity Brokers",
-   "stocks_passing": 15,
-   "total_in_universe": 18,
-   "hit_rate_%": 83.3
-  },
-  {
-   "sector": "Logistics",
-   "stocks_passing": 15,
-   "total_in_universe": 24,
-   "hit_rate_%": 62.5
   },
   {
    "sector": "Non Ferrous Metals",
@@ -2540,10 +2540,10 @@
    "hit_rate_%": 68.4
   },
   {
-   "sector": "Infrastructure Investment Trusts",
-   "stocks_passing": 12,
-   "total_in_universe": 14,
-   "hit_rate_%": 85.7
+   "sector": "Automobile",
+   "stocks_passing": 13,
+   "total_in_universe": 20,
+   "hit_rate_%": 65.0
   },
   {
    "sector": "Sugar",
@@ -2552,16 +2552,16 @@
    "hit_rate_%": 80.0
   },
   {
-   "sector": "Entertainment",
-   "stocks_passing": 12,
-   "total_in_universe": 18,
-   "hit_rate_%": 66.7
+   "sector": "Electronics",
+   "stocks_passing": 11,
+   "total_in_universe": 12,
+   "hit_rate_%": 91.7
   },
   {
-   "sector": "Automobile",
-   "stocks_passing": 12,
-   "total_in_universe": 20,
-   "hit_rate_%": 60.0
+   "sector": "Infrastructure Investment Trusts",
+   "stocks_passing": 11,
+   "total_in_universe": 14,
+   "hit_rate_%": 78.6
   },
   {
    "sector": "Plastic products",
@@ -2570,28 +2570,28 @@
    "hit_rate_%": 57.9
   },
   {
-   "sector": "Electronics",
-   "stocks_passing": 10,
-   "total_in_universe": 12,
-   "hit_rate_%": 83.3
-  },
-  {
    "sector": "Cables",
    "stocks_passing": 10,
    "total_in_universe": 15,
    "hit_rate_%": 66.7
   },
   {
-   "sector": "Alcoholic Beverages",
+   "sector": "Entertainment",
    "stocks_passing": 10,
-   "total_in_universe": 16,
-   "hit_rate_%": 62.5
+   "total_in_universe": 18,
+   "hit_rate_%": 55.6
   },
   {
    "sector": "Power Generation & Distribution",
    "stocks_passing": 10,
    "total_in_universe": 21,
    "hit_rate_%": 47.6
+  },
+  {
+   "sector": "Alcoholic Beverages",
+   "stocks_passing": 9,
+   "total_in_universe": 16,
+   "hit_rate_%": 56.2
   },
   {
    "sector": "Diversified",
@@ -2606,22 +2606,10 @@
    "hit_rate_%": 80.0
   },
   {
-   "sector": "Readymade Garments/ Apparells",
-   "stocks_passing": 8,
-   "total_in_universe": 11,
-   "hit_rate_%": 72.7
-  },
-  {
    "sector": "Agro Chemicals",
    "stocks_passing": 8,
    "total_in_universe": 19,
    "hit_rate_%": 42.1
-  },
-  {
-   "sector": "Cement",
-   "stocks_passing": 8,
-   "total_in_universe": 23,
-   "hit_rate_%": 34.8
   },
   {
    "sector": "Glass & Glass Products",
@@ -2654,28 +2642,52 @@
    "hit_rate_%": 70.0
   },
   {
-   "sector": "Paper",
-   "stocks_passing": 7,
-   "total_in_universe": 10,
-   "hit_rate_%": 70.0
-  },
-  {
-   "sector": "Mining & Mineral products",
+   "sector": "Readymade Garments/ Apparells",
    "stocks_passing": 7,
    "total_in_universe": 11,
    "hit_rate_%": 63.6
   },
   {
-   "sector": "Fertilizers",
-   "stocks_passing": 7,
-   "total_in_universe": 13,
-   "hit_rate_%": 53.8
+   "sector": "Crude Oil & Natural Gas",
+   "stocks_passing": 6,
+   "total_in_universe": 7,
+   "hit_rate_%": 85.7
+  },
+  {
+   "sector": "Telecom-Service",
+   "stocks_passing": 6,
+   "total_in_universe": 7,
+   "hit_rate_%": 85.7
   },
   {
    "sector": "Engineering",
    "stocks_passing": 6,
    "total_in_universe": 9,
    "hit_rate_%": 66.7
+  },
+  {
+   "sector": "Paper",
+   "stocks_passing": 6,
+   "total_in_universe": 10,
+   "hit_rate_%": 60.0
+  },
+  {
+   "sector": "Mining & Mineral products",
+   "stocks_passing": 6,
+   "total_in_universe": 12,
+   "hit_rate_%": 50.0
+  },
+  {
+   "sector": "Fertilizers",
+   "stocks_passing": 6,
+   "total_in_universe": 13,
+   "hit_rate_%": 46.2
+  },
+  {
+   "sector": "Cement",
+   "stocks_passing": 6,
+   "total_in_universe": 23,
+   "hit_rate_%": 26.1
   },
   {
    "sector": "Cement - Products",
@@ -2708,10 +2720,10 @@
    "hit_rate_%": 71.4
   },
   {
-   "sector": "Telecom-Service",
+   "sector": "Plantation & Plantation Products",
    "stocks_passing": 5,
-   "total_in_universe": 7,
-   "hit_rate_%": 71.4
+   "total_in_universe": 8,
+   "hit_rate_%": 62.5
   },
   {
    "sector": "Co-Working",
@@ -2726,16 +2738,16 @@
    "hit_rate_%": 100.0
   },
   {
-   "sector": "Crude Oil & Natural Gas",
+   "sector": "Education",
    "stocks_passing": 4,
-   "total_in_universe": 7,
-   "hit_rate_%": 57.1
+   "total_in_universe": 6,
+   "hit_rate_%": 66.7
   },
   {
-   "sector": "Plantation & Plantation Products",
+   "sector": "Gas Distribution",
    "stocks_passing": 4,
-   "total_in_universe": 8,
-   "hit_rate_%": 50.0
+   "total_in_universe": 6,
+   "hit_rate_%": 66.7
   },
   {
    "sector": "Telecom Equipment & Infra Services",
@@ -2751,12 +2763,6 @@
   },
   {
    "sector": "Air Transport Service",
-   "stocks_passing": 3,
-   "total_in_universe": 3,
-   "hit_rate_%": 100.0
-  },
-  {
-   "sector": "Credit Rating Agencies",
    "stocks_passing": 3,
    "total_in_universe": 3,
    "hit_rate_%": 100.0
@@ -2792,24 +2798,6 @@
    "hit_rate_%": 50.0
   },
   {
-   "sector": "Education",
-   "stocks_passing": 3,
-   "total_in_universe": 6,
-   "hit_rate_%": 50.0
-  },
-  {
-   "sector": "Gas Distribution",
-   "stocks_passing": 3,
-   "total_in_universe": 6,
-   "hit_rate_%": 50.0
-  },
-  {
-   "sector": "Paints/Varnish",
-   "stocks_passing": 3,
-   "total_in_universe": 6,
-   "hit_rate_%": 50.0
-  },
-  {
    "sector": "Refractories",
    "stocks_passing": 3,
    "total_in_universe": 6,
@@ -2828,6 +2816,12 @@
    "hit_rate_%": 100.0
   },
   {
+   "sector": "Credit Rating Agencies",
+   "stocks_passing": 2,
+   "total_in_universe": 3,
+   "hit_rate_%": 66.7
+  },
+  {
    "sector": "Tobacco Products",
    "stocks_passing": 2,
    "total_in_universe": 3,
@@ -2838,6 +2832,12 @@
    "stocks_passing": 2,
    "total_in_universe": 4,
    "hit_rate_%": 50.0
+  },
+  {
+   "sector": "Paints/Varnish",
+   "stocks_passing": 2,
+   "total_in_universe": 6,
+   "hit_rate_%": 33.3
   },
   {
    "sector": "Plywood Boards/Laminates",
@@ -2885,27 +2885,27 @@
  "industry_either": [
   {
    "industry": "IT - Software",
-   "stocks_passing": 39,
+   "stocks_passing": 37,
    "total_in_universe": 52,
-   "hit_rate_%": 75.0
+   "hit_rate_%": 71.2
   },
   {
    "industry": "Pharma - Formulators",
-   "stocks_passing": 35,
+   "stocks_passing": 32,
    "total_in_universe": 40,
-   "hit_rate_%": 87.5
-  },
-  {
-   "industry": "Pharma - API & CRAMS",
-   "stocks_passing": 24,
-   "total_in_universe": 24,
-   "hit_rate_%": 100.0
+   "hit_rate_%": 80.0
   },
   {
    "industry": "Finance & Investments - Others",
-   "stocks_passing": 23,
+   "stocks_passing": 24,
    "total_in_universe": 28,
-   "hit_rate_%": 82.1
+   "hit_rate_%": 85.7
+  },
+  {
+   "industry": "Pharma - API & CRAMS",
+   "stocks_passing": 23,
+   "total_in_universe": 24,
+   "hit_rate_%": 95.8
   },
   {
    "industry": "Trading",
@@ -2915,21 +2915,15 @@
   },
   {
    "industry": "Miscellaneous",
-   "stocks_passing": 20,
+   "stocks_passing": 22,
    "total_in_universe": 34,
-   "hit_rate_%": 58.8
+   "hit_rate_%": 64.7
   },
   {
-   "industry": "Hotels",
-   "stocks_passing": 18,
-   "total_in_universe": 21,
-   "hit_rate_%": 85.7
-  },
-  {
-   "industry": "Aerospace & Defence - Equipments",
-   "stocks_passing": 18,
-   "total_in_universe": 23,
-   "hit_rate_%": 78.3
+   "industry": "Speciality Chemicals",
+   "stocks_passing": 19,
+   "total_in_universe": 25,
+   "hit_rate_%": 76.0
   },
   {
    "industry": "Castings, Forgings & Fastners",
@@ -2938,10 +2932,16 @@
    "hit_rate_%": 89.5
   },
   {
-   "industry": "Speciality Chemicals",
+   "industry": "Aerospace & Defence - Equipments",
    "stocks_passing": 17,
-   "total_in_universe": 25,
-   "hit_rate_%": 68.0
+   "total_in_universe": 23,
+   "hit_rate_%": 73.9
+  },
+  {
+   "industry": "Finance - Capital Markets - Brokers",
+   "stocks_passing": 16,
+   "total_in_universe": 16,
+   "hit_rate_%": 100.0
   },
   {
    "industry": "Auto Ancillaries - Diversified",
@@ -2950,22 +2950,10 @@
    "hit_rate_%": 84.2
   },
   {
-   "industry": "Diamond, Gems & Jewellery",
+   "industry": "Hotels",
    "stocks_passing": 16,
-   "total_in_universe": 20,
-   "hit_rate_%": 80.0
-  },
-  {
-   "industry": "Textiles - Readymade Apparel",
-   "stocks_passing": 16,
-   "total_in_universe": 24,
-   "hit_rate_%": 66.7
-  },
-  {
-   "industry": "Finance - Capital Markets - Brokers",
-   "stocks_passing": 15,
-   "total_in_universe": 16,
-   "hit_rate_%": 93.8
+   "total_in_universe": 21,
+   "hit_rate_%": 76.2
   },
   {
    "industry": "Chemicals - Organic",
@@ -2980,10 +2968,22 @@
    "hit_rate_%": 83.3
   },
   {
-   "industry": "Entertainment & Media",
+   "industry": "Diamond, Gems & Jewellery",
    "stocks_passing": 15,
-   "total_in_universe": 19,
-   "hit_rate_%": 78.9
+   "total_in_universe": 20,
+   "hit_rate_%": 75.0
+  },
+  {
+   "industry": "Realty - Construction & Contracting",
+   "stocks_passing": 15,
+   "total_in_universe": 23,
+   "hit_rate_%": 65.2
+  },
+  {
+   "industry": "Textiles - Readymade Apparel",
+   "stocks_passing": 15,
+   "total_in_universe": 24,
+   "hit_rate_%": 62.5
   },
   {
    "industry": "Sugar",
@@ -2992,16 +2992,10 @@
    "hit_rate_%": 82.4
   },
   {
-   "industry": "Realty - Construction & Contracting",
-   "stocks_passing": 14,
-   "total_in_universe": 23,
-   "hit_rate_%": 60.9
-  },
-  {
-   "industry": "Steel Products",
+   "industry": "Entertainment & Media",
    "stocks_passing": 13,
-   "total_in_universe": 14,
-   "hit_rate_%": 92.9
+   "total_in_universe": 19,
+   "hit_rate_%": 68.4
   },
   {
    "industry": "E-Commerce - Platform - Utility",
@@ -3010,10 +3004,16 @@
    "hit_rate_%": 92.3
   },
   {
-   "industry": "Pharma - API",
+   "industry": "Steel Products",
    "stocks_passing": 12,
+   "total_in_universe": 14,
+   "hit_rate_%": 85.7
+  },
+  {
+   "industry": "Pharma - API",
+   "stocks_passing": 11,
    "total_in_universe": 13,
-   "hit_rate_%": 92.3
+   "hit_rate_%": 84.6
   },
   {
    "industry": "Capital Goods - Electric General",
@@ -3022,7 +3022,19 @@
    "hit_rate_%": 61.1
   },
   {
+   "industry": "Textiles - Spinning",
+   "stocks_passing": 10,
+   "total_in_universe": 12,
+   "hit_rate_%": 83.3
+  },
+  {
    "industry": "Logistics",
+   "stocks_passing": 10,
+   "total_in_universe": 16,
+   "hit_rate_%": 62.5
+  },
+  {
+   "industry": "Telecom Services",
    "stocks_passing": 10,
    "total_in_universe": 16,
    "hit_rate_%": 62.5
@@ -3040,18 +3052,6 @@
    "hit_rate_%": 45.5
   },
   {
-   "industry": "Cement",
-   "stocks_passing": 10,
-   "total_in_universe": 25,
-   "hit_rate_%": 40.0
-  },
-  {
-   "industry": "Chemicals - Inorganic",
-   "stocks_passing": 9,
-   "total_in_universe": 9,
-   "hit_rate_%": 100.0
-  },
-  {
    "industry": "Construction - Civil/Turnkey",
    "stocks_passing": 9,
    "total_in_universe": 10,
@@ -3059,12 +3059,6 @@
   },
   {
    "industry": "IT Enabled Services",
-   "stocks_passing": 9,
-   "total_in_universe": 12,
-   "hit_rate_%": 75.0
-  },
-  {
-   "industry": "Textiles - Spinning",
    "stocks_passing": 9,
    "total_in_universe": 12,
    "hit_rate_%": 75.0
@@ -3082,34 +3076,16 @@
    "hit_rate_%": 56.2
   },
   {
-   "industry": "Telecom Services",
-   "stocks_passing": 9,
-   "total_in_universe": 16,
-   "hit_rate_%": 56.2
-  },
-  {
    "industry": "Quick Service Restaurant - QSR",
    "stocks_passing": 8,
    "total_in_universe": 8,
    "hit_rate_%": 100.0
   },
   {
-   "industry": "Electric Equipment - General",
+   "industry": "Chemicals - Inorganic",
    "stocks_passing": 8,
-   "total_in_universe": 11,
-   "hit_rate_%": 72.7
-  },
-  {
-   "industry": "Alcoholic Beverages",
-   "stocks_passing": 8,
-   "total_in_universe": 14,
-   "hit_rate_%": 57.1
-  },
-  {
-   "industry": "Fertilisers",
-   "stocks_passing": 8,
-   "total_in_universe": 15,
-   "hit_rate_%": 53.3
+   "total_in_universe": 9,
+   "hit_rate_%": 88.9
   },
   {
    "industry": "Finance - Holding Company",
@@ -3118,7 +3094,19 @@
    "hit_rate_%": 50.0
   },
   {
+   "industry": "Cement",
+   "stocks_passing": 8,
+   "total_in_universe": 25,
+   "hit_rate_%": 32.0
+  },
+  {
    "industry": "IT - ER&D",
+   "stocks_passing": 7,
+   "total_in_universe": 7,
+   "hit_rate_%": 100.0
+  },
+  {
+   "industry": "Logistics - Warehousing/Supply Chain",
    "stocks_passing": 7,
    "total_in_universe": 7,
    "hit_rate_%": 100.0
@@ -3142,7 +3130,7 @@
    "hit_rate_%": 100.0
   },
   {
-   "industry": "Infrastructure Investment Trusts",
+   "industry": "Conglomerate Backed NBFC",
    "stocks_passing": 7,
    "total_in_universe": 8,
    "hit_rate_%": 87.5
@@ -3154,28 +3142,10 @@
    "hit_rate_%": 77.8
   },
   {
-   "industry": "Mining/Minerals",
-   "stocks_passing": 7,
-   "total_in_universe": 10,
-   "hit_rate_%": 70.0
-  },
-  {
-   "industry": "Paper",
-   "stocks_passing": 7,
-   "total_in_universe": 10,
-   "hit_rate_%": 70.0
-  },
-  {
-   "industry": "Capital Goods - Transformers",
+   "industry": "Electric Equipment - General",
    "stocks_passing": 7,
    "total_in_universe": 11,
    "hit_rate_%": 63.6
-  },
-  {
-   "industry": "Consumer Electronics",
-   "stocks_passing": 7,
-   "total_in_universe": 12,
-   "hit_rate_%": 58.3
   },
   {
    "industry": "Finance - Housing",
@@ -3184,7 +3154,13 @@
    "hit_rate_%": 53.8
   },
   {
-   "industry": "Infra - Construction & Contracting",
+   "industry": "Alcoholic Beverages",
+   "stocks_passing": 7,
+   "total_in_universe": 14,
+   "hit_rate_%": 50.0
+  },
+  {
+   "industry": "Fertilisers",
    "stocks_passing": 7,
    "total_in_universe": 15,
    "hit_rate_%": 46.7
@@ -3214,12 +3190,6 @@
    "hit_rate_%": 100.0
   },
   {
-   "industry": "Logistics - Warehousing/Supply Chain",
-   "stocks_passing": 6,
-   "total_in_universe": 7,
-   "hit_rate_%": 85.7
-  },
-  {
    "industry": "Pharma - Others",
    "stocks_passing": 6,
    "total_in_universe": 7,
@@ -3232,13 +3202,19 @@
    "hit_rate_%": 85.7
   },
   {
-   "industry": "Conglomerate Backed NBFC",
+   "industry": "Dyes & Pigments",
    "stocks_passing": 6,
    "total_in_universe": 8,
    "hit_rate_%": 75.0
   },
   {
-   "industry": "Dyes & Pigments",
+   "industry": "Infrastructure Investment Trusts",
+   "stocks_passing": 6,
+   "total_in_universe": 8,
+   "hit_rate_%": 75.0
+  },
+  {
+   "industry": "Oil Drilling & Exploration",
    "stocks_passing": 6,
    "total_in_universe": 8,
    "hit_rate_%": 75.0
@@ -3256,10 +3232,46 @@
    "hit_rate_%": 66.7
   },
   {
+   "industry": "Paper",
+   "stocks_passing": 6,
+   "total_in_universe": 10,
+   "hit_rate_%": 60.0
+  },
+  {
+   "industry": "Capital Goods - Transformers",
+   "stocks_passing": 6,
+   "total_in_universe": 11,
+   "hit_rate_%": 54.5
+  },
+  {
+   "industry": "Mining/Minerals",
+   "stocks_passing": 6,
+   "total_in_universe": 11,
+   "hit_rate_%": 54.5
+  },
+  {
    "industry": "Capital Goods - Engineering Heavy",
    "stocks_passing": 6,
    "total_in_universe": 12,
    "hit_rate_%": 50.0
+  },
+  {
+   "industry": "Consumer Electronics",
+   "stocks_passing": 6,
+   "total_in_universe": 12,
+   "hit_rate_%": 50.0
+  },
+  {
+   "industry": "Banks - PSU",
+   "stocks_passing": 6,
+   "total_in_universe": 13,
+   "hit_rate_%": 46.2
+  },
+  {
+   "industry": "Infra - Construction & Contracting",
+   "stocks_passing": 6,
+   "total_in_universe": 15,
+   "hit_rate_%": 40.0
   },
   {
    "industry": "Cables - Telecom",
@@ -3275,12 +3287,6 @@
   },
   {
    "industry": "Packaging - BOPP",
-   "stocks_passing": 5,
-   "total_in_universe": 5,
-   "hit_rate_%": 100.0
-  },
-  {
-   "industry": "Packaging - FMCG/Consumers",
    "stocks_passing": 5,
    "total_in_universe": 5,
    "hit_rate_%": 100.0
@@ -3304,7 +3310,7 @@
    "hit_rate_%": 83.3
   },
   {
-   "industry": "FMCG - Dairy Products",
+   "industry": "Finance - AMC",
    "stocks_passing": 5,
    "total_in_universe": 7,
    "hit_rate_%": 71.4
@@ -3320,12 +3326,6 @@
    "stocks_passing": 5,
    "total_in_universe": 7,
    "hit_rate_%": 71.4
-  },
-  {
-   "industry": "Auto - 2 & 3 Wheelers",
-   "stocks_passing": 5,
-   "total_in_universe": 8,
-   "hit_rate_%": 62.5
   },
   {
    "industry": "Diagnostics",
@@ -3358,25 +3358,7 @@
    "hit_rate_%": 55.6
   },
   {
-   "industry": "FMCG - Personal Care",
-   "stocks_passing": 5,
-   "total_in_universe": 11,
-   "hit_rate_%": 45.5
-  },
-  {
-   "industry": "Banks - PSU",
-   "stocks_passing": 5,
-   "total_in_universe": 13,
-   "hit_rate_%": 38.5
-  },
-  {
    "industry": "Auto Ancillaries - 2 Wheelers",
-   "stocks_passing": 4,
-   "total_in_universe": 4,
-   "hit_rate_%": 100.0
-  },
-  {
-   "industry": "Compressors",
    "stocks_passing": 4,
    "total_in_universe": 4,
    "hit_rate_%": 100.0
@@ -3394,7 +3376,19 @@
    "hit_rate_%": 100.0
   },
   {
+   "industry": "Industrial Gas",
+   "stocks_passing": 4,
+   "total_in_universe": 4,
+   "hit_rate_%": 100.0
+  },
+  {
    "industry": "Petrochem - Others",
+   "stocks_passing": 4,
+   "total_in_universe": 4,
+   "hit_rate_%": 100.0
+  },
+  {
+   "industry": "Textiles - Manmade Fibre - PFY/PSF",
    "stocks_passing": 4,
    "total_in_universe": 4,
    "hit_rate_%": 100.0
@@ -3424,13 +3418,31 @@
    "hit_rate_%": 80.0
   },
   {
+   "industry": "Domestic Appliances",
+   "stocks_passing": 4,
+   "total_in_universe": 5,
+   "hit_rate_%": 80.0
+  },
+  {
    "industry": "Engineering - Light - General",
    "stocks_passing": 4,
    "total_in_universe": 5,
    "hit_rate_%": 80.0
   },
   {
+   "industry": "Hospitals/Medical Services",
+   "stocks_passing": 4,
+   "total_in_universe": 5,
+   "hit_rate_%": 80.0
+  },
+  {
    "industry": "Medical Equipment",
+   "stocks_passing": 4,
+   "total_in_universe": 5,
+   "hit_rate_%": 80.0
+  },
+  {
+   "industry": "Packaging - FMCG/Consumers",
    "stocks_passing": 4,
    "total_in_universe": 5,
    "hit_rate_%": 80.0
@@ -3484,13 +3496,13 @@
    "hit_rate_%": 57.1
   },
   {
-   "industry": "Finance & Investments - Microfinance",
+   "industry": "FMCG - Dairy Products",
    "stocks_passing": 4,
    "total_in_universe": 7,
    "hit_rate_%": 57.1
   },
   {
-   "industry": "Finance - AMC",
+   "industry": "Finance & Investments - Microfinance",
    "stocks_passing": 4,
    "total_in_universe": 7,
    "hit_rate_%": 57.1
@@ -3508,6 +3520,12 @@
    "hit_rate_%": 57.1
   },
   {
+   "industry": "Auto - 2 & 3 Wheelers",
+   "stocks_passing": 4,
+   "total_in_universe": 8,
+   "hit_rate_%": 50.0
+  },
+  {
    "industry": "Banks - Small Finance",
    "stocks_passing": 4,
    "total_in_universe": 8,
@@ -3520,10 +3538,10 @@
    "hit_rate_%": 50.0
   },
   {
-   "industry": "Oil Drilling & Exploration",
+   "industry": "FMCG - Personal Care",
    "stocks_passing": 4,
-   "total_in_universe": 8,
-   "hit_rate_%": 50.0
+   "total_in_universe": 11,
+   "hit_rate_%": 36.4
   },
   {
    "industry": "Abrasives & Grinding Wheels",
@@ -3545,12 +3563,6 @@
   },
   {
    "industry": "Chemicals - Speciality",
-   "stocks_passing": 3,
-   "total_in_universe": 3,
-   "hit_rate_%": 100.0
-  },
-  {
-   "industry": "Credit Rating Agencies",
    "stocks_passing": 3,
    "total_in_universe": 3,
    "hit_rate_%": 100.0
@@ -3616,6 +3628,12 @@
    "hit_rate_%": 100.0
   },
   {
+   "industry": "Platform - Education",
+   "stocks_passing": 3,
+   "total_in_universe": 3,
+   "hit_rate_%": 100.0
+  },
+  {
    "industry": "Railways - Kavach/Springs",
    "stocks_passing": 3,
    "total_in_universe": 3,
@@ -3629,6 +3647,12 @@
   },
   {
    "industry": "Textiles - Composite Mills",
+   "stocks_passing": 3,
+   "total_in_universe": 3,
+   "hit_rate_%": 100.0
+  },
+  {
+   "industry": "Textiles - Technical Textile",
    "stocks_passing": 3,
    "total_in_universe": 3,
    "hit_rate_%": 100.0
@@ -3652,6 +3676,12 @@
    "hit_rate_%": 75.0
   },
   {
+   "industry": "Auto - 4 Wheelers",
+   "stocks_passing": 3,
+   "total_in_universe": 4,
+   "hit_rate_%": 75.0
+  },
+  {
    "industry": "Capital Goods - EPC/Cranes",
    "stocks_passing": 3,
    "total_in_universe": 4,
@@ -3659,6 +3689,12 @@
   },
   {
    "industry": "Chemicals - Others",
+   "stocks_passing": 3,
+   "total_in_universe": 4,
+   "hit_rate_%": 75.0
+  },
+  {
+   "industry": "Compressors",
    "stocks_passing": 3,
    "total_in_universe": 4,
    "hit_rate_%": 75.0
@@ -3706,12 +3742,6 @@
    "hit_rate_%": 75.0
   },
   {
-   "industry": "Industrial Gas",
-   "stocks_passing": 3,
-   "total_in_universe": 4,
-   "hit_rate_%": 75.0
-  },
-  {
    "industry": "Lubricants",
    "stocks_passing": 3,
    "total_in_universe": 4,
@@ -3742,12 +3772,6 @@
    "hit_rate_%": 75.0
   },
   {
-   "industry": "Textiles - Manmade Fibre - PFY/PSF",
-   "stocks_passing": 3,
-   "total_in_universe": 4,
-   "hit_rate_%": 75.0
-  },
-  {
    "industry": "Textiles - Weaving",
    "stocks_passing": 3,
    "total_in_universe": 4,
@@ -3766,7 +3790,7 @@
    "hit_rate_%": 60.0
   },
   {
-   "industry": "Domestic Appliances",
+   "industry": "Electronics - Equipment/Components",
    "stocks_passing": 3,
    "total_in_universe": 5,
    "hit_rate_%": 60.0
@@ -3778,13 +3802,7 @@
    "hit_rate_%": 60.0
   },
   {
-   "industry": "Hospitals/Medical Services",
-   "stocks_passing": 3,
-   "total_in_universe": 5,
-   "hit_rate_%": 60.0
-  },
-  {
-   "industry": "Pre-Engineering Buildings",
+   "industry": "Gas Distribution",
    "stocks_passing": 3,
    "total_in_universe": 5,
    "hit_rate_%": 60.0
@@ -3796,13 +3814,13 @@
    "hit_rate_%": 60.0
   },
   {
-   "industry": "Building Materials - Paints",
+   "industry": "Ceramics/Tiles/Sanitaryware",
    "stocks_passing": 3,
    "total_in_universe": 6,
    "hit_rate_%": 50.0
   },
   {
-   "industry": "Ceramics/Tiles/Sanitaryware",
+   "industry": "FMCG - Foods",
    "stocks_passing": 3,
    "total_in_universe": 6,
    "hit_rate_%": 50.0
@@ -3844,19 +3862,7 @@
    "hit_rate_%": 100.0
   },
   {
-   "industry": "Auto Ancillaries - Transmission",
-   "stocks_passing": 2,
-   "total_in_universe": 2,
-   "hit_rate_%": 100.0
-  },
-  {
    "industry": "CCTV Camera",
-   "stocks_passing": 2,
-   "total_in_universe": 2,
-   "hit_rate_%": 100.0
-  },
-  {
-   "industry": "Capital Goods - Gensets/Turbines",
    "stocks_passing": 2,
    "total_in_universe": 2,
    "hit_rate_%": 100.0
@@ -3904,12 +3910,6 @@
    "hit_rate_%": 100.0
   },
   {
-   "industry": "FMCG Processing - Other",
-   "stocks_passing": 2,
-   "total_in_universe": 2,
-   "hit_rate_%": 100.0
-  },
-  {
    "industry": "Glass - Others",
    "stocks_passing": 2,
    "total_in_universe": 2,
@@ -3952,12 +3952,6 @@
    "hit_rate_%": 66.7
   },
   {
-   "industry": "Capital Goods - Engineering General",
-   "stocks_passing": 2,
-   "total_in_universe": 3,
-   "hit_rate_%": 66.7
-  },
-  {
    "industry": "Capital Goods - Mining Equipement",
    "stocks_passing": 2,
    "total_in_universe": 3,
@@ -3970,19 +3964,13 @@
    "hit_rate_%": 66.7
   },
   {
+   "industry": "Credit Rating Agencies",
+   "stocks_passing": 2,
+   "total_in_universe": 3,
+   "hit_rate_%": 66.7
+  },
+  {
    "industry": "E-Commerce - Platform - Travel",
-   "stocks_passing": 2,
-   "total_in_universe": 3,
-   "hit_rate_%": 66.7
-  },
-  {
-   "industry": "Platform - Education",
-   "stocks_passing": 2,
-   "total_in_universe": 3,
-   "hit_rate_%": 66.7
-  },
-  {
-   "industry": "Pumps",
    "stocks_passing": 2,
    "total_in_universe": 3,
    "hit_rate_%": 66.7
@@ -4018,19 +4006,13 @@
    "hit_rate_%": 66.7
   },
   {
-   "industry": "Textiles - Technical Textile",
-   "stocks_passing": 2,
-   "total_in_universe": 3,
-   "hit_rate_%": 66.7
-  },
-  {
    "industry": "Watches",
    "stocks_passing": 2,
    "total_in_universe": 3,
    "hit_rate_%": 66.7
   },
   {
-   "industry": "Auto - 4 Wheelers",
+   "industry": "Auto - Bus/LCVs",
    "stocks_passing": 2,
    "total_in_universe": 4,
    "hit_rate_%": 50.0
@@ -4043,6 +4025,12 @@
   },
   {
    "industry": "Electronics - Others",
+   "stocks_passing": 2,
+   "total_in_universe": 4,
+   "hit_rate_%": 50.0
+  },
+  {
+   "industry": "Finance - Non Life Insurance",
    "stocks_passing": 2,
    "total_in_universe": 4,
    "hit_rate_%": 50.0
@@ -4066,25 +4054,19 @@
    "hit_rate_%": 50.0
   },
   {
-   "industry": "Electronics - Equipment/Components",
-   "stocks_passing": 2,
-   "total_in_universe": 5,
-   "hit_rate_%": 40.0
-  },
-  {
    "industry": "Finance & Investments - MSME Lending",
    "stocks_passing": 2,
    "total_in_universe": 5,
    "hit_rate_%": 40.0
   },
   {
-   "industry": "Gas Distribution",
+   "industry": "Plywood Boards/Laminates",
    "stocks_passing": 2,
    "total_in_universe": 5,
    "hit_rate_%": 40.0
   },
   {
-   "industry": "Plywood Boards/Laminates",
+   "industry": "Pre-Engineering Buildings",
    "stocks_passing": 2,
    "total_in_universe": 5,
    "hit_rate_%": 40.0
@@ -4102,13 +4084,7 @@
    "hit_rate_%": 40.0
   },
   {
-   "industry": "EPC",
-   "stocks_passing": 2,
-   "total_in_universe": 6,
-   "hit_rate_%": 33.3
-  },
-  {
-   "industry": "FMCG - Foods",
+   "industry": "Building Materials - Paints",
    "stocks_passing": 2,
    "total_in_universe": 6,
    "hit_rate_%": 33.3
@@ -4450,7 +4426,13 @@
    "hit_rate_%": 50.0
   },
   {
-   "industry": "Building Material USA",
+   "industry": "Auto Ancillaries - Transmission",
+   "stocks_passing": 1,
+   "total_in_universe": 2,
+   "hit_rate_%": 50.0
+  },
+  {
+   "industry": "Capital Goods - Gensets/Turbines",
    "stocks_passing": 1,
    "total_in_universe": 2,
    "hit_rate_%": 50.0
@@ -4492,13 +4474,13 @@
    "hit_rate_%": 50.0
   },
   {
-   "industry": "Finance - Capital Markets - RTA",
+   "industry": "FMCG Processing - Other",
    "stocks_passing": 1,
    "total_in_universe": 2,
    "hit_rate_%": 50.0
   },
   {
-   "industry": "Finance - Investment Bankers",
+   "industry": "Finance - Capital Markets - RTA",
    "stocks_passing": 1,
    "total_in_universe": 2,
    "hit_rate_%": 50.0
@@ -4576,6 +4558,12 @@
    "hit_rate_%": 33.3
   },
   {
+   "industry": "Capital Goods - Engineering General",
+   "stocks_passing": 1,
+   "total_in_universe": 3,
+   "hit_rate_%": 33.3
+  },
+  {
    "industry": "Infra - Power - Generation/Distribution",
    "stocks_passing": 1,
    "total_in_universe": 3,
@@ -4588,19 +4576,13 @@
    "hit_rate_%": 33.3
   },
   {
-   "industry": "Auto - Bus/LCVs",
+   "industry": "Pumps",
    "stocks_passing": 1,
-   "total_in_universe": 4,
-   "hit_rate_%": 25.0
+   "total_in_universe": 3,
+   "hit_rate_%": 33.3
   },
   {
    "industry": "Auto - Tractors",
-   "stocks_passing": 1,
-   "total_in_universe": 4,
-   "hit_rate_%": 25.0
-  },
-  {
-   "industry": "Finance - Non Life Insurance",
    "stocks_passing": 1,
    "total_in_universe": 4,
    "hit_rate_%": 25.0
@@ -4612,10 +4594,10 @@
    "hit_rate_%": 25.0
   },
   {
-   "industry": "Finance & Investments - CV Finance",
+   "industry": "EPC",
    "stocks_passing": 1,
-   "total_in_universe": 5,
-   "hit_rate_%": 20.0
+   "total_in_universe": 6,
+   "hit_rate_%": 16.7
   },
   {
    "industry": "Finance - PSU Lending",
@@ -4642,6 +4624,12 @@
    "hit_rate_%": 0.0
   },
   {
+   "industry": "Building Material USA",
+   "stocks_passing": 0,
+   "total_in_universe": 2,
+   "hit_rate_%": 0.0
+  },
+  {
    "industry": "Capital Goods - Solar",
    "stocks_passing": 0,
    "total_in_universe": 6,
@@ -4661,6 +4649,18 @@
   },
   {
    "industry": "Ferro Alloys",
+   "stocks_passing": 0,
+   "total_in_universe": 2,
+   "hit_rate_%": 0.0
+  },
+  {
+   "industry": "Finance & Investments - CV Finance",
+   "stocks_passing": 0,
+   "total_in_universe": 5,
+   "hit_rate_%": 0.0
+  },
+  {
+   "industry": "Finance - Investment Bankers",
    "stocks_passing": 0,
    "total_in_universe": 2,
    "hit_rate_%": 0.0

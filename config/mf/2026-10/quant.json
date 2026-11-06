@@ -1,0 +1,480 @@
+{
+ "code": "quant",
+ "amc": "Quant Mutual Fund",
+ "month": "2026-10",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-11-06 20:17",
+ "files": [
+  {
+   "name": "quant Aggressive Hybrid Fund",
+   "url": "https://quantmutual.com/Admin/disclouser/quant_Aggressive_Hybrid_Fund_30_Oct_2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 10
+  },
+  {
+   "name": "quant Multi Asset Allocation Fund",
+   "url": "https://quantmutual.com/Admin/disclouser/quant_Multi_Asset_Allocation_Fund_30_Oct_2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 26
+  },
+  {
+   "name": "quant Multi Cap Fund",
+   "url": "https://quantmutual.com/Admin/disclouser/quant_Multi_Cap_Fund_30_Oct_2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 52
+  },
+  {
+   "name": "quant Large & Mid Cap Fund",
+   "url": "https://quantmutual.com/Admin/disclouser/quant_Large_and_Mid_Cap_Fund_30_Oct_2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 21
+  },
+  {
+   "name": "quant Small Cap Fund",
+   "url": "https://quantmutual.com/Admin/disclouser/quant_Small_Cap_Fund_30_Oct_2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 104
+  },
+  {
+   "name": "quant Infrastructure Fund",
+   "url": "https://quantmutual.com/Admin/disclouser/quant_Infrastructure_Fund_30_Oct_2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 20
+  },
+  {
+   "name": "quant Focused Fund",
+   "url": "https://quantmutual.com/Admin/disclouser/quant_Focused_Fund_30_Oct_2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 10
+  },
+  {
+   "name": "quant Liquid Fund",
+   "url": "https://quantmutual.com/Admin/disclouser/quant_Liquid_Fund_30_Oct_2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "quant Mid Cap Fund",
+   "url": "https://quantmutual.com/Admin/disclouser/quant_Mid_Cap_Fund_30_Oct_2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 23
+  },
+  {
+   "name": "quant Flexi cap Fund",
+   "url": "https://quantmutual.com/Admin/disclouser/quant_Flexi_Cap_Fund_30_Oct_2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 29
+  },
+  {
+   "name": "quant ELSS Tax Saver Fund",
+   "url": "https://quantmutual.com/Admin/disclouser/quant_ELSS_Tax_Saver_Fund_30_Oct_2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 31
+  },
+  {
+   "name": "quant ESG Integration Strategy Fund",
+   "url": "https://quantmutual.com/Admin/disclouser/quant_ESG_Integration_Strategy_Fund_30_Oct_2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 12
+  },
+  {
+   "name": "quant Quantamental Fund",
+   "url": "https://quantmutual.com/Admin/disclouser/quant_Quantamental_Fund_30_Oct_2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 13
+  },
+  {
+   "name": "quant Value Fund",
+   "url": "https://quantmutual.com/Admin/disclouser/quant_Value_Fund_30_Oct_2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 22
+  },
+  {
+   "name": "quant Large cap fund",
+   "url": "https://quantmutual.com/Admin/disclouser/quant_Large_Cap_Fund_30_Oct_2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 14
+  },
+  {
+   "name": "quant Gilt Fund",
+   "url": "https://quantmutual.com/Admin/disclouser/quant_Gilt_Fund_30_Oct_2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "quant Overnight Fund",
+   "url": "https://quantmutual.com/Admin/disclouser/quant_Overnight_Fund_30_Oct_2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "quant Dynamic Asset Allocation Fund",
+   "url": "https://quantmutual.com/Admin/disclouser/quant_Dynamic_Asset_Allocation_Fund_30_Oct_2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 9
+  },
+  {
+   "name": "quant Business Cycle Fund",
+   "url": "https://quantmutual.com/Admin/disclouser/quant_Business_Cycle_Fund_30_Oct_2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 14
+  },
+  {
+   "name": "quant BFSI Fund",
+   "url": "https://quantmutual.com/Admin/disclouser/quant_BFSI_Fund_30_Oct_2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 9
+  },
+  {
+   "name": "quant Healthcare Fund",
+   "url": "https://quantmutual.com/Admin/disclouser/quant_Healthcare_Fund_30_Oct_2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 12
+  },
+  {
+   "name": "quant Manufacturing Fund",
+   "url": "https://quantmutual.com/Admin/disclouser/quant_Manufacturing_Fund_30_Oct_2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 14
+  },
+  {
+   "name": "quant Teck Fund",
+   "url": "https://quantmutual.com/Admin/disclouser/quant_Teck_Fund_30_Oct_2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 10
+  },
+  {
+   "name": "quant Momentum Fund",
+   "url": "https://quantmutual.com/Admin/disclouser/quant_Momentum_Fund_30_Oct_2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 12
+  },
+  {
+   "name": "quant Commodities Fund",
+   "url": "https://quantmutual.com/Admin/disclouser/quant_Commodities_Fund_30_Oct_2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 10
+  },
+  {
+   "name": "quant Consumption Fund",
+   "url": "https://quantmutual.com/Admin/disclouser/quant_Consumption_Fund_30_Oct_2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 14
+  },
+  {
+   "name": "quant PSU Fund",
+   "url": "https://quantmutual.com/Admin/disclouser/quant_PSU_Fund_30_Oct_2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 10
+  },
+  {
+   "name": "quant Arbitrage Fund",
+   "url": "https://quantmutual.com/Admin/disclouser/quant_Arbitrage_Fund_30_Oct_2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 85
+  },
+  {
+   "name": "quant Equity Savings Fund",
+   "url": "https://quantmutual.com/Admin/disclouser/quant_Equity_Savings_Fund_30_Oct_2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 21
+  },
+  {
+   "name": "quant Silver ETF",
+   "url": "https://quantmutual.com/Admin/disclouser/quant_Silver_ETF_30_Oct_2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "quant Income Plus Arbitrage Active FOF",
+   "url": "https://quantmutual.com/Admin/disclouser/quant_Income_Plus_Arbitrage_Active_FOF_30_Oct_2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 0
+  },
+  {
+   "name": "quant Nifty 50 Index Fund",
+   "url": "https://quantmutual.com/Admin/disclouser/quant_Nifty_50_Index_Fund_30_Oct_2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 50
+  },
+  {
+   "name": "quant Nifty 100 Index Fund",
+   "url": "https://quantmutual.com/Admin/disclouser/quant_Nifty_100_Index_Fund_30_Oct_2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 100
+  },
+  {
+   "name": "quant Nifty Midcap 150 Index Fund",
+   "url": "https://quantmutual.com/Admin/disclouser/quant_Nifty_Midcap_150_Index_Fund_30_Oct_2026.xlsx",
+   "schemes": 1,
+   "eq_rows": 149
+  }
+ ],
+ "schemes": {
+  "quant Aggressive Hybrid Fund": {
+   "eq": 10,
+   "fut": 1,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1504.02,
+   "total_cr": 2095.94
+  },
+  "quant Multi Asset Allocation Fund": {
+   "eq": 26,
+   "fut": 12,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 4405.01,
+   "total_cr": 6685.48
+  },
+  "quant Multi Cap Fund": {
+   "eq": 52,
+   "fut": 5,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 6423.96,
+   "total_cr": 7202.06
+  },
+  "quant Large & Mid Cap Fund": {
+   "eq": 21,
+   "fut": 5,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2683.7,
+   "total_cr": 3369.78
+  },
+  "quant Small Cap Fund": {
+   "eq": 104,
+   "fut": 3,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 30218.04,
+   "total_cr": 33809.27
+  },
+  "quant Infrastructure Fund": {
+   "eq": 20,
+   "fut": 5,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2302.42,
+   "total_cr": 2933.79
+  },
+  "quant Focused Fund": {
+   "eq": 10,
+   "fut": 5,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 655.15,
+   "total_cr": 811.96
+  },
+  "quant Mid Cap Fund": {
+   "eq": 23,
+   "fut": 6,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 6456.4,
+   "total_cr": 7477.7
+  },
+  "quant Flexi Cap Fund": {
+   "eq": 29,
+   "fut": 7,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 5808.17,
+   "total_cr": 7162.33
+  },
+  "quant ELSS Tax Saver Fund": {
+   "eq": 31,
+   "fut": 0,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 11957.21,
+   "total_cr": 12782.76
+  },
+  "quant ESG Integration Strategy Fund": {
+   "eq": 12,
+   "fut": 5,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 235.38,
+   "total_cr": 319.61
+  },
+  "quant Quantamental Fund": {
+   "eq": 13,
+   "fut": 5,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1051.45,
+   "total_cr": 1492.19
+  },
+  "quant Value Fund": {
+   "eq": 22,
+   "fut": 4,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1476.76,
+   "total_cr": 1811.72
+  },
+  "quant Large Cap Fund": {
+   "eq": 14,
+   "fut": 5,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 3142.13,
+   "total_cr": 3738.02
+  },
+  "quant Dynamic Asset Allocation Fund": {
+   "eq": 9,
+   "fut": 2,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 530.49,
+   "total_cr": 787.18
+  },
+  "quant Business Cycle Fund": {
+   "eq": 14,
+   "fut": 5,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 787.2,
+   "total_cr": 892.06
+  },
+  "quant BFSI Fund": {
+   "eq": 9,
+   "fut": 5,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 597.84,
+   "total_cr": 822.84
+  },
+  "quant Healthcare Fund": {
+   "eq": 12,
+   "fut": 4,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 276.79,
+   "total_cr": 416.6
+  },
+  "quant Manufacturing Fund": {
+   "eq": 14,
+   "fut": 4,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 532.55,
+   "total_cr": 663.69
+  },
+  "quant Teck Fund": {
+   "eq": 10,
+   "fut": 3,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 203.65,
+   "total_cr": 246.29
+  },
+  "quant Momentum Fund": {
+   "eq": 12,
+   "fut": 5,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 936.65,
+   "total_cr": 1201.66
+  },
+  "quant Commodities Fund": {
+   "eq": 10,
+   "fut": 4,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 214.27,
+   "total_cr": 315.35
+  },
+  "quant Consumption Fund": {
+   "eq": 14,
+   "fut": 2,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 152.93,
+   "total_cr": 171.96
+  },
+  "quant PSU Fund": {
+   "eq": 10,
+   "fut": 6,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 243.11,
+   "total_cr": 372.59
+  },
+  "quant Arbitrage Fund": {
+   "eq": 85,
+   "fut": 86,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 844.03,
+   "total_cr": 1138.37
+  },
+  "quant Equity Savings Fund": {
+   "eq": 21,
+   "fut": 13,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 48.08,
+   "total_cr": 58.51
+  },
+  "quant Nifty 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 8.71,
+   "total_cr": 8.79
+  },
+  "quant Nifty 100 Index Fund": {
+   "eq": 100,
+   "fut": 0,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 9.74,
+   "total_cr": 9.86
+  },
+  "quant Nifty Midcap 150 Index Fund": {
+   "eq": 149,
+   "fut": 0,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 7.95,
+   "total_cr": 8.11
+  }
+ },
+ "rows": 1113,
+ "eq_cr": 83713.8,
+ "warn": []
+}
