@@ -1726,23 +1726,31 @@
   },
   {
    "m": "2026-10",
-   "fund_houses": 5,
-   "active_schemes": 85,
-   "active_equity_cr": 284802.0,
-   "active_net": 1971.0,
+   "fund_houses": 8,
+   "active_schemes": 174,
+   "active_equity_cr": 1314596.0,
+   "active_net": 2214.0,
    "left_out": {
     "new_funds": 0.0,
-    "new_funds_n": 0,
+    "new_funds_n": 1,
     "doubled": 0.0,
-    "doubled_n": 0,
-    "new_listings": 2825.0,
-    "only_one_month": 0.0
+    "doubled_n": 1,
+    "new_listings": 6470.0,
+    "only_one_month": 829.0
    },
    "merges": [],
    "by_fund_house": {
+    "absl": [
+     -1427.0,
+     970.0
+    ],
     "canara": [
      -118.0,
      444.0
+    ],
+    "hdfc": [
+     3107.0,
+     1192.0
     ],
     "helios": [
      589.0,
@@ -1755,6 +1763,10 @@
     "quant": [
      1801.0,
      2051.0
+    ],
+    "sbi": [
+     -1437.0,
+     1483.0
     ],
     "tata": [
      -569.0,
@@ -4314,7 +4326,14 @@
    1245.6,
    622.8,
    2
+  ],
+  [
+   "2026-10",
+   "KMEW",
+   3115.13,
+   619.0,
+   5
   ]
  ],
- "unmapped_share": 0.00222
+ "unmapped_share": 0.00218
 }
