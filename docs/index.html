@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>PKC Sector Radar</title>
+<title>PKCSCREEN</title>
 <meta name="theme-color" content="#10233D">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1000,15 +1000,15 @@ body{background:var(--wash),var(--desk);background-attachment:scroll;min-height:
   .rcard:hover{transform:translateY(-2px)}
   .rail button{transition:background .12s ease,border-color .12s ease}
 }
-/* Nine tabs: on PCs and tablets every tab stays in view - tighter spacing, short names for the three longest
-   (RS, Bases, VPCI); below 1280px every tab uses its short name, below 1100px the counts are dropped */
+/* Ten tabs: on PCs and tablets every tab stays in view - tighter spacing, short names for the three longest
+   (RS, Bases, VPCI); below 1360px every tab uses its short name, below 1100px the counts are dropped */
 @media (min-width:721px){
   .tab{padding-inline:9px;gap:6px}
   .tab svg{padding:4px}
   .tab[data-v="rs"] .lf,.tab[data-v="bases"] .lf,.tab[data-v="vpci"] .lf{display:none}
   .tab[data-v="rs"] .ls,.tab[data-v="bases"] .ls,.tab[data-v="vpci"] .ls{display:inline}
 }
-@media (min-width:721px) and (max-width:1279px){.tab .lf{display:none}.tab .ls{display:inline}.tab{font-size:16px}}
+@media (min-width:721px) and (max-width:1359px){.tab .lf{display:none}.tab .ls{display:inline}.tab{font-size:16px}}
 @media (min-width:721px) and (max-width:1099px){.tab .cnt{display:none}.tab{padding-inline:7px;gap:5px;font-size:15.5px}.tabbar .wrap{padding-inline:12px}}
 @media (min-width:721px) and (max-width:899px){.tabbar .wrap{justify-content:space-between;gap:0}.tab{flex:1 1 auto;flex-direction:column;gap:3px;padding:8px 2px 7px;font-size:14px;min-width:0}}
 @media (max-width:720px){
@@ -1025,14 +1025,87 @@ body{background:var(--wash),var(--desk);background-attachment:scroll;min-height:
   .sdoc-b{padding:12px 12px 14px}
   .sd-rules li{font-size:16px;padding:7px 9px}
 }
+/* ══ PKCSCREEN (Nov 2026) ══════════════════════════════════
+   Wider pages on PCs, the new wordmark, the Upside tab and the breadth small multiples. Kept last. */
+.wrap{max-width:1680px;padding-inline:clamp(16px,2.4vw,40px)}
+.brand .mark{filter:drop-shadow(0 3px 8px rgba(240,180,86,.28))}
+/* the band reads as a screen: a faint grid that fades out towards the tabs */
+.band::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+  background-size:40px 40px;background-position:-1px -1px;-webkit-mask-image:linear-gradient(180deg,#000 10%,transparent 92%);mask-image:linear-gradient(180deg,#000 10%,transparent 92%)}
+.band>.wrap{position:relative}
+.foot .fbrand{display:flex;align-items:center;gap:10px;margin:0 0 6px;color:var(--ink)}
+.foot .fbrand b{font-family:var(--display);font-weight:800;font-stretch:125%;letter-spacing:.05em;font-size:18px}
+.foot .fbrand b i{font-style:normal;font-weight:500;color:var(--muted)}
+.brand b.wm{display:block;font-family:var(--display);font-weight:800;font-stretch:125%;font-size:27px;letter-spacing:.05em;line-height:1.05;color:#fff}
+.brand b.wm i{font-style:normal;font-weight:500;color:#C9D7EB;letter-spacing:.07em}
+.tab[data-v="upside"],#view[data-v="upside"]{--t:#6D28D9}
+:root{--pe20:#7C3AED;--pe50:#0F8A7A;--pe100:#D9640F;--pe200:#1F5FAE}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--pe20:#A78BFA;--pe50:#2DD4BF;--pe100:#FB923C;--pe200:#6AA3EC}}
+:root[data-theme="dark"]{--pe20:#A78BFA;--pe50:#2DD4BF;--pe100:#FB923C;--pe200:#6AA3EC}
+@media (min-width:1500px){.tiles{grid-template-columns:repeat(6,minmax(0,1fr))}}
+.tiles.uptiles{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (min-width:721px) and (max-width:1099px){.tiles.uptiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.uptiles .tile .v{font-size:31px}.uptiles .tile .d{color:var(--muted);line-height:1.4}
+
+/* Upside rank, reasons, bands */
+.upp{display:inline-block;min-width:40px;text-align:center;padding:1px 7px;border-radius:7px;font-weight:800;font-size:15.5px;font-variant-numeric:tabular-nums}
+.up-a{background:linear-gradient(180deg,#8B5CF6,#6D28D9 60%,#5B21B6);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 1px 0 #4C1D95}
+.up-b{background:color-mix(in srgb,#6D28D9 17%,var(--card));color:#5B21B6}
+.up-c{background:var(--soft);color:var(--ink)}
+.up-d{background:var(--soft);color:var(--muted)}
+:root[data-theme="dark"] .up-b{color:#C4B5FD;background:color-mix(in srgb,#8B5CF6 24%,var(--card))}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .up-b{color:#C4B5FD;background:color-mix(in srgb,#8B5CF6 24%,var(--card))}}
+.upcs{display:flex;flex-wrap:wrap;gap:4px;min-width:210px}
+.upc{display:inline-block;font-size:13.5px;font-weight:600;padding:1px 8px;border-radius:999px;white-space:nowrap;cursor:help;
+  background:color-mix(in srgb,var(--up) 12%,var(--card));color:var(--up-t);border:1px solid color-mix(in srgb,var(--up) 34%,transparent)}
+.upc.neg{background:color-mix(in srgb,var(--down) 10%,var(--card));color:var(--down-t);border-color:color-mix(in srgb,var(--down) 34%,transparent)}
+.upband{white-space:nowrap;font-size:15px}.upband small{display:block;color:var(--muted);font-size:13px;font-weight:600}
+.upbars{max-width:980px}
+.upsec{display:block;min-width:150px;white-space:normal;line-height:1.3}.upsec small{display:block;color:var(--muted);font-size:13.5px}
+.upyrs{display:grid;grid-template-columns:repeat(17,minmax(0,1fr));gap:6px;max-width:980px;margin:8px 0 4px}
+.upy{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.upyb{position:relative;width:100%;height:150px}
+.upyb::after{content:"";position:absolute;left:-3px;right:-3px;bottom:22%;height:1.5px;background:var(--muted);opacity:.55}
+.upyb i{position:absolute;width:40%;border-radius:3px}
+.upyb i.u{left:8%;background:var(--t)}
+.upyb i.r{right:8%;background:color-mix(in srgb,var(--muted) 60%,var(--track))}
+@media (max-width:720px){.upyrs{gap:2px}.upy{font-size:11px}.upyb{height:120px}.upcs{min-width:170px}}
+
+/* Breadth: benchmark indices and trend participation (small multiples), one-year charts two-up on wide screens */
+.msec-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:10px 20px;margin:24px 2px 12px}
+.msec-head h3{font-size:23px;font-weight:800}
+.msec-head p{margin:4px 0 0;color:var(--muted);font-size:16px;max-width:82ch}
+.mgrid{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;margin-bottom:14px}
+.mgrid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.mcard{padding:14px 15px 6px;position:relative;min-width:0}
+.mhead{display:flex;justify-content:space-between;align-items:baseline;gap:4px 14px;flex-wrap:wrap;margin:0 2px 6px}
+.mhead h4{font-family:var(--display);font-stretch:106%;font-weight:800;font-size:19px;margin:0}
+.mval{display:flex;align-items:baseline;gap:10px}
+.mval b{font-family:var(--display);font-weight:800;font-size:23px}
+.mval span{font-size:15px;font-weight:700}
+.bgrid2{display:grid;grid-template-columns:minmax(0,1fr);column-gap:14px}
+.bgrid2.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.bgrid2>.chart{min-width:0}
+
+/* Ten tabs: on phones the bottom bar scrolls sideways (the open tab is kept in view; a fade shows there is more) */
+@media (max-width:720px){
+  .tabbar .wrap{justify-content:flex-start;scroll-snap-type:x proximity;scroll-padding-inline:4px}
+  .tab{flex:1 0 auto;min-width:48px;font-size:12px;scroll-snap-align:start}
+  .tabbar .wrap.ovf{-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent)}
+  .tabbar .wrap.ovf.end{-webkit-mask-image:linear-gradient(270deg,#000 88%,transparent);mask-image:linear-gradient(270deg,#000 88%,transparent)}
+  .brand b.wm{font-size:23px}
+  .tiles.uptiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .uptiles .tile .v{font-size:25px}
+}
 </style>
 </head>
 <body>
 <header class="band">
   <div class="wrap topbar">
-    <a class="brand" href="#rotation" aria-label="PKC Sector Radar home">
-      <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17.5" fill="none" stroke="#3E5C85" stroke-width="2"/><circle cx="20" cy="20" r="11" fill="none" stroke="#3E5C85" stroke-width="2"/><path d="M20 20 L33 9" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/><circle cx="27" cy="25" r="2.6" fill="#5FD6B3"/><circle cx="13" cy="14" r="2" fill="#FF9479"/><circle cx="20" cy="20" r="2.4" fill="var(--accent)"/></svg>
-      <div><b>PKC Sector Radar</b><span id="asof">Loading market data…</span></div>
+    <a class="brand" href="#rotation" aria-label="PKCSCREEN home">
+      <svg class="mark" width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><rect x="3" y="5" width="38" height="27" rx="7" fill="rgba(255,255,255,.07)" stroke="#5578A8" stroke-width="2"/><path d="M9.5 13.5h25M9.5 19.5h25M9.5 25.5h25" stroke="#2E4B74" stroke-width="1.3"/><path d="M9.5 26l7.5-6.5 5.5 3.6 9.5-9.4" fill="none" stroke="var(--accent)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="13.7" r="3.2" fill="#5FD6B3" stroke="#0C1D38" stroke-width="1.6"/><path d="M16.5 38.5h11M22 32v6.5" stroke="#5578A8" stroke-width="2.3" stroke-linecap="round"/></svg>
+      <div><b class="wm">PKC<i>SCREEN</i></b><span id="asof">Loading market data…</span></div>
     </a>
     <div class="gsearch" role="search">
       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M16 16l4.5 4.5"/></svg>
@@ -1053,6 +1126,7 @@ body{background:var(--wash),var(--desk);background-attachment:scroll;min-height:
     <button class="tab" role="tab" data-v="rotation" aria-selected="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 5h11v3H3zm0 5.5h16v3H3zM3 16h8v3H3z"/></svg>Rotation</button>
     <button class="tab" role="tab" data-v="breadth" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M3 13h4l2.5-6 4 11 2.5-6H21"/></svg>Breadth</button>
     <button class="tab" role="tab" data-v="rs" aria-selected="false" title="RS ranking"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M4 18l6-6 4 4 6-8M15 8h5v5"/></svg><span class="lf">RS ranking</span><span class="ls">RS</span></button>
+    <button class="tab" role="tab" data-v="upside" aria-selected="false" title="Upside score"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M12 20V5M6 10.5L12 4.5l6 6M5 20.5h4M15 20.5h4"/></svg><span class="lf">Upside</span><span class="ls">Upside</span></button>
     <button class="tab" role="tab" data-v="scanners" aria-selected="false" title="Scanners"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M16 16l4.5 4.5"/></svg><span class="lf">Scanners</span><span class="ls">Scans</span><span class="cnt" id="scanCnt"></span></button>
     <button class="tab" role="tab" data-v="bases" aria-selected="false" title="Long bases"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M3 19h18M5 15c2-1 3 1 5 0s3-2 5-1 2 1 4 0"/><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-dasharray="3 2.4" stroke-linecap="round" d="M4 8h16"/></svg><span class="lf">Long bases</span><span class="ls">Bases</span></button>
     <button class="tab" role="tab" data-v="patterns" aria-selected="false" title="Chart patterns"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M2.5 7l4 10 5.5-8 5.5 8 4-11"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="2.6 2.4" stroke-linecap="round" d="M8 9.5h8"/></svg><span class="lf">Patterns</span><span class="ls">Patterns</span><span class="cnt" id="patCnt"></span></button>
@@ -1076,8 +1150,8 @@ body{background:var(--wash),var(--desk);background-attachment:scroll;min-height:
 /* ════════════════════ state & helpers ════════════════════ */
 const PERIODS=["1D","1W","1M","3M","6M","YTD","1Y"];
 const PL={"1D":"Today","1W":"1W","1M":"1M","3M":"3M","6M":"6M","YTD":"YTD","1Y":"1Y"};
-const TABS=["rotation","breadth","rs","scanners","bases","patterns","results","watch","vpci"];
-const st={tab:"rotation",period:"1M",group:"Themes",agg:"mean",sort:"ret",view:"bars",open:null,scan:"combo3",scanTop:0,scanFund:0,uni:"all",
+const TABS=["rotation","breadth","rs","upside","scanners","bases","patterns","results","watch","vpci"];
+const st={up:{q:"",sec:"",min:"0",s2:false,a50:false,cap:false},brange:"6M",tab:"rotation",period:"1M",group:"Themes",agg:"mean",sort:"ret",view:"bars",open:null,scan:"combo3",scanTop:0,scanFund:0,uni:"all",
   rs:{q:"",sec:"",theme:"",min:0,fmin:0,tt:false,s2:false,a50:false,all:false},tbl:{}};
 let D={};
 const $=s=>document.querySelector(s);
@@ -1159,7 +1233,7 @@ function renderPulse(){
 }
 function renderFoot(){
   const m=D.meta,f=m.filters||{};
-  $("#foot").innerHTML=`<p>Breadth and rotation: ${m.all_stocks?`all ${m.all_stocks.toLocaleString("en-IN")} NSE main-board stocks that traded in the last 3 sessions (no liquidity filter), or the liquid universe with the switch. `:""}Scanners and RS ranking: ${m.universe.toLocaleString("en-IN")} liquid NSE stocks (price ≥ ₹${f.min_price}, median daily turnover ≥ ₹${f.min_median_turnover_cr} Cr${f.min_market_cap_cr?`, market cap ≥ ₹${f.min_market_cap_cr} Cr`:""}). Prices from ${m.source==="upstox"?"Upstox (split- and bonus-adjusted), with today's candle checked against the NSE bhavcopy":m.source==="yahoo"?"Yahoo Finance (backup source)":esc(m.source)}. Refreshed every weekday evening.</p><p>For personal research. Not investment advice.${D.meta.grp?` Group charts by <a href="https://www.tradingview.com/" target="_blank" rel="noopener">TradingView</a> Lightweight Charts™ (Apache 2.0).`:""}</p>`;
+  $("#foot").innerHTML=`<p class="fbrand"><b>PKC<i>SCREEN</i></b><span>· prices to ${fmtDate(m.asof)}</span></p><p>Breadth and rotation: ${m.all_stocks?`all ${m.all_stocks.toLocaleString("en-IN")} NSE main-board stocks that traded in the last 3 sessions (no liquidity filter), or the liquid universe with the switch. `:""}Scanners and RS ranking: ${m.universe.toLocaleString("en-IN")} liquid NSE stocks (price ≥ ₹${f.min_price}, median daily turnover ≥ ₹${f.min_median_turnover_cr} Cr${f.min_market_cap_cr?`, market cap ≥ ₹${f.min_market_cap_cr} Cr`:""}). Prices from ${m.source==="upstox"?"Upstox (split- and bonus-adjusted), with today's candle checked against the NSE bhavcopy":m.source==="yahoo"?"Yahoo Finance (backup source)":esc(m.source)}. Refreshed every weekday evening.</p><p>For personal research. Not investment advice.${D.meta.grp?` Group charts by <a href="https://www.tradingview.com/" target="_blank" rel="noopener">TradingView</a> Lightweight Charts™ (Apache 2.0).`:""}</p>`;
 }
 
 /* ════════════════════ generic table ════════════════════ */
@@ -1356,8 +1430,10 @@ function heatmap(rows){
 }
 
 /* ════════════════════ BREADTH ════════════════════ */
+let LCW=0;   // breadth charts are drawn at their on-screen width (set by renderBreadth)
+function viewW(){const v=$("#view"),cs=getComputedStyle(v);return (v.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight))||1200}
 function lineChart(id,series,o){
-  const W=1000,H=o.h||300,pl=46,pr=14,pt=12,pb=28,n=D.breadth.dates.length;
+  const W=o.W||LCW||1000,H=o.h||(W<600?240:300),pl=46,pr=14,pt=12,pb=28,n=D.breadth.dates.length;
   const x=i=>pl+i*(W-pl-pr)/(n-1),y=(v,lo,hi)=>pt+(1-(v-lo)/(hi-lo))*(H-pt-pb);
   let g="";
   for(const t of o.ticks)g+=`<line x1="${pl}" x2="${W-pr}" y1="${y(t,o.lo,o.hi)}" y2="${y(t,o.lo,o.hi)}" stroke="var(--track)" stroke-width="${t===o.mid?1.6:1}"/><text x="${pl-8}" y="${y(t,o.lo,o.hi)+4}" text-anchor="end">${o.tf?o.tf(t):t+(o.unit||"")}</text>`;
@@ -1367,10 +1443,10 @@ function lineChart(id,series,o){
     const pts=s.data.map((v,i)=>v==null?null:`${x(i).toFixed(1)},${y(v,lo,hi).toFixed(1)}`).filter(Boolean).join(" ");
     g+=`<polyline points="${pts}" fill="none" stroke="${s.c}" stroke-width="${s.w||2}" ${s.dash?'stroke-dasharray="6 5"':""} stroke-linejoin="round"/>`}
   g+=`<line class="xh" x1="0" x2="0" y1="${pt}" y2="${H-pb}" stroke="var(--muted)" stroke-width="1" opacity="0"/>`;
-  return `<svg data-chart="${id}" viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="${esc(o.label)}" style="touch-action:pan-y;display:block">${g}<rect x="${pl}" y="0" width="${W-pl-pr}" height="${H}" fill="transparent"/></svg><div class="tip" hidden></div>`;
+  return `<svg data-chart="${id}" data-w="${W}" viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="${esc(o.label)}" style="touch-action:pan-y;display:block">${g}<rect x="${pl}" y="0" width="${W-pl-pr}" height="${H}" fill="transparent"/></svg><div class="tip" hidden></div>`;
 }
 function wireChart(box,id,fmtTip){
-  const svg=box.querySelector(`svg[data-chart="${id}"]`),tip=box.querySelector(".tip"),xh=svg.querySelector(".xh"),n=D.breadth.dates.length,W=1000,pl=46,pr=14;
+  const svg=box.querySelector(`svg[data-chart="${id}"]`),tip=box.querySelector(".tip"),xh=svg.querySelector(".xh"),n=D.breadth.dates.length,W=+svg.dataset.w||1000,pl=46,pr=14;
   const move=e=>{const r=svg.getBoundingClientRect(),cx=(e.touches?e.touches[0].clientX:e.clientX)-r.left;
     const i=Math.max(0,Math.min(n-1,Math.round((cx/r.width*W-pl)/((W-pl-pr)/(n-1))))),sx=pl+i*(W-pl-pr)/(n-1);
     xh.setAttribute("x1",sx);xh.setAttribute("x2",sx);xh.setAttribute("opacity",".7");tip.hidden=false;tip.innerHTML=fmtTip(i);
@@ -1381,6 +1457,7 @@ function wireChart(box,id,fmtTip){
 function nticks(lo,hi,n=4){const r=hi-lo||1,b=Math.pow(10,Math.floor(Math.log10(r/n))),m=[1,2,2.5,5,10].find(k=>r/(k*b)<=n)*b,a=[];for(let v=Math.ceil(lo/m)*m;v<=hi+1e-9;v+=m)a.push(Math.round(v));return a}
 const kfmt=v=>Math.abs(v)>=1000?(v/1000).toFixed(Math.abs(v)>=10000?0:1).replace(/\.0$/,"")+"k":String(v);
 function renderBreadth(){
+  const vw=viewW(),two=vw>=1300;LCW=Math.round((two?(vw-14)/2:vw)-30);
   const b=uniB(),L=b.dates.length-1,P=Math.max(0,L-5),sum=k=>b[k].slice(-5).reduce((x,y)=>x+y,0);
   const tile=(k,lab)=>{const v=b[k][L],d=v-b[k][P];return `<div class="card tile"><div class="k">${lab}</div><div class="v num">${v.toFixed(1)}%</div><div class="d num ${cls(d)}">${d>0?"+":""}${d.toFixed(1)} pts vs a week ago</div><div class="bar"><i style="width:${v}%"></i></div></div>`};
   const pair=(lab,a,c,k1,k2)=>`<div class="card tile"><div class="k">${lab}</div><div class="v num"><span class="up">${a}</span> <span style="color:var(--muted);font-weight:500">/</span> <span class="down">${c}</span></div><div class="d" style="color:var(--muted)">5-day total ${sum(k1).toLocaleString("en-IN")} / ${sum(k2).toLocaleString("en-IN")}</div></div>`;
@@ -1388,6 +1465,7 @@ function renderBreadth(){
   ${D.breadth.universe?`<div class="card toolbar">${uniSeg()}<p class="tbnote">${st.uni==="lq"?"Only the liquid stocks the scanners use.":"Every main-board stock that traded that day — no price, turnover or size filter, as NSE counts advances and declines."}</p></div>`:""}
   <div class="tiles">${tile("a20","Above 20 DMA")}${tile("a50","Above 50 DMA")}${tile("a200","Above 200 DMA")}
     ${pair("Advances / declines today",b.adv[L],b.dec[L],"adv","dec")}${pair("52-week highs / lows today",b.nh[L],b.nl[L],"nh","nl")}${pair("Up 4%+ / down 4%+ today",b.up4[L],b.dn4[L],"up4","dn4")}</div>`;
+  const SM=breadthSmall(b);h+=SM.h+`<div class="msec-head"><div><h3>Breadth history, one year</h3></div></div><div class="bgrid2${two?" two":""}">`;
   const bv=b.bench.filter(isNum),blo=Math.min(...bv),bhi=Math.max(...bv),bsc={lo:blo-(bhi-blo)*.05,hi:bhi+(bhi-blo)*.05};
   h+=`<div class="card chart" id="ch1"><h3>Share of stocks above their moving averages</h3>
     <div class="legend"><span><i style="--c:var(--s1)"></i>Above 50 DMA</span><span><i style="--c:var(--s2)"></i>Above 200 DMA</span><span><i class="dash" style="--c:var(--muted)"></i>${esc(b.bench_name)} (own scale)</span></div>
@@ -1405,7 +1483,7 @@ function renderBreadth(){
   }
   const net=b.nh.map((v,i)=>v-b.nl[i]),nlo=Math.min(0,...net),nhi=Math.max(1,...net),tk=[nlo,0,nhi].map(Math.round).filter((v,i,a)=>a.indexOf(v)===i);
   h+=`<div class="card chart" id="ch2"><h3>Net new 52-week highs</h3><div class="legend"><span><i style="--c:var(--up)"></i>More highs than lows</span><span><i style="--c:var(--down)"></i>More lows than highs</span></div>
-    ${lineChart("b",[{data:net,bars:1}],{lo:nlo,hi:nhi,ticks:tk,mid:0,label:"Daily new 52-week highs minus new lows",h:220})}</div>`;
+    ${lineChart("b",[{data:net,bars:1}],{lo:nlo,hi:nhi,ticks:tk,mid:0,label:"Daily new 52-week highs minus new lows",h:220})}</div></div>`;
   const last=[];for(let i=L;i>=Math.max(0,L-14);i--)last.push({i,d:b.dates[i]});
   const pc=k=>({k,label:{a20:">20 DMA",a50:">50 DMA",a200:">200 DMA"}[k],fmt:r=>`<span class="num">${b[k][r.i]}%</span>`,sort:r=>b[k][r.i]});
   const ct=(k,lab,c)=>({k,label:lab,fmt:r=>`<span class="num ${c}">${b[k][r.i].toLocaleString("en-IN")}</span>`,sort:r=>b[k][r.i]});
@@ -1416,7 +1494,7 @@ function renderBreadth(){
   if(D.meta.idx)h+=`<div id="valSlot"></div>`;
   h+=`<h3 style="font-size:19px;margin:6px 0 10px">Last 15 sessions</h3><div class="card">${dtable("brt",last,cols,{limit:15})}</div>
   <p class="note">${st.uni==="lq"||!b.n?`Breadth uses today's ${D.meta.universe.toLocaleString("en-IN")}-stock liquid universe across the whole history.`:`Breadth counts every NSE main-board stock (EQ and BE series) on each day it traded — ${b.n[L].toLocaleString("en-IN")} today. Checked against NSE's own daily file: advances and declines agree within a few stocks.`}</p>`;
-  $("#view").innerHTML=h;wireTables($("#view"),renderBreadth);
+  $("#view").innerHTML=h;wireTables($("#view"),renderBreadth);SM.wire();
   wireChart($("#ch1"),"a",i=>`<b>${fmtDate(b.dates[i])}</b><br>Above 50 DMA: <b>${b.a50[i]}%</b><br>Above 200 DMA: <b>${b.a200[i]}%</b><br>${esc(b.bench_name)}: <b>${inr(b.bench[i])}</b>`);
   wireChart($("#ch2"),"b",i=>`<b>${fmtDate(b.dates[i])}</b><br>Highs <b>${b.nh[i]}</b> · Lows <b>${b.nl[i]}</b><br>Net <b>${net[i]>0?"+":""}${net[i]}</b>`);
   if(b.adl){wireChart($("#ch3"),"c",i=>`<b>${fmtDate(b.dates[i])}</b><br>Advances <b>${b.adv[i]}</b> · Declines <b>${b.dec[i]}</b><br>A/D line <b>${b.adl[i].toLocaleString("en-IN")}</b><br>${esc(b.bench_name)}: <b>${inr(b.bench[i])}</b>`);
@@ -3124,7 +3202,7 @@ async function openDrawer(sym,ex,focusWl){
     <div id="patSlot"></div><div id="s2Slot">${hasS2?stage2Section(sym):""}</div><div id="baseSlot"></div>
     ${x.lq===0?`<p class="note" style="margin:0 0 12px">Outside the liquid universe (median turnover under ₹${D.meta.filters?.min_median_turnover_cr??1} Cr a day, price under ₹${D.meta.filters?.min_price??20}${D.meta.filters?.min_market_cap_cr?` or market cap under ₹${D.meta.filters.min_market_cap_cr} Cr`:""}), so it is not in the scanners or the RS ranking. It counts in breadth and sector rotation; its RS rating places it among the liquid stocks.</p>`:""}
     <div class="dsec" id="retsec"><h4>Returns</h4><dl class="dgrid">${per}</dl></div>
-    <div class="dsec" id="trendsec"><h4>Trend and strength</h4><dl class="dgrid">${kv("RS rating",rsPill(x.rs))}${kv("RS a week ago",x.rs1w??"–")}${kv("Stage",stagePill(x.st))}${kv("Trend template",x.tt?'<span class="up">Pass</span>':'<span style="color:var(--muted)">No</span>')}
+    <div class="dsec" id="trendsec"><h4>Trend and strength</h4><dl class="dgrid">${kv("RS rating",rsPill(x.rs))}${kv("RS a week ago",x.rs1w??"–")}${isNum(x.up)?kv("Upside score",upPill(x.up)):""}${kv("Stage",stagePill(x.st))}${kv("Trend template",x.tt?'<span class="up">Pass</span>':'<span style="color:var(--muted)">No</span>')}
       ${kv("Above 20 / 50 / 200",[x.a20,x.a50,x.a200].map(b=>b==null?"–":b?'<span class="up">✓</span>':'<span class="down">✗</span>').join(" "))}${kv("From 52W high",sgn(x.h52,1))}${kv("Above 52W low",sgn(x.l52,1))}${kv("RSI 14",isNum(x.rsi)?x.rsi.toFixed(0):"–")}
       ${kv("ADX 14",isNum(x.adx)?x.adx.toFixed(0):"–")}${kv("ATR % of price",isNum(x.atrp)?x.atrp.toFixed(1)+"%":"–")}${kv("Volume × 50d",isNum(x.vr)?x.vr.toFixed(1):"–")}${kv("Turnover ₹Cr/day",isNum(x.to)?x.to:"–")}
       ${kv("Close range today",isNum(x.dcr)?x.dcr.toFixed(0)+"%":"–")}${kv("ADR % (20d)",isNum(x.adr)?x.adr.toFixed(1)+"%":"–")}${kv("Signal groups today",isNum(x.nsc)?x.nsc.toFixed(0)+" / 7":"–")}</dl></div><div id="rsSlot"></div>`:`<p class="note" style="margin:0">This symbol is outside the main NSE universe (BSE-only, or below the liquidity filter), so only its VPCI read is shown.</p><div id="pchartSlot"></div>${wlCardHtml(sym)}`}
@@ -3351,7 +3429,7 @@ async function syncConnect(tok){const w=wlGet();const mine=await gh("/gists?per_
     const localHas=w.lists.some(l=>l.items.length),remoteHas=remote&&Array.isArray(remote.lists)&&remote.lists.some(l=>l.items?.length);
     WL=localHas&&remoteHas?wlMerge(w,wlNorm(remote)):remoteHas?wlNorm(remote):w;wlSave(true);
     await gh("/gists/"+g.id,{method:"PATCH",body:JSON.stringify({files:{[GFILE]:{content:JSON.stringify(WL)}}})},tok)}
-  else g=await gh("/gists",{method:"POST",body:JSON.stringify({description:"PKC Sector Radar watchlists",public:false,files:{[GFILE]:{content:JSON.stringify(w)}}})},tok);
+  else g=await gh("/gists",{method:"POST",body:JSON.stringify({description:"PKCSCREEN watchlists",public:false,files:{[GFILE]:{content:JSON.stringify(w)}}})},tok);
   syncCfg.set({tok,id:g.id,at:Date.now(),err:null})}
 async function syncPull(){const c=syncCfg.get();if(!c)return;try{const full=await gh("/gists/"+c.id,null,c.tok);const remote=JSON.parse(full.files[GFILE]?.content||"null");
     if(remote&&(remote.updated||0)>(wlGet().updated||0)){WL=wlNorm(remote);wlSave(true);if(st.tab==="watch")renderWatch();toast("Watchlists updated from your other device")}
@@ -3363,7 +3441,7 @@ function syncDialog(){const c=syncCfg.get();
       <p style="font-size:15px"><b>Telegram alerts:</b> save this same token as the <code>GIST_TOKEN</code> secret in your repository and the Telegram bot reads these lists — your pivot, stop and target levels — live during market hours (README → Telegram alerts).</p>
       <div class="acts"><button type="button" class="ghost" data-mclose>Close</button><button type="button" class="ghost" id="syncnow">Sync now</button><button class="btn danger" type="submit">Turn off on this device</button></div></form>`
     :`<form><h3>Sync across your devices</h3><p>Watchlists are saved in this browser. To see the same lists on your phone and PC, store them in a private GitHub gist (free, only you can change it):</p>
-      <ol><li>Open <a href="https://github.com/settings/tokens/new?scopes=gist&description=PKC%20Sector%20Radar%20watchlists" target="_blank" rel="noopener">this GitHub page</a> (signed in as you). It creates a token that can only read and write gists. Choose an expiry, then click <b>Generate token</b>.</li>
+      <ol><li>Open <a href="https://github.com/settings/tokens/new?scopes=gist&description=PKCSCREEN%20watchlists" target="_blank" rel="noopener">this GitHub page</a> (signed in as you). It creates a token that can only read and write gists. Choose an expiry, then click <b>Generate token</b>.</li>
       <li>Copy the token (starts with <code>ghp_</code>) and paste it below. Do the same on your other device.</li></ol>
       <input name="tok" placeholder="ghp_…" autocomplete="off" spellcheck="false" aria-label="GitHub token" required>
       <p style="font-size:14px">The token stays in this browser only. The gist is secret (not listed anywhere), but anyone given its exact address could read it — don't put anything private in notes.</p>
@@ -3705,12 +3783,175 @@ function resEvidence(E){
     <p class="note">${esc(E.data)} ${esc(E.caveats)}</p>
     <p class="note"><b>Research behind it:</b> ${E.sources.map(s=>`<a href="${esc(s.u)}" target="_blank" rel="noopener">${esc(s.t)}</a>`).join(" · ")}</p></div></details>`}
 
+/* ════════════════════ UPSIDE ════════════════════
+   upside.json (scripts/upside.py): every liquid stock with a year of history, ranked 1–99 on its odds of beating
+   the average stock over the next 3 months. u = Upside rank, d = decile (9 = top 10%), p = the model's chance of a
+   top-20% finish, w / a = the input families pushing the score up / down, irs / srs = industry / sector RS rating.
+   evidence = the walk-forward test (config/upside_evidence.json). */
+let UPD=null;
+async function upLoad(){
+  if(UPD)return UPD;let j=window.EMBED?.upside||null;
+  if(!j){if(!D.meta.up)return null;try{const r=await fetch(`data/upside.json?v=${encodeURIComponent(D.meta.generated||"")}`);j=r.ok?await r.json():null}catch(e){j=null}}
+  if(j){j.rows.forEach((x,i)=>x.o=i);j.by=Object.fromEntries(j.rows.map(x=>[x.s,x]))}
+  return UPD=j}
+const UPW={trend:"Uptrend",rs:"RS & momentum",near_high:"Near its high",sector:"Strong sector",industry:"Strong industry",volatility:"Calm price action",volume:"Volume & size",market:"Market backdrop"};
+const UPA={trend:"Trend",rs:"RS & momentum",near_high:"Far from its high",sector:"Weak sector",industry:"Weak industry",volatility:"Volatility",volume:"Volume & size",market:"Market backdrop"};
+const UPTIP={trend:"Price against its 10/20/50/150/200-day averages, their slopes, stage and the trend template",rs:"RS rating, its path over 12 weeks, 1-week to 1-year returns",near_high:"Distance from the 52-week high, days since it, RS line against its own high, days since the last blue dot",sector:"Sector index (equal weight): returns, RS rating, breadth, money flow, rank changes",industry:"Industry index (equal weight): returns, RS rating, breadth, money flow, rank changes",volatility:"ATR, daily range, 63-day volatility, range tightness, pullback depth",volume:"Volume against its average, up/down volume, turnover trend, price level and turnover size",market:"Market breadth and the equal-weight market trend (same for every stock)"};
+function upPill(v){if(!isNum(v))return "–";const c=v>=90?"up-a":v>=80?"up-b":v>=50?"up-c":"up-d";return `<span class="upp ${c}">${v}</span>`}
+const upChips=(a,lab,neg)=>(a||[]).map(k=>`<span class="upc${neg?" neg":""}" title="${esc(UPTIP[k]||"")}">${esc(lab[k]||k)}</span>`).join("")||`<span style="color:var(--muted)">–</span>`;
+const upBand=d=>d===9?"Top 10%":d===8?"Top 20%":d>=5?"Upper half":d>=2?"Lower half":"Bottom 20%";
+function upRegime(E,ab){const r=E?.regime||[];if(!r.length||!isNum(ab))return null;
+  return r.find(x=>x.band==="Below 25%"&&ab<25)||r.find(x=>x.band==="25–40%"&&ab>=25&&ab<40)||r.find(x=>x.band==="40–55%"&&ab>=40&&ab<55)||r.find(x=>x.band==="55% or more"&&ab>=55)||null}
+function renderUpside(){
+  if(!UPD){$("#view").innerHTML=`<div class="card empty">${D.meta.up?"Loading the Upside score…":"The Upside score is not in today's data yet. It appears after the next daily update."}</div>`;
+    if(D.meta.up)upLoad().then(()=>{if(st.tab==="upside")renderUpside()});return}
+  const f=st.up,E=UPD.evidence,dec=E?Object.fromEntries(E.deciles.map(x=>[x.d,x])):{},top=dec[9],reg=upRegime(E,UPD.ab50);
+  const secs=[...new Set(UPD.rows.flatMap(r=>{const x=D.by[r.s];return x?[x.sec,x.ind]:[]}).filter(Boolean))].sort();
+  const opt=(a,cur)=>a.map(o=>`<option ${o===cur?"selected":""}>${esc(o)}</option>`).join("");
+  const t30=UPD.rows.slice(0,30).map(r=>D.by[r.s]?.sec).filter(Boolean),cnt={};t30.forEach(s=>cnt[s]=(cnt[s]||0)+1);
+  const [csec,cn]=Object.entries(cnt).sort((a,b)=>b[1]-a[1])[0]||["",0];
+  const nTop=UPD.rows.filter(r=>r.d===9).length;
+  let h=`<div class="sec-head"><div><h2>Upside score</h2><p>Every liquid stock ranked 1–99 on its odds of beating the average stock over the next 3 months, from the site's own numbers: trend, RS, the RS line, sector and industry rotation, volatility, volume and market breadth. It ranks odds, it does not predict: in testing, about 4 in 10 top-10% picks were still lower after 3 months.</p></div></div>`;
+  if(top)h+=`<div class="tiles uptiles">
+    <div class="card tile"><div class="k">Top 10% today</div><div class="v num">${nTop.toLocaleString("en-IN")} stocks</div><div class="d">Upside 90+ · in testing they beat the average stock by <b class="up">${sgn(top.x63,1)}</b> over 3 months</div></div>
+    <div class="card tile"><div class="k">Chance of +20% before −8%</div><div class="v num">${top.hit.toFixed(0)}%</div><div class="d">for the top 10%, within 3 months · ${E.base_hit.toFixed(0)}% for all stocks</div></div>
+    <div class="card tile"><div class="k">Market backdrop</div><div class="v num">${UPD.ab50.toFixed(0)}%</div><div class="d">of liquid stocks above their 50-DMA${reg?` · in this band the top 10% beat the average by <b class="up">${sgn(reg.top_x63,1)}</b>`:""}</div></div>
+    <div class="card tile"><div class="k">Concentration</div><div class="v num">${cn} of 30</div><div class="d">of the top 30 are ${esc(csec)}${cn>=10?" — tick “2 per industry” to spread the list":""}</div></div></div>`;
+  h+=`<div class="card toolbar">
+    <div class="ctl"><span>Search</span><input class="search" type="search" id="uq" placeholder="Symbol or company" value="${esc(f.q)}" aria-label="Search stocks"></div>
+    <div class="ctl"><span>Sector / industry</span><select class="select" id="usec" aria-label="Sector or industry"><option value="">All</option>${opt(secs,f.sec)}</select></div>
+    <div class="ctl"><span>Minimum Upside</span>${seg("upmin",["0","50","80","90"],String(f.min),{"0":"Any","50":"50+","80":"80+","90":"90+ (top 10%)"})}</div>
+    <div class="ctl"><span>Filters</span><div style="display:flex;flex-wrap:wrap;gap:0 16px"><label class="check"><input type="checkbox" id="us2" ${f.s2?"checked":""}>Stage 2</label><label class="check"><input type="checkbox" id="ua50" ${f.a50?"checked":""}>Above 50 DMA</label><label class="check" title="Keep only the two highest-ranked stocks of each industry"><input type="checkbox" id="ucap" ${f.cap?"checked":""}>2 per industry</label></div></div>
+  </div><div class="card" id="upT"></div>${upEvidence(E)}
+  <p class="note">Scores use the close of ${fmtDate(UPD.asof)} (EOD). Stocks listed less than a year ago are not scored. Past results are averages over many trades; any single stock can do the opposite. Check the chart and the news before acting.</p>`;
+  $("#view").innerHTML=h;
+  const on=(id,k,ev)=>$(id).addEventListener(ev,e=>{f[k]=e.target.type==="checkbox"?e.target.checked:e.target.value;if(st.tbl.up)st.tbl.up.show=100;store.set("up",{...f,q:""});drawUpside()});
+  on("#uq","q","input");on("#usec","sec","change");on("#us2","s2","change");on("#ua50","a50","change");on("#ucap","cap","change");
+  drawUpside();upWireEv();
+}
+function drawUpside(){
+  const f=st.up,q=f.q.trim().toUpperCase(),E=UPD.evidence,dec=E?Object.fromEntries(E.deciles.map(x=>[x.d,x])):{};
+  let rows=UPD.rows.map(r=>({...r,x:D.by[r.s]||{}})).filter(r=>{const x=r.x;
+    return (!q||r.s.includes(q)||(x.n||"").toUpperCase().includes(q))&&(!f.sec||x.sec===f.sec||x.ind===f.sec)&&r.u>=+f.min&&(!f.s2||x.st===2)&&(!f.a50||x.a50)});
+  if(f.cap){const seen={};rows=rows.filter(r=>{const k=r.x.ind||r.x.sec||"–";seen[k]=(seen[k]||0)+1;return seen[k]<=2})}
+  if(!st.tbl.up)st.tbl.up={key:"u",dir:-1,show:100};
+  const cols=[C.stock,
+    {k:"u",label:"Upside",fmt:r=>upPill(r.u),sort:r=>-r.o,csv:r=>r.u},
+    {k:"band",label:"Past 3M of its band",l:1,fmt:r=>{const b=dec[r.d];return b?`<span class="upband"><b class="num ${cls(b.x63)}">${sgn(b.x63,1)}</b> vs avg · <span class="num">${b.hit.toFixed(0)}%</span> hit +20%<small>${upBand(r.d)}</small></span>`:"–"},sort:r=>-r.o,csv:r=>dec[r.d]?.x63},
+    {k:"w",label:"Pushing it up",l:1,fmt:r=>`<span class="upcs">${upChips(r.w,UPW)}</span>`,sort:r=>(r.w||[]).length,csv:r=>(r.w||[]).map(k=>UPW[k]).join("; ")},
+    {k:"a",label:"Holding it back",l:1,fmt:r=>`<span class="upcs">${upChips(r.a,UPA,1)}</span>`,sort:r=>(r.a||[]).length,csv:r=>(r.a||[]).map(k=>UPA[k]).join("; ")},
+    {k:"rs",label:"RS",fmt:r=>rsPill(r.x.rs??r.rs),sort:r=>r.x.rs??r.rs},
+    {k:"irs",label:"Industry RS",fmt:r=>rsPill(r.irs),sort:r=>r.irs},
+    {k:"srs",label:"Sector RS",fmt:r=>rsPill(r.srs),sort:r=>r.srs},
+    {k:"h52",label:"From 52W high",fmt:r=>`<span class="num">${sgn(r.x.h52??r.h52,1)}</span>`,sort:r=>r.x.h52??r.h52},
+    {k:"st",label:"Stage",fmt:r=>stagePill(r.x.st),sort:r=>r.x.st},
+    {k:"r3",label:"3M",fmt:r=>`<span class="num ${cls(r.x.r?.["3M"])}">${sgn(r.x.r?.["3M"],1)}</span>`,sort:r=>r.x.r?.["3M"]},
+    {k:"atrp",label:"ATR %",fmt:r=>isNum(r.x.atrp)?`<span class="num">${r.x.atrp.toFixed(1)}%</span>`:"–",sort:r=>r.x.atrp},
+    {k:"px",label:"Price",fmt:r=>`<span class="num">${inr(r.x.px)}</span>`,sort:r=>r.x.px},
+    {k:"p",label:"Model %",fmt:r=>`<span class="num" title="The model's chance of finishing the next 3 months in the top 20% of liquid stocks (one half of the score)">${r.p.toFixed(0)}%</span>`,sort:r=>r.p},
+    {k:"sec",label:"Sector · industry",l:1,fmt:r=>`<span class="upsec">${esc(r.x.sec||"–")}<small>${esc(r.x.ind||"")}</small></span>`,sort:r=>r.x.sec||"",csv:r=>`${r.x.sec||""} / ${r.x.ind||""}`}];
+  $("#upT").innerHTML=dtable("up",rows,cols,{empty:"No stocks match. Clear a filter or lower the minimum."});
+  wireTables($("#upT"),drawUpside);
+}
+function upEvidence(E){
+  if(!E)return "";
+  const D9=E.deciles,mx=Math.max(...D9.map(x=>Math.abs(x.x63)),1);
+  const W=Math.max(300,Math.min(980,viewW()-34)),H=W<520?220:260,pl=44,pr=10,pt=16,pb=40,bw=(W-pl-pr)/10,y0=pt+(H-pt-pb)/2,sc=(H-pt-pb)/2/mx;
+  let g=`<line x1="${pl}" x2="${W-pr}" y1="${y0}" y2="${y0}" stroke="var(--muted)" stroke-width="1.2"/>`;
+  for(const t of [-Math.floor(mx),Math.floor(mx)])g+=`<text x="${pl-8}" y="${y0-t*sc+4}" text-anchor="end">${t>0?"+":""}${t}%</text>`;
+  D9.forEach((x,i)=>{const v=x.x63,hh=Math.max(2,Math.abs(v)*sc),xx=pl+i*bw+bw*.18,ww=bw*.64,yy=v>=0?y0-hh:y0;
+    g+=`<rect x="${xx}" y="${yy}" width="${ww}" height="${hh}" rx="4" fill="${v>=0?"var(--up)":"var(--down)"}"><title>Decile ${i+1}: ${sgn(v,1)} vs the average stock</title></rect>`+
+      `<text x="${xx+ww/2}" y="${v>=0?yy-6:yy+hh+16}" text-anchor="middle" style="fill:var(--ink);font-weight:700">${sgn(v,1)}</text>`+
+      `<text x="${xx+ww/2}" y="${H-12}" text-anchor="middle">${i===0?(W<520?"Low":"Lowest"):i===9?(W<520?"Top":"Top 10%"):i+1}</text>`});
+  const dt=(a)=>`<table class="dt etab"><thead><tr><th class="l">Score decile</th><th>3 months vs average</th><th>1 month vs average</th><th>Up after 3 months</th><th>Median 3-month return</th><th>+20% before −8%</th><th>Median worst drop</th></tr></thead><tbody>${[...a].reverse().map(x=>`<tr><td class="l">${x.d===9?"<b>Top 10%</b>":x.d===0?"Lowest 10%":"Decile "+(x.d+1)}</td><td class="num ${cls(x.x63)}">${sgn(x.x63,1)}</td><td class="num ${cls(x.x21)}">${sgn(x.x21,1)}</td><td class="num">${x.up.toFixed(0)}%</td><td class="num ${cls(x.med)}">${sgn(x.med,1)}</td><td class="num">${x.hit.toFixed(1)}%</td><td class="num down">${sgn(x.mae,1)}</td></tr>`).join("")}</tbody></table>`;
+  const cmp=`<table class="dt etab"><thead><tr><th class="l">Ranking (top 10% of each)</th><th>2019–26: 3 months vs average</th><th>+20% before −8%</th><th>Beat the average, % of weeks</th><th>2010–18: 3 months vs average</th></tr></thead><tbody>${E.compare.map((c,i)=>`<tr><td class="l">${i===0?"<b>"+esc(c.name)+"</b>":esc(c.name)}</td><td class="num ${cls(c.hold.x63)}">${sgn(c.hold.x63,1)}</td><td class="num">${c.hold.hit.toFixed(1)}%</td><td class="num">${c.hold.beat.toFixed(0)}%</td><td class="num ${cls(c.dev.x63)}">${sgn(c.dev.x63,1)}</td></tr>`).join("")}</tbody></table>`;
+  const ym=Math.max(...E.years.flatMap(y=>[Math.abs(y.up),Math.abs(y.rs)]),1);
+  const bar=(v,cl,t)=>{const p=Math.abs(v)/ym*78;return `<i class="${cl}" style="${v>=0?`bottom:22%;height:${p}%`:`top:78%;height:${Math.min(22,p)}%`}" title="${t}"></i>`};
+  const yrs=`<div class="upyrs" role="img" aria-label="Top-10% result by year, Upside score against RS rating alone">${E.years.map(y=>`<div class="upy"><div class="upyb">${bar(y.up,"u",`${y.y}: Upside ${sgn(y.up,1)}`)}${bar(y.rs,"r",`${y.y}: RS alone ${sgn(y.rs,1)}`)}</div><span>${String(y.y).slice(2)}</span></div>`).join("")}</div>
+    <div class="legend"><span><i style="--c:var(--t)"></i>Upside score, top 10%</span><span><i style="--c:var(--muted)"></i>RS rating alone, top 10%</span><span>Below the line: a year it lagged the average stock</span></div>`;
+  const regt=`<table class="dt etab"><thead><tr><th class="l">Stocks above their 50-DMA on the day</th><th>Weeks</th><th>Top 10%: vs average</th><th>Top 10%: actual 3-month return</th><th>All stocks: 3-month return</th><th>Top 10%: +20% before −8%</th></tr></thead><tbody>${E.regime.map(r=>`<tr><td class="l">${esc(r.band)}</td><td class="num">${r.days}</td><td class="num ${cls(r.top_x63)}">${sgn(r.top_x63,1)}</td><td class="num ${cls(r.top_f63)}">${sgn(r.top_f63,1)}</td><td class="num ${cls(r.all_f63)}">${sgn(r.all_f63,1)}</td><td class="num">${r.top_hit.toFixed(0)}%</td></tr>`).join("")}</tbody></table>`;
+  const pt_=`<table class="dt etab"><thead><tr><th class="l">20-stock portfolio, 2 new buys a week, held about 3 months</th><th>Return a year, 2010–26</th><th>Worst fall</th><th>Return a year, 2019–26</th><th>Worst fall</th></tr></thead><tbody>${E.portfolio.map((p,i)=>`<tr><td class="l">${i===0?"<b>"+esc(p.name)+"</b>":esc(p.name)}</td><td class="num">${p.all.cagr.toFixed(0)}%</td><td class="num down">${p.all.dd.toFixed(0)}%</td><td class="num">${p.hold.cagr.toFixed(0)}%</td><td class="num down">${p.hold.dd.toFixed(0)}%</td></tr>`).join("")}</tbody></table>`;
+  return `<details class="card evid" id="upEv"><summary>How it works and how it was tested <span>· top 10% beat the average stock by ${sgn(E.compare[0].hold.x63,1)} over 3 months in 2019–26</span></summary><div class="evb">
+    <h4>What it is</h4><ul class="fl">
+      <li><b>Half a trained model, half a plain leadership score.</b> The model (LightGBM, 88 inputs, all from this site's data) estimates the chance that a stock finishes the next 3 months in the top 20% of liquid stocks. The plain half is the average percentile of the RS rating, closeness to the 52-week high and the industry's RS rating. The Upside rank is the percentile of the two combined.</li>
+      <li><b>The chips explain the model half:</b> which groups of inputs pushed this stock's chance up or down today (hover a chip for what it covers).</li>
+      <li><b>Updated every evening</b> from the same prices as the rest of the site. The model itself is fixed; it is retrained offline once a year.</li></ul>
+    <h4>How it was tested</h4><ul class="fl">
+      <li>${esc(E.data)}. The score is read at the close; the trade is counted from the next session's open and measured over 63 sessions against the average liquid stock.</li>
+      <li>The model was retrained for each year using only data whose 3-month outcome was known before that year began. The design was chosen on ${esc(E.design)} and written down; ${esc(E.holdout)} was then read once, with no changes afterwards.</li></ul>
+    <h4>Outcome by score decile, ${esc(E.holdout)}</h4>
+    <div class="upbars"><svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="3-month return against the average stock by Upside decile">${g}</svg></div>
+    <div class="tscroll">${dt(E.deciles)}</div>
+    <h4>Against simpler rankings</h4><div class="tscroll">${cmp}</div>
+    <h4>Every year, top 10% against the average stock (3 months)</h4>${yrs}
+    <h4>By market breadth on the day, ${esc(E.holdout)}</h4><div class="tscroll">${regt}</div>
+    <p class="note" style="margin-top:6px">The edge is largest in strong markets. In weak ones the top 10% still beat the average stock, but the average stock itself did poorly.</p>
+    <h4>As a portfolio (0.5% cost per round trip, idle cash at 6%, marked weekly)</h4><div class="tscroll">${pt_}</div>
+    <p class="note" style="margin-top:6px">Compare the rows, not the levels: the price history has no delisted companies and no slippage, which flatters every row.</p>
+    ${E.gate?`<h4>Inside the scan-shortlist rules</h4><p class="note" style="margin-top:0">Among stocks that pass an approximation of the shortlist gate (Stage 2, RS 80+, near the high, calm, not extended), the top half by Upside did <b class="up">${sgn(E.gate.hold.top,1)}</b> against the average stock and the bottom half <b>${sgn(E.gate.hold.bottom,1)}</b> (2019–26; 2010–18: ${sgn(E.gate.dev.top,1)} vs ${sgn(E.gate.dev.bottom,1)}).</p>`:""}
+    <h4>Limits</h4><ul class="fl">
+      <li>It ranks odds; it does not call tops or bottoms. About 4 in 10 top-10% stocks were still lower after 3 months, and their worst drop along the way was as deep as any other stock's — use stops.</li>
+      <li>It leans towards the leading sector, so the top of the list can bunch (capping 2 per industry cost about 4–5 points a year in the test and did not reduce the worst fall).</li>
+      <li>Over 1 month the edge is about a third of the 3-month edge. It is stronger in small and mid caps than in large caps.</li>
+      <li>Sector and industry membership is today's; the price history has no delisted companies; fixed 3-month holds are not real exits.</li></ul>
+    <p class="note">Tested ${esc(E.tested)}. Model: ${esc(E.model)}, trained on outcomes to ${fmtDate(E.trained_to)}.</p></div></details>`;
+}
+function upWireEv(){}
+
+/* ── Benchmark indices and trend participation: small single-series charts with one range for all ── */
+const BRANGE={"3M":63,"6M":126,"1Y":260};
+function miniChart(id,dates,vals,o){
+  const n=vals.length,W=o.W||560,H=o.h||230,pl=58,pr=14,pt=14,pb=28,v=vals.filter(isNum);if(n<2||!v.length)return "";
+  let lo=o.lo,hi=o.hi;if(lo==null){lo=Math.min(...v);hi=Math.max(...v);const pad=(hi-lo)*.1||1;lo-=pad;hi+=pad}
+  const x=i=>pl+i*(W-pl-pr)/(n-1),y=t=>pt+(1-(t-lo)/(hi-lo))*(H-pt-pb);
+  let g="";for(const t of (o.ticks||nticks(lo,hi,4)))if(t>=lo-1e-9&&t<=hi+1e-9)g+=`<line x1="${pl}" x2="${W-pr}" y1="${y(t).toFixed(1)}" y2="${y(t).toFixed(1)}" stroke="var(--track)" stroke-width="1" ${o.ref===t?'stroke-dasharray="5 4" style="stroke:var(--muted);opacity:.55"':""}/><text x="${pl-7}" y="${(y(t)+4).toFixed(1)}" text-anchor="end">${o.tf?o.tf(t):t}${o.unit||""}</text>`;
+  const step=Math.max(1,Math.round(n/5));for(let i=Math.floor(step/2);i<n;i+=step)g+=`<text x="${x(i).toFixed(1)}" y="${H-8}" text-anchor="middle">${new Date(dates[i]+"T00:00:00").toLocaleDateString("en-IN",{day:"numeric",month:"short"})}</text>`;
+  const pts=vals.map((t,i)=>isNum(t)?[x(i),y(t)]:null).filter(Boolean),line=pts.map(p=>p[0].toFixed(1)+","+p[1].toFixed(1)).join(" ");
+  g+=`<defs><linearGradient id="mg_${id}" x1="0" x2="0" y1="0" y2="1"><stop offset="0" style="stop-color:${o.c};stop-opacity:.32"/><stop offset="1" style="stop-color:${o.c};stop-opacity:.02"/></linearGradient></defs>`+
+    `<path d="M${pts[0][0].toFixed(1)},${H-pb} L${line.replace(/ /g," L")} L${pts[pts.length-1][0].toFixed(1)},${H-pb} Z" fill="url(#mg_${id})"/>`+
+    `<polyline points="${line}" fill="none" stroke="${o.c}" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>`+
+    `<circle cx="${pts[pts.length-1][0].toFixed(1)}" cy="${pts[pts.length-1][1].toFixed(1)}" r="4.5" fill="${o.c}" stroke="var(--card)" stroke-width="2"/>`+
+    `<line class="xh" x1="0" x2="0" y1="${pt}" y2="${H-pb}" stroke="var(--muted)" stroke-width="1" opacity="0"/><circle class="xd" r="4.5" fill="${o.c}" stroke="var(--card)" stroke-width="2" opacity="0"/>`;
+  return `<svg data-mini="${id}" data-w="${W}" data-pl="${pl}" data-pr="${pr}" viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="${esc(o.label)}" style="touch-action:pan-y;display:block">${g}<rect x="${pl}" y="0" width="${W-pl-pr}" height="${H}" fill="transparent"/></svg><div class="tip" hidden></div>`;
+}
+function wireMini(box,id,dates,vals,o,fmtTip){
+  const svg=box?.querySelector(`svg[data-mini="${id}"]`);if(!svg)return;const tip=box.querySelector(".tip"),xh=svg.querySelector(".xh"),xd=svg.querySelector(".xd");
+  const n=vals.length,W=+svg.dataset.w,pl=+svg.dataset.pl,pr=+svg.dataset.pr,vb=svg.viewBox.baseVal,H=vb.height,pt=14,pb=28,v=vals.filter(isNum);
+  let lo=o.lo,hi=o.hi;if(lo==null){lo=Math.min(...v);hi=Math.max(...v);const pad=(hi-lo)*.1||1;lo-=pad;hi+=pad}
+  const move=e=>{const r=svg.getBoundingClientRect(),cx=(e.touches?e.touches[0].clientX:e.clientX)-r.left;
+    const i=Math.max(0,Math.min(n-1,Math.round((cx/r.width*W-pl)/((W-pl-pr)/(n-1))))),sx=pl+i*(W-pl-pr)/(n-1);if(!isNum(vals[i]))return;
+    const sy=pt+(1-(vals[i]-lo)/(hi-lo))*(H-pt-pb);
+    xh.setAttribute("x1",sx);xh.setAttribute("x2",sx);xh.setAttribute("opacity",".6");xd.setAttribute("cx",sx);xd.setAttribute("cy",sy);xd.setAttribute("opacity","1");
+    tip.hidden=false;tip.innerHTML=fmtTip(i);const bx=box.getBoundingClientRect(),tw=tip.offsetWidth;let left=sx/W*r.width+(r.left-bx.left)+12;if(left+tw>bx.width-8)left-=tw+24;tip.style.left=Math.max(4,left)+"px";tip.style.top="62px"};
+  const out=()=>{tip.hidden=true;xh.setAttribute("opacity","0");xd.setAttribute("opacity","0")};
+  svg.addEventListener("mousemove",move);svg.addEventListener("touchmove",move,{passive:true});svg.addEventListener("touchstart",move,{passive:true});svg.addEventListener("mouseleave",out);svg.addEventListener("touchend",out);
+}
+const BIDX=[["NIFTY 50","Nifty 50"],["NIFTY 500","Nifty 500"],["NIFTY SMLCAP 250","Nifty Smallcap 250"],["NIFTY MICROCAP250","Nifty Microcap 250"]];
+const BEMA=[["e20","20-day","--pe20"],["e50","50-day","--pe50"],["e100","100-day","--pe100"],["e200","200-day","--pe200"]];
+function breadthSmall(b){
+  const N=b.dates.length,k=Math.min(N,BRANGE[st.brange]||126),s0=N-k,dts=b.dates.slice(s0),L=N-1,P=Math.max(0,L-5);
+  const idx=b.idx||D.breadth.idx||{},hasI=BIDX.some(([nm])=>idx[nm]),hasE=!!b.e20;if(!hasI&&!hasE)return {h:"",wire:()=>{}};
+  const vw=viewW(),cols=vw>=900?2:1,MW=Math.max(280,Math.round((vw-(cols-1)*14)/cols-30)),MH=Math.round(Math.min(250,Math.max(180,MW*.34)));
+  const wires=[];let h=`<div class="msec-head"><div><h3>Benchmark indices and trend participation</h3><p>Where the main indices are trading, and how many stocks hold above their exponential moving averages (EMA) — the faster averages turn first.</p></div><div class="ctl"><span>Range</span>${seg("brange",["3M","6M","1Y"],st.brange)}</div></div>`;
+  if(hasI){h+=`<div class="mgrid${cols>1?" two":""}">`;
+    for(const [nm,lab] of BIDX){const a=(idx[nm]||[]).slice(s0);if(!a.some(isNum))continue;const f0=a.find(isNum),fl=a[a.length-1],ch=(fl/f0-1)*100,c=ch>=0?"var(--up)":"var(--down)",id="bi"+nm.replace(/\W/g,"");
+      h+=`<div class="card mcard" id="mc_${id}"><div class="mhead"><h4>${esc(lab)}</h4><div class="mval"><b class="num">${inr(fl)}</b><span class="num ${cls(ch)}">${sgn(ch,1)} in ${st.brange}</span></div></div>${miniChart(id,dts,a,{c,W:MW,h:MH,label:`${lab}, last ${st.brange}`,tf:t=>t.toLocaleString("en-IN")})}</div>`;
+      wires.push(()=>wireMini($("#mc_"+id),id,dts,a,{},i=>`<b>${fmtDate(dts[i])}</b><br>${esc(lab)}: <b>${inr(a[i])}</b><br>From the range start: <b>${sgn((a[i]/f0-1)*100,1)}</b>`))}
+    h+=`</div>`}
+  if(hasE){h+=`<div class="mgrid${cols>1?" two":""}">`;
+    for(const [key,lab,cv] of BEMA){const a=b[key].slice(s0),v=b[key][L],d=v-b[key][P],id="be"+key;
+      h+=`<div class="card mcard" id="mc_${id}"><div class="mhead"><h4>Stocks above their ${lab} EMA</h4><div class="mval"><b class="num">${isNum(v)?v.toFixed(1)+"%":"–"}</b><span class="num ${cls(d)}">${isNum(d)?(d>0?"+":"")+d.toFixed(1)+" pts in a week":""}</span></div></div>${miniChart(id,dts,a,{c:`var(${cv})`,W:MW,h:MH,lo:0,hi:100,ticks:[0,20,50,80,100],ref:50,unit:"%",label:`Percent of stocks above their ${lab} EMA, last ${st.brange}`})}</div>`;
+      wires.push(()=>wireMini($("#mc_"+id),id,dts,a,{lo:0,hi:100},i=>`<b>${fmtDate(dts[i])}</b><br>Above the ${lab} EMA: <b>${a[i]}%</b>`))}
+    h+=`</div><p class="note" style="margin:-4px 2px 18px">${st.uni==="lq"?"Liquid universe.":"Every main-board stock that traded."} The EMAs run over about six years of prices, so the 200-day line has settled; a stock counts once it has that many sessions. Below 20% has often been near a low, above 80% near a short-term high.</p>`}
+  return {h,wire:()=>wires.forEach(w=>w())};
+}
+
 /* ════════════════════ routing & wiring ════════════════════ */
 function render(){
   renderPulse();$("#view").dataset.v=st.tab;
   document.querySelectorAll("#tabs .tab").forEach(b=>b.setAttribute("aria-selected",b.dataset.v===st.tab));
-  const tw=$("#tabs"),ta=tw.querySelector('.tab[aria-selected="true"]');if(ta&&tw.scrollWidth>tw.clientWidth+1){const l=ta.offsetLeft-tw.offsetLeft,r=l+ta.offsetWidth;if(l<tw.scrollLeft||r>tw.scrollLeft+tw.clientWidth)tw.scrollLeft=Math.max(0,l-24)}
-  ({rotation:renderRotation,breadth:renderBreadth,rs:renderRS,scanners:renderScanners,bases:renderBases,patterns:renderPatterns,results:renderResults,watch:renderWatch,vpci:renderVpci})[st.tab]();
+  const tw=$("#tabs"),ta=tw.querySelector('.tab[aria-selected="true"]');tw.classList.toggle("ovf",tw.scrollWidth>tw.clientWidth+1);if(ta&&tw.scrollWidth>tw.clientWidth+1){const l=ta.offsetLeft-tw.offsetLeft,r=l+ta.offsetWidth;if(l<tw.scrollLeft||r>tw.scrollLeft+tw.clientWidth)tw.scrollLeft=Math.max(0,l-24)}
+  ({rotation:renderRotation,breadth:renderBreadth,rs:renderRS,upside:renderUpside,scanners:renderScanners,bases:renderBases,patterns:renderPatterns,results:renderResults,watch:renderWatch,vpci:renderVpci})[st.tab]();
 }
 function go(tab){
   if(HASHVIEW[tab]){st.scanView=HASHVIEW[tab];store.set("scanView",st.scanView);tab="scanners"}
@@ -3783,6 +4024,7 @@ $("#gqres").addEventListener("mousedown",e=>{const b=e.target.closest(".opt");if
 document.addEventListener("keydown",e=>{if(e.key==="/"&&!/INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName||"")&&$("#drawer").hidden){e.preventDefault();$("#gq").focus()}});
 
 $("#tabs").addEventListener("click",e=>{const b=e.target.closest(".tab");if(b)go(b.dataset.v)});
+$("#tabs").addEventListener("scroll",e=>{const t=e.currentTarget;t.classList.toggle("end",t.scrollLeft+t.clientWidth>=t.scrollWidth-4)},{passive:true});
 document.addEventListener("click",e=>{
   const sb=e.target.closest(".symbtn");if(sb){openDrawer(sb.dataset.sym,sb.dataset.ex);return}
   if(e.target.closest("[data-close]")||e.target.id==="scrim"){closeDrawer();return}
@@ -3811,6 +4053,8 @@ document.addEventListener("click",e=>{
     if(k==="fundmin"){st.rs.fmin=+v;store.set("rs",st.rs);s.parentElement.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===s));drawRS();return}
     if(k==="rrgset"){st.rrgset=v;store.set("rrgset",v);renderRRG();return}
     if(k==="uni"){st.uni=v;store.set("uni",v);st.open=null;render();return}
+    if(k==="upmin"){st.up.min=v;store.set("up",{...st.up,q:""});if(st.tbl.up)st.tbl.up.show=100;s.parentElement.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===s));drawUpside();return}
+    if(k==="brange"){st.brange=v;store.set("brange",v);const y=window.scrollY;renderBreadth();window.scrollTo(0,y);return}
     if(k==="rsdir"||k==="rsdot"){st.rs[k.slice(2)]=v;store.set("rs",st.rs);if(st.tbl.rs)st.tbl.rs.show=100;s.parentElement.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===s));drawRS();return}
     if(k==="rsmin"){st.rs.min=+v;store.set("rs",st.rs);s.parentElement.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===s));drawRS();return}
     st[k]=v;if(k==="group")st.open=null;store.set("prefs",{period:st.period,group:st.group,agg:st.agg,sort:st.sort,view:st.view});
@@ -3835,7 +4079,7 @@ document.addEventListener("keydown",e=>{
 });
 window.addEventListener("hashchange",()=>{const t=location.hash.slice(1);if(HASHVIEW[t]){if(st.tab!=="scanners"||st.scanView!==HASHVIEW[t])go(t);return}if(TABS.includes(t)&&(t!==st.tab||(t==="scanners"&&VIEWHASH[st.scanView]))){if(t==="scanners")st.scanView="lib";go(t)}});
 $("#themeBtn").addEventListener("click",()=>{const d=document.documentElement,cur=d.dataset.theme||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");d.dataset.theme=cur==="dark"?"light":"dark";store.set("theme",d.dataset.theme)});
-(()=>{const t=store.get("theme",null);if(t)document.documentElement.dataset.theme=t;Object.assign(st,store.get("prefs",{}));st.uni=store.get("uni","all");st.rrgset=store.get("rrgset","sector");st.gsig=store.get("gsig",{kind:"all",win:"5"});Object.assign(st.rs,store.get("rs",{}));Object.assign(st.bx,store.get("bx",{}));Object.assign(st.px,store.get("px",{}));st.px.q="";Object.assign(st.s2,store.get("s2",{}));Object.assign(st.rx,store.get("rx",{}));st.rx.q="";st.rx.season="";st.scanView=store.get("scanView","lib");st.scan=store.get("scan2",st.scan);st.scanTop=+store.get("scanTop",0)||0;st.scanFund=+store.get("scanFund",0)||0;
+(()=>{const t=store.get("theme",null);if(t)document.documentElement.dataset.theme=t;Object.assign(st,store.get("prefs",{}));st.uni=store.get("uni","all");st.rrgset=store.get("rrgset","sector");st.gsig=store.get("gsig",{kind:"all",win:"5"});Object.assign(st.rs,store.get("rs",{}));Object.assign(st.up,store.get("up",{}));st.up.q="";st.brange=store.get("brange","6M");Object.assign(st.bx,store.get("bx",{}));Object.assign(st.px,store.get("px",{}));st.px.q="";Object.assign(st.s2,store.get("s2",{}));Object.assign(st.rx,store.get("rx",{}));st.rx.q="";st.rx.season="";st.scanView=store.get("scanView","lib");st.scan=store.get("scan2",st.scan);st.scanTop=+store.get("scanTop",0)||0;st.scanFund=+store.get("scanFund",0)||0;
   Object.assign(st.mf,store.get("mf",{}));st.mf.q="";
   const h=location.hash.slice(1);if(HASHVIEW[h]){st.scanView=HASHVIEW[h];st.tab="scanners"}else{if(h==="scanners")st.scanView="lib";st.tab=TABS.includes(h)?h:store.get("tab","rotation")}})();
 
