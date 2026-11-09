@@ -1,5 +1,5 @@
 {
- "run": "2026-11-08 22:52",
+ "run": "2026-11-09 07:16",
  "delivery": {
   "added": [],
   "not_published": [],
@@ -11,10 +11,12 @@
   "last": "2026-11-06"
  },
  "close_check": {
-  "date": "2026-11-06",
-  "checked": 2589,
-  "corrected": 0,
+  "date": "2026-11-08",
+  "checked": 2574,
   "disagree": 0,
-  "examples": {}
+  "corrected": 0,
+  "skipped": 0,
+  "examples": {},
+  "skipped_examples": {}
  }
 }
