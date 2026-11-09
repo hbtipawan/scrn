@@ -1,4 +1,4 @@
-"""Telegram alerts for PKC Sector Radar.
+"""Telegram alerts for PKCSCREEN.
 
   --evening  after the daily run: market summary + your watchlist alerts (same rules as the
              website's "Needs your attention today") + today's best scans.
@@ -38,7 +38,7 @@ TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
 CHAT = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
 GTOK = os.environ.get("GIST_TOKEN", "").strip()
 MOVE_PCT = float(os.environ.get("MOVE_PCT") or 5)
-UA = {"User-Agent": "Mozilla/5.0 (PKC Sector Radar alerts)"}
+UA = {"User-Agent": "Mozilla/5.0 (PKCSCREEN alerts)"}
 
 
 def site_url():
@@ -240,7 +240,7 @@ def evening():
     L = len(breadth["dates"]) - 1
     a50, a50w = breadth["a50"][L], breadth["a50"][max(0, L - 5)]
     verdict = "Strong" if a50 >= 60 else "Mixed" if a50 >= 40 else "Weak"
-    lines = [f"<b>📊 PKC Sector Radar · {datetime.strptime(asof, '%Y-%m-%d'):%d %b %Y}</b>",
+    lines = [f"<b>📊 PKCSCREEN · {datetime.strptime(asof, '%Y-%m-%d'):%d %b %Y}</b>",
              f"{E(bname)} {inr(bi.get('px'))} ({sgn((bi.get('r') or {}).get('1D'), 2)}) · Breadth <b>{verdict}</b>: {a50:.1f}% above 50 DMA ({sgn(a50 - a50w, 1, ' pts')} in a week)",
              f"Advances/declines {breadth['adv'][L]}/{breadth['dec'][L]} · 52W highs/lows {breadth['nh'][L]}/{breadth['nl'][L]}"
              + (f" ({breadth['n'][L]:,} stocks)" if breadth.get("n") else "")]
@@ -489,7 +489,7 @@ def test():
             return
         CHAT = str(list(chats)[-1])
         print(f"YOUR TELEGRAM_CHAT_ID IS: {CHAT}  ({list(chats.values())[-1]}) - save it as a repository secret")
-    lines = ["<b>✅ PKC Sector Radar is connected to Telegram</b>"]
+    lines = ["<b>✅ PKCSCREEN is connected to Telegram</b>"]
     try:
         gid, wl, _ = gist_load()
         if wl:

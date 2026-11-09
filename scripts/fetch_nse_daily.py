@@ -267,20 +267,30 @@ def check_closes(status):
         status["close_check"] = {"date": last, "checked": 0, "note": "NSE file not available"}
         return
     off = nse[nse.series.isin({"EQ", "BE", "BZ"})].drop_duplicates("symbol").set_index("symbol")["close"]
-    day = p[p.date == last]
-    cmp_ = pd.DataFrame({"ours": day.set_index("symbol")["close"], "nse": off}).dropna()
+    day = p[p.date == last].drop_duplicates("symbol", keep="last").set_index("symbol")
+    cmp_ = pd.DataFrame({"ours": day["close"], "hi": day["high"], "lo": day["low"], "nse": off}).dropna(subset=["ours", "nse"])
     diff = (cmp_.ours / cmp_.nse - 1).abs()
     bad = diff[diff > 0.001]
-    if len(bad) and len(bad) < 0.2 * len(cmp_):      # a mass disagreement means a wrong file, not wrong prices
-        idx = p.index[(p.date == last) & p.symbol.isin(bad.index)]
+    # Upstox's candle for the latest session can still carry the last traded price, not NSE's official close (the
+    # weighted average of the last 30 minutes), when the job runs on the same night: on 6 Nov 2026 that was 988 of
+    # 2,589 stocks, up to 7% apart. read_delivery() has already checked that NSE's file is for this very session (the
+    # date inside the file), so its close replaces ours. Per stock, a close that is not inside our candle's range or
+    # is more than 20% away is left alone and reported: that points to a different security, not a late price.
+    b = cmp_.loc[bad.index]
+    sane = (b.nse >= b.lo.fillna(b.nse) * 0.995) & (b.nse <= b.hi.fillna(b.nse) * 1.005) & (diff[bad.index] <= 0.20)
+    fix, skip = bad.index[sane.to_numpy()], bad.index[~sane.to_numpy()]
+    if len(fix):
+        idx = p.index[(p.date == last) & p.symbol.isin(fix)]
         p.loc[idx, "close"] = p.loc[idx, "symbol"].map(off).values
         p.loc[idx, "high"] = np.fmax(p.loc[idx, "high"], p.loc[idx, "close"])   # keep the bar consistent
         p.loc[idx, "low"] = np.fmin(p.loc[idx, "low"], p.loc[idx, "close"])
         p.to_csv(f, index=False, compression="gzip")
-    status["close_check"] = {"date": last, "checked": int(len(cmp_)), "corrected": int(len(bad)) if len(bad) < 0.2 * len(cmp_) else 0,
-                             "disagree": int(len(bad)), "examples": {k: [round(float(cmp_.ours[k]), 2), round(float(cmp_.nse[k]), 2)]
-                                                                     for k in list(bad.sort_values(ascending=False).index[:8])}}
-    print(f"official close check {last}: {len(cmp_)} stocks, {len(bad)} differed by more than 0.1%")
+    ex = lambda ks: {k: [round(float(cmp_.ours[k]), 2), round(float(cmp_.nse[k]), 2)] for k in ks}
+    status["close_check"] = {"date": last, "checked": int(len(cmp_)), "disagree": int(len(bad)), "corrected": int(len(fix)),
+                             "skipped": int(len(skip)), "examples": ex(list(bad[fix].sort_values(ascending=False).index[:8])),
+                             "skipped_examples": ex(list(skip[:8]))}
+    print(f"official close check {last}: {len(cmp_)} stocks, {len(bad)} differed by more than 0.1%; "
+          f"{len(fix)} corrected to NSE's official close, {len(skip)} left alone (not a late price)")
 
 
 # ════════════════════════════════════════ one-time history from EOD2

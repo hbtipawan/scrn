@@ -1,4 +1,4 @@
-"""Technical scanner library for PKC Sector Radar.
+"""Technical scanner library for PKCSCREEN.
 
 Every scanner works on wide DataFrames (rows = trading days, columns = symbols)
 and returns a boolean Series for the latest day, plus an optional metric to

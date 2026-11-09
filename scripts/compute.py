@@ -155,8 +155,9 @@ def rank_vs(sc, U):
     return out
 
 
-def breadth_frame(C, raw, sma, idx_from):
-    """Daily breadth of the stocks in C (columns). A stock counts on a day only if it traded that day."""
+def breadth_frame(C, raw, sma, idx_from, ema=None):
+    """Daily breadth of the stocks in C (columns). A stock counts on a day only if it traded that day.
+    ema: optional {n: EMA frame} (computed on the long history, so the 200-day EMA has settled) -> % above each EMA."""
     valid = raw.notna()
     dchg = C.pct_change(fill_method=None)
     hiC = C.rolling(252, min_periods=200).max()
@@ -178,11 +179,15 @@ def breadth_frame(C, raw, sma, idx_from):
         "nl": ((C <= loC) & loC.notna() & valid).sum(axis=1),
         "up4": ((dchg >= 0.04) & valid).sum(axis=1), "dn4": ((dchg <= -0.04) & valid).sum(axis=1),
         "mco": mco,
-    }).iloc[idx_from:]
+    })
+    for n, e in (ema or {}).items():
+        e = e.reindex(index=C.index, columns=C.columns)
+        b[f"e{n}"] = pct((C > e) & valid, e.notna() & valid)
+    b = b.iloc[idx_from:]
     b["adl"] = (b.adv - b.dec).cumsum()            # advance/decline line over the window shown
     out = {}
     for col in b.columns:
-        out[col] = [r2(x, 1) for x in b[col]] if col in ("a20", "a50", "a200", "mco") else [int(x) for x in b[col]]
+        out[col] = [r2(x, 1) for x in b[col]] if col in ("a20", "a50", "a200", "mco") or col[0] == "e" else [int(x) for x in b[col]]
     return out, b.index
 
 
@@ -345,11 +350,25 @@ def main():
 
     # ---------------- breadth history: every stock with prices (no liquidity filter), and the liquid universe
     nb = S["breadth_history_days"]
-    breadth, bidx = breadth_frame(C, raw_close, sma_all, -nb)
-    lq, _ = breadth_frame(Cu, raw_close[U], sma, -nb)
+    # % of stocks above their 20/50/100/200-day EMAs: the EMAs run over the full download (about 6 years), so the
+    # 200-day EMA has settled long before the year shown; a stock counts once it has n sessions, as for the SMAs
+    ema_b = {}
+    try:
+        Cl = (PFULL[PFULL.symbol.isin(set(syms))].pivot_table(index="date", columns="symbol", values="close", aggfunc="last")
+              .sort_index().ffill(limit=3))
+        ema_b = {n: Cl.ewm(span=n, adjust=False, min_periods=n).mean() for n in (20, 50, 100, 200)}
+        del Cl
+    except Exception as e:  # optional - never break the daily run
+        print(f"EMA breadth skipped: {e}")
+    breadth, bidx = breadth_frame(C, raw_close, sma_all, -nb, ema_b)
+    lq, _ = breadth_frame(Cu, raw_close[U], sma, -nb, ema_b)
+    del ema_b
     bench_close = W["close"][bench].reindex(bidx) if bench in W["close"] else pd.Series(np.nan, index=bidx)
     breadth.update({"dates": list(bidx), "bench": [r2(x) for x in bench_close], "bench_name": bench, "lq": lq,
                     "universe": {"all": len(A), "lq": len(U)}})
+    # benchmark indices for the Breadth tab (closes on the same sessions)
+    breadth["idx"] = {name: [r2(x) for x in W["close"][name].reindex(bidx).ffill()]
+                      for name in [bench] + S["extra_indices"] if name in W["close"]}
 
     indices = {}
     for name in [bench] + S["extra_indices"]:
@@ -573,6 +592,23 @@ def main():
         import traceback
         traceback.print_exc()
         print(f"vcp scanner skipped: {e}")
+    # ---------------- Upside score (upside.py): odds of beating the average stock over the next 3 months, from the
+    # site's own technicals, RS, sector/industry rotation and breadth (model trained offline, config/upside_model.txt)
+    up_meta = None
+    try:
+        import upside as UP
+        UPR, up_by = UP.build(PFULL, syms, bench, {"sec": sec_all, "ind": ind}, CFG)
+        json.dumps(UPR, separators=(",", ":"), allow_nan=False)       # must be writable before anything is attached
+        for r in rows:
+            if r["s"] in up_by:
+                r["up"] = up_by[r["s"]]
+        dump_later["upside.json"] = UPR
+        up_meta = {"n": UPR["n"], "asof": UPR["asof"]}
+        print(f"upside: {UPR['n']} stocks scored for {UPR['asof']}")
+    except Exception as e:  # never break the daily run
+        import traceback
+        traceback.print_exc()
+        print(f"upside skipped: {e}")
     # ---------------- quarterly results: this season's results, Result Quality and PEAD scores (results.py)
     res_meta = None
     try:
@@ -636,7 +672,7 @@ def main():
             "failed": fm.get("failed_count"), "indices": indices,
             "filters": {"min_price": S["min_price"], "min_median_turnover_cr": S["min_median_turnover_cr"],
                         "min_market_cap_cr": S["min_market_cap_cr"] if mcap is not None else None},
-            "min_group_size": S["min_group_size"], "fund": fund_meta, "bases": base_meta, "stage2": s2_meta, "results": res_meta, "mf": mf_meta, "rs": rs_meta, "dlv": dlv_meta, "idx": idx_meta, "corp": corp_meta, "grp": grp_meta, "pat": pat_meta, "vcp": vcp_meta}
+            "min_group_size": S["min_group_size"], "fund": fund_meta, "bases": base_meta, "stage2": s2_meta, "results": res_meta, "mf": mf_meta, "rs": rs_meta, "dlv": dlv_meta, "idx": idx_meta, "corp": corp_meta, "grp": grp_meta, "pat": pat_meta, "vcp": vcp_meta, "up": up_meta}
 
     def dump(name, obj):
         (OUT / name).write_text(json.dumps(obj, separators=(",", ":"), allow_nan=False))
