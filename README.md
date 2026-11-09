@@ -1,10 +1,11 @@
-# PKC Sector Radar
+# PKCSCREEN
 
 A free, ScreeningMantis-style dashboard for NSE stocks:
 
 - **Rotation** – theme / sector / industry / NSE-index returns for Today, 1W, 1M, 3M, 6M, YTD, 1Y, with mean or median, rank change vs last week, and a click-through list of the stocks in each group. Uses **every NSE stock** by default (switch to the liquid universe with *Stocks: All / Liquid*). A **Rotation map (RRG)** view plots NSE's sector, theme and size indices against Nifty 500, week by week.
 - **Group charts** – every theme, sector, NSE index and industry has its own daily index. Open a group in Rotation for a 12-month chart; tap it (or 📈) for a full-screen chart: candles with 21/50/200-day averages, members' turnover, RS line vs Nifty 500 with blue dots, % of members above their 50/200-day averages, and the group RS rating — with past signals marked and what followed. Rotation also has a **Rotation radar** (group RS rating against its 4-week change) and **Group signals** (early-rotation signals that held up in testing, plus breakouts and weakness).
-- **Breadth** – every NSE main-board stock (no liquidity filter, or the liquid universe with the switch): % above 20/50/200 DMA, advance/decline and the A/D line, McClellan oscillator, 52-week highs/lows, 4% movers, one year of history. Below it, **valuation and volatility**: NSE's own P/E, P/B and dividend yield for 50 indices against their history, and India VIX.
+- **Breadth** – every NSE main-board stock (no liquidity filter, or the liquid universe with the switch): Nifty 50 / 500 / Smallcap 250 / Microcap 250 charts and the % of stocks above their 20/50/100/200-day EMAs (3M, 6M or 1Y), % above 20/50/200 DMA, advance/decline and the A/D line, McClellan oscillator, 52-week highs/lows, 4% movers, one year of history. Below it, **valuation and volatility**: NSE's own P/E, P/B and dividend yield for 50 indices against their history, and India VIX.
+- **Upside** – every liquid stock ranked 1–99 on its odds of beating the average stock over the next 3 months, from the site's own technicals, RS, sector/industry rotation and breadth, with the reasons for each stock and the full walk-forward test (see *Upside score* below).
 - **RS ranking** – every stock ranked 1–99 by relative strength, with where the rating is **coming from** (▲ from 70 / ▼ from 99 over 12 weeks), a 52-week RS path, RS 4 and 12 weeks ago, and **blue dots** (RS line at a 52-week high). Filterable by sector, theme, direction, blue dot, Stage 2, Minervini trend template.
 - **Stock window** – price chart, **relative strength** (RS line with every blue dot of the year + the RS rating week by week), **delivery** (NSE delivery % and value delivered for 3 months), **corporate actions** (splits, bonuses, dividends coming up), plus bases, Stage 2, results, fundamentals and mutual funds.
 - **Scanners** – 99 stock scanners in 18 colour-coded groups (group signals live in Rotation): 59 technical (`scripts/scanners.py`), 4 from the RS history (`scripts/rs_history.py`), 5 from NSE delivery data (`scripts/delivery.py`), 18 from NSE filings, 6 from mutual-fund portfolios and 7 from the long-base, Stage 2 and results models, led by a **Confluence** list (stocks firing in 4+ of the 7 bullish technical groups). Every scanner opens with a collapsible **How this scanner works** panel — what it looks for, the exact rules, how traders use it, what to watch out for and the source (`scripts/scan_docs.py`). A search box finds scanners by any word in their name or write-up ("EMA", "volume", "Minervini"); Enter opens the closest match. Any scan can be limited to the top 5 or 10 themes or by Fund rating.
@@ -242,6 +243,35 @@ The **VCP scanner** is the VCP breakout scanner from your Streamlit app ([VCP-RE
   - The extra base types showed no clear edge over the flat base; high-tight-flag and episodic-pivot breakouts did worse than plain breakouts.
 - **Checks.** The JavaScript engine was run against the Python on every bar of 12 stocks under 5 settings (2018–26) and on random settings across 660 stocks. The exported site data was also checked against the Python on the full price history, for every stock's last bar.
 
+## Upside score (Upside tab)
+
+`scripts/upside.py` ranks every liquid stock with a year of history 1–99 on its odds of beating the average stock over the next 3 months. It uses only numbers the site already computes, and it has two equal halves:
+
+1. **A trained model** (`config/upside_model.txt`, LightGBM, 300 trees, 88 inputs) that gives the chance a stock finishes the next 63 sessions in the top 20% of the liquid universe. Inputs: the RS rating and its 12-week path; 1-week to 1-year returns; the RS line against Nifty 500 and blue dots; price against the 10/20/50/150/200-day averages and their slopes, stage and the trend template; distance from the 52-week high and low; ATR, daily range, 63-day volatility, range tightness and pullback depth; volume against its average, up/down volume and turnover trend; for the stock's **sector and industry** (equal-weight indices of their liquid members) returns and their rank changes, the group RS rating and its 4- and 12-week change, % of members above the 50/200-day average and near their highs, money flow and the stock against its group; and market breadth. Every input except the market ones is turned into a percentile among that day's stocks.
+2. **A plain leadership score**: the average percentile of the RS rating, closeness to the 52-week high and the industry's RS rating.
+
+Upside rank = percentile of the two percentiles averaged. The chips on each row are the model's reasons (SHAP contributions grouped into trend, RS & momentum, near the high, sector, industry, volatility, volume & size and market).
+
+**How it was tested (Nov 2026).** NSE daily prices 2006–2026 ([EOD2](https://github.com/BennyThadikaran/eod2_data), corporate actions checked), liquid stocks (price ≥ ₹20, median turnover ≥ ₹1 Cr) with a year of history, every 5th session — 505,000 stock-days. The score is read at the close; the trade starts at the next session's open and is measured over 63 sessions against the average liquid stock. The model was retrained for each year on data whose 3-month outcome was known before that year began (walk-forward, 13-week gap). The design — inputs, target, the 50/50 blend — was chosen on 2010–2018 and written down, and 2019–2026 was then read once.
+
+| Top 10% of each ranking, 2019–2026 | 3 months vs the average stock | +20% before −8% | Beat the average, % of weeks |
+|---|---|---|---|
+| **Upside score** | **+4.4%** | **33.5%** | **83%** |
+| Model half alone | +4.4% | 34.0% | 82% |
+| RS rating alone | +2.7% | 31.5% | 72% |
+| RS + near high + industry RS | +2.5% | 31.1% | 73% |
+| Sector and industry RS only | +2.7% | 31.4% | 68% |
+| All stocks | 0 | 28.3% | – |
+
+- 2010–2018: the top 10% did +3.7% (RS alone +2.7%). The top 10% beat the average stock in every calendar year 2010–2026 (weakest 2022, +1.1%); RS alone lagged in 2010, 2016 and 2022. The bottom 10% did −3.5%.
+- Over 1 month the edge is +1.6%. It is larger in strong markets (+5.7% when 55%+ of stocks are above their 50-DMA) than weak ones (+2.8%), and larger in small and mid caps than large caps.
+- About 4 in 10 top-10% stocks were still lower after 3 months, and their worst drop along the way was as deep as other stocks' (median −12%). It ranks odds; stops are still needed.
+- Sector rotation on its own predicted little — rank-change arrows and RRG-type turns had no edge — but strong sectors and industries matter as context: the top 10% is mostly leaders in leading groups (median RS 90, 8% below the high, 88% in Stage 2).
+- Inside the scan-shortlist gate the top half by Upside did +3.9% against +0.7% for the bottom half.
+- Limits: the price history has no delisted companies; sector and industry membership is today's; fixed 3-month holds are not real exits.
+
+**Checked on the live code:** run on the site's own price file for 6 Nov 2026, `upside.py` reproduces the research code's 88 inputs exactly for 1,335 of 1,335 stocks (one input differs for 3 stocks at the edge of the 900-session window). The nightly run takes about 15 seconds and needs `lightgbm` (in `requirements.txt`). If the model file or the package is missing, the step is skipped and the rest of the site is unaffected. The model is retrained offline about once a year; the evidence shown on the site is `config/upside_evidence.json`.
+
 ## Quarterly results (Results tab)
 
 **Results** shows every result announced in the current results season — the calendar quarter in which it was announced: 1 Oct – 31 Dec, 1 Jan – 31 Mar, and so on (the Oct–Dec season is mostly the September quarter, Q2). The season before it is one tap away, and the next 14 days of announced results dates are listed at the bottom. Each result is a card (revenue, EBITDA, net profit and EPS with YoY and QoQ change, EBITDA margin and its change in points) or a row in a sortable list.
@@ -300,7 +330,7 @@ The code is `scripts/results.py` (it reads `config/fund_results.csv` from the fu
 
 Each evening it adds every session not stored yet (it catches up after a missed day, and tries weekends too, for budget-day sessions). NSE serves the previous day's file under a holiday's name, so the date *inside* each file is checked. Past months never change, so the repository grows by about 10 MB a year.
 
-**Checks made when it was built (Oct 2026):** delivered shares, volume and trades equal NSE's file for 100% of stocks on five test days from 2024 to 2026; delivery % matches NSE's published `DELIV_PER` to rounding for all 2,343 EQ stocks; index closes and P/E agree with EOD2 for all 167 indices. The price file is checked every evening: the last session's close of every stock is compared with NSE's official close and corrected if it differs by more than 0.1% (unless more than a fifth differ, which would mean a wrong file).
+**Checks made when it was built (Oct 2026):** delivered shares, volume and trades equal NSE's file for 100% of stocks on five test days from 2024 to 2026; delivery % matches NSE's published `DELIV_PER` to rounding for all 2,343 EQ stocks; index closes and P/E agree with EOD2 for all 167 indices. The price file is checked every evening: the last session's close of every stock is compared with NSE's official close and corrected if it differs by more than 0.1%. When the job runs on the same night, Upstox's newest candle can still carry the last traded price instead of NSE's official close (the weighted average of the last 30 minutes) — on 6 Nov 2026 that was 988 of 2,589 stocks, up to 7% apart. NSE's file is first checked to be for the same session (the date inside it), and then its close replaces ours. A stock whose NSE close lies outside our candle's range, or more than 20% away, is left alone and listed in `status.json` (`skipped_examples`), because that points to a different security, not a late price.
 
 **Delivery (stock window + 5 scanners, group *Delivery*).** NSE's quantities are raw, so delivered shares are put on the split-adjusted basis of the price file (NSE delivery % × adjusted volume); value per trade (₹) needs no adjustment. BE/BZ stocks trade for delivery only, so their delivery % is left out. Tested point-in-time on Mar 2021 – Jul 2026 (weekly signals, against the average stock): *quiet delivery build-up* +1.7% over 3 months (54% beat the median stock), *delivery accumulation* +1.1%, *heavy delivery selling* −0.7%; plain *delivery spikes* and *big-ticket trades* showed **no edge** — information, not signals.
 
@@ -333,6 +363,8 @@ To rebuild the history: `python scripts/fetch_nse_daily.py --backfill 2024-01-01
 A turn from lagging to improving on a group RRG did *not* help (−1.2%), which is why the Rotation radar uses the group RS rating instead. Groups share stocks and membership is today's, so treat these as tendencies, not guarantees.
 
 ## Breadth and rotation on every stock
+
+The Breadth tab also shows **Nifty 50, Nifty 500, Nifty Smallcap 250 and Nifty Microcap 250** (Upstox's index candles) and the **% of stocks above their 20, 50, 100 and 200-day EMAs** over 3 months, 6 months or a year. The EMAs run over the full price download (about six years), so the 200-day EMA has settled long before the year shown; a stock counts once it has that many sessions, as for the moving averages. On 8 Nov 2026: above the 20/50/100/200-day EMA 63.7% / 42.7% / 39.1% / 37.9% of all stocks.
 
 Breadth and rotation count **every NSE main-board stock that traded** (about 2,570 a day) — as NSE counts advances and declines — instead of only the ~1,440 liquid ones. The liquid universe still drives the scanners and the RS ranking; stocks outside it appear in rotation, breadth, search and the stock window, with a note. *Stocks: All / Liquid* switches Rotation, Breadth and the header. Checked: the all-stock % above the 50 and 200 DMA matches EOD2's independent market tracker within 0.3–0.4 points on average over a year, and advances/declines agree with NSE's daily file within a few stocks. NSE lists a sector only for the ~750 stocks of its broad indices; other stocks take the NSE sector their industry belongs to (the two agree for 91% of stocks where both are known), marked in the data. Small, thinly traded stocks swing more, so the median is steadier than the mean in *All* mode.
 
