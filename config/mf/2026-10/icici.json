@@ -1,0 +1,921 @@
+{
+ "code": "icici",
+ "amc": "ICICI Prudential Mutual Fund",
+ "month": "2026-10",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-11-09 23:06",
+ "files": [
+  {
+   "name": "Monthly-Portfolio-Disclosure-October-2026.zip",
+   "url": "https://www.icicipruamc.com/blob/downloads/Files/Monthly%20Portfolio%20Disclosures/2026/Oct/Monthly-Portfolio-Disclosure-October-2026.zip",
+   "schemes": 151,
+   "eq_rows": 6458
+  }
+ ],
+ "schemes": {
+  "ICICI Prudential Arbitrage Fund": {
+   "eq": 185,
+   "fut": 297,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 23916.12,
+   "total_cr": 35377.58
+  },
+  "ICICI Prudential Balanced Advantage Fund": {
+   "eq": 104,
+   "fut": 8,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 52014.89,
+   "total_cr": 71892.46
+  },
+  "ICICI Prudential Balanced Hybrid Fund": {
+   "eq": 42,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 124.45,
+   "total_cr": 217.1
+  },
+  "ICICI Prudential Banking & Financial Services Fund": {
+   "eq": 49,
+   "fut": 4,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 10405.87,
+   "total_cr": 10708.73
+  },
+  "ICICI Prudential Bharat Consumption Fund": {
+   "eq": 55,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2857.68,
+   "total_cr": 3031.62
+  },
+  "ICICI Prudential BSE 500 ETF": {
+   "eq": 501,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 0.998,
+   "eq_cr": 344.29,
+   "total_cr": 344.37
+  },
+  "ICICI Prudential BSE Insurance ETF": {
+   "eq": 13,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 91.38,
+   "total_cr": 91.39
+  },
+  "ICICI Prudential BSE Midcap Select ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 109.04,
+   "total_cr": 109.04
+  },
+  "ICICI Prudential BSE Sensex ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 33345.08,
+   "total_cr": 33347.09
+  },
+  "ICICI Prudential BSE Sensex Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1768.35,
+   "total_cr": 1768.59
+  },
+  "ICICI Prudential Business Cycle Fund": {
+   "eq": 74,
+   "fut": 7,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 12609.14,
+   "total_cr": 14613.72
+  },
+  "ICICI Prudential Children\u2019s Fund": {
+   "eq": 55,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1123.94,
+   "total_cr": 1331.23
+  },
+  "ICICI Prudential Commodities Fund": {
+   "eq": 48,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 3501.46,
+   "total_cr": 3874.26
+  },
+  "ICICI Prudential Conglomerate Fund": {
+   "eq": 41,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 687.29,
+   "total_cr": 714.45
+  },
+  "ICICI Prudential Conservative Hybrid Fund": {
+   "eq": 56,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 767.15,
+   "total_cr": 3223.29
+  },
+  "ICICI Prudential Contra Fund": {
+   "eq": 34,
+   "fut": 2,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1337.52,
+   "total_cr": 1582.78
+  },
+  "ICICI Prudential Dividend Yield Fund": {
+   "eq": 67,
+   "fut": 1,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 5980.04,
+   "total_cr": 6247.76
+  },
+  "ICICI Prudential ELSS \u2013 Tax Saver Fund": {
+   "eq": 85,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 12743.42,
+   "total_cr": 13240.76
+  },
+  "ICICI Prudential Energy Opportunities Fund": {
+   "eq": 84,
+   "fut": 3,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 7142.72,
+   "total_cr": 7526.55
+  },
+  "ICICI Prudential Equity Minimum Variance Fund": {
+   "eq": 30,
+   "fut": 4,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2084.47,
+   "total_cr": 2399.23
+  },
+  "ICICI Prudential Equity Savings Fund": {
+   "eq": 81,
+   "fut": 74,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 10750.34,
+   "total_cr": 14225.89
+  },
+  "ICICI Prudential ESG Exclusionary Strategy Fund": {
+   "eq": 44,
+   "fut": 2,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1158.16,
+   "total_cr": 1231.83
+  },
+  "ICICI Prudential Exports and Services Fund": {
+   "eq": 59,
+   "fut": 1,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1378.29,
+   "total_cr": 1441.82
+  },
+  "ICICI Prudential Flexi Cap Fund": {
+   "eq": 77,
+   "fut": 1,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 24757.27,
+   "total_cr": 25381.96
+  },
+  "ICICI Prudential FMCG Fund": {
+   "eq": 33,
+   "fut": 1,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1416.09,
+   "total_cr": 1486.6
+  },
+  "ICICI Prudential Focused Fund": {
+   "eq": 28,
+   "fut": 7,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 16365.26,
+   "total_cr": 17247.77
+  },
+  "ICICI Prudential Healthcare Fund": {
+   "eq": 39,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 6851.28,
+   "total_cr": 7103.54
+  },
+  "ICICI PRUDENTIAL HOUSING OPPORTUNITIES FUND": {
+   "eq": 60,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2512.01,
+   "total_cr": 2578.15
+  },
+  "ICICI Prudential India Opportunities Fund": {
+   "eq": 64,
+   "fut": 5,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 34673.8,
+   "total_cr": 36572.97
+  },
+  "ICICI Prudential Infrastructure Fund": {
+   "eq": 74,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 7495.27,
+   "total_cr": 7741.2
+  },
+  "ICICI Prudential Innovation Fund": {
+   "eq": 84,
+   "fut": 4,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 7114.82,
+   "total_cr": 7434.38
+  },
+  "ICICI Prudential Large & Mid Cap Fund": {
+   "eq": 116,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 30100.7,
+   "total_cr": 30602.76
+  },
+  "ICICI Prudential Large Cap Fund": {
+   "eq": 86,
+   "fut": 1,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 73668.35,
+   "total_cr": 76895.25
+  },
+  "ICICI Prudential Life Cycle Fund 2031": {
+   "eq": 20,
+   "fut": 3,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 27.58,
+   "total_cr": 42.55
+  },
+  "ICICI Prudential Life Cycle Fund 2036": {
+   "eq": 21,
+   "fut": 6,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 21.1,
+   "total_cr": 29.77
+  },
+  "ICICI Prudential Life Cycle Fund 2041": {
+   "eq": 26,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 40.41,
+   "total_cr": 55.05
+  },
+  "ICICI Prudential Long Term Wealth Enhancement Fund": {
+   "eq": 23,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 35.61,
+   "total_cr": 36.79
+  },
+  "ICICI Prudential Manufacturing Fund": {
+   "eq": 66,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 6501.28,
+   "total_cr": 6612.2
+  },
+  "ICICI Prudential Mid Cap Fund": {
+   "eq": 86,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 7524.51,
+   "total_cr": 7695.3
+  },
+  "ICICI Prudential MNC Fund": {
+   "eq": 48,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1568.99,
+   "total_cr": 1643.88
+  },
+  "ICICI Prudential Multi Asset Allocation Fund": {
+   "eq": 121,
+   "fut": 5,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 55569.32,
+   "total_cr": 82433.47
+  },
+  "ICICI Prudential Multi Cap Fund": {
+   "eq": 170,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 17577.79,
+   "total_cr": 17967.42
+  },
+  "ICICI Prudential Nifty 50 ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 44560.71,
+   "total_cr": 44567.79
+  },
+  "ICICI Prudential Nifty 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 16705.55,
+   "total_cr": 16709.97
+  },
+  "ICICI Prudential Nifty 100 ETF": {
+   "eq": 100,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 154.0,
+   "total_cr": 154.08
+  },
+  "ICICI Prudential Nifty 100 Low Volatility 30 ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 3111.14,
+   "total_cr": 3111.25
+  },
+  "ICICI Prudential Nifty 200 Momentum 30 ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 512.54,
+   "total_cr": 512.71
+  },
+  "ICICI Prudential Nifty 200 Momentum 30 Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 488.81,
+   "total_cr": 488.92
+  },
+  "ICICI Prudential Nifty 200 Quality 30 ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 129.27,
+   "total_cr": 129.27
+  },
+  "ICICI Prudential Nifty 500 Index Fund": {
+   "eq": 498,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 0.998,
+   "eq_cr": 103.78,
+   "total_cr": 104.2
+  },
+  "ICICI Prudential Nifty Alpha Low- Volatility 30 ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1448.59,
+   "total_cr": 1448.63
+  },
+  "ICICI Prudential Nifty Auto ETF": {
+   "eq": 15,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 225.75,
+   "total_cr": 225.75
+  },
+  "ICICI Prudential Nifty Auto Index Fund": {
+   "eq": 15,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 230.58,
+   "total_cr": 230.8
+  },
+  "ICICI Prudential Nifty Bank ETF": {
+   "eq": 14,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2423.34,
+   "total_cr": 2423.41
+  },
+  "ICICI Prudential Nifty Bank Index Fund": {
+   "eq": 14,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 703.85,
+   "total_cr": 703.99
+  },
+  "ICICI Prudential Nifty Commodities ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 119.2,
+   "total_cr": 119.21
+  },
+  "ICICI Prudential Nifty EV & New Age Automotive ETF": {
+   "eq": 37,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 74.16,
+   "total_cr": 74.16
+  },
+  "ICICI Prudential Nifty Financial Services Ex-Bank ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 193.01,
+   "total_cr": 193.25
+  },
+  "ICICI Prudential Nifty FMCG ETF": {
+   "eq": 15,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 769.32,
+   "total_cr": 769.33
+  },
+  "ICICI Prudential Nifty Healthcare ETF": {
+   "eq": 20,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 240.1,
+   "total_cr": 240.11
+  },
+  "ICICI Prudential Nifty India Consumption ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 52.44,
+   "total_cr": 52.45
+  },
+  "ICICI Prudential Nifty Infrastructure ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 246.81,
+   "total_cr": 246.81
+  },
+  "ICICI Prudential Nifty IT ETF": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 597.42,
+   "total_cr": 597.81
+  },
+  "ICICI Prudential Nifty IT Index Fund": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 484.22,
+   "total_cr": 483.25
+  },
+  "ICICI Prudential Nifty LargeMidcap 250 Index Fund": {
+   "eq": 249,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 291.12,
+   "total_cr": 292.77
+  },
+  "ICICI Prudential Nifty Metal ETF": {
+   "eq": 15,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 903.29,
+   "total_cr": 903.33
+  },
+  "ICICI Prudential Nifty Midcap 150 ETF": {
+   "eq": 149,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 720.31,
+   "total_cr": 727.37
+  },
+  "ICICI Prudential Nifty Midcap 150 Index Fund": {
+   "eq": 149,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1191.37,
+   "total_cr": 1201.84
+  },
+  "ICICI Prudential Nifty Next 50 ETF": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2577.7,
+   "total_cr": 2577.79
+  },
+  "ICICI Prudential Nifty Next 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 9552.75,
+   "total_cr": 9557.84
+  },
+  "ICICI Prudential Nifty Oil & Gas ETF": {
+   "eq": 15,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 272.39,
+   "total_cr": 272.49
+  },
+  "ICICI Prudential Nifty Pharma ETF": {
+   "eq": 20,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 6.48,
+   "total_cr": 6.48
+  },
+  "ICICI Prudential Nifty Pharma Index Fund": {
+   "eq": 20,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 177.16,
+   "total_cr": 177.33
+  },
+  "ICICI Prudential Nifty Private Bank ETF": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 4439.98,
+   "total_cr": 4440.08
+  },
+  "ICICI Prudential Nifty Private Bank Index Fund": {
+   "eq": 10,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 62.38,
+   "total_cr": 62.04
+  },
+  "ICICI Prudential Nifty PSU Bank ETF": {
+   "eq": 12,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 119.8,
+   "total_cr": 119.8
+  },
+  "ICICI Prudential Nifty Smallcap 250 ETF": {
+   "eq": 249,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 0.996,
+   "eq_cr": 9.23,
+   "total_cr": 9.35
+  },
+  "ICICI Prudential Nifty Smallcap 250 Index Fund": {
+   "eq": 249,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 0.996,
+   "eq_cr": 729.64,
+   "total_cr": 740.1
+  },
+  "ICICI Prudential Nifty Top 15 Equal Weight ETF": {
+   "eq": 15,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 14.71,
+   "total_cr": 14.72
+  },
+  "ICICI Prudential Nifty Top 15 Equal Weight Index Fund": {
+   "eq": 15,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 40.19,
+   "total_cr": 40.71
+  },
+  "ICICI Prudential Nifty50 Equal Weight Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 248.49,
+   "total_cr": 248.68
+  },
+  "ICICI Prudential Nifty50 Value 20 ETF": {
+   "eq": 20,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 172.02,
+   "total_cr": 172.06
+  },
+  "ICICI Prudential Nifty50 Value 20 Index Fund": {
+   "eq": 20,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 97.48,
+   "total_cr": 97.54
+  },
+  "ICICI Prudential Nifty200 Quality 30 Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 24.87,
+   "total_cr": 24.87
+  },
+  "ICICI Prudential Nifty200 Value 30 ETF": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 45.72,
+   "total_cr": 45.73
+  },
+  "ICICI Prudential Nifty200 Value 30 Index Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 189.34,
+   "total_cr": 186.71
+  },
+  "ICICI PRUDENTIAL PSU EQUITY FUND": {
+   "eq": 45,
+   "fut": 2,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1623.79,
+   "total_cr": 1704.09
+  },
+  "ICICI Prudential Quality Fund": {
+   "eq": 67,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1896.64,
+   "total_cr": 1960.74
+  },
+  "ICICI Prudential Quant Fund": {
+   "eq": 52,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 159.41,
+   "total_cr": 164.26
+  },
+  "ICICI Prudential Retirement Fund - Hybrid Aggressive Plan": {
+   "eq": 63,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1003.6,
+   "total_cr": 1218.24
+  },
+  "ICICI Prudential Retirement Fund - Hybrid Conservative Plan": {
+   "eq": 20,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 20.34,
+   "total_cr": 94.05
+  },
+  "ICICI Prudential Retirement Fund - Pure Equity Plan": {
+   "eq": 83,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1932.66,
+   "total_cr": 2071.31
+  },
+  "ICICI Prudential Rural Opportunities Fund": {
+   "eq": 43,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1752.24,
+   "total_cr": 1829.74
+  },
+  "ICICI Prudential Small Cap Fund": {
+   "eq": 118,
+   "fut": 1,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 8852.56,
+   "total_cr": 9124.48
+  },
+  "ICICI Prudential Technology Fund": {
+   "eq": 65,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 11984.7,
+   "total_cr": 13154.25
+  },
+  "ICICI Prudential Transportation and Logistics Fund": {
+   "eq": 39,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 3685.26,
+   "total_cr": 3817.29
+  },
+  "ICICI Prudential Value Fund": {
+   "eq": 60,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 55670.94,
+   "total_cr": 57760.28
+  },
+  "BHARAT 22 ETF": {
+   "eq": 22,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 9419.46,
+   "total_cr": 9421.07
+  },
+  "ICICI Prudential Active Momentum Fund": {
+   "eq": 45,
+   "fut": 1,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1862.69,
+   "total_cr": 1974.93
+  },
+  "ICICI Prudential Aggressive Hybrid Fund": {
+   "eq": 122,
+   "fut": 14,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 36359.9,
+   "total_cr": 50087.17
+  }
+ },
+ "rows": 6912,
+ "eq_cr": 711747.7,
+ "warn": []
+}

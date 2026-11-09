@@ -1,0 +1,75 @@
+{
+ "code": "ppfas",
+ "amc": "PPFAS Mutual Fund",
+ "month": "2026-10",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-11-09 23:09",
+ "files": [
+  {
+   "name": "Consolidated",
+   "url": "https://amc.ppfas.com/downloads/portfolio-disclosure/2026/PPFAS_Monthly_Portfolio_Report_October_31_2026.xls?09112026",
+   "schemes": 7,
+   "eq_rows": 305
+  }
+ ],
+ "schemes": {
+  "Parag Parikh Flexi Cap Fund": {
+   "eq": 56,
+   "fut": 59,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 112439.65,
+   "total_cr": 146784.53
+  },
+  "Parag Parikh ELSS Tax Saver Fund": {
+   "eq": 40,
+   "fut": 5,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 4896.56,
+   "total_cr": 5426.72
+  },
+  "Parag Parikh Conservative Hybrid Fund": {
+   "eq": 7,
+   "fut": 14,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 341.99,
+   "total_cr": 3394.73
+  },
+  "Parag Parikh Arbitrage Fund": {
+   "eq": 75,
+   "fut": 152,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1826.69,
+   "total_cr": 2720.36
+  },
+  "Parag Parikh Dynamic Asset Allocation Fund": {
+   "eq": 26,
+   "fut": 37,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 559.85,
+   "total_cr": 2442.34
+  },
+  "Parag Parikh Large Cap Fund": {
+   "eq": 101,
+   "fut": 6,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 926.28,
+   "total_cr": 932.88
+  }
+ },
+ "rows": 578,
+ "eq_cr": 120991.0,
+ "warn": []
+}

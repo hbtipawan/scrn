@@ -1,0 +1,192 @@
+{
+ "code": "boi",
+ "amc": "Bank of India Mutual Fund",
+ "month": "2026-10",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-11-09 23:17",
+ "files": [
+  {
+   "name": "MONTHLY-PORTFOLIO - 31-OCTOBER-2026",
+   "url": "https://www.boimf.in/docs/default-source/investorcorner/monthly-portfolio/monthly-portfolio---31-october-2026.xlsx?sfvrsn=3af3c327_3",
+   "schemes": 25,
+   "eq_rows": 1011
+  }
+ ],
+ "schemes": {
+  "Bank of India Large & Mid Cap Fund": {
+   "eq": 49,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 494.85,
+   "total_cr": 507.75
+  },
+  "Bank Of India Conservative Hybrid Fund": {
+   "eq": 27,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 14.02,
+   "total_cr": 68.35
+  },
+  "Bank of India ELSS Tax Saver Fund": {
+   "eq": 53,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1194.16,
+   "total_cr": 1324.18
+  },
+  "Bank Of India Manufacturing and Infrastructure Fund": {
+   "eq": 61,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 925.37,
+   "total_cr": 1002.06
+  },
+  "Bank Of India Balanced Advantage Fund": {
+   "eq": 71,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 100.78,
+   "total_cr": 175.54
+  },
+  "Bank of India Aggressive Hybrid Fund": {
+   "eq": 67,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 0.985,
+   "eq_cr": 1637.79,
+   "total_cr": 2241.73
+  },
+  "Bank Of India Mid Cap Tax Fund Series 1 (A 10 Year Close-ended Equity Linked Savings Scheme)": {
+   "eq": 53,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 61.03,
+   "total_cr": 62.53
+  },
+  "Bank Of India Arbitrage Fund": {
+   "eq": 33,
+   "fut": 66,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 88.53,
+   "total_cr": 123.18
+  },
+  "Bank Of India Mid Cap Tax Fund Series 2 (A 10 Year Close-ended Equity Linked Savings Scheme)": {
+   "eq": 53,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 30.57,
+   "total_cr": 31.0
+  },
+  "Bank Of India Small Cap Fund": {
+   "eq": 82,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 0.988,
+   "eq_cr": 3503.63,
+   "total_cr": 3685.24
+  },
+  "Bank Of India Flexi Cap Fund": {
+   "eq": 62,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 3033.95,
+   "total_cr": 3137.4
+  },
+  "Bank of India Large Cap Fund": {
+   "eq": 60,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 224.59,
+   "total_cr": 225.93
+  },
+  "Bank Of India Multi Cap Fund": {
+   "eq": 66,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1262.58,
+   "total_cr": 1357.19
+  },
+  "Bank of India Multi Asset Allocation Fund": {
+   "eq": 49,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 0.98,
+   "eq_cr": 202.64,
+   "total_cr": 358.23
+  },
+  "Bank of India Business Cycle Fund": {
+   "eq": 52,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 389.43,
+   "total_cr": 414.57
+  },
+  "Bank of India Consumption Fund": {
+   "eq": 37,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 325.4,
+   "total_cr": 337.38
+  },
+  "Bank of India Mid Cap Fund": {
+   "eq": 54,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 694.31,
+   "total_cr": 706.6
+  },
+  "Bank of India Banking & Financial Services Fund": {
+   "eq": 35,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 232.53,
+   "total_cr": 241.73
+  },
+  "Bank of India Value Fund": {
+   "eq": 47,
+   "fut": 0,
+   "date": "2026-10-31",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 329.68,
+   "total_cr": 357.76
+  }
+ },
+ "rows": 1077,
+ "eq_cr": 14745.8,
+ "warn": []
+}
