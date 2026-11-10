@@ -320,6 +320,8 @@ def main():
             "a50": bool(c_all[s] > sma_a[50].iloc[-1][s]) if pd.notna(sma_a[50].iloc[-1][s]) else None,
             "a200": bool(c_all[s] > sma_a[200].iloc[-1][s]) if pd.notna(sma_a[200].iloc[-1][s]) else None,
             "tt": bool(tt_all[s]), "st": stage(s),
+            "d20": r2((c_all[s] / sma_a[20].iloc[-1][s] - 1) * 100, 1), "d50": r2((c_all[s] / sma_a[50].iloc[-1][s] - 1) * 100, 1),
+            "d200": r2((c_all[s] / sma_a[200].iloc[-1][s] - 1) * 100, 1),
             "to": r2(med_to[s], 1), "vr": r2(vr_a[s], 1),
             "mc": r2(mc_show.get(s), 0),
         }
@@ -599,9 +601,11 @@ def main():
         import upside as UP
         UPR, up_by = UP.build(PFULL, syms, bench, {"sec": sec_all, "ind": ind}, CFG)
         json.dumps(UPR, separators=(",", ":"), allow_nan=False)       # must be writable before anything is attached
+        grs = {x["s"]: (x["irs"], x["srs"]) for x in UPR["rows"]}
         for r in rows:
             if r["s"] in up_by:
                 r["up"] = up_by[r["s"]]
+                r["irs"], r["srs"] = grs[r["s"]]          # industry / sector RS rating (screener)
         dump_later["upside.json"] = UPR
         up_meta = {"n": UPR["n"], "asof": UPR["asof"]}
         print(f"upside: {UPR['n']} stocks scored for {UPR['asof']}")

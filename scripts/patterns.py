@@ -1013,6 +1013,38 @@ def card(pid, p, d, gap, kind):
         row["since"] = round((c_now / level - 1) * 100, 1)                # today's close vs the confirmation level
         # failed since: closed back below the pattern low (above the right shoulder for an H&S top)
         row["fail"] = bool(c_now > stop) if kind == "sell" else bool(c_now < stop)
+    # where price really touches each drawn line: bars between the line's two ends whose high (for a ceiling) or low
+    # (for a floor or neckline under price) comes within 0.5% of the line; touches are at least 3 sessions apart
+    Hh, Ll, Cc = d["high"].to_numpy(float), d["low"].to_numpy(float), d["close"].to_numpy(float)
+    tch = []
+    for a_, b_ in p["lines"]:
+        i0, i1 = int(a_[0]), min(int(b_[0]), last_real)
+        if i1 <= i0:
+            tch.append([])
+            continue
+        ii = np.arange(i0, i1 + 1)
+        ln = np.array([px(a_[1] + (b_[1] - a_[1]) * (i - a_[0]) / max(1e-9, b_[0] - a_[0])) for i in ii])
+        ceil_ = np.median(Cc[i0:i1 + 1] - ln) < 0
+        ext = Hh[i0:i1 + 1] if ceil_ else Ll[i0:i1 + 1]
+        gap_ = np.abs(np.log(ext / ln))
+        hit, lastk = [], -9
+        for k in np.flatnonzero(gap_ <= 0.005):
+            if int(ii[k]) == t and not fm:
+                continue                                  # the breakout bar itself is not a touch
+            if k - lastk < 3:
+                if gap_[k] < gap_[hit[-1]]:
+                    hit[-1] = int(k)
+                lastk = k
+                continue
+            hit.append(int(k)); lastk = k
+        tch.append([[int(ii[k]), float(ext[k])] for k in hit])
+    row["tch"] = [[[dt(i), rd(v)] for i, v in L_] for L_ in tch]
+    row["nt"] = int(sum(len(L_) for L_ in tch))
+    if pid.startswith("rect") and len(p["lines"]) == 2:
+        # a rectangle's rule: a touch is a swing high in the top fifth of the box (a swing low in the bottom fifth).
+        # zn = [lower edge of the ceiling zone, upper edge of the floor zone], drawn as bands so every counted swing sits inside one
+        top_, bot_ = p["lines"][0][0][1], p["lines"][1][0][1]
+        row["zn"] = [rd(px(top_ - 0.20 * (top_ - bot_))), rd(px(bot_ + 0.20 * (top_ - bot_)))]
     if pid == "vcp":
         row["nT"] = p["nT"]
         row["dep"] = [round((math.exp(x) - 1) * 100, 1) for x in p["depths"]]
@@ -1023,8 +1055,9 @@ def card(pid, p, d, gap, kind):
         j1 = min(int(i1), last_real)
         y1c = y0 + (y1 - y0) * (j1 - i0) / max(1e-9, i1 - i0)
         m_lines.append([[int(i0) - a, rd(px(y0))], [j1 - a, rd(px(y1c))]])
-    row["m"] = {"c": [rd(x) for x in d["close"].iloc[a:].tolist()], "p": [[int(i) - a, rd(px(y)), lab] for i, y, lab in p["pts"]],
-                "l": m_lines, "b": None if fm else int(t) - a}
+    row["m"] = {"c": [rd(x) for x in d["close"].iloc[a:].tolist()], "h": [rd(x) for x in d["high"].iloc[a:].tolist()],
+                "lo": [rd(x) for x in d["low"].iloc[a:].tolist()], "p": [[int(i) - a, rd(px(y)), lab] for i, y, lab in p["pts"]],
+                "l": m_lines, "b": None if fm else int(t) - a, "t": [[[i - a, rd(v)] for i, v in L_] for L_ in tch]}
     return row, first
 
 

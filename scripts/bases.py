@@ -350,18 +350,60 @@ def build(p_long, U, rs_now):
             rec["ib"] = {"len": bo["len"], "piv": _px(bo["piv"]), "ago": e - bo["t"], "ext": _r((c[e] / bo["piv"] - 1) * 100, 1),
                          "sc": bo["sc"], "start": str(d[bo["st"]])}
         rows.append(rec)
-        per[s] = {"bl": prim["len"], "bsc": prim["sc"]}
+        # for the screener: price against the pivot (+ above, - below), status, depth and pivot tests
+        per[s] = {"bl": prim["len"], "bsc": prim["sc"], "bfp": _r((c[e] / piv - 1) * 100, 1), "bst": status,
+                  "bdp": rec["depth"], "btc": prim["tc"]}
         # chart: some bars before the base, the base, and anything since
         a0 = max(0, st - max(20, int(prim["len"] * 0.3)))
         seg = c[a0:]
-        step = max(1, math.ceil(len(seg) / CHART_PTS))
-        idx = list(range(len(seg) - 1, -1, -step))[::-1]
-        ch = {"c": [_px(seg[i]) for i in idx], "s": int(np.searchsorted(idx, st - a0)), "d0": str(d[a0]), "k": step}
+        step = 1 if len(seg) <= CHART_PTS else math.ceil(len(seg) / (CHART_PTS // 2))     # two points (high, low) per bucket
+        # the bars that define the base and the tests of its ceiling and floor (the same rule as base_stats: a test
+        # starts when the close comes within ZONE of the level and counts again only after it has moved 2 x ZONE away)
+        endb = prim["t"] if prim["kind"] == "bo" else n          # the base ends before a breakout bar
+        cb_ = c[st:endb]
+        pvb = st + int(np.flatnonzero(cb_ >= piv * (1 - 1e-9))[-1]) if (cb_ >= piv * (1 - 1e-9)).any() else st + int(np.argmax(cb_))
+        flb = st + int(np.argmin(cb_))
+        lo_ = st
+        if prim["fa"]:
+            below = np.flatnonzero(cb_ < c[st] * (1 - ZONE))
+            lo_ = st + int(below[0]) if len(below) else st
+
+        def tests(i_from, at, level, up):
+            out_, armed, best = [], True, None
+            for i in range(i_from, endb):
+                inside = c[i] >= level * (1 - ZONE) if up else c[i] <= level * (1 + ZONE)
+                away = c[i] < level * (1 - 2 * ZONE) if up else c[i] > level * (1 + 2 * ZONE)
+                if inside:
+                    if armed:
+                        out_.append(i); armed = False
+                    elif (c[i] > c[out_[-1]]) if up else (c[i] < c[out_[-1]]):
+                        out_[-1] = i                      # the closest close of this test
+                elif away:
+                    armed = True
+            return out_
+        tcs, tfs = tests(lo_, pvb, piv, True), tests(st, flb, fl, False)
+        rec["pd"], rec["fd"] = str(d[pvb]), str(d[flb])
+        # one in `step` bars is drawn, but never without the bars that matter: every bucket keeps its highest and lowest
+        # close, so the line reaches the pivot, the base low and every test
+        keep = {len(seg) - 1, 0, pvb - a0, flb - a0, st - a0, lo_ - a0} | {i - a0 for i in tcs + tfs}
         if prim["kind"] == "bo":
-            ch["b"] = int(np.searchsorted(idx, prim["t"] - a0))
+            keep.add(prim["t"] - a0)
+        if bo is not None and prim is not bo:
+            keep |= {bo["t"] - a0, max(0, bo["st"] - a0)}
+        for b0 in range(len(seg) - 1, -1, -step):
+            w0 = max(0, b0 - step + 1)
+            keep |= {w0 + int(np.argmax(seg[w0:b0 + 1])), w0 + int(np.argmin(seg[w0:b0 + 1]))}
+        idx = sorted(i for i in keep if 0 <= i < len(seg))
+        pos = {i: k for k, i in enumerate(idx)}
+        ch = {"c": [_px(seg[i]) for i in idx], "s": pos[st - a0], "d0": str(d[a0]), "k": step,
+              "ls": pos[lo_ - a0], "pv": pos[pvb - a0], "fv": pos[flb - a0], "tc": [pos[i - a0] for i in tcs], "tf": [pos[i - a0] for i in tfs]}
+        if step > 1:                                      # bar offsets are no longer evenly spaced: send them
+            ch["x"] = idx
+        if prim["kind"] == "bo":
+            ch["b"] = pos[prim["t"] - a0]
         elif bo is not None:
-            ch["ib"] = int(np.searchsorted(idx, bo["t"] - a0))
-            ch["ibs"] = int(np.searchsorted(idx, bo["st"] - a0))
+            ch["ib"] = pos[bo["t"] - a0]
+            ch["ibs"] = pos[max(0, bo["st"] - a0)]
             ch["ibp"] = _px(bo["piv"])
         charts[s] = ch
     ev_file = CFG / "base_evidence.json"

@@ -436,7 +436,7 @@ def build(W, U, ctx):
     rows.sort(key=lambda x: (x["d"], x["qs"] or 0), reverse=True)
     for x in rows:                       # latest result of the current season, for the stock window and scanners
         if x["sn"] == cur["id"] and x["s"] not in per:
-            per[x["s"]] = {"rq": x["qs"], "rp": x["pead"], "rd": x["d"]}
+            per[x["s"]] = {"rq": x["qs"], "pead": x["pead"], "rd": x["d"]}   # not "rp": that key is last week's returns (rank arrows)
     due = []
     if "next_results" in info:
         nx = pd.to_datetime(info["next_results"], errors="coerce")

@@ -226,6 +226,47 @@ def features(PFULL, syms, bench, groups):
     return F[elig.reindex(F.index).fillna(False).to_numpy()], dates[t], float(ab50.iloc[t])
 
 
+SNAP_EVERY = 5        # sessions between saved snapshots of the ranks (the test also read the score every 5th session)
+HOLD = 63             # sessions each snapshot is followed for
+
+
+def live_record(PFULL, cfg: Path, asof, ranks):
+    """The score's record since it went live. Every 5th session the ranks are saved to config/upside_history.csv.gz;
+    each saved day is then followed exactly as in the test: bought at the next session's open, measured at the close
+    up to 63 sessions later against the average of all stocks scored that day. Nothing is back-filled."""
+    f = cfg / "upside_history.csv.gz"
+    cal = sorted(PFULL.date.unique())
+    pos = {d: i for i, d in enumerate(cal)}
+    H = pd.read_csv(f, dtype={"date": str, "sym": str}) if f.exists() else pd.DataFrame({"date": pd.Series(dtype=str), "sym": pd.Series(dtype=str), "u": pd.Series(dtype=int)})
+    H = H[H.date.isin(pos) & (H.date <= asof)]
+    last = H.date.max() if len(H) else None
+    if asof in pos and (last is None or pos[asof] - pos[last] >= SNAP_EVERY):
+        H = pd.concat([H, pd.DataFrame({"date": asof, "sym": list(ranks.index), "u": ranks.to_numpy().astype(int)})], ignore_index=True)
+        H.to_csv(f, index=False, compression="gzip")
+    snaps = sorted(H.date.unique())
+    out = {"since": snaps[0] if snaps else asof, "snaps": len(snaps), "rows": []}
+    if not snaps:
+        return out
+    p = PFULL[PFULL.symbol.isin(set(H.sym)) & (PFULL.date >= snaps[0])].drop_duplicates(["date", "symbol"], keep="last")
+    O = p.pivot(index="date", columns="symbol", values="open"); C = p.pivot(index="date", columns="symbol", values="close").ffill(limit=10)
+    t_last = pos[asof]
+    for d in snaps:
+        age = t_last - pos[d]
+        if age < 5:
+            continue                                   # too young to say anything
+        g = H[H.date == d].set_index("sym")["u"]
+        d_in, d_out = cal[pos[d] + 1], cal[min(pos[d] + HOLD, t_last)]
+        e = O.loc[d_in].reindex(g.index); x = C.loc[d_out].reindex(g.index)
+        r = (x / e.where(e > 0) - 1).dropna()
+        if len(r) < 100:
+            continue
+        top, bot = r[g.reindex(r.index) >= 90], r[g.reindex(r.index) <= 10]
+        out["rows"].append({"d": d, "n": int(len(top)), "days": int(min(age, HOLD)), "done": bool(age >= HOLD),
+                            "top": round(float(top.mean()) * 100, 1), "all": round(float(r.mean()) * 100, 1),
+                            "bot": round(float(bot.mean()) * 100, 1), "up": round(float((top > 0).mean()) * 100)})
+    return out
+
+
 def build(PFULL, syms, bench, groups, cfg: Path):
     """-> (upside.json content, {symbol: upside rank}) for the last session."""
     import lightgbm as lgb
@@ -254,4 +295,8 @@ def build(PFULL, syms, bench, groups, cfg: Path):
     ev_f = cfg / "upside_evidence.json"
     out = {"asof": asof, "n": len(rows), "ab50": round(ab50 * 100, 1), "rows": rows,
            "evidence": json.loads(ev_f.read_text()) if ev_f.exists() else None}
+    try:
+        out["live"] = live_record(PFULL, cfg, asof, up)
+    except Exception as e:  # the record is optional - never lose the scores over it
+        print(f"upside live record skipped: {e}")
     return out, {r["s"]: r["u"] for r in rows}
