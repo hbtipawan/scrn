@@ -736,6 +736,7 @@ details.exp>div{padding:0 0 8px}
 .glegend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:15px;color:var(--muted);margin:10px 2px 16px}
 .glegend span{display:inline-flex;align-items:center;gap:7px}
 .glegend i{display:inline-block;width:18px;height:3px;border-radius:2px;background:var(--c)}
+.glegend i.ring{width:11px;height:11px;border-radius:50%;background:var(--card);border:2px solid var(--c)}.glegend i.dot{width:8px;height:8px;border-radius:50%}
 .glegend i.dash{background:repeating-linear-gradient(90deg,var(--c) 0 5px,transparent 5px 9px)}
 .gcols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:16px;align-items:start}
 .gcols .dsec,.gbody>.dsec{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
@@ -1000,7 +1001,7 @@ body{background:var(--wash),var(--desk);background-attachment:scroll;min-height:
   .rcard:hover{transform:translateY(-2px)}
   .rail button{transition:background .12s ease,border-color .12s ease}
 }
-/* Ten tabs: on PCs and tablets every tab stays in view - tighter spacing, short names for the three longest
+/* Eleven tabs: on PCs and tablets every tab stays in view - tighter spacing, short names for the three longest
    (RS, Bases, VPCI); below 1360px every tab uses its short name, below 1100px the counts are dropped */
 @media (min-width:721px){
   .tab{padding-inline:9px;gap:6px}
@@ -1010,7 +1011,7 @@ body{background:var(--wash),var(--desk);background-attachment:scroll;min-height:
 }
 @media (min-width:721px) and (max-width:1359px){.tab .lf{display:none}.tab .ls{display:inline}.tab{font-size:16px}}
 @media (min-width:721px) and (max-width:1099px){.tab .cnt{display:none}.tab{padding-inline:7px;gap:5px;font-size:15.5px}.tabbar .wrap{padding-inline:12px}}
-@media (min-width:721px) and (max-width:899px){.tabbar .wrap{justify-content:space-between;gap:0}.tab{flex:1 1 auto;flex-direction:column;gap:3px;padding:8px 2px 7px;font-size:14px;min-width:0}}
+@media (min-width:721px) and (max-width:1099px){.tabbar .wrap{justify-content:space-between;gap:0}.tab{flex:1 1 auto;flex-direction:column;gap:3px;padding:8px 2px 7px;font-size:14px;min-width:0}}
 @media (max-width:720px){
   .tabbar{box-shadow:0 -1px 0 var(--line),0 -10px 22px -14px rgba(15,26,42,.35);background:linear-gradient(0deg,var(--card),var(--soft))}
   .tab svg{padding:4px;width:20px;height:20px}
@@ -1062,6 +1063,8 @@ body{background:var(--wash),var(--desk);background-attachment:scroll;min-height:
 .upc.neg{background:color-mix(in srgb,var(--down) 10%,var(--card));color:var(--down-t);border-color:color-mix(in srgb,var(--down) 34%,transparent)}
 .upband{white-space:nowrap;font-size:15px}.upband small{display:block;color:var(--muted);font-size:13px;font-weight:600}
 .upbars{max-width:980px}
+.uplive{margin:14px 0;padding:14px 0 0}.uplive h3{font-size:21px;margin:0 16px}.uplive h3 span{font-family:var(--body);font-weight:600;font-size:15.5px;color:var(--muted);margin-left:8px}
+.uplive>.note{padding:0 16px 14px}.uplsum{margin:6px 16px 10px;font-size:16.5px}
 .upsec{display:block;min-width:150px;white-space:normal;line-height:1.3}.upsec small{display:block;color:var(--muted);font-size:13.5px}
 .upyrs{display:grid;grid-template-columns:repeat(17,minmax(0,1fr));gap:6px;max-width:980px;margin:8px 0 4px}
 .upy{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
@@ -1088,6 +1091,52 @@ body{background:var(--wash),var(--desk);background-attachment:scroll;min-height:
 .bgrid2.two{grid-template-columns:repeat(2,minmax(0,1fr))}
 .bgrid2>.chart{min-width:0}
 
+/* ── Screener ─────────────────────────────────────────── */
+.tab[data-v="screener"],#view[data-v="screener"]{--t:#0E7490}
+.sxstrip{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 10px}
+.sxk{font-size:14px;font-weight:700;color:var(--muted);margin-right:4px;min-width:108px}
+.sxchip{display:inline-flex;align-items:center;border:1.5px solid var(--line);background:linear-gradient(180deg,var(--card),var(--soft));border-radius:999px;padding:6px 14px;font-size:15.5px;font-weight:600;cursor:pointer;color:var(--ink);box-shadow:0 2px 0 var(--line)}
+.sxchip:hover{border-color:var(--t)}
+.sxchip.mine{padding:0;overflow:hidden}.sxchip.mine button{border:0;background:none;padding:6px 6px 6px 14px;font:inherit;color:inherit;cursor:pointer}.sxchip.mine button+button{padding:6px 12px 6px 4px;color:var(--muted)}
+.sxchip.mine.on{border-color:var(--t);background:color-mix(in srgb,var(--t) 12%,var(--card))}
+.sxbox{margin:6px 0 14px;overflow:hidden}
+.sxhead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px 18px;padding:14px 16px;border-bottom:1px solid var(--line)}
+.sxtitle{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px}.sxtitle h3{font-size:22px;font-weight:800}
+#sxCount{font-size:17px;color:var(--muted)}#sxCount b{font-family:var(--display);font-weight:800;font-size:25px;color:var(--t)}
+:root[data-theme="dark"] #sxCount b{color:color-mix(in srgb,var(--t) 55%,#fff)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) #sxCount b{color:color-mix(in srgb,var(--t) 55%,#fff)}}
+.sxacts{display:flex;flex-wrap:wrap;align-items:center;gap:8px}.sxacts .ghost:disabled{opacity:.45;cursor:default}
+.sxsave{display:inline-flex;gap:6px;align-items:center}.sxsave .search{width:200px;min-height:40px}.sxsave .btn{min-height:40px;padding:0 14px}
+.sxrow{display:grid;grid-template-columns:minmax(200px,300px) minmax(0,1fr) 92px 40px;gap:10px 16px;align-items:center;padding:11px 16px;border-bottom:1px solid var(--line)}
+.sxrow.off{background:color-mix(in srgb,var(--warn-bg) 55%,transparent)}
+.sxlab{display:flex;gap:10px;align-items:center;min-width:0}.sxlab i{flex:none;width:6px;align-self:stretch;min-height:36px;border-radius:3px;background:var(--g)}
+.sxlab b{display:block;font-size:16.5px;line-height:1.25}.sxlab small{color:var(--muted);font-size:13.5px}
+.sxctl{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;min-width:0}
+.sxrng{display:inline-flex;align-items:center;gap:7px}.sxrng input{width:96px;min-height:40px;border:1.5px solid var(--line);border-radius:8px;padding:6px 9px;background:var(--card);font-variant-numeric:tabular-nums}
+.sxrng input:focus{outline:2px solid var(--t);outline-offset:1px;border-color:var(--t)}.sxrng i{font-style:normal;color:var(--muted);font-size:14.5px}.sxrng em{font-style:normal;color:var(--muted);font-weight:600}
+.sxps{display:flex;flex-wrap:wrap;gap:5px}
+.sxps button{border:1.5px solid var(--line);background:var(--card);border-radius:8px;padding:5px 10px;font-size:15px;font-weight:600;color:var(--muted);cursor:pointer;white-space:nowrap}
+.sxps button:hover{color:var(--ink);border-color:var(--muted)}
+.sxps button[aria-pressed="true"]{background:linear-gradient(180deg,var(--key-top),var(--key-bot));border-color:var(--key-edge);color:var(--sel-ink)}
+.sxsel{min-height:40px;padding:5px 10px;max-width:230px;font-size:15.5px}
+.sxleft{text-align:right;line-height:1.15}.sxleft b{display:block;font-family:var(--display);font-weight:800;font-size:21px}.sxleft small{color:var(--muted);font-size:13.5px}
+.sxdel{border:0;background:none;color:var(--muted);font-size:17px;cursor:pointer;border-radius:8px;min-height:40px}.sxdel:hover{background:var(--soft);color:var(--down-t)}
+.sxempty{margin:0;padding:18px 16px;color:var(--muted);border-bottom:1px solid var(--line)}
+.sxadd>summary{cursor:pointer;list-style:none;padding:13px 16px;display:flex;gap:12px;align-items:baseline}.sxadd>summary::-webkit-details-marker{display:none}
+.sxadd>summary b{font-size:17px;color:var(--t)}.sxadd>summary span{color:var(--muted);font-size:14.5px}
+:root[data-theme="dark"] .sxadd>summary b{color:color-mix(in srgb,var(--t) 55%,#fff)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .sxadd>summary b{color:color-mix(in srgb,var(--t) 55%,#fff)}}
+.sxfind{padding:0 16px 10px}.sxfind .search{width:min(420px,100%)}
+.sxpick{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px 22px;padding:2px 16px 18px}
+.sxpg h4{display:flex;align-items:center;gap:8px;font-family:var(--body);font-size:14px;font-weight:700;color:var(--muted);margin:0 0 5px}.sxpg h4 i{width:9px;height:9px;border-radius:3px;background:var(--g)}
+.sxpg button{display:block;width:100%;text-align:left;border:0;background:none;padding:4px 8px;border-radius:7px;font-size:15.5px;cursor:pointer;color:var(--ink);line-height:1.3}
+.sxpg button:hover{background:color-mix(in srgb,var(--g) 13%,var(--card))}.sxpg button.used{color:var(--muted)}.sxpg button.used::after{content:" ✓"}
+.sxtools{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.sxv{display:inline-block;max-width:260px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;vertical-align:bottom;font-size:15px}
+#sxT td{white-space:nowrap}
+#sxT .bxhead>span:first-child{flex:1 1 320px;min-width:0;color:var(--muted);font-size:15.5px;line-height:1.4}#sxT .bxhead>span:first-child b{color:var(--ink);font-size:18px}
+@media (max-width:900px){.sxrow{grid-template-columns:minmax(0,1fr) 76px 36px}.sxctl{grid-column:1/-1;grid-row:2}.sxk{min-width:0;flex-basis:100%}.sxrng input{width:84px}}
+
 /* Ten tabs: on phones the bottom bar scrolls sideways (the open tab is kept in view; a fade shows there is more) */
 @media (max-width:720px){
   .tabbar .wrap{justify-content:flex-start;scroll-snap-type:x proximity;scroll-padding-inline:4px}
@@ -1098,6 +1147,29 @@ body{background:var(--wash),var(--desk);background-attachment:scroll;min-height:
   .tiles.uptiles{grid-template-columns:repeat(2,minmax(0,1fr))}
   .uptiles .tile .v{font-size:25px}
 }
+
+/* ══ Nov 2026 polish ══ one-line market strip on the working tabs, eleven tabs that always fit, calmer tables */
+.mstrip{display:flex;flex-wrap:nowrap;overflow:hidden;align-items:center;gap:6px 22px;padding-block:6px 12px;font-size:15px;color:var(--band-muted)}
+.mstrip.open{justify-content:flex-end;padding-block:0 0;margin-bottom:-6px}
+.ms{display:inline-flex;align-items:baseline;gap:7px;white-space:nowrap}
+.ms b{color:var(--band-ink);font-weight:700;font-size:16px}
+.ms b.up,.ms .up{color:#5FD6B3}.ms b.down,.ms .down{color:#FF9479}
+.msbtn{margin-left:auto;flex:none;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.07);color:var(--band-ink);border-radius:999px;padding:5px 14px;font-size:14.5px;font-weight:600;cursor:pointer;white-space:nowrap}
+.msbtn:hover{background:rgba(255,255,255,.14)}
+@media (max-width:1700px){.ms.opt2{display:none}}
+@media (max-width:1000px){.ms.opt{display:none}}
+@media (max-width:720px){.mstrip{flex-wrap:wrap;overflow:visible}}
+@media (max-width:720px){.ms.opt{display:none}.mstrip{gap:4px 14px;font-size:14.5px}.msbtn{padding:5px 11px}}
+@media (min-width:721px) and (max-width:1699px){.tab .cnt{display:none}}
+@media (min-width:1360px) and (max-width:1499px){.tab{padding-inline:8px;gap:6px;font-size:16px}}
+@media (min-width:1100px) and (max-width:1359px){.tab{padding-inline:6px;gap:5px;font-size:15.5px}.tab svg{width:19px;height:19px}}
+.dt thead th{background:var(--soft);border-bottom:1.5px solid var(--line);font-weight:700;color:color-mix(in srgb,var(--ink) 72%,var(--muted))}
+.dt th,.dt th:first-child{background:var(--soft)}
+.dt tbody tr:nth-child(even) td{background:color-mix(in srgb,var(--soft) 55%,var(--card))}
+.dt tbody tr:hover td{background:color-mix(in srgb,var(--t,var(--s1)) 9%,var(--card))}
+.dt td{border-bottom-color:color-mix(in srgb,var(--track) 70%,transparent)}
+.tscroll{border-radius:inherit}
+.card>.tscroll:first-child table.dt thead th:first-child{border-top-left-radius:var(--r)}
 </style>
 </head>
 <body>
@@ -1118,6 +1190,7 @@ body{background:var(--wash),var(--desk);background-attachment:scroll;min-height:
       <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/></svg><span>Theme</span>
     </button>
   </div>
+  <section class="wrap mstrip" id="mstrip" aria-label="Market summary" hidden></section>
   <section class="wrap pulse" id="pulse" aria-label="Market pulse"></section>
 </header>
 
@@ -1127,6 +1200,7 @@ body{background:var(--wash),var(--desk);background-attachment:scroll;min-height:
     <button class="tab" role="tab" data-v="breadth" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M3 13h4l2.5-6 4 11 2.5-6H21"/></svg>Breadth</button>
     <button class="tab" role="tab" data-v="rs" aria-selected="false" title="RS ranking"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M4 18l6-6 4 4 6-8M15 8h5v5"/></svg><span class="lf">RS ranking</span><span class="ls">RS</span></button>
     <button class="tab" role="tab" data-v="upside" aria-selected="false" title="Upside score"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M12 20V5M6 10.5L12 4.5l6 6M5 20.5h4M15 20.5h4"/></svg><span class="lf">Upside</span><span class="ls">Upside</span></button>
+    <button class="tab" role="tab" data-v="screener" aria-selected="false" title="Screener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M3.5 5h17l-6.5 7.6V19l-4 1.8v-8.2z"/></svg><span class="lf">Screener</span><span class="ls">Screen</span></button>
     <button class="tab" role="tab" data-v="scanners" aria-selected="false" title="Scanners"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M16 16l4.5 4.5"/></svg><span class="lf">Scanners</span><span class="ls">Scans</span><span class="cnt" id="scanCnt"></span></button>
     <button class="tab" role="tab" data-v="bases" aria-selected="false" title="Long bases"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M3 19h18M5 15c2-1 3 1 5 0s3-2 5-1 2 1 4 0"/><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-dasharray="3 2.4" stroke-linecap="round" d="M4 8h16"/></svg><span class="lf">Long bases</span><span class="ls">Bases</span></button>
     <button class="tab" role="tab" data-v="patterns" aria-selected="false" title="Chart patterns"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M2.5 7l4 10 5.5-8 5.5 8 4-11"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="2.6 2.4" stroke-linecap="round" d="M8 9.5h8"/></svg><span class="lf">Patterns</span><span class="ls">Patterns</span><span class="cnt" id="patCnt"></span></button>
@@ -1150,8 +1224,8 @@ body{background:var(--wash),var(--desk);background-attachment:scroll;min-height:
 /* ════════════════════ state & helpers ════════════════════ */
 const PERIODS=["1D","1W","1M","3M","6M","YTD","1Y"];
 const PL={"1D":"Today","1W":"1W","1M":"1M","3M":"3M","6M":"6M","YTD":"YTD","1Y":"1Y"};
-const TABS=["rotation","breadth","rs","upside","scanners","bases","patterns","results","watch","vpci"];
-const st={up:{q:"",sec:"",min:"0",s2:false,a50:false,cap:false},brange:"6M",tab:"rotation",period:"1M",group:"Themes",agg:"mean",sort:"ret",view:"bars",open:null,scan:"combo3",scanTop:0,scanFund:0,uni:"all",
+const TABS=["rotation","breadth","rs","upside","screener","scanners","bases","patterns","results","watch","vpci"];
+const st={sx:{uni:"lq",f:[],cols:[],name:""},sxq:"",up:{q:"",sec:"",min:"0",s2:false,a50:false,cap:false},brange:"6M",tab:"rotation",period:"1M",group:"Themes",agg:"mean",sort:"ret",view:"bars",open:null,scan:"combo3",scanTop:0,scanFund:0,uni:"all",
   rs:{q:"",sec:"",theme:"",min:0,fmin:0,tt:false,s2:false,a50:false,all:false},tbl:{}};
 let D={};
 const $=s=>document.querySelector(s);
@@ -1230,6 +1304,17 @@ function renderPulse(){
     <div class="hm"><div class="k"><span>Up 4%+ / down 4%+</span><b class="num"><span class="up">${u4}</span> / <span class="down">${d4}</span></b></div>${split(u4,d4)}</div>
     <div class="hm"><div class="k"><span>Pass Minervini trend template</span><b class="num">${tt} <span style="color:var(--band-muted);font-weight:500;font-size:15px">(${(tt/m.universe*100).toFixed(1)}%)</span></b></div><div class="meter"><i style="width:${Math.min(100,tt/m.universe*100)}%"></i></div></div>
   </div>`;
+  /* On every tab but Rotation the market panel folds into one line, so the work area starts higher; "Market detail" opens it */
+  const compact=st.tab!=="rotation"&&!st.pulseOpen,nm=k=>k.replace("NIFTY ","").replace("SMLCAP","Smallcap").replace("MIDCAP","Midcap").replace("MICROCAP","Microcap ").replace(/^(\d)/,"Nifty $1");
+  $("#pulse").hidden=compact;$("#mstrip").hidden=!compact&&st.tab==="rotation";
+  $("#mstrip").classList.toggle("open",!compact);
+  $("#mstrip").innerHTML=compact?`<span class="ms"><span>${esc(nm(bn))}</span><b class="num">${main?inr(main.px):"–"}</b><b class="num ${cls(main?.r?.["1D"])}">${sgn(main?.r?.["1D"])}</b><span>today</span></span>
+    ${others.map(([k,v])=>`<span class="ms opt"><span>${esc(nm(k))}</span><b class="num ${cls(v.r["1D"])}">${sgn(v.r["1D"])}</b></span>`).join("")}
+    <span class="ms"><span>Breadth</span><b class="${vd[1]}" style="${vd[1]?"":"color:var(--accent)"}">${vd[0]}</b><span class="num">${a50.toFixed(0)}% above 50 DMA</span></span>
+    <span class="ms opt2"><span>Adv / dec</span><b class="num"><span class="up">${adv}</span> / <span class="down">${dec}</span></b></span>
+    ${m.idx?.vix?`<span class="ms opt2"><span>VIX</span><b class="num">${m.idx.vix.v.toFixed(1)}</b></span>`:""}
+    <button type="button" class="msbtn" data-pulse="1" aria-expanded="false">Market detail ▾</button>`
+    :`<button type="button" class="msbtn" data-pulse="0" aria-expanded="true">Hide market detail ▴</button>`;
 }
 function renderFoot(){
   const m=D.meta,f=m.filters||{};
@@ -1238,7 +1323,13 @@ function renderFoot(){
 
 /* ════════════════════ generic table ════════════════════ */
 const TBL={};
+const MCAUTO={k:"mc",label:"Mcap ₹Cr",fmt:r=>{const v=r.mc??D.by?.[r.s??r.symbol]?.mc;return `<span class="num">${isNum(v)?Math.round(v).toLocaleString("en-IN"):"–"}</span>`},sort:r=>r.mc??D.by?.[r.s??r.symbol]?.mc??null};
 function dtable(id,rows,cols,{limit=100,empty="Nothing to show.",csv=true}={}){
+  /* every table of stocks carries market cap: added after the stock column when the table does not have it */
+  {const si=cols.findIndex(c=>c.k==="s"||c.k==="symbol");
+    if(si>=0){const mi=cols.findIndex(c=>c.k==="mc"||c.k==="mcap"||/^mcap|market cap/i.test(c.label||""));
+      if(mi<0)cols=[...cols.slice(0,si+1),MCAUTO,...cols.slice(si+1)];
+      else if(mi>si+1){const m=cols[mi];cols=[...cols.slice(0,si+1),m,...cols.slice(si+1,mi),...cols.slice(mi+1)]}}}
   const T=st.tbl[id]||(st.tbl[id]={key:null,dir:-1,show:limit});
   if(!rows.length)return `<div class="empty">${esc(empty)}</div>`;
   let data=rows;
@@ -2054,26 +2145,35 @@ function scorePill(v){if(!isNum(v))return "–";const c=v>=80?"rs-a":v>=70?"rs-b
 function bchart(s,big,wpx){
   const ch=BASES?.charts?.[s],b=BASES?.by?.[s];if(!ch||!b)return "–";
   const c=ch.c,n=c.length;if(n<3)return "–";
-  const W=big?Math.max(320,Math.min(900,(wpx||460)-12)):156,H=big?Math.round(Math.min(300,Math.max(220,W*.45))):48,pl=big?58:2,pr=big?8:2,pt=big?14:4,pb=big?28:4;
+  const W=big?Math.max(320,Math.min(900,(wpx||460)-12)):156,H=big?Math.round(Math.min(320,Math.max(230,W*.46))):48,pl=big?58:3,pr=big?10:4,pt=big?26:5,pb=big?28:5;
   const v=c.filter(isNum);let lo=Math.min(...v,b.fl),hi=Math.max(...v,b.piv);if(isNum(b.tgt)&&big&&b.tgt<hi*1.25)hi=Math.max(hi,b.tgt);const pad=(hi-lo)*.07;lo-=pad;hi+=pad;
-  const x=i=>pl+i*(W-pl-pr)/(n-1),y=t=>pt+(1-(t-lo)/(hi-lo))*(H-pt-pb);
-  const e=ch.b!=null?ch.b-1:n-1;
+  /* ch.x = each point's bar offset (the line keeps every bucket's high and low, so points are not evenly spaced) */
+  const X=ch.x||null,xm=X?X[n-1]:n-1,x=i=>pl+(X?X[i]:i)*(W-pl-pr)/Math.max(1,xm),y=t=>pt+(1-(t-lo)/(hi-lo))*(H-pt-pb),f=t=>t.toFixed(1);
+  const e=ch.b!=null?Math.max(ch.s,ch.b-1):n-1,ls=ch.ls??ch.s;
+  const ring=(i,r,col,solid)=>i==null||!isNum(c[i])?"":`<circle cx="${f(x(i))}" cy="${f(y(c[i]))}" r="${r}" fill="${solid?col:"var(--card)"}" stroke="${solid?"var(--card)":col}" stroke-width="${big?2:1.2}"/>`;
   let g="";
-  if(big){for(let k=0;k<=3;k++){const t=lo+(hi-lo)*k/3;g+=`<line x1="${pl}" x2="${W-pr}" y1="${y(t)}" y2="${y(t)}" stroke="var(--track)"/><text x="${pl-8}" y="${y(t)+4}" text-anchor="end">${t>=1000?Math.round(t).toLocaleString("en-IN"):t.toFixed(t>=100?0:1)}</text>`}
-    g+=`<text x="${x(ch.s)}" y="${H-8}" text-anchor="${ch.s<n*.15?"start":"middle"}">${esc(bmon(b.start))}</text><text x="${W-pr}" y="${H-8}" text-anchor="end">${esc(fmtDate(D.meta.asof))}</text>`}
-  g+=`<rect class="box" x="${x(ch.s)}" y="${y(b.piv)}" width="${Math.max(1,x(e)-x(ch.s))}" height="${Math.max(1,y(b.fl)-y(b.piv))}"/>`;
-  if(ch.ibp!=null&&ch.ibs!=null)g+=`<line x1="${x(ch.ibs)}" x2="${x(ch.ib)}" y1="${y(ch.ibp)}" y2="${y(ch.ibp)}" stroke="var(--s2)" stroke-width="${big?1.8:1.3}"/>`;
-  g+=`<line x1="${x(ch.s)}" x2="${W-pr}" y1="${y(b.piv)}" y2="${y(b.piv)}" stroke="var(--accent-ink)" stroke-width="${big?2:1.5}" stroke-dasharray="${big?"7 4":"4 3"}"/>`;
-  if(big){g+=`<text x="${pl+6}" y="${y(b.piv)-6}" style="fill:var(--accent-ink);font-weight:700">Pivot ${inr(b.piv)}</text><text x="${pl+6}" y="${y(b.fl)+17}" style="font-weight:700">Base low ${inr(b.fl)}</text>`;
-    if(isNum(b.tgt)&&b.tgt<=hi)g+=`<line x1="${pl}" x2="${W-pr}" y1="${y(b.tgt)}" y2="${y(b.tgt)}" stroke="var(--muted)" stroke-width="1.4" stroke-dasharray="2 4"/><text x="${W-pr-4}" y="${y(b.tgt)-6}" text-anchor="end">Measured move ${inr(b.tgt)}</text>`}
-  g+=`<polyline points="${c.map((t,i)=>isNum(t)?`${x(i).toFixed(1)},${y(t).toFixed(1)}`:null).filter(Boolean).join(" ")}" fill="none" stroke="var(--s1)" stroke-width="${big?2:1.5}" stroke-linejoin="round"/>`;
-  if(ch.b!=null)g+=`<circle cx="${x(ch.b)}" cy="${y(c[ch.b])}" r="${big?5.5:3.2}" fill="var(--up)" stroke="var(--card)" stroke-width="2"/>`;
-  else if(ch.ib!=null)g+=`<circle cx="${x(ch.ib)}" cy="${y(c[ch.ib])}" r="${big?5:3}" fill="var(--s2)" stroke="var(--card)" stroke-width="2"/>`;
-  return `<svg class="bch${big?" big":""}" viewBox="0 0 ${W} ${H}" ${big?'style="width:100%;height:auto"':`width="${W}" height="${H}"`} role="img" aria-label="${esc(s)}: ${b.len}-day base since ${esc(bmon(b.start))}, pivot ${inr(b.piv)}, low ${inr(b.fl)}">${g}</svg>`}
+  if(big){for(let k=0;k<=3;k++){const t=lo+(hi-lo)*k/3;g+=`<line x1="${pl}" x2="${W-pr}" y1="${f(y(t))}" y2="${f(y(t))}" stroke="var(--track)"/><text x="${pl-8}" y="${f(y(t)+4)}" text-anchor="end">${t>=1000?Math.round(t).toLocaleString("en-IN"):t.toFixed(t>=100?0:1)}</text>`}
+    g+=`<text x="${f(x(ch.s))}" y="${H-8}" text-anchor="${x(ch.s)<W*.15?"start":"middle"}">${esc(bmon(b.start))}</text><text x="${W-pr}" y="${H-8}" text-anchor="end">${esc(fmtDate(D.meta.asof))}</text>`}
+  g+=`<rect class="box" x="${f(x(ch.s))}" y="${f(y(b.piv))}" width="${f(Math.max(1,x(e)-x(ch.s)))}" height="${f(Math.max(1,y(b.fl)-y(b.piv)))}"/>`;
+  if(ch.ibp!=null&&ch.ibs!=null)g+=`<line x1="${f(x(ch.ibs))}" x2="${f(x(ch.ib))}" y1="${f(y(ch.ibp))}" y2="${f(y(ch.ibp))}" stroke="var(--s2)" stroke-width="${big?1.8:1.3}"/>`;
+  /* the pivot starts where the base's ceiling starts, the base low runs under the base only */
+  g+=`<line x1="${f(x(ls))}" x2="${W-pr}" y1="${f(y(b.piv))}" y2="${f(y(b.piv))}" stroke="var(--accent-ink)" stroke-width="${big?2:1.5}"/>`;
+  if(big)g+=`<line x1="${f(x(ch.s))}" x2="${f(x(e))}" y1="${f(y(b.fl))}" y2="${f(y(b.fl))}" stroke="var(--muted)" stroke-width="1.4" stroke-dasharray="3 4"/>`;
+  if(big&&isNum(b.tgt)&&b.tgt<=hi)g+=`<line x1="${f(x(e))}" x2="${W-pr}" y1="${f(y(b.tgt))}" y2="${f(y(b.tgt))}" stroke="var(--up)" stroke-width="1.4" stroke-dasharray="2 4"/><text x="${W-pr-4}" y="${f(y(b.tgt)-6)}" text-anchor="end">Measured move ${inr(b.tgt)}</text>`;
+  g+=`<polyline points="${c.map((t,i)=>isNum(t)?`${f(x(i))},${f(y(t))}`:null).filter(Boolean).join(" ")}" fill="none" stroke="var(--s1)" stroke-width="${big?1.8:1.3}" stroke-linejoin="round"/>`;
+  /* every close that tested the pivot (ring) and the close that set it (dot); the same for the base low on the big chart */
+  for(const i of ch.tc||[])if(i!==ch.pv)g+=ring(i,big?4.2:2.1,"var(--accent-ink)",false);
+  g+=ring(ch.pv,big?5:2.6,"var(--accent-ink)",true);
+  if(big){for(const i of ch.tf||[])if(i!==ch.fv)g+=ring(i,4,"var(--muted)",false);g+=ring(ch.fv,4.6,"var(--muted)",true)}
+  if(big){const nt=(ch.tc||[]).length,pd=b.pd?` · set ${fmtDate(b.pd)}`:"";
+    g+=`<text x="${f(Math.max(pl+4,x(ls)))}" y="${f(y(b.piv)-8)}" style="fill:var(--accent-ink);font-weight:700">Pivot ₹${inr(b.piv)}${pd}${nt>1?` · tested ${nt} times`:""}</text><text x="${f(x(ch.s)+4)}" y="${f(y(b.fl)+17)}" style="font-weight:700">Base low ₹${inr(b.fl)}${b.fd?` · ${fmtDate(b.fd)}`:""}</text>`}
+  if(ch.b!=null)g+=`<circle cx="${f(x(ch.b))}" cy="${f(y(c[ch.b]))}" r="${big?5.5:3.2}" fill="var(--up)" stroke="var(--card)" stroke-width="2"/>`;
+  else if(ch.ib!=null)g+=`<circle cx="${f(x(ch.ib))}" cy="${f(y(c[ch.ib]))}" r="${big?5:3}" fill="var(--s2)" stroke="var(--card)" stroke-width="2"/>`;
+  return `<svg class="bch${big?" big":""}" viewBox="0 0 ${W} ${H}" ${big?'style="width:100%;height:auto"':`width="${W}" height="${H}"`} role="img" aria-label="${esc(s)}: ${b.len}-day base since ${esc(bmon(b.start))}, pivot ${inr(b.piv)} tested ${(ch.tc||[]).length||b.tc} times, low ${inr(b.fl)}">${g}</svg>`}
 function bJoin(b){const x=D.by[b.s]||{};return {s:b.s,n:x.n,rs:x.rs,fr:x.fr,mc:x.mc,sec:x.sec,ind:x.ind,stage:x.st,px:x.px,b}}
 const BCOL={
   len:{k:"len",label:"Base days",fmt:r=>`<span class="bdays num">${r.b.len.toLocaleString("en-IN")}${r.b.cap?"+":""}</span><span class="bsub">${bdur(r.b.len)} · from ${esc(bmon(r.b.start))}${r.b.lst?" (listing)":""}${r.b.cap?" (data limit)":""}</span>`,sort:r=>r.b.len,csv:r=>r.b.len},
-  ch:{k:"ch",label:"Base (shaded) and pivot",l:1,fmt:r=>bchart(r.s),sort:r=>r.b.len,csv:r=>r.b.start},
+  ch:{k:"ch",label:"Base, pivot and its tests",l:1,fmt:r=>bchart(r.s),sort:r=>r.b.len,csv:r=>r.b.start},
   st:{k:"bst",label:"Status",l:1,fmt:r=>bStatus(r.b),sort:r=>BORDER[r.b.st]*1000-(r.b.len/10),csv:r=>(BST[r.b.st]||[""])[0]+(r.b.ib?` / inner breakout ${r.b.ib.len}d`:"")},
   fp:{k:"fp",label:"From pivot",fmt:r=>{const v=bFromPiv(r.b);return `<span class="num ${v>=0?"up":""}" style="font-weight:700">${sgn(v,1)}</span>`},sort:r=>bFromPiv(r.b)},
   piv:{k:"piv",label:"Pivot ₹",fmt:r=>`<span class="num">${inr(r.b.piv)}</span>`,sort:r=>r.b.piv},
@@ -2203,29 +2303,37 @@ function plevels(r){const sell=pSell(r),px=D.by[r.s]?.px;
   return `<dl class="plev"><div><dt>${pLevelLab(r)}</dt><dd class="num">₹${inr(pLevel(r))}${pc(pLevel(r))}</dd></div><div><dt>${sell?"Right shoulder high":"Stop · pattern low"}</dt><dd class="num">₹${inr(r.stop)}${pc(r.stop)}</dd></div><div><dt>${sell?"Bulkowski target":"Target"}</dt><dd class="num">${tgt}</dd></div></dl>`}
 /* the card's small chart: closes, the pattern's points and lines, stop and level; forming patterns get room on the right */
 function pmini(r,wpx,big){const m=r.m;if(!m||!Array.isArray(m.c))return "";const c=m.c,n=c.length;if(n<3)return "";
-  const sell=pSell(r),fm=r.st==="fm",lv=pLevel(r);
-  const W=big?Math.max(300,Math.min(900,(wpx||460)-12)):360,H=big?Math.round(Math.min(300,Math.max(210,W*.44))):164;
-  const pl=big?62:6,pr=big?12:8,pt=big?22:20,pb=big?30:20,ext=fm?Math.max(4,Math.round(n*.07)):0;
-  const vals=c.filter(isNum).concat((m.p||[]).map(q=>q[1]),[lv,r.stop].filter(isNum));let lo=Math.min(...vals),hi=Math.max(...vals);
+  const sell=pSell(r),fm=r.st==="fm",lv=pLevel(r),hh=Array.isArray(m.h)&&m.h.length===n?m.h:null,ll=Array.isArray(m.lo)&&m.lo.length===n?m.lo:null;
+  const W=big?Math.max(300,Math.min(900,(wpx||460)-12)):360,H=big?Math.round(Math.min(320,Math.max(220,W*.46))):172;
+  const pl=big?62:6,pr=big?12:8,pt=big?24:22,pb=big?30:22,ext=fm?Math.max(4,Math.round(n*.07)):0;
+  const vals=c.filter(isNum).concat((hh||[]).filter(isNum),(ll||[]).filter(isNum),(m.p||[]).map(q=>q[1]),[lv,r.stop].filter(isNum));let lo=Math.min(...vals),hi=Math.max(...vals);
   if(big&&isNum(r.tgt)&&r.tgt<=hi*1.35&&r.tgt>=lo*.7){lo=Math.min(lo,r.tgt);hi=Math.max(hi,r.tgt)}
   const pad=(hi-lo)*.06||hi*.02;lo-=pad;hi+=pad;
-  const x=i=>pl+i*(W-pl-pr)/Math.max(1,n-1+ext),y=v=>pt+(1-(v-lo)/(hi-lo))*(H-pt-pb),f=v=>v.toFixed(1);
-  const hline=(v,col,dash,w)=>`<line x1="${pl}" x2="${W-pr}" y1="${f(y(v))}" y2="${f(y(v))}" stroke="${col}" stroke-width="${w}" stroke-dasharray="${dash}"/>`;
+  const x=i=>pl+i*(W-pl-pr)/Math.max(1,n-1+ext),y=v=>pt+(1-(v-lo)/(hi-lo))*(H-pt-pb),f=v=>v.toFixed(1),xr=W-pr;
   let g="";
   if(big){for(let k=0;k<=3;k++){const v=lo+(hi-lo)*k/3;g+=`<line x1="${pl}" x2="${W-pr}" y1="${f(y(v))}" y2="${f(y(v))}" stroke="var(--track)"/><text x="${pl-8}" y="${f(y(v)+4)}" text-anchor="end">${v>=1000?Math.round(v).toLocaleString("en-IN"):v.toFixed(v>=100?0:1)}</text>`}
     const d0=(r.pts||[])[0]?.[0];g+=`<text x="${pl}" y="${H-8}">${esc(bmon(r.start||d0||""))}</text><text x="${W-pr}" y="${H-8}" text-anchor="end">${esc(fmtDate(PAT?.asof||D.meta.asof))}</text>`}
-  if(isNum(r.stop))g+=hline(r.stop,"var(--down)","3 4",1.3);
-  if(big&&isNum(r.tgt)&&r.tgt>=lo&&r.tgt<=hi)g+=hline(r.tgt,"var(--up)","2 5",1.3)+`<text x="${W-pr-4}" y="${f(y(r.tgt)-6)}" text-anchor="end">Target ₹${inr(r.tgt)}</text>`;
+  /* each session's high-low range (the pattern's points are highs and lows, so they sit on its edge), then the close */
+  if(hh&&ll){const up=[],dn=[];for(let i=0;i<n;i++)if(isNum(hh[i])&&isNum(ll[i])){up.push(`${f(x(i))},${f(y(hh[i]))}`);dn.push(`${f(x(i))},${f(y(ll[i]))}`)}
+    g+=`<polygon points="${up.join(" ")} ${dn.reverse().join(" ")}" fill="var(--s1)" opacity=".17"/>`}
+  g+=`<polyline points="${c.map((v,i)=>isNum(v)?`${f(x(i))},${f(y(v))}`:null).filter(Boolean).join(" ")}" fill="none" stroke="var(--s1)" stroke-width="${big?1.8:1.5}" stroke-linejoin="round"/>`;
+  if(r.zn&&(m.l||[]).length===2){const [[a0,pt_],[a1]]=m.l[0],pb_=m.l[1][0][1],xa=x(a0),xb=x(fm?n-1+ext:a1);
+    g+=`<rect x="${f(xa)}" y="${f(y(pt_))}" width="${f(Math.max(1,xb-xa))}" height="${f(Math.max(1,y(r.zn[0])-y(pt_)))}" fill="var(--s3)" opacity=".14"/><rect x="${f(xa)}" y="${f(y(r.zn[1]))}" width="${f(Math.max(1,xb-xa))}" height="${f(Math.max(1,y(pb_)-y(r.zn[1])))}" fill="var(--s3)" opacity=".14"/>`}
+  /* lines start at the bar that anchors them; the stop starts at the low that sets it */
+  const P_=(m.p||[]).filter(q=>q[0]>=0&&q[0]<n&&isNum(q[1])),sp=isNum(r.stop)?P_.find(q=>Math.abs(q[1]/r.stop-1)<0.002):null,x0s=sp?x(sp[0]):P_.length?x(Math.min(...P_.map(q=>q[0]))):pl;
+  if(isNum(r.stop))g+=`<line x1="${f(x0s)}" x2="${xr}" y1="${f(y(r.stop))}" y2="${f(y(r.stop))}" stroke="var(--down)" stroke-width="1.4" stroke-dasharray="4 4"/>`;
+  if(big&&isNum(r.tgt)&&r.tgt>=lo&&r.tgt<=hi)g+=`<line x1="${f(x(m.b??n-1))}" x2="${xr}" y1="${f(y(r.tgt))}" y2="${f(y(r.tgt))}" stroke="var(--up)" stroke-width="1.4" stroke-dasharray="2 5"/><text x="${W-pr-4}" y="${f(y(r.tgt)-6)}" text-anchor="end">Target ₹${inr(r.tgt)}</text>`;
   for(const [[i0,p0],[i1,p1]] of m.l||[]){let j1=i1,q1=p1;
     if(fm){j1=n-1+ext;q1=i1>i0?Math.exp(Math.log(p0)+(Math.log(p1)-Math.log(p0))*(j1-i0)/(i1-i0)):p1}
-    g+=`<line x1="${f(x(i0))}" x2="${f(x(j1))}" y1="${f(y(p0))}" y2="${f(y(q1))}" stroke="var(--s3)" stroke-width="${big?2.2:1.8}" stroke-dasharray="7 4"/>`}
-  g+=`<polyline points="${c.map((v,i)=>isNum(v)?`${f(x(i))},${f(y(v))}`:null).filter(Boolean).join(" ")}" fill="none" stroke="var(--s1)" stroke-width="${big?2:1.7}" stroke-linejoin="round"/>`;
-  for(const [i,p,lab] of m.p||[]){if(i<0||i>=n||!isNum(p))continue;const low=!isNum(c[i])||p<=c[i];
-    g+=`<circle cx="${f(x(i))}" cy="${f(y(p))}" r="${big?4:3.2}" fill="var(--card)" stroke="var(--s3)" stroke-width="2"/>`;
+    g+=`<line x1="${f(x(i0))}" x2="${f(x(j1))}" y1="${f(y(p0))}" y2="${f(y(q1))}" stroke="var(--s3)" stroke-width="${big?2.2:1.9}"/>`}
+  if(!fm&&m.b!=null&&isNum(lv))g+=`<line x1="${f(x(m.b))}" x2="${xr}" y1="${f(y(lv))}" y2="${f(y(lv))}" stroke="var(--s3)" stroke-width="1.3" stroke-dasharray="2 4"/>`;
+  for(const L_ of m.t||[])for(const [i,p] of L_)if(i>=0&&i<n&&isNum(p))g+=`<circle cx="${f(x(i))}" cy="${f(y(p))}" r="${big?3:2.4}" fill="var(--s3)"/>`;
+  for(const [i,p,lab] of P_){const low=ll&&hh?Math.abs(p-ll[i])<=Math.abs(p-hh[i]):(!isNum(c[i])||p<=c[i]);
+    g+=`<circle cx="${f(x(i))}" cy="${f(y(p))}" r="${big?4.4:3.4}" fill="var(--card)" stroke="var(--s3)" stroke-width="2"/>`;
     if(lab)g+=`<text class="pl" x="${f(x(i))}" y="${f(low?y(p)+(big?18:15):y(p)-(big?9:7))}" text-anchor="middle">${esc(lab)}</text>`}
   if(m.b!=null&&m.b>=0&&m.b<n&&isNum(c[m.b]))g+=`<circle cx="${f(x(m.b))}" cy="${f(y(c[m.b]))}" r="${big?6:4.8}" fill="${sell?"var(--down)":"var(--up)"}" stroke="var(--card)" stroke-width="2"/>`;
   if(fm&&isNum(lv))g+=`<circle cx="${f(x(n-1+ext))}" cy="${f(y(lv))}" r="${big?6:4.8}" fill="var(--card)" stroke="${sell?"var(--down)":"var(--up)"}" stroke-width="2.4"/>`;
-  if(big&&isNum(lv))g+=`<text x="${pl+6}" y="${f(y(lv)-8)}" style="fill:var(--s3);font-weight:700">${pLevelLab(r)} ₹${inr(lv)}</text>`;
+  if(big&&isNum(lv)){const l0=(m.l||[])[0];g+=`<text x="${f(Math.max(pl+6,l0?x(l0[0][0]):pl+6))}" y="${f(y(lv)-9)}" style="fill:var(--s3);font-weight:700">${pLevelLab(r)} ₹${inr(lv)}${r.nt>1?` · ${r.nt} touches`:""}</text>`}
   return `<svg class="pmini${big?" big":""}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(r.s)}: ${esc(pdef(r.id).name)}, ${esc(pLevelLab(r).toLowerCase())} ₹${inr(lv)}, stop ₹${inr(r.stop)}">${g}</svg>`}
 function pcard(r){const x=D.by[r.s]||{},e=pdef(r.id),key=esc(r.s+"|"+r.id),d1=x.r?.["1D"];
   return `<article class="card pcard${pSell(r)?" sell":""}">
@@ -2363,7 +2471,7 @@ function drawPatChart(r,F){const m=$("#pmodal"),x=D.by[r.s]||{},e=pdef(r.id),sel
    ${others.length?`<div class="chips" style="margin:0 0 10px"><span style="color:var(--muted);font-weight:600;align-self:center">Also on this stock:</span>${others.map(q=>`<button type="button" class="chipbtn" data-pswitch="${esc(q.id)}">${esc(pdef(q.id).name)}</button>`).join("")}</div>`:""}
    <div class="gread" id="pread" aria-live="off"></div>
    <div class="gchart" id="pchartbox"><div class="gplab" id="pplab"></div></div>
-   <div class="glegend"><span><i class="dash" style="--c:${P.s3}"></i>${sell?"Neckline":r.id==="barr"?"Trendline":/^rect/.test(r.id)?"Ceiling and floor":"Pattern lines"} and points</span><span><i class="dash" style="--c:${P.down}"></i>${sell?"Right shoulder high":"Stop (pattern low)"}</span>${isNum(r.tgt)?`<span><i class="dash" style="--c:${P.up}"></i>Target</span>`:""}<span><i style="--c:${P.s1}"></i>50-day average</span><span><i style="--c:${P.s2}"></i>200-day average</span></div>
+   <div class="glegend"><span><i style="--c:${P.s3}"></i>${sell?"Neckline":r.id==="barr"?"Trendline":/^rect/.test(r.id)?"Ceiling and floor":"Pattern lines"}, from their anchor bar</span><span><i class="ring" style="--c:${P.s3}"></i>Swing points</span><span><i class="dot" style="--c:${P.s3}"></i>Other touches of the line</span>${r.zn?`<span><i class="box" style="--c:${P.s3}"></i>Touch zones (top and bottom fifth of the box)</span>`:""}<span><i class="dash" style="--c:${P.down}"></i>${sell?"Right shoulder high":"Stop (pattern low)"}</span>${isNum(r.tgt)?`<span><i class="dash" style="--c:${P.up}"></i>Target</span>`:""}<span><i style="--c:${P.s1}"></i>50-day average</span><span><i style="--c:${P.s2}"></i>200-day average</span></div>
    <div class="gcols"><div class="dsec"><h4>What it is</h4><p class="pab">${esc(e.about||"")}</p><h4 style="margin-top:14px">How the site finds it</h4><ul class="prules">${(e.rules||[]).map(t=>`<li>${esc(t)}</li>`).join("")}</ul><p class="pnote" style="margin-top:0">${esc(e.levels||"")}</p><p class="pnote">Source: ${esc(e.src||"")}${e.url?` · <a href="${esc(e.url)}" target="_blank" rel="noopener">read more</a>`:""}</p></div>
      <div class="dsec"><h4>How it did on NSE, 2005–26</h4>${pEvTable(r.id)}</div></div>
    <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap"><button type="button" class="btn" data-sym="${esc(r.s)}" data-popen="1">Open the stock card</button><a class="btn alt" href="${tv(r.s)}" target="_blank" rel="noopener">TradingView ↗</a></div>`;
@@ -2380,20 +2488,28 @@ function pRenderChart(r,F){const box=$("#pchartbox"),L=window.LightweightCharts,
   const cs=chart.addSeries(L.CandlestickSeries,{upColor:P.up,downColor:P.down,borderUpColor:P.up,borderDownColor:P.down,wickUpColor:P.up,wickDownColor:P.down,priceLineVisible:false},0);
   cs.setData(rows.map(q=>({time:q.t,open:q.o,high:q.h,low:q.l,close:q.c})));
   for(const [a,c] of [[sma(C,50),P.s1],[sma(C,200),P.s2]]){const s=chart.addSeries(L.LineSeries,line({color:c,lineWidth:1.4}),0);s.setData(a.map((v,i)=>isNum(v)?{time:T[i],value:v}:{time:T[i]}))}
-  /* the pattern's lines (dashed); a forming pattern's line runs on to the last session */
+  /* the pattern's own lines, from the bar that anchors each one; a forming pattern's line runs on to the right edge,
+     a completed one continues as a thin dotted level so a retest can be read */
+  const segs=[],rings=[],N=T.length,fm=r.st==="fm",bi=!fm&&r.d?idx.get(r.d):null;
   for(const [[d0,p0],[d1,p1]] of r.lines||[]){const i0=idx.get(d0),i1=idx.get(d1);if(i0==null||i1==null||!isNum(p0)||!isNum(p1))continue;
-    let j1=i1,q1=p1;if(r.st==="fm"&&i1<T.length-1){j1=T.length-1;q1=i1>i0?Math.exp(Math.log(p0)+(Math.log(p1)-Math.log(p0))*(j1-i0)/(i1-i0)):p1}
+    let j1=i1,q1=p1;if(fm&&i1>i0){j1=N-1;q1=Math.exp(Math.log(p0)+(Math.log(p1)-Math.log(p0))*(j1-i0)/(i1-i0))}
     if(j1<=i0)continue;
-    const s=chart.addSeries(L.LineSeries,line({color:P.s3,lineWidth:2.4,lineStyle:L.LineStyle.Dashed}),0);
-    const pts=[];for(let i=i0;i<=j1;i++)pts.push({time:T[i],value:Math.exp(Math.log(p0)+(Math.log(q1)-Math.log(p0))*(i-i0)/(j1-i0))});s.setData(pts)}
-  /* markers: the pattern's swing points, and the breakout day */
-  const mk=[];for(const [d,p,lab] of r.pts||[]){const i=idx.get(d);if(i==null)continue;const q=rows[i],low=Math.abs(p-q.l)<=Math.abs(p-q.h);
-    mk.push({time:d,position:low?"belowBar":"aboveBar",shape:lab?(low?"arrowUp":"arrowDown"):"circle",color:P.s3,text:lab||"",size:lab?1:0.6})}
-  if(r.st!=="fm"&&r.d&&idx.has(r.d))mk.push({time:r.d,position:sell?"aboveBar":"belowBar",shape:sell?"arrowDown":"arrowUp",color:sell?P.down:P.up,text:sell?"Breakdown":"Breakout",size:1.4});
-  mk.sort((a,b)=>a.time<b.time?-1:a.time>b.time?1:0);L.createSeriesMarkers(cs,mk);
-  cs.createPriceLine({price:lv,color:P.s3,lineWidth:2,lineStyle:L.LineStyle.Solid,axisLabelVisible:true,title:r.st==="fm"?(sell?"Breaks down below":"Breaks out above"):(sell?"Neckline":"Breakout")});
-  if(isNum(r.stop))cs.createPriceLine({price:r.stop,color:P.down,lineWidth:1.5,lineStyle:L.LineStyle.Dashed,axisLabelVisible:true,title:sell?"Shoulder":"Stop"});
-  if(isNum(r.tgt))cs.createPriceLine({price:r.tgt,color:P.up,lineWidth:1.5,lineStyle:L.LineStyle.Dashed,axisLabelVisible:true,title:"Target"});
+    segs.push({i0,p0,i1:j1,p1:q1,color:P.s3,w:2.4,log:true,edge:fm&&Math.abs(p1/p0-1)<1e-6})}
+  if(bi!=null&&isNum(lv))segs.push({i0:bi,p0:lv,i1:N-1,p1:lv,color:P.s3,w:1.6,dash:[2,4],edge:true});
+  for(const L_ of r.tch||[])for(const [d,p] of L_){const i=idx.get(d);if(i!=null&&isNum(p))rings.push({i,p,color:P.s3,r:3.4,solid:true})}
+  let si=null;for(const [d,p,lab] of r.pts||[]){const i=idx.get(d);if(i==null||!isNum(p))continue;const q=rows[i],low=Math.abs(p-q.l)<=Math.abs(p-q.h);
+    rings.push({i,p,color:P.s3,r:5,label:lab||"",below:low});if(isNum(r.stop)&&Math.abs(p/r.stop-1)<0.002)si=i}
+  const p0i=Math.min(...(r.pts||[]).map(q=>idx.get(q[0])).filter(i=>i!=null),N-1);
+  if(isNum(r.stop))segs.push({i0:si??p0i,p0:r.stop,i1:N-1,p1:r.stop,color:P.down,w:1.6,dash:[5,4],edge:true});
+  if(isNum(r.tgt))segs.push({i0:bi??Math.max(0,N-6),p0:r.tgt,i1:N-1,p1:r.tgt,color:P.up,w:1.6,dash:[5,4],edge:true});
+  if(r.zn&&(r.lines||[]).length===2){const a=idx.get(r.lines[0][0][0]),b_=fm?N-1:idx.get(r.lines[0][1][0]);
+    if(a!=null&&b_!=null)cs.attachPrimitive(new VbBoxes([{i0:a,i1:b_,p0:r.zn[0],p1:r.lines[0][0][1],fill:rgba(P.s3,.13)},{i0:a,i1:b_,p0:r.lines[1][0][1],p1:r.zn[1],fill:rgba(P.s3,.13)}]))}
+  const marks=new ChartMarks(segs,rings);marks.bg=P.card;marks.noLabels=false;cs.attachPrimitive(marks);
+  const mk=[];if(bi!=null)mk.push({time:r.d,position:sell?"aboveBar":"belowBar",shape:sell?"arrowDown":"arrowUp",color:sell?P.down:P.up,text:sell?"Breakdown":"Breakout",size:1.4});
+  if(mk.length)L.createSeriesMarkers(cs,mk);
+  axisTag(cs,lv,P.s3,fm?(sell?"Breaks down below":"Breaks out above"):(sell?"Neckline":"Breakout"));
+  if(isNum(r.stop))axisTag(cs,r.stop,P.down,sell?"Shoulder":"Stop");
+  if(isNum(r.tgt))axisTag(cs,r.tgt,P.up,"Target");
   const vs=chart.addSeries(L.HistogramSeries,{priceFormat:{type:"volume"},priceLineVisible:false,lastValueVisible:false},1);
   vs.setData(rows.map((q,i)=>({time:q.t,value:q.v||0,color:rgba(i&&q.c<rows[i-1].c?P.down:P.up,.55)})));
   const panes=chart.panes();panes[0]?.setStretchFactor(phone?76:80);panes[1]?.setStretchFactor(phone?24:20);
@@ -2711,6 +2827,27 @@ function vbEvCard(E){return `<table class="pevm"><tbody>
    <tr><td>…vs a plain breakout</td><td class="num ${cls(E.d63)}"><b>${sgn(E.d63,1," pts")}</b> <span class="vb-vs">${sgn(E.d63_lo,1,"")} to ${sgn(E.d63_hi,1,"")}</span></td></tr></tbody></table>
    <p class="pnote">${E.label?esc(E.label)+": ":""}${E.nt!==E.n&&isNum(E.trig)?`${E.n.toLocaleString("en-IN")} coiling bases, ${E.nt.toLocaleString("en-IN")} of them filled the buy-stop.`:`${E.n.toLocaleString("en-IN")} cases.`}${E.note&&!E.label?" "+esc(E.note):""}</p>`}
 /* shaded boxes drawn under the candles (a lightweight-charts primitive) */
+/* Lines and touch points drawn straight on a candle chart, at exact bar and price (a Lightweight Charts primitive).
+   seg: {i0,p0,i1,p1,edge,color,w,dash,log} - from bar i0 to bar i1 (or to the right edge); log = straight on a log scale.
+   ring: {i,p,color,r,solid,label,below} - a ring exactly on the high/low that the line touches. */
+class ChartMarks{constructor(segs,rings){this.s=segs;this.r=rings;this.ch=null;this.se=null}
+  attached(p){this.ch=p.chart;this.se=p.series}detached(){this.ch=this.se=null}updateAllViews(){}
+  paneViews(){const me=this;return [{zOrder:()=>"top",renderer:()=>({draw:tg=>{if(!me.ch||!me.se)return;const ts=me.ch.timeScale();
+    tg.useBitmapCoordinateSpace(sc=>{const c=sc.context,hr=sc.horizontalPixelRatio,vr=sc.verticalPixelRatio,Wpx=sc.bitmapSize.width,X=i=>ts.logicalToCoordinate(i),Y=p=>me.se.priceToCoordinate(p);
+      c.save();c.lineCap="round";c.lineJoin="round";
+      for(const g of me.s){const x0=X(g.i0),y0=Y(g.p0);if(x0==null||y0==null)continue;c.beginPath();c.strokeStyle=g.color;c.lineWidth=Math.max(1,Math.round((g.w||2)*hr));c.setLineDash((g.dash||[]).map(v=>v*hr));
+        c.moveTo(x0*hr,y0*vr);
+        if(g.log&&g.i1>g.i0&&g.p1!==g.p0){for(let i=g.i0+1;i<=g.i1;i++){const x=X(i),y=Y(Math.exp(Math.log(g.p0)+(Math.log(g.p1)-Math.log(g.p0))*(i-g.i0)/(g.i1-g.i0)));if(x!=null&&y!=null)c.lineTo(x*hr,y*vr)}}
+        else{const x1=X(g.i1),y1=Y(g.p1);if(x1!=null&&y1!=null)c.lineTo(x1*hr,y1*vr)}
+        if(g.edge){const y1=Y(g.p1);if(y1!=null)c.lineTo(Wpx,y1*vr)}
+        c.stroke()}
+      c.setLineDash([]);
+      for(const q of me.r){const x=X(q.i),y=Y(q.p);if(x==null||y==null)continue;const rr=(q.r||5)*hr;
+        c.beginPath();c.arc(x*hr,y*vr,rr,0,Math.PI*2);c.fillStyle=q.solid?q.color:me.bg||"#fff";c.fill();c.lineWidth=Math.max(1,Math.round(2*hr));c.strokeStyle=q.solid?(me.bg||"#fff"):q.color;c.stroke();
+        if(q.label&&!me.noLabels){c.font=`700 ${Math.round(13*vr)}px IBM Plex Sans, system-ui, sans-serif`;c.textAlign="center";c.textBaseline=q.below?"top":"bottom";
+          const ty=q.below?y*vr+rr+4*vr:y*vr-rr-4*vr;c.lineWidth=4*hr;c.strokeStyle=me.bg||"#fff";c.strokeText(q.label,x*hr,ty);c.fillStyle=q.color;c.fillText(q.label,x*hr,ty)}}
+      c.restore()})}})}]}}
+const axisTag=(cs,price,color,title)=>cs.createPriceLine({price,color,lineVisible:false,axisLabelVisible:true,title});
 class VbBoxes{constructor(boxes){this.b=boxes;this.ch=null;this.se=null}
   attached(p){this.ch=p.chart;this.se=p.series}detached(){this.ch=this.se=null}updateAllViews(){}
   paneViews(){const me=this;return [{zOrder:()=>"bottom",renderer:()=>({draw:tg=>{if(!me.ch||!me.se)return;const ts=me.ch.timeScale(),half=(ts.options().barSpacing||6)/2;
@@ -2757,9 +2894,12 @@ function vbRenderChart(r,A,R){const box=$("#vchartbox"),L=window.LightweightChar
   if(r.status==="Breakout"&&kind!=="pp"&&kind!=="ep")mk.push({time:T[n-1],position:"belowBar",shape:"arrowUp",color:P.up,text:`Breakout ${r.vol_surge.toFixed(1)}× vol`,size:1.4});
   mk.sort((a,b)=>a.time<b.time?-1:a.time>b.time?1:0);if(mk.length)L.createSeriesMarkers(cs,mk);
   const bx=new VbBoxes(boxes);bx.noLabels=phone;cs.attachPrimitive(bx);
-  cs.createPriceLine({price:r.pivot,color:P.s3,lineWidth:2,lineStyle:L.LineStyle.Solid,axisLabelVisible:true,title:r.status==="Coiling"?"Buy above":"Pivot"});
-  cs.createPriceLine({price:r.stop,color:P.down,lineWidth:1.5,lineStyle:L.LineStyle.Dashed,axisLabelVisible:true,title:"Stop"});
-  cs.createPriceLine({price:r.target,color:P.up,lineWidth:1.5,lineStyle:L.LineStyle.Dashed,axisLabelVisible:true,title:"2R"});
+  {const a0=Math.max(0,Math.min(n-1,g.a??g.e??n-15)),b0=Math.max(a0,Math.min(n-1,g.b??n-1)),segs=[],rings=[];
+    segs.push({i0:a0,p0:r.pivot,i1:n-1,p1:r.pivot,color:P.s3,w:2.4,edge:true},{i0:a0,p0:r.stop,i1:n-1,p1:r.stop,color:P.down,w:1.6,dash:[5,4],edge:true},{i0:b0,p0:r.target,i1:n-1,p1:r.target,color:P.up,w:1.6,dash:[5,4],edge:true});
+    let lastk=-9;for(let i=a0;i<=b0;i++){if(Math.abs(A.h[i]/r.pivot-1)<=0.005&&i-lastk>=2){rings.push({i,p:A.h[i],color:P.s3,r:3.6,solid:true});lastk=i}}
+    for(let i=a0;i<=b0;i++)if(Math.abs(A.l[i]/r.stop-1)<=0.003){rings.push({i,p:A.l[i],color:P.down,r:3.6,solid:true});break}
+    const cm=new ChartMarks(segs,rings);cm.bg=P.card;cs.attachPrimitive(cm)}
+  axisTag(cs,r.pivot,P.s3,r.status==="Coiling"?"Buy above":"Pivot");axisTag(cs,r.stop,P.down,"Stop");axisTag(cs,r.target,P.up,"2R");
   const vs=chart.addSeries(L.HistogramSeries,{priceFormat:{type:"volume"},priceLineVisible:false,lastValueVisible:false},1);
   const v50=sma(rows.map(q=>q.v),50);
   vs.setData(rows.map((q,i)=>({time:q.t,value:q.v||0,color:rgba(i&&q.c<rows[i-1].c?P.down:P.up,i>=g.a&&i<=g.b?.8:.45)})));
@@ -3822,7 +3962,7 @@ function renderUpside(){
     <div class="ctl"><span>Sector / industry</span><select class="select" id="usec" aria-label="Sector or industry"><option value="">All</option>${opt(secs,f.sec)}</select></div>
     <div class="ctl"><span>Minimum Upside</span>${seg("upmin",["0","50","80","90"],String(f.min),{"0":"Any","50":"50+","80":"80+","90":"90+ (top 10%)"})}</div>
     <div class="ctl"><span>Filters</span><div style="display:flex;flex-wrap:wrap;gap:0 16px"><label class="check"><input type="checkbox" id="us2" ${f.s2?"checked":""}>Stage 2</label><label class="check"><input type="checkbox" id="ua50" ${f.a50?"checked":""}>Above 50 DMA</label><label class="check" title="Keep only the two highest-ranked stocks of each industry"><input type="checkbox" id="ucap" ${f.cap?"checked":""}>2 per industry</label></div></div>
-  </div><div class="card" id="upT"></div>${upEvidence(E)}
+  </div><div class="card" id="upT"></div>${upLive(UPD.live)}${upEvidence(E)}
   <p class="note">Scores use the close of ${fmtDate(UPD.asof)} (EOD). Stocks listed less than a year ago are not scored. Past results are averages over many trades; any single stock can do the opposite. Check the chart and the news before acting.</p>`;
   $("#view").innerHTML=h;
   const on=(id,k,ev)=>$(id).addEventListener(ev,e=>{f[k]=e.target.type==="checkbox"?e.target.checked:e.target.value;if(st.tbl.up)st.tbl.up.show=100;store.set("up",{...f,q:""});drawUpside()});
@@ -3853,6 +3993,15 @@ function drawUpside(){
   $("#upT").innerHTML=dtable("up",rows,cols,{empty:"No stocks match. Clear a filter or lower the minimum."});
   wireTables($("#upT"),drawUpside);
 }
+/* live record: the ranks saved every 5th session since the score went live, each followed like a test trade (upside.py live_record) */
+function upLive(Lv){
+  if(!Lv)return "";const R=[...(Lv.rows||[])].reverse();
+  if(!R.length)return `<div class="card uplive"><h3>Live record</h3><p class="note" style="margin:6px 0 0">Recording started on ${fmtDate(Lv.since)}. Every 5th session the ranks are saved, and each saved day is then followed the same way as in the test: bought at the next open, measured against the average scored stock for up to 63 sessions. The first reading appears after 5 sessions. Nothing is back-filled, so this is a true out-of-sample record.</p></div>`;
+  const gaps=R.map(r=>r.top-r.all),ahead=gaps.filter(g=>g>0).length,avg=gaps.reduce((a,b)=>a+b,0)/gaps.length,done=R.filter(r=>r.done).length;
+  return `<div class="card uplive"><h3>Live record <span>since ${fmtDate(Lv.since)} · ${R.length} saved day${R.length===1?"":"s"}${done?`, ${done} complete`:""}</span></h3>
+    <p class="uplsum">Top 10% ahead of the average scored stock on <b>${ahead} of ${R.length}</b> saved days · average gap <b class="num ${cls(avg)}">${sgn(avg,1," pts")}</b>${R.length<13?` <span class="wchip">Small sample — the saved days overlap, read it as a direction only</span>`:""}</p>
+    <div class="tscroll"><table class="dt etab"><thead><tr><th class="l">Ranks saved on</th><th>Sessions followed</th><th>Top 10% (Upside 90+)</th><th>All scored stocks</th><th>Top 10% − all</th><th>Bottom 10%</th><th>Top 10% that are up</th></tr></thead><tbody>${R.slice(0,26).map(r=>`<tr><td class="l">${fmtDate(r.d)}${r.done?"":` <span style="color:var(--muted)">· running</span>`}</td><td class="num">${r.days} of 63</td><td class="num ${cls(r.top)}">${sgn(r.top,1)}</td><td class="num ${cls(r.all)}">${sgn(r.all,1)}</td><td class="num ${cls(r.top-r.all)}"><b>${sgn(r.top-r.all,1," pts")}</b></td><td class="num ${cls(r.bot)}">${sgn(r.bot,1)}</td><td class="num">${r.up}%</td></tr>`).join("")}</tbody></table></div>
+    <p class="note" style="margin:8px 14px 12px">Each saved day: bought at the next session's open, measured at the latest close (up to 63 sessions). Not back-filled.</p></div>`}
 function upEvidence(E){
   if(!E)return "";
   const D9=E.deciles,mx=Math.max(...D9.map(x=>Math.abs(x.x63)),1);
@@ -3946,12 +4095,219 @@ function breadthSmall(b){
   return {h,wire:()=>wires.forEach(w=>w())};
 }
 
+/* ════════════════════ SCREENER ════════════════════
+   Any number of filters over every number the site computes for a stock. A filter is {id, min, max} for a number,
+   {id, v} for yes/no, {id, in:[…]} for a choice (any of the chosen values). Filters are joined with AND, in order;
+   each row shows how many stocks are left after it, so the filter that cuts hardest is easy to see.
+   Screens are kept in this browser (store "sx" = the open one, "sxSaved" = named ones). */
+const SXG={size:["Price & size","#1F5FAE"],perf:["Performance","#0E8A6E"],rs:["Relative strength","#15803D"],up:["Upside & rotation","#6D28D9"],trend:["Trend","#0369A1"],
+  vol:["Volatility, volume, delivery","#C2410C"],setup:["Bases, stages, patterns","#4338CA"],res:["Results","#A21CAF"],fund:["Fundamentals","#8A5A00"],own:["Ownership & funds","#BE185D"],sig:["Scanners & lists","#0F766E"]};
+const SXF=[],SXB={};
+(()=>{const N=(id,label,g,get,o={})=>SXF.push({id,label,g,t:"n",get,dec:1,...o}),B=(id,label,g,get)=>SXF.push({id,label,g,t:"b",get}),E=(id,label,g,get,opts,o={})=>SXF.push({id,label,g,t:"e",get,opts,...o});
+  const ge=(l,v)=>[l,v,null],le=(l,v)=>[l,null,v],dd=d=>d?Math.round((new Date(D.meta.asof+"T00:00:00")-new Date(String(d).slice(0,10)+"T00:00:00"))/864e5):null;
+  N("px","Price ₹","size",x=>x.px,{dec:2,ps:[le("Under ₹100",100),["₹100–1,000",100,1000],ge("Above ₹1,000",1000)]});
+  N("mc","Market cap ₹Cr","size",x=>x.mc,{dec:0,ps:[le("Micro, under 1,000",1000),["Small, 1,000–5,000",1000,5000],["Mid, 5,000–20,000",5000,20000],ge("Large, 20,000+",20000)]});
+  N("to","Turnover ₹Cr a day (50-day median)","size",x=>x.to,{ps:[ge("3+",3),ge("10+",10),ge("50+",50)]});
+  for(const p of PERIODS)N("r"+p,`Return, ${PL[p]==="Today"?"today":PL[p]}`,"perf",x=>x.r?.[p],{u:"%",sg:1,ps:[ge("Up",0),ge("+10% or more",10),ge("+25% or more",25),le("Down",0)]});
+  N("h52","From 52-week high","perf",x=>x.h52,{u:"%",sg:1,ps:[ge("Within 5%",-5),ge("Within 10%",-10),ge("Within 15%",-15),ge("Within 25%",-25),le("More than 25% below",-25)]});
+  N("l52","Above 52-week low","perf",x=>x.l52,{u:"%",sg:1,ps:[ge("30%+",30),ge("100%+",100)]});
+  N("rs","RS rating","rs",x=>x.rs,{dec:0,pill:rsPill,ps:[ge("70+",70),ge("80+",80),ge("90+",90),le("Under 30",30)]});
+  N("rsd1","RS change, 1 week","rs",x=>isNum(x.rs)&&isNum(x.rs1w)?x.rs-x.rs1w:null,{dec:0,sg:1,ps:[ge("Up 5+",5),le("Down 5+",-5)]});
+  N("rsd4","RS change, 4 weeks","rs",x=>isNum(x.rs)&&isNum(x.rs4w)?x.rs-x.rs4w:null,{dec:0,sg:1,ps:[ge("Up 10+",10),ge("Up 20+",20),le("Down 10+",-10)]});
+  N("rsd12","RS change, 12 weeks","rs",x=>isNum(x.rs)&&isNum(x.rs12w)?x.rs-x.rs12w:null,{dec:0,sg:1,ps:[ge("Up 20+",20),le("Down 20+",-20)]});
+  N("bdot","Sessions since the last blue dot","rs",x=>x.rsnhd,{dec:0,ps:[le("Today",0),le("Last 5",5),le("Last 20",20)]});
+  E("rsdir","RS direction, 12 weeks","rs",x=>x.rsdir===1?"up":x.rsdir===-1?"down":isNum(x.rs)?"steady":null,()=>[["up","▲ Rising"],["down","▼ Falling"],["steady","Steady"]]);
+  N("up","Upside score","up",x=>x.up,{dec:0,pill:v=>upPill(v),ps:[ge("50+",50),ge("80+",80),ge("90+ (top 10%)",90)]});
+  N("irs","Industry RS rating","up",x=>x.irs,{dec:0,pill:rsPill,ps:[ge("70+",70),ge("80+",80),le("Under 40",40)]});
+  N("srs","Sector RS rating","up",x=>x.srs,{dec:0,pill:rsPill,ps:[ge("70+",70),ge("80+",80),le("Under 40",40)]});
+  const uniq=f=>()=>[...new Set(D.stocks.map(f).flat().filter(Boolean))].sort().map(v=>[v,v]);
+  E("sec","Sector","up",x=>x.sec,uniq(x=>x.sec),{big:1});E("ind","Industry","up",x=>x.ind,uniq(x=>x.ind),{big:1});
+  E("th","Theme","up",x=>D.themesOf[x.s]||[],()=>Object.keys(D.groups.Themes||{}).sort().map(v=>[v,v]),{big:1});
+  E("st","Stage","trend",x=>x.st,()=>[[2,"Stage 2"],[1,"Stage 1"],[3,"Stage 3"],[4,"Stage 4"]],{pill:stagePill});
+  B("tt","Minervini trend template","trend",x=>x.tt);B("a20","Above the 20-day average","trend",x=>x.a20);B("a50","Above the 50-day average","trend",x=>x.a50);B("a200","Above the 200-day average","trend",x=>x.a200);
+  N("d20","Price against the 20-day average","trend",x=>x.d20,{u:"%",sg:1,ps:[["Within 3%",-3,3],ge("Above",0),ge("15%+ above",15)]});
+  N("d50","Price against the 50-day average","trend",x=>x.d50,{u:"%",sg:1,ps:[["0–10% above",0,10],ge("Above",0),le("Below",0)]});
+  N("d200","Price against the 200-day average","trend",x=>x.d200,{u:"%",sg:1,ps:[ge("Above",0),["0–30% above",0,30],ge("70%+ above (extended)",70),le("Below",0)]});
+  E("s2p","Stage 2 phase","trend",x=>x.s2p,()=>[["E","Early"],["M","Mid"],["L","Late"]]);
+  N("s2s","Early Stage 2 score","trend",x=>x.s2s,{dec:0,pill:v=>scorePill(v),ps:[ge("55+",55),ge("70+",70)]});
+  N("atrp","ATR, % of price","vol",x=>x.atrp,{u:"%",ps:[le("3% or less (calm)",3),le("6% or less",6),ge("6%+",6)]});
+  N("adr","Average daily range, 20 days","vol",x=>x.adr,{u:"%",ps:[ge("3%+",3),ge("5%+",5)]});
+  N("rsi","RSI 14","vol",x=>x.rsi,{dec:0,ps:[le("30 or less (oversold)",30),["40–60",40,60],ge("60+",60),ge("70+",70)]});
+  N("adx","ADX 14","vol",x=>x.adx,{dec:0,ps:[ge("25+ (trending)",25),le("Under 20",20)]});
+  N("vr","Volume today ÷ 50-day average","vol",x=>x.vr,{u:"×",ps:[ge("1.5×+",1.5),ge("3×+",3),le("0.6× or less (dry)",0.6)]});
+  N("dcr","Close within the day's range","vol",x=>x.dcr,{u:"%",dec:0,ps:[ge("Top quarter",75),le("Bottom quarter",25)]});
+  N("dp20","Delivery %, 20 days","vol",x=>x.dp20,{u:"%",dec:0,ps:[ge("50%+",50),ge("65%+",65)]});
+  N("dq","Delivered shares ÷ 50-day average","vol",x=>x.dq,{u:"×",ps:[ge("2×+",2),ge("4×+",4)]});
+  N("acc","Heavy-delivery up days, last 20","vol",x=>x.acc,{dec:0,ps:[ge("3+",3),ge("5+",5)]});
+  N("dist","Heavy-delivery down days, last 20","vol",x=>x.dist,{dec:0,ps:[le("None",0),ge("3+",3)]});
+  N("bl","Base length, sessions","setup",x=>x.bl,{dec:0,ps:[ge("100+",100),ge("200+",200),ge("400+",400)]});
+  N("bsc","Base Score","setup",x=>x.bsc,{dec:0,pill:v=>scorePill(v),ps:[ge("55+",55),ge("70+",70),ge("80+",80)]});
+  N("bfp","Price against the base pivot","setup",x=>x.bfp,{u:"%",sg:1,ps:[["Up to 5% below",-5,0],["Broke out, 0–5% above",0,5],["5–15% below",-15,-5]]});
+  E("bst","Base status","setup",x=>x.bst,()=>[["bo0","Breakout today"],["bo","Breakout, last 20 sessions"],["near","Within 5% of the pivot"],["w15","5–15% below"],["in","Deeper in the base"],["ext","Extended above"]]);
+  N("bdp","Base depth","setup",x=>x.bdp,{u:"%",ps:[le("15% or less (flat)",15),le("33% or less",33)]});
+  N("btc","Times the pivot was tested","setup",x=>x.btc,{dec:0,ps:[ge("3+",3),ge("5+",5)]});
+  E("pt","Chart pattern","setup",x=>x.pt||[],()=>[...new Set(D.stocks.flatMap(x=>x.pt||[]))].map(id=>[id,(PAT&&typeof pdef==="function"&&pdef(id)?.name)||id]).sort((a,b)=>a[1].localeCompare(b[1])));
+  N("rq","Result Quality score","res",x=>x.rq,{dec:0,pill:v=>scorePill(v),ps:[ge("55+ good",55),ge("70+ very good",70),ge("85+ excellent",85)]});
+  N("pead","PEAD score (0–9)","res",x=>x.pead,{dec:0,ps:[ge("5+",5),ge("7+",7)]});
+  N("rdays","Days since the latest result","res",x=>dd(x.rd),{dec:0,ps:[le("Last 7 days",7),le("Last 30 days",30)]});
+  N("nres","Days to the next results","res",x=>{const v=dd(x.next_results);return v==null?null:-v},{dec:0,ps:[["Within 7 days",0,7],["Within 14 days",0,14]]});
+  N("fr","Fund rating","fund",x=>x.fr,{dec:0,pill:rsPill,ps:[ge("60+",60),ge("80+",80)]});
+  N("pe","P/E","fund",x=>x.pe,{ps:[["Under 20",0,20],["Under 40",0,40],ge("60+",60)]});N("peg","PEG","fund",x=>x.peg,{dec:2,ps:[["Under 1",0,1],["Under 1.5",0,1.5]]});
+  N("pb","P/B","fund",x=>x.pb,{ps:[le("Under 3",3)]});N("ps","P/S","fund",x=>x.ps,{ps:[le("Under 2",2)]});
+  N("roe","ROE","fund",x=>x.roe,{u:"%",ps:[ge("15%+",15),ge("20%+",20)]});N("roce","ROCE","fund",x=>x.roce,{u:"%",ps:[ge("15%+",15),ge("20%+",20)]});
+  N("de","Debt ÷ equity","fund",x=>x.de,{dec:2,ps:[le("0.5 or less",0.5),le("1 or less",1)]});
+  N("rev_yoy","Revenue growth, YoY","fund",x=>x.rev_yoy,{u:"%",sg:1,dec:0,ps:[ge("15%+",15),ge("25%+",25)]});
+  N("pat_yoy","Profit growth, YoY","fund",x=>x.pat_yoy,{u:"%",sg:1,dec:0,ps:[ge("20%+",20),ge("50%+",50)]});
+  N("rev_qoq","Revenue growth, QoQ","fund",x=>x.rev_qoq,{u:"%",sg:1,dec:0,ps:[ge("Up",0)]});N("pat_qoq","Profit growth, QoQ","fund",x=>x.pat_qoq,{u:"%",sg:1,dec:0,ps:[ge("Up",0)]});
+  N("rev_ttm_g","Revenue growth, last 4 quarters","fund",x=>x.rev_ttm_g,{u:"%",sg:1,dec:0,ps:[ge("15%+",15)]});
+  N("pat_ttm_g","Profit growth, last 4 quarters","fund",x=>x.pat_ttm_g,{u:"%",sg:1,dec:0,ps:[ge("20%+",20)]});
+  N("rev_streak","Quarters in a row with revenue up 10%+ YoY","fund",x=>x.rev_streak,{dec:0,ps:[ge("3+",3),ge("6",6)]});
+  N("opm","Operating margin","fund",x=>x.opm,{u:"%",ps:[ge("15%+",15)]});N("opm_chg","Operating margin change, YoY (points)","fund",x=>x.opm_chg,{sg:1,ps:[ge("Expanding",0.01),ge("+3 or more",3)]});
+  N("npm","Net margin","fund",x=>x.npm,{u:"%",ps:[ge("10%+",10)]});
+  N("fcf","Free cash flow ₹Cr (last year)","fund",x=>x.fcf,{dec:0,ps:[ge("Positive",0.01)]});N("ocf_pat","Operating cash flow ÷ profit","fund",x=>x.ocf_pat,{dec:2,ps:[ge("0.8+",0.8)]});
+  N("cwip_pct","Capital work in progress, % of assets","fund",x=>x.cwip_pct,{u:"%",ps:[ge("15%+ (capex under way)",15)]});
+  B("noflag","No fundamental red flags","fund",x=>isNum(x.fr)||x.qe?!(x.flags?.length):null);
+  N("promoter","Promoter holding","own",x=>x.promoter,{u:"%",ps:[ge("50%+",50),ge("70%+",70)]});
+  N("promoter_1y","Promoter holding, change in a year (points)","own",x=>x.promoter_1y,{dec:2,sg:1,ps:[ge("Rising",0.01),le("Falling",-0.01)]});
+  N("fii","FII holding","own",x=>x.fii,{u:"%",ps:[ge("10%+",10)]});N("fii_1y","FII holding, change in a year (points)","own",x=>x.fii_1y,{dec:2,sg:1,ps:[ge("Rising",0.01),le("Falling",-0.01)]});
+  N("dii","DII holding","own",x=>x.dii,{u:"%",ps:[ge("10%+",10)]});N("dii_1y","DII holding, change in a year (points)","own",x=>x.dii_1y,{dec:2,sg:1,ps:[ge("Rising",0.01)]});
+  N("mf","Mutual-fund holding","own",x=>x.mf,{u:"%",ps:[ge("5%+",5)]});N("mf_1y","Mutual-fund holding, change in a year (points)","own",x=>x.mf_1y,{dec:2,sg:1,ps:[ge("Rising",0.01)]});
+  N("inst_1y","FII + DII, change in a year (points)","own",x=>x.inst_1y,{dec:2,sg:1,ps:[ge("Rising",0.01),ge("+2 or more",2)]});
+  N("retail","Retail holding","own",x=>x.retail,{u:"%",ps:[le("Under 20%",20)]});
+  N("mfn","Mutual funds, net bought last month ₹Cr","own",x=>x.mfn,{sg:1,ps:[ge("Net bought",0.01),ge("₹50 Cr+",50),le("Net sold",-0.01)]});
+  N("mfst","Mutual-fund buying streak, months","own",x=>x.mfst,{dec:0,ps:[ge("2+",2),ge("3+",3)]});
+  E("scan","In scanner","sig",x=>D.scansOf[x.s]||[],()=>(D.scans.meta||[]).map(m=>[m.id,m.name,m.cat]),{big:1});
+  N("nsc","Bullish signal groups today (of 7)","sig",x=>x.nsc,{dec:0,ps:[ge("3+",3),ge("4+",4)]});
+  E("wl","In watchlist","sig",x=>wlListsOf(x.s).map(l=>l.id),()=>wlGet().lists.map(l=>[l.id,l.name]));
+  for(const f of SXF)SXB[f.id]=f})();
+const SXP=[
+  ["Leaders near their highs","RS 85+, within 10% of the high, Stage 2, above the 50-day",[{id:"rs",min:85},{id:"h52",min:-10},{id:"st",in:[2]},{id:"a50",v:true}]],
+  ["Top Upside in Stage 2","Upside 90+, Stage 2, turnover ₹3 Cr+, ATR 6% or less",[{id:"up",min:90},{id:"st",in:[2]},{id:"to",min:3},{id:"atrp",max:6}]],
+  ["Trend template with growth","Minervini template, profit and revenue both growing 20%+",[{id:"tt",v:true},{id:"pat_yoy",min:20},{id:"rev_yoy",min:20}]],
+  ["At a long-base pivot","200+ session base, Base Score 70+, within 5% of the pivot or just through it",[{id:"bl",min:200},{id:"bsc",min:70},{id:"bfp",min:-5,max:5}]],
+  ["Early Stage 2 with strong RS","Early phase, score 70+, RS 70+",[{id:"s2p",in:["E"]},{id:"s2s",min:70},{id:"rs",min:70}]],
+  ["Strong result, still near it","Result Quality 70+, PEAD 7+, reported in the last 30 days",[{id:"rq",min:70},{id:"pead",min:7},{id:"rdays",max:30}]],
+  ["Funds are buying leaders","Mutual funds net bought, streak 2+ months, RS 70+, Stage 2",[{id:"mfn",min:0.01},{id:"mfst",min:2},{id:"rs",min:70},{id:"st",in:[2]}]],
+  ["Quiet pullback in an uptrend","Stage 2, RS 70+, within 3% of the 20-day, volume dry",[{id:"st",in:[2]},{id:"rs",min:70},{id:"d20",min:-3,max:3},{id:"vr",max:0.6}]],
+  ["Quality at a fair price","ROE 18%+, debt ÷ equity 0.5 or less, P/E under 30, profit growing",[{id:"roe",min:18},{id:"de",max:0.5},{id:"pe",min:0,max:30},{id:"pat_yoy",min:10}]],
+  ["Strong group, strong stock","Industry RS 80+, sector RS 70+, stock RS 80+, above the 50-day",[{id:"irs",min:80},{id:"srs",min:70},{id:"rs",min:80},{id:"a50",v:true}]]];
+const sxSaved=()=>store.get("sxSaved",[]);
+const sxOn=f=>{const d=SXB[f.id];if(!d)return false;return d.t==="n"?isNum(f.min)||isNum(f.max):d.t==="b"?f.v===true||f.v===false:(f.in||[]).length>0};
+function sxTest(d,f,x){const v=d.get(x);
+  if(d.t==="n")return isNum(v)&&(!isNum(f.min)||v>=f.min)&&(!isNum(f.max)||v<=f.max);
+  if(d.t==="b")return v===f.v;
+  const a=Array.isArray(v)?v:[v];return f.in.some(q=>a.some(z=>String(z)===String(q)))}
+function sxRun(){const S=st.sx,base=S.uni==="all"?D.stocks:D.liq,act=S.f.filter(sxOn);let cur=base;const left=new Map();
+  for(const f of S.f){if(sxOn(f)){const d=SXB[f.id];cur=cur.filter(x=>sxTest(d,f,x))}left.set(f,cur.length)}
+  return {rows:cur,base:base.length,left,nAct:act.length}}
+const sxNum=(d,v)=>!isNum(v)?"–":(d.sg&&v>0?"+":"")+(d.dec===0?Math.round(v).toLocaleString("en-IN"):v.toLocaleString("en-IN",{minimumFractionDigits:d.dec,maximumFractionDigits:d.dec})).replace("-","−")+(d.u==="%"?"%":d.u==="×"?"×":"");
+function sxDesc(f){const d=SXB[f.id];if(!d)return "";
+  if(d.t==="n"){const a=isNum(f.min),b=isNum(f.max);return d.label+(a&&b?` ${sxNum(d,f.min)} to ${sxNum(d,f.max)}`:a?` ${sxNum(d,f.min)} or more`:b?` ${sxNum(d,f.max)} or less`:"")}
+  if(d.t==="b")return d.label+(f.v===false?": no":"");
+  const o=Object.fromEntries(d.opts().map(q=>[String(q[0]),q[1]]));return d.label+": "+(f.in||[]).map(v=>o[String(v)]||v).join(" or ")}
+function sxCol(d){
+  if(d.t==="n")return {k:"sx_"+d.id,label:d.label.replace(/ ₹Cr.*$/," ₹Cr").replace(/,? ?\(.*\)$/,""),fmt:r=>{const v=d.get(r);return d.pill?d.pill(v):`<span class="num ${d.sg?cls(v):""}">${sxNum(d,v)}</span>`},sort:r=>d.get(r),csv:r=>d.get(r)};
+  if(d.t==="b")return {k:"sx_"+d.id,label:d.label,fmt:r=>{const v=d.get(r);return v==null?"–":v?'<span class="up">✓</span>':'<span class="down">✗</span>'},sort:r=>{const v=d.get(r);return v==null?null:+v},csv:r=>d.get(r)};
+  if(d.pill)return {k:"sx_"+d.id,label:d.label,fmt:r=>d.pill(d.get(r)),sort:r=>d.get(r),csv:r=>d.get(r)};
+  return {k:"sx_"+d.id,label:d.label,l:1,fmt:r=>{const v=d.get(r),a=(Array.isArray(v)?v:[v]).filter(q=>q!=null&&q!=="");if(!a.length)return "–";const o=Object.fromEntries(d.opts().map(q=>[String(q[0]),q[1]]));
+    return `<span class="sxv">${a.slice(0,3).map(q=>esc(o[String(q)]||q)).join(", ")}${a.length>3?` +${a.length-3}`:""}</span>`},sort:r=>{const v=d.get(r);return Array.isArray(v)?v.length:v},csv:r=>{const v=d.get(r);return Array.isArray(v)?v.join("; "):v}}}
+function sxRow(f,i,left,prev){const d=SXB[f.id];if(!d)return "";const [gn,gc]=SXG[d.g],on=sxOn(f);
+  let ctl="";
+  if(d.t==="n"){const cur=d.ps?.find(p=>(p[1]??null)===(f.min??null)&&(p[2]??null)===(f.max??null));
+    ctl=`<span class="sxrng"><input type="number" step="any" inputmode="decimal" data-sxmin="${i}" value="${isNum(f.min)?f.min:""}" placeholder="min" aria-label="${esc(d.label)} minimum"><i>to</i><input type="number" step="any" inputmode="decimal" data-sxmax="${i}" value="${isNum(f.max)?f.max:""}" placeholder="max" aria-label="${esc(d.label)} maximum">${d.u?`<em>${d.u}</em>`:""}</span>
+      <span class="sxps">${(d.ps||[]).map((p,k)=>`<button type="button" data-sxps="${i}|${k}" aria-pressed="${p===cur}">${esc(p[0])}</button>`).join("")}</span>`}
+  else if(d.t==="b")ctl=`<span class="sxps"><button type="button" data-sxb="${i}|1" aria-pressed="${f.v===true}">Yes</button><button type="button" data-sxb="${i}|0" aria-pressed="${f.v===false}">No</button></span>`;
+  else{const O=d.opts(),sel=new Set((f.in||[]).map(String));
+    if(d.big){const rest=O.filter(o=>!sel.has(String(o[0])));let op="";
+      if(O[0]?.[2]){const by={};for(const o of rest)(by[o[2]]=by[o[2]]||[]).push(o);op=Object.entries(by).map(([c,a])=>`<optgroup label="${esc(c)}">${a.map(o=>`<option value="${esc(o[0])}">${esc(o[1])}</option>`).join("")}</optgroup>`).join("")}
+      else op=rest.map(o=>`<option value="${esc(o[0])}">${esc(o[1])}</option>`).join("");
+      ctl=`<span class="sxps">${O.filter(o=>sel.has(String(o[0]))).map(o=>`<button type="button" data-sxe="${i}|${esc(o[0])}" aria-pressed="true">${esc(o[1])} ✕</button>`).join("")}</span><select class="select sxsel" data-sxadd="${i}" aria-label="Add ${esc(d.label)}"><option value="">${sel.size?"or…":"Choose…"}</option>${op}</select>`}
+    else ctl=`<span class="sxps">${O.map(o=>`<button type="button" data-sxe="${i}|${esc(o[0])}" aria-pressed="${sel.has(String(o[0]))}">${esc(o[1])}</button>`).join("")||`<span style="color:var(--muted)">Nothing to choose from today</span>`}</span>`}
+  const cut=prev-left;
+  return `<div class="sxrow${on?"":" off"}" style="--g:${gc}"><div class="sxlab"><i></i><div><b>${esc(d.label)}</b><small>${esc(gn)}</small></div></div><div class="sxctl">${ctl}</div>
+    <div class="sxleft num" title="Stocks left after this filter">${on?`<b>${left.toLocaleString("en-IN")}</b><small>${cut>0?"−"+cut.toLocaleString("en-IN"):"no cut"}</small>`:`<small>not set</small>`}</div>
+    <button type="button" class="sxdel" data-sxdel="${i}" aria-label="Remove the ${esc(d.label)} filter">✕</button></div>`}
+function sxPicker(){const q=(st.sxq||"").trim().toLowerCase(),used=new Set(st.sx.f.map(f=>f.id));
+  const cols=Object.entries(SXG).map(([g,[gn,gc]])=>{const a=SXF.filter(d=>d.g===g&&(!q||d.label.toLowerCase().includes(q)||gn.toLowerCase().includes(q)));if(!a.length)return "";
+    return `<div class="sxpg" style="--g:${gc}"><h4><i></i>${esc(gn)}</h4>${a.map(d=>`<button type="button" data-sxpick="${d.id}"${used.has(d.id)&&d.id!=="scan"&&d.id!=="th"?' class="used"':""}>${esc(d.label)}</button>`).join("")}</div>`}).join("");
+  return cols||`<p class="note" style="margin:6px 2px">No filter matches “${esc(st.sxq)}”.</p>`}
+function renderScreener(){
+  const S=st.sx,saved=sxSaved();
+  if(D.meta.pat&&!PAT&&!renderScreener.pl){renderScreener.pl=1;patLoad().then(()=>{if(st.tab==="screener")renderScreener()}).catch(()=>{})}
+  let h=`<div class="sec-head"><div><h2>Screener</h2><p>Stack any filters — price, returns, RS, Upside, trend, bases, results, fundamentals, ownership, scanners. Every filter shows how many stocks are left after it. Start from a ready screen or build your own and save it.</p></div></div>
+  <div class="sxstrip"><span class="sxk">Ready screens</span>${SXP.map((p,i)=>`<button type="button" class="sxchip" data-sxpre="${i}" title="${esc(p[1])}">${esc(p[0])}</button>`).join("")}</div>
+  ${saved.length?`<div class="sxstrip"><span class="sxk">My screens</span>${saved.map((p,i)=>`<span class="sxchip mine${S.name===p.name?" on":""}"><button type="button" data-sxload="${i}">${esc(p.name)}</button><button type="button" data-sxrm="${i}" aria-label="Delete the screen ${esc(p.name)}">✕</button></span>`).join("")}</div>`:""}
+  <div class="card sxbox"><div class="sxhead"><div class="sxtitle"><h3>${S.name?esc(S.name):S.f.length?"Your screen":"No filters yet"}</h3><span id="sxCount"></span></div>
+      <div class="sxacts">${seg("sxuni",["lq","all"],S.uni,{lq:`Liquid ${D.liq.length.toLocaleString("en-IN")}`,all:`All ${D.stocks.length.toLocaleString("en-IN")}`})}
+        <span class="sxsave" id="sxSaveBox" hidden><input class="search" id="sxName" maxlength="40" placeholder="Name this screen" aria-label="Screen name"><button type="button" class="btn" data-sxsaveok>Save</button></span><button type="button" class="ghost" data-sxsave ${S.f.some(sxOn)?"":"disabled"}>Save screen</button><button type="button" class="ghost" data-sxclear ${S.f.length?"":"disabled"}>Clear</button></div></div>
+    <div id="sxRows"></div>
+    <details class="sxadd" id="sxAdd"${S.f.length?"":" open"}><summary><b>+ Add a filter</b><span>${SXF.length} to choose from</span></summary>
+      <div class="sxfind"><input class="search" type="search" id="sxq" placeholder="Find a filter — RS, pivot, ROE, delivery…" value="${esc(st.sxq||"")}" aria-label="Find a filter"></div>
+      <div class="sxpick" id="sxPick">${sxPicker()}</div></details></div>
+  <div class="card" id="sxT"></div>
+  <p class="note">Numbers are as of the close of ${fmtDate(D.meta.asof)}. A stock with no value for a field (for example no P/E, or no base) does not pass a filter on that field. Within one filter, several choices mean “any of these”; add the filter again to ask for both.</p>`;
+  $("#view").innerHTML=h;
+  $("#sxq").addEventListener("input",e=>{st.sxq=e.target.value;$("#sxPick").innerHTML=sxPicker()});
+  $("#sxq").addEventListener("keydown",e=>{if(e.key==="Enter"){const b=$("#sxPick button[data-sxpick]");if(b)b.click()}});
+  const box=$("#view .sxbox");
+  box.addEventListener("change",e=>{const t=e.target,S=st.sx;
+    if(t.dataset.sxmin!=null||t.dataset.sxmax!=null){const i=+(t.dataset.sxmin??t.dataset.sxmax),v=t.value===""?null:+t.value;S.f[i][t.dataset.sxmin!=null?"min":"max"]=isNum(v)?v:null;sxChanged(false,true);return}
+    if(t.dataset.sxadd!=null&&t.value!==""){const f=S.f[+t.dataset.sxadd];f.in=[...(f.in||[]),t.value];sxChanged();return}});
+  box.addEventListener("keydown",e=>{if(e.key==="Enter"&&(e.target.dataset.sxmin!=null||e.target.dataset.sxmax!=null))e.target.dispatchEvent(new Event("change",{bubbles:true}))});
+  drawScreener();
+}
+function sxChanged(keepName,inPlace){if(!keepName)st.sx.name="";store.set("sx",st.sx);if(st.tbl.sx)st.tbl.sx.show=100;
+  const h=$("#view .sxtitle h3");if(h)h.textContent=st.sx.name||(st.sx.f.length?"Your screen":"No filters yet");
+  document.querySelectorAll(".sxchip.mine").forEach(c=>c.classList.toggle("on",!!st.sx.name&&c.firstElementChild.textContent===st.sx.name));
+  const sv=$("[data-sxsave]"),cl=$("[data-sxclear]");if(sv)sv.disabled=!st.sx.f.some(sxOn);if(cl)cl.disabled=!st.sx.f.length;drawScreener(inPlace)}
+function drawScreener(inPlace){
+  const S=st.sx,R=sxRun();let prev=R.base;
+  const rowsEl=$("#sxRows"),have=rowsEl.querySelectorAll(".sxrow");
+  if(inPlace===true&&have.length===S.f.length){      /* a number was typed: update counts and preset buttons only */
+    S.f.forEach((f,i)=>{const d=SXB[f.id],el=have[i],l=R.left.get(f),on=sxOn(f),cut=prev-l;el.classList.toggle("off",!on);
+      el.querySelector(".sxleft").innerHTML=on?`<b>${l.toLocaleString("en-IN")}</b><small>${cut>0?"−"+cut.toLocaleString("en-IN"):"no cut"}</small>`:`<small>not set</small>`;
+      if(d.t==="n")el.querySelectorAll("[data-sxps]").forEach((b,k)=>{const p=d.ps[k];b.setAttribute("aria-pressed",(p[1]??null)===(f.min??null)&&(p[2]??null)===(f.max??null))});
+      if(on)prev=l})}
+  else rowsEl.innerHTML=S.f.map((f,i)=>{const l=R.left.get(f),r=sxRow(f,i,l,prev);if(sxOn(f))prev=l;return r}).join("")||`<p class="sxempty">Pick a ready screen above, or add your first filter below.</p>`;
+  $("#sxCount").innerHTML=`<b class="num">${R.rows.length.toLocaleString("en-IN")}</b> of ${R.base.toLocaleString("en-IN")} stocks${R.nAct?` pass ${R.nAct} filter${R.nAct===1?"":"s"}`:""}`;
+  if(!st.tbl.sx)st.tbl.sx={key:null,dir:-1,show:100};
+  const fixed=["px","mc","sec","ind"],used=[...new Set(S.f.filter(sxOn).map(f=>f.id))].filter(id=>SXB[id]&&!fixed.includes(id));
+  const extra=(S.cols||[]).filter(id=>SXB[id]&&!fixed.includes(id)&&!used.includes(id));
+  const ids=[...new Set(["r1D","up","rs",...used,...extra,"h52","r1M","r3M","st"])];
+  const cols=[C.stock,C.px,...ids.map(id=>sxCol(SXB[id])),C.sec];
+  if(!st.tbl.sx.key||!cols.some(c=>c.k===st.tbl.sx.key))st.tbl.sx.key=used[0]&&SXB[used[0]].t==="n"?"sx_"+used[0]:"sx_up";
+  const rest=SXF.filter(d=>!ids.includes(d.id)&&!fixed.includes(d.id));
+  const head=`<div class="bxhead"><span><b class="num">${R.rows.length.toLocaleString("en-IN")}</b> stock${R.rows.length===1?"":"s"}${R.nAct?` · ${esc(S.f.filter(sxOn).map(sxDesc).join(" · "))}`:""}</span><span class="sxtools">
+    <select class="select sxsel" id="sxColAdd" aria-label="Add a column"><option value="">+ Column</option>${Object.entries(SXG).map(([g,[gn]])=>{const a=rest.filter(d=>d.g===g);return a.length?`<optgroup label="${esc(gn)}">${a.map(d=>`<option value="${d.id}">${esc(d.label)}</option>`).join("")}</optgroup>`:""}).join("")}</select>
+    ${extra.length?`<button type="button" class="ghost" data-sxcolclr>Remove ${extra.length} added column${extra.length===1?"":"s"}</button>`:""}<button type="button" class="ghost" data-sxcsv>Download CSV</button>
+    ${R.rows.length?`<button type="button" class="ghost" data-wl-addall="${esc(JSON.stringify(R.rows.slice(0,200).map(r=>r.s)))}" data-label="${esc(S.name||"Screener")} stocks">☆ Add ${Math.min(200,R.rows.length)} to a watchlist</button>`:""}</span></div>`;
+  $("#sxT").innerHTML=head+dtable("sx",R.rows,cols,{empty:R.nAct?"No stock passes every filter. Loosen the one with the biggest cut.":"Add a filter to start."});
+  wireTables($("#sxT"),()=>drawScreener());
+  $("#sxColAdd").addEventListener("change",e=>{if(e.target.value){st.sx.cols=[...(st.sx.cols||[]),e.target.value];store.set("sx",st.sx);drawScreener()}});
+}
+function sxClick(e){
+  const S=st.sx,t=e.target.closest("[data-sxpick],[data-sxdel],[data-sxps],[data-sxb],[data-sxe],[data-sxpre],[data-sxload],[data-sxrm],[data-sxsave],[data-sxsaveok],[data-sxclear],[data-sxcolclr]");if(!t)return false;const ds=t.dataset;
+  if(ds.sxpick){const d=SXB[ds.sxpick];S.f.push(d.t==="n"?{id:d.id,min:null,max:null}:d.t==="b"?{id:d.id,v:true}:{id:d.id,in:[]});st.sxq="";const q=$("#sxq");if(q)q.value="";$("#sxPick").innerHTML=sxPicker();$("#sxAdd").open=false;sxChanged();
+    const r=$("#sxRows .sxrow:last-child");r?.scrollIntoView({block:"nearest"});r?.querySelector("input,select,button")?.focus();return true}
+  if(ds.sxdel!=null){S.f.splice(+ds.sxdel,1);$("#sxPick").innerHTML=sxPicker();sxChanged();return true}
+  if(ds.sxps){const [i,k]=ds.sxps.split("|").map(Number),f=S.f[i],p=SXB[f.id].ps[k],same=(p[1]??null)===(f.min??null)&&(p[2]??null)===(f.max??null);f.min=same?null:p[1];f.max=same?null:p[2];sxChanged();return true}
+  if(ds.sxb){const [i,k]=ds.sxb.split("|").map(Number),f=S.f[i],v=k===1;f.v=f.v===v?null:v;sxChanged();return true}
+  if(ds.sxe){const j=ds.sxe.indexOf("|"),f=S.f[+ds.sxe.slice(0,j)],v=ds.sxe.slice(j+1),a=(f.in||[]).map(String);f.in=a.includes(v)?a.filter(q=>q!==v):[...a,v];sxChanged();return true}
+  if(ds.sxpre!=null){const p=SXP[+ds.sxpre];st.sx={...S,f:JSON.parse(JSON.stringify(p[2])),name:p[0],cols:[]};st.tbl.sx=null;store.set("sx",st.sx);renderScreener();return true}
+  if(ds.sxload!=null){const p=sxSaved()[+ds.sxload];if(p){st.sx={uni:p.uni||"lq",f:JSON.parse(JSON.stringify(p.f)),cols:[...(p.cols||[])],name:p.name};st.tbl.sx=null;store.set("sx",st.sx);renderScreener()}return true}
+  if(ds.sxrm!=null){const a=sxSaved(),p=a[+ds.sxrm];if(p){a.splice(+ds.sxrm,1);store.set("sxSaved",a);if(S.name===p.name){S.name="";store.set("sx",S)}renderScreener();toast(`Deleted “${p.name}”`)}return true}
+  if(ds.sxsave!=null){const b=$("#sxSaveBox");b.hidden=!b.hidden;if(!b.hidden){const i=$("#sxName");i.value=S.name||"";i.focus();i.onkeydown=ev=>{if(ev.key==="Enter")$("[data-sxsaveok]").click();if(ev.key==="Escape")b.hidden=true}}return true}
+  if(ds.sxsaveok!=null){const nm=($("#sxName").value||"").trim().slice(0,40);if(!nm){$("#sxName").focus();return true}const a=sxSaved().filter(p=>p.name!==nm);a.push({name:nm,uni:S.uni,f:S.f.filter(sxOn),cols:S.cols||[]});store.set("sxSaved",a);S.name=nm;store.set("sx",S);renderScreener();toast(`Saved “${nm}”`);return true}
+  if(ds.sxclear!=null){st.sx={uni:S.uni,f:[],cols:[],name:""};st.tbl.sx=null;store.set("sx",st.sx);renderScreener();return true}
+  if(ds.sxcolclr!=null){S.cols=[];store.set("sx",S);drawScreener();return true}
+  return false}
+
 /* ════════════════════ routing & wiring ════════════════════ */
 function render(){
   renderPulse();$("#view").dataset.v=st.tab;
   document.querySelectorAll("#tabs .tab").forEach(b=>b.setAttribute("aria-selected",b.dataset.v===st.tab));
   const tw=$("#tabs"),ta=tw.querySelector('.tab[aria-selected="true"]');tw.classList.toggle("ovf",tw.scrollWidth>tw.clientWidth+1);if(ta&&tw.scrollWidth>tw.clientWidth+1){const l=ta.offsetLeft-tw.offsetLeft,r=l+ta.offsetWidth;if(l<tw.scrollLeft||r>tw.scrollLeft+tw.clientWidth)tw.scrollLeft=Math.max(0,l-24)}
-  ({rotation:renderRotation,breadth:renderBreadth,rs:renderRS,upside:renderUpside,scanners:renderScanners,bases:renderBases,patterns:renderPatterns,results:renderResults,watch:renderWatch,vpci:renderVpci})[st.tab]();
+  ({rotation:renderRotation,breadth:renderBreadth,rs:renderRS,upside:renderUpside,screener:renderScreener,scanners:renderScanners,bases:renderBases,patterns:renderPatterns,results:renderResults,watch:renderWatch,vpci:renderVpci})[st.tab]();
 }
 function go(tab){
   if(HASHVIEW[tab]){st.scanView=HASHVIEW[tab];store.set("scanView",st.scanView);tab="scanners"}
@@ -4026,7 +4382,9 @@ document.addEventListener("keydown",e=>{if(e.key==="/"&&!/INPUT|TEXTAREA|SELECT/
 $("#tabs").addEventListener("click",e=>{const b=e.target.closest(".tab");if(b)go(b.dataset.v)});
 $("#tabs").addEventListener("scroll",e=>{const t=e.currentTarget;t.classList.toggle("end",t.scrollLeft+t.clientWidth>=t.scrollWidth-4)},{passive:true});
 document.addEventListener("click",e=>{
+  const pb=e.target.closest("[data-pulse]");if(pb){st.pulseOpen=pb.dataset.pulse==="1";store.set("pulseOpen",st.pulseOpen);renderPulse();return}
   const sb=e.target.closest(".symbtn");if(sb){openDrawer(sb.dataset.sym,sb.dataset.ex);return}
+  if(st.tab==="screener"&&e.target.closest("#view")){if(e.target.closest("[data-sxcsv]")){downloadCsv("sx");return}if(sxClick(e))return}
   if(e.target.closest("[data-close]")||e.target.id==="scrim"){closeDrawer();return}
   const jp=e.target.closest("[data-jump]");if(jp){document.getElementById(jp.dataset.jump)?.scrollIntoView({behavior:"smooth",block:"start"});return}
   if(e.target.closest("[data-res-go]")){closeDrawer(true);go("results");return}
@@ -4053,6 +4411,7 @@ document.addEventListener("click",e=>{
     if(k==="fundmin"){st.rs.fmin=+v;store.set("rs",st.rs);s.parentElement.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===s));drawRS();return}
     if(k==="rrgset"){st.rrgset=v;store.set("rrgset",v);renderRRG();return}
     if(k==="uni"){st.uni=v;store.set("uni",v);st.open=null;render();return}
+    if(k==="sxuni"){st.sx.uni=v;s.parentElement.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===s));sxChanged(true);return}
     if(k==="upmin"){st.up.min=v;store.set("up",{...st.up,q:""});if(st.tbl.up)st.tbl.up.show=100;s.parentElement.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===s));drawUpside();return}
     if(k==="brange"){st.brange=v;store.set("brange",v);const y=window.scrollY;renderBreadth();window.scrollTo(0,y);return}
     if(k==="rsdir"||k==="rsdot"){st.rs[k.slice(2)]=v;store.set("rs",st.rs);if(st.tbl.rs)st.tbl.rs.show=100;s.parentElement.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===s));drawRS();return}
@@ -4079,7 +4438,7 @@ document.addEventListener("keydown",e=>{
 });
 window.addEventListener("hashchange",()=>{const t=location.hash.slice(1);if(HASHVIEW[t]){if(st.tab!=="scanners"||st.scanView!==HASHVIEW[t])go(t);return}if(TABS.includes(t)&&(t!==st.tab||(t==="scanners"&&VIEWHASH[st.scanView]))){if(t==="scanners")st.scanView="lib";go(t)}});
 $("#themeBtn").addEventListener("click",()=>{const d=document.documentElement,cur=d.dataset.theme||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");d.dataset.theme=cur==="dark"?"light":"dark";store.set("theme",d.dataset.theme)});
-(()=>{const t=store.get("theme",null);if(t)document.documentElement.dataset.theme=t;Object.assign(st,store.get("prefs",{}));st.uni=store.get("uni","all");st.rrgset=store.get("rrgset","sector");st.gsig=store.get("gsig",{kind:"all",win:"5"});Object.assign(st.rs,store.get("rs",{}));Object.assign(st.up,store.get("up",{}));st.up.q="";st.brange=store.get("brange","6M");Object.assign(st.bx,store.get("bx",{}));Object.assign(st.px,store.get("px",{}));st.px.q="";Object.assign(st.s2,store.get("s2",{}));Object.assign(st.rx,store.get("rx",{}));st.rx.q="";st.rx.season="";st.scanView=store.get("scanView","lib");st.scan=store.get("scan2",st.scan);st.scanTop=+store.get("scanTop",0)||0;st.scanFund=+store.get("scanFund",0)||0;
+(()=>{const t=store.get("theme",null);if(t)document.documentElement.dataset.theme=t;Object.assign(st,store.get("prefs",{}));st.uni=store.get("uni","all");st.rrgset=store.get("rrgset","sector");st.gsig=store.get("gsig",{kind:"all",win:"5"});st.pulseOpen=!!store.get("pulseOpen",false);Object.assign(st.rs,store.get("rs",{}));Object.assign(st.up,store.get("up",{}));{const z=store.get("sx",null);if(z&&Array.isArray(z.f))st.sx={uni:z.uni==="all"?"all":"lq",f:z.f.filter(f=>f&&SXB[f.id]),cols:(z.cols||[]).filter(id=>SXB[id]),name:z.name||""}}st.up.q="";st.brange=store.get("brange","6M");Object.assign(st.bx,store.get("bx",{}));Object.assign(st.px,store.get("px",{}));st.px.q="";Object.assign(st.s2,store.get("s2",{}));Object.assign(st.rx,store.get("rx",{}));st.rx.q="";st.rx.season="";st.scanView=store.get("scanView","lib");st.scan=store.get("scan2",st.scan);st.scanTop=+store.get("scanTop",0)||0;st.scanFund=+store.get("scanFund",0)||0;
   Object.assign(st.mf,store.get("mf",{}));st.mf.q="";
   const h=location.hash.slice(1);if(HASHVIEW[h]){st.scanView=HASHVIEW[h];st.tab="scanners"}else{if(h==="scanners")st.scanView="lib";st.tab=TABS.includes(h)?h:store.get("tab","rotation")}})();
 
