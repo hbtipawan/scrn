@@ -1,59 +1,22 @@
 {
- "run": "2026-11-10 04:33",
+ "run": "2026-11-10 15:59",
  "delivery": {
-  "added": [
-   "2026-11-09"
-  ],
+  "added": [],
   "not_published": [],
   "last": "2026-11-09"
  },
  "indices": {
-  "added": [
-   "2026-11-09"
-  ],
+  "added": [],
   "not_published": [],
   "last": "2026-11-09"
  },
  "close_check": {
   "date": "2026-11-09",
-  "checked": 2588,
-  "disagree": 1030,
-  "corrected": 1030,
+  "checked": 2584,
+  "disagree": 0,
+  "corrected": 0,
   "skipped": 0,
-  "examples": {
-   "FLEXITUFF": [
-    2.95,
-    2.68
-   ],
-   "KEEPLEARN": [
-    1.61,
-    1.5
-   ],
-   "ADL": [
-    74.97,
-    70.12
-   ],
-   "SHYAMTEL": [
-    12.2,
-    11.45
-   ],
-   "SHARDUL": [
-    49.79,
-    46.79
-   ],
-   "GUJRAFFIA": [
-    43.69,
-    41.32
-   ],
-   "SECMARK": [
-    155.87,
-    148.19
-   ],
-   "NITIRAJ": [
-    197.79,
-    188.42
-   ]
-  },
+  "examples": {},
   "skipped_examples": {}
  }
 }

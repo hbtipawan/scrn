@@ -1,6 +1,6 @@
 {
  "scan_date": "2026-11-06",
- "scan_timestamp": "2026-11-10T05:08:09+05:30",
+ "scan_timestamp": "2026-11-10T16:25:19+05:30",
  "market": "IN",
  "sector_both": [
   {
@@ -2385,9 +2385,9 @@
   },
   {
    "sector": "Finance",
-   "stocks_passing": 79,
+   "stocks_passing": 78,
    "total_in_universe": 122,
-   "hit_rate_%": 64.8
+   "hit_rate_%": 63.9
   },
   {
    "sector": "Chemicals",
@@ -2450,13 +2450,13 @@
    "hit_rate_%": 77.1
   },
   {
-   "sector": "Banks",
-   "stocks_passing": 27,
+   "sector": "Healthcare",
+   "stocks_passing": 28,
    "total_in_universe": 40,
-   "hit_rate_%": 67.5
+   "hit_rate_%": 70.0
   },
   {
-   "sector": "Healthcare",
+   "sector": "Banks",
    "stocks_passing": 27,
    "total_in_universe": 40,
    "hit_rate_%": 67.5
@@ -2908,16 +2908,16 @@
    "hit_rate_%": 95.8
   },
   {
-   "industry": "Trading",
-   "stocks_passing": 23,
-   "total_in_universe": 33,
-   "hit_rate_%": 69.7
-  },
-  {
    "industry": "Finance & Investments - Others",
    "stocks_passing": 22,
    "total_in_universe": 28,
    "hit_rate_%": 78.6
+  },
+  {
+   "industry": "Trading",
+   "stocks_passing": 22,
+   "total_in_universe": 33,
+   "hit_rate_%": 66.7
   },
   {
    "industry": "Aerospace & Defence - Equipments",
@@ -3460,6 +3460,12 @@
    "hit_rate_%": 80.0
   },
   {
+   "industry": "Hospitals/Medical Services",
+   "stocks_passing": 4,
+   "total_in_universe": 5,
+   "hit_rate_%": 80.0
+  },
+  {
    "industry": "Medical Equipment",
    "stocks_passing": 4,
    "total_in_universe": 5,
@@ -3785,12 +3791,6 @@
   },
   {
    "industry": "Gas Distribution",
-   "stocks_passing": 3,
-   "total_in_universe": 5,
-   "hit_rate_%": 60.0
-  },
-  {
-   "industry": "Hospitals/Medical Services",
    "stocks_passing": 3,
    "total_in_universe": 5,
    "hit_rate_%": 60.0
