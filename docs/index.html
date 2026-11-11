@@ -1148,6 +1148,11 @@ body{background:var(--wash),var(--desk);background-attachment:scroll;min-height:
   .uptiles .tile .v{font-size:25px}
 }
 
+.vupl{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:15px}.vupl>span{color:var(--muted);font-weight:600}.vupl small{color:var(--muted);font-size:14px}
+.wlchk{display:inline-flex;align-items:baseline;gap:1px;padding:2px 9px;border-radius:999px;font-variant-numeric:tabular-nums;font-size:15px;border:1.5px solid currentColor;cursor:help}
+.wlchk b{font-size:16px}.wlchk.g{color:var(--up)}.wlchk.m{color:var(--accent-ink)}.wlchk.b{color:var(--down)}
+.tflag{display:inline-block;margin:1px 2px 1px 0;padding:1px 8px;border-radius:6px;font-size:14px;font-weight:600;background:color-mix(in srgb,var(--down) 12%,transparent);color:var(--down);white-space:nowrap}
+.wlcols{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:0 14px 12px}.wlcols .select{max-width:300px}
 /* ══ Nov 2026 polish ══ one-line market strip on the working tabs, eleven tabs that always fit, calmer tables */
 .mstrip{display:flex;flex-wrap:nowrap;overflow:hidden;align-items:center;gap:6px 22px;padding-block:6px 12px;font-size:15px;color:var(--band-muted)}
 .mstrip.open{justify-content:flex-end;padding-block:0 0;margin-bottom:-6px}
@@ -3034,9 +3039,12 @@ function vcell(c,v){
   return esc(v);
 }
 const LEFT=new Set(["position_state","scenario","candle_type","missed_gates","Sector","Industry","Market Cap","source","exchange","sector","industry","name","last_entry_date","last_exit_date","week_ending","asof"]);
+const vUp=s=>D.by[s]?.up??null;
+const VUPCOL={k:"_up",label:"Upside",fmt:r=>upPill(vUp(r.symbol)),sort:r=>vUp(r.symbol),csv:r=>vUp(r.symbol)};
 function vcols(rows,keys){
   const all=new Set(rows.length?Object.keys(rows[0]):[]);
-  return keys.filter(k=>k==="gates"||all.has(k)).map(k=>{
+  return keys.filter(k=>k==="gates"||all.has(k)).flatMap(k=>k==="symbol"?[k,"_up"]:[k]).map(k=>{
+    if(k==="_up")return VUPCOL;
     if(k==="symbol")return {k,label:"Stock",l:1,fmt:r=>symBtn(r.symbol,r["Company Name"]||r.name,r.exchange),sort:r=>r.symbol,csv:r=>r.symbol};
     if(k==="gates")return {k,label:"Gates",l:1,fmt:gateDots,sort:r=>r.gate_count,csv:r=>r.gate_count};
     if(k==="status")return {k,label:"Status",l:1,fmt:r=>statusPill(r.status),sort:r=>r.status,csv:r=>r.status};
@@ -3057,6 +3065,7 @@ function sigCard(r){
   return `<article class="card scard">
     <div class="t"><div><div class="sym">${symBtn(r.symbol,"",r.exchange)}</div><div class="co">${esc(r["Company Name"]||"")}${mc}</div></div>
       <div style="text-align:right"><div class="px num">₹${inr(r.close)}</div>${statusPill(r.status)}</div></div>
+    <div class="vupl"><span>Upside</span>${upPill(vUp(r.symbol))}${(()=>{const u=vUp(r.symbol);return isNum(u)?`<small>${u>=80?"80+: the strongest mix in the test":u<50?"under 50: the weakest mix in the test":"50–79: in between"}</small>`:"<small>not ranked (too new, illiquid or not on NSE)</small>"})()}</div>
     <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">${gateDots(r)}<span class="state">${esc(r.position_state||"")}</span></div>
     <dl>${s("VPCI",isNum(r.vpci)?r.vpci.toFixed(2):"–")}${s("RS 13w",sgn(r.rs_return,1),cls(r.rs_return))}${s("From 52W high",isNum(r.pct_from_52w)?r.pct_from_52w.toFixed(1)+"%":"–")}
       ${s("Trail stop","₹"+inr(r.trail_stop))}${s("Initial SL","₹"+inr(r.init_sl))}${s("Risk",isNum(r.risk_pct)?r.risk_pct.toFixed(1)+"%":"–")}
@@ -3106,7 +3115,7 @@ async function vpTab(){
   const tbl=(id,rows,first)=>dtable(`vp_${id}_${f}`,rows,vcols(rows,VP.allcols?appCols(rows):first),{empty:"No stocks."});
   const dflt=(id,key,dir)=>{if(!st.tbl[`vp_${id}_${f}`])st.tbl[`vp_${id}_${f}`]={key,dir,show:100}};
   if(t==="fresh"){
-    h+=`<p class="note" style="margin:0 0 12px"><b>Fresh = a genuinely new entry.</b> All 7 gates open this week and no open prior position — never signalled before, or the last position was closed by a sell (weekly close below the 3×ATR trailing stop). Re-passes inside a live position show as 📌 Continuing.</p>`+vtools(true);
+    h+=`<p class="note" style="margin:0 0 12px"><b>Upside matters here.</b> In a 2010–26 test of buying every fresh signal (stop 4×ATR, sell on a close below the 50-day or on the VPCI trailing stop), stocks with Upside 80+ made 18.1% a year with a worst fall of −27.9%; stocks with Upside under 50 made 3.4% a year. The ready screen “VPCI fresh signal + Upside 80+” in the Screener lists exactly these.</p><p class="note" style="margin:0 0 12px"><b>Fresh = a genuinely new entry.</b> All 7 gates open this week and no open prior position — never signalled before, or the last position was closed by a sell (weekly close below the 3×ATR trailing stop). Re-passes inside a live position show as 📌 Continuing.</p>`+vtools(true);
     const fr=by(["🔥 FRESH BUY","🔥 FRESH EXT"]);dflt("fresh","pct_from_52w",1);
     if(!fr.length)h+=`<div class="card empty">No genuinely fresh signals this week (first-ever, or first after a sell).</div>`;
     else h+=VP.view==="cards"?`<div class="cards">${[...fr].sort((a,b)=>a.pct_from_52w-b.pct_from_52w).map(sigCard).join("")}</div>`:`<div class="card">${tbl("fresh",fr,["symbol","Market Cap","close","status","gates","position_state","last_exit_date","vpci","rs_return","pct_from_52w","trail_stop","init_sl","risk_pct","vol_ratio","scenario","Sector","source","exchange"])}</div>`;
@@ -3592,7 +3601,22 @@ function syncDialog(){const c=syncCfg.get();
   $("#syncnow")?.addEventListener("click",async()=>{await syncPull();syncPushSoon();modalClose();toast("Synced")})}
 
 /* ── the Watchlists tab ── */
-st.wl={view:"track",flag:""};
+st.wl={view:store.get("wlview","decide"),flag:"",cols:store.get("wlcols",null)};
+const WLCOLS0=["up","rs","rsd4","r1M","r3M","h52","st","d50","irs","irot","vpst","dp20","rq","nres"];
+function wlChecks(r){const v=VPX?.[r.s];
+  const list=[["Upside 80+",isNum(r.up)&&r.up>=80],["RS 70+",isNum(r.rs)&&r.rs>=70],["Stage 2",r.st===2],["Above the 50-day",r.a50===true],["Industry RS 60+",isNum(r.irs)&&r.irs>=60],["VPCI 6+ gates or in a VPCI position",!!v&&(v.gate_count>=6||vpOpen(v))]];
+  return {list,ok:list.filter(x=>x[1]).length}}
+function wlTrim(r){const a=[],v=VPX?.[r.s];
+  if(r.a50===false)a.push("Below 50-day");if(isNum(r.up)&&r.up<50)a.push("Upside under 50");if(r.st===3||r.st===4)a.push("Stage "+r.st);
+  if(isNum(r.rs)&&isNum(r.rs4w)&&r.rs-r.rs4w<=-15)a.push("RS falling");
+  const t=SXB.vptr?.get(r);if(isNum(t)&&t<5)a.push(t<0?"Below VPCI stop":"Near VPCI stop");
+  if(isNum(r.irs)&&r.irs<40)a.push("Weak industry");
+  if(r.next_results){const dd=Math.round((new Date(r.next_results+"T00:00:00")-new Date(D.meta.asof+"T00:00:00"))/864e5);if(dd>=0&&dd<=7)a.push("Results in "+dd+"d")}
+  return a}
+function wlColPicker(){const cur=st.wl.cols||WLCOLS0;
+  const opt=Object.entries(SXG).map(([g,[gn]])=>{const a=SXF.filter(d=>d.g===g&&!cur.includes(d.id)&&!["px","mc"].includes(d.id));return a.length?`<optgroup label="${esc(gn)}">${a.map(d=>`<option value="${d.id}">${esc(d.label)}</option>`).join("")}</optgroup>`:""}).join("");
+  return `<div class="wlcols"><span class="sxk">Columns</span>${cur.filter(id=>SXB[id]).map(id=>`<button type="button" class="chipbtn" data-wlcol-rm="${id}" title="Remove this column">${esc(SXB[id].label.replace(/,? ?\(.*\)$/,""))} ✕</button>`).join("")}
+    <select class="select" id="wlcoladd" aria-label="Add a column"><option value="">+ Add a column…</option>${opt}</select><button type="button" class="ghost" data-wlcol-reset>Reset</button></div>`}
 function renderWatch(){
   $("#view").innerHTML=`<div class="empty">Loading watchlists…</div>`;
   Promise.all([vpxLoad(),clLoad(),D.meta.corp?.n?caLoad():null]).then(()=>{if(st.tab==="watch")drawWatch();updateWlBadge()})}
@@ -3641,18 +3665,40 @@ function drawWatch(){
     res:{k:"next_results",label:"Results",fmt:r=>{if(!r.next_results)return "–";const dd=Math.round((new Date(r.next_results+"T00:00:00")-new Date(D.meta.asof+"T00:00:00"))/864e5);return `<span class="num ${dd<=7?"down":""}">${esc(new Date(r.next_results+"T00:00:00").toLocaleDateString("en-IN",{day:"numeric",month:"short"}))}</span>`}},
     vp:{k:"vp",label:"VPCI",l:1,fmt:r=>r.vp?statusPill(r.vp):"–"},
     note:{k:"note",label:"Note",l:1,td:()=>"wrapcell",fmt:r=>r.note?esc(r.note.length>90?r.note.slice(0,90)+"…":r.note):"<span style='color:var(--muted)'>–</span>"},
+    up:{k:"up",label:"Upside",fmt:r=>upPill(r.up)},
+    rsd4:{k:"rsd4",label:"RS Δ4W",fmt:r=>{const d=isNum(r.rs)&&isNum(r.rs4w)?r.rs-r.rs4w:null;return `<span class="num ${cls(d)}">${d==null?"–":(d>0?"+":"")+d}</span>`},sort:r=>isNum(r.rs)&&isNum(r.rs4w)?r.rs-r.rs4w:null},
+    d50:{k:"d50",label:"vs 50-day",fmt:r=>`<span class="num ${cls(r.d50)}">${sgn(r.d50,1)}</span>`},
+    irs:{k:"irs",label:"Industry RS",fmt:r=>rsPill(r.irs)},srs:{k:"srs",label:"Sector RS",fmt:r=>rsPill(r.srs)},
+    irot:{k:"_irot",label:"Industry rotation",l:1,fmt:r=>{const q=grpRot(r,"ind"),k=grpR(r,"ind","1M");return q?`${rotPill(q)} <span class="num" title="Industry return rank, 1 month (99 = best)">${k}</span>`:"–"},sort:r=>grpR(r,"ind","1M"),csv:r=>grpRot(r,"ind")||""},
+    vptr:{k:"_vptr",label:"Above VPCI stop",fmt:r=>{const v=SXB.vptr.get(r);return `<span class="num ${isNum(v)&&v<5?"down":""}">${sgn(v,1)}</span>`},sort:r=>SXB.vptr.get(r)},
+    atr:{k:"atrp",label:"ATR %",fmt:r=>`<span class="num">${isNum(r.atrp)?r.atrp.toFixed(1):"–"}</span>`},
+    rq:{k:"rq",label:"Result Q",fmt:r=>isNum(r.rq)?scorePill(r.rq):"–"},
+    chk:{k:"_chk",label:"Checks",l:1,fmt:r=>{const c=wlChecks(r);return `<span class="wlchk ${c.ok>=5?"g":c.ok>=3?"m":"b"}" title="${esc(c.list.map(([t,ok])=>(ok?"✓ ":"✗ ")+t).join("\n"))}"><b>${c.ok}</b>/${c.list.length}</span>`},sort:r=>wlChecks(r).ok,csv:r=>wlChecks(r).ok},
+    trim:{k:"_trim",label:"Trim flags",l:1,td:()=>"wrapcell",fmt:r=>{const a=wlTrim(r);return a.length?a.map(t=>`<span class="tflag">${esc(t)}</span>`).join(" "):'<span class="up" style="font-weight:600">None</span>'},sort:r=>wlTrim(r).length,csv:r=>wlTrim(r).join("; ")},
     prom:{k:"promoter",label:"Promoter %",fmt:r=>`<span class="num">${isNum(r.promoter)?r.promoter.toFixed(1):"–"}</span>`},inst:pc("inst_1y","FII+DII Δ1Y",2),
     act:{k:"_a",label:"",fmt:r=>`<span class="rowact"><button type="button" data-wl-edit="${esc(r.s)}" title="Levels, note, flag" aria-label="Edit ${esc(r.s)}">✎</button><button type="button" data-wl-mv="${esc(r.s)}" title="Move or copy to another list" aria-label="Move ${esc(r.s)}">⇄</button><button type="button" data-wl-rm="${esc(r.s)}" title="Remove from this list" aria-label="Remove ${esc(r.s)}">✕</button></span>`,sort:()=>0}};
-  const views={track:[stockW,col.spark,C.px,C.ret("1D"),col.added,col.since,col.alpha,col.days,col.maxg,col.maxdd,col.setup,col.piv,col.stp,col.toStop,C.rs,C.fr,col.scans,col.res,col.note,col.act],
-    perf:[stockW,col.spark,C.px,C.ret("1D"),C.ret("1W"),C.ret("1M"),C.ret("3M"),C.ret("6M"),C.ret("1Y"),C.h52,C.rs,C.drs,C.st,C.vr,C.adr,col.vp,col.act],
-    fund:[stockW,C.px,C.mc,C.fr,C.pe,C.patg,C.revg,C.roe,col.prom,col.inst,col.res,C.sec,col.act]};
-  const tid="wl_"+L.id+"_"+st.wl.view;if(!st.tbl[tid])st.tbl[tid]={key:st.wl.view==="track"?"since":"rs",dir:-1,show:200};
-  h+=`<div class="card"><div style="display:flex;flex-wrap:wrap;gap:12px 22px;padding:12px 14px;align-items:flex-end"><div class="ctl"><span>Columns</span>${seg("wlview",["track","perf","fund"],st.wl.view,{track:"Tracking",perf:"Performance",fund:"Fundamentals"})}</div>
+  const views={decide:[stockW,C.px,C.ret("1D"),col.chk,col.trim,col.up,C.rs,col.rsd4,C.ret("1M"),C.ret("3M"),C.h52,C.st,col.d50,col.irs,col.irot,col.vp,col.vptr,col.since,col.res,col.act],
+    rot:[stockW,C.px,col.up,C.rs,col.irs,col.srs,col.irot,{k:"_srot",label:"Sector rotation",l:1,fmt:r=>rotPill(grpRot(r,"sec")),sort:r=>grpR(r,"sec","1M"),csv:r=>grpRot(r,"sec")||""},
+      {k:"_ir3",label:"Industry rank 3M",fmt:r=>rsPill(grpR(r,"ind","3M")),sort:r=>grpR(r,"ind","3M")},C.themes,C.sec,col.act],
+    track:[stockW,col.spark,C.px,C.ret("1D"),col.added,col.since,col.alpha,col.days,col.maxg,col.maxdd,col.setup,col.piv,col.stp,col.toStop,C.rs,C.fr,col.scans,col.res,col.note,col.act],
+    perf:[stockW,col.spark,C.px,C.ret("1D"),C.ret("1W"),C.ret("1M"),C.ret("3M"),C.ret("6M"),C.ret("1Y"),C.h52,col.up,C.rs,C.drs,col.rsd4,C.st,col.d50,col.atr,C.vr,C.adr,C.dp20,col.vp,col.act],
+    fund:[stockW,C.px,C.mc,C.fr,col.rq,C.pe,C.patg,C.revg,C.roe,col.prom,col.inst,C.mfn,col.res,C.sec,col.act]};
+  views.custom=[stockW,C.px,...(st.wl.cols||WLCOLS0).filter(id=>SXB[id]).map(id=>sxCol(SXB[id])),col.act];
+  if(!views[st.wl.view])st.wl.view="track";
+  const tid="wl_"+L.id+"_"+st.wl.view;if(!st.tbl[tid])st.tbl[tid]={key:{track:"since",decide:"_chk",rot:"_irot",custom:null}[st.wl.view]??"rs",dir:-1,show:200};
+  h+=`<div class="card"><div style="display:flex;flex-wrap:wrap;gap:12px 22px;padding:12px 14px;align-items:flex-end"><div class="ctl"><span>Columns</span>${seg("wlview",["decide","track","perf","rot","fund","custom"],st.wl.view,{decide:"Add or trim",track:"Tracking",perf:"Performance",rot:"Rotation",fund:"Fundamentals",custom:"My columns"})}</div>
     ${flags.length?`<div class="ctl"><span>Flag</span><div class="chips"><button type="button" class="chipbtn" data-wl-flag="" aria-pressed="${!st.wl.flag}">All</button>${flags.map(([k,n])=>`<button type="button" class="chipbtn" data-wl-flag="${k}" aria-pressed="${st.wl.flag===k}"><span class="fdot ${k}"></span>${n}</button>`).join("")}</div></div>`:""}</div>
+    ${st.wl.view==="custom"?wlColPicker():""}
     <div id="wlT">${dtable(tid,rows,views[st.wl.view],{empty:"No stocks with this flag."})}</div></div>
+    ${st.wl.view==="decide"?`<p class="note"><b>Checks</b> (hover for the list): Upside 80+, RS 70+, Stage 2, above the 50-day, industry RS 60+, VPCI 6+ gates or in a VPCI position. <b>Trim flags</b> are the exits and weak spots from the tests: a close below the 50-day (the Upside plan's exit), Upside under 50 (fresh VPCI signals with Upside under 50 made 3.4% a year against 18.1% for Upside 80+), Stage 3 or 4, RS down 15+ points in 4 weeks, the price within 5% of or below the VPCI trailing stop, a weak industry (RS under 40), and results due within 7 days.</p>`:""}
+    ${st.wl.view==="rot"?`<p class="note">Industry and sector rotation compare each group's median 1-month return with every other group's: rank 50+ is strong, and rising means the rank is higher than a week ago. Leading = strong and rising, Weakening = strong and falling, Improving = weak and rising, Lagging = weak and falling. Groups need 3+ liquid stocks.</p>`:""}
     <p class="note">Buy zone = pivot to 5% above it (IBD). Above that is extended — chasing raises risk. “Best since” and “Worst dip” use daily closes since the day added. Rows sort by any column; ✎ sets pivot, stop, target, flag and note.</p>`;
   h+=historyHtml();
   $("#view").innerHTML=h;wireTables($("#view"),drawWatch);
+  const setCols=c=>{st.wl.cols=c;store.set("wlcols",c);drawWatch()};
+  $("#wlcoladd")?.addEventListener("change",e=>{if(e.target.value)setCols([...(st.wl.cols||WLCOLS0),e.target.value])});
+  document.querySelectorAll("[data-wlcol-rm]").forEach(b=>b.addEventListener("click",()=>setCols((st.wl.cols||WLCOLS0).filter(id=>id!==b.dataset.wlcolRm))));
+  $("[data-wlcol-reset]")?.addEventListener("click",()=>setCols(null));
 }
 function historyHtml(){const w=wlGet();if(!w.log.length)return "";
   const rows=w.log.map((e,i)=>{const ret=isNum(e.po)&&isNum(e.p)&&e.p>0?(e.po/e.p-1)*100:null,br=isNum(e.bo)&&isNum(e.b)&&e.b>0?(e.bo/e.b-1)*100:null;
@@ -4100,8 +4146,29 @@ function breadthSmall(b){
    {id, v} for yes/no, {id, in:[…]} for a choice (any of the chosen values). Filters are joined with AND, in order;
    each row shows how many stocks are left after it, so the filter that cuts hardest is easy to see.
    Screens are kept in this browser (store "sx" = the open one, "sxSaved" = named ones). */
+/* industry and sector return ranks (99 = best group) for this period and for the same period a week ago (from last week's returns).
+   Rotation: strong = rank 50+, rising = rank up on a week ago. Groups need 3+ liquid stocks. */
+const GRK={};
+function grpRank(kind,p){const key=kind+p+D.meta.asof;if(GRK[key])return GRK[key];
+  const by={};for(const x of D.liq){const g=kind==="ind"?x.ind:x.sec;if(g)(by[g]=by[g]||[]).push(x)}
+  const rk=prev=>{const a=Object.entries(by).map(([g,xs])=>{const v=xs.map(x=>(prev?x.rp:x.r)?.[p]).filter(isNum);return [g,v.length>=3?median(v):null]}).filter(e=>isNum(e[1])).sort((a,b)=>a[1]-b[1]);
+    const n=a.length,m={};a.forEach(([g],i)=>m[g]=n>1?Math.max(1,Math.round(i/(n-1)*99)):50);return m};
+  return GRK[key]={now:rk(false),prev:rk(true),n:Object.keys(by).length}}
+const medR=p=>{const key="med"+p+D.meta.asof;if(GRK[key]===undefined){const v=D.liq.map(x=>x.r?.[p]).filter(isNum);GRK[key]=v.length?median(v):null}return GRK[key]};
+const grpOf=(x,kind)=>kind==="ind"?x.ind:x.sec;
+const grpR=(x,kind,p)=>{const g=grpOf(x,kind);return g?grpRank(kind,p).now[g]??null:null};
+function grpRot(x,kind){const g=grpOf(x,kind);if(!g)return null;const R=grpRank(kind,"1M"),a=R.now[g],b=R.prev[g];if(!isNum(a))return null;const up=!isNum(b)||a>=b;return a>=50?(up?"leading":"weakening"):(up?"improving":"lagging")}
+const rotPill=q=>q?`<span class="pill" style="color:${QC[q]};border-color:currentColor;background:transparent">${QL[q]}</span>`:"–";
+/* from the daily closes (loaded only when one of these filters or columns is used) */
+const CLS={};
+function clStat(s){if(!CL)return null;if(CLS[s])return CLS[s];const c=(CL.c[s]||[]).filter(isNum);if(c.length<30)return CLS[s]={};
+  const n=c.length,last=c[n-1],w=c.slice(-252),hi=Math.max(...w),ih=w.lastIndexOf(hi),t=c.slice(-10),u20=c.slice(-21);let up=0;for(let i=1;i<u20.length;i++)if(u20[i]>u20[i-1])up++;
+  return CLS[s]={dsh:w.length-1-ih,tight:(Math.max(...t)/Math.min(...t)-1)*100,up20:up}}
+const vpOf=x=>VPX?VPX[x.s]||null:null;
+const vpOpen=v=>!!v&&(!!v.in_open_position||/FRESH/.test(v.status||""));   /* a fresh signal opens the position this week */
+const VPST=[["🔥 FRESH BUY","🔥 Fresh buy"],["🔥 FRESH EXT","🔥 Fresh, extended"],["★ BUYABLE (7/7)","★ Buyable 7/7"],["📌 CONTINUING (7/7)","📌 Continuing 7/7"],["⚡ 7/7 EXTENDED","⚡ 7/7, extended"],["★ RELAXED (6/7)","★ Relaxed 6/7"],["◉ WATCHLIST (6/7)","◉ Watchlist 6/7"],["▲ MOMENTUM (5+)","▲ Momentum 5+"],["Other","Other"]];
 const SXG={size:["Price & size","#1F5FAE"],perf:["Performance","#0E8A6E"],rs:["Relative strength","#15803D"],up:["Upside & rotation","#6D28D9"],trend:["Trend","#0369A1"],
-  vol:["Volatility, volume, delivery","#C2410C"],setup:["Bases, stages, patterns","#4338CA"],res:["Results","#A21CAF"],fund:["Fundamentals","#8A5A00"],own:["Ownership & funds","#BE185D"],sig:["Scanners & lists","#0F766E"]};
+  vol:["Volatility, volume, delivery","#C2410C"],setup:["Bases, stages, patterns","#4338CA"],res:["Results","#A21CAF"],fund:["Fundamentals","#8A5A00"],own:["Ownership & funds","#BE185D"],vp:["VPCI weekly","#4D7C0F"],sig:["Scanners & lists","#0F766E"]};
 const SXF=[],SXB={};
 (()=>{const N=(id,label,g,get,o={})=>SXF.push({id,label,g,t:"n",get,dec:1,...o}),B=(id,label,g,get)=>SXF.push({id,label,g,t:"b",get}),E=(id,label,g,get,opts,o={})=>SXF.push({id,label,g,t:"e",get,opts,...o});
   const ge=(l,v)=>[l,v,null],le=(l,v)=>[l,null,v],dd=d=>d?Math.round((new Date(D.meta.asof+"T00:00:00")-new Date(String(d).slice(0,10)+"T00:00:00"))/864e5):null;
@@ -4111,6 +4178,9 @@ const SXF=[],SXB={};
   for(const p of PERIODS)N("r"+p,`Return, ${PL[p]==="Today"?"today":PL[p]}`,"perf",x=>x.r?.[p],{u:"%",sg:1,ps:[ge("Up",0),ge("+10% or more",10),ge("+25% or more",25),le("Down",0)]});
   N("h52","From 52-week high","perf",x=>x.h52,{u:"%",sg:1,ps:[ge("Within 5%",-5),ge("Within 10%",-10),ge("Within 15%",-15),ge("Within 25%",-25),le("More than 25% below",-25)]});
   N("l52","Above 52-week low","perf",x=>x.l52,{u:"%",sg:1,ps:[ge("30%+",30),ge("100%+",100)]});
+  N("rng52","Place in the 52-week range (100 = at the high)","perf",x=>{if(!isNum(x.h52)||!isNum(x.l52))return null;const hi=x.px/(1+x.h52/100),lo=x.px/(1+x.l52/100);return hi>lo?(x.px-lo)/(hi-lo)*100:null},{u:"%",dec:0,ps:[ge("Top 10%",90),ge("Top quarter",75),le("Bottom quarter",25)]});
+  N("dsh","Sessions since the 52-week closing high","perf",x=>clStat(x.s)?.dsh,{dec:0,cl:1,ps:[le("Today",0),le("Last 5",5),le("Last 20",20),ge("60+ (resting)",60)]});
+  N("r3m_x","3-month return minus the median stock's","perf",x=>{const m=medR("3M");return isNum(x.r?.["3M"])&&isNum(m)?x.r["3M"]-m:null},{u:"%",sg:1,ps:[ge("Ahead",0),ge("+20 points",20),le("Behind",0)]});
   N("rs","RS rating","rs",x=>x.rs,{dec:0,pill:rsPill,ps:[ge("70+",70),ge("80+",80),ge("90+",90),le("Under 30",30)]});
   N("rsd1","RS change, 1 week","rs",x=>isNum(x.rs)&&isNum(x.rs1w)?x.rs-x.rs1w:null,{dec:0,sg:1,ps:[ge("Up 5+",5),le("Down 5+",-5)]});
   N("rsd4","RS change, 4 weeks","rs",x=>isNum(x.rs)&&isNum(x.rs4w)?x.rs-x.rs4w:null,{dec:0,sg:1,ps:[ge("Up 10+",10),ge("Up 20+",20),le("Down 10+",-10)]});
@@ -4120,6 +4190,10 @@ const SXF=[],SXB={};
   N("up","Upside score","up",x=>x.up,{dec:0,pill:v=>upPill(v),ps:[ge("50+",50),ge("80+",80),ge("90+ (top 10%)",90)]});
   N("irs","Industry RS rating","up",x=>x.irs,{dec:0,pill:rsPill,ps:[ge("70+",70),ge("80+",80),le("Under 40",40)]});
   N("srs","Sector RS rating","up",x=>x.srs,{dec:0,pill:rsPill,ps:[ge("70+",70),ge("80+",80),le("Under 40",40)]});
+  for(const [k,kl] of [["ind","Industry"],["sec","Sector"]])for(const p of ["1W","1M","3M"])N(k[0]+"r"+p,`${kl} return rank, ${{"1W":"1 week","1M":"1 month","3M":"3 months"}[p]} (99 = best)`,"up",x=>grpR(x,k,p),{dec:0,pill:rsPill,ps:[ge("Top quarter",75),ge("Top half",50),le("Bottom quarter",25)]});
+  E("irot","Industry rotation, 1 month","up",x=>grpRot(x,"ind"),()=>[["leading","Leading — strong, rising"],["improving","Improving — weak, rising"],["weakening","Weakening — strong, falling"],["lagging","Lagging — weak, falling"]],{pill:rotPill});
+  E("srot","Sector rotation, 1 month","up",x=>grpRot(x,"sec"),()=>[["leading","Leading — strong, rising"],["improving","Improving — weak, rising"],["weakening","Weakening — strong, falling"],["lagging","Lagging — weak, falling"]],{pill:rotPill});
+  N("rs_up","RS rating + Upside score","up",x=>isNum(x.rs)&&isNum(x.up)?x.rs+x.up:null,{dec:0,ps:[ge("160+",160),ge("180+",180)]});
   const uniq=f=>()=>[...new Set(D.stocks.map(f).flat().filter(Boolean))].sort().map(v=>[v,v]);
   E("sec","Sector","up",x=>x.sec,uniq(x=>x.sec),{big:1});E("ind","Industry","up",x=>x.ind,uniq(x=>x.ind),{big:1});
   E("th","Theme","up",x=>D.themesOf[x.s]||[],()=>Object.keys(D.groups.Themes||{}).sort().map(v=>[v,v]),{big:1});
@@ -4127,6 +4201,7 @@ const SXF=[],SXB={};
   B("tt","Minervini trend template","trend",x=>x.tt);B("a20","Above the 20-day average","trend",x=>x.a20);B("a50","Above the 50-day average","trend",x=>x.a50);B("a200","Above the 200-day average","trend",x=>x.a200);
   N("d20","Price against the 20-day average","trend",x=>x.d20,{u:"%",sg:1,ps:[["Within 3%",-3,3],ge("Above",0),ge("15%+ above",15)]});
   N("d50","Price against the 50-day average","trend",x=>x.d50,{u:"%",sg:1,ps:[["0–10% above",0,10],ge("Above",0),le("Below",0)]});
+  N("x50","Distance above the 50-day, in ATRs","trend",x=>isNum(x.d50)&&x.atrp>0?x.d50/x.atrp:null,{sg:1,ps:[["0–2 ATRs (close to it)",0,2],ge("5+ ATRs (stretched)",5),le("Below",0)]});
   N("d200","Price against the 200-day average","trend",x=>x.d200,{u:"%",sg:1,ps:[ge("Above",0),["0–30% above",0,30],ge("70%+ above (extended)",70),le("Below",0)]});
   E("s2p","Stage 2 phase","trend",x=>x.s2p,()=>[["E","Early"],["M","Mid"],["L","Late"]]);
   N("s2s","Early Stage 2 score","trend",x=>x.s2s,{dec:0,pill:v=>scorePill(v),ps:[ge("55+",55),ge("70+",70)]});
@@ -4135,6 +4210,8 @@ const SXF=[],SXB={};
   N("rsi","RSI 14","vol",x=>x.rsi,{dec:0,ps:[le("30 or less (oversold)",30),["40–60",40,60],ge("60+",60),ge("70+",70)]});
   N("adx","ADX 14","vol",x=>x.adx,{dec:0,ps:[ge("25+ (trending)",25),le("Under 20",20)]});
   N("vr","Volume today ÷ 50-day average","vol",x=>x.vr,{u:"×",ps:[ge("1.5×+",1.5),ge("3×+",3),le("0.6× or less (dry)",0.6)]});
+  N("tight","Range of the last 10 closes","vol",x=>clStat(x.s)?.tight,{u:"%",cl:1,ps:[le("5% or less (tight)",5),le("8% or less",8),ge("15%+ (loose)",15)]});
+  N("up20","Up closes, last 20 sessions","vol",x=>clStat(x.s)?.up20,{dec:0,cl:1,ps:[ge("12+",12),ge("14+",14),le("8 or fewer",8)]});
   N("dcr","Close within the day's range","vol",x=>x.dcr,{u:"%",dec:0,ps:[ge("Top quarter",75),le("Bottom quarter",25)]});
   N("dp20","Delivery %, 20 days","vol",x=>x.dp20,{u:"%",dec:0,ps:[ge("50%+",50),ge("65%+",65)]});
   N("dq","Delivered shares ÷ 50-day average","vol",x=>x.dq,{u:"×",ps:[ge("2×+",2),ge("4×+",4)]});
@@ -4176,11 +4253,19 @@ const SXF=[],SXB={};
   N("retail","Retail holding","own",x=>x.retail,{u:"%",ps:[le("Under 20%",20)]});
   N("mfn","Mutual funds, net bought last month ₹Cr","own",x=>x.mfn,{sg:1,ps:[ge("Net bought",0.01),ge("₹50 Cr+",50),le("Net sold",-0.01)]});
   N("mfst","Mutual-fund buying streak, months","own",x=>x.mfst,{dec:0,ps:[ge("2+",2),ge("3+",3)]});
+  B("vpfresh","VPCI fresh signal (7/7, not extended, from flat)","vp",x=>{const v=vpOf(x);return v?v.status==="🔥 FRESH BUY":null});
+  E("vpst","VPCI status","vp",x=>vpOf(x)?.status??null,()=>VPST,{pill:statusPill});
+  N("vpg","VPCI gates passed (of 7)","vp",x=>vpOf(x)?.gate_count,{dec:0,ps:[ge("5+",5),ge("6+",6),ge("All 7",7)]});
+  B("vpopen","VPCI position open (including this week's fresh signals)","vp",x=>{const v=vpOf(x);return v?vpOpen(v):null});
+  N("vptr","Price above the VPCI trailing stop","vp",x=>{const v=vpOf(x);if(!(vpOpen(v)&&v.trail_stop>0&&isNum(x.px)))return null;const g=(x.px/v.trail_stop-1)*100;return g<-40?null:g},{u:"%",sg:1,ps:[le("Within 5% (close to the exit)",5),ge("10%+",10),le("Below it",0)]});
+  N("vpwk","Weeks since the VPCI entry","vp",x=>{const v=vpOf(x);if(!vpOpen(v))return null;if(/FRESH/.test(v.status||"")||!v.last_entry_date)return 0;const we=v.week_ending||v.asof||D.meta.asof;return Math.max(0,Math.round((new Date(String(we).slice(0,10)+"T00:00:00")-new Date(v.last_entry_date+"T00:00:00"))/6048e5))},{dec:0,ps:[le("This week",0),le("4 or less (new)",4),["5–26",5,26],ge("26+",26)]});
+  N("nscan","Scanners the stock is in today","sig",x=>(D.scansOf[x.s]||[]).length||null,{dec:0,ps:[ge("3+",3),ge("5+",5)]});
   E("scan","In scanner","sig",x=>D.scansOf[x.s]||[],()=>(D.scans.meta||[]).map(m=>[m.id,m.name,m.cat]),{big:1});
   N("nsc","Bullish signal groups today (of 7)","sig",x=>x.nsc,{dec:0,ps:[ge("3+",3),ge("4+",4)]});
   E("wl","In watchlist","sig",x=>wlListsOf(x.s).map(l=>l.id),()=>wlGet().lists.map(l=>[l.id,l.name]));
   for(const f of SXF)SXB[f.id]=f})();
 const SXP=[
+  ["VPCI fresh signal + Upside 80+","This week's fresh VPCI buy (7/7 gates, not extended, from flat) in a stock with Upside 80+ — 18.1% a year in the 2010–26 test",[{id:"vpfresh",v:true},{id:"up",min:80}]],
   ["Leaders near their highs","RS 85+, within 10% of the high, Stage 2, above the 50-day",[{id:"rs",min:85},{id:"h52",min:-10},{id:"st",in:[2]},{id:"a50",v:true}]],
   ["Top Upside in Stage 2","Upside 90+, Stage 2, turnover ₹3 Cr+, ATR 6% or less",[{id:"up",min:90},{id:"st",in:[2]},{id:"to",min:3},{id:"atrp",max:6}]],
   ["Trend template with growth","Minervini template, profit and revenue both growing 20%+",[{id:"tt",v:true},{id:"pat_yoy",min:20},{id:"rev_yoy",min:20}]],
@@ -4190,7 +4275,10 @@ const SXP=[
   ["Funds are buying leaders","Mutual funds net bought, streak 2+ months, RS 70+, Stage 2",[{id:"mfn",min:0.01},{id:"mfst",min:2},{id:"rs",min:70},{id:"st",in:[2]}]],
   ["Quiet pullback in an uptrend","Stage 2, RS 70+, within 3% of the 20-day, volume dry",[{id:"st",in:[2]},{id:"rs",min:70},{id:"d20",min:-3,max:3},{id:"vr",max:0.6}]],
   ["Quality at a fair price","ROE 18%+, debt ÷ equity 0.5 or less, P/E under 30, profit growing",[{id:"roe",min:18},{id:"de",max:0.5},{id:"pe",min:0,max:30},{id:"pat_yoy",min:10}]],
-  ["Strong group, strong stock","Industry RS 80+, sector RS 70+, stock RS 80+, above the 50-day",[{id:"irs",min:80},{id:"srs",min:70},{id:"rs",min:80},{id:"a50",v:true}]]];
+  ["Strong group, strong stock","Industry RS 80+, sector RS 70+, stock RS 80+, above the 50-day",[{id:"irs",min:80},{id:"srs",min:70},{id:"rs",min:80},{id:"a50",v:true}]],
+  ["Leading industry, tight near the high","Industry rotation leading, within 10% of the high, last 10 closes within 8%, Stage 2",[{id:"irot",in:["leading"]},{id:"h52",min:-10},{id:"tight",max:8},{id:"st",in:[2]}]],
+  ["VPCI 6/7 with top Upside","VPCI 6 or 7 gates, Upside 90+, above the 50-day, not stretched (5 ATRs or less above it)",[{id:"vpg",min:6},{id:"up",min:90},{id:"a50",v:true},{id:"x50",max:5}]],
+  ["Fresh 52-week high, strong group","Closing high in the last 5 sessions, RS 80+, industry return rank top half for 1 month",[{id:"dsh",max:5},{id:"rs",min:80},{id:"ir1M",min:50}]]];
 const sxSaved=()=>store.get("sxSaved",[]);
 const sxOn=f=>{const d=SXB[f.id];if(!d)return false;return d.t==="n"?isNum(f.min)||isNum(f.max):d.t==="b"?f.v===true||f.v===false:(f.in||[]).length>0};
 function sxTest(d,f,x){const v=d.get(x);
@@ -4234,6 +4322,8 @@ function sxPicker(){const q=(st.sxq||"").trim().toLowerCase(),used=new Set(st.sx
 function renderScreener(){
   const S=st.sx,saved=sxSaved();
   if(D.meta.pat&&!PAT&&!renderScreener.pl){renderScreener.pl=1;patLoad().then(()=>{if(st.tab==="screener")renderScreener()}).catch(()=>{})}
+  if(!VPX&&!renderScreener.vl){renderScreener.vl=1;vpxLoad().then(()=>{if(st.tab==="screener")renderScreener()})}
+  sxNeedCL();
   let h=`<div class="sec-head"><div><h2>Screener</h2><p>Stack any filters — price, returns, RS, Upside, trend, bases, results, fundamentals, ownership, scanners. Every filter shows how many stocks are left after it. Start from a ready screen or build your own and save it.</p></div></div>
   <div class="sxstrip"><span class="sxk">Ready screens</span>${SXP.map((p,i)=>`<button type="button" class="sxchip" data-sxpre="${i}" title="${esc(p[1])}">${esc(p[0])}</button>`).join("")}</div>
   ${saved.length?`<div class="sxstrip"><span class="sxk">My screens</span>${saved.map((p,i)=>`<span class="sxchip mine${S.name===p.name?" on":""}"><button type="button" data-sxload="${i}">${esc(p.name)}</button><button type="button" data-sxrm="${i}" aria-label="Delete the screen ${esc(p.name)}">✕</button></span>`).join("")}</div>`:""}
@@ -4256,7 +4346,10 @@ function renderScreener(){
   box.addEventListener("keydown",e=>{if(e.key==="Enter"&&(e.target.dataset.sxmin!=null||e.target.dataset.sxmax!=null))e.target.dispatchEvent(new Event("change",{bubbles:true}))});
   drawScreener();
 }
-function sxChanged(keepName,inPlace){if(!keepName)st.sx.name="";store.set("sx",st.sx);if(st.tbl.sx)st.tbl.sx.show=100;
+/* closes are a large file: fetch them only once a filter or column needs them */
+function sxNeedCL(){if(CL||sxNeedCL.busy)return;const ids=[...st.sx.f.map(f=>f.id),...(st.sx.cols||[])];if(!ids.some(id=>SXB[id]?.cl))return;
+  sxNeedCL.busy=1;clLoad().then(()=>{if(st.tab==="screener")renderScreener()}).catch(()=>{}).finally(()=>{sxNeedCL.busy=0})}
+function sxChanged(keepName,inPlace){sxNeedCL();if(!keepName)st.sx.name="";store.set("sx",st.sx);if(st.tbl.sx)st.tbl.sx.show=100;
   const h=$("#view .sxtitle h3");if(h)h.textContent=st.sx.name||(st.sx.f.length?"Your screen":"No filters yet");
   document.querySelectorAll(".sxchip.mine").forEach(c=>c.classList.toggle("on",!!st.sx.name&&c.firstElementChild.textContent===st.sx.name));
   const sv=$("[data-sxsave]"),cl=$("[data-sxclear]");if(sv)sv.disabled=!st.sx.f.some(sxOn);if(cl)cl.disabled=!st.sx.f.length;drawScreener(inPlace)}
@@ -4399,7 +4492,7 @@ document.addEventListener("click",e=>{
     if(k==="vpmode"){VP.mode=v;renderVpci();return}
     if(k==="vpprorate"){VP.prorate=v==="on";renderVpci();return}
     if(k==="vview"){VP.view=v;vpTab();return}
-    if(k==="wlview"){st.wl.view=v;drawWatch();return}
+    if(k==="wlview"){st.wl.view=v;store.set("wlview",v);drawWatch();return}
     if(k==="scanView"){st.scanView=v;store.set("scanView",v);const hh=VIEWHASH[v]||"scanners";if(location.hash.slice(1)!==hh)history.replaceState(null,"","#"+hh);renderScanners();return}
     if(k.startsWith("mf_")){const kk=k.slice(3);st.mf[kk]=v;store.set("mf",st.mf);if(st.tbl.mf)st.tbl.mf.show=100;s.parentElement.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===s));if(kk==="per"&&st.tbl.mf)st.tbl.mf.sortFrom=null;drawMF();return}
     if(k.startsWith("s2_")){st.s2[k.slice(3)]=v;store.set("s2",st.s2);if(st.tbl.s2)st.tbl.s2.show=100;s.parentElement.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===s));drawStage2();return}
