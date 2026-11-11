@@ -1727,16 +1727,16 @@
   {
    "m": "2026-10",
    "fund_houses": 28,
-   "active_schemes": 477,
-   "active_equity_cr": 3287382.0,
-   "active_net": 22425.0,
+   "active_schemes": 483,
+   "active_equity_cr": 3380252.0,
+   "active_net": 22200.0,
    "left_out": {
     "new_funds": 44.0,
     "new_funds_n": 10,
     "doubled": 0.0,
     "doubled_n": 4,
-    "new_listings": 10312.0,
-    "only_one_month": -90407.0
+    "new_listings": 10504.0,
+    "only_one_month": 2783.0
    },
    "merges": [],
    "by_fund_house": {
@@ -1805,8 +1805,8 @@
      0.0
     ],
     "mirae": [
-     637.0,
-     276.0
+     412.0,
+     467.0
     ],
     "motilal": [
      2091.0,

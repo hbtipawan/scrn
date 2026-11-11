@@ -1,18 +1,59 @@
 {
- "run": "2026-11-11 16:49",
+ "run": "2026-11-12 01:44",
  "delivery": {
-  "added": [],
+  "added": [
+   "2026-11-11"
+  ],
   "not_published": [],
-  "last": "2026-11-09"
+  "last": "2026-11-11"
  },
  "indices": {
-  "added": [],
+  "added": [
+   "2026-11-11"
+  ],
   "not_published": [],
-  "last": "2026-11-09"
+  "last": "2026-11-11"
  },
  "close_check": {
   "date": "2026-11-11",
-  "checked": 0,
-  "note": "NSE file not available"
+  "checked": 2586,
+  "disagree": 927,
+  "corrected": 927,
+  "skipped": 0,
+  "examples": {
+   "FILATFASH": [
+    0.18,
+    0.17
+   ],
+   "DBSTOCKBRO": [
+    33.8,
+    32.22
+   ],
+   "TFL": [
+    11.88,
+    11.33
+   ],
+   "AUSTENG": [
+    140.16,
+    147.07
+   ],
+   "IPRINGLTD": [
+    142.75,
+    136.94
+   ],
+   "VGCL": [
+    67.0,
+    64.67
+   ],
+   "DGCONTENT": [
+    24.0,
+    23.22
+   ],
+   "ANTGRAPHIC": [
+    0.63,
+    0.61
+   ]
+  },
+  "skipped_examples": {}
  }
 }
