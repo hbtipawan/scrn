@@ -1726,17 +1726,17 @@
   },
   {
    "m": "2026-10",
-   "fund_houses": 26,
-   "active_schemes": 453,
-   "active_equity_cr": 3195339.0,
-   "active_net": 23140.0,
+   "fund_houses": 28,
+   "active_schemes": 477,
+   "active_equity_cr": 3287382.0,
+   "active_net": 22425.0,
    "left_out": {
     "new_funds": 44.0,
     "new_funds_n": 10,
     "doubled": 0.0,
     "doubled_n": 4,
-    "new_listings": 10080.0,
-    "only_one_month": -90602.0
+    "new_listings": 10312.0,
+    "only_one_month": -90407.0
    },
    "merges": [],
    "by_fund_house": {
@@ -1775,6 +1775,14 @@
     "dsp": [
      5457.0,
      40.0
+    ],
+    "franklin": [
+     -1090.0,
+     226.0
+    ],
+    "groww": [
+     375.0,
+     7.0
     ],
     "hdfc": [
      3107.0,
@@ -1995,6 +2003,20 @@
    "IB71",
    "Groww Nifty Smallcap 250 Momentum Quality 100 Index Fund",
    0.997
+  ],
+  [
+   "2026-10",
+   "groww",
+   "Groww Nifty Smallcap 250 Momentum Quality 100 ETF",
+   "Groww Nifty Smallcap 250Mom Qlty 100 ETF",
+   0.994
+  ],
+  [
+   "2026-10",
+   "groww",
+   "Groww Nifty Smallcap 250 Momentum Quality 100 Index Fund",
+   "YK",
+   0.994
   ],
   [
    "2025-12",
@@ -4409,7 +4431,7 @@
   [
    "2026-10",
    "KMEW",
-   3100.0,
+   3097.9,
    619.0,
    5
   ]

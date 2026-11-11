@@ -1,0 +1,237 @@
+{
+ "code": "franklin",
+ "amc": "Franklin Templeton Mutual Fund",
+ "month": "2026-10",
+ "complete": true,
+ "failed_files": [],
+ "fetched": "2026-11-11 08:50",
+ "files": [
+  {
+   "name": "ISIN as on 30 October 2026",
+   "url": "https://www.franklintempletonindia.com/download/en-in/monthly-portfolio-dsclr/2e3e30ca-8a93-4c7d-a2a8-922f8953df55/Monthly-Portfolio-ISIN-30-Oct-2026.xls",
+   "schemes": 42,
+   "eq_rows": 1312
+  }
+ ],
+ "schemes": {
+  "Franklin India Retirement Fund": {
+   "eq": 47,
+   "fut": 0,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 161.72,
+   "total_cr": 471.96
+  },
+  "Franklin India Conservative Hybrid Fund": {
+   "eq": 44,
+   "fut": 0,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 39.29,
+   "total_cr": 179.07
+  },
+  "Franklin India Multi Asset Allocation Fund": {
+   "eq": 47,
+   "fut": 14,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1828.29,
+   "total_cr": 2698.72
+  },
+  "Franklin India Equity Savings Fund": {
+   "eq": 49,
+   "fut": 36,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 368.03,
+   "total_cr": 549.69
+  },
+  "Franklin India Balanced Advantage Fund": {
+   "eq": 50,
+   "fut": 3,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1738.05,
+   "total_cr": 2616.84
+  },
+  "Franklin India Aggressive Hybrid Fund": {
+   "eq": 51,
+   "fut": 0,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1551.55,
+   "total_cr": 2217.01
+  },
+  "Franklin India Arbitrage Fund": {
+   "eq": 129,
+   "fut": 129,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1639.16,
+   "total_cr": 2332.45
+  },
+  "Templeton India Value Fund": {
+   "eq": 47,
+   "fut": 0,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1650.03,
+   "total_cr": 1778.54
+  },
+  "Franklin India Technology Fund": {
+   "eq": 15,
+   "fut": 0,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1358.01,
+   "total_cr": 1742.13
+  },
+  "Franklin India Small Cap Fund": {
+   "eq": 87,
+   "fut": 0,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 12677.93,
+   "total_cr": 13304.58
+  },
+  "Franklin India Opportunities Fund": {
+   "eq": 45,
+   "fut": 0,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 7862.34,
+   "total_cr": 9176.79
+  },
+  "Franklin India Mid Cap Fund": {
+   "eq": 74,
+   "fut": 0,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 10995.0,
+   "total_cr": 11629.02
+  },
+  "Franklin India Multi-Factor Fund": {
+   "eq": 92,
+   "fut": 0,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 577.56,
+   "total_cr": 584.97
+  },
+  "Franklin India Multi Cap Fund": {
+   "eq": 51,
+   "fut": 0,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 4457.02,
+   "total_cr": 4902.1
+  },
+  "Franklin India Large & Mid Cap Fund": {
+   "eq": 49,
+   "fut": 0,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 3208.74,
+   "total_cr": 3276.33
+  },
+  "Franklin India Large Cap Fund": {
+   "eq": 33,
+   "fut": 0,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 6921.25,
+   "total_cr": 7047.53
+  },
+  "Franklin India Focused Equity Fund": {
+   "eq": 29,
+   "fut": 0,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 9883.16,
+   "total_cr": 10407.97
+  },
+  "Franklin India Flexi Cap Fund": {
+   "eq": 56,
+   "fut": 1,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 17431.74,
+   "total_cr": 18228.26
+  },
+  "Franklin India Dividend Yield Fund": {
+   "eq": 34,
+   "fut": 0,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 1645.79,
+   "total_cr": 2136.97
+  },
+  "Franklin Build India Fund": {
+   "eq": 42,
+   "fut": 0,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 2796.93,
+   "total_cr": 2946.3
+  },
+  "Franklin Asian Equity Fund": {
+   "eq": 30,
+   "fut": 0,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 436.88,
+   "total_cr": 912.51
+  },
+  "Franklin India NSE Nifty 50 Index Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 665.2,
+   "total_cr": 667.09
+  },
+  "Franklin India ELSS Tax Saver Fund": {
+   "eq": 50,
+   "fut": 0,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 5523.1,
+   "total_cr": 5849.73
+  },
+  "SIELS": {
+   "eq": 111,
+   "fut": 18,
+   "date": "2026-10-30",
+   "unit": "lakh",
+   "price_match": 1.0,
+   "eq_cr": 196.34,
+   "total_cr": 211.74
+  }
+ },
+ "rows": 1513,
+ "eq_cr": 95613.1,
+ "warn": []
+}
