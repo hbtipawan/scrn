@@ -1,6 +1,6 @@
 {
  "scan_date": "2026-11-13",
- "scan_timestamp": "2026-11-12T17:35:17+05:30",
+ "scan_timestamp": "2026-11-13T02:48:25+05:30",
  "market": "IN",
  "sector_both": [
   {
@@ -268,13 +268,13 @@
    "hit_rate_%": 2.6
   },
   {
-   "sector": "Banks",
+   "sector": "Miscellaneous",
    "stocks_passing": 1,
-   "total_in_universe": 40,
-   "hit_rate_%": 2.5
+   "total_in_universe": 39,
+   "hit_rate_%": 2.6
   },
   {
-   "sector": "Miscellaneous",
+   "sector": "Banks",
    "stocks_passing": 1,
    "total_in_universe": 40,
    "hit_rate_%": 2.5
@@ -966,13 +966,13 @@
    "hit_rate_%": 5.6
   },
   {
-   "industry": "Auto Ancillaries - Diversified",
+   "industry": "Entertainment & Media",
    "stocks_passing": 1,
-   "total_in_universe": 19,
-   "hit_rate_%": 5.3
+   "total_in_universe": 18,
+   "hit_rate_%": 5.6
   },
   {
-   "industry": "Entertainment & Media",
+   "industry": "Auto Ancillaries - Diversified",
    "stocks_passing": 1,
    "total_in_universe": 19,
    "hit_rate_%": 5.3
@@ -2463,9 +2463,9 @@
   },
   {
    "sector": "Miscellaneous",
-   "stocks_passing": 27,
-   "total_in_universe": 40,
-   "hit_rate_%": 67.5
+   "stocks_passing": 26,
+   "total_in_universe": 39,
+   "hit_rate_%": 66.7
   },
   {
    "sector": "Aerospace & Defence",
@@ -2998,12 +2998,6 @@
    "hit_rate_%": 100.0
   },
   {
-   "industry": "Entertainment & Media",
-   "stocks_passing": 13,
-   "total_in_universe": 19,
-   "hit_rate_%": 68.4
-  },
-  {
    "industry": "Cement",
    "stocks_passing": 13,
    "total_in_universe": 25,
@@ -3035,6 +3029,12 @@
   },
   {
    "industry": "Capital Goods - Electric General",
+   "stocks_passing": 12,
+   "total_in_universe": 18,
+   "hit_rate_%": 66.7
+  },
+  {
+   "industry": "Entertainment & Media",
    "stocks_passing": 12,
    "total_in_universe": 18,
    "hit_rate_%": 66.7
