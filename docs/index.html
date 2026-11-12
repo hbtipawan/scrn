@@ -517,7 +517,7 @@ main.wrap{padding-block:22px 40px;min-height:60vh}
 
 /* ── Rotation ─────────────────────────────────────────── */
 .rows{padding:4px 0}
-.brow{display:grid;grid-template-columns:minmax(170px,1.25fr) minmax(0,2.3fr) 92px 58px;align-items:center;gap:6px 14px;padding:10px 18px;cursor:pointer;border-top:1px solid var(--track)}
+.brow{display:grid;grid-template-columns:minmax(170px,1.25fr) minmax(0,2.3fr) 92px 82px;align-items:center;gap:6px 14px;padding:10px 18px;cursor:pointer;border-top:1px solid var(--track)}
 .brow:first-child{border-top:0}
 .brow:hover{background:var(--soft)}
 .brow[aria-expanded="true"]{background:var(--soft)}
@@ -858,7 +858,7 @@ footer.foot p{margin:4px 0;max-width:110ch}
   main.wrap{padding-bottom:110px}
   footer.foot{padding-bottom:110px}
   .sec-head h2{font-size:24px}
-  .brow{grid-template-columns:minmax(0,1fr) 84px 46px;padding:10px 14px}
+  .brow{grid-template-columns:minmax(0,1fr) 84px 64px;padding:10px 14px}
   .btrack{grid-column:1/-1;grid-row:2}
   .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
   .tile .v{font-size:28px}
@@ -1153,6 +1153,14 @@ body{background:var(--wash),var(--desk);background-attachment:scroll;min-height:
 .wlchk b{font-size:16px}.wlchk.g{color:var(--up)}.wlchk.m{color:var(--accent-ink)}.wlchk.b{color:var(--down)}
 .tflag{display:inline-block;margin:1px 2px 1px 0;padding:1px 8px;border-radius:6px;font-size:14px;font-weight:600;background:color-mix(in srgb,var(--down) 12%,transparent);color:var(--down);white-space:nowrap}
 .wlcols{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:0 14px 12px}.wlcols .select{max-width:300px}
+.rkl{justify-self:end;display:inline-flex;align-items:baseline;gap:1px;padding:3px 9px;border-radius:8px;font-size:18px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.2;white-space:nowrap}
+.rkl small{font-size:12px;font-weight:600;opacity:.75}
+.rkl.t1{background:color-mix(in srgb,var(--up) 16%,transparent);color:var(--up-t)}
+.rkl.t2,.rkl.t0{background:var(--soft);color:var(--ink)}.rkl.t0{color:var(--muted)}
+.rkl.t3{background:color-mix(in srgb,var(--down) 13%,transparent);color:var(--down-t)}
+.gmv{font-size:13px;font-weight:600;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.gmv.firm{color:var(--ink);font-weight:800}.gmv.fade{color:#fff;background:var(--down);border-radius:6px;padding:0 6px;font-weight:700}
+.heat td.hrs{white-space:nowrap;padding:0 10px}
 /* ══ Nov 2026 polish ══ one-line market strip on the working tabs, eleven tabs that always fit, calmer tables */
 .mstrip{display:flex;flex-wrap:nowrap;overflow:hidden;align-items:center;gap:6px 22px;padding-block:6px 12px;font-size:15px;color:var(--band-muted)}
 .mstrip.open{justify-content:flex-end;padding-block:0 0;margin-bottom:-6px}
@@ -1424,7 +1432,7 @@ function renderRotation(){
   const ranked=[...now].sort((a,b)=>b.v-a.v);ranked.forEach((g,i)=>g.rank=i+1);
   let rows=ranked;if(st.sort==="name")rows=[...now].sort((a,b)=>a.name.localeCompare(b.name));if(st.sort==="br")rows=[...now].sort((a,b)=>(b.br??-1)-(a.br??-1));
   const what=st.group==="Themes"?"theme":st.group==="NSE Index"?"NSE index":st.group.toLowerCase();
-  let h=`<div class="sec-head"><div><h2>Where the money is rotating</h2><p>Average return of the stocks in each ${what}, ranked. Arrows show rank change against a week ago. Tap a row for its stocks.</p></div></div>
+  let h=`<div class="sec-head"><div><h2>Where the money is rotating</h2><p>Average return of the stocks in each ${what}, ranked. The rank on the right is what counts: in 20 years of NSE data, top-third groups by 1-month to 1-year return (green) beat the average stock over the next 1–6 months and bottom-third groups (red) lagged; how the rank moved week to week added nothing. <b>RS</b> is the group's RS rating (3–12 months) with its change over 4 weeks — grey unless it matters: <span class="gmv fade">red</span> when a group rated 70+ has lost 10+ points. Tap a row for its stocks.</p></div></div>
   <div class="card toolbar">
     <div class="ctl"><span>Period</span>${seg("period",PERIODS,st.period,PL)}</div>
     <div class="ctl"><span>Group by</span>${seg("group",Object.keys(D.groups),st.group)}</div>
@@ -1435,11 +1443,12 @@ function renderRotation(){
   </div>`;
   if(!rows.length){$("#view").innerHTML=h+`<div class="card empty">No group has ${D.meta.min_group_size}+ stocks with data for this period.</div>`;return}
   if(st.view==="heat"){$("#view").innerHTML=h+heatmap(rows);wireTables($("#view"),renderRotation);if(D.meta.grp)gMountMini();return}
-  const mx=Math.max(1,...now.map(g=>Math.abs(g.v))),showRank=st.period!=="1D";
+  const mx=Math.max(1,...now.map(g=>Math.abs(g.v))),showRank=st.period!=="1D";void prank;
   h+=`<div class="card rows">`;
   for(const g of rows){
     const w=Math.abs(g.v)/mx*50,left=g.v>=0?50:50-w,pr=prank[g.name],dr=pr?pr-g.rank:0;
-    const rk=!showRank||!pr?"<span></span>":dr>0?`<span class="rk gain" title="Rank a week ago: ${pr}">▲${dr}</span>`:dr<0?`<span class="rk loss" title="Rank a week ago: ${pr}">▼${-dr}</span>`:`<span class="rk" title="Rank unchanged">=</span>`;
+    const N=ranked.length,third=Math.ceil(N/3),band=!showRank||st.period==="1W"?"t0":g.rank<=third?"t1":g.rank>N-third?"t3":"t2";
+    const rk=`<span class="rkl ${band}" title="Rank ${g.rank} of ${N} by ${st.period==="1D"?"today's":PL[st.period]} return${band==="t0"?" — ranks over a day or a week carried no signal in testing":band==="t1"?" — top third":band==="t3"?" — bottom third":" — middle third"}">#${g.rank}<small>/${N}</small></span>`;
     const open=st.open===g.name;
     h+=`<div class="brow" tabindex="0" role="button" aria-expanded="${open}" data-g="${esc(g.name)}">
       <div class="bname">${esc(g.name)}<span class="cnt">${g.n}</span>${D.meta.grp?`${gBadges(st.group,g.name)}<button type="button" class="gbtn" data-gopen="${esc(st.group+"|"+g.name)}" aria-label="Chart of ${esc(g.name)}" title="Chart"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 19h18v2H3zm2-3 4-5 3 3 5-7 2 1.4-6.6 9.3-3-3L6.6 17z"/></svg></button>`:""}<span class="lead">Top: ${g.top.map(([s,v])=>`${esc(s)} ${sgn(v,1)}`).join(" · ")}</span></div>
@@ -1519,9 +1528,9 @@ function heatmap(rows){
   const mx=Object.fromEntries(PERIODS.map(p=>[p,Math.max(1,...Object.values(stats[p]).map(Math.abs))]));
   const sorted=st.sort==="ret"?[...rows].sort((a,b)=>(stats[st.period][b.name]??-999)-(stats[st.period][a.name]??-999)):rows;
   const cell=(v,m)=>{if(!isNum(v))return `<div class="cell">–</div>`;const f=Math.min(1,Math.abs(v)/m),c=v>=0?"var(--up)":"var(--down)";return `<div class="cell num" style="background:color-mix(in srgb,${c} ${Math.round(8+f*62)}%,transparent);${f>.55?"color:#fff":""}">${sgn(v,1)}</div>`};
-  let h=`<div class="card"><div class="tscroll"><table class="heat"><thead><tr><th>Group</th>${PERIODS.map(p=>`<th data-hp="${p}" class="${p===st.period?"on":""}" tabindex="0">${p}</th>`).join("")}</tr></thead><tbody>`;
-  for(const g of sorted){h+=`<tr class="hr" data-g="${esc(g.name)}" tabindex="0"><td>${esc(g.name)} <span style="color:var(--muted);font-weight:400;font-size:14px">${g.n}</span></td>${PERIODS.map(p=>`<td>${cell(stats[p][g.name],mx[p])}</td>`).join("")}</tr>`;
-    if(st.open===g.name)h+=`<tr><td colspan="${PERIODS.length+1}" style="padding:0 8px 10px;position:static">${members(g)}</td></tr>`}
+  let h=`<div class="card"><div class="tscroll"><table class="heat"><thead><tr><th>Group</th>${D.meta.grp?"<th>RS · 4 wk</th>":""}${PERIODS.map(p=>`<th data-hp="${p}" class="${p===st.period?"on":""}" tabindex="0">${p}</th>`).join("")}</tr></thead><tbody>`;
+  for(const g of sorted){h+=`<tr class="hr" data-g="${esc(g.name)}" tabindex="0"><td>${esc(g.name)} <span style="color:var(--muted);font-weight:400;font-size:14px">${g.n}</span></td>${D.meta.grp?`<td class="hrs">${(()=>{const r=gRow(st.group,g.name),x=r&&r[gU(r)];return x&&isNum(x.rk)?`${rsPill(x.rk)} ${gMove(x.rk,x.rk4)}`:"–"})()}</td>`:""}${PERIODS.map(p=>`<td>${cell(stats[p][g.name],mx[p])}</td>`).join("")}</tr>`;
+    if(st.open===g.name)h+=`<tr><td colspan="${PERIODS.length+1+(D.meta.grp?1:0)}" style="padding:0 8px 10px;position:static">${members(g)}</td></tr>`}
   return h+`</tbody></table></div></div><p class="note">Colour depth is scaled within each period column. Click a period heading to rank by it; click a group for its stocks.</p>`;
 }
 
@@ -1709,8 +1718,18 @@ function closeGroupChart(fromPop){const m=$("#gmodal");if(!m||m.hidden)return;if
   if(!fromPop&&history.state?.gchart){GCH_BACK=true;history.back()}}
 window.addEventListener("popstate",()=>{if(GCH_BACK){GCH_BACK=false;return}if(!history.state?.gchart&&$("#gmodal")&&!$("#gmodal").hidden&&$("#drawer").hidden)closeGroupChart(true)});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&$("#gmodal")&&!$("#gmodal").hidden&&$("#drawer").hidden&&$("#mdl").hidden){e.stopImmediatePropagation();closeGroupChart()}},true);
-function gpill(r,u){const x=r[u];if(!x||!isNum(x.rk))return "–";const d=isNum(x.rk4)?x.rk-x.rk4:null;
-  return `${rsPill(x.rk)}${d!=null&&Math.abs(d)>=5?` <span class="num ${cls(d)}" style="font-size:15px">${d>0?"▲":"▼"}${Math.abs(d)}</span>`:""}`}
+/* Group RS rating and its 4-week move. NSE 2007-26 (industries and sectors): moves under 10 points told nothing; a group rated
+   70+ that lost 10+ points went on to lag (industries +0.4% / -1.2%, sectors +0.1% / -2.0% over 3 months vs +1.1-1.4% steady);
+   a 70+ group gaining 10+ did a little better for industries (+1.8-2.2%), not for sectors. So: every move is shown, in grey;
+   only "70+ and down 10+" is coloured (a warning) and "70+ and up 10+" is set bold. */
+function gMove(rk,rk4){if(!isNum(rk)||!isNum(rk4))return "";const d=rk-rk4,c=rk>=70&&d<=-10?"fade":rk>=70&&d>=10?"firm":"";
+  const t=`Group RS rating ${rk}, ${rk4} four weeks ago (${d>0?"+":""}${d})${c==="fade"?" — a strong group losing 10+ points: in testing these lagged over the next 3 months":c==="firm"?" — a strong group gaining 10+ points: a mild plus in testing (industries)":Math.abs(d)<10?" — moves under 10 points carried no signal in testing":""}`;
+  return `<span class="gmv ${c}" title="${esc(t)}">${d>0?"▲":d<0?"▼":"="}${d?Math.abs(d):""}${c==="fade"?" in 4 wk":""}</span>`}
+const gState=(rk,rk4)=>!isNum(rk)?null:rk>=70?(isNum(rk4)&&rk-rk4<=-10?"fade":"strong"):rk>=40?"mid":"weak";
+const GSL={strong:"Strong (RS 70+)",fade:"Strong but fading (70+, down 10+ in 4 weeks)",mid:"Middle (RS 40–69)",weak:"Weak (RS under 40)"};
+const GSC={strong:"var(--up-t)",fade:"var(--accent-ink)",mid:"var(--muted)",weak:"var(--down-t)"};
+const gStatePill=q=>q?`<span class="pill" style="color:${GSC[q]};border-color:currentColor;background:transparent">${GSL[q].replace(/ \(.*$/,"")}</span>`:"–";
+function gpill(r,u){const x=r[u];if(!x||!isNum(x.rk))return "–";return `${rsPill(x.rk)} ${gMove(x.rk,x.rk4)}`}
 function gsigChips(r,u,maxAgo=19,big){const x=r[u];if(!x)return "";const ids=(x.sig||[]).filter(k=>x.ago[k]<=maxAgo);
   return ids.map(k=>{const m=GXD.sig[k]||{},t=GTESTED.includes(k)?"t":GWEAK.includes(k)?"w":"b";return `<span class="gsc ${t}" title="${esc(m.name||k)} — ${x.ago[k]===0?"today":x.ago[k]+" sessions ago"}">${esc(GCODE[k]||k)}${big?` ${esc(m.name||k)} · ${x.ago[k]===0?"today":x.ago[k]+"d ago"}`:""}</span>`}).join("")}
 function drawGroupChart(){
@@ -1850,7 +1869,7 @@ async function gMountMini(){const el=document.querySelector(".gmini[data-gopen]"
 function gMiniHtml(kind,name){return `<div class="gmini" data-gopen="${esc(kind+"|"+name)}" role="button" tabindex="0" aria-label="Open the full chart of ${esc(name)}"><div class="gmh">Loading chart…</div><div class="gmc"></div><span class="gmo">Open full chart ⤢</span></div>`}
 /* ── badges on the rotation rows ── */
 function gBadges(kind,name){const r=gRow(kind,name);if(!r)return "";const u=gU(r),x=r[u];if(!x)return "";
-  return `<span class="gbadges">${isNum(x.rk)?`<span class="gbrk" title="Group RS rating ${x.rk}${isNum(x.rk4)?`, ${x.rk4} four weeks ago`:""}">RS ${x.rk}${isNum(x.rk4)&&Math.abs(x.rk-x.rk4)>=5?(x.rk>x.rk4?" ▲":" ▼"):""}</span>`:""}${gsigChips(r,u,4)}</span>`}
+  return `<span class="gbadges">${isNum(x.rk)?`<span class="gbrk" title="Group RS rating ${x.rk}${isNum(x.rk4)?`, ${x.rk4} four weeks ago`:""}">RS ${x.rk}</span>${gMove(x.rk,x.rk4)}`:""}${gsigChips(r,u,4)}</span>`}
 /* ── Group signals view ── */
 function renderGroupSignals(){
   if(!GXD){$("#view").innerHTML=`<div class="card empty">Loading group data…</div>`;grpLoad().then(()=>{if(st.tab==="rotation"&&st.view==="gsig")renderGroupSignals()});return}
@@ -3610,7 +3629,7 @@ function wlTrim(r){const a=[],v=VPX?.[r.s];
   if(r.a50===false)a.push("Below 50-day");if(isNum(r.up)&&r.up<50)a.push("Upside under 50");if(r.st===3||r.st===4)a.push("Stage "+r.st);
   if(isNum(r.rs)&&isNum(r.rs4w)&&r.rs-r.rs4w<=-15)a.push("RS falling");
   const t=SXB.vptr?.get(r);if(isNum(t)&&t<5)a.push(t<0?"Below VPCI stop":"Near VPCI stop");
-  if(isNum(r.irs)&&r.irs<40)a.push("Weak industry");
+  if(isNum(r.irs)&&r.irs<40)a.push("Weak industry");else if(grpRot(r,"ind")==="fade")a.push("Industry fading");
   if(r.next_results){const dd=Math.round((new Date(r.next_results+"T00:00:00")-new Date(D.meta.asof+"T00:00:00"))/864e5);if(dd>=0&&dd<=7)a.push("Results in "+dd+"d")}
   return a}
 function wlColPicker(){const cur=st.wl.cols||WLCOLS0;
@@ -3619,7 +3638,7 @@ function wlColPicker(){const cur=st.wl.cols||WLCOLS0;
     <select class="select" id="wlcoladd" aria-label="Add a column"><option value="">+ Add a column…</option>${opt}</select><button type="button" class="ghost" data-wlcol-reset>Reset</button></div>`}
 function renderWatch(){
   $("#view").innerHTML=`<div class="empty">Loading watchlists…</div>`;
-  Promise.all([vpxLoad(),clLoad(),D.meta.corp?.n?caLoad():null]).then(()=>{if(st.tab==="watch")drawWatch();updateWlBadge()})}
+  Promise.all([vpxLoad(),clLoad(),D.meta.corp?.n?caLoad():null,D.meta.grp?grpLoad().catch(()=>null):null]).then(()=>{if(st.tab==="watch")drawWatch();updateWlBadge()})}
 function drawWatch(){
   const w=wlGet(),L=wlList(w.active),sync=syncCfg.get();
   const flags=FLAGS.filter(([k])=>L.items.some(i=>w.meta[i.s]?.flag===k));
@@ -3669,7 +3688,7 @@ function drawWatch(){
     rsd4:{k:"rsd4",label:"RS Δ4W",fmt:r=>{const d=isNum(r.rs)&&isNum(r.rs4w)?r.rs-r.rs4w:null;return `<span class="num ${cls(d)}">${d==null?"–":(d>0?"+":"")+d}</span>`},sort:r=>isNum(r.rs)&&isNum(r.rs4w)?r.rs-r.rs4w:null},
     d50:{k:"d50",label:"vs 50-day",fmt:r=>`<span class="num ${cls(r.d50)}">${sgn(r.d50,1)}</span>`},
     irs:{k:"irs",label:"Industry RS",fmt:r=>rsPill(r.irs)},srs:{k:"srs",label:"Sector RS",fmt:r=>rsPill(r.srs)},
-    irot:{k:"_irot",label:"Industry rotation",l:1,fmt:r=>{const q=grpRot(r,"ind"),k=grpR(r,"ind","1M");return q?`${rotPill(q)} <span class="num" title="Industry return rank, 1 month (99 = best)">${k}</span>`:"–"},sort:r=>grpR(r,"ind","1M"),csv:r=>grpRot(r,"ind")||""},
+    irot:{k:"_irot",label:"Industry strength",l:1,fmt:r=>{const y=grpX(r,"ind");return y&&isNum(y.rk)?`${rotPill(gState(y.rk,y.rk4))} ${gMove(y.rk,y.rk4)}`:"–"},sort:r=>grpRS(r,"ind"),csv:r=>grpRot(r,"ind")||""},
     vptr:{k:"_vptr",label:"Above VPCI stop",fmt:r=>{const v=SXB.vptr.get(r);return `<span class="num ${isNum(v)&&v<5?"down":""}">${sgn(v,1)}</span>`},sort:r=>SXB.vptr.get(r)},
     atr:{k:"atrp",label:"ATR %",fmt:r=>`<span class="num">${isNum(r.atrp)?r.atrp.toFixed(1):"–"}</span>`},
     rq:{k:"rq",label:"Result Q",fmt:r=>isNum(r.rq)?scorePill(r.rq):"–"},
@@ -3678,7 +3697,7 @@ function drawWatch(){
     prom:{k:"promoter",label:"Promoter %",fmt:r=>`<span class="num">${isNum(r.promoter)?r.promoter.toFixed(1):"–"}</span>`},inst:pc("inst_1y","FII+DII Δ1Y",2),
     act:{k:"_a",label:"",fmt:r=>`<span class="rowact"><button type="button" data-wl-edit="${esc(r.s)}" title="Levels, note, flag" aria-label="Edit ${esc(r.s)}">✎</button><button type="button" data-wl-mv="${esc(r.s)}" title="Move or copy to another list" aria-label="Move ${esc(r.s)}">⇄</button><button type="button" data-wl-rm="${esc(r.s)}" title="Remove from this list" aria-label="Remove ${esc(r.s)}">✕</button></span>`,sort:()=>0}};
   const views={decide:[stockW,C.px,C.ret("1D"),col.chk,col.trim,col.up,C.rs,col.rsd4,C.ret("1M"),C.ret("3M"),C.h52,C.st,col.d50,col.irs,col.irot,col.vp,col.vptr,col.since,col.res,col.act],
-    rot:[stockW,C.px,col.up,C.rs,col.irs,col.srs,col.irot,{k:"_srot",label:"Sector rotation",l:1,fmt:r=>rotPill(grpRot(r,"sec")),sort:r=>grpR(r,"sec","1M"),csv:r=>grpRot(r,"sec")||""},
+    rot:[stockW,C.px,col.up,C.rs,col.irs,col.srs,col.irot,{k:"_srot",label:"Sector strength",l:1,fmt:r=>{const y=grpX(r,"sec");return y&&isNum(y.rk)?`${rotPill(gState(y.rk,y.rk4))} ${gMove(y.rk,y.rk4)}`:"–"},sort:r=>grpRS(r,"sec"),csv:r=>grpRot(r,"sec")||""},
       {k:"_ir3",label:"Industry rank 3M",fmt:r=>rsPill(grpR(r,"ind","3M")),sort:r=>grpR(r,"ind","3M")},C.themes,C.sec,col.act],
     track:[stockW,col.spark,C.px,C.ret("1D"),col.added,col.since,col.alpha,col.days,col.maxg,col.maxdd,col.setup,col.piv,col.stp,col.toStop,C.rs,C.fr,col.scans,col.res,col.note,col.act],
     perf:[stockW,col.spark,C.px,C.ret("1D"),C.ret("1W"),C.ret("1M"),C.ret("3M"),C.ret("6M"),C.ret("1Y"),C.h52,col.up,C.rs,C.drs,col.rsd4,C.st,col.d50,col.atr,C.vr,C.adr,C.dp20,col.vp,col.act],
@@ -3690,8 +3709,8 @@ function drawWatch(){
     ${flags.length?`<div class="ctl"><span>Flag</span><div class="chips"><button type="button" class="chipbtn" data-wl-flag="" aria-pressed="${!st.wl.flag}">All</button>${flags.map(([k,n])=>`<button type="button" class="chipbtn" data-wl-flag="${k}" aria-pressed="${st.wl.flag===k}"><span class="fdot ${k}"></span>${n}</button>`).join("")}</div></div>`:""}</div>
     ${st.wl.view==="custom"?wlColPicker():""}
     <div id="wlT">${dtable(tid,rows,views[st.wl.view],{empty:"No stocks with this flag."})}</div></div>
-    ${st.wl.view==="decide"?`<p class="note"><b>Checks</b> (hover for the list): Upside 80+, RS 70+, Stage 2, above the 50-day, industry RS 60+, VPCI 6+ gates or in a VPCI position. <b>Trim flags</b> are the exits and weak spots from the tests: a close below the 50-day (the Upside plan's exit), Upside under 50 (fresh VPCI signals with Upside under 50 made 3.4% a year against 18.1% for Upside 80+), Stage 3 or 4, RS down 15+ points in 4 weeks, the price within 5% of or below the VPCI trailing stop, a weak industry (RS under 40), and results due within 7 days.</p>`:""}
-    ${st.wl.view==="rot"?`<p class="note">Industry and sector rotation compare each group's median 1-month return with every other group's: rank 50+ is strong, and rising means the rank is higher than a week ago. Leading = strong and rising, Weakening = strong and falling, Improving = weak and rising, Lagging = weak and falling. Groups need 3+ liquid stocks.</p>`:""}
+    ${st.wl.view==="decide"?`<p class="note"><b>Checks</b> (hover for the list): Upside 80+, RS 70+, Stage 2, above the 50-day, industry RS 60+, VPCI 6+ gates or in a VPCI position. <b>Trim flags</b> are the exits and weak spots from the tests: a close below the 50-day (the Upside plan's exit), Upside under 50 (fresh VPCI signals with Upside under 50 made 3.4% a year against 18.1% for Upside 80+), Stage 3 or 4, RS down 15+ points in 4 weeks, the price within 5% of or below the VPCI trailing stop, a weak industry (RS under 40) or a strong industry losing 10+ RS points in 4 weeks (these lagged in testing), and results due within 7 days.</p>`:""}
+    ${st.wl.view==="rot"?`<p class="note">Industry and sector strength use the group RS rating (3–12 months, as on the Rotation tab): Strong = 70+, Middle = 40–69, Weak = under 40, and Strong but fading = rated 70+ but down 10+ points in 4 weeks. In 2007–26 NSE tests, stocks in strong groups beat the average stock over the next 3 months, weak groups lagged, and strong-but-fading groups lagged too. Smaller moves (grey arrows) carried no signal.</p>`:""}
     <p class="note">Buy zone = pivot to 5% above it (IBD). Above that is extended — chasing raises risk. “Best since” and “Worst dip” use daily closes since the day added. Rows sort by any column; ✎ sets pivot, stop, target, flag and note.</p>`;
   h+=historyHtml();
   $("#view").innerHTML=h;wireTables($("#view"),drawWatch);
@@ -4157,8 +4176,12 @@ function grpRank(kind,p){const key=kind+p+D.meta.asof;if(GRK[key])return GRK[key
 const medR=p=>{const key="med"+p+D.meta.asof;if(GRK[key]===undefined){const v=D.liq.map(x=>x.r?.[p]).filter(isNum);GRK[key]=v.length?median(v):null}return GRK[key]};
 const grpOf=(x,kind)=>kind==="ind"?x.ind:x.sec;
 const grpR=(x,kind,p)=>{const g=grpOf(x,kind);return g?grpRank(kind,p).now[g]??null:null};
-function grpRot(x,kind){const g=grpOf(x,kind);if(!g)return null;const R=grpRank(kind,"1M"),a=R.now[g],b=R.prev[g];if(!isNum(a))return null;const up=!isNum(b)||a>=b;return a>=50?(up?"leading":"weakening"):(up?"improving":"lagging")}
-const rotPill=q=>q?`<span class="pill" style="color:${QC[q]};border-color:currentColor;background:transparent">${QL[q]}</span>`:"–";
+/* a stock's industry or sector, read from the group RS rating (liquid stocks where the group has them) */
+function grpX(x,kind){const g=grpOf(x,kind);if(!g||!GXD)return null;const r=gRow(kind==="ind"?"Industry":"Sector",g);return r?(r.l||r.a||null):null}
+function grpRot(x,kind){const y=grpX(x,kind);return y?gState(y.rk,y.rk4):null}
+const grpRS=(x,kind)=>grpX(x,kind)?.rk??null;
+const grpMv=(x,kind)=>{const y=grpX(x,kind);return y&&isNum(y.rk)&&isNum(y.rk4)?y.rk-y.rk4:null};
+const rotPill=gStatePill;
 /* from the daily closes (loaded only when one of these filters or columns is used) */
 const CLS={};
 function clStat(s){if(!CL)return null;if(CLS[s])return CLS[s];const c=(CL.c[s]||[]).filter(isNum);if(c.length<30)return CLS[s]={};
@@ -4190,9 +4213,11 @@ const SXF=[],SXB={};
   N("up","Upside score","up",x=>x.up,{dec:0,pill:v=>upPill(v),ps:[ge("50+",50),ge("80+",80),ge("90+ (top 10%)",90)]});
   N("irs","Industry RS rating","up",x=>x.irs,{dec:0,pill:rsPill,ps:[ge("70+",70),ge("80+",80),le("Under 40",40)]});
   N("srs","Sector RS rating","up",x=>x.srs,{dec:0,pill:rsPill,ps:[ge("70+",70),ge("80+",80),le("Under 40",40)]});
-  for(const [k,kl] of [["ind","Industry"],["sec","Sector"]])for(const p of ["1W","1M","3M"])N(k[0]+"r"+p,`${kl} return rank, ${{"1W":"1 week","1M":"1 month","3M":"3 months"}[p]} (99 = best)`,"up",x=>grpR(x,k,p),{dec:0,pill:rsPill,ps:[ge("Top quarter",75),ge("Top half",50),le("Bottom quarter",25)]});
-  E("irot","Industry rotation, 1 month","up",x=>grpRot(x,"ind"),()=>[["leading","Leading — strong, rising"],["improving","Improving — weak, rising"],["weakening","Weakening — strong, falling"],["lagging","Lagging — weak, falling"]],{pill:rotPill});
-  E("srot","Sector rotation, 1 month","up",x=>grpRot(x,"sec"),()=>[["leading","Leading — strong, rising"],["improving","Improving — weak, rising"],["weakening","Weakening — strong, falling"],["lagging","Lagging — weak, falling"]],{pill:rotPill});
+  for(const [k,kl] of [["ind","Industry"],["sec","Sector"]])for(const p of ["1M","3M"])N(k[0]+"r"+p,`${kl} return rank, ${{"1W":"1 week","1M":"1 month","3M":"3 months"}[p]} (99 = best)`,"up",x=>grpR(x,k,p),{dec:0,pill:rsPill,ps:[ge("Top quarter",75),ge("Top half",50),le("Bottom quarter",25)]});
+  E("irot","Industry strength (group RS rating)","up",x=>grpRot(x,"ind"),()=>[["strong","Strong — group RS 70+"],["fade","Strong but fading — 70+, down 10+ in 4 weeks"],["mid","Middle — 40–69"],["weak","Weak — under 40"]],{pill:rotPill});
+  E("srot","Sector strength (group RS rating)","up",x=>grpRot(x,"sec"),()=>[["strong","Strong — group RS 70+"],["fade","Strong but fading — 70+, down 10+ in 4 weeks"],["mid","Middle — 40–69"],["weak","Weak — under 40"]],{pill:rotPill});
+  N("igmv","Industry RS rating, change over 4 weeks","up",x=>grpMv(x,"ind"),{dec:0,sg:1,ps:[le("Down 10+ (fading)",-10),ge("Up 10+",10)]});
+  N("sgmv","Sector RS rating, change over 4 weeks","up",x=>grpMv(x,"sec"),{dec:0,sg:1,ps:[le("Down 10+ (fading)",-10),ge("Up 10+",10)]});
   N("rs_up","RS rating + Upside score","up",x=>isNum(x.rs)&&isNum(x.up)?x.rs+x.up:null,{dec:0,ps:[ge("160+",160),ge("180+",180)]});
   const uniq=f=>()=>[...new Set(D.stocks.map(f).flat().filter(Boolean))].sort().map(v=>[v,v]);
   E("sec","Sector","up",x=>x.sec,uniq(x=>x.sec),{big:1});E("ind","Industry","up",x=>x.ind,uniq(x=>x.ind),{big:1});
@@ -4276,7 +4301,7 @@ const SXP=[
   ["Quiet pullback in an uptrend","Stage 2, RS 70+, within 3% of the 20-day, volume dry",[{id:"st",in:[2]},{id:"rs",min:70},{id:"d20",min:-3,max:3},{id:"vr",max:0.6}]],
   ["Quality at a fair price","ROE 18%+, debt ÷ equity 0.5 or less, P/E under 30, profit growing",[{id:"roe",min:18},{id:"de",max:0.5},{id:"pe",min:0,max:30},{id:"pat_yoy",min:10}]],
   ["Strong group, strong stock","Industry RS 80+, sector RS 70+, stock RS 80+, above the 50-day",[{id:"irs",min:80},{id:"srs",min:70},{id:"rs",min:80},{id:"a50",v:true}]],
-  ["Leading industry, tight near the high","Industry rotation leading, within 10% of the high, last 10 closes within 8%, Stage 2",[{id:"irot",in:["leading"]},{id:"h52",min:-10},{id:"tight",max:8},{id:"st",in:[2]}]],
+  ["Strong industry, tight near the high","Industry group RS 70+ and not fading, within 10% of the high, last 10 closes within 8%, Stage 2",[{id:"irot",in:["strong"]},{id:"h52",min:-10},{id:"tight",max:8},{id:"st",in:[2]}]],
   ["VPCI 6/7 with top Upside","VPCI 6 or 7 gates, Upside 90+, above the 50-day, not stretched (5 ATRs or less above it)",[{id:"vpg",min:6},{id:"up",min:90},{id:"a50",v:true},{id:"x50",max:5}]],
   ["Fresh 52-week high, strong group","Closing high in the last 5 sessions, RS 80+, industry return rank top half for 1 month",[{id:"dsh",max:5},{id:"rs",min:80},{id:"ir1M",min:50}]]];
 const sxSaved=()=>store.get("sxSaved",[]);
@@ -4323,6 +4348,7 @@ function renderScreener(){
   const S=st.sx,saved=sxSaved();
   if(D.meta.pat&&!PAT&&!renderScreener.pl){renderScreener.pl=1;patLoad().then(()=>{if(st.tab==="screener")renderScreener()}).catch(()=>{})}
   if(!VPX&&!renderScreener.vl){renderScreener.vl=1;vpxLoad().then(()=>{if(st.tab==="screener")renderScreener()})}
+  if(D.meta.grp&&!GXD&&!renderScreener.gl){renderScreener.gl=1;grpLoad().then(()=>{if(st.tab==="screener")renderScreener()}).catch(()=>{})}
   sxNeedCL();
   let h=`<div class="sec-head"><div><h2>Screener</h2><p>Stack any filters — price, returns, RS, Upside, trend, bases, results, fundamentals, ownership, scanners. Every filter shows how many stocks are left after it. Start from a ready screen or build your own and save it.</p></div></div>
   <div class="sxstrip"><span class="sxk">Ready screens</span>${SXP.map((p,i)=>`<button type="button" class="sxchip" data-sxpre="${i}" title="${esc(p[1])}">${esc(p[0])}</button>`).join("")}</div>
