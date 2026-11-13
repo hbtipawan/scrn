@@ -1082,6 +1082,14 @@
 "subject": "INTERIM DIVIDEND - RE 0.15 PER SHARE"
 },
 {
+"symbol": "BNAGROCHEM",
+"series": "EQ",
+"ex": "2026-11-16",
+"kind": "split",
+"label": "Split \u20b910 \u2192 \u20b91",
+"subject": "Face Value Split (Sub-Division) - From Rs 10/- Per Share To Re 1/- Per Share"
+},
+{
 "symbol": "COCHINSHIP",
 "series": "EQ",
 "ex": "2026-11-16",
@@ -1098,12 +1106,44 @@
 "subject": "Interim Dividend - Rs 4 Per Share"
 },
 {
+"symbol": "771GS2066",
+"series": "GS",
+"ex": "2026-11-17",
+"kind": "other",
+"label": "Interest Payment",
+"subject": "Interest Payment"
+},
+{
+"symbol": "EDELALTS",
+"series": "EQ",
+"ex": "2026-11-17",
+"kind": "dividend",
+"label": "Interim dividend \u20b97",
+"subject": "Interim Dividend - Rs 7 Per Share"
+},
+{
 "symbol": "MRF",
 "series": "EQ",
 "ex": "2026-11-17",
 "kind": "dividend",
 "label": "Interim dividend \u20b93",
 "subject": "Interim Dividend - Rs 3 Per Share"
+},
+{
+"symbol": "NILE",
+"series": "EQ",
+"ex": "2026-11-17",
+"kind": "dividend",
+"label": "Interim dividend \u20b93",
+"subject": "Interim Dividend - Rs 3 Per Share"
+},
+{
+"symbol": "OSEINTRUST",
+"series": "IV",
+"ex": "2026-11-17",
+"kind": "dividend",
+"label": "Dividend \u20b96.9192",
+"subject": "Distribution - Rs 3.4596 Per Unit Consists Of Rs 1.8659 Per Unit As Interest/ Rs 1.2797 Per Unit As Dividend/ Re 0.3140 "
 },
 {
 "symbol": "PFC",
@@ -1114,12 +1154,52 @@
 "subject": "Interim Dividend - Rs 4.10 Per Share"
 },
 {
+"symbol": "PGINVIT",
+"series": "IV",
+"ex": "2026-11-17",
+"kind": "dividend",
+"label": "Dividend \u20b96",
+"subject": "Distribution - Rs 3 Per Unit Consist Of Rs 1.69 Per Unit As Interest/ Re 0.62 Per Unit As Dividend/ Re 0.68 Per Unit As "
+},
+{
 "symbol": "CONNPLEX",
 "series": "SM",
 "ex": "2026-11-18",
 "kind": "dividend",
 "label": "Interim dividend \u20b90.5",
 "subject": "INTERIM DIVIDEND - RE 0.50 PER SHARE"
+},
+{
+"symbol": "GLOBAL",
+"series": "EQ",
+"ex": "2026-11-18",
+"kind": "buyback",
+"label": "Buyback",
+"subject": "Buy Back"
+},
+{
+"symbol": "MANAPPURAM",
+"series": "EQ",
+"ex": "2026-11-18",
+"kind": "dividend",
+"label": "Interim dividend \u20b91",
+"subject": "Interim Dividend - Re 1 Per Share"
+},
+{
+"symbol": "PAGEIND",
+"series": "EQ",
+"ex": "2026-11-18",
+"kind": "dividend",
+"label": "Interim dividend \u20b9150",
+"subject": "Interim Dividend - Rs  150 Per Share"
+},
+{
+"symbol": "TDPOWERSYS",
+"series": "EQ",
+"ex": "2026-11-18",
+"kind": "dividend",
+"label": "Interim dividend \u20b90.65",
+"subject": "Interim Dividend - Re 0.65 Per Share"
 },
 {
 "symbol": "INGERRAND",
@@ -1136,6 +1216,22 @@
 "kind": "buyback",
 "label": "Buyback",
 "subject": "Buy Back"
+},
+{
+"symbol": "OIL",
+"series": "EQ",
+"ex": "2026-11-20",
+"kind": "dividend",
+"label": "Interim dividend \u20b97",
+"subject": "Interim Dividend - Rs 7 Per Share"
+},
+{
+"symbol": "TALBROAUTO",
+"series": "EQ",
+"ex": "2026-11-20",
+"kind": "dividend",
+"label": "Interim dividend \u20b90.3",
+"subject": "Interim Dividend - Re 0.30 Per Share"
 },
 {
 "symbol": "VENUSPIPES",

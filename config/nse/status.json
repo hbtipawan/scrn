@@ -1,59 +1,18 @@
 {
- "run": "2026-11-13 02:21",
+ "run": "2026-11-13 16:46",
  "delivery": {
-  "added": [
-   "2026-11-12"
-  ],
+  "added": [],
   "not_published": [],
   "last": "2026-11-12"
  },
  "indices": {
-  "added": [
-   "2026-11-12"
-  ],
+  "added": [],
   "not_published": [],
   "last": "2026-11-12"
  },
  "close_check": {
-  "date": "2026-11-12",
-  "checked": 2591,
-  "disagree": 994,
-  "corrected": 994,
-  "skipped": 0,
-  "examples": {
-   "ASIANTNE": [
-    9.78,
-    9.16
-   ],
-   "GLOBALE": [
-    10.78,
-    10.1
-   ],
-   "DRCSYSTEMS": [
-    12.2,
-    11.55
-   ],
-   "BTTL": [
-    39.7,
-    37.65
-   ],
-   "IPRINGLTD": [
-    142.0,
-    135.22
-   ],
-   "GRANDOAK": [
-    32.0,
-    30.49
-   ],
-   "SUYOG": [
-    561.95,
-    536.3
-   ],
-   "SHIVAM-RE1": [
-    0.63,
-    0.66
-   ]
-  },
-  "skipped_examples": {}
+  "date": "2026-11-13",
+  "checked": 0,
+  "note": "NSE file not available"
  }
 }
