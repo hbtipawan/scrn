@@ -1,18 +1,59 @@
 {
- "run": "2026-11-13 16:46",
+ "run": "2026-11-14 02:02",
  "delivery": {
-  "added": [],
+  "added": [
+   "2026-11-13"
+  ],
   "not_published": [],
-  "last": "2026-11-12"
+  "last": "2026-11-13"
  },
  "indices": {
-  "added": [],
+  "added": [
+   "2026-11-13"
+  ],
   "not_published": [],
-  "last": "2026-11-12"
+  "last": "2026-11-13"
  },
  "close_check": {
   "date": "2026-11-13",
-  "checked": 0,
-  "note": "NSE file not available"
+  "checked": 2593,
+  "disagree": 972,
+  "corrected": 972,
+  "skipped": 0,
+  "examples": {
+   "PRAKASHSTL": [
+    3.6,
+    3.82
+   ],
+   "YOGI": [
+    171.0,
+    163.53
+   ],
+   "DNAMEDIA": [
+    2.34,
+    2.24
+   ],
+   "HEADSUP": [
+    5.3,
+    5.51
+   ],
+   "UNIINFO": [
+    11.13,
+    10.73
+   ],
+   "MWL": [
+    38.26,
+    39.62
+   ],
+   "SIGIND": [
+    62.98,
+    60.95
+   ],
+   "VCL": [
+    1.6,
+    1.55
+   ]
+  },
+  "skipped_examples": {}
  }
 }
