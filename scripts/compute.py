@@ -613,6 +613,23 @@ def main():
         import traceback
         traceback.print_exc()
         print(f"upside skipped: {e}")
+    # ---------------- Multibagger checks (multibagger.py): seven yes/no checks that about doubled the odds of a 5x
+    # within 3 years in the 2016-23 test (config/multibagger_evidence.json)
+    mb_meta = None
+    try:
+        import multibagger as MBG
+        MBR, mb_by = MBG.build(PFULL, rows, ath_prior, last, CFG)
+        json.dumps(MBR, separators=(",", ":"), allow_nan=False)       # must be writable before anything is attached
+        for r in rows:
+            if r["s"] in mb_by:
+                r["mb"] = mb_by[r["s"]]
+        dump_later["multibagger.json"] = MBR
+        mb_meta = {"n": MBR["n"], "hi": MBR["hi"], "ab200": MBR["ab200"]}
+        print(f"multibagger: {MBR['n']} stocks checked, {MBR['hi']} pass 5 or more; {MBR['ab200']}% above the 200-day")
+    except Exception as e:  # never break the daily run
+        import traceback
+        traceback.print_exc()
+        print(f"multibagger skipped: {e}")
     # ---------------- quarterly results: this season's results, Result Quality and PEAD scores (results.py)
     res_meta = None
     try:
@@ -676,7 +693,7 @@ def main():
             "failed": fm.get("failed_count"), "indices": indices,
             "filters": {"min_price": S["min_price"], "min_median_turnover_cr": S["min_median_turnover_cr"],
                         "min_market_cap_cr": S["min_market_cap_cr"] if mcap is not None else None},
-            "min_group_size": S["min_group_size"], "fund": fund_meta, "bases": base_meta, "stage2": s2_meta, "results": res_meta, "mf": mf_meta, "rs": rs_meta, "dlv": dlv_meta, "idx": idx_meta, "corp": corp_meta, "grp": grp_meta, "pat": pat_meta, "vcp": vcp_meta, "up": up_meta}
+            "min_group_size": S["min_group_size"], "fund": fund_meta, "bases": base_meta, "stage2": s2_meta, "results": res_meta, "mf": mf_meta, "rs": rs_meta, "dlv": dlv_meta, "idx": idx_meta, "corp": corp_meta, "grp": grp_meta, "pat": pat_meta, "vcp": vcp_meta, "up": up_meta, "mb": mb_meta}
 
     def dump(name, obj):
         (OUT / name).write_text(json.dumps(obj, separators=(",", ":"), allow_nan=False))
