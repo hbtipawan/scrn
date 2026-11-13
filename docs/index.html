@@ -1041,6 +1041,7 @@ body{background:var(--wash),var(--desk);background-attachment:scroll;min-height:
 .brand b.wm{display:block;font-family:var(--display);font-weight:800;font-stretch:125%;font-size:27px;letter-spacing:.05em;line-height:1.05;color:#fff}
 .brand b.wm i{font-style:normal;font-weight:500;color:#C9D7EB;letter-spacing:.07em}
 .tab[data-v="upside"],#view[data-v="upside"]{--t:#6D28D9}
+.tab[data-v="multi"],#view[data-v="multi"]{--t:#4D7C0F}
 :root{--pe20:#7C3AED;--pe50:#0F8A7A;--pe100:#D9640F;--pe200:#1F5FAE}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--pe20:#A78BFA;--pe50:#2DD4BF;--pe100:#FB923C;--pe200:#6AA3EC}}
 :root[data-theme="dark"]{--pe20:#A78BFA;--pe50:#2DD4BF;--pe100:#FB923C;--pe200:#6AA3EC}
@@ -1161,6 +1162,42 @@ body{background:var(--wash),var(--desk);background-attachment:scroll;min-height:
 .gmv{font-size:13px;font-weight:600;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
 .gmv.firm{color:var(--ink);font-weight:800}.gmv.fade{color:#fff;background:var(--down);border-radius:6px;padding:0 6px;font-weight:700}
 .heat td.hrs{white-space:nowrap;padding:0 10px}
+/* ══ Multibagger tab ══ */
+.mbk{display:inline-flex;align-items:baseline;gap:1px;padding:2px 9px;border-radius:999px;font-variant-numeric:tabular-nums;font-size:14px;border:1.5px solid currentColor;white-space:nowrap}
+.mbk b{font-size:17px}.mbk.g{color:#fff;background:var(--up);border-color:var(--up)}.mbk.m{color:var(--up-t)}.mbk.n{color:var(--muted)}.mbk.b{color:var(--down-t)}
+.mbdots{display:inline-flex;gap:3px;vertical-align:middle;margin-left:4px}.mbdots i{width:11px;height:11px;border-radius:50%;border:1.5px solid var(--line);background:transparent;cursor:help}.mbdots i.on{background:var(--up);border-color:var(--up)}
+.mbc{display:inline-block;padding:1px 8px;border-radius:6px;color:var(--muted)}.mbc.on{background:color-mix(in srgb,var(--up) 15%,transparent);color:var(--up-t);font-weight:700}
+.mbe{display:inline-block;padding:1px 9px;border-radius:999px;font-size:14px;font-weight:700;border:1.5px solid currentColor;cursor:help;white-space:nowrap}.mbe.strong{color:var(--up-t)}.mbe.ok{color:var(--ink)}.mbe.stall{color:var(--down-t)}
+.mbmkt{display:grid;grid-template-columns:minmax(180px,300px) 1fr;gap:14px 22px;align-items:center;padding:16px 18px;margin-bottom:14px;font-size:17px;line-height:1.5}
+.mbmkt b.num{font-size:26px}
+.mbgauge{position:relative;height:16px;border-radius:999px;overflow:hidden;display:flex;box-shadow:inset 0 1px 2px rgba(15,26,42,.2)}
+.mbgauge .z1,.mbleg .z1{background:var(--up)}.mbgauge .z2,.mbleg .z2{background:var(--accent)}.mbgauge .z3,.mbleg .z3{background:var(--down)}
+.mbgauge .z1{width:35%}.mbgauge .z2{width:30%}.mbgauge .z3{width:35%}
+.mbgauge i{position:absolute;top:-3px;bottom:-3px;width:5px;margin-left:-2.5px;background:var(--ink);border-radius:3px;box-shadow:0 0 0 2px var(--card)}
+.mbmkt .mbgauge{overflow:visible}.mbmkt .mbgauge .z1{border-radius:999px 0 0 999px}.mbmkt .mbgauge .z3{border-radius:0 999px 999px 0}
+.mbleg{display:block;margin-top:6px;font-size:14px;color:var(--muted)}.mbleg span{display:inline-block;width:10px;height:10px;border-radius:3px;margin:0 5px 0 10px}.mbleg span:first-child{margin-left:0}
+.mbtiles{grid-template-columns:repeat(4,minmax(0,1fr))}
+.mbtile{text-align:left;cursor:pointer;font:inherit;color:inherit;border:2px solid transparent}.mbtile.on{border-color:var(--t,var(--accent))}.mbtile .v small{font-size:15px;font-weight:600;color:var(--muted)}.mbtile .d{color:var(--muted);font-size:15px;line-height:1.4}.mbtile .d b{color:var(--ink)}.mbtile .d b.up{color:var(--up-t)}.mbtile .d b.down{color:var(--down-t)}
+.mbtools{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;padding:12px 14px}.mbtools .search{flex:1 1 240px;max-width:360px}.mbtools .select{max-width:320px}
+.mbbtn{white-space:nowrap;font-size:15px;padding:5px 10px}.mbbtn.on{color:var(--up-t);border-color:var(--up)}
+.mbbar{display:flex;flex-wrap:wrap;gap:10px 20px;align-items:center;justify-content:space-between;margin:0 0 14px}.mbbar p{margin:0;max-width:74ch;color:var(--muted);font-size:16px}
+.mbprog{display:inline-flex;align-items:center;gap:10px;min-width:170px}.mbprog .tr{position:relative;flex:1;height:10px;min-width:90px;border-radius:999px;background:var(--track);overflow:hidden}
+.mbprog .tr i{position:absolute;inset:0 auto 0 0;background:var(--up);border-radius:999px}.mbprog .tr i.neg{background:var(--down)}.mbprog .tr em{position:absolute;left:20%;top:0;bottom:0;width:2px;background:var(--ink);opacity:.45}
+.tflag.good{background:color-mix(in srgb,var(--up) 15%,transparent);color:var(--up-t)}.tflag.warn{background:color-mix(in srgb,var(--accent) 22%,transparent);color:var(--accent-ink)}
+.mbsold{font-size:14px!important;font-weight:700;width:auto!important;padding:4px 10px!important}
+.mbform{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px 14px;margin:8px 0}
+#mdl form.mbdlg label{display:block;font-weight:600;font-size:15px;margin:8px 0}#mdl form.mbdlg label input{display:block;width:100%;margin-top:4px}
+.mbhow,.mbev{padding:18px 20px;margin-bottom:14px}.mbhow h3,.mbev h3{font-size:21px;margin:0 0 10px}.mbev p{margin:0 0 12px;max-width:80ch}
+.mbhow ol,.mbhow ul,.mbev ul{margin:0;padding-left:24px;line-height:1.55;max-width:86ch}.mbhow li,.mbev li{margin:0 0 10px;font-size:17px}
+.mbhow ol li b{display:block}.mbhow ol li span{color:var(--ink)}.mbhow ol.mbrules li b{display:inline;margin-right:8px}
+.mbt td,.mbt th{white-space:nowrap}.mbt td.l{white-space:normal;min-width:200px}
+@media (max-width:900px){.mbtiles{grid-template-columns:repeat(2,minmax(0,1fr))}.mbmkt{grid-template-columns:1fr}}
+/* twelve tabs: one more than before - a little tighter so every tab still shows */
+@media (min-width:721px){.tab{padding-inline:7px;gap:5px}}
+@media (min-width:1360px) and (max-width:1439px){.tab .lf{display:none}.tab .ls{display:inline}}
+@media (min-width:721px) and (max-width:1099px){.tab{font-size:13px;padding-inline:1px}}
+@media (min-width:1100px) and (max-width:1219px){.tab{font-size:15px;padding-inline:4px;gap:4px}.tab .cnt{display:none}.tab svg{padding:3px}}
+@media (min-width:1100px) and (max-width:1159px){.tabbar .wrap{justify-content:space-between;gap:0;padding-inline:12px}.tab{flex:1 1 auto;flex-direction:column;gap:3px;padding:8px 2px 7px;font-size:13.5px;min-width:0}}
 /* ══ Nov 2026 polish ══ one-line market strip on the working tabs, eleven tabs that always fit, calmer tables */
 .mstrip{display:flex;flex-wrap:nowrap;overflow:hidden;align-items:center;gap:6px 22px;padding-block:6px 12px;font-size:15px;color:var(--band-muted)}
 .mstrip.open{justify-content:flex-end;padding-block:0 0;margin-bottom:-6px}
@@ -1213,6 +1250,7 @@ body{background:var(--wash),var(--desk);background-attachment:scroll;min-height:
     <button class="tab" role="tab" data-v="breadth" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M3 13h4l2.5-6 4 11 2.5-6H21"/></svg>Breadth</button>
     <button class="tab" role="tab" data-v="rs" aria-selected="false" title="RS ranking"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M4 18l6-6 4 4 6-8M15 8h5v5"/></svg><span class="lf">RS ranking</span><span class="ls">RS</span></button>
     <button class="tab" role="tab" data-v="upside" aria-selected="false" title="Upside score"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M12 20V5M6 10.5L12 4.5l6 6M5 20.5h4M15 20.5h4"/></svg><span class="lf">Upside</span><span class="ls">Upside</span></button>
+    <button class="tab" role="tab" data-v="multi" aria-selected="false" title="Multibagger checks"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" d="M12 21v-9.5M12 11.5c0-4 2.9-6.6 7-6.6 0 4-2.9 6.600-7 6.600zM12 15c0-3-2.100-5-5.500-5 0 3 2.100 5 5.500 5z"/></svg><span class="lf">Multibagger</span><span class="ls">Multi</span></button>
     <button class="tab" role="tab" data-v="screener" aria-selected="false" title="Screener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M3.5 5h17l-6.5 7.6V19l-4 1.8v-8.2z"/></svg><span class="lf">Screener</span><span class="ls">Screen</span></button>
     <button class="tab" role="tab" data-v="scanners" aria-selected="false" title="Scanners"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M16 16l4.5 4.5"/></svg><span class="lf">Scanners</span><span class="ls">Scans</span><span class="cnt" id="scanCnt"></span></button>
     <button class="tab" role="tab" data-v="bases" aria-selected="false" title="Long bases"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M3 19h18M5 15c2-1 3 1 5 0s3-2 5-1 2 1 4 0"/><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-dasharray="3 2.4" stroke-linecap="round" d="M4 8h16"/></svg><span class="lf">Long bases</span><span class="ls">Bases</span></button>
@@ -1237,7 +1275,7 @@ body{background:var(--wash),var(--desk);background-attachment:scroll;min-height:
 /* ════════════════════ state & helpers ════════════════════ */
 const PERIODS=["1D","1W","1M","3M","6M","YTD","1Y"];
 const PL={"1D":"Today","1W":"1W","1M":"1M","3M":"3M","6M":"6M","YTD":"YTD","1Y":"1Y"};
-const TABS=["rotation","breadth","rs","upside","screener","scanners","bases","patterns","results","watch","vpci"];
+const TABS=["rotation","breadth","rs","upside","multi","screener","scanners","bases","patterns","results","watch","vpci"];
 const st={sx:{uni:"lq",f:[],cols:[],name:""},sxq:"",up:{q:"",sec:"",min:"0",s2:false,a50:false,cap:false},brange:"6M",tab:"rotation",period:"1M",group:"Themes",agg:"mean",sort:"ret",view:"bars",open:null,scan:"combo3",scanTop:0,scanFund:0,uni:"all",
   rs:{q:"",sec:"",theme:"",min:0,fmin:0,tt:false,s2:false,a50:false,all:false},tbl:{}};
 let D={};
@@ -3590,6 +3628,7 @@ function wlMerge(a,b){ // first connect on a device that already has lists: keep
   for(const L of older.lists){let T=out.lists.find(x=>x.name.trim().toLowerCase()===L.name.trim().toLowerCase());if(!T){T={id:wlNewId(),name:L.name,items:[]};out.lists.push(T)}
     for(const it of L.items){const e=T.items.find(i=>i.s===it.s);if(!e)T.items.push({...it});else if(it.d<e.d)Object.assign(e,it)}}
   for(const [k,v] of Object.entries(older.meta||{}))if(!out.meta[k])out.meta[k]=v;
+  if(older.mb){out.mb=out.mb||{open:[],closed:[]};for(const key of ["open","closed"]){const have=new Set((out.mb[key]||[]).map(x=>x.s+x.d+(x.sd||"")));for(const x of older.mb[key]||[])if(!have.has(x.s+x.d+(x.sd||"")))(out.mb[key]=out.mb[key]||[]).push(x)}}
   const seen=new Set(out.log.map(e=>e.s+e.d+e.o));for(const e of older.log||[])if(!seen.has(e.s+e.d+e.o))out.log.push(e);
   out.updated=Date.now();return out}
 async function syncConnect(tok){const w=wlGet();const mine=await gh("/gists?per_page=100",null,tok);let g=mine.find(x=>x.files&&x.files[GFILE]);
@@ -3988,6 +4027,189 @@ function resEvidence(E){
     <p class="note">${esc(E.data)} ${esc(E.caveats)}</p>
     <p class="note"><b>Research behind it:</b> ${E.sources.map(s=>`<a href="${esc(s.u)}" target="_blank" rel="noopener">${esc(s.t)}</a>`).join(" · ")}</p></div></details>`}
 
+/* ════════════════════ MULTIBAGGER ════════════════════
+   multibagger.json (scripts/multibagger.py): seven yes/no checks per liquid stock, the market's 200-day breadth, and the
+   tested record (2016-23). Two views: Candidates, and Bought - positions the user marks with a buy price, kept with the
+   watchlists (WL.mb), so they sync between devices with them. */
+let MBD=null;
+st.mb=Object.assign({view:"cand",band:"5+",clean:false,q:"",sec:""},store.get("mb",{}));if(!["5+","3-4","2","0-1"].includes(st.mb.band))st.mb.band="5+";
+const MBC=[["Size","Market cap ₹300–5,000 Cr"],["RS","RS rating 80 or more"],["Volume","Up-day volume at least 1.2× down-day volume, 50 sessions"],["Forgotten","No new all-time high for 2 years or more"],
+  ["Cheap","Price to book under 1.5, or price to sales under 1"],["Cash","Operating cash flow at least 8% of market cap"],["Sales","Sales growth 10+ points above the year before"]];
+function mbPill(k){if(!isNum(k))return "–";const c=k>=5?"g":k>=3?"m":k>=2?"n":"b";return `<span class="mbk ${c}"><b>${k}</b>/7</span>`}
+async function mbLoad(){if(MBD)return MBD;let j=window.EMBED?.multibagger||null;
+  if(!j){if(!D.meta.mb)return null;try{const r=await fetch(`data/multibagger.json?v=${encodeURIComponent(D.meta.generated||"")}`);j=r.ok?await r.json():null}catch(e){j=null}}
+  if(j){j.by=Object.fromEntries(j.rows.map(r=>[r.s,r]))}return MBD=j}
+const mbBook=()=>{const w=wlGet();if(!w.mb||!Array.isArray(w.mb.open))w.mb={open:[],closed:[]};w.mb.closed=w.mb.closed||[];return w.mb};
+const mbHeld=s=>mbBook().open.some(x=>x.s===s);
+const mbBand=k=>k>=5?"5+":k>=3?"3-4":k===2?"2":"0-1";
+function mbCautions(x){const a=[];if(!x)return a;if(isNum(x.pat_ttm)&&x.pat_ttm<=0)a.push("Loss-making");if(isNum(x.de)&&x.de>=1.5)a.push("Debt/equity "+x.de.toFixed(1));
+  if(isNum(x.pe)&&x.pe>50)a.push("P/E over 50");if(isNum(x.mc)&&x.mc>20000)a.push("Above ₹20,000 Cr");return a}
+function mbEngine(x){if(!x)return null;const s=x.rev_ttm_g,p=x.pat_ttm_g;if(!isNum(p)&&!isNum(s))return null;
+  const k=isNum(p)&&p<=0?"stall":isNum(p)&&p>=25&&(!isNum(s)||s>=10)?"strong":isNum(s)&&s<0?"stall":"ok";
+  return {k,label:{strong:"Strong",ok:"Growing",stall:"Stalling"}[k],tip:`Last 4 quarters against the 4 before: sales ${sgn(s,0)}, profit ${sgn(p,0)}${isNum(x.opm_chg)?` · margin ${x.opm_chg>0?"+":""}${x.opm_chg.toFixed(1)} pts on a year ago`:""}`}}
+const mbEnginePill=x=>{const e=mbEngine(x);return e?`<span class="mbe ${e.k}" title="${esc(e.tip)}">${e.label}</span>`:"–"};
+const mbDots=r=>`<span class="mbdots" role="img" aria-label="${r.k} of 7 checks passed">${MBC.map((c,i)=>`<i class="${r.c[i]?"on":""}" title="${esc(c[0]+": "+c[1]+" — "+(r.c[i]?"passed":"not passed"))}"></i>`).join("")}</span>`;
+const mbOdds=(e,k)=>e?`${e.x5.toFixed(0)}% made 5× in 3 years, ${e.x3.toFixed(0)}% made 3× in 2 years; the typical stock ended ${e.med.toFixed(2)}× and ${e.lower.toFixed(0)}% were lower after 3 years`:"";
+function renderMulti(){
+  if(!MBD){$("#view").innerHTML=`<div class="card empty">${D.meta.mb?"Loading the multibagger checks…":"The multibagger checks are not in today's data yet. They appear after the next daily update."}</div>`;
+    if(D.meta.mb)Promise.all([mbLoad(),clLoad()]).then(()=>{if(st.tab==="multi")renderMulti()});return}
+  const B=mbBook(),E=MBD.evidence,f=st.mb;
+  let h=`<div class="sec-head"><div><h2>Multibagger checks</h2><p>Seven yes-or-no checks on every liquid stock. In the 2016–23 test, stocks passing 5 or more went on to rise 5× within 3 years about twice as often as the average stock — and about 5 in 6 of them still did not. A shortlist to research for the long-term portfolio, not a buy list.</p></div></div>
+  <div class="subtabs" role="group" aria-label="Multibagger views"><button type="button" data-mbview="cand" aria-pressed="${f.view==="cand"}">Candidates<span class="c">${MBD.hi}</span></button><button type="button" data-mbview="bought" aria-pressed="${f.view==="bought"}">Bought<span class="c">${B.open.length}</span></button><button type="button" data-mbview="how" aria-pressed="${f.view==="how"}">How to use</button><button type="button" data-mbview="ev" aria-pressed="${f.view==="ev"}">The test</button></div>`;
+  h+=f.view==="bought"?mbBoughtHtml():f.view==="how"?mbHowHtml():f.view==="ev"?mbEvidenceHtml():mbCandHtml();
+  $("#view").innerHTML=h;wireTables($("#view"),renderMulti);
+  const v=$("#view");
+  v.querySelectorAll("[data-mbview]").forEach(b=>b.addEventListener("click",()=>{f.view=b.dataset.mbview;mbKeep();renderMulti()}));
+  v.querySelectorAll("[data-mbband]").forEach(b=>b.addEventListener("click",()=>{f.band=b.dataset.mbband;f.q="";mbKeep();renderMulti()}));
+  v.querySelectorAll("[data-mbbuy]").forEach(b=>b.addEventListener("click",()=>mbBuyDialog(b.dataset.mbbuy)));
+  v.querySelectorAll("[data-mbedit]").forEach(b=>b.addEventListener("click",()=>mbBuyDialog(b.dataset.mbedit,true)));
+  v.querySelectorAll("[data-mbsell]").forEach(b=>b.addEventListener("click",()=>mbSellDialog(b.dataset.mbsell)));
+  v.querySelectorAll("[data-mbdel]").forEach(b=>b.addEventListener("click",()=>{const B=mbBook();B.closed.splice(+b.dataset.mbdel,1);wlSave();renderMulti()}));
+  $("#mbq")?.addEventListener("input",e=>{f.q=e.target.value;mbKeep();renderMulti();const n=$("#mbq");if(n){n.focus();n.setSelectionRange(n.value.length,n.value.length)}});
+  $("#mbsec")?.addEventListener("change",e=>{f.sec=e.target.value;mbKeep();renderMulti()});
+  $("#mbclean")?.addEventListener("change",e=>{f.clean=e.target.checked;mbKeep();renderMulti()});
+  $("#mbadd")?.addEventListener("click",()=>mbBuyDialog(""));
+}
+const mbKeep=()=>store.set("mb",{view:st.mb.view,band:st.mb.band,clean:st.mb.clean});
+function mbMarketHtml(){const a=MBD.ab200,E=MBD.evidence;if(!isNum(a))return "";
+  const k=a<35?"lt35":a<65?"mid":"gt65",m=E?.market?.[k]?.hi;
+  const txt={lt35:"A washout. This is when most multibaggers were born",mid:"A middle market",gt65:"A broad bull market. High scorers did worst when picked here"}[k];
+  return `<div class="card mbmkt ${k}"><div class="mbgauge" role="img" aria-label="${a.toFixed(0)}% of liquid stocks are above their 200-day average"><div class="z1"></div><div class="z2"></div><div class="z3"></div><i style="left:${Math.max(1,Math.min(99,a))}%"></i></div>
+    <div><b class="num">${a.toFixed(0)}%</b> of liquid stocks are above their 200-day average. <b>${txt}.</b>${m?` In the test, stocks with 5+ checks picked in this kind of market: ${mbOdds(m)}.`:""}
+    <span class="mbleg"><span class="z1"></span>under 35% washout <span class="z2"></span>35–65% middle <span class="z3"></span>over 65% broad bull</span></div></div>`}
+function mbCandHtml(){const f=st.mb,E=MBD.evidence;
+  const all=MBD.rows.map(r=>({...D.by[r.s],...r,s:r.s,_x:D.by[r.s]})).filter(r=>r._x);
+  const cnt=b=>all.filter(r=>mbBand(r.k)===b).length;
+  const tile=(b,lab)=>{const e=E?.bands?.[b];return `<button type="button" class="card tile mbtile ${f.band===b?"on":""}" data-mbband="${b}" aria-pressed="${f.band===b}"><div class="k">${lab}</div><div class="v num">${cnt(b).toLocaleString("en-IN")} <small>stocks</small></div>${e?`<div class="d"><b class="${e.x5>=E.all.x5*1.5?"up":e.x5<E.all.x5*.6?"down":""}">${e.x5.toFixed(0)}%</b> made 5× in 3 years · <b>${e.x3.toFixed(0)}%</b> made 3× in 2 · typical stock ${e.med.toFixed(2)}×</div>`:""}</button>`};
+  let rows=all.filter(r=>mbBand(r.k)===f.band);
+  const q=f.q.trim().toUpperCase();if(q)rows=all.filter(r=>r.s.includes(q)||String(r.n||"").toUpperCase().includes(q));
+  if(!q){if(f.sec)rows=rows.filter(r=>r.sec===f.sec||r.ind===f.sec);        /* a search looks up any stock, whatever the filters */
+    if(f.clean)rows=rows.filter(r=>!mbCautions(r._x).length)}
+  const secs=[...new Set(all.filter(r=>r.k>=3).flatMap(r=>[r.sec,r.ind]).filter(Boolean))].sort();
+  const n2=(v,d=1,u="")=>`<span class="num">${isNum(v)?v.toFixed(d)+u:"–"}</span>`,ok=(r,i,html)=>`<span class="mbc ${r.c[i]?"on":""}">${html}</span>`;
+  const cols=[{k:"s",label:"Stock",l:1,fmt:r=>symBtn(r.s,r.n),sort:r=>r.s},C.px,
+    {k:"k",label:"Checks",l:1,fmt:r=>`${mbPill(r.k)} ${mbDots(r)}`,sort:r=>r.k*100+(r.rs||0)/100,csv:r=>r.k},
+    {k:"rs",label:"RS",fmt:r=>rsPill(r.rs)},
+    {k:"ud",label:"Up÷down volume",fmt:r=>ok(r,2,n2(r.ud,2,"×"))},
+    {k:"ay",label:"Years since all-time high",fmt:r=>ok(r,3,isNum(r.ay)?`<span class="num">${r.ao?"over ":""}${r.ay.toFixed(1)}</span>`:"–")},
+    {k:"pb",label:"P/B",fmt:r=>ok(r,4,n2(r.pb,1))},{k:"ps",label:"P/S",fmt:r=>ok(r,4,n2(r.ps,1))},
+    {k:"cy",label:"Cash-flow yield",fmt:r=>ok(r,5,n2(r.cy,1,"%"))},
+    {k:"sa",label:"Sales growth change",fmt:r=>ok(r,6,isNum(r.sa)?`<span class="num" title="Sales growth last financial year ${sgn(r.sg,0)}">${r.sa>0?"+":""}${r.sa.toFixed(0)} pts</span>`:"–")},
+    {k:"_cau",label:"Cautions",l:1,td:()=>"wrapcell",fmt:r=>{const a=mbCautions(r._x);return a.length?a.map(t=>`<span class="tflag">${esc(t)}</span>`).join(" "):'<span class="up" style="font-weight:600">None</span>'},sort:r=>mbCautions(r._x).length,csv:r=>mbCautions(r._x).join("; ")},
+    {k:"_eng",label:"Business now",l:1,fmt:r=>mbEnginePill(r._x),sort:r=>r._x.pat_ttm_g,csv:r=>mbEngine(r._x)?.label||""},
+    {k:"up",label:"Upside",fmt:r=>upPill(r.up)},C.st,C.sec,
+    {k:"_b",label:"",fmt:r=>mbHeld(r.s)?`<button type="button" class="ghost mbbtn on" data-mbedit="${esc(r.s)}" title="In your Bought list — edit">✓ Bought</button>`:`<button type="button" class="ghost mbbtn" data-mbbuy="${esc(r.s)}" title="Record a buy and track it in the Bought list">＋ Bought</button>`,sort:r=>+mbHeld(r.s),csv:r=>mbHeld(r.s)?"bought":""}];
+  if(!st.tbl.mb)st.tbl.mb={key:"k",dir:-1,show:100};
+  return mbMarketHtml()+`<div class="tiles mbtiles">${tile("5+","5, 6 or 7 checks")}${tile("3-4","3 or 4 checks")}${tile("2","2 checks")}${tile("0-1","0 or 1 check")}</div>
+  <div class="card"><div class="mbtools"><input class="search" type="search" id="mbq" placeholder="Find any stock — symbol or name" value="${esc(f.q)}" aria-label="Find a stock">
+      <select class="select" id="mbsec" aria-label="Sector or industry"><option value="">All sectors and industries</option>${secs.map(o=>`<option ${o===f.sec?"selected":""}>${esc(o)}</option>`).join("")}</select>
+      <label class="check"><input type="checkbox" id="mbclean" ${f.clean?"checked":""}>No cautions only</label></div>
+    ${dtable("mb",rows,cols,{empty:q?"No stock matches that search.":"No stock passes these filters today."})}</div>
+  <p class="note">Tap a box above to see that group; the search finds any stock in any group. A green cell passed its check; a grey one did not. The seven dots are, in order: ${MBC.map(c=>c[0]).join(", ")} — hover a dot for the rule. <b>Cautions</b> are the groups that did worse in the test: loss-makers and high debt had more disasters; a P/E over 50 or a market cap above ₹20,000 Cr rarely made 5×. <b>Business now</b> compares the last four quarters with the four before. Numbers as of ${fmtDate(MBD.asof)}.</p>`}
+function mbPosStats(it){const x=D.by[it.s],px=pxOf(it.s),bp=benchPx();
+  const ret=isNum(px)&&it.p>0?(px/it.p-1)*100:null,br=isNum(bp)&&isNum(it.b)&&it.b>0?(bp/it.b-1)*100:null;
+  const days=Math.max(0,Math.round((new Date(D.meta.asof+"T00:00:00")-new Date(it.d+"T00:00:00"))/864e5)),k=MBD.by[it.s]?.k;
+  const fl=[];if(isNum(ret)&&ret>=400)fl.push(["good","Reached 5×"]);
+  if(x){if(isNum(x.pat_ttm_g)&&x.pat_ttm_g<=0)fl.push(["bad","Profit falling"]);if(isNum(x.rev_ttm_g)&&x.rev_ttm_g<0)fl.push(["bad","Sales falling"]);
+    if(x.st===3||x.st===4)fl.push(["bad","Stage "+x.st]);else if(x.a200===false)fl.push(["bad","Below 200-day"]);
+    if(isNum(x.de)&&x.de>=1.5)fl.push(["bad","High debt"]);if(isNum(k)&&isNum(it.k)&&k<=it.k-2)fl.push(["warn",`Checks fell ${it.k}→${k}`])}
+  return {x,px,ret,mult:isNum(px)&&it.p>0?px/it.p:null,alpha:isNum(ret)&&isNum(br)?ret-br:null,days,k,fl,val:isNum(px)&&it.q>0?px*it.q:null,cost:it.q>0?it.p*it.q:null}}
+function mbBoughtHtml(){const B=mbBook(),bn=benchName();
+  let h=`<div class="mbbar"><p>Stocks you have bought, with your buy price. Add one with <b>＋ Bought</b> on the Candidates list, or here for any stock. Kept with your watchlists${syncCfg.get()?" and synced across your devices":" in this browser — turn on Sync in the Watchlists tab to see them on your phone too"}.</p><button type="button" class="btn" id="mbadd">＋ Add a bought stock</button></div>`;
+  if(!B.open.length&&!B.closed.length)return h+`<div class="card empty">Nothing here yet. Open <b>Candidates</b>, and press <b>＋ Bought</b> on a stock after you buy it.</div>`;
+  const rows=B.open.map(it=>({...it,n:nameOf(it.s),...mbPosStats(it),_it:it}));
+  const R=rows.filter(r=>isNum(r.ret)),avg=a=>a.length?a.reduce((x,y)=>x+y,0)/a.length:null;
+  const cost=rows.reduce((a,r)=>a+(r.cost||0),0),val=rows.reduce((a,r)=>a+(r.cost?r.val||0:0),0),best=[...R].sort((a,b)=>b.ret-a.ret);
+  const tile=(k,v,d)=>`<div class="card tile"><div class="k">${k}</div><div class="v num">${v}</div><div class="d" style="color:var(--muted)">${d}</div></div>`;
+  if(rows.length)h+=`<div class="tiles">${tile("Positions",rows.length,`${R.filter(r=>r.ret>0).length} up · ${R.filter(r=>r.ret<0).length} down`)}
+    ${tile("Average return",`<span class="${cls(avg(R.map(r=>r.ret)))}">${sgn(avg(R.map(r=>r.ret)),1)}</span>`,`vs ${esc(bn)}: <span class="${cls(avg(R.filter(r=>isNum(r.alpha)).map(r=>r.alpha)))}">${sgn(avg(R.filter(r=>isNum(r.alpha)).map(r=>r.alpha)),1," pts")}</span>`)}
+    ${cost>0?tile("Value of positions with a quantity",`₹${Math.round(val).toLocaleString("en-IN")}`,`cost ₹${Math.round(cost).toLocaleString("en-IN")} · <span class="${cls(val-cost)}">${sgn((val/cost-1)*100,1)}</span>`):tile("Beating "+esc(bn),R.filter(r=>isNum(r.alpha)&&r.alpha>0).length,`of ${R.filter(r=>isNum(r.alpha)).length} with a start level`)}
+    ${tile("2× or more",R.filter(r=>r.mult>=2).length,`${R.filter(r=>r.mult>=5).length} at 5× or more`)}
+    ${tile("Best",best[0]?`${esc(best[0].s)} <span class="${cls(best[0].ret)}" style="font-size:.7em">${sgn(best[0].ret,0)}</span>`:"–",best.length>1?`Worst: ${esc(best[best.length-1].s)} ${sgn(best[best.length-1].ret,0)}`:"")}
+    ${tile("Need a look",rows.filter(r=>r.fl.some(f=>f[0]==="bad")).length,"profit or sales falling, weak chart, or high debt")}</div>`;
+  const dsh=d=>esc(new Date(d+"T00:00:00").toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"2-digit"}));
+  const cols=[{k:"s",label:"Stock",l:1,fmt:r=>symBtn(r.s,r.n),sort:r=>r.s},
+    {k:"d",label:"Bought",fmt:r=>`<span class="num">${dsh(r.d)}</span><span class="nm">at ₹${inr(r.p)}${r.q>0?` × ${r.q.toLocaleString("en-IN")}`:""}</span>`},
+    {k:"px",label:"Price now",fmt:r=>`<span class="num">${isNum(r.px)?inr(r.px):"–"}</span>`},
+    {k:"ret",label:"Return",fmt:r=>`<span class="num ${cls(r.ret)}" style="font-weight:700">${sgn(r.ret,1)}</span>`},
+    {k:"mult",label:"Multiple, towards 5×",l:1,fmt:r=>isNum(r.mult)?`<span class="mbprog" title="${r.mult.toFixed(2)}× your buy price"><span class="num">${r.mult.toFixed(2)}×</span><span class="tr"><i class="${r.mult<1?"neg":""}" style="width:${Math.max(2,Math.min(100,r.mult/5*100)).toFixed(0)}%"></i><em></em></span></span>`:"–",sort:r=>r.mult},
+    {k:"alpha",label:"vs "+bn,fmt:r=>`<span class="num ${cls(r.alpha)}">${sgn(r.alpha,1," pts")}</span>`},
+    {k:"days",label:"Days held",fmt:r=>`<span class="num">${r.days}</span>`},
+    {k:"val",label:"Value ₹",fmt:r=>`<span class="num">${isNum(r.val)?Math.round(r.val).toLocaleString("en-IN"):"–"}</span>`},
+    {k:"k",label:"Checks: at buy → now",l:1,fmt:r=>`${isNum(r._it.k)?mbPill(r._it.k):"–"} → ${mbPill(r.k)}`,sort:r=>r.k},
+    {k:"_eng",label:"Business now",l:1,fmt:r=>mbEnginePill(r.x),sort:r=>r.x?.pat_ttm_g},
+    {k:"_fl",label:"Flags",l:1,td:()=>"wrapcell",fmt:r=>r.fl.length?r.fl.map(f=>`<span class="tflag ${f[0]}">${esc(f[1])}</span>`).join(" "):'<span class="up" style="font-weight:600">None</span>',sort:r=>r.fl.filter(f=>f[0]==="bad").length},
+    {k:"note",label:"Note",l:1,td:()=>"wrapcell",fmt:r=>r.note?esc(r.note.length>80?r.note.slice(0,80)+"…":r.note):"<span style='color:var(--muted)'>–</span>"},
+    {k:"_a",label:"",fmt:r=>`<span class="rowact"><button type="button" data-mbedit="${esc(r.s)}" title="Edit buy price, date, quantity or note" aria-label="Edit ${esc(r.s)}">✎</button><button type="button" class="mbsold" data-mbsell="${esc(r.s)}" title="Record a sale and move it to closed positions">Sold</button></span>`,sort:()=>0}];
+  if(!st.tbl.mbb)st.tbl.mbb={key:"ret",dir:-1,show:200};
+  if(rows.length)h+=`<div class="card">${dtable("mbb",rows,cols)}</div>
+    <p class="note">Return is from your buy price to the latest close; it does not include dividends or costs. <b>Flags</b> come from the study: profit or sales falling over the last four quarters is the main warning, because profit growth is what separated the multibaggers (in the test, only 2% of companies whose profit did not grow made 5×). The bar fills as the price moves towards 5× your buy price.</p>`;
+  if(B.closed.length){const cr=B.closed.map((c,i)=>{const ret=c.p>0?(c.sp/c.p-1)*100:null,br=isNum(c.b)&&isNum(c.sb)&&c.b>0?(c.sb/c.b-1)*100:null;return {...c,i,n:nameOf(c.s),ret,mult:c.p>0?c.sp/c.p:null,alpha:isNum(ret)&&isNum(br)?ret-br:null,days:Math.max(0,Math.round((new Date(c.sd+"T00:00:00")-new Date(c.d+"T00:00:00"))/864e5))}});
+    const cc=[{k:"s",label:"Stock",l:1,fmt:r=>symBtn(r.s,r.n)},{k:"d",label:"Bought",fmt:r=>`<span class="num">${dsh(r.d)}</span><span class="nm">at ₹${inr(r.p)}</span>`},{k:"sd",label:"Sold",fmt:r=>`<span class="num">${dsh(r.sd)}</span><span class="nm">at ₹${inr(r.sp)}</span>`},
+      {k:"days",label:"Days held"},{k:"ret",label:"Return",fmt:r=>`<span class="num ${cls(r.ret)}">${sgn(r.ret,1)}</span>`},{k:"mult",label:"Multiple",fmt:r=>`<span class="num">${isNum(r.mult)?r.mult.toFixed(2)+"×":"–"}</span>`},
+      {k:"alpha",label:"vs "+bn,fmt:r=>`<span class="num ${cls(r.alpha)}">${sgn(r.alpha,1," pts")}</span>`},{k:"_d",label:"",fmt:r=>`<span class="rowact"><button type="button" data-mbdel="${r.i}" title="Delete this record" aria-label="Delete the ${esc(r.s)} record">✕</button></span>`,sort:()=>0}];
+    if(!st.tbl.mbc)st.tbl.mbc={key:"sd",dir:-1,show:50};const w=cr.filter(r=>isNum(r.ret));
+    h+=`<details class="card" style="margin-top:16px" ${rows.length?"":"open"}><summary style="padding:14px 16px;font-weight:700;font-size:18px;cursor:pointer">Closed positions (${cr.length}) — ${w.filter(r=>r.ret>0).length} gains, average ${sgn(avg(w.map(r=>r.ret)),1)}</summary>${dtable("mbc",cr,cc,{limit:50})}</details>`}
+  return h}
+async function mbBuyDialog(sym,edit){await clLoad();const B=mbBook(),it=B.open.find(x=>x.s===sym),today=D.meta.asof,px=sym?pxOf(sym):null;
+  modal(`<form class="mbdlg"><h3>${it?`Edit ${esc(sym)}`:sym?`Bought ${esc(sym)}`:"Add a bought stock"}</h3>
+    ${sym?"":`<label>Symbol<input name="s" placeholder="e.g. NILKAMAL" autocomplete="off" spellcheck="false" style="text-transform:uppercase" required></label>`}
+    <div class="mbform"><label>Buy price ₹<input name="p" type="number" step="any" min="0.01" inputmode="decimal" value="${it?it.p:isNum(px)?px:""}" required></label>
+      <label>Buy date<input name="d" type="date" max="${today}" value="${it?it.d:today}" required></label>
+      <label>Quantity (optional)<input name="q" type="number" step="any" min="0" inputmode="decimal" value="${it&&it.q?it.q:""}"></label></div>
+    <label>Note (optional)<input name="n" maxlength="200" value="${it?esc(it.note||""):""}" placeholder="Why you bought it"></label>
+    <p class="err" id="mberr" hidden></p>
+    <div class="acts">${it?`<button type="button" class="ghost danger" id="mbrm">Remove (not a sale)</button>`:""}<button type="button" class="ghost" data-mclose>Cancel</button><button class="btn" type="submit">${it?"Save":"Add to Bought"}</button></div></form>`,
+  fd=>{const s=sym||String(fd.get("s")||"").trim().toUpperCase(),p=+fd.get("p"),d=String(fd.get("d")||today),q=+fd.get("q")||0,er=$("#mberr");
+    const bad=m=>{er.hidden=false;er.textContent=m;return false};
+    if(!D.by[s])return bad(`“${s}” is not a stock on this site.`);if(!(p>0))return bad("Enter the price you paid.");if(d>today)return bad("The buy date cannot be after the latest close.");
+    if(!it&&B.open.some(x=>x.s===s))return bad(`${s} is already in your Bought list — edit it there.`);
+    let b=it&&it.d===d?it.b:null;if(b==null){if(d>=today)b=benchPx();else{const i=clIdx(d),bc=CL?.c?.[benchName()];b=i>=0&&bc&&isNum(bc[i])?bc[i]:null}}
+    if(it)Object.assign(it,{p,d,q,b,note:String(fd.get("n")||"")});
+    else B.open.push({s,d,p,q,b,k:MBD.by[s]?.k??null,note:String(fd.get("n")||"")});
+    wlSave();toast(it?"Saved":`${s} added to Bought`);if(!it&&st.mb.view!=="bought"&&!sym){st.mb.view="bought"}renderMulti()});
+  $("#mbrm")?.addEventListener("click",()=>{B.open=B.open.filter(x=>x!==it);wlSave();modalClose();toast(`${sym} removed`);renderMulti()})}
+async function mbSellDialog(sym){await clLoad();const B=mbBook(),it=B.open.find(x=>x.s===sym);if(!it)return;const today=D.meta.asof,px=pxOf(sym);
+  modal(`<form class="mbdlg"><h3>Sold ${esc(sym)}</h3><p>Bought on ${fmtDate(it.d)} at ₹${inr(it.p)}. The position moves to Closed positions with its result.</p>
+    <div class="mbform"><label>Sell price ₹<input name="p" type="number" step="any" min="0.01" inputmode="decimal" value="${isNum(px)?px:""}" required></label>
+      <label>Sell date<input name="d" type="date" min="${it.d}" max="${today}" value="${today}" required></label></div>
+    <div class="acts"><button type="button" class="ghost" data-mclose>Cancel</button><button class="btn" type="submit">Record the sale</button></div></form>`,
+  fd=>{const sp=+fd.get("p"),sd=String(fd.get("d")||today);if(!(sp>0))return false;
+    let sb=null;if(sd>=today)sb=benchPx();else{const i=clIdx(sd),bc=CL?.c?.[benchName()];sb=i>=0&&bc&&isNum(bc[i])?bc[i]:null}
+    B.open=B.open.filter(x=>x!==it);B.closed.unshift({...it,sp,sd,sb});wlSave();toast(`${sym} moved to closed positions`);renderMulti()})}
+function mbHowHtml(){const E=MBD.evidence,b=E?.bands||{},a=E?.all;
+  const step=(t,d)=>`<li><b>${t}</b><span>${d}</span></li>`;
+  return `<div class="card mbhow"><h3>How to use this tab</h3><ol>
+    ${step("Read the market line first.",`Most multibaggers were born when under 35% of stocks were above their 200-day average. Add most then, and little when the reading is over 65%${E?.market?` (stocks with 5+ checks picked then ended a typical ${E.market.gt65.hi.med.toFixed(2)}× after 3 years, against ${E.market.lt35.hi.med.toFixed(2)}× when picked in a washout)`:""}.`)}
+    ${step("Open Candidates and start with 5 or more checks.",`${b["5+"]?`In the test ${b["5+"].x5.toFixed(0)}% of them made 5× within 3 years, against ${a.x5.toFixed(0)}% of all stocks. `:""}Sort by any column; search any stock to see its checks.`)}
+    ${step("Tick “No cautions only”.","It removes loss-makers, high debt, P/E over 50 and companies above ₹20,000 Cr. Profitable companies with moderate debt had fewer disasters in the test.")}
+    ${step("Research each name before buying.","The score is a shortlist, not a buy list. Open the stock (tap its name) for its chart, results and fundamentals, and run your own research on the business: what will make sales and profit grow for the next 3 years?")}
+    ${step("Spread the money.","About 1 in 6 high scorers made 5×, and about 3 in 10 were lower after 3 years. A basket of 12–15 positions gives the odds room to work; one or two positions do not.")}
+    ${step("Press ＋ Bought after you buy.","Enter your buy price, date and (if you like) quantity. The stock moves to the Bought list, which tracks its return, its multiple towards 5×, and how it is doing against the index.")}
+    ${step("Review the Bought list after each results season.","Watch “Business now” and the flags. Profit or sales falling over the last four quarters is the main warning: in the test, companies whose profit doubled in 3 years made 5× about a quarter of the time, and those whose profit did not grow almost never did.")}
+    ${step("Press Sold when you exit.","Enter the sell price. The position moves to Closed positions, so your own record builds up over time.")}</ol></div>
+  <div class="card mbhow"><h3>The seven checks</h3><ol class="mbrules">${MBC.map((c,i)=>`<li><b>${c[0]}</b><span>${c[1]}.${E?.checks?` Stocks passing it made 5× ${E.checks[["small","rs80","accum","forgotten","cheap","cash","accel"][i]].pass.toFixed(0)}% of the time; those failing it, ${E.checks[["small","rs80","accum","forgotten","cheap","cash","accel"][i]].fail.toFixed(0)}%.`:""}</span></li>`).join("")}</ol>
+    <p class="note" style="margin:10px 0 0">A check with no data counts as not passed. Price to sales uses the last four quarters; cash flow and sales growth use the last financial year filed with NSE.</p></div>
+  <div class="card mbhow"><h3>What it cannot do</h3><ul>${(E?.caveats||[]).map(c=>`<li>${esc(c)}</li>`).join("")}<li>It ranks odds; it does not predict. About 5 in 6 stocks with 5+ checks did not make 5× in the test.</li></ul></div>`}
+function mbEvidenceHtml(){const E=MBD.evidence;if(!E)return `<div class="card empty">The test results are not in today's data.</div>`;
+  const row=(lab,e,share)=>`<tr><td class="l">${lab}</td>${share!==undefined?`<td class="num">${share==null?"":share.toFixed(0)+"%"}</td>`:""}<td class="num"><b>${e.x5.toFixed(1)}%</b></td><td class="num">${e.x3.toFixed(1)}%</td><td class="num">${e.med.toFixed(2)}×</td><td class="num">${e.lower.toFixed(0)}%</td><td class="num">${e.halved.toFixed(0)}%</td></tr>`;
+  const head=(first,share)=>`<thead><tr><th class="l">${first}</th>${share?"<th>Share of stocks</th>":""}<th>5× within 3 years</th><th>3× within 2 years</th><th>Typical stock after 3 years</th><th>Lower after 3 years</th><th>Halved within 1 year</th></tr></thead>`;
+  const R=E.runs,Bz=E.biz;
+  return `<div class="card mbev"><h3>${esc(E.title)}</h3><p>${E.n.toLocaleString("en-IN")} monthly snapshots of liquid stocks over ${E.months} months, using only what was known on each day, followed for 3 years. Stocks passing 5+ checks beat that month's average stock in <b>${E.months_better.toFixed(0)}%</b> of months, and in every year.</p>
+    <div class="tscroll"><table class="dt mbt">${head("Checks passed",true)}<tbody>${E.tiers.map(t=>row(t.k===6?"6 or 7":String(t.k),t,t.share)).join("")}${row("<b>All stocks</b>",E.all,100)}</tbody></table></div></div>
+  <div class="card mbev"><h3>It does not protect you in a bad cycle</h3><p>The same test, split in two. In 2016–19 (which includes the 2018–19 small-cap fall) high scorers still made 5× more often than other stocks, but the typical one lost money.</p>
+    <div class="tscroll"><table class="dt mbt">${head("Stocks with 5+ checks")}<tbody>${Object.entries(E.eras).map(([k,v])=>row("Picked "+k,v.hi)+row(`<span style="color:var(--muted)">all stocks, ${k}</span>`,v.all)).join("")}
+      ${row("Picked with under 35% of stocks above the 200-day",E.market.lt35.hi)}${row("Picked with 35–65% above",E.market.mid.hi)}${row("Picked with over 65% above",E.market.gt65.hi)}
+      ${row("Profitable, debt/equity under 1.5",E.safe.hi_safe)}${row("Loss-making or high debt",E.safe.hi_unsafe)}</tbody></table></div>
+    <p class="note" style="padding:0 16px 12px">By year of purchase, 5× rate for 5+ checks against all stocks: ${E.years.map(y=>`${y.y}: <b>${y.hi.toFixed(0)}%</b> vs ${y.base.toFixed(0)}%`).join(" · ")}.</p></div>
+  <div class="card mbev"><h3>What ${R.n.toLocaleString("en-IN")} past multibagger runs looked like</h3><ul>
+    <li>${R.n.toLocaleString("en-IN")} runs of 5× or more within 3 years, in ${R.stocks.toLocaleString("en-IN")} stocks, 2004–2026. The typical run began after a ${Math.abs(R.dd0)}% fall, with an RS rating of ${R.rs0} and a market cap near ₹${R.mc0} Cr.</li>
+    <li>The RS rating reached 80 in ${R.rs80_reached.toFixed(0)}% of them, about ${R.rs80_days} sessions after the low, with the stock already up ${R.rs80_gain.toFixed(1)}× and a typical ${R.rs80_left.toFixed(1)}× still to come. But most stocks whose RS reaches 80 do not become multibaggers — hence the other six checks.</li>
+    <li>During the run the business improved: sales ${Bz.x5.sales}× in 3 years (other stocks ${Bz.rest.sales}×), profit ${Bz.x5.pat}× (${Bz.rest.pat}×), margin up ${Bz.x5.opm} points (down ${Math.abs(Bz.rest.opm)}), ROCE up ${Bz.x5.roce} points (down ${Math.abs(Bz.rest.roce)}).</li>
+    <li>${Bz.pat_doubled_x5.toFixed(0)}% of companies whose profit at least doubled in 3 years made 5×; ${Bz.pat_flat_x5.toFixed(0)}% of those whose profit was flat or down did. This is why the Bought list watches the business.</li>
+    <li>Four of the checks (size, RS, volume, forgotten) could be tested back to 2006: stocks passing all four made 5× ${E.long["2006–14"].all4.x5.toFixed(1)}% of the time in 2006–14 (all stocks ${E.long["2006–14"].all.x5.toFixed(1)}%) and ${E.long["2015–23"].all4.x5.toFixed(1)}% in 2015–23 (${E.long["2015–23"].all.x5.toFixed(1)}%).</li></ul></div>
+  <div class="card mbev"><h3>Limits</h3><ul>${E.caveats.map(c=>`<li>${esc(c)}</li>`).join("")}</ul></div>`}
+
 /* ════════════════════ UPSIDE ════════════════════
    upside.json (scripts/upside.py): every liquid stock with a year of history, ranked 1–99 on its odds of beating
    the average stock over the next 3 months. u = Upside rank, d = decile (9 = top 10%), p = the model's chance of a
@@ -4211,6 +4433,7 @@ const SXF=[],SXB={};
   N("bdot","Sessions since the last blue dot","rs",x=>x.rsnhd,{dec:0,ps:[le("Today",0),le("Last 5",5),le("Last 20",20)]});
   E("rsdir","RS direction, 12 weeks","rs",x=>x.rsdir===1?"up":x.rsdir===-1?"down":isNum(x.rs)?"steady":null,()=>[["up","▲ Rising"],["down","▼ Falling"],["steady","Steady"]]);
   N("up","Upside score","up",x=>x.up,{dec:0,pill:v=>upPill(v),ps:[ge("50+",50),ge("80+",80),ge("90+ (top 10%)",90)]});
+  N("mb","Multibagger checks passed (of 7)","up",x=>x.mb,{dec:0,pill:v=>mbPill(v),ps:[ge("5+",5),ge("4+",4),le("0 or 1",1)]});
   N("irs","Industry RS rating","up",x=>x.irs,{dec:0,pill:rsPill,ps:[ge("70+",70),ge("80+",80),le("Under 40",40)]});
   N("srs","Sector RS rating","up",x=>x.srs,{dec:0,pill:rsPill,ps:[ge("70+",70),ge("80+",80),le("Under 40",40)]});
   for(const [k,kl] of [["ind","Industry"],["sec","Sector"]])for(const p of ["1M","3M"])N(k[0]+"r"+p,`${kl} return rank, ${{"1W":"1 week","1M":"1 month","3M":"3 months"}[p]} (99 = best)`,"up",x=>grpR(x,k,p),{dec:0,pill:rsPill,ps:[ge("Top quarter",75),ge("Top half",50),le("Bottom quarter",25)]});
@@ -4291,6 +4514,7 @@ const SXF=[],SXB={};
   for(const f of SXF)SXB[f.id]=f})();
 const SXP=[
   ["VPCI fresh signal + Upside 80+","This week's fresh VPCI buy (7/7 gates, not extended, from flat) in a stock with Upside 80+ — 18.1% a year in the 2010–26 test",[{id:"vpfresh",v:true},{id:"up",min:80}]],
+  ["Multibagger candidates","5 or more of the 7 multibagger checks, profitable, debt to equity under 1.5 — see the Multibagger tab for the tested odds",[{id:"mb",min:5},{id:"pe",min:0.01},{id:"de",max:1.5}]],
   ["Leaders near their highs","RS 85+, within 10% of the high, Stage 2, above the 50-day",[{id:"rs",min:85},{id:"h52",min:-10},{id:"st",in:[2]},{id:"a50",v:true}]],
   ["Top Upside in Stage 2","Upside 90+, Stage 2, turnover ₹3 Cr+, ATR 6% or less",[{id:"up",min:90},{id:"st",in:[2]},{id:"to",min:3},{id:"atrp",max:6}]],
   ["Trend template with growth","Minervini template, profit and revenue both growing 20%+",[{id:"tt",v:true},{id:"pat_yoy",min:20},{id:"rev_yoy",min:20}]],
@@ -4426,7 +4650,7 @@ function render(){
   renderPulse();$("#view").dataset.v=st.tab;
   document.querySelectorAll("#tabs .tab").forEach(b=>b.setAttribute("aria-selected",b.dataset.v===st.tab));
   const tw=$("#tabs"),ta=tw.querySelector('.tab[aria-selected="true"]');tw.classList.toggle("ovf",tw.scrollWidth>tw.clientWidth+1);if(ta&&tw.scrollWidth>tw.clientWidth+1){const l=ta.offsetLeft-tw.offsetLeft,r=l+ta.offsetWidth;if(l<tw.scrollLeft||r>tw.scrollLeft+tw.clientWidth)tw.scrollLeft=Math.max(0,l-24)}
-  ({rotation:renderRotation,breadth:renderBreadth,rs:renderRS,upside:renderUpside,screener:renderScreener,scanners:renderScanners,bases:renderBases,patterns:renderPatterns,results:renderResults,watch:renderWatch,vpci:renderVpci})[st.tab]();
+  ({rotation:renderRotation,breadth:renderBreadth,rs:renderRS,upside:renderUpside,multi:renderMulti,screener:renderScreener,scanners:renderScanners,bases:renderBases,patterns:renderPatterns,results:renderResults,watch:renderWatch,vpci:renderVpci})[st.tab]();
 }
 function go(tab){
   if(HASHVIEW[tab]){st.scanView=HASHVIEW[tab];store.set("scanView",st.scanView);tab="scanners"}
