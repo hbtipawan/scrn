@@ -6,6 +6,7 @@ A free, ScreeningMantis-style dashboard for NSE stocks:
 - **Group charts** – every theme, sector, NSE index and industry has its own daily index. Open a group in Rotation for a 12-month chart; tap it (or 📈) for a full-screen chart: candles with 21/50/200-day averages, members' turnover, RS line vs Nifty 500 with blue dots, % of members above their 50/200-day averages, and the group RS rating — with past signals marked and what followed. Rotation also has a **Rotation radar** (group RS rating against its 4-week change) and **Group signals** (early-rotation signals that held up in testing, plus breakouts and weakness).
 - **Breadth** – every NSE main-board stock (no liquidity filter, or the liquid universe with the switch): Nifty 50 / 500 / Smallcap 250 / Microcap 250 charts and the % of stocks above their 20/50/100/200-day EMAs (3M, 6M or 1Y), % above 20/50/200 DMA, advance/decline and the A/D line, McClellan oscillator, 52-week highs/lows, 4% movers, one year of history. Below it, **valuation and volatility**: NSE's own P/E, P/B and dividend yield for 50 indices against their history, and India VIX.
 - **Upside** – every liquid stock ranked 1–99 on its odds of beating the average stock over the next 3 months, from the site's own technicals, RS, sector/industry rotation and breadth, with the reasons for each stock and the full walk-forward test (see *Upside score* below).
+- **Multibagger** – seven yes/no checks on every liquid stock (market cap ₹300–5,000 Cr, RS 80+, up-day volume ≥ 1.2× down-day volume, no all-time high for 2+ years, P/B under 1.5 or P/S under 1, operating cash flow ≥ 8% of market cap, sales growth 10+ points above the year before). In a 2016–23 test, stocks passing 5+ made 5× within 3 years about twice as often as the average stock (and about 5 in 6 still did not). Shows the market's 200-day breadth, cautions, the business trend, a **Bought** list (buy price, date, quantity → return, multiple towards 5×, vs Nifty 500, flags; Sold moves it to closed positions; kept and synced with the watchlists), a how-to and the full test with its limits (see *Multibagger* below).
 - **Screener** – stack any number of filters over 114 fields (price and size, returns, RS, Upside, sector/industry/theme, industry and sector return ranks and rotation, VPCI weekly status, closes-based tightness and days since the 52-week high, trend, volatility, volume and delivery, bases, Stage 2, chart patterns, results, fundamentals, ownership, mutual funds, scanner membership, your watchlists). Each filter shows how many stocks are left after it; fourteen ready screens (including “VPCI fresh signal + Upside 80+”); save your own; add columns; CSV; add the result to a watchlist (see *Screener* below).
 - **RS ranking** – every stock ranked 1–99 by relative strength, with where the rating is **coming from** (▲ from 70 / ▼ from 99 over 12 weeks), a 52-week RS path, RS 4 and 12 weeks ago, and **blue dots** (RS line at a 52-week high). Filterable by sector, theme, direction, blue dot, Stage 2, Minervini trend template.
 - **Stock window** – price chart, **relative strength** (RS line with every blue dot of the year + the RS rating week by week), **delivery** (NSE delivery % and value delivered for 3 months), **corporate actions** (splits, bonuses, dividends coming up), plus bases, Stage 2, results, fundamentals and mutual funds.
@@ -503,3 +504,19 @@ Attributions were corrected too: Ants is David Ryan's indicator; the bull snort 
 ## A note on the data source
 
 Upstox's historical-candle endpoint is meant for its API users, and it currently answers without a login. That could change without notice; if it does, the job falls back to Yahoo automatically and you'll see "Yahoo (backup)" in the site header. Keep the dashboard for personal use; don't resell the data.
+
+## Multibagger (Multibagger tab)
+
+`scripts/multibagger.py` runs inside the daily job (after the fundamentals) and writes `docs/data/multibagger.json`; each stock also gets `mb` (checks passed, 0–7) for the Screener. The tested record shown on the tab is `config/multibagger_evidence.json` (a fixed file from the study: 44,370 monthly snapshots of liquid NSE stocks, July 2016 – 2023, followed for 3 years).
+
+| Check | Rule | Data |
+| --- | --- | --- |
+| Size | market cap ₹300–5,000 Cr | NSE market cap |
+| RS | RS rating 80+ | the site's RS rating |
+| Volume | up-day volume ≥ 1.2 × down-day volume, 50 sessions | daily prices |
+| Forgotten | no new all-time high for 504 sessions | daily highs + `config/ath.csv` |
+| Cheap | P/B < 1.5 or P/S < 1 | NSE filings (last four quarters, latest balance sheet) |
+| Cash | last financial year's operating cash flow ≥ 8% of market cap | NSE filings (March year-end) |
+| Sales | last financial year's sales growth ≥ 10 points above the year before | NSE filings (three March year-ends) |
+
+A check with no data counts as not passed. The **Bought** list is stored with the watchlists (`mb.open` / `mb.closed` in the same object), so it follows the same device sync. Limits: the test covers only companies still listed today (failed companies are missing, so real odds are lower), the fundamentals part covers 2016–23 only, and in 2016–19 the typical high scorer lost money — the tab says so and shows the market state first.
