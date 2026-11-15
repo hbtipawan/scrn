@@ -275,6 +275,15 @@ def main():
         return 3 if px >= m else 1
 
     # sectors / names
+    # Master classification (config/classification_master.csv): sector and industry for every stock from one file.
+    # Without that file the older way below is used (NSE sector lists + industry vote, Yahoo/NSE industry).
+    import classify as CL
+    m_sec, m_ind, m_rep = CL.classify(A, {s_: str(stocks.loc[s_, "name"]) for s_ in A if s_ in stocks.index}, CFG)
+    MASTER = m_sec is not None
+    if MASTER:
+        print(f"classification master: {m_rep['matched']} of {len(A)} stocks classified ({m_rep['via_bse']} via the BSE listing), "
+              f"{m_rep['sectors']} sectors, {m_rep['industries']} industries; not in the file: {m_rep['missing']} "
+              f"{m_rep['missing_list'][:10]}; same symbol but another company: {m_rep['refused']} {m_rep['refused_list'][:10]}")
     sec = pd.read_csv(CFG / "sectors.csv").set_index("Symbol")["Sector"] if (CFG / "sectors.csv").exists() else pd.Series(dtype=str)
     # industry for every stock (Yahoo's classification, NSE's where Yahoo has none; fund_info.csv from fetch_fundamentals.py)
     info_f = CFG / "fund_info.csv"
@@ -286,16 +295,22 @@ def main():
     # its industry falls in among the stocks where both are known (only when 60%+ of them agree, from 3+ stocks).
     sec_x = pd.Series(dtype=str)
     sec_check = None
-    if len(sec) and len(ind):
+    if len(sec) and len(ind):          # (with the master file this only feeds the Upside model's groups)
         both = pd.DataFrame({"i": ind, "s": sec}).dropna()
         votes = both.groupby("i")["s"].agg(lambda x: (x.value_counts().index[0], x.value_counts().iloc[0] / len(x), len(x)))
         mp = {i: v[0] for i, v in votes.items() if v[1] >= 0.6 and v[2] >= 3}
         sec_x = pd.Series({s: mp[ind[s]] for s in A if s not in sec.index and ind.get(s) in mp})
         agree = (both["i"].map(mp) == both["s"])[both["i"].isin(mp)]
         sec_check = {"derived": len(sec_x), "agree": r2(agree.mean() * 100, 1), "tested": int(len(agree))}
-        print(f"sectors: {int(sec.index.isin(A).sum())} from NSE lists, {len(sec_x)} from their industry "
+        if not MASTER:
+            print(f"sectors: {int(sec.index.isin(A).sum())} from NSE lists, {len(sec_x)} from their industry "
               f"(industry → sector agrees for {sec_check['agree']}% of {sec_check['tested']} stocks with both)")
     sec_all = pd.concat([sec, sec_x])
+    # the Upside model was trained with these older groups; it keeps them (a test with the master groups scored lower)
+    up_groups = {"sec": sec_all, "ind": ind}
+    if MASTER:
+        sec_all, ind, sec_x, sec_check = m_sec, m_ind, pd.Series(dtype=str), None
+        sec = m_sec
 
     rows = []
     vr_a = V[A].iloc[-1] / avgv50_a.iloc[-1]
@@ -342,10 +357,16 @@ def main():
         return {r[key]: [x for x in str(r["Symbols"]).split() if x in aset] for _, r in g.iterrows()}
 
     groups = {
-        "Themes": load_groups(CFG / "themes.csv", "Theme"),
+        "Themes": load_groups(CFG / "themes.csv", "Theme"),     # replaced below when the master file is present
         "Sector": {k: [s for s in sec_all.index[sec_all == k] if s in aset] for k in sorted(sec_all.dropna().unique())},
         "NSE Index": load_groups(CFG / "indices.csv", "Index"),
     }
+    if MASTER:
+        try:                                   # themes from the master sector/industry (theme_rules.py)
+            import theme_rules as TR
+            groups["Themes"] = {k: v for k, v in TR.build(sec_all, ind, A).items() if v}
+        except Exception as e:                 # never break the daily run: keep config/themes.csv
+            print(f"theme rules skipped ({e}); using config/themes.csv")
     if len(ind):
         ia = ind[ind.index.isin(aset)]
         groups["Industry"] = {k: list(ia.index[ia == k]) for k in sorted(ia.unique())}
@@ -421,13 +442,13 @@ def main():
     if FR:
         for r in rows:
             r.update(FR["per_stock"].get(r["s"], {}))
-            if not r.get("ind") and FR["industry"].get(r["s"]):
+            if not MASTER and not r.get("ind") and FR["industry"].get(r["s"]):
                 r["ind"] = FR["industry"][r["s"]]
         sc_meta += FR["meta"]
         sc_hits.update(FR["hits"])
         sc_metric.update(FR["metric"])
         cats = [k for k in cats if k != "Weakness"] + FR["cats"][:3] + ["Weakness", FR["cats"][3]]
-        if "Industry" not in groups and FR["industry"]:
+        if not MASTER and "Industry" not in groups and FR["industry"]:
             iu = pd.Series(FR["industry"])
             groups["Industry"] = {k: sorted(iu.index[iu == k]) for k in sorted(iu.unique())}
         dump_later = {"fund.json": FR["detail"]}
@@ -599,7 +620,7 @@ def main():
     up_meta = None
     try:
         import upside as UP
-        UPR, up_by = UP.build(PFULL, syms, bench, {"sec": sec_all, "ind": ind}, CFG)
+        UPR, up_by = UP.build(PFULL, syms, bench, up_groups, CFG)
         json.dumps(UPR, separators=(",", ":"), allow_nan=False)       # must be writable before anything is attached
         grs = {x["s"]: (x["irs"], x["srs"]) for x in UPR["rows"]}
         for r in rows:
@@ -690,6 +711,7 @@ def main():
     meta = {"asof": last, "generated": datetime.now(ist).strftime("%Y-%m-%d %H:%M IST"),
             "source": fm.get("source"), "stocks_with_data": len(syms), "universe": len(U), "all_stocks": len(A),
             "sector_from_industry": sec_check,
+            "classification": ({k: m_rep[k] for k in ("matched", "via_bse", "missing", "sectors", "industries")} if MASTER else None),
             "failed": fm.get("failed_count"), "indices": indices,
             "filters": {"min_price": S["min_price"], "min_median_turnover_cr": S["min_median_turnover_cr"],
                         "min_market_cap_cr": S["min_market_cap_cr"] if mcap is not None else None},

@@ -346,11 +346,18 @@ def today_ist():
     return datetime.now(timezone(timedelta(hours=5, minutes=30))).date()
 
 
-def load_quarters():
+def load_quarters(names=None):
     R = pd.read_csv(CFG / "fund_results.csv", dtype={"symbol": str})
     info = pd.read_csv(CFG / "fund_info.csv", dtype={"symbol": str}).set_index("symbol")
     R["qe"] = pd.to_datetime(R.qe)
     fin_sec = info["sector"].astype(str).str.contains("Financial", na=False) if "sector" in info else pd.Series(dtype=bool)
+    try:                    # sector from the master classification file (Finance, Banks, Insurance, brokers ...)
+        import classify as CL
+        ms, _, _ = CL.classify(sorted(set(R.symbol.dropna())), names or {}, CFG)
+        if ms is not None:
+            fin_sec = fin_sec.reindex(fin_sec.index.union(ms.index)).fillna(False).astype(bool) | ms.isin(CL.FINANCIAL_SECTORS).reindex(fin_sec.index.union(ms.index)).fillna(False)
+    except Exception as e:
+        print(f"results: master classification not used ({e})")
     R["finsec"] = R.symbol.map(fin_sec).fillna(False).astype(bool) | (R.bank.fillna(0) == 1)
     return R, info
 
@@ -369,7 +376,7 @@ def build(W, U, ctx):
     ctx: bench (name), names, mcap (Series), today (date, optional)."""
     import time
     t0 = time.time()
-    R, info = load_quarters()
+    R, info = load_quarters(ctx.get("names"))
     Z = quarter_metrics(R)
     Z["event"] = event_dates(Z, info)
     Z["late"] = (pd.to_datetime(Z.filed, errors="coerce") - Z.event).dt.days

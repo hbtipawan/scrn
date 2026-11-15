@@ -270,7 +270,13 @@ def build(U, ctx):
     c, rs, st, tt = ctx["c"].reindex(U), ctx["rs"].reindex(U), ctx["st"].reindex(U), ctx["tt"].reindex(U)
     a200, h52, vr = ctx["a200"].reindex(U), ctx["h52"].reindex(U), ctx["vr"].reindex(U)
     # Lenders / financials: banks (bank-format filings) plus NBFCs, insurers, brokers etc. by sector
-    fin_sec = ctx.get("sector", pd.Series(dtype=object)).reindex(U).astype(str).str.contains("Financial", case=False, na=False)
+    sec_ctx = ctx.get("sector", pd.Series(dtype=object)).reindex(U).astype(str)
+    fin_sec = sec_ctx.str.contains("Financial", case=False, na=False)
+    try:                                  # master classification names (Finance, Banks, Insurance, brokers ...)
+        from classify import FINANCIAL_SECTORS
+        fin_sec |= sec_ctx.isin(FINANCIAL_SECTORS)
+    except Exception:
+        pass
     if len(info) and "sector" in info:
         fin_sec |= info["sector"].reindex(U).astype(str).str.contains("Financial", case=False, na=False)
     nb = ~(df["bank"].fillna(False).astype(bool) | fin_sec)
