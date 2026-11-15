@@ -1162,6 +1162,42 @@ body{background:var(--wash),var(--desk);background-attachment:scroll;min-height:
 .gmv{font-size:13px;font-weight:600;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
 .gmv.firm{color:var(--ink);font-weight:800}.gmv.fade{color:#fff;background:var(--down);border-radius:6px;padding:0 6px;font-weight:700}
 .heat td.hrs{white-space:nowrap;padding:0 10px}
+/* ══ List summary pop-up, and the group screener ══ */
+:root{--q0:#8A94A3;--q1:#1F5FAE;--q2:#E0652B;--q3:#9D2460;--q4:#B07A00;--q5:#0A5F6B;--q6:#18A67C;--q7:#6D4BD8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--q0:#7C8798;--q1:#7DB7F7;--q2:#F0794A;--q3:#C94C86;--q4:#E0A82E;--q5:#35B8CC;--q6:#1C8F6A;--q7:#BBAAFA}}
+:root[data-theme="dark"]{--q0:#7C8798;--q1:#7DB7F7;--q2:#F0794A;--q3:#C94C86;--q4:#E0A82E;--q5:#35B8CC;--q6:#1C8F6A;--q7:#BBAAFA}
+.sumbar{display:flex;justify-content:flex-end;padding:8px 12px 0}
+.sumbtn{display:inline-flex;align-items:center;gap:7px;white-space:nowrap}.sumbtn svg{flex:none}.sumbtn.sumr{margin-left:auto}
+.sscrim{position:fixed;inset:0;background:rgba(5,12,22,.6);z-index:70}
+.ssum{position:fixed;z-index:71;top:4vh;left:0;right:0;margin-inline:auto;width:min(1080px,96vw);max-height:92vh;display:flex;flex-direction:column;background:var(--card);color:var(--ink);border-radius:16px;box-shadow:0 28px 80px rgba(0,0,0,.45);overflow:hidden}
+body.ssopen{overflow:hidden}
+.sshead{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:flex-start;justify-content:space-between;padding:18px 20px 14px;border-bottom:1px solid var(--line)}
+.sshead h2{font-size:23px;margin:0;line-height:1.2}.sshead p{margin:4px 0 0;color:var(--muted);font-size:16px}
+.sstools{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.sstools .seg button{font-size:16px}
+.ssx{border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;width:42px;height:42px;font-size:19px;cursor:pointer}.ssx:hover{border-color:var(--muted)}
+.ssbody{display:grid;grid-template-columns:240px minmax(0,1fr);gap:8px 22px;padding:16px 20px 18px;overflow:auto;align-items:start}
+.ssleft{position:sticky;top:0;display:flex;justify-content:center;padding-top:6px}
+.ssdonut .ssn{font-size:36px;font-weight:800;fill:var(--ink);font-variant-numeric:tabular-nums}.ssdonut .ssl{font-size:13.5px;fill:var(--muted)}
+.ssarc{stroke:var(--card);stroke-width:1;transition:opacity .12s}path.ssarc{stroke:none}
+.ssum.sshover .ssarc:not(.sshot){opacity:.35}
+.sstake{margin:0 0 12px;font-size:17px;line-height:1.5;max-width:78ch}
+.sst{width:100%}.sst th{cursor:pointer;white-space:nowrap}.sst td{font-size:17px;white-space:nowrap}.sst td.l:first-child{white-space:normal;min-width:170px;font-weight:600}
+.sslab{display:flex;align-items:baseline;gap:10px}.sst .sssw{flex:none;display:inline-block;width:13px;height:13px;border-radius:4px;border:1.5px solid transparent;transform:translateY(1px)}.ssrow.zero .sssw{border-color:var(--line)}
+.ssrow{cursor:pointer}.ssrow.zero{cursor:default;color:var(--muted)}.ssrow:hover,.ssrow.sshot,.ssrow.open{background:var(--soft)}.ssrow:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.ssshare{min-width:190px}.ssbar{display:inline-block;width:110px;height:8px;border-radius:999px;background:var(--track);vertical-align:middle;margin-right:10px;overflow:hidden}.ssbar i{display:block;height:100%;border-radius:999px}
+.sspct{color:var(--muted)}.sspct.hi{color:var(--ink);font-weight:700}
+.ssdet td{padding:6px 14px 14px 37px;white-space:normal;background:var(--soft)}.ssdet div{display:flex;flex-wrap:wrap;gap:6px}
+.sschip{border:1.5px solid var(--line)!important;border-radius:8px;padding:3px 9px!important;background:var(--card);font-size:15px;text-decoration:none!important}.sschip small{margin-left:6px;color:var(--muted);font-weight:600;font-size:13px}
+.ssnote{margin:12px 0 0}
+@media (max-width:820px){.ssum{top:0;width:100%;max-height:100dvh;height:100dvh;border-radius:0}.ssbody{grid-template-columns:minmax(0,1fr);padding:12px 12px 20px}.ssleft{position:static}.ssdonut{width:190px;height:190px}.sshead{padding:14px 12px 10px}.sshead h2{font-size:20px}.sstools{width:100%}.sstools .seg{flex:1;overflow-x:auto}.ssbar{width:64px}.ssshare{min-width:130px}}
+.sxmode{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;margin:0 0 12px}.sxmode .seg button{font-size:17px;padding:8px 16px}
+.sxchip.t,.sxchip.w,.sxchip.x{position:relative;padding-left:26px}.sxchip.t::before,.sxchip.w::before,.sxchip.x::before,.sxleg i{content:"";position:absolute;left:10px;top:50%;width:9px;height:9px;margin-top:-4.500px;border-radius:50%;background:var(--up)}
+.sxchip.w::before,.sxleg i.w{background:var(--muted)}.sxchip.x::before,.sxleg i.x{background:var(--down)}
+.sxleg{display:inline-flex;flex-wrap:wrap;gap:4px 6px;align-items:center;color:var(--muted);font-size:14px;margin-left:6px}.sxleg i{position:static;display:inline-block;margin:0 2px 0 8px}
+.sxnote{margin:0;padding:10px 16px;font-size:16px;line-height:1.5;border-top:1px solid var(--track);border-left:4px solid var(--up);background:color-mix(in srgb,var(--up) 6%,transparent);max-width:none}
+.sxnote.w{border-left-color:var(--muted);background:var(--soft)}.sxnote.x{border-left-color:var(--down);background:color-mix(in srgb,var(--down) 7%,transparent)}
+.gxn{background:none;border:0;padding:0;font:inherit;font-weight:700;color:var(--ink);cursor:pointer;text-align:left;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}.gxn:hover{text-decoration-color:var(--ink)}
+.gxs{font-size:15px!important;margin-right:6px}
 /* ══ Multibagger tab ══ */
 .mbk{display:inline-flex;align-items:baseline;gap:1px;padding:2px 9px;border-radius:999px;font-variant-numeric:tabular-nums;font-size:14px;border:1.5px solid currentColor;white-space:nowrap}
 .mbk b{font-size:17px}.mbk.g{color:#fff;background:var(--up);border-color:var(--up)}.mbk.m{color:var(--up-t)}.mbk.n{color:var(--muted)}.mbk.b{color:var(--down-t)}
@@ -1396,6 +1432,7 @@ function dtable(id,rows,cols,{limit=100,empty="Nothing to show.",csv=true}={}){
   return h;
 }
 function wireTables(root,rerender){
+  ssButtons(root);
   root.querySelectorAll("table.dt").forEach(t=>{const id=t.dataset.tid;
     t.querySelectorAll("th[data-k]").forEach(th=>{const go=()=>{const T=st.tbl[id];const k=th.dataset.k;T.dir=T.key===k?-T.dir:-1;T.key=k;rerender()};th.addEventListener("click",go);th.addEventListener("keydown",e=>{if(e.key==="Enter")go()})})});
   root.querySelectorAll("[data-more]").forEach(b=>b.addEventListener("click",()=>{st.tbl[b.dataset.more].show+=100;rerender()}));
@@ -2470,7 +2507,7 @@ function drawPatterns(){const P=PAT,f=st.px,rows=pFilter(P.rows),box=$("#pxT");i
     box.innerHTML=`<div class="card"><div class="bxhead"><span><b class="num">${rows.length}</b> pattern${rows.length===1?"":"s"} on <b class="num">${new Set(rows.map(r=>r.s)).size}</b> stocks</span><button type="button" class="ghost" data-wl-addall="${esc(JSON.stringify([...new Set(rows.map(r=>r.s))].slice(0,200)))}" data-label="Chart patterns">☆ Add to a watchlist</button></div>${dtable("pat",data,cols,{empty:"No pattern matches."})}</div>`;
     wireTables(box,drawPatterns);return}
   const ord=(P.E.order||[]).length?P.E.order:[...new Set(rows.map(r=>r.id))];
-  box.innerHTML=ord.map(id=>{const a=rows.filter(r=>r.id===id);if(!a.length)return "";const e=pdef(id);
+  box.innerHTML=(new Set(rows.map(r=>r.s)).size>=3?`<div class="sumbar" style="padding:0 0 10px">${ssBtnFor("pat",rows.map(r=>r.s),"Chart patterns")}</div>`:"")+ord.map(id=>{const a=rows.filter(r=>r.id===id);if(!a.length)return "";const e=pdef(id);
     return `<section class="pgrp t-${esc(e.tier||"same")}" aria-label="${esc(e.name)}"><div class="pgh"><div><h3>${esc(e.name)} <span class="pgc">${a.length}</span></h3><p>${pevLine(id)}</p></div>${ptier(id)}</div><div class="pgrid">${a.map(pcard).join("")}</div></section>`}).join("");}
 function pPreset(id){const f=st.px;Object.assign(f,{q:"",pat:"all",rs70:false,s2:false,nofail:false});
   if(id==="bo")f.status="bo";if(id==="fm")f.status="fm";if(id==="sell")f.status="sell";if(id==="vcp")Object.assign(f,{status:"all",pat:"vcp"});
@@ -2749,7 +2786,7 @@ function vbDraw(){const X=VBD[st.vb.tf==="Weekly"?"w":"d"];if(!X||!$("#vbRes"))r
   const ch=vbChanged();$("#vbChg").innerHTML=ch?`<b>${ch}</b> setting${ch===1?" differs":"s differ"} from the app's defaults`:`The app's default settings`;
   if(!st.tbl.vb)st.tbl.vb={key:"rank",dir:1,show:100};
   const phone=matchMedia("(max-width:720px)").matches;
-  const head=`<div class="bxhead"><span><b class="num">${rows.length.toLocaleString("en-IN")}</b> VCP candidate${rows.length===1?"":"s"} · ranked by grade, then score</span>${rows.length?`<button type="button" class="ghost" data-wl-addall="${esc(JSON.stringify(rows.slice(0,200).map(r=>r.s)))}" data-label="VCP scanner">☆ Add ${Math.min(200,rows.length)} to a watchlist</button>`:""}</div>`;
+  const head=`<div class="bxhead"><span><b class="num">${rows.length.toLocaleString("en-IN")}</b> VCP candidate${rows.length===1?"":"s"} · ranked by grade, then score</span>${ssBtnFor("vcp",rows.map(r=>r.s),"VCP scanner","sumr")}${rows.length?`<button type="button" class="ghost" data-wl-addall="${esc(JSON.stringify(rows.slice(0,200).map(r=>r.s)))}" data-label="VCP scanner">☆ Add ${Math.min(200,rows.length)} to a watchlist</button>`:""}</div>`;
   const empty="No VCP candidates match these settings. VCP is strict by design — loosen the near-high %, the trend strictness or the grade filter, or switch on more base types.";
   const T=rows.map(r=>({...r,n:D.by[r.s]?.n,mc:D.by[r.s]?.mc,risk:(r.close-r.stop)/r.close*100,rank:VB_GR[r.grade]*1000-r.score,lock:vbLocked(r,X)}));
   $("#vbRes").innerHTML=head+(phone?vbCards(T,empty):dtable("vb",T,VB_COLS,{empty}));
@@ -3984,7 +4021,7 @@ async function renderResults(){
 let RX_ROWS=[],RX_SHOW=60;
 function drawResults(){
   const f=st.rx,rows=rxFilter(RX_ROWS),el=$("#rxT");if(!el)return;
-  const head=`<div class="bxhead"><span><b class="num">${rows.length.toLocaleString("en-IN")}</b> of ${RX_ROWS.length.toLocaleString("en-IN")} results</span>${rows.length?`<button type="button" class="ghost" data-wl-addall="${esc(JSON.stringify(rows.slice(0,200).map(r=>r.s)))}" data-label="Results">☆ Add ${Math.min(200,rows.length)} to a watchlist</button>`:""}</div>`;
+  const head=`<div class="bxhead"><span><b class="num">${rows.length.toLocaleString("en-IN")}</b> of ${RX_ROWS.length.toLocaleString("en-IN")} results</span>${ssBtnFor("results",rows.map(r=>r.s),"Results","sumr")}${rows.length?`<button type="button" class="ghost" data-wl-addall="${esc(JSON.stringify(rows.slice(0,200).map(r=>r.s)))}" data-label="Results">☆ Add ${Math.min(200,rows.length)} to a watchlist</button>`:""}</div>`;
   if(f.view==="list"){
     if(!st.tbl.results)st.tbl.results={key:"d",dir:-1,show:100};
     const C_=RCOL,cols=[C_.stock,C_.d,C_.q,C_.qs,C_.pead,C_.rev,C_.rev_y,C_.rev_q,C_.eb,C_.eb_y,C_.m,C_.m_y,C_.np,C_.np_y,C_.np_q,C_.eps,C_.eps_y,C_.ear,C_.since,C_.vr,C_.mc,C_.rs,C_.sec];
@@ -4026,6 +4063,95 @@ function resEvidence(E){
     <div class="egrid two">${parts("PEAD score (0–9)",E.pead_parts)}${parts("Result Quality Score (0–100)",E.quality_parts)}</div>
     <p class="note">${esc(E.data)} ${esc(E.caveats)}</p>
     <p class="note"><b>Research behind it:</b> ${E.sources.map(s=>`<a href="${esc(s.u)}" target="_blank" rel="noopener">${esc(s.t)}</a>`).join(" · ")}</p></div></details>`}
+
+/* ════════════════════ LIST SUMMARY ════════════════════
+   A pop-up for any list of stocks on the site (every table drawn by dtable that has a stock column): where the list's
+   stocks sit by sector, industry, theme, market-cap size and result grade - a donut and a table. Opened from the
+   "Summary" button above the table; nothing is fetched, it reads the rows already on the page. */
+const SSL={};        /* lists shown as cards, not tables, register their symbols here */
+const SSICON=`<svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="3.2" d="M12 4.2a7.8 7.8 0 1 0 7.8 7.800"/><path fill="none" stroke="currentColor" stroke-width="3.2" opacity=".45" d="M12 4.2a7.8 7.8 0 0 1 7.8 7.800"/></svg>`;
+function ssBtnFor(id,syms,title,cl=""){const u=[...new Set(syms.filter(Boolean))];SSL[id]={syms:u,title};
+  return u.length>=3?`<button type="button" class="ghost sumbtn ${cl}" data-sum="${esc(id)}" data-sumlist="1" title="Where these ${u.length.toLocaleString("en-IN")} stocks sit: by sector, industry, theme, size and result grade">${SSICON}Summary</button>`:""}
+const SS={id:null,title:"",syms:[],dim:store.get("ssdim","sec"),sort:null,open:null,from:null};
+const SSDIM=[["sec","Sector","sector"],["ind","Industry","industry"],["th","Theme","theme"],["cap","Market cap","size group"],["rg","Result grade","result grade"]];
+const SSCAP=["Large cap","Mid cap","Small cap","Micro cap","No market cap"],SSRG=["Excellent (85+)","Very good (70–84)","Good (55–69)","Mixed (40–54)","Weak (under 40)","No result this season"];
+let SSCAPBY=null;
+function ssCap(x){if(!SSCAPBY){SSCAPBY={};[...D.stocks].filter(q=>isNum(q.mc)&&q.mc>0).sort((a,b)=>b.mc-a.mc).forEach((q,i)=>SSCAPBY[q.s]=i<100?0:i<250?1:i<500?2:3)}
+  return SSCAP[SSCAPBY[x.s]??4]}
+const ssGrade=x=>!isNum(x.rq)?SSRG[5]:x.rq>=85?SSRG[0]:x.rq>=70?SSRG[1]:x.rq>=55?SSRG[2]:x.rq>=40?SSRG[3]:SSRG[4];
+const ssKeys={sec:x=>[x.sec||"Unclassified"],ind:x=>[x.ind||"Unclassified"],th:x=>{const a=D.themesOf[x.s];return a&&a.length?a:["No theme"]},cap:x=>[ssCap(x)],rg:x=>[ssGrade(x)]};
+function ssData(){const dim=SS.dim,kf=ssKeys[dim],known=SS.syms.map(s=>D.by[s]).filter(Boolean),unk=SS.syms.length-known.length;
+  const liq=known.every(x=>x.lq!==0),uni=liq?D.liq:D.stocks,N={},G={};
+  for(const x of uni)for(const k of kf(x))N[k]=(N[k]||0)+1;
+  for(const x of known)for(const k of kf(x))(G[k]=G[k]||[]).push(x);
+  const fixed=dim==="cap"?SSCAP:dim==="rg"?SSRG:null,keys=fixed||Object.keys(G),tot=SS.syms.length,base=known.length/uni.length*100;
+  const rows=keys.map((k,i)=>{const a=G[k]||[],rs=a.map(x=>x.rs).filter(isNum),r3=a.map(x=>x.r?.["3M"]).filter(isNum),n=a.length,of=N[k]||0;
+    return {k,i,n,items:a,share:tot?n/tot*100:0,of,pct:of?n/of*100:null,lift:of&&base?n/of*100/base:null,rs:rs.length?Math.round(median(rs)):null,r3:r3.length?median(r3):null,
+      dull:/^(Unclassified|No theme|No market cap|No result)/.test(k)}}).filter(r=>fixed||r.n>0);
+  if(unk)rows.push({k:"Not on this site",i:99,n:unk,items:[],share:unk/tot*100,of:0,pct:null,lift:null,rs:null,r3:null,dull:true});
+  /* colours go to the 7 biggest real categories (or the fixed order for size and grade) and stay with them however the table is sorted */
+  const ranked=fixed?rows.filter(r=>!r.dull&&r.n>0):[...rows].filter(r=>!r.dull).sort((a,b)=>b.n-a.n||a.k.localeCompare(b.k));
+  ranked.slice(0,7).forEach((r,i)=>r.c=i+1);
+  return {rows,tot,known:known.length,unk,uni,liq,base,multi:dim==="th",ncat:rows.filter(r=>r.n>0&&!r.dull).length}}
+function ssDonut(Dt){const W=220,R=100,r0=68,cx=W/2,cy=W/2,col=Dt.rows.filter(r=>r.c).sort((a,b)=>a.c-b.c),rest=Dt.rows.filter(r=>!r.c&&r.n>0);
+  const total=Dt.rows.reduce((a,r)=>a+r.n,0)||1,parts=[...col.map(r=>({n:r.n,c:r.c,k:r.k})),...(rest.length?[{n:rest.reduce((a,r)=>a+r.n,0),c:0,k:rest.length===1?rest[0].k:`${rest.length} others`}]:[])];
+  const gap=parts.length>1?0.022:0;let a0=-Math.PI/2,g="";
+  const pt=(a,r)=>`${(cx+r*Math.cos(a)).toFixed(2)} ${(cy+r*Math.sin(a)).toFixed(2)}`;
+  for(const p of parts){const sw=p.n/total*Math.PI*2,a=a0+gap/2,b=a0+sw-gap/2;a0+=sw;if(b<=a)continue;const big=b-a>Math.PI?1:0;
+    g+=p.n/total>0.9995?`<circle cx="${cx}" cy="${cy}" r="${(R+r0)/2}" fill="none" stroke="var(--q${p.c})" stroke-width="${R-r0}" class="ssarc" data-ssk="${esc(p.k)}"><title>${esc(p.k)}: ${p.n}</title></circle>`
+      :`<path class="ssarc" data-ssk="${esc(p.c?p.k:"")}" fill="var(--q${p.c})" d="M${pt(a,R)}A${R} ${R} 0 ${big} 1 ${pt(b,R)}L${pt(b,r0)}A${r0} ${r0} 0 ${big} 0 ${pt(a,r0)}Z"><title>${esc(p.k)}: ${p.n} (${(p.n/total*100).toFixed(0)}%)</title></path>`}
+  const word=SSDIM.find(d=>d[0]===SS.dim)[2];
+  return `<svg class="ssdonut" viewBox="0 0 ${W} ${W}" width="${W}" height="${W}" role="img" aria-label="${Dt.tot} stocks in ${Dt.ncat} ${word}s; the table lists each one">${g}
+    <text x="${cx}" y="${cy-4}" text-anchor="middle" class="ssn">${Dt.tot.toLocaleString("en-IN")}</text><text x="${cx}" y="${cy+17}" text-anchor="middle" class="ssl">stock${Dt.tot===1?"":"s"}</text><text x="${cx}" y="${cy+35}" text-anchor="middle" class="ssl">${Dt.ncat} ${word}${Dt.ncat===1?"":"s"}</text></svg>`}
+function ssDraw(){const el=$("#ssum");if(!el||el.hidden)return;const Dt=ssData(),dim=SS.dim,word=SSDIM.find(d=>d[0]===dim);
+  const natural=dim==="cap"||dim==="rg",S=SS.sort||(natural?{k:"i",dir:1}:{k:"n",dir:-1});
+  const rows=[...Dt.rows].sort((a,b)=>{const A=a[S.k],B=b[S.k];if(A==null)return 1;if(B==null)return -1;return (typeof A==="string"?A.localeCompare(B):A-B)*S.dir||b.n-a.n||a.k.localeCompare(b.k)});
+  const mx=Math.max(1,...rows.map(r=>r.share)),star=[...Dt.rows].filter(r=>!r.dull&&r.n>=3&&r.of>=5&&isNum(r.lift)).sort((a,b)=>b.lift-a.lift)[0];
+  const th=(k,lab,l,tip)=>`<th class="${l?"l":""}" data-sssort="${k}" tabindex="0" aria-sort="${S.k===k?(S.dir<0?"descending":"ascending"):"none"}"${tip?` title="${esc(tip)}"`:""}>${lab}${S.k===k?(S.dir<0?" ▼":" ▲"):""}</th>`;
+  const uniW=Dt.liq?"liquid stocks":"stocks";
+  const take=!Dt.known?"":star&&star.lift>=1.5?`<b>${esc(star.k)}</b> stands out: ${star.n} of its ${star.of.toLocaleString("en-IN")} ${uniW} are on this list (${star.pct.toFixed(1)}%), ${star.lift.toFixed(1)} times the list's share of all ${uniW} (${Dt.base.toFixed(1)}%).`
+    :`No ${word[2]} stands out: the list is spread across ${word[2]}s much as the market is.`;
+  let body="";
+  for(const r of rows){const open=SS.open===r.k,zero=r.n===0;
+    body+=`<tr class="ssrow${zero?" zero":""}${open?" open":""}" data-ssrow="${esc(r.k)}" tabindex="${zero||!r.items.length?-1:0}" ${r.items.length?`aria-expanded="${open}" title="Show the ${r.n} stock${r.n===1?"":"s"}"`:""}>
+      <td class="l"><span class="sslab"><i class="sssw" style="background:${r.c?`var(--q${r.c})`:zero?"transparent":"var(--q0)"}"></i><span>${esc(r.k)}</span></span></td><td class="num"><b>${r.n}</b></td>
+      <td class="l ssshare"><span class="ssbar"><i style="width:${(r.share/mx*100).toFixed(1)}%;background:${r.c?`var(--q${r.c})`:"var(--q0)"}"></i></span><span class="num">${zero?"–":r.share>=10?r.share.toFixed(0)+"%":r.share.toFixed(1)+"%"}</span></td>
+      <td class="num">${r.of?`${r.n} of ${r.of.toLocaleString("en-IN")} <span class="sspct${r.lift>=2&&r.n>=3&&!r.dull?" hi":""}"${r.lift>=2&&r.n>=3&&!r.dull?` title="${r.lift.toFixed(1)} times the list's share of the market"`:""}>(${r.pct>=10?r.pct.toFixed(0):r.pct.toFixed(1)}%)</span>`:"–"}</td>
+      <td class="num">${isNum(r.rs)?`<span class="${r.rs>=70?"up":r.rs<40?"down":""}" style="font-weight:700">${r.rs}</span>`:"–"}</td><td class="num ${cls(r.r3)}">${isNum(r.r3)?sgn(r.r3,0):"–"}</td></tr>`;
+    if(open&&r.items.length)body+=`<tr class="ssdet"><td colspan="6"><div>${[...r.items].sort((a,b)=>(b.rs??-1)-(a.rs??-1)).map(x=>`<button type="button" class="symbtn sschip" data-sym="${esc(x.s)}" title="${esc(x.n||"")} · RS ${x.rs??"–"} · 3 months ${sgn(x.r?.["3M"],0)}">${esc(x.s)}<small>${isNum(x.rs)?x.rs:""}</small></button>`).join("")}</div></td></tr>`}
+  el.innerHTML=`<header class="sshead"><div><h2 id="ssTitle">Summary · ${esc(SS.title)}</h2><p>${Dt.tot.toLocaleString("en-IN")} stock${Dt.tot===1?"":"s"} · as of ${fmtDate(D.meta.asof)} · compared with ${Dt.uni.length.toLocaleString("en-IN")} ${uniW}</p></div>
+      <div class="sstools"><div class="seg" role="group" aria-label="Group the list by">${SSDIM.map(d=>`<button type="button" data-ssdim="${d[0]}" aria-pressed="${d[0]===dim}">${d[1]}</button>`).join("")}</div><button type="button" class="ssx" data-ssclose aria-label="Close the summary">✕</button></div></header>
+    <div class="ssbody"><div class="ssleft">${ssDonut(Dt)}</div>
+      <div class="ssright">${take?`<p class="sstake">${take}</p>`:""}<div class="tscroll"><table class="dt sst"><thead><tr>${th("k",word[1],1)}${th("n","Stocks")}${th("share","Share of list",1)}${th("pct","Of the "+word[2],0,`How many of all ${uniW} in this ${word[2]} are on the list`)}${th("rs","RS",0,"Median RS rating of the listed stocks in this row")}${th("r3","3M",0,"Median 3-month return of the listed stocks in this row")}</tr></thead><tbody>${body}</tbody></table></div>
+        <p class="note ssnote">Tap a row to see its stocks. RS and 3M are the middle values of the listed stocks in that row. “Of the ${word[2]}” counts ${uniW}${Dt.liq?"":" (the list includes stocks outside the liquid set)"}.${Dt.multi?" A stock can be in more than one theme, so the shares add up to more than 100%.":""}${dim==="cap"?" Large = the 100 biggest companies by market cap, Mid = the next 150, Small = the next 250, Micro = the rest.":""}${dim==="rg"?" Result grade is the Result Quality score of the latest quarter in the current season.":""}</p></div></div>`}
+function ssOpen(id,btn){const L=btn?.dataset?.sumlist?SSL[id]:null,T=L?null:TBL[id];if(!L&&!T)return;const seen=new Set(L?L.syms:[]);if(T)for(const r of T.rows){const s=r.s??r.symbol;if(s)seen.add(String(s))}
+  if(!$("#ssum"))document.body.insertAdjacentHTML("beforeend",`<div class="sscrim" id="sscrim" hidden></div><section class="ssum" id="ssum" hidden role="dialog" aria-modal="true" aria-labelledby="ssTitle"></section>`);
+  const host=btn?.closest("section,.card"),h3=host?.querySelector("h3")?.textContent?.trim();
+  SS.id=id;SS.syms=[...seen];SS.sort=null;SS.open=null;SS.from=btn||null;
+  SS.title=L?L.title:id==="sx"?(st.sx.name||"Your screen"):id.startsWith("wl_")?(wlList(wlGet().active)?.name||"Watchlist"):h3&&h3.length<60?h3:($("#view .sec-head h2")?.textContent||"List");
+  if(!SSDIM.some(d=>d[0]===SS.dim))SS.dim="sec";
+  $("#sscrim").hidden=false;$("#ssum").hidden=false;document.body.classList.add("ssopen");ssDraw();$("#ssum [data-ssclose]")?.focus()}
+function ssClose(){const el=$("#ssum");if(!el||el.hidden)return;el.hidden=true;$("#sscrim").hidden=true;document.body.classList.remove("ssopen");SS.from?.focus?.()}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-sum]");if(b){ssOpen(b.dataset.sum,b);return}
+  if(e.target.id==="sscrim"){ssClose();return}const el=e.target.closest("#ssum");if(!el)return;
+  if(e.target.closest("[data-ssclose]")){ssClose();return}
+  const d=e.target.closest("[data-ssdim]");if(d){SS.dim=d.dataset.ssdim;SS.sort=null;SS.open=null;store.set("ssdim",SS.dim);ssDraw();$(`#ssum [data-ssdim="${SS.dim}"]`)?.focus();return}
+  const so=e.target.closest("[data-sssort]");if(so){const k=so.dataset.sssort,cur=SS.sort;SS.sort={k,dir:cur&&cur.k===k?-cur.dir:(k==="k"?1:-1)};ssDraw();return}
+  if(e.target.closest(".symbtn")){ssClose();return}          /* the stock window opens from the page's own handler */
+  const r=e.target.closest("[data-ssrow]");if(r&&r.tabIndex>=0){SS.open=SS.open===r.dataset.ssrow?null:r.dataset.ssrow;ssDraw();$(`#ssum [data-ssrow="${CSS.escape(r.dataset.ssrow)}"]`)?.focus()}});
+document.addEventListener("keydown",e=>{const el=$("#ssum");if(!el||el.hidden)return;if(e.key==="Escape"){e.stopPropagation();ssClose();return}
+  if(e.key==="Enter"||e.key===" "){const t=e.target.closest?.("[data-ssrow],[data-sssort]");if(t&&el.contains(t)){e.preventDefault();t.click()}}},true);
+document.addEventListener("mouseover",e=>{const el=$("#ssum");if(!el||el.hidden||!el.contains(e.target))return;const t=e.target.closest("[data-ssrow],[data-ssk]"),k=t?(t.dataset.ssrow??t.dataset.ssk):null;
+  el.querySelectorAll(".sshot").forEach(n=>n.classList.remove("sshot"));el.classList.toggle("sshover",!!k);if(!k)return;
+  el.querySelectorAll(`[data-ssrow="${CSS.escape(k)}"],[data-ssk="${CSS.escape(k)}"]`).forEach(n=>n.classList.add("sshot"))});
+/* the Summary button: beside a list's own tools where it has them, otherwise in a slim bar above the table */
+function ssButtons(root){root.querySelectorAll("table.dt[data-tid]").forEach(t=>{const id=t.dataset.tid,T=TBL[id];if(!T||!T.cols.some(c=>c.k==="s"||c.k==="symbol")||T.rows.length<3)return;
+    const wrap=t.closest(".tscroll");if(!wrap||wrap.dataset.sumdone)return;wrap.dataset.sumdone=1;
+    const btn=`<button type="button" class="ghost sumbtn" data-sum="${esc(id)}" title="Where these ${T.rows.length.toLocaleString("en-IN")} stocks sit: by sector, industry, theme, size and result grade">${SSICON}Summary</button>`;
+    const bx=wrap.previousElementSibling;
+    if(bx&&bx.classList.contains("bxhead")&&bx.querySelector("[data-sum]"))return;
+    if(bx&&bx.classList.contains("bxhead")){const tools=bx.querySelector(".sxtools");if(tools)tools.insertAdjacentHTML("afterbegin",btn);else{const last=bx.lastElementChild;if(last&&last.tagName==="BUTTON"){last.insertAdjacentHTML("beforebegin",btn);last.previousElementSibling.style.marginLeft="auto"}else bx.insertAdjacentHTML("beforeend",btn)}}
+    else wrap.insertAdjacentHTML("beforebegin",`<div class="sumbar">${btn}</div>`)})}
 
 /* ════════════════════ MULTIBAGGER ════════════════════
    multibagger.json (scripts/multibagger.py): seven yes/no checks per liquid stock, the market's 200-day breadth, and the
@@ -4528,17 +4654,112 @@ const SXP=[
   ["Strong industry, tight near the high","Industry group RS 70+ and not fading, within 10% of the high, last 10 closes within 8%, Stage 2",[{id:"irot",in:["strong"]},{id:"h52",min:-10},{id:"tight",max:8},{id:"st",in:[2]}]],
   ["VPCI 6/7 with top Upside","VPCI 6 or 7 gates, Upside 90+, above the 50-day, not stretched (5 ATRs or less above it)",[{id:"vpg",min:6},{id:"up",min:90},{id:"a50",v:true},{id:"x50",max:5}]],
   ["Fresh 52-week high, strong group","Closing high in the last 5 sessions, RS 80+, industry return rank top half for 1 month",[{id:"dsh",max:5},{id:"rs",min:80},{id:"ir1M",min:50}]]];
-const sxSaved=()=>store.get("sxSaved",[]);
-const sxOn=f=>{const d=SXB[f.id];if(!d)return false;return d.t==="n"?isNum(f.min)||isNum(f.max):d.t==="b"?f.v===true||f.v===false:(f.in||[]).length>0};
+/* ── Group screener: the same engine on themes, sectors, industries and NSE indices (grp.json). A row is one group:
+   its index figures for the chosen universe (All / Liquid, the site-wide switch) plus a few figures worked out here from
+   its member stocks. Nothing new is fetched. ── */
+const GQG={kind:["Group","#1F5FAE"],str:["Strength","#15803D"],perf:["Returns","#0E8A6E"],pos:["Price position & trend","#0369A1"],br:["Breadth inside the group","#C2410C"],sig:["Rotation signals","#6D28D9"],mem:["Member quality","#A21CAF"]};
+const GQF=[],GQB={};
+const GQR={};
+function gxRows(){const key=st.uni+"|"+D.meta.asof;if(GQR[key])return GQR[key];if(!GXD)return [];
+  const med=a=>a.length?median(a):null,pct=(a,f)=>a.length?a.filter(f).length/a.length*100:null,kindRet={};
+  const out=GXD.rows.map(r=>{const uk=gU(r),u=r[uk];if(!u)return null;
+    let syms=D.groups[r.k]?.[r.n];if(!syms&&r.k==="Industry")syms=D.stocks.filter(x=>x.ind===r.n).map(x=>x.s);
+    const mem=(syms||[]).map(s=>D.by[s]).filter(x=>x&&(uk==="a"||x.lq!==0)),rs=mem.filter(x=>isNum(x.rs)),up=mem.filter(x=>isNum(x.up));
+    return {id:r.id,k:r.k,n:r.n,m:uk==="l"?(r.ml??mem.length):(r.m??mem.length),u,r,uk,
+      mrs:med(rs.map(x=>x.rs)),p80:pct(rs,x=>x.rs>=80),ps2:pct(mem.filter(x=>x.st),x=>x.st===2),pnh:pct(mem.filter(x=>isNum(x.h52)),x=>x.h52>=-10),
+      pup:pct(up,x=>x.up>=80),nmb:mem.filter(x=>x.mb>=5).length,nrq:mem.filter(x=>x.rq>=70).length,
+      top:[...rs].sort((a,b)=>b.rs-a.rs).slice(0,3).map(x=>x.s)}}).filter(Boolean);
+  for(const p of ["1M","3M"]){const by={};for(const x of out)if(isNum(x.u.r?.[p]))(by[x.k]=by[x.k]||[]).push(x);
+    for(const a of Object.values(by)){a.sort((p1,p2)=>p1.u.r[p]-p2.u.r[p]);a.forEach((x,i)=>x["rr"+p]=a.length>1?Math.max(1,Math.round(i/(a.length-1)*99)):50)}}
+  return GQR[key]=out}
+(()=>{const N=(id,label,g,get,o={})=>GQF.push({id,label,g,t:"n",get,dec:1,...o}),E=(id,label,g,get,opts,o={})=>GQF.push({id,label,g,t:"e",get,opts,...o});
+  const ge=(l,v)=>[l,v,null],le=(l,v)=>[l,null,v];
+  E("kind","Kind of group","kind",x=>x.k,()=>Object.keys(GXD?.kinds||{}).map(k=>[k,GKIND[k]||k]));
+  N("m","Stocks in the group","kind",x=>x.m,{dec:0,ps:[ge("5+",5),ge("10+",10),ge("25+",25)]});
+  N("to","Members' turnover ₹Cr a day","kind",x=>x.u.to,{dec:0,ps:[ge("100+",100),ge("1,000+",1000)]});
+  N("rk","Group RS rating","str",x=>x.u.rk,{dec:0,pill:rsPill,ps:[ge("70+",70),ge("80+ (leaders)",80),le("Under 40",40),le("Under 20",20)]});
+  N("rkd4","RS rating change, 4 weeks","str",x=>isNum(x.u.rk)&&isNum(x.u.rk4)?x.u.rk-x.u.rk4:null,{dec:0,sg:1,ps:[ge("Up 10+",10),ge("Up 20+",20),le("Down 10+",-10)]});
+  N("rkd12","RS rating change, 12 weeks","str",x=>isNum(x.u.rk)&&isNum(x.u.rk12)?x.u.rk-x.u.rk12:null,{dec:0,sg:1,ps:[ge("Up 20+",20),le("Down 20+",-20)]});
+  E("gst","Strength","str",x=>gState(x.u.rk,x.u.rk4),()=>[["strong","Strong — RS 70+"],["fade","Strong but fading — 70+, down 10+ in 4 weeks"],["mid","Middle — 40–69"],["weak","Weak — under 40"]],{pill:gStatePill});
+  N("rh52","RS line against its 52-week high","str",x=>x.u.rh52,{u:"%",sg:1,ps:[ge("At or near a high (within 2%)",-2),le("10%+ below",-10)]});
+  for(const p of ["1D","1W","1M","3M","6M","1Y"])N("r"+p,`Return, ${p==="1D"?"today":p}`,"perf",x=>x.u.r?.[p],{u:"%",sg:1,ps:[ge("Up",0),ge("+10% or more",10),le("Down",0)]});
+  N("rr1M","Return rank among its kind, 1 month (99 = best)","perf",x=>x.rr1M,{dec:0,pill:rsPill,ps:[ge("Top third",67),le("Bottom third",33)]});
+  N("rr3M","Return rank among its kind, 3 months (99 = best)","perf",x=>x.rr3M,{dec:0,pill:rsPill,ps:[ge("Top third",67),le("Bottom third",33)]});
+  N("h52","From the 52-week high","pos",x=>x.u.h52,{u:"%",sg:1,ps:[ge("At the high (within 3%)",-3),ge("Within 10%",-10),["10–25% below",-25,-10],le("More than 25% below",-25)]});
+  E("stg","Stage","pos",x=>x.u.st,()=>[[2,"Stage 2"],[1,"Stage 1"],[3,"Stage 3"],[4,"Stage 4"]],{pill:stagePill});
+  N("b50","Members above their 50-day average","br",x=>x.u.b50,{u:"%",dec:0,ps:[ge("70%+",70),["40–70%",40,70],le("30% or less",30)]});
+  N("b200","Members above their 200-day average","br",x=>x.u.b200,{u:"%",dec:0,ps:[ge("70%+",70),le("30% or less",30)]});
+  N("nhp","Members at a 52-week high","br",x=>x.u.nhp,{u:"%",dec:0,ps:[ge("10%+",10),ge("20%+",20)]});
+  N("pnh","Members within 10% of their high","br",x=>x.pnh,{u:"%",dec:0,ps:[ge("50%+",50),le("20% or less",20)]});
+  N("ps2","Members in Stage 2","br",x=>x.ps2,{u:"%",dec:0,ps:[ge("50%+",50),le("20% or less",20)]});
+  N("mr","Turnover, last 20 sessions ÷ last 120","br",x=>x.u.mr,{dec:2,u:"×",ps:[ge("1.2×+",1.2),ge("1.5×+ (money flowing in)",1.5),le("0.8× or less",0.8)]});
+  const sigs=()=>Object.entries(GXD?.sig||{}).map(([k,m])=>[k,m.name,GTESTED.includes(k)?"Tested — beat other groups":GWEAK.includes(k)?"Weakness":"Watch only — no edge on its own"]);
+  E("sig5","Signal in the last 5 sessions","sig",x=>(x.u.sig||[]).filter(k=>x.u.ago?.[k]<=5),sigs,{big:1});
+  E("sig20","Signal in the last 4 weeks","sig",x=>(x.u.sig||[]).filter(k=>x.u.ago?.[k]<=19),sigs,{big:1});
+  N("nsig","Tested signals in the last 4 weeks","sig",x=>(x.u.sig||[]).filter(k=>GTESTED.includes(k)&&x.u.ago?.[k]<=19).length,{dec:0,ps:[ge("1+",1),ge("2+",2)]});
+  N("mrs","Median RS rating of members","mem",x=>x.mrs,{dec:0,pill:v=>rsPill(isNum(v)?Math.round(v):v),ps:[ge("60+",60),ge("70+",70),le("Under 40",40)]});
+  N("p80","Members with RS 80+","mem",x=>x.p80,{u:"%",dec:0,ps:[ge("30%+",30),ge("50%+",50)]});
+  N("pup","Members with Upside 80+","mem",x=>x.pup,{u:"%",dec:0,ps:[ge("30%+",30),ge("50%+",50)]});
+  N("nmb","Members passing 5+ multibagger checks","mem",x=>x.nmb,{dec:0,ps:[ge("1+",1),ge("3+",3)]});
+  N("nrq","Members with a very good result this season (Quality 70+)","mem",x=>x.nrq,{dec:0,ps:[ge("1+",1),ge("3+",3)]});
+  for(const f of GQF)GQB[f.id]=f})();
+/* [name, what it is, filters, t = tested edge | w = watch only | x = warning, evidence key] */
+const GQP=[
+  ["Leaders: RS 80+","Group RS rating 80 or more",[{id:"rk",min:80}],"t","lead80"],
+  ["Leaders still climbing","RS 70+ and up 10 or more points in 4 weeks",[{id:"rk",min:70},{id:"rkd4",min:10}],"t","climb"],
+  ["RS rating climbing fast","RS 70+ and 20+ points higher than 4 weeks ago, fired in the last 4 weeks",[{id:"sig20",in:["g_rank"]}],"t","g_rank"],
+  ["Stage 2 just started","The index crossed above its rising 30-week average in the last 4 weeks",[{id:"sig20",in:["g_stage2","g_stage2m"]}],"t","g_stage2"],
+  ["Money flowing in","Turnover 1.5× its usual level with the index rising, in the last 4 weeks",[{id:"sig20",in:["g_money"]}],"t","g_money"],
+  ["At a 52-week high","Index within 3% of its 52-week high",[{id:"h52",min:-3}],"w","g_high"],
+  ["Coiling near the high","A tight 20-session range within 3% of the high, above a rising 50-day average, in the last 4 weeks",[{id:"sig20",in:["g_coil"]}],"w","g_coil"],
+  ["Broad strength inside","70%+ of members above their 50-day average, group RS 60+",[{id:"b50",min:70},{id:"rk",min:60}],"w",null],
+  ["Turning up from the bottom","RS under 40 but up 15+ points in 4 weeks",[{id:"rk",max:40},{id:"rkd4",min:15}],"w","turn"],
+  ["Strong but fading","RS 70+ that has lost 10 or more points in 4 weeks",[{id:"gst",in:["fade"]}],"x","fade"],
+  ["Weak groups to avoid","Group RS rating 20 or less",[{id:"rk",max:20}],"x","lag20"]];
+const gxEv=p=>GXD?.evidence?.signals?.[p[4]]?.[st.uni==="lq"?"l":"a"]||null;
+/* green only where the test for the universe in use shows an edge; a warning stays a warning */
+function gxCls(p){const ev=gxEv(p);if(p[3]==="x"||!ev)return p[3];return ev.ex63>=1&&ev.beat63>=52?"t":"w"}
+function gxNote(p){const k=p[4],ev=gxEv(p),c=gxCls(p);let t="";
+  if(ev)t=`Tested on ${GXD.evidence.from.slice(0,4)}–${GXD.evidence.to.slice(2,4)} data (${ev.n.toLocaleString("en-IN")} cases): ${sgn(ev.ex63,1)} against the average group over the next 3 months, and ${ev.beat63}% beat the median group. ${c==="x"?"These lagged — treat it as a warning.":c==="t"?(ev.beat63>=55?"A tested edge.":"A tested edge, though a small one."):"No edge on its own — use it to build a watch list, not as a buy signal."}`;
+  else if(k==="climb")t="In a 2007–26 test on industries, groups rated 70+ that gained 10+ points in 4 weeks did a little better over the next 3 months than steady leaders (+1.8% to +2.2% against the average stock, steady +1.1%). For sectors the rise made no difference; the 70+ rating itself did.";
+  else if(k==="fade")t="A tested warning (2007–26): groups rated 70+ that lost 10–19 points went on to do no better than the average stock (industries +0.4%, sectors +0.1%, against +1.1% to +1.4% for steady leaders); after a 20-point loss they lagged (−1.2% and −2.0%).";
+  else if(k==="turn")t="Watch only. In the 2007–26 test, groups rated under 40 still lagged the average stock even after a 20-point jump; a weak group turning up is not yet a leader.";
+  else t="Not tested on its own. It describes the group today; pair it with the RS rating.";
+  return `<p class="sxnote ${c}">${t}</p>`}
+const GQC={name:{k:"n",label:"Group",l:1,fmt:r=>`<button type="button" class="gxn" data-gopen="${esc(r.k+"|"+r.n)}" title="Open the chart and members">${esc(r.n)}</button><span class="nm">${esc(GKIND[r.k]||r.k)}</span>`,sort:r=>r.n,csv:r=>r.n},
+  m:{k:"m",label:"Stocks",fmt:r=>`<span class="num">${r.m}</span>`},
+  top:{k:"_top",label:"Strongest members by RS",l:1,fmt:r=>r.top.length?r.top.map(s=>`<button type="button" class="symbtn gxs" data-sym="${esc(s)}">${esc(s)}</button>`).join(" "):"–",sort:r=>r.mrs,csv:r=>r.top.join(" ")},
+  spark:{k:"_sp",label:"Index, 26 weeks",l:1,fmt:r=>gSpark(r.u.sp),sort:r=>r.u.r?.["6M"],csv:()=>""}};
+const SXC_S={kind:"s",key:"sx",saved:"sxSaved",F:SXF,B:SXB,G:SXG,P:SXP,noun:"stock",uni0:"lq",
+  intro:"Stack any filters — price, returns, RS, Upside, trend, bases, results, fundamentals, ownership, scanners. Every filter shows how many stocks are left after it. Start from a ready screen or build your own and save it.",
+  find:"Find a filter — RS, pivot, ROE, delivery…",base:S=>S.uni==="all"?D.stocks:D.liq,
+  uniSeg:S=>seg("sxuni",["lq","all"],S.uni,{lq:`Liquid ${D.liq.length.toLocaleString("en-IN")}`,all:`All ${D.stocks.length.toLocaleString("en-IN")}`}),
+  fixed:["px","mc","sec","ind"],lead:["r1D","up","rs"],tail:["h52","r1M","r3M","st"],sort:"sx_up",cols:a=>[C.stock,C.px,...a,C.sec],
+  foot:()=>`Numbers are as of the close of ${fmtDate(D.meta.asof)}. A stock with no value for a field (for example no P/E, or no base) does not pass a filter on that field. Within one filter, several choices mean “any of these”; add the filter again to ask for both.`};
+const SXC_G={kind:"g",key:"gx",saved:"gxSaved",F:GQF,B:GQB,G:GQG,P:GQP,noun:"group",uni0:"all",
+  intro:"Screen themes, sectors, industries and NSE indices the same way as stocks: strength, returns, distance from the high, breadth inside the group and the rotation signals. Ready screens marked green held up in testing; grey ones are for watching; red ones are warnings. Tap a group for its chart and members.",
+  find:"Find a filter — RS, 52-week high, breadth, signal…",base:S=>gxRows().filter(r=>S.uni==="all"||r.k===S.uni),
+  uniSeg:S=>{const R=gxRows(),ks=Object.keys(GXD?.kinds||{});return seg("sxuni",["all",...ks],S.uni,Object.fromEntries([["all",`All ${R.length}`],...ks.map(k=>[k,`${({Themes:"Themes",Sector:"Sectors",Industry:"Industries","NSE Index":"NSE indices"})[k]||k} ${R.filter(r=>r.k===k).length}`])]))},
+  fixed:["kind","m"],lead:["rk","rkd4","gst"],tail:["r1M","r3M","h52","b50","sig20"],sort:"sx_rk",cols:a=>[GQC.name,GQC.m,...a,GQC.top,GQC.spark],note:gxNote,pcls:gxCls,
+  legend:`<span class="sxleg"><i class="t"></i>held up in testing <i class="w"></i>watch only <i class="x"></i>warning</span>`,
+  foot:()=>`Group figures are for ${st.uni==="lq"?"liquid stocks":"all stocks"} (the Stocks switch on the Rotation tab), as of the close of ${fmtDate(D.meta.asof)}. The RS rating ranks each group against the others of its kind on 3 to 12-month performance. Signals and their tests are the same as in Rotation → Group signals. A group with no value for a field does not pass a filter on it.`};
+let SXC=SXC_S,SXALT=null;
+/* switch between the stock screener and the group screener; each keeps its own open screen and saved screens */
+function sxSwap(){const cur=st.sx,to=SXC===SXC_S?SXC_G:SXC_S;
+  if(!SXALT){const z=store.get(to.key,null);SXALT=z&&Array.isArray(z.f)?{uni:z.uni||to.uni0,f:z.f.filter(f=>f&&to.B[f.id]),cols:(z.cols||[]).filter(id=>to.B[id]),name:z.name||""}:{uni:to.uni0,f:[],cols:[],name:""}}
+  if(to===SXC_G&&SXALT.uni!=="all"&&!(GXD?.kinds?.[SXALT.uni]))SXALT.uni="all";
+  st.sx=SXALT;SXALT=cur;SXC=to;st.tbl.sx=null;st.sxq=""}
+const sxSaved=()=>store.get(SXC.saved,[]);
+const sxOn=f=>{const d=SXC.B[f.id];if(!d)return false;return d.t==="n"?isNum(f.min)||isNum(f.max):d.t==="b"?f.v===true||f.v===false:(f.in||[]).length>0};
 function sxTest(d,f,x){const v=d.get(x);
   if(d.t==="n")return isNum(v)&&(!isNum(f.min)||v>=f.min)&&(!isNum(f.max)||v<=f.max);
   if(d.t==="b")return v===f.v;
   const a=Array.isArray(v)?v:[v];return f.in.some(q=>a.some(z=>String(z)===String(q)))}
-function sxRun(){const S=st.sx,base=S.uni==="all"?D.stocks:D.liq,act=S.f.filter(sxOn);let cur=base;const left=new Map();
-  for(const f of S.f){if(sxOn(f)){const d=SXB[f.id];cur=cur.filter(x=>sxTest(d,f,x))}left.set(f,cur.length)}
+function sxRun(){const S=st.sx,base=SXC.base(S),act=S.f.filter(sxOn);let cur=base;const left=new Map();
+  for(const f of S.f){if(sxOn(f)){const d=SXC.B[f.id];cur=cur.filter(x=>sxTest(d,f,x))}left.set(f,cur.length)}
   return {rows:cur,base:base.length,left,nAct:act.length}}
 const sxNum=(d,v)=>!isNum(v)?"–":(d.sg&&v>0?"+":"")+(d.dec===0?Math.round(v).toLocaleString("en-IN"):v.toLocaleString("en-IN",{minimumFractionDigits:d.dec,maximumFractionDigits:d.dec})).replace("-","−")+(d.u==="%"?"%":d.u==="×"?"×":"");
-function sxDesc(f){const d=SXB[f.id];if(!d)return "";
+function sxDesc(f){const d=SXC.B[f.id];if(!d)return "";
   if(d.t==="n"){const a=isNum(f.min),b=isNum(f.max);return d.label+(a&&b?` ${sxNum(d,f.min)} to ${sxNum(d,f.max)}`:a?` ${sxNum(d,f.min)} or more`:b?` ${sxNum(d,f.max)} or less`:"")}
   if(d.t==="b")return d.label+(f.v===false?": no":"");
   const o=Object.fromEntries(d.opts().map(q=>[String(q[0]),q[1]]));return d.label+": "+(f.in||[]).map(v=>o[String(v)]||v).join(" or ")}
@@ -4548,7 +4769,7 @@ function sxCol(d){
   if(d.pill)return {k:"sx_"+d.id,label:d.label,fmt:r=>d.pill(d.get(r)),sort:r=>d.get(r),csv:r=>d.get(r)};
   return {k:"sx_"+d.id,label:d.label,l:1,fmt:r=>{const v=d.get(r),a=(Array.isArray(v)?v:[v]).filter(q=>q!=null&&q!=="");if(!a.length)return "–";const o=Object.fromEntries(d.opts().map(q=>[String(q[0]),q[1]]));
     return `<span class="sxv">${a.slice(0,3).map(q=>esc(o[String(q)]||q)).join(", ")}${a.length>3?` +${a.length-3}`:""}</span>`},sort:r=>{const v=d.get(r);return Array.isArray(v)?v.length:v},csv:r=>{const v=d.get(r);return Array.isArray(v)?v.join("; "):v}}}
-function sxRow(f,i,left,prev){const d=SXB[f.id];if(!d)return "";const [gn,gc]=SXG[d.g],on=sxOn(f);
+function sxRow(f,i,left,prev){const d=SXC.B[f.id];if(!d)return "";const [gn,gc]=SXC.G[d.g],on=sxOn(f);
   let ctl="";
   if(d.t==="n"){const cur=d.ps?.find(p=>(p[1]??null)===(f.min??null)&&(p[2]??null)===(f.max??null));
     ctl=`<span class="sxrng"><input type="number" step="any" inputmode="decimal" data-sxmin="${i}" value="${isNum(f.min)?f.min:""}" placeholder="min" aria-label="${esc(d.label)} minimum"><i>to</i><input type="number" step="any" inputmode="decimal" data-sxmax="${i}" value="${isNum(f.max)?f.max:""}" placeholder="max" aria-label="${esc(d.label)} maximum">${d.u?`<em>${d.u}</em>`:""}</span>
@@ -4562,30 +4783,34 @@ function sxRow(f,i,left,prev){const d=SXB[f.id];if(!d)return "";const [gn,gc]=SX
     else ctl=`<span class="sxps">${O.map(o=>`<button type="button" data-sxe="${i}|${esc(o[0])}" aria-pressed="${sel.has(String(o[0]))}">${esc(o[1])}</button>`).join("")||`<span style="color:var(--muted)">Nothing to choose from today</span>`}</span>`}
   const cut=prev-left;
   return `<div class="sxrow${on?"":" off"}" style="--g:${gc}"><div class="sxlab"><i></i><div><b>${esc(d.label)}</b><small>${esc(gn)}</small></div></div><div class="sxctl">${ctl}</div>
-    <div class="sxleft num" title="Stocks left after this filter">${on?`<b>${left.toLocaleString("en-IN")}</b><small>${cut>0?"−"+cut.toLocaleString("en-IN"):"no cut"}</small>`:`<small>not set</small>`}</div>
+    <div class="sxleft num" title="Left after this filter">${on?`<b>${left.toLocaleString("en-IN")}</b><small>${cut>0?"−"+cut.toLocaleString("en-IN"):"no cut"}</small>`:`<small>not set</small>`}</div>
     <button type="button" class="sxdel" data-sxdel="${i}" aria-label="Remove the ${esc(d.label)} filter">✕</button></div>`}
 function sxPicker(){const q=(st.sxq||"").trim().toLowerCase(),used=new Set(st.sx.f.map(f=>f.id));
-  const cols=Object.entries(SXG).map(([g,[gn,gc]])=>{const a=SXF.filter(d=>d.g===g&&(!q||d.label.toLowerCase().includes(q)||gn.toLowerCase().includes(q)));if(!a.length)return "";
+  const cols=Object.entries(SXC.G).map(([g,[gn,gc]])=>{const a=SXC.F.filter(d=>d.g===g&&(!q||d.label.toLowerCase().includes(q)||gn.toLowerCase().includes(q)));if(!a.length)return "";
     return `<div class="sxpg" style="--g:${gc}"><h4><i></i>${esc(gn)}</h4>${a.map(d=>`<button type="button" data-sxpick="${d.id}"${used.has(d.id)&&d.id!=="scan"&&d.id!=="th"?' class="used"':""}>${esc(d.label)}</button>`).join("")}</div>`}).join("");
   return cols||`<p class="note" style="margin:6px 2px">No filter matches “${esc(st.sxq)}”.</p>`}
 function renderScreener(){
-  const S=st.sx,saved=sxSaved();
   if(D.meta.pat&&!PAT&&!renderScreener.pl){renderScreener.pl=1;patLoad().then(()=>{if(st.tab==="screener")renderScreener()}).catch(()=>{})}
   if(!VPX&&!renderScreener.vl){renderScreener.vl=1;vpxLoad().then(()=>{if(st.tab==="screener")renderScreener()})}
   if(D.meta.grp&&!GXD&&!renderScreener.gl){renderScreener.gl=1;grpLoad().then(()=>{if(st.tab==="screener")renderScreener()}).catch(()=>{})}
   sxNeedCL();
-  let h=`<div class="sec-head"><div><h2>Screener</h2><p>Stack any filters — price, returns, RS, Upside, trend, bases, results, fundamentals, ownership, scanners. Every filter shows how many stocks are left after it. Start from a ready screen or build your own and save it.</p></div></div>
-  <div class="sxstrip"><span class="sxk">Ready screens</span>${SXP.map((p,i)=>`<button type="button" class="sxchip" data-sxpre="${i}" title="${esc(p[1])}">${esc(p[0])}</button>`).join("")}</div>
+  if(!renderScreener.mi){renderScreener.mi=1;if(store.get("sxmode","s")==="g"&&D.meta.grp)sxSwap()}
+  if(SXC.kind==="g"&&!GXD){$("#view").innerHTML=`<div class="card empty">${D.meta.grp?"Loading group data…":"Group data is not in today's update."}</div>`;return}
+  const S=st.sx,saved=sxSaved(),pn=SXC.P.find(p=>p[0]===S.name);
+  let h=`<div class="sec-head"><div><h2>Screener</h2><p>${SXC.intro}</p></div></div>
+  ${D.meta.grp?`<div class="sxmode" role="group" aria-label="What to screen"><span class="sxk">Screen</span>${seg("sxmode",["s","g"],SXC.kind,{s:"Stocks",g:"Groups — themes, sectors, industries"})}</div>`:""}
+  <div class="sxstrip"><span class="sxk">Ready screens</span>${SXC.P.map((p,i)=>`<button type="button" class="sxchip${p[3]?" "+(SXC.pcls?SXC.pcls(p):p[3]):""}" data-sxpre="${i}" title="${esc(p[1])}">${esc(p[0])}</button>`).join("")}${SXC.legend||""}</div>
   ${saved.length?`<div class="sxstrip"><span class="sxk">My screens</span>${saved.map((p,i)=>`<span class="sxchip mine${S.name===p.name?" on":""}"><button type="button" data-sxload="${i}">${esc(p.name)}</button><button type="button" data-sxrm="${i}" aria-label="Delete the screen ${esc(p.name)}">✕</button></span>`).join("")}</div>`:""}
   <div class="card sxbox"><div class="sxhead"><div class="sxtitle"><h3>${S.name?esc(S.name):S.f.length?"Your screen":"No filters yet"}</h3><span id="sxCount"></span></div>
-      <div class="sxacts">${seg("sxuni",["lq","all"],S.uni,{lq:`Liquid ${D.liq.length.toLocaleString("en-IN")}`,all:`All ${D.stocks.length.toLocaleString("en-IN")}`})}
+      <div class="sxacts">${SXC.uniSeg(S)}
         <span class="sxsave" id="sxSaveBox" hidden><input class="search" id="sxName" maxlength="40" placeholder="Name this screen" aria-label="Screen name"><button type="button" class="btn" data-sxsaveok>Save</button></span><button type="button" class="ghost" data-sxsave ${S.f.some(sxOn)?"":"disabled"}>Save screen</button><button type="button" class="ghost" data-sxclear ${S.f.length?"":"disabled"}>Clear</button></div></div>
+    ${pn&&SXC.note?SXC.note(pn):""}
     <div id="sxRows"></div>
-    <details class="sxadd" id="sxAdd"${S.f.length?"":" open"}><summary><b>+ Add a filter</b><span>${SXF.length} to choose from</span></summary>
-      <div class="sxfind"><input class="search" type="search" id="sxq" placeholder="Find a filter — RS, pivot, ROE, delivery…" value="${esc(st.sxq||"")}" aria-label="Find a filter"></div>
+    <details class="sxadd" id="sxAdd"${S.f.length?"":" open"}><summary><b>+ Add a filter</b><span>${SXC.F.length} to choose from</span></summary>
+      <div class="sxfind"><input class="search" type="search" id="sxq" placeholder="${SXC.find}" value="${esc(st.sxq||"")}" aria-label="Find a filter"></div>
       <div class="sxpick" id="sxPick">${sxPicker()}</div></details></div>
   <div class="card" id="sxT"></div>
-  <p class="note">Numbers are as of the close of ${fmtDate(D.meta.asof)}. A stock with no value for a field (for example no P/E, or no base) does not pass a filter on that field. Within one filter, several choices mean “any of these”; add the filter again to ask for both.</p>`;
+  <p class="note">${SXC.foot()}</p>`;
   $("#view").innerHTML=h;
   $("#sxq").addEventListener("input",e=>{st.sxq=e.target.value;$("#sxPick").innerHTML=sxPicker()});
   $("#sxq").addEventListener("keydown",e=>{if(e.key==="Enter"){const b=$("#sxPick button[data-sxpick]");if(b)b.click()}});
@@ -4597,9 +4822,9 @@ function renderScreener(){
   drawScreener();
 }
 /* closes are a large file: fetch them only once a filter or column needs them */
-function sxNeedCL(){if(CL||sxNeedCL.busy)return;const ids=[...st.sx.f.map(f=>f.id),...(st.sx.cols||[])];if(!ids.some(id=>SXB[id]?.cl))return;
+function sxNeedCL(){if(SXC.kind!=="s"||CL||sxNeedCL.busy)return;const ids=[...st.sx.f.map(f=>f.id),...(st.sx.cols||[])];if(!ids.some(id=>SXC.B[id]?.cl))return;
   sxNeedCL.busy=1;clLoad().then(()=>{if(st.tab==="screener")renderScreener()}).catch(()=>{}).finally(()=>{sxNeedCL.busy=0})}
-function sxChanged(keepName,inPlace){sxNeedCL();if(!keepName)st.sx.name="";store.set("sx",st.sx);if(st.tbl.sx)st.tbl.sx.show=100;
+function sxChanged(keepName,inPlace){sxNeedCL();if(!keepName)st.sx.name="";store.set(SXC.key,st.sx);if(st.tbl.sx)st.tbl.sx.show=100;
   const h=$("#view .sxtitle h3");if(h)h.textContent=st.sx.name||(st.sx.f.length?"Your screen":"No filters yet");
   document.querySelectorAll(".sxchip.mine").forEach(c=>c.classList.toggle("on",!!st.sx.name&&c.firstElementChild.textContent===st.sx.name));
   const sv=$("[data-sxsave]"),cl=$("[data-sxclear]");if(sv)sv.disabled=!st.sx.f.some(sxOn);if(cl)cl.disabled=!st.sx.f.length;drawScreener(inPlace)}
@@ -4607,42 +4832,42 @@ function drawScreener(inPlace){
   const S=st.sx,R=sxRun();let prev=R.base;
   const rowsEl=$("#sxRows"),have=rowsEl.querySelectorAll(".sxrow");
   if(inPlace===true&&have.length===S.f.length){      /* a number was typed: update counts and preset buttons only */
-    S.f.forEach((f,i)=>{const d=SXB[f.id],el=have[i],l=R.left.get(f),on=sxOn(f),cut=prev-l;el.classList.toggle("off",!on);
+    S.f.forEach((f,i)=>{const d=SXC.B[f.id],el=have[i],l=R.left.get(f),on=sxOn(f),cut=prev-l;el.classList.toggle("off",!on);
       el.querySelector(".sxleft").innerHTML=on?`<b>${l.toLocaleString("en-IN")}</b><small>${cut>0?"−"+cut.toLocaleString("en-IN"):"no cut"}</small>`:`<small>not set</small>`;
       if(d.t==="n")el.querySelectorAll("[data-sxps]").forEach((b,k)=>{const p=d.ps[k];b.setAttribute("aria-pressed",(p[1]??null)===(f.min??null)&&(p[2]??null)===(f.max??null))});
       if(on)prev=l})}
   else rowsEl.innerHTML=S.f.map((f,i)=>{const l=R.left.get(f),r=sxRow(f,i,l,prev);if(sxOn(f))prev=l;return r}).join("")||`<p class="sxempty">Pick a ready screen above, or add your first filter below.</p>`;
-  $("#sxCount").innerHTML=`<b class="num">${R.rows.length.toLocaleString("en-IN")}</b> of ${R.base.toLocaleString("en-IN")} stocks${R.nAct?` pass ${R.nAct} filter${R.nAct===1?"":"s"}`:""}`;
+  $("#sxCount").innerHTML=`<b class="num">${R.rows.length.toLocaleString("en-IN")}</b> of ${R.base.toLocaleString("en-IN")} ${SXC.noun}s${R.nAct?` pass ${R.nAct} filter${R.nAct===1?"":"s"}`:""}`;
   if(!st.tbl.sx)st.tbl.sx={key:null,dir:-1,show:100};
-  const fixed=["px","mc","sec","ind"],used=[...new Set(S.f.filter(sxOn).map(f=>f.id))].filter(id=>SXB[id]&&!fixed.includes(id));
-  const extra=(S.cols||[]).filter(id=>SXB[id]&&!fixed.includes(id)&&!used.includes(id));
-  const ids=[...new Set(["r1D","up","rs",...used,...extra,"h52","r1M","r3M","st"])];
-  const cols=[C.stock,C.px,...ids.map(id=>sxCol(SXB[id])),C.sec];
-  if(!st.tbl.sx.key||!cols.some(c=>c.k===st.tbl.sx.key))st.tbl.sx.key=used[0]&&SXB[used[0]].t==="n"?"sx_"+used[0]:"sx_up";
-  const rest=SXF.filter(d=>!ids.includes(d.id)&&!fixed.includes(d.id));
-  const head=`<div class="bxhead"><span><b class="num">${R.rows.length.toLocaleString("en-IN")}</b> stock${R.rows.length===1?"":"s"}${R.nAct?` · ${esc(S.f.filter(sxOn).map(sxDesc).join(" · "))}`:""}</span><span class="sxtools">
-    <select class="select sxsel" id="sxColAdd" aria-label="Add a column"><option value="">+ Column</option>${Object.entries(SXG).map(([g,[gn]])=>{const a=rest.filter(d=>d.g===g);return a.length?`<optgroup label="${esc(gn)}">${a.map(d=>`<option value="${d.id}">${esc(d.label)}</option>`).join("")}</optgroup>`:""}).join("")}</select>
+  const fixed=SXC.fixed,used=[...new Set(S.f.filter(sxOn).map(f=>f.id))].filter(id=>SXC.B[id]&&!fixed.includes(id));
+  const extra=(S.cols||[]).filter(id=>SXC.B[id]&&!fixed.includes(id)&&!used.includes(id));
+  const ids=[...new Set([...SXC.lead,...used,...extra,...SXC.tail])].filter(id=>SXC.B[id]);
+  const cols=SXC.cols(ids.map(id=>sxCol(SXC.B[id])));
+  if(!st.tbl.sx.key||!cols.some(c=>c.k===st.tbl.sx.key))st.tbl.sx.key=used[0]&&SXC.B[used[0]].t==="n"?"sx_"+used[0]:SXC.sort;
+  const rest=SXC.F.filter(d=>!ids.includes(d.id)&&!fixed.includes(d.id));
+  const head=`<div class="bxhead"><span><b class="num">${R.rows.length.toLocaleString("en-IN")}</b> ${SXC.noun}${R.rows.length===1?"":"s"}${R.nAct?` · ${esc(S.f.filter(sxOn).map(sxDesc).join(" · "))}`:""}</span><span class="sxtools">
+    <select class="select sxsel" id="sxColAdd" aria-label="Add a column"><option value="">+ Column</option>${Object.entries(SXC.G).map(([g,[gn]])=>{const a=rest.filter(d=>d.g===g);return a.length?`<optgroup label="${esc(gn)}">${a.map(d=>`<option value="${d.id}">${esc(d.label)}</option>`).join("")}</optgroup>`:""}).join("")}</select>
     ${extra.length?`<button type="button" class="ghost" data-sxcolclr>Remove ${extra.length} added column${extra.length===1?"":"s"}</button>`:""}<button type="button" class="ghost" data-sxcsv>Download CSV</button>
-    ${R.rows.length?`<button type="button" class="ghost" data-wl-addall="${esc(JSON.stringify(R.rows.slice(0,200).map(r=>r.s)))}" data-label="${esc(S.name||"Screener")} stocks">☆ Add ${Math.min(200,R.rows.length)} to a watchlist</button>`:""}</span></div>`;
-  $("#sxT").innerHTML=head+dtable("sx",R.rows,cols,{empty:R.nAct?"No stock passes every filter. Loosen the one with the biggest cut.":"Add a filter to start."});
+    ${R.rows.length&&SXC.kind==="s"?`<button type="button" class="ghost" data-wl-addall="${esc(JSON.stringify(R.rows.slice(0,200).map(r=>r.s)))}" data-label="${esc(S.name||"Screener")} stocks">☆ Add ${Math.min(200,R.rows.length)} to a watchlist</button>`:""}</span></div>`;
+  $("#sxT").innerHTML=head+dtable("sx",R.rows,cols,{empty:R.nAct?`No ${SXC.noun} passes every filter. Loosen the one with the biggest cut.`:"Add a filter to start."});
   wireTables($("#sxT"),()=>drawScreener());
-  $("#sxColAdd").addEventListener("change",e=>{if(e.target.value){st.sx.cols=[...(st.sx.cols||[]),e.target.value];store.set("sx",st.sx);drawScreener()}});
+  $("#sxColAdd").addEventListener("change",e=>{if(e.target.value){st.sx.cols=[...(st.sx.cols||[]),e.target.value];store.set(SXC.key,st.sx);drawScreener()}});
 }
 function sxClick(e){
   const S=st.sx,t=e.target.closest("[data-sxpick],[data-sxdel],[data-sxps],[data-sxb],[data-sxe],[data-sxpre],[data-sxload],[data-sxrm],[data-sxsave],[data-sxsaveok],[data-sxclear],[data-sxcolclr]");if(!t)return false;const ds=t.dataset;
-  if(ds.sxpick){const d=SXB[ds.sxpick];S.f.push(d.t==="n"?{id:d.id,min:null,max:null}:d.t==="b"?{id:d.id,v:true}:{id:d.id,in:[]});st.sxq="";const q=$("#sxq");if(q)q.value="";$("#sxPick").innerHTML=sxPicker();$("#sxAdd").open=false;sxChanged();
+  if(ds.sxpick){const d=SXC.B[ds.sxpick];S.f.push(d.t==="n"?{id:d.id,min:null,max:null}:d.t==="b"?{id:d.id,v:true}:{id:d.id,in:[]});st.sxq="";const q=$("#sxq");if(q)q.value="";$("#sxPick").innerHTML=sxPicker();$("#sxAdd").open=false;sxChanged();
     const r=$("#sxRows .sxrow:last-child");r?.scrollIntoView({block:"nearest"});r?.querySelector("input,select,button")?.focus();return true}
   if(ds.sxdel!=null){S.f.splice(+ds.sxdel,1);$("#sxPick").innerHTML=sxPicker();sxChanged();return true}
-  if(ds.sxps){const [i,k]=ds.sxps.split("|").map(Number),f=S.f[i],p=SXB[f.id].ps[k],same=(p[1]??null)===(f.min??null)&&(p[2]??null)===(f.max??null);f.min=same?null:p[1];f.max=same?null:p[2];sxChanged();return true}
+  if(ds.sxps){const [i,k]=ds.sxps.split("|").map(Number),f=S.f[i],p=SXC.B[f.id].ps[k],same=(p[1]??null)===(f.min??null)&&(p[2]??null)===(f.max??null);f.min=same?null:p[1];f.max=same?null:p[2];sxChanged();return true}
   if(ds.sxb){const [i,k]=ds.sxb.split("|").map(Number),f=S.f[i],v=k===1;f.v=f.v===v?null:v;sxChanged();return true}
   if(ds.sxe){const j=ds.sxe.indexOf("|"),f=S.f[+ds.sxe.slice(0,j)],v=ds.sxe.slice(j+1),a=(f.in||[]).map(String);f.in=a.includes(v)?a.filter(q=>q!==v):[...a,v];sxChanged();return true}
-  if(ds.sxpre!=null){const p=SXP[+ds.sxpre];st.sx={...S,f:JSON.parse(JSON.stringify(p[2])),name:p[0],cols:[]};st.tbl.sx=null;store.set("sx",st.sx);renderScreener();return true}
-  if(ds.sxload!=null){const p=sxSaved()[+ds.sxload];if(p){st.sx={uni:p.uni||"lq",f:JSON.parse(JSON.stringify(p.f)),cols:[...(p.cols||[])],name:p.name};st.tbl.sx=null;store.set("sx",st.sx);renderScreener()}return true}
-  if(ds.sxrm!=null){const a=sxSaved(),p=a[+ds.sxrm];if(p){a.splice(+ds.sxrm,1);store.set("sxSaved",a);if(S.name===p.name){S.name="";store.set("sx",S)}renderScreener();toast(`Deleted “${p.name}”`)}return true}
+  if(ds.sxpre!=null){const p=SXC.P[+ds.sxpre];st.sx={...S,f:JSON.parse(JSON.stringify(p[2])),name:p[0],cols:[]};st.tbl.sx=null;store.set(SXC.key,st.sx);renderScreener();return true}
+  if(ds.sxload!=null){const p=sxSaved()[+ds.sxload];if(p){st.sx={uni:p.uni||SXC.uni0,f:JSON.parse(JSON.stringify(p.f)),cols:[...(p.cols||[])],name:p.name};st.tbl.sx=null;store.set(SXC.key,st.sx);renderScreener()}return true}
+  if(ds.sxrm!=null){const a=sxSaved(),p=a[+ds.sxrm];if(p){a.splice(+ds.sxrm,1);store.set(SXC.saved,a);if(S.name===p.name){S.name="";store.set(SXC.key,S)}renderScreener();toast(`Deleted “${p.name}”`)}return true}
   if(ds.sxsave!=null){const b=$("#sxSaveBox");b.hidden=!b.hidden;if(!b.hidden){const i=$("#sxName");i.value=S.name||"";i.focus();i.onkeydown=ev=>{if(ev.key==="Enter")$("[data-sxsaveok]").click();if(ev.key==="Escape")b.hidden=true}}return true}
-  if(ds.sxsaveok!=null){const nm=($("#sxName").value||"").trim().slice(0,40);if(!nm){$("#sxName").focus();return true}const a=sxSaved().filter(p=>p.name!==nm);a.push({name:nm,uni:S.uni,f:S.f.filter(sxOn),cols:S.cols||[]});store.set("sxSaved",a);S.name=nm;store.set("sx",S);renderScreener();toast(`Saved “${nm}”`);return true}
-  if(ds.sxclear!=null){st.sx={uni:S.uni,f:[],cols:[],name:""};st.tbl.sx=null;store.set("sx",st.sx);renderScreener();return true}
-  if(ds.sxcolclr!=null){S.cols=[];store.set("sx",S);drawScreener();return true}
+  if(ds.sxsaveok!=null){const nm=($("#sxName").value||"").trim().slice(0,40);if(!nm){$("#sxName").focus();return true}const a=sxSaved().filter(p=>p.name!==nm);a.push({name:nm,uni:S.uni,f:S.f.filter(sxOn),cols:S.cols||[]});store.set(SXC.saved,a);S.name=nm;store.set(SXC.key,S);renderScreener();toast(`Saved “${nm}”`);return true}
+  if(ds.sxclear!=null){st.sx={uni:S.uni,f:[],cols:[],name:""};st.tbl.sx=null;store.set(SXC.key,st.sx);renderScreener();return true}
+  if(ds.sxcolclr!=null){S.cols=[];store.set(SXC.key,S);drawScreener();return true}
   return false}
 
 /* ════════════════════ routing & wiring ════════════════════ */
@@ -4754,6 +4979,7 @@ document.addEventListener("click",e=>{
     if(k==="fundmin"){st.rs.fmin=+v;store.set("rs",st.rs);s.parentElement.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===s));drawRS();return}
     if(k==="rrgset"){st.rrgset=v;store.set("rrgset",v);renderRRG();return}
     if(k==="uni"){st.uni=v;store.set("uni",v);st.open=null;render();return}
+    if(k==="sxmode"){if(v!==SXC.kind){sxSwap();store.set("sxmode",SXC.kind);renderScreener()}return}
     if(k==="sxuni"){st.sx.uni=v;s.parentElement.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===s));sxChanged(true);return}
     if(k==="upmin"){st.up.min=v;store.set("up",{...st.up,q:""});if(st.tbl.up)st.tbl.up.show=100;s.parentElement.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===s));drawUpside();return}
     if(k==="brange"){st.brange=v;store.set("brange",v);const y=window.scrollY;renderBreadth();window.scrollTo(0,y);return}
