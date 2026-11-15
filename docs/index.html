@@ -1531,8 +1531,8 @@ function renderRotation(){
       <div class="bval num ${cls(g.v)}">${sgn(g.v)}</div>${rk}
       ${open?members(g):""}</div>`;
   }
-  const sx=D.meta.sector_from_industry;
-  h+=`</div><p class="note">Bars are the ${st.agg} ${st.period==="1D"?"today's":PL[st.period]} return of stocks in each group, using ${uniWord()} (groups need ${D.meta.min_group_size}+ stocks).${st.uni!=="lq"?" Small, thinly traded stocks swing more — the median is steadier than the mean.":""}${st.group==="Sector"&&sx?` NSE lists a sector only for the ~750 stocks of its broad indices; ${sx.derived.toLocaleString("en-IN")} other stocks take the sector that their industry belongs to (the two agree for ${sx.agree}% of stocks where both are known).`:""}</p>`;
+  const sx=D.meta.sector_from_industry,cl=D.meta.classification;
+  h+=`</div><p class="note">Bars are the ${st.agg} ${st.period==="1D"?"today's":PL[st.period]} return of stocks in each group, using ${uniWord()} (groups need ${D.meta.min_group_size}+ stocks).${st.uni!=="lq"?" Small, thinly traded stocks swing more — the median is steadier than the mean.":""}${st.group==="Sector"&&sx?` NSE lists a sector only for the ~750 stocks of its broad indices; ${sx.derived.toLocaleString("en-IN")} other stocks take the sector that their industry belongs to (the two agree for ${sx.agree}% of stocks where both are known).`:""}${(st.group==="Sector"||st.group==="Industry"||st.group==="Themes")&&cl?` Sector and industry come from one master list (${cl.matched.toLocaleString("en-IN")} of ${D.meta.all_stocks.toLocaleString("en-IN")} stocks; ${cl.sectors} sectors, ${cl.industries} industries)${st.group==="Themes"?"; each theme takes the companies whose sector or industry is its core business, plus named companies with a large business in it":""}.`:""}</p>`;
   $("#view").innerHTML=h;wireTables($("#view"),renderRotation);if(D.meta.grp)gMountMini();
 }
 const viewSeg=()=>`<div class="ctl"><span>View</span>${seg("view",["bars","heat",...(D.meta.grp?["radar","gsig"]:[]),...(D.meta.idx?["rrg"]:[])],st.view,{bars:"Bars",heat:"Heatmap",radar:"Rotation radar",gsig:"Group signals",rrg:"NSE index map (RRG)"})}</div>`;
