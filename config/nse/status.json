@@ -1,59 +1,22 @@
 {
- "run": "2026-11-14 02:02",
+ "run": "2026-11-15 08:57",
  "delivery": {
-  "added": [
-   "2026-11-13"
-  ],
+  "added": [],
   "not_published": [],
   "last": "2026-11-13"
  },
  "indices": {
-  "added": [
-   "2026-11-13"
-  ],
+  "added": [],
   "not_published": [],
   "last": "2026-11-13"
  },
  "close_check": {
   "date": "2026-11-13",
-  "checked": 2593,
-  "disagree": 972,
-  "corrected": 972,
+  "checked": 2591,
+  "disagree": 0,
+  "corrected": 0,
   "skipped": 0,
-  "examples": {
-   "PRAKASHSTL": [
-    3.6,
-    3.82
-   ],
-   "YOGI": [
-    171.0,
-    163.53
-   ],
-   "DNAMEDIA": [
-    2.34,
-    2.24
-   ],
-   "HEADSUP": [
-    5.3,
-    5.51
-   ],
-   "UNIINFO": [
-    11.13,
-    10.73
-   ],
-   "MWL": [
-    38.26,
-    39.62
-   ],
-   "SIGIND": [
-    62.98,
-    60.95
-   ],
-   "VCL": [
-    1.6,
-    1.55
-   ]
-  },
+  "examples": {},
   "skipped_examples": {}
  }
 }
