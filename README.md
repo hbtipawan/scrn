@@ -68,18 +68,23 @@ There is nothing secret in the repo, so pick based on who may see the dashboard:
 4. You get a link like `sector-radar-xyz.pages.dev`. Each evening's data commit redeploys it.
 5. Lock it to you: **Zero Trust → Access → Applications → Add → Self-hosted**, enter the pages.dev address, allow only your email.
 
-## Step 4 — Edit themes
+## Step 4 — Sector, industry and themes
 
-Themes live in `config/themes.csv`: one theme per row, NSE symbols separated by spaces.
+**Sector and industry** for every stock come from one master list, `config/classification_master.csv` (columns `companyId` as `NSE:SYMBOL` or `BSE:SYMBOL`, `Name`, `Industry`, `Sector`; about 6,000 NSE and BSE companies). `scripts/classify.py` reads it:
 
-```
-Theme,Symbols
-Wires & Cables,POLYCAB KEI FINCABLES RRKABEL HAVELLS ...
-```
+- a stock is matched to `NSE:SYMBOL`; if the list has the company only as `BSE:SYMBOL` with the same symbol, that row is used when the company names agree;
+- spelling variants of one label are merged ("IT - Software" and "IT Software"), and a few old-style labels get the current one (`MANUAL_IND` in `classify.py`);
+- a stock missing from the list stays unclassified — it is never guessed. Each daily run prints how many matched.
 
-Edit it on GitHub (open the file → pencil icon → commit). A theme appears once 3 of its stocks pass the filters. The next daily run picks up changes; to see them immediately, run the workflow by hand.
+**To refresh it**, export the same list again and replace `config/classification_master.csv` on GitHub (same four columns). Nothing else needs changing; the next run uses it everywhere (Rotation, group charts, Screener, Summary pop-ups, watchlists, Telegram group alerts). `vpci/Stock_List.csv` (VPCI tab) uses the same labels; it was rewritten from the master list once and keeps its own rows.
 
-**Sector** comes from NSE's classification of the ~750 Nifty Total Market stocks. **NSE Index** groups are equal-weighted members of 39 sectoral and thematic indices. Both refresh automatically.
+Lenders, brokers and insurers (master sectors Finance, Banks, Insurance, Stock and Commodity Brokers, Financial Services) are treated as financial companies in the fundamentals and results scoring.
+
+The **Upside** model keeps the sector and industry groups it was trained on (NSE sector lists and the Yahoo/NSE industry). A retrain with the master groups was tested: it scored lower on 2019–26 (top-10% excess return +3.7% against +4.4%), so the trained groups stay inside the model only.
+
+**Themes** (49) are built every day by `scripts/theme_rules.py`, the way index providers build thematic indices: a theme takes every company whose master sector or industry is its core business (e.g. Private Banks = industry *Private Banks*; Defence = sector *Aerospace and Defence* plus shipyards and defence explosives), plus a short named list of companies from other industries with a large business in the theme (Havells in Wires & Cables, Bharat Forge in Defence), minus named exclusions where a label does not fit (each with its reason). A new listing joins its themes as soon as the master list has it. To change a theme, edit its line in `theme_rules.py` (`sec=`, `ind=`, `add=`, `drop=`). `config/themes.csv` holds the same lists written out and is used only if the master file is missing.
+
+**NSE Index** groups are equal-weighted members of 39 sectoral and thematic indices; they refresh automatically.
 
 ## Optional — Industry for every stock and the ₹500 Cr filter
 
