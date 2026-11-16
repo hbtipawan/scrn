@@ -1,110 +1,6 @@
 {
-"fetched": "2026-11-15",
+"fetched": "2026-11-16",
 "rows": [
-{
-"symbol": "BAGMANE",
-"series": "RR",
-"ex": "2026-11-05",
-"kind": "dividend",
-"label": "Dividend \u20b93.1",
-"subject": "Distribution - Rs 1.55 Per Unit Consists Of Rs 1.22 Per Unit As Dividend & Re 0.33 Per Unit As Interest"
-},
-{
-"symbol": "BIRET",
-"series": "RR",
-"ex": "2026-11-05",
-"kind": "dividend",
-"label": "Dividend \u20b911.4",
-"subject": "Distribution - Rs 5.70 Per Unit Consists Of Rs 1.72 Per Unit As Dividend/ Rs 1.54 Per Unit As Interest/Rs 2.24 Per Unit "
-},
-{
-"symbol": "BSOFT",
-"series": "EQ",
-"ex": "2026-11-05",
-"kind": "dividend",
-"label": "Interim dividend \u20b93",
-"subject": "Interim Dividend - Rs 3 Per Share"
-},
-{
-"symbol": "ENGINERSIN",
-"series": "EQ",
-"ex": "2026-11-05",
-"kind": "dividend",
-"label": "Interim dividend \u20b91.5",
-"subject": "Interim Dividend - Rs 1.50 Per Share"
-},
-{
-"symbol": "GNRL",
-"series": "EQ",
-"ex": "2026-11-05",
-"kind": "split",
-"label": "Split \u20b910 \u2192 \u20b91",
-"subject": "Face Value Split (Sub-Division) - From Rs 10/- Per Share To Re 1/- Per Share"
-},
-{
-"symbol": "INDTONER",
-"series": "EQ",
-"ex": "2026-11-05",
-"kind": "dividend",
-"label": "Interim dividend \u20b91.2",
-"subject": "Interim Dividend - Rs 1.20 Per Share"
-},
-{
-"symbol": "KRISHNADEF",
-"series": "EQ",
-"ex": "2026-11-05",
-"kind": "dividend",
-"label": "Interim dividend \u20b90.75",
-"subject": "Interim Dividend - Re 0.75 Per Share"
-},
-{
-"symbol": "MINDSPACE",
-"series": "RR",
-"ex": "2026-11-05",
-"kind": "dividend",
-"label": "Dividend \u20b913.34",
-"subject": "Distribution - Rs 6.67 Per Unit Consisting Of Dividend - Rs 4.17 Per Unit/ Repayment Of Spv Debt - Rs 2.50 Per Unit"
-},
-{
-"symbol": "NAVINFLUOR",
-"series": "EQ",
-"ex": "2026-11-05",
-"kind": "dividend",
-"label": "Interim dividend \u20b98",
-"subject": "Interim Dividend - Rs 8 Per Share"
-},
-{
-"symbol": "SANOFI",
-"series": "EQ",
-"ex": "2026-11-05",
-"kind": "dividend",
-"label": "Interim dividend \u20b975",
-"subject": "Interim Dividend - Rs 75 Per Share"
-},
-{
-"symbol": "SHAREINDIA",
-"series": "EQ",
-"ex": "2026-11-05",
-"kind": "dividend",
-"label": "Interim dividend \u20b90.4",
-"subject": "Interim Dividend - Re 0.40 Per Share"
-},
-{
-"symbol": "SUNTV",
-"series": "EQ",
-"ex": "2026-11-05",
-"kind": "dividend",
-"label": "Interim dividend \u20b93.75",
-"subject": "Interim Dividend - Rs 3.75 Per Share"
-},
-{
-"symbol": "VBL",
-"series": "EQ",
-"ex": "2026-11-05",
-"kind": "dividend",
-"label": "Interim dividend \u20b90.5",
-"subject": "Interim Dividend - Re 0.50 Per Share"
-},
 {
 "symbol": "761GS2030",
 "series": "GS",
@@ -1034,12 +930,28 @@
 "subject": "Distribution - Rs 3 Per Unit Consist Of Rs 1.69 Per Unit As Interest/ Re 0.62 Per Unit As Dividend/ Re 0.68 Per Unit As "
 },
 {
+"symbol": "CAPINVIT",
+"series": "IV",
+"ex": "2026-11-18",
+"kind": "dividend",
+"label": "Dividend \u20b94.6",
+"subject": "Distribution - Rs 2.30 Per Unit Consist Of Rs 1.20 Per Unit As Interest/ Re 0.70 Per Unit As Dividend/ Re 0.40 Per Unit "
+},
+{
 "symbol": "CONNPLEX",
 "series": "SM",
 "ex": "2026-11-18",
 "kind": "dividend",
 "label": "Interim dividend \u20b90.5",
 "subject": "INTERIM DIVIDEND - RE 0.50 PER SHARE"
+},
+{
+"symbol": "DRAGARWQ",
+"series": "EQ",
+"ex": "2026-11-18",
+"kind": "other",
+"label": "Merger",
+"subject": "Merger"
 },
 {
 "symbol": "GLOBAL",
@@ -1066,6 +978,22 @@
 "subject": "Interim Dividend - Rs  150 Per Share"
 },
 {
+"symbol": "PRAXIS",
+"series": "EQ",
+"ex": "2026-11-18",
+"kind": "rights",
+"label": "Rights 5:9",
+"subject": "Rights 5:9"
+},
+{
+"symbol": "ROYALARC",
+"series": "SM",
+"ex": "2026-11-18",
+"kind": "dividend",
+"label": "Interim dividend \u20b90.5",
+"subject": "INTERIM DIVIDEND - RE 0.50 PER SHARE"
+},
+{
 "symbol": "TDPOWERSYS",
 "series": "EQ",
 "ex": "2026-11-18",
@@ -1074,12 +1002,44 @@
 "subject": "Interim Dividend - Re 0.65 Per Share"
 },
 {
+"symbol": "VERTIS",
+"series": "IV",
+"ex": "2026-11-18",
+"kind": "dividend",
+"label": "Dividend \u20b96.5",
+"subject": "Distribution - Rs 3.25 Per Unit Consist Of Rs 1.9609 Per Unit As Interest /Re 0.5156 Per Unit As Return Of Capital/ Re 0"
+},
+{
 "symbol": "INGERRAND",
 "series": "EQ",
 "ex": "2026-11-19",
 "kind": "dividend",
 "label": "Interim dividend \u20b920",
 "subject": "Interim Dividend - Rs 20 Per Share"
+},
+{
+"symbol": "NATCOPHARM",
+"series": "EQ",
+"ex": "2026-11-19",
+"kind": "dividend",
+"label": "Interim dividend \u20b91.25",
+"subject": "Interim Dividend - Rs 1.25 Per Share"
+},
+{
+"symbol": "ASHOKLEY",
+"series": "EQ",
+"ex": "2026-11-20",
+"kind": "dividend",
+"label": "Interim dividend \u20b91",
+"subject": "Interim Dividend - Re 1 Per Share"
+},
+{
+"symbol": "JAMNAAUTO",
+"series": "EQ",
+"ex": "2026-11-20",
+"kind": "dividend",
+"label": "Interim dividend \u20b91",
+"subject": "Interim Dividend - Re 1 Per Share"
 },
 {
 "symbol": "MEDIASSIST",
@@ -1096,6 +1056,14 @@
 "kind": "dividend",
 "label": "Interim dividend \u20b97",
 "subject": "Interim Dividend - Rs 7 Per Share"
+},
+{
+"symbol": "POLYPLEX",
+"series": "EQ",
+"ex": "2026-11-20",
+"kind": "dividend",
+"label": "Interim dividend \u20b912",
+"subject": "Interim Dividend - Rs 12 Per Share"
 },
 {
 "symbol": "TALBROAUTO",
@@ -1120,6 +1088,14 @@
 "kind": "dividend",
 "label": "Interim dividend \u20b90.02",
 "subject": "Interim Dividend - Re 0.02 Per Share"
+},
+{
+"symbol": "ZEEL",
+"series": "EQ",
+"ex": "2026-11-25",
+"kind": "buyback",
+"label": "Buyback",
+"subject": "Buy Back"
 }
 ]
 }
