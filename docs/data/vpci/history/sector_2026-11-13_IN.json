@@ -1,6 +1,6 @@
 {
  "scan_date": "2026-11-13",
- "scan_timestamp": "2026-11-17T17:11:05+05:30",
+ "scan_timestamp": "2026-11-18T03:42:16+05:30",
  "market": "IN",
  "sector_both": [
   {
@@ -2534,16 +2534,16 @@
    "hit_rate_%": 75.7
   },
   {
-   "sector": "Hotels and Restaurants",
-   "stocks_passing": 27,
-   "total_in_universe": 33,
-   "hit_rate_%": 81.8
-  },
-  {
    "sector": "Aerospace and Defence",
    "stocks_passing": 27,
    "total_in_universe": 35,
    "hit_rate_%": 77.1
+  },
+  {
+   "sector": "Hotels and Restaurants",
+   "stocks_passing": 26,
+   "total_in_universe": 33,
+   "hit_rate_%": 78.8
   },
   {
    "sector": "Consumer Durables",
@@ -2974,13 +2974,13 @@
    "hit_rate_%": 64.5
   },
   {
-   "industry": "Hotels",
-   "stocks_passing": 19,
+   "industry": "Diversified Auto Components",
+   "stocks_passing": 18,
    "total_in_universe": 20,
-   "hit_rate_%": 95.0
+   "hit_rate_%": 90.0
   },
   {
-   "industry": "Diversified Auto Components",
+   "industry": "Hotels",
    "stocks_passing": 18,
    "total_in_universe": 20,
    "hit_rate_%": 90.0
