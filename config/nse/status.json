@@ -1,59 +1,18 @@
 {
- "run": "2026-11-17 04:26",
+ "run": "2026-11-17 16:52",
  "delivery": {
-  "added": [
-   "2026-11-16"
-  ],
+  "added": [],
   "not_published": [],
   "last": "2026-11-16"
  },
  "indices": {
-  "added": [
-   "2026-11-16"
-  ],
+  "added": [],
   "not_published": [],
   "last": "2026-11-16"
  },
  "close_check": {
-  "date": "2026-11-16",
-  "checked": 2592,
-  "disagree": 1011,
-  "corrected": 1011,
-  "skipped": 0,
-  "examples": {
-   "SRIKPRIND": [
-    25.47,
-    24.03
-   ],
-   "FILATFASH": [
-    0.18,
-    0.17
-   ],
-   "VELJAN": [
-    2014.0,
-    1924.3
-   ],
-   "NAGREEKCAP": [
-    24.9,
-    23.83
-   ],
-   "RSDFIN": [
-    82.3,
-    85.82
-   ],
-   "PANSARI": [
-    262.1,
-    272.3
-   ],
-   "BRIGHTBR": [
-    215.35,
-    223.27
-   ],
-   "PANORAMA": [
-    61.0,
-    58.98
-   ]
-  },
-  "skipped_examples": {}
+  "date": "2026-11-17",
+  "checked": 0,
+  "note": "NSE file not available"
  }
 }

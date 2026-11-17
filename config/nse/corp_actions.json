@@ -690,6 +690,14 @@
 "subject": "Interim Dividend - Rs 18 Per Share"
 },
 {
+"symbol": "ARCL",
+"series": "EQ",
+"ex": "2026-11-18",
+"kind": "dividend",
+"label": "Interim dividend \u20b91",
+"subject": "Interim Dividend - Re 1 Per Share"
+},
+{
 "symbol": "CAPINVIT",
 "series": "IV",
 "ex": "2026-11-18",
@@ -704,14 +712,6 @@
 "kind": "dividend",
 "label": "Interim dividend \u20b90.5",
 "subject": "INTERIM DIVIDEND - RE 0.50 PER SHARE"
-},
-{
-"symbol": "DRAGARWQ",
-"series": "EQ",
-"ex": "2026-11-18",
-"kind": "other",
-"label": "Merger",
-"subject": "Merger"
 },
 {
 "symbol": "GLOBAL",
@@ -856,6 +856,14 @@
 "kind": "dividend",
 "label": "Interim dividend \u20b90.4",
 "subject": "Interim Dividend - Re 0.40 Per Share"
+},
+{
+"symbol": "SMLMAH",
+"series": "EQ",
+"ex": "2026-11-20",
+"kind": "rights",
+"label": "Rights 2:7",
+"subject": "Rights 2:7 @ Premium Rs 3496/-"
 },
 {
 "symbol": "TALBROAUTO",
