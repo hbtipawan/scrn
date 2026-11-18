@@ -1,6 +1,6 @@
 {
  "scan_date": "2026-11-20",
- "scan_timestamp": "2026-11-18T17:13:01+05:30",
+ "scan_timestamp": "2026-11-19T03:18:17+05:30",
  "market": "IN",
  "sector_both": [
   {
@@ -28,12 +28,6 @@
    "hit_rate_%": 8.5
   },
   {
-   "sector": "Capital Goods Non Electrical Equipment",
-   "stocks_passing": 5,
-   "total_in_universe": 60,
-   "hit_rate_%": 8.3
-  },
-  {
    "sector": "IT Software",
    "stocks_passing": 5,
    "total_in_universe": 91,
@@ -56,6 +50,12 @@
    "stocks_passing": 4,
    "total_in_universe": 38,
    "hit_rate_%": 10.5
+  },
+  {
+   "sector": "Capital Goods Non Electrical Equipment",
+   "stocks_passing": 4,
+   "total_in_universe": 60,
+   "hit_rate_%": 6.7
   },
   {
    "sector": "Glass and Glass Products",
@@ -110,12 +110,6 @@
    "stocks_passing": 2,
    "total_in_universe": 64,
    "hit_rate_%": 3.1
-  },
-  {
-   "sector": "Chemicals",
-   "stocks_passing": 2,
-   "total_in_universe": 95,
-   "hit_rate_%": 2.1
   },
   {
    "sector": "Marine Port and Services",
@@ -200,6 +194,12 @@
    "stocks_passing": 1,
    "total_in_universe": 64,
    "hit_rate_%": 1.6
+  },
+  {
+   "sector": "Chemicals",
+   "stocks_passing": 1,
+   "total_in_universe": 95,
+   "hit_rate_%": 1.1
   },
   {
    "sector": "Agro Chemicals",
@@ -624,12 +624,6 @@
    "hit_rate_%": 33.3
   },
   {
-   "industry": "Capital Goods Engineering General",
-   "stocks_passing": 1,
-   "total_in_universe": 3,
-   "hit_rate_%": 33.3
-  },
-  {
    "industry": "Chemicals Fluorine",
    "stocks_passing": 1,
    "total_in_universe": 3,
@@ -930,12 +924,6 @@
    "hit_rate_%": 3.1
   },
   {
-   "industry": "Specialty Chemicals",
-   "stocks_passing": 1,
-   "total_in_universe": 33,
-   "hit_rate_%": 3.0
-  },
-  {
    "industry": "Abrasives and Grinding Wheels",
    "stocks_passing": 0,
    "total_in_universe": 3,
@@ -1167,6 +1155,12 @@
    "industry": "Capital Goods Electrical Equipment",
    "stocks_passing": 0,
    "total_in_universe": 1,
+   "hit_rate_%": 0.0
+  },
+  {
+   "industry": "Capital Goods Engineering General",
+   "stocks_passing": 0,
+   "total_in_universe": 3,
    "hit_rate_%": 0.0
   },
   {
@@ -2274,6 +2268,12 @@
    "hit_rate_%": 0.0
   },
   {
+   "industry": "Specialty Chemicals",
+   "stocks_passing": 0,
+   "total_in_universe": 33,
+   "hit_rate_%": 0.0
+  },
+  {
    "industry": "Stainless Steel",
    "stocks_passing": 0,
    "total_in_universe": 4,
@@ -2630,12 +2630,6 @@
    "hit_rate_%": 63.2
   },
   {
-   "sector": "Cement",
-   "stocks_passing": 11,
-   "total_in_universe": 23,
-   "hit_rate_%": 47.8
-  },
-  {
    "sector": "Cables",
    "stocks_passing": 10,
    "total_in_universe": 15,
@@ -2658,6 +2652,12 @@
    "stocks_passing": 10,
    "total_in_universe": 22,
    "hit_rate_%": 45.5
+  },
+  {
+   "sector": "Cement",
+   "stocks_passing": 10,
+   "total_in_universe": 23,
+   "hit_rate_%": 43.5
   },
   {
    "sector": "Petrochemicals",
@@ -2768,6 +2768,12 @@
    "hit_rate_%": 100.0
   },
   {
+   "sector": "Financial Services",
+   "stocks_passing": 4,
+   "total_in_universe": 7,
+   "hit_rate_%": 57.1
+  },
+  {
    "sector": "Telecom Service",
    "stocks_passing": 4,
    "total_in_universe": 7,
@@ -2856,12 +2862,6 @@
    "stocks_passing": 3,
    "total_in_universe": 6,
    "hit_rate_%": 50.0
-  },
-  {
-   "sector": "Financial Services",
-   "stocks_passing": 3,
-   "total_in_universe": 7,
-   "hit_rate_%": 42.9
   },
   {
    "sector": "Plantation and Plantation Products",
@@ -3094,12 +3094,6 @@
    "hit_rate_%": 78.6
   },
   {
-   "industry": "Cement",
-   "stocks_passing": 11,
-   "total_in_universe": 24,
-   "hit_rate_%": 45.8
-  },
-  {
    "industry": "Capital Goods Transformers",
    "stocks_passing": 10,
    "total_in_universe": 12,
@@ -3140,6 +3134,12 @@
    "stocks_passing": 10,
    "total_in_universe": 17,
    "hit_rate_%": 58.8
+  },
+  {
+   "industry": "Cement",
+   "stocks_passing": 10,
+   "total_in_universe": 24,
+   "hit_rate_%": 41.7
   },
   {
    "industry": "PSU Banks",
@@ -3622,6 +3622,12 @@
    "hit_rate_%": 100.0
   },
   {
+   "industry": "Exchanges",
+   "stocks_passing": 3,
+   "total_in_universe": 3,
+   "hit_rate_%": 100.0
+  },
+  {
    "industry": "Finance Investment Bankers",
    "stocks_passing": 3,
    "total_in_universe": 3,
@@ -4067,12 +4073,6 @@
   },
   {
    "industry": "E Commerce Platform Travel",
-   "stocks_passing": 2,
-   "total_in_universe": 3,
-   "hit_rate_%": 66.7
-  },
-  {
-   "industry": "Exchanges",
    "stocks_passing": 2,
    "total_in_universe": 3,
    "hit_rate_%": 66.7
