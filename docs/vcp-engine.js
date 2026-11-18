@@ -7,7 +7,10 @@
    sums and Python's round-half-to-even.
    Each result also carries a "g" block (where the base starts and ends, trendlines, cup rims...) for
    drawing the chart. It is read-only geometry and never changes a result.
-   Runs in the browser (window.VCPE) and in node (module.exports). */
+   Runs in the browser (window.VCPE) and in node (module.exports).
+   Nov 2026: optional, tested rules were added (htf_pole_max, htf_flag_min, cup_min_len, cup_handle_min, pp_strict,
+   ep_close_min, ep_neglect, ep_hi52, darvas_near_hi). Left unset they change nothing: with the app's settings the
+   output was checked identical on every stock-day 2005-2026. */
 (function (root) {
   "use strict";
 
@@ -243,8 +246,8 @@
     return best ? best[1] : null;
   }
 
-  function htfBase(A, end, c, vol50, thrustMin, flagMax) {
-    const flagMinLen = 4, flagMaxLen = 30, poleWin = 45;
+  function htfBase(A, end, c, vol50, thrustMin, flagMax, flagMinLen, poleWin) {
+    flagMinLen = flagMinLen || 4; poleWin = poleWin || 45; const flagMaxLen = 30;
     let best = null;
     for (let Lf = flagMinLen; Lf <= Math.min(flagMaxLen, end - poleWin); Lf++) {
       const s = end - Lf + 1;
@@ -348,7 +351,7 @@
       dry: (ok(vol50) && vol50 > 0) ? npRound(dry, 2) : 1.0, type: "DarvasBox", k: { t: "py", c: "py", p: "py", b: "py" }, note: "box " + pyRound(pct * 100, 0) + "%", g: { kind: "darvas", a: ct, b: end, f: cf } };
   }
 
-  function pocketPivot(A, end, c, vol50, maxExt) {
+  function pocketPivot(A, end, c, vol50, maxExt, strict) {
     const cl = A.c, lo = A.l, vv = A.v, lookback = 10;
     if (end < lookback + 1) return null;
     if (cl[end] <= cl[end - 1]) return null;
@@ -358,7 +361,9 @@
     if (!(vv[end] > thr)) return null;
     const ma10 = nanmean(cl, end - 9, end);
     if (ma10 <= 0) return null;
-    if (!((lo[end] <= ma10 && ma10 <= c) || Math.abs((c - ma10) / ma10) <= maxExt)) return null;
+    if (strict) { if (!(c >= ma10 && c <= ma10 * (1 + maxExt))) return null;
+      const m50 = smaOf(A, "c", 50); if (!(m50[end] >= m50[end - 5])) return null; }
+    else if (!((lo[end] <= ma10 && ma10 <= c) || Math.abs((c - ma10) / ma10) <= maxExt)) return null;
     const dayrange = c > 0 ? (c - lo[end]) / c : 0;
     if (dayrange <= 0) return null;
     const volratio = thr > 0 ? vv[end] / thr : 2.0;
@@ -367,7 +372,7 @@
       note: "vol " + pyRound(volratio, 1).toFixed(1) + "x", g: { kind: "pp", a: end, b: end, ma10, thr } };
   }
 
-  function episodicPivot(A, end, vol50, moveMin, gapMin, volMin, dormWin, dormMax) {
+  function episodicPivot(A, end, vol50, moveMin, gapMin, volMin, dormWin, dormMax, cpMin, neglect, hi52) {
     const o = A.o, cl = A.c, hi = A.h, lo = A.l, vv = A.v, volLookback = 10;
     if (end < dormWin + 5) return null;
     const pc = cl[end - 1];
@@ -378,7 +383,9 @@
     const closePos = (c - L) / rng;
     if (move < moveMin) return null;
     if (volr < volMin) return null;
-    if (closePos < 0.5) return null;
+    if (closePos < (cpMin || 0.5)) return null;
+    if (neglect !== null && neglect !== undefined && end >= 64 && cl[end - 64] > 0 && pc / cl[end - 64] - 1 > neglect) return null;
+    if (hi52 && !(c > nanmax(hi, Math.max(0, end - 252), end - 1))) return null;
     if (gap < gapMin && move < moveMin * 1.5) return null;
     if (vv[end] < nanmax(vv, end - volLookback, end - 1)) return null;
     const base0 = cl[end - 1 - dormWin];
@@ -437,7 +444,7 @@
     const nret = o.nifty_mom_ret || 0.0;
 
     if (o.ep_on) {
-      const ep = episodicPivot(A, i, vol50, o.ep_move_min, o.ep_gap_min, o.ep_vol_min, p.epw, o.ep_dorm_max);
+      const ep = episodicPivot(A, i, vol50, o.ep_move_min, o.ep_gap_min, o.ep_vol_min, p.epw, o.ep_dorm_max, o.ep_close_min, o.ep_neglect, o.ep_hi52);
       if (ep) {
         const hi52 = nanmax(A.h, i - p.win + 1, i), lo52 = nanmin(A.l, i - p.win + 1, i);
         const nh = hi52 > 0 ? (hi52 - c) / hi52 : 0.0;
@@ -494,17 +501,19 @@
       if (base !== null) { baseType = base.type; slope = base.slope; }
     }
     if (base === null && o.htf_on) {
-      const hc = htfBase(A, i, c, vol50, o.htf_thrust_min, o.htf_flag_max);
+      const hc = htfBase(A, i, c, vol50, o.htf_thrust_min, o.htf_flag_max, o.htf_flag_min, o.htf_pole_max);
       if (hc && c <= hc.piv * 1.001 && c >= hc.piv * (1 - 0.08)) { status = "Coiling"; base = hc; }
       else {
-        const hb = htfBase(A, i - 1, c, vol50, o.htf_thrust_min, o.htf_flag_max);
+        const hb = htfBase(A, i - 1, c, vol50, o.htf_thrust_min, o.htf_flag_max, o.htf_flag_min, o.htf_pole_max);
         if (hb && c > hb.piv && volSurge >= 2.5) { status = "Breakout"; base = hb; }
       }
       if (base !== null) { baseType = "HiTightFlag"; pole = base.pole === undefined ? null : base.pole; }
     }
     if (base === null && o.cup_on) {
       const wk = tf === "Weekly";
-      const [hmn, hmx, cmn, cmx] = wk ? [2, 8, 6, 45] : [3, 25, 18, 130];
+      let [hmn, hmx, cmn, cmx] = wk ? [2, 8, 6, 45] : [3, 25, 18, 130];
+      if (o.cup_handle_min) hmn = Math.max(hmn, wk ? Math.ceil(o.cup_handle_min / 5) : o.cup_handle_min);
+      if (o.cup_min_len) cmn = Math.max(cmn, wk ? Math.ceil(o.cup_min_len / 5) : o.cup_min_len);
       const cc = cupHandle(A, i, c, vol50, o.cup_min_depth, o.cup_max_depth, o.cup_handle_max, hmn, hmx, cmn, cmx);
       if (cc && c <= cc.piv * 1.001 && c >= cc.piv * (1 - 0.06)) { status = "Coiling"; base = cc; }
       else {
@@ -520,10 +529,14 @@
         const db = darvasBox(A, i - 1, c, vol50, 3, 60, o.darvas_min_pct, o.darvas_max_pct);
         if (db && c > db.piv && c <= db.piv * 1.04 && volSurge >= 2.5) { status = "Breakout"; base = db; }
       }
+      if (base !== null && base.type === "DarvasBox" && ok(o.darvas_near_hi)) {      // box top at the 52-period high (as of the day before a breakout)
+        const hiRef = status === "Breakout" ? nanmax(A.h, i - p.win, i - 1) : hi52;
+        if (base.piv < hiRef * (1 - o.darvas_near_hi)) { base = null; status = null; }
+      }
       if (base !== null) { baseType = "DarvasBox"; note = base.note === undefined ? null : base.note; }
     }
     if (base === null && o.pp_on) {
-      const pp = pocketPivot(A, i, c, vol50, o.pp_max_ext);
+      const pp = pocketPivot(A, i, c, vol50, o.pp_max_ext, o.pp_strict);
       if (pp) { status = "Breakout"; base = pp; baseType = "PocketPivot"; note = pp.note; }
     }
     if (base === null) return null;

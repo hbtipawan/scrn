@@ -2661,8 +2661,10 @@ function pRenderChart(r,F){const box=$("#pchartbox"),L=window.LightweightCharts,
 let VBD={},VB_ENG=null,VB_X={},VB_LAST=null,VB_RAF=0,VB_TMO=0,VBCH=null,VBCH_BACK=false;
 const VB_DEF={tf:"Daily",nh:12,tight:5,base:3,strict:"Strict",recent:false,grade:"All",status:"All",btype:"All",
   low:true,lowMin:30,lowMax:500,wedge:false,wLo:0.05,wHi:0.8,htf:false,htfThr:80,htfFlag:25,cup:false,cupMin:12,cupMax:40,cupH:15,
-  darvas:false,dMin:3,dMax:40,pp:false,ppExt:5,ep:false,epMove:10,epGap:5,epVol:3,epDorm:30,uni:"liq",sec:"",q:""};
-const VB_SCANKEYS=["tf","nh","tight","base","strict","recent","low","lowMin","lowMax","wedge","wLo","wHi","htf","htfThr","htfFlag","cup","cupMin","cupMax","cupH","darvas","dMin","dMax","pp","ppExt","ep","epMove","epGap","epVol","epDorm"];
+  darvas:false,dMin:3,dMax:40,pp:false,ppExt:5,ep:false,epMove:10,epGap:5,epVol:3,epDorm:30,uni:"liq",sec:"",q:"",imp:false,rsMin:"0"};
+/* the improved rules (tested Nov 2026, see the evidence panel): published definitions where the app was looser, plus RS 80+ */
+const VB_IMP={imp:true,rsMin:"80",htfThr:100,htfFlag:20,cupH:12,ppExt:3};
+const VB_SCANKEYS=["tf","nh","tight","base","strict","recent","low","lowMin","lowMax","wedge","wLo","wHi","htf","htfThr","htfFlag","cup","cupMin","cupMax","cupH","darvas","dMin","dMax","pp","ppExt","ep","epMove","epGap","epVol","epDorm","imp"];
 const VB_TYPES={Flat:{n:"Flat",d:"a horizontal tight box",c:"--vb-flat"},Ascending:{n:"Ascending",d:"higher lows on a rising support line",c:"--vb-asc",t:"wedge"},
   Descending:{n:"Descending",d:"falling resistance over holding lows",c:"--vb-desc",t:"wedge"},HiTightFlag:{n:"High tight flag",d:"a shallow flag on top of a powerful pole",c:"--vb-htf",t:"htf"},
   CupHandle:{n:"Cup with handle",d:"a rounded U base and a small handle in its upper half",c:"--vb-cup",t:"cup"},DarvasBox:{n:"Darvas box",d:"a confirmed ceiling and floor near the highs",c:"--vb-dvb",t:"darvas"},
@@ -2690,7 +2692,8 @@ function vbOpts(f,X){return {tf:f.tf,near_high_pct:f.nh/100,max_tight:f.tight/10
   nifty_mom_ret:f.tf==="Weekly"?X.n50.w:X.n50.d,low_dist_on:f.low,low_dist_min:f.low?+f.lowMin:30.0,low_dist_max:f.low&&f.lowMax<500?+f.lowMax:null,
   wedge_on:f.wedge,wedge_slope_min:f.wedge?f.wLo:0.05,wedge_slope_max:f.wedge?f.wHi:0.80,htf_on:f.htf,htf_thrust_min:f.htfThr/100,htf_flag_max:f.htfFlag/100,
   cup_on:f.cup,cup_min_depth:f.cupMin/100,cup_max_depth:f.cupMax/100,cup_handle_max:f.cupH/100,darvas_on:f.darvas,darvas_min_pct:f.dMin/100,darvas_max_pct:f.dMax/100,
-  pp_on:f.pp,pp_max_ext:f.ppExt/100,ep_on:f.ep,ep_move_min:f.epMove/100,ep_gap_min:f.epGap/100,ep_vol_min:f.epVol,ep_dorm_max:f.epDorm/100,short_history:f.recent}}
+  pp_on:f.pp,pp_max_ext:f.ppExt/100,ep_on:f.ep,
+  ...(f.imp?{htf_pole_max:f.tf==="Weekly"?8:40,htf_flag_min:f.tf==="Weekly"?2:10,cup_min_len:35,cup_handle_min:5,pp_strict:true,ep_hi52:true}:{}),ep_move_min:f.epMove/100,ep_gap_min:f.epGap/100,ep_vol_min:f.epVol,ep_dorm_max:f.epDorm/100,short_history:f.recent}}
 function vbScan(X){const f=st.vb,key=JSON.stringify(VB_SCANKEYS.map(k=>f[k]));
   if(VB_LAST&&VB_LAST.key===key&&VB_LAST.X===X)return VB_LAST;
   const opt=VCPE.options(vbOpts(f,X)),out=[],t0=performance.now();
@@ -2701,17 +2704,18 @@ const VB_GR={A:0,B:1,C:2};
 function vbFilter(rows,skipStatus){const f=st.vb,q=f.q.trim().toUpperCase(),allow={"A only":"A","A & B":"AB"}[f.grade]||"ABC";
   return rows.filter(r=>{const x=D.by[r.s]||{};
     if(!allow.includes(r.grade))return false;
+    if(f.rsMin==="80"&&!((x.rs??0)>=80))return false;
     if(!skipStatus&&f.status!=="All"&&r.status!==f.status)return false;
     if(f.btype!=="All"&&(r.base_type||"Flat")!==f.btype)return false;
     if(f.uni==="liq"&&x.lq===0)return false;
     if(f.sec&&x.sec!==f.sec)return false;
     if(q&&!r.s.includes(q)&&!String(x.n||"").toUpperCase().includes(q))return false;
     return true}).sort((a,b)=>VB_GR[a.grade]-VB_GR[b.grade]||b.score-a.score||a.s.localeCompare(b.s))}
-function vbChanged(){const f=st.vb;let n=0;for(const k of VB_SCANKEYS.concat(["grade","status","btype"]))if(f[k]!==VB_DEF[k])n++;return n}
+function vbChanged(){const f=st.vb;let n=0;for(const k of VB_SCANKEYS.concat(["grade","status","btype","rsMin"]))if(f[k]!==VB_DEF[k])n++;return n}
 /* the research's best tested settings: the app's own engine, only the 52-week-low floor raised (see the evidence panel) */
 function vbPreset(id){const f=st.vb;const keep={uni:f.uni,sec:f.sec,q:f.q};
   if(id==="app")Object.assign(f,VB_DEF,keep);
-  if(id==="best")Object.assign(f,VB_DEF,keep,VBD.d?.evidence?.best||{lowMin:100});
+  if(id==="best")Object.assign(f,VB_DEF,keep,VB_IMP);
   if(id==="bo"||id==="co"){f.status=id==="bo"?"Breakout":"Coiling"}
   if(id==="ab")f.grade="A & B";
   if(st.tbl.vb)st.tbl.vb.show=100;vbSave();renderScanners()}
@@ -2741,9 +2745,12 @@ function vbSettings(){const f=st.vb;
      ${vbSlider("tight","Max base tightness",2,10,1,v=>v+"%","The final contraction, high to low, can be no wider than this.")}
      ${vbSlider("base","Min base length",3,15,1,v=>v+" bars")}
      <label class="check"><input type="checkbox" data-vbc="recent" ${f.recent?"checked":""}>Include recent listings (short history)</label>
+     <label class="check"><input type="checkbox" data-vbc="imp" ${f.imp?"checked":""}>Improved base rules (tested Nov 2026)</label>
+     <small class="vb-help">High tight flag: pole up 100%+ within 8 weeks, flag 2+ weeks. Cup: 7+ weeks, handle 1+ week. Pocket pivot: at or just above the 10-day, 50-day not falling. Episodic pivot: closes above the prior 52-week high. Flat, wedge and Darvas rules are unchanged.</small>
    </div>
    <div class="vb-col"><h3>Show</h3>
      <div class="ctl"><span>Status</span>${vbSeg("status",["All","Coiling","Breakout"])}</div>
+     <div class="ctl"><span>RS rating</span>${vbSeg("rsMin",["0","80"],{"0":"Any","80":"80+ (tested best)"})}</div>
      <div class="ctl"><span>Minimum grade</span>${vbSeg("grade",["All","A & B","A only"],{All:"All (A/B/C)"})}</div>
      <div class="ctl"><span>Base type</span><select class="vb-sel" data-vbk="btype" aria-label="Base type">${types.map(t=>`<option value="${t}" ${f.btype===t?"selected":""}>${t==="All"?"All base types":esc(VB_TYPES[t].n)+(VB_TYPES[t].t&&!f[VB_TYPES[t].t]?" (switch it on below)":"")}</option>`).join("")}</select></div>
      <div class="vb-lowbox"><label class="check"><input type="checkbox" data-vbc="low" ${f.low?"checked":""}>Filter by distance from the 52-week low</label>
@@ -2844,6 +2851,7 @@ const VB_COLS=[
   {k:"dist_pivot",label:"To pivot",fmt:r=>`<span class="num ${r.dist_pivot<0?"up":""}">${sgn(r.dist_pivot,2)}</span>`},
   {k:"stop",label:"Stop",fmt:r=>`<span class="num">${inr(r.stop)}</span>`},
   {k:"risk",label:"Risk",fmt:r=>vbN(r.risk,1,"%")},
+  {k:"stop8",label:"Stop 8%",fmt:r=>`<span class="num">${inr(vbStop8(r))}</span>`,sort:r=>vbStop8(r),csv:r=>vbStop8(r)},
   {k:"target",label:"2R target",fmt:r=>`<span class="num">${inr(r.target)}</span>`},
   {k:"tightness",label:"Tight",fmt:r=>vbN(r.tightness,1,"%")},
   {k:"base_len",label:"Base",fmt:r=>`<span class="num">${r.base_len}</span>`},
@@ -2861,11 +2869,12 @@ function vbCards(T,empty){const t=st.tbl.vb;if(!T.length)return `<div class="emp
     <div class="vb-ch">${vbGrade(r.grade)}<span class="num vb-score">${r.score}</span>${vbStatus(r.status)}${vbTypeChip(r)}</div>
     <div class="vb-cn">${symBtn(r.s,r.n)}</div>
     <dl class="vb-kv"><div><dt>Close</dt><dd class="num">₹${inr(r.close)}</dd></div><div><dt>Pivot</dt><dd class="num">₹${inr(r.pivot)}</dd></div><div><dt>To pivot</dt><dd class="num ${r.dist_pivot<0?"up":""}">${sgn(r.dist_pivot,1)}</dd></div>
-      <div><dt>Stop</dt><dd class="num">₹${inr(r.stop)}</dd></div><div><dt>Risk</dt><dd class="num">${r.risk.toFixed(1)}%</dd></div><div><dt>2R target</dt><dd class="num">₹${inr(r.target)}</dd></div>
+      <div><dt>Stop</dt><dd class="num">₹${inr(r.stop)}</dd></div><div><dt>Risk</dt><dd class="num">${r.risk.toFixed(1)}%</dd></div><div><dt>Stop 8%</dt><dd class="num">₹${inr(vbStop8(r))}</dd></div>
       <div><dt>Tight · base</dt><dd class="num">${r.tightness.toFixed(1)}% · ${r.base_len}</dd></div><div><dt>Near high</dt><dd class="num">${r.near_high.toFixed(1)}%</dd></div><div><dt>RS</dt><dd class="num ${cls(r.rs)}">${sgn(r.rs,0)}</dd></div></dl>
     <button type="button" class="btn alt vb-cgo" data-vbchart="${esc(r.s)}">Open the VCP chart</button></article>`).join("")}</div>
     ${T.length>t.show?`<div class="tfoot"><span>${T.length} candidates · showing ${t.show}</span><button type="button" class="ghost" data-vbmore="1">Show more</button></div>`:""}`}
 
+const vbStop8=r=>Math.round((r.status==="Coiling"?r.pivot:r.close)*0.92*100)/100;
 /* ── evidence (scripts: the research run on NSE 2005–2026; config/vcp_evidence.json) ── */
 function vbEvidence(E){const open=store.get("vbEv",false);const g=(v,d=1)=>sgn(v,d," pts");
   const row=(lab,x,strong)=>x?`<tr${strong?` class="vb-strong"`:""}><td>${esc(lab)}</td><td class="num">${x.n.toLocaleString("en-IN")}${x.nt!==x.n?`<span class="vb-vs"><br>${x.nt.toLocaleString("en-IN")} filled</span>`:""}</td><td class="num">${isNum(x.trig)?x.trig.toFixed(0)+"%":"–"}</td><td class="num">${x.w2.toFixed(0)}%</td><td class="num">${x.w20.toFixed(0)}% <span class="vb-vs">vs ${x.bw20.toFixed(0)}%</span></td><td class="num ${cls(x.d63)}"><b>${g(x.d63)}</b> <span class="vb-vs">${sgn(x.d63_lo,1,"")} to ${sgn(x.d63_hi,1,"")}</span></td></tr>`:"";
@@ -2874,7 +2883,12 @@ function vbEvidence(E){const open=store.get("vbEv",false);const g=(v,d=1)=>sgn(v
     <div class="tscroll"><table class="pevm vb-evt"><thead><tr><th>Signals (the app's default settings unless noted)</th><th>Cases</th><th>Broke out within 20 sessions</th><th>Hit the 2R target first</th><th>Rose 20% before falling 8%</th><th>3-month return vs a plain breakout</th></tr></thead><tbody>
       ${(E.rows||[]).map(x=>row(x.label,x,x.strong)).join("")}</tbody></table></div>
     <ul class="vb-find">${(E.findings||[]).map(t=>`<li>${t}</li>`).join("")}</ul>
+    ${E.types?vbTypesTable(E):""}
     <p class="pnote">${E.method||""}</p></div></details>`}
+function vbTypesTable(E){const c=z=>z?`<b class="num ${cls(z.x63)}">${sgn(z.x63,1)}</b><span class="vb-vs"> ${z.n.toLocaleString("en-IN")} · ±${z.se.toFixed(1)}</span>`:"–";
+  return `<h4 class="vr-h">Every base type, before and after the improved rules (Nov 2026 test, daily bars)</h4><p class="pnote" style="margin:0 0 8px">${esc(E.types_note||"")}</p>
+    <div class="tscroll"><table class="pevm vb-evt"><thead><tr><th>Base type · status</th><th>App rules</th><th>Improved rules</th><th>Improved + RS 80+</th><th>…in 2005–15 / 2016–26</th><th>What changed</th></tr></thead><tbody>
+    ${E.types.map(t=>`<tr><td>${esc(t.type)} · ${esc(t.status)}</td><td>${c(t.old)}</td><td>${c(t.new)}</td><td>${c(t.new_rs)}</td><td class="num">${t.new_rs?`${sgn(t.new_rs.dev,1)} / ${sgn(t.new_rs.hold,1)}`:"–"}</td><td style="text-align:left;white-space:normal;font-weight:500;min-width:220px">${esc(t.change)}</td></tr>`).join("")}</tbody></table></div>`}
 
 /* ════════════════════ VCP SCANNER — rule-based (Minervini), tested on NSE 2005–26 ════════════════════
    vcp2.json (scripts/vcp_rules.py) lists every liquid stock with RS 70+ whose base passes the VCP rules on the last
