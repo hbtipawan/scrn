@@ -575,6 +575,30 @@ def main():
         import traceback
         traceback.print_exc()
         print(f"stage 2 phases skipped: {e}")
+    # ---------------- candle chart data for every stock (the Chart button; stock_charts.py)
+    sch_meta = None
+    try:
+        import stock_charts as SCH
+        sch_meta = SCH.build(PFULL, A, bench, last, OUT / "sc")
+    except Exception as e:  # never break the daily run
+        import traceback
+        traceback.print_exc()
+        print(f"stock charts skipped: {e}")
+    # ---------------- VCP scanner, rule-based (vcp_rules.py; tested on NSE 2005-26, config/vcp_rules_evidence.json)
+    vcp2_meta = None
+    try:
+        import vcp_rules as VR
+        ev2 = CFG / "vcp_rules_evidence.json"
+        V2 = VR.build(PFULL, U, rs_all, last, json.loads(ev2.read_text(encoding="utf-8")) if ev2.exists() else None)
+        json.dumps(V2, allow_nan=False)
+        dump_later["vcp2.json"] = V2
+        vcp2_meta = {"setup": sum(1 for r in V2["rows"] if r["st"] == "setup"), "bo": sum(1 for r in V2["rows"] if r["st"] == "bo"),
+                     "scanned": V2["scanned"]}
+        print(f"vcp rules: {V2['scanned']} stocks with RS 70+ checked -> {vcp2_meta['setup']} setting up, {vcp2_meta['bo']} breakouts")
+    except Exception as e:  # never break the daily run
+        import traceback
+        traceback.print_exc()
+        print(f"vcp rules skipped: {e}")
     # ---------------- chart patterns: breakouts in the last 10 sessions, patterns about to break out, H&S tops
     # (patterns.py; every pattern tested on NSE 2005-26, config/pattern_evidence.json)
     pat_meta = None
@@ -715,7 +739,7 @@ def main():
             "failed": fm.get("failed_count"), "indices": indices,
             "filters": {"min_price": S["min_price"], "min_median_turnover_cr": S["min_median_turnover_cr"],
                         "min_market_cap_cr": S["min_market_cap_cr"] if mcap is not None else None},
-            "min_group_size": S["min_group_size"], "fund": fund_meta, "bases": base_meta, "stage2": s2_meta, "results": res_meta, "mf": mf_meta, "rs": rs_meta, "dlv": dlv_meta, "idx": idx_meta, "corp": corp_meta, "grp": grp_meta, "pat": pat_meta, "vcp": vcp_meta, "up": up_meta, "mb": mb_meta}
+            "min_group_size": S["min_group_size"], "fund": fund_meta, "bases": base_meta, "stage2": s2_meta, "results": res_meta, "mf": mf_meta, "rs": rs_meta, "dlv": dlv_meta, "idx": idx_meta, "corp": corp_meta, "grp": grp_meta, "pat": pat_meta, "vcp": vcp_meta, "up": up_meta, "mb": mb_meta, "sc": sch_meta, "vcp2": vcp2_meta}
 
     def dump(name, obj):
         (OUT / name).write_text(json.dumps(obj, separators=(",", ":"), allow_nan=False))
