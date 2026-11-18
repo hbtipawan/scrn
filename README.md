@@ -242,6 +242,20 @@ Mark Minervini's volatility contraction pattern written as exact rules (`scripts
 
 ## Classic breakout scanner (Scanners → VCP scanner → Classic breakout scanner)
 
+**Nov 2026 audit of every base type** (each type alone, 2005–2026, 3-month return after costs minus the average liquid stock; the full table is in the scanner's evidence panel):
+
+| Base type | App rules (coiling / breakout) | Improved + RS 80+ | What the improved rules change |
+|---|---|---|---|
+| Flat | +1.4% / +1.2% | +2.8% / +1.8% | nothing (RS filter only) |
+| Sloping / wedge | +1.0% / +1.1% | +2.2% / +1.7% | nothing (RS filter only) |
+| High tight flag | +1.5% / −1.0% | +2.3% / +1.4% | O'Neil: pole up 100%+ within 8 weeks, flag 2+ weeks and at most 20% deep |
+| Cup with handle | +0.3% / +0.3% | +0.8% / +2.3% | O'Neil: cup 7+ weeks, handle 1+ week and at most 12% deep |
+| Darvas box | +1.1% / +1.2% | +1.9% / +1.4% | nothing (a tighter box helped 2005–15 only) |
+| Pocket pivot | – / +0.8% | – / +1.9% | Kacher & Morales: close at or just above the 10-day average, 50-day not falling |
+| Episodic pivot | – / −2.9% | – / +2.3% | the EP day closes above the prior 52-week high |
+
+The improved rules are a tick box (*Improved base rules*) plus an *RS rating 80+* filter; *Use the best tested settings* turns both on (with the tested slider values: pole 100%, flag 20%, handle 12%, pocket-pivot extension 3%). *Reset to the app's defaults* restores the app exactly — with the box unticked the engine's output was checked identical to before on every stock-day. Coiling cups did not beat the market under any rule tested. Every type did better with an 8% stop held 63 sessions than with the base-low stop and 2R target (now shown as *Stop 8%*).
+
 The **classic breakout scanner** is the VCP breakout scanner from your Streamlit app ([VCP-REVERSAL](https://github.com/hbtipawan/VCP-REVERSAL), `vcp_core.analyze_vcp`), built into the site. The reversal scanner is not included. It is a sub-tab of Scanners only; it adds nothing to the stock card.
 
 - **Same engine, same results.** `docs/vcp-engine.js` is a line-by-line JavaScript port of `vcp_core.analyze_vcp`: the same trend gates, near-high and 52-week-low filters, the flat base and all six extra base types, the score weights and A/B/C grades, and the app's `clean_df` and weekly bars. Even the small Python details that can change a result are reproduced (pandas' rolling mean, numpy's sums and rounding). It was checked bar by bar against your Python on 9,847 signals and 1,500 random non-signal days: identical in every field.
