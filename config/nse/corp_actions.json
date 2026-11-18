@@ -794,6 +794,14 @@
 "subject": "Interim Dividend - Rs 1.25 Per Share"
 },
 {
+"symbol": "VGCL",
+"series": "EQ",
+"ex": "2026-11-19",
+"kind": "dividend",
+"label": "Interim dividend \u20b91",
+"subject": "Interim Dividend - Re 1 Per Share"
+},
+{
 "symbol": "ASHOKLEY",
 "series": "EQ",
 "ex": "2026-11-20",
@@ -896,6 +904,14 @@
 "kind": "buyback",
 "label": "Buyback",
 "subject": "Buy Back"
+},
+{
+"symbol": "VGL",
+"series": "EQ",
+"ex": "2026-11-27",
+"kind": "split",
+"label": "Split \u20b95 \u2192 \u20b92",
+"subject": "Face Value Split (Sub-Division) - From Rs 5/- Per Share To Rs 2/- Per Share"
 }
 ]
 }

@@ -4,7 +4,7 @@
    "m": "2025-10",
    "fund_houses": 33,
    "active_schemes": 515,
-   "active_equity_cr": 3392100.0,
+   "active_equity_cr": 3392096.0,
    "active_net": 6876.0,
    "left_out": {
     "new_funds": 452.0,
@@ -150,7 +150,7 @@
    "m": "2025-11",
    "fund_houses": 33,
    "active_schemes": 516,
-   "active_equity_cr": 3443058.0,
+   "active_equity_cr": 3443052.0,
    "active_net": 13813.0,
    "left_out": {
     "new_funds": 850.0,
@@ -296,7 +296,7 @@
    "m": "2025-12",
    "fund_houses": 32,
    "active_schemes": 502,
-   "active_equity_cr": 3364957.0,
+   "active_equity_cr": 3364952.0,
    "active_net": 8068.0,
    "left_out": {
     "new_funds": 443.0,
@@ -438,7 +438,7 @@
    "m": "2026-01",
    "fund_houses": 31,
    "active_schemes": 504,
-   "active_equity_cr": 3269988.0,
+   "active_equity_cr": 3269985.0,
    "active_net": 21047.0,
    "left_out": {
     "new_funds": 16.0,
@@ -576,7 +576,7 @@
    "m": "2026-02",
    "fund_houses": 30,
    "active_schemes": 518,
-   "active_equity_cr": 3388398.0,
+   "active_equity_cr": 3388395.0,
    "active_net": 15638.0,
    "left_out": {
     "new_funds": 0.0,
@@ -848,7 +848,7 @@
    "m": "2026-04",
    "fund_houses": 32,
    "active_schemes": 522,
-   "active_equity_cr": 3439580.0,
+   "active_equity_cr": 3439579.0,
    "active_net": 12950.0,
    "left_out": {
     "new_funds": 616.0,
@@ -990,7 +990,7 @@
    "m": "2026-05",
    "fund_houses": 33,
    "active_schemes": 532,
-   "active_equity_cr": 3486073.0,
+   "active_equity_cr": 3486072.0,
    "active_net": 41023.0,
    "left_out": {
     "new_funds": 0.0,
@@ -1136,7 +1136,7 @@
    "m": "2026-06",
    "fund_houses": 33,
    "active_schemes": 540,
-   "active_equity_cr": 3607887.0,
+   "active_equity_cr": 3607886.0,
    "active_net": 32186.0,
    "left_out": {
     "new_funds": 170.0,
@@ -1286,7 +1286,7 @@
    "m": "2026-07",
    "fund_houses": 33,
    "active_schemes": 540,
-   "active_equity_cr": 3706710.0,
+   "active_equity_cr": 3706709.0,
    "active_net": 18932.0,
    "left_out": {
     "new_funds": 383.0,
@@ -1432,8 +1432,8 @@
    "m": "2026-08",
    "fund_houses": 34,
    "active_schemes": 542,
-   "active_equity_cr": 3799940.0,
-   "active_net": 26211.0,
+   "active_equity_cr": 3799938.0,
+   "active_net": 26210.0,
    "left_out": {
     "new_funds": 188.0,
     "new_funds_n": 12,
@@ -1541,7 +1541,7 @@
      0.0
     ],
     "pgim": [
-     -637.0,
+     -638.0,
      309.0
     ],
     "ppfas": [
@@ -1582,8 +1582,8 @@
    "m": "2026-09",
    "fund_houses": 33,
    "active_schemes": 531,
-   "active_equity_cr": 3542807.0,
-   "active_net": 22243.0,
+   "active_equity_cr": 3542804.0,
+   "active_net": 22241.0,
    "left_out": {
     "new_funds": 957.0,
     "new_funds_n": 14,
@@ -1687,7 +1687,7 @@
      0.0
     ],
     "pgim": [
-     -131.0,
+     -132.0,
      53.0
     ],
     "ppfas": [
@@ -1726,16 +1726,16 @@
   },
   {
    "m": "2026-10",
-   "fund_houses": 28,
-   "active_schemes": 483,
-   "active_equity_cr": 3380252.0,
-   "active_net": 22200.0,
+   "fund_houses": 31,
+   "active_schemes": 507,
+   "active_equity_cr": 3425776.0,
+   "active_net": 24014.0,
    "left_out": {
     "new_funds": 44.0,
     "new_funds_n": 10,
     "doubled": 0.0,
     "doubled_n": 4,
-    "new_listings": 10504.0,
+    "new_listings": 10873.0,
     "only_one_month": 2783.0
    },
    "merges": [],
@@ -1751,6 +1751,10 @@
     "axis": [
      530.0,
      159.0
+    ],
+    "bajaj": [
+     705.0,
+     56.0
     ],
     "bandhan": [
      4750.0,
@@ -1825,7 +1829,7 @@
      0.0
     ],
     "pgim": [
-     39.0,
+     38.0,
      14.0
     ],
     "ppfas": [
@@ -1851,6 +1855,10 @@
     "uti": [
      126.0,
      177.0
+    ],
+    "whiteoak": [
+     1111.0,
+     313.0
     ]
    }
   }
@@ -2437,6 +2445,13 @@
    "WhiteOak Capital Flexi Cap Fund",
    "WhiteOak Capital Flexi Cap Fund Monthly Portfolio Disclosure - 30th September2026",
    0.992
+  ],
+  [
+   "2026-10",
+   "whiteoak",
+   "WhiteOak Capital Flexi Cap Fund Monthly Portfolio Disclosure - 30th September2026",
+   "WhiteOak Capital Flexi Cap Fund",
+   0.988
   ]
  ],
  "hedged_as_hybrid": [
@@ -4424,7 +4439,7 @@
   [
    "2026-10",
    "CONCORDBIO",
-   1245.59,
+   1245.56,
    622.8,
    2
   ],
@@ -4436,5 +4451,5 @@
    5
   ]
  ],
- "unmapped_share": 0.00212
+ "unmapped_share": 0.00213
 }

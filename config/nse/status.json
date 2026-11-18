@@ -1,59 +1,22 @@
 {
- "run": "2026-11-18 03:18",
+ "run": "2026-11-18 14:05",
  "delivery": {
-  "added": [
-   "2026-11-17"
-  ],
+  "added": [],
   "not_published": [],
   "last": "2026-11-17"
  },
  "indices": {
-  "added": [
-   "2026-11-17"
-  ],
+  "added": [],
   "not_published": [],
   "last": "2026-11-17"
  },
  "close_check": {
   "date": "2026-11-17",
   "checked": 2590,
-  "disagree": 1020,
-  "corrected": 1020,
+  "disagree": 0,
+  "corrected": 0,
   "skipped": 0,
-  "examples": {
-   "ASSAMENT": [
-    795.0,
-    859.3
-   ],
-   "SAMBANDAM": [
-    108.0,
-    102.78
-   ],
-   "SHYAMTEL": [
-    11.34,
-    10.86
-   ],
-   "IIRM": [
-    104.51,
-    109.19
-   ],
-   "KHANDSE": [
-    17.39,
-    16.68
-   ],
-   "SMLT": [
-    74.23,
-    71.28
-   ],
-   "POLYSPIN": [
-    29.36,
-    28.24
-   ],
-   "INFOMEDIA": [
-    5.59,
-    5.4
-   ]
-  },
+  "examples": {},
   "skipped_examples": {}
  }
 }
