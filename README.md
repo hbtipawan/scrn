@@ -3,7 +3,8 @@
 A free, ScreeningMantis-style dashboard for NSE stocks:
 
 - **Rotation** – theme / sector / industry / NSE-index returns for Today, 1W, 1M, 3M, 6M, YTD, 1Y, with mean or median, each group's rank (#1/104; green top third, red bottom third — what tested as useful; Today and 1W stay grey), its group RS rating with the 4-week change (red when a group rated 70+ loses 10+ points, the one move that tested as a warning), and a click-through list of the stocks in each group. Uses **every NSE stock** by default (switch to the liquid universe with *Stocks: All / Liquid*). A **Rotation map (RRG)** view plots NSE's sector, theme and size indices against Nifty 500, week by week.
-- **Group charts** – every theme, sector, NSE index and industry has its own daily index. Open a group in Rotation for a 12-month chart; tap it (or 📈) for a full-screen chart: candles with 21/50/200-day averages, members' turnover, RS line vs Nifty 500 with blue dots, % of members above their 50/200-day averages, and the group RS rating — with past signals marked and what followed. Rotation also has a **Rotation radar** (group RS rating against its 4-week change) and **Group signals** (early-rotation signals that held up in testing, plus breakouts and weakness).
+- **Stock chart** – a candle-chart button next to every stock (in every list, and *Candle chart* on the stock card) opens a full-screen daily or weekly chart: EMA 21 / 50 / 200 with an on/off chip each, volume, the RS line against NIFTY 500 with blue dots, and the site's own levels for that stock (long base, VCP base under your VCP settings, chart patterns, 52-week high, your watchlist pivot / stop / target), each switchable (see *Stock chart* below).
+- **Group charts** – every theme, sector, NSE index and industry has its own daily index. Open a group in Rotation for a 12-month chart; tap it (or 📈) for a full-screen chart: candles with EMA 21 / 50 / 200 (each can be switched off with its chip), members' turnover, RS line vs Nifty 500 with blue dots, % of members above their 50/200-day averages, and the group RS rating — with past signals marked and what followed. Rotation also has a **Rotation radar** (group RS rating against its 4-week change) and **Group signals** (early-rotation signals that held up in testing, plus breakouts and weakness).
 - **Breadth** – every NSE main-board stock (no liquidity filter, or the liquid universe with the switch): Nifty 50 / 500 / Smallcap 250 / Microcap 250 charts and the % of stocks above their 20/50/100/200-day EMAs (3M, 6M or 1Y), % above 20/50/200 DMA, advance/decline and the A/D line, McClellan oscillator, 52-week highs/lows, 4% movers, one year of history. Below it, **valuation and volatility**: NSE's own P/E, P/B and dividend yield for 50 indices against their history, and India VIX.
 - **Upside** – every liquid stock ranked 1–99 on its odds of beating the average stock over the next 3 months, from the site's own technicals, RS, sector/industry rotation and breadth, with the reasons for each stock and the full walk-forward test (see *Upside score* below).
 - **Multibagger** – seven yes/no checks on every liquid stock (market cap ₹300–5,000 Cr, RS 80+, up-day volume ≥ 1.2× down-day volume, no all-time high for 2+ years, P/B under 1.5 or P/S under 1, operating cash flow ≥ 8% of market cap, sales growth 10+ points above the year before). In a 2016–23 test, stocks passing 5+ made 5× within 3 years about twice as often as the average stock (and about 5 in 6 still did not). Shows the market's 200-day breadth, cautions, the business trend, a **Bought** list (buy price, date, quantity → return, multiple towards 5×, vs Nifty 500, flags; Sold moves it to closed positions; kept and synced with the watchlists), a how-to and the full test with its limits (see *Multibagger* below).
@@ -227,9 +228,21 @@ The **Patterns** tab lists every liquid stock showing one of 13 classic chart pa
 
 The code is `scripts/stage2.py`. It uses the long-base breakouts from `bases.py` to count bases.
 
-## VCP scanner (Scanners → VCP scanner)
+## VCP scanner (Scanners → VCP scanner) — rule-based, tested
 
-The **VCP scanner** is the VCP breakout scanner from your Streamlit app ([VCP-REVERSAL](https://github.com/hbtipawan/VCP-REVERSAL), `vcp_core.analyze_vcp`), built into the site. The reversal scanner is not included. It is a sub-tab of Scanners only; it adds nothing to the stock card.
+Mark Minervini's volatility contraction pattern written as exact rules (`scripts/vcp_rules.py`, run every evening on the liquid universe) and tested on NSE daily data 2005–2026 (`config/vcp_rules_evidence.json`; the page shows the full test).
+
+- **Trend:** Minervini's Trend Template — close above the 50-, 150- and 200-day averages, 50 > 150 > 200, the 200-day higher than a month ago, 30%+ above the 52-week low, within 25% of the 52-week high — and RS rating 70+ (80+ by default).
+- **Base:** the left-side high is the highest high of the last 250 sessions (at least 10 back), with a 30%+ advance into it.
+- **Contractions:** every 5% swing inside the base (high to low) counts; 2 to 6 contractions, each shallower than the one before, the first at most 35%, the last at most 10%. Options: higher lows (each contraction's low at or above the previous one's; on by default), volume dry-up (last 5 sessions at most 0.8× the 50-day average; on by default), prior advance 100%+.
+- **Status:** *Setting up* — the close is inside the last contraction (buy-stop at its high, the pivot); *Breakout today* — closed above yesterday's pivot, at most 5% over it, on 1.4×+ the 50-day volume.
+- **Plan:** buy above the pivot (up to 5% over it); stop 8% under the entry; no fixed target. The last contraction's low is shown, but in the test a stop there was hit by ordinary noise (the trades broke even), and a 2R or +20% target halved the result.
+- **What the test found** (setting up, 3-month return after costs minus the average liquid stock): default settings +4.6% (1,405 trades), classic scanner +1.4%, plain 60-day breakouts +0.6%. RS rating, higher lows and how strictly contractions are counted made most of the difference; results were much better when the average stock was above its 200-day average (+5.5% a trade vs +0.5%), and lumpy year to year. Most bases it finds are 2–4 weeks long. Limits: today's listed stocks only (no delisted companies), fills assumed at the pivot.
+- Tap a row for the stock chart with the contractions drawn (T1, T2… with their depth), the pivot, the last contraction low and the 8% stop. *Classic breakout scanner* (the segment above the list) is the previous scanner, unchanged.
+
+## Classic breakout scanner (Scanners → VCP scanner → Classic breakout scanner)
+
+The **classic breakout scanner** is the VCP breakout scanner from your Streamlit app ([VCP-REVERSAL](https://github.com/hbtipawan/VCP-REVERSAL), `vcp_core.analyze_vcp`), built into the site. The reversal scanner is not included. It is a sub-tab of Scanners only; it adds nothing to the stock card.
 
 - **Same engine, same results.** `docs/vcp-engine.js` is a line-by-line JavaScript port of `vcp_core.analyze_vcp`: the same trend gates, near-high and 52-week-low filters, the flat base and all six extra base types, the score weights and A/B/C grades, and the app's `clean_df` and weekly bars. Even the small Python details that can change a result are reproduced (pandas' rolling mean, numpy's sums and rounding). It was checked bar by bar against your Python on 9,847 signals and 1,500 random non-signal days: identical in every field.
 - **Every setting of the app, live.** Timeframe, trend strictness, within % of the 52-period high, max base tightness, min base length, recent listings, minimum grade, status, base type, the distance-from-52-week-low band, and the wedge / high-tight-flag / cup-with-handle / Darvas / pocket-pivot / episodic-pivot toggles with all their sliders. Change one and the list updates at once — the scan runs in your browser. There are also Sector, Search and "Liquid stocks / All traded" filters.
@@ -371,6 +384,17 @@ Each evening it adds every session not stored yet (it catches up after a missed 
 **Rotation map (RRG).** Weekly closes of NSE's sector, theme and size indices against Nifty 500. The original RRG formulas are not published; the site uses a smoothed approximation (`scripts/indices.py`): RS-Ratio = 100 × 10-week ÷ 30-week EMA of index/Nifty 500, RS-Momentum = 100 × RS-Ratio ÷ its 10-week EMA. Leading → weakening → lagging → improving, clockwise.
 
 To rebuild the history: `python scripts/fetch_nse_daily.py --backfill 2024-01-01 2026-10-13` (delivery) and `--backfill-idx 2016-01-01 2026-10-13` (indices).
+
+## Stock chart
+
+Every stock has a small candle icon next to its symbol (and a **Candle chart** button on the stock card). It opens:
+
+- **Daily or weekly candles** — about 2 years of daily and 3 years of weekly bars, end of day, split and bonus adjusted (the same prices the scanners use).
+- **EMA 21, 50 and 200** (sessions on daily bars, weeks on weekly bars). Tap a chip to hide or show each line; the choice is remembered and is shared with the group charts. The EMAs are worked out on each stock's full price history (since 2020): `scripts/stock_charts.py` ships the EMA state just before the first bar, so the lines are exact, not warmed up from the visible bars. Each EMA starts from the simple average of its first n closes, as TradingView's does. A stock listed less than n sessions ago has no EMA n yet.
+- **Levels**, each with its own chip: the long base (box from pivot to floor, pivot line), the rule-based VCP's contractions (T1, T2… with depth), pivot, last contraction low and 8% stop, chart-pattern lines from the Patterns tab, the 52-week high, and your watchlist pivot / stop / target with the day you added it.
+- **Volume** with its 50-bar average, and the **RS line** against NIFTY 500 with blue dots (RS line at a 52-week high) — the panel can be hidden.
+
+Data: `docs/data/sc/_common.json` (calendar, NIFTY 500 closes) and one file per stock, `docs/data/sc/<symbol>.json` (about 10 KB to download), about 52 MB in all; written by the daily run, not committed. The daily run checks that the shipped EMA state reproduces the full-history EMA and fails that step if it does not.
 
 ## Group charts and group signals (spotting rotation early)
 
