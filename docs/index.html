@@ -1256,6 +1256,32 @@ body.ssopen{overflow:hidden}
 .dt td{border-bottom-color:color-mix(in srgb,var(--track) 70%,transparent)}
 .tscroll{border-radius:inherit}
 .card>.tscroll:first-child table.dt thead th:first-child{border-top-left-radius:var(--r)}
+/* stock chart + EMA chips */
+.scscrim{z-index:64}.smodal{z-index:65}
+.emachips{gap:8px}
+.emachip{display:inline-flex;align-items:center;gap:8px;min-height:38px;font-size:15.5px;font-weight:700;padding:4px 14px}
+.emachip i{display:inline-block;width:20px;height:4px;border-radius:2px;background:var(--c);flex:none}
+.lvchip i{width:13px;height:13px;border-radius:3px}
+.emachip[aria-pressed="true"]{border-color:var(--ink);background:var(--soft)}
+.emachip[aria-pressed="false"]{color:var(--muted);font-weight:600;text-decoration:line-through;text-decoration-thickness:1.5px}
+.emachip[aria-pressed="false"] i{opacity:.3}
+.emadot{display:inline-block;width:12px;height:4px;border-radius:2px;background:var(--c);margin-right:5px;vertical-align:middle}
+.scbtn{border:0;background:none;cursor:pointer;color:var(--muted);min-width:30px;min-height:30px;padding:0 4px;margin:-6px 0 -6px 2px;vertical-align:-4px;border-radius:6px;line-height:0}
+.scbtn svg{width:18px;height:18px}
+.scbtn:hover{color:var(--accent-ink);background:var(--soft)}
+.scbtn:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.dacts .scopen{display:inline-flex;align-items:center;gap:8px}
+.dacts .scopen svg{width:18px;height:18px}
+.vr-setup{background:color-mix(in srgb,var(--accent) 22%,var(--card));color:var(--accent-ink);border:1px solid color-mix(in srgb,var(--accent) 55%,var(--line))}
+.vr-chk{display:inline-block;font-size:14px;font-weight:700;border-radius:999px;padding:1px 9px;margin:1px 4px 1px 0;border:1px solid var(--line);white-space:nowrap}
+.vr-chk.on{color:var(--up-t);border-color:color-mix(in srgb,var(--up) 50%,var(--line))}.vr-chk.off{color:var(--muted);text-decoration:line-through}
+.vr-chks{display:flex;flex-wrap:wrap;gap:4px}
+.vr-mkt{padding:12px 16px;margin-bottom:12px;font-size:16px;box-shadow:inset 5px 0 0 var(--up),var(--shadow)}.vr-mkt.down{box-shadow:inset 5px 0 0 var(--down),var(--shadow)}
+.vr-mkt b{display:block;font-size:17px;margin-bottom:2px}
+.vr-h{margin:16px 0 6px;font-size:17px}
+.vr-years{display:flex;flex-wrap:wrap;gap:6px}.vr-years span{border:1px solid var(--line);border-radius:8px;padding:4px 8px;font-size:15px;font-weight:700}
+.vr-years span.up{color:var(--up-t)}.vr-years span.down{color:var(--down-t)}.vr-years b{color:var(--ink);margin-right:4px}.vr-years i{font-style:normal;color:var(--muted);font-weight:600;font-size:12.5px;margin-left:4px}
+.vr-audit{font-size:15.5px;border-left:4px solid var(--accent);padding:6px 10px;background:var(--soft);border-radius:6px;max-width:110ch}
 </style>
 </head>
 <body>
@@ -1328,7 +1354,7 @@ const tv=(s,ex)=>`https://in.tradingview.com/chart/?symbol=${encodeURIComponent(
 function seg(name,opts,cur,labels){return `<div class="seg" role="group" aria-label="${esc(name)}">`+opts.map(o=>`<button type="button" data-seg="${name}" data-val="${esc(o)}" aria-pressed="${o===cur}">${esc(labels?labels[o]:o)}</button>`).join("")+`</div>`}
 function rsPill(v){if(!isNum(v))return "–";const c=v>=90?"rs-a":v>=70?"rs-b":v>=40?"rs-c":"rs-d";return `<span class="rs ${c}">${v}</span>`}
 function stagePill(s){return !s?"–":s===2?`<span class="pill p-up">Stage 2</span>`:s===4?`<span class="pill p-down">Stage 4</span>`:s===1?`<span class="pill p-mut">Stage 1</span>`:`<span class="pill p-mut">Stage 3</span>`}
-const symBtn=(s,n,ex)=>wlStar(s)+`<button type="button" class="symbtn" data-sym="${esc(s)}"${ex?` data-ex="${esc(ex)}"`:""}>${esc(s)}</button>${n?`<span class="nm">${esc(n)}</span>`:""}`;
+const symBtn=(s,n,ex)=>wlStar(s)+`<button type="button" class="symbtn" data-sym="${esc(s)}"${ex?` data-ex="${esc(ex)}"`:""}>${esc(s)}</button>${scBtn(s)}${n?`<span class="nm">${esc(n)}</span>`:""}`;
 function fmtDate(d){if(!d)return"";const t=new Date(String(d).slice(0,10)+"T00:00:00");return isNaN(t)?String(d):t.toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"})}
 
 /* ════════════════════ data ════════════════════ */
@@ -1823,6 +1849,7 @@ function drawGroupChart(){
    <div class="gtools">
      <div class="ctl"><span>Range</span>${segG("range",["3M","6M","1Y","2Y","5Y","All"],GST.range)}</div>
      <div class="ctl"><span>Bars</span>${segG("int",["D","W"],GST.int,{D:"Daily",W:"Weekly"})}</div>
+     <div class="ctl"><span>Averages${GST.int==="W"?" (weekly bars)":""}</span>${emaChips("data-gema")}</div>
      <details class="gmore" ${matchMedia("(max-width:700px)").matches?"":"open"}><summary>Chart options</summary><div class="gtools">
      <div class="ctl"><span>Signals on chart</span>${segG("sig",["tested","all","off"],GST.sig,{tested:"Tested",all:"All",off:"Off"})}</div>
      <div class="ctl"><span>Scale</span>${segG("scale",["lin","log"],GST.scale,{lin:"Linear",log:"Log"})}</div>
@@ -1831,7 +1858,7 @@ function drawGroupChart(){
    </div></details></div>
    <div class="gread" id="gread" aria-live="off"></div>
    <div class="gchart" id="gchart"><div class="gplab" id="gplab"></div></div>
-   <div class="glegend"><span><i style="--c:${P.s3}"></i>${GST.int==="W"?"10-week":"21-day"} EMA</span><span><i style="--c:${P.s1}"></i>${GST.int==="W"?"30-week":"50-day"} average</span><span><i style="--c:${P.s2}"></i>${GST.int==="W"?"40-week":"200-day"} average</span><span><span class="bd" aria-hidden="true"></span>RS line at a ${GST.int==="W"?"52-week":"52-week"} high</span><span><span class="gsc t">▲</span>tested signal</span><span><span class="gsc b">●</span>breakout / other</span><span><span class="gsc w">▼</span>weakness</span></div>
+   <div class="glegend">${(()=>{const on=emaOn(),ec=emaCol(P);return EMA_N.map(n=>`<span data-gleg="${n}"${on[n]?"":` style="opacity:.45"`}><i style="--c:${ec[n]}"></i>EMA ${n}${GST.int==="W"?" weeks":""}</span>`).join("")})()}<span><span class="bd" aria-hidden="true"></span>RS line at a ${GST.int==="W"?"52-week":"52-week"} high</span><span><span class="gsc t">▲</span>tested signal</span><span><span class="gsc b">●</span>breakout / other</span><span><span class="gsc w">▼</span>weakness</span></div>
    <div class="gcols"><div class="dsec"><h4>This group's signals and what followed</h4><div id="ghist"></div></div>
      <div class="dsec"><h4>What the signals mean — tested on 2021–26</h4>${gEvidence(u)}</div></div>
    <div class="dsec" style="margin-top:16px"><h4>Member stocks</h4><div id="gmem"></div></div>`;
@@ -1839,6 +1866,8 @@ function drawGroupChart(){
   gRenderChart();gHistory();gMembers()}
 function gModalClick(e){
   if(e.target.closest("[data-gclose]")){closeGroupChart();return}
+  const em=e.target.closest("[data-gema]");if(em){const n=+em.dataset.gema,v=em.getAttribute("aria-pressed")!=="true";emaSet(n,v);em.setAttribute("aria-pressed",v);
+    GCH?.es?.[n]?.applyOptions({visible:v});const lg=document.querySelector(`#gmodal [data-gleg="${n}"]`);if(lg)lg.style.opacity=v?"":".45";return}
   const s=e.target.closest("[data-gs]");if(s){const k=s.dataset.gs,v=s.dataset.val;
     if(k==="uni"){st.uni=v;store.set("uni",v);drawGroupChart();if(["rotation","breadth"].includes(st.tab))render();return}
     GST[k]=v;store.set("gchart",{range:GST.range,int:GST.int,sig:GST.sig,scale:GST.scale});
@@ -1863,8 +1892,9 @@ async function gRenderChart(){
   /* pane 0: candles + averages (+ comparison) */
   const cs=chart.addSeries(L.CandlestickSeries,{upColor:P.up,downColor:P.down,borderUpColor:P.up,borderDownColor:P.down,wickUpColor:P.up,wickDownColor:P.down,priceLineVisible:false},0);
   cs.setData(rows.map(q=>({time:q.t,open:q.o,high:q.h,low:q.l,close:q.c})));
-  const mas=W?[[ema(C,10),P.s3],[sma(C,30),P.s1],[sma(C,40),P.s2]]:[[ema(C,21),P.s3],[sma(C,50),P.s1],[sma(C,200),P.s2]];
-  for(const [a,c] of mas){const sr=chart.addSeries(L.LineSeries,line({color:c,lineWidth:1.6}),0);sr.setData(a.map((v,i)=>isNum(v)?{time:T[i],value:v}:{time:T[i]}))}
+  /* EMA 21 / 50 / 200 of the chosen bars (each can be hidden; the choice is shared with the stock charts) */
+  const eOn=emaOn(),eCol=emaCol(P),es={};
+  for(const n of EMA_N){const a=emaRun(C,n);es[n]=chart.addSeries(L.LineSeries,line({color:eCol[n],lineWidth:n===200?2:1.6,visible:eOn[n]}),0);es[n].setData(a.map((v,i)=>isNum(v)?{time:T[i],value:v}:{time:T[i]}))}
   let cmpS=null;
   if(GST.cmp){const vals=GST.cmp==="__bench"?rows.map(q=>q.bx):rows.map(q=>cmpRows?.get(q.t)??null);
     cmpS=chart.addSeries(L.LineSeries,line({color:P.ink,lineWidth:1.6,lineStyle:L.LineStyle.Dashed,lastValueVisible:true,title:GST.cmp==="__bench"?"NIFTY 500":GXD.id[GST.cmp]?.n||""}),0);
@@ -1899,7 +1929,7 @@ async function gRenderChart(){
   /* scale modes, set once every pane exists (a new pane copies the options of the last one changed):
      price = linear / log / % from the left edge when comparing; RS line = 100 at the left edge; the rest linear */
   [GST.cmp?2:GST.scale==="log"?1:0,0,3,0,0].forEach((md,i)=>chart.priceScale("right",i).applyOptions({mode:md}));
-  GCH={chart,rows,cs,rsv};
+  GCH={chart,rows,cs,rsv,es};
   gSetRange();
   /* pane titles */
   const labels=phone?["Index"+(GST.cmp?" · % from left edge":""),"Turnover (₹ Cr)","RS line vs NIFTY 500","% above 50 & 200 DMA","Group RS rating"]
@@ -1931,14 +1961,15 @@ function gMembers(){const m=$("#gmodal"),kind=m.dataset.k,name=m.dataset.n,syms=
 async function gMountMini(){const el=document.querySelector(".gmini[data-gopen]");if(GMINI){GMINI.remove();GMINI=null}if(!el)return;
   const [k,n]=el.dataset.gopen.split("|");
   try{await Promise.all([grpLoad(),gcomLoad(),lwcLoad()]);const r=gRow(k,n);if(!r){el.innerHTML=`<p class="note" style="margin:8px">No chart for this group (it needs 3 or more stocks with prices).</p>`;return}
-    const F=await gfileLoad(r.id);if(!document.body.contains(el))return;const u=gU(r),rows=gRows(F,u,false).slice(-260),L=window.LightweightCharts,P=gpal();
+    const F=await gfileLoad(r.id);if(!document.body.contains(el))return;const u=gU(r),all=gRows(F,u,false),rows=all.slice(-260),L=window.LightweightCharts,P=gpal();
     el.querySelector(".gmc").innerHTML="";
     const ch=L.createChart(el.querySelector(".gmc"),{autoSize:true,layout:{background:{type:"solid",color:P.card},textColor:P.muted,fontFamily:"IBM Plex Sans, system-ui, sans-serif",fontSize:12,attributionLogo:true},
       grid:{vertLines:{visible:false},horzLines:{color:P.track}},rightPriceScale:{borderColor:P.line},timeScale:{borderColor:P.line},handleScroll:false,handleScale:false,crosshair:{mode:L.CrosshairMode.Magnet},localization:{locale:"en-IN"}});
     const a=ch.addSeries(L.AreaSeries,{lineColor:P.s1,topColor:rgba(P.s1,.22),bottomColor:rgba(P.s1,.02),lineWidth:2,priceLineVisible:false});
     a.setData(rows.map(q=>({time:q.t,value:q.c})));
-    const s50=sma(rows.map(q=>q.c),50),ml=ch.addSeries(L.LineSeries,{color:P.s2,lineWidth:1.5,priceLineVisible:false,lastValueVisible:false,crosshairMarkerVisible:false});
-    ml.setData(s50.map((v,i)=>isNum(v)?{time:rows[i].t,value:v}:{time:rows[i].t}));ch.timeScale().fitContent();GMINI=ch;
+    const eOn=emaOn(),eCol=emaCol(P),cAll=all.map(q=>q.c),off=all.length-rows.length;
+    for(const n of EMA_N){if(!eOn[n])continue;const e=emaRun(cAll,n).slice(off),ml=ch.addSeries(L.LineSeries,{color:eCol[n],lineWidth:1.5,priceLineVisible:false,lastValueVisible:false,crosshairMarkerVisible:false});
+      ml.setData(e.map((v,i)=>isNum(v)?{time:rows[i].t,value:v}:{time:rows[i].t}))}ch.timeScale().fitContent();GMINI=ch;
     const x=r[u];el.querySelector(".gmh").innerHTML=`<b>${esc(n)}</b> · last 12 months · group RS rating ${gpill(r,u)} · ${{2:"Stage 2",4:"Stage 4",1:"Stage 1",3:"Stage 3"}[x.st]||""} ${gsigChips(r,u,19)}`}
   catch(e){el.querySelector(".gmc").innerHTML=`<p class="note" style="margin:8px">${esc(e.message||String(e))}</p>`}}
 function gMiniHtml(kind,name){return `<div class="gmini" data-gopen="${esc(kind+"|"+name)}" role="button" tabindex="0" aria-label="Open the full chart of ${esc(name)}"><div class="gmh">Loading chart…</div><div class="gmc"></div><span class="gmo">Open full chart ⤢</span></div>`}
@@ -2733,20 +2764,21 @@ function vbSettings(){const f=st.vb;
   </div>`}
 
 /* ── the view ── */
-async function renderVcpScan(head){vbInit();
+async function renderVcpScan(head){if(store.get("vbMode","rules")==="rules"){renderVcpRules(head);return}vbInit();
   $("#view").innerHTML=head+`<div class="empty">Loading the VCP scanner…</div>`;
   let X=null;
   try{await vbEngine();await vbData("Daily");X=await vbData(st.vb.tf)}catch(e){if(st.tab!=="scanners"||st.scanView!=="vb")return;$("#view").innerHTML=head+`<div class="err">${esc(e.message||String(e))}</div>`;return}
   if(st.tab!=="scanners"||st.scanView!=="vb")return;
   if(!X||!VBD.d){$("#view").innerHTML=head+`<div class="err">The VCP scanner's data isn't there yet. It is made by the evening “Daily update” run — run it once from the Actions tab, then reload.</div>`;return}
   const f=st.vb,E=VBD.d.evidence||null,sc=X.scanned||{};
-  $("#view").innerHTML=head+`<div class="sec-head"><div><h2>VCP scanner</h2><p>Your VCP breakout scanner (Minervini-style volatility contraction) running on every NSE stock after the close: tight, quiet bases near the highs that are <b>Coiling</b> under the pivot or <b>Breaking out</b> through it on a volume surge. Same rules, grades and settings as the app — change any setting and the list updates at once.</p></div></div>
+  $("#view").innerHTML=head+`<div class="sec-head"><div><h2>Classic breakout scanner</h2><p>Your VCP app's breakout scanner running on every NSE stock after the close: tight, quiet bases near the highs that are <b>Coiling</b> under the pivot or <b>Breaking out</b> through it on a volume surge. Same rules, grades and settings as the app — change any setting and the list updates at once.</p><p class="vr-audit"><b>Audit, Nov 2026:</b> tested the same way as the rule-based VCP (2005–26), its coiling bases beat the market by +1.4% over 3 months against +4.6% for the rule-based VCP's default setups; it does not check that pullbacks shrink, lows hold or relative strength; its plan (stop at the base low, 2R target) about broke even after costs; and the grade did not separate winners from losers. Kept for its other base types and the app's settings.</p></div></div>
+    <div class="card toolbar">${vbModeSeg("classic")}</div>
     <div class="tiles btiles" id="vbTiles"></div>
     ${vbSettings()}
     ${E?vbEvidence(E):""}
     <div class="card vb-res" id="vbRes"></div>
     <p class="note">Data: NSE daily bars to ${esc(fmtDate(X.asof))}${f.tf==="Weekly"?" (weeks end on Friday; the latest week can be in progress)":""} · Nifty 50 momentum ${sgn((f.tf==="Weekly"?X.n50.w:X.n50.d)*100,1)} over ${f.tf==="Weekly"?"26 weeks":"126 sessions"}, the benchmark the RS column subtracts. Stocks with no trade in the last session are left out. Research tool, not investment advice.</p>`;
-  vbWire();
+  vbWire();wireVbMode();
   $("#view").querySelector(".vb-evid")?.addEventListener("toggle",e=>store.set("vbEv",e.target.open));
   $("#vbTiles").addEventListener("click",e=>{const t=e.target.closest("[data-vbp]");if(t)vbPreset(t.dataset.vbp)});
   vbDraw()}
@@ -2843,6 +2875,122 @@ function vbEvidence(E){const open=store.get("vbEv",false);const g=(v,d=1)=>sgn(v
       ${(E.rows||[]).map(x=>row(x.label,x,x.strong)).join("")}</tbody></table></div>
     <ul class="vb-find">${(E.findings||[]).map(t=>`<li>${t}</li>`).join("")}</ul>
     <p class="pnote">${E.method||""}</p></div></details>`}
+
+/* ════════════════════ VCP SCANNER — rule-based (Minervini), tested on NSE 2005–26 ════════════════════
+   vcp2.json (scripts/vcp_rules.py) lists every liquid stock with RS 70+ whose base passes the VCP rules on the last
+   session; the checks that the test found worth having (RS 80+, higher lows, volume dry-up) are applied here so they
+   can be relaxed. config/vcp_rules_evidence.json carries the test. The classic breakout scanner stays one tap away. */
+let VR2=null;
+async function vr2Load(){if(VR2)return VR2;let j=window.EMBED?.vcp2||null;
+  if(!j&&D.meta?.vcp2){try{const r=await fetch(`data/vcp2.json?v=${gv()}`);j=r.ok?await r.json():null}catch(e){}}
+  if(j){j.by={};for(const r of j.rows)j.by[r.s]=r}return VR2=j}
+const VR_DEF={rs:"80",hl:"req",dry:"req",adv:"30",st:"all",q:""};
+function vrInit(){if(!st.vr){st.vr={...VR_DEF,...store.get("vr",{}),q:""};for(const k in VR_DEF)if(typeof st.vr[k]!==typeof VR_DEF[k])st.vr[k]=VR_DEF[k]}return st.vr}
+function vrSave(){store.set("vr",{...st.vr,q:""})}
+const vrBest=r=>r.rs>=80&&r.hl&&r.dry<=0.8;
+function vrPass(r,f){const q=(f.q||"").trim().toUpperCase();
+  return r.rs>=+f.rs&&(f.hl!=="req"||r.hl)&&(f.dry!=="req"||r.dry<=0.8)&&(f.adv!=="100"||r.adv>=100)&&(f.st==="all"||r.st===f.st)
+    &&(!q||r.s.includes(q)||(D.by[r.s]?.n||"").toUpperCase().includes(q))}
+/* Minervini's footprint: weeks in the base, deepest / last contraction, number of contractions ("11W 25/4 3T") */
+const vrFoot=r=>`${Math.max(1,Math.round(r.blen/5))}W ${Math.round(r.dep[0])}/${Math.round(r.dep[r.dep.length-1])} ${r.k}T`;
+const vrChain=r=>r.dep.map(d=>d<10?d.toFixed(1):Math.round(d)).join(" → ")+"%";
+const vrStatus=r=>r.st==="bo"?`<span class="pill p-up">Breakout today</span>`:`<span class="pill vr-setup">Setting up</span>`;
+const vrEntry=r=>r.st==="bo"?r.c:r.piv;
+const vrStop8=r=>Math.round(vrEntry(r)*0.92*100)/100;
+function vrChecks(r){const ok=(b,t,tip)=>`<span class="vr-chk ${b?"on":"off"}" title="${esc(tip)}">${b?"✓":"✗"} ${t}</span>`;
+  return ok(r.rs>=80,`RS ${r.rs}`,"RS rating 80+ (tested: the biggest single filter)")+ok(r.hl,"Higher lows","Every contraction's low at or above the previous one's")+ok(r.dry<=0.8,`Dry-up ${isNum(r.dry)?r.dry.toFixed(2)+"×":"–"}`,"Volume of the last 5 sessions against its 50-day average (0.8× or less passes)")}
+const VR_COLS=[
+  {k:"chart",label:"Chart",fmt:r=>`<button type="button" class="vb-cbtn" data-schart="${esc(r.s)}" aria-label="Open the chart of ${esc(r.s)} with its contractions"><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M3 16V4M3 16h14M6 12l3-4 3 2 4-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`,sort:r=>r.s,csv:()=>""},
+  {k:"st",label:"Status",l:1,fmt:vrStatus,sort:r=>r.st==="bo"?0:1,csv:r=>r.st==="bo"?"Breakout":"Setting up"},
+  {k:"s",label:"Stock",l:1,fmt:r=>symBtn(r.s,r.n),sort:r=>r.s},
+  {k:"foot",label:"Footprint",l:1,fmt:r=>`<b class="num">${esc(vrFoot(r))}</b><span class="vb-vs"><br>${esc(vrChain(r))}</span>`,sort:r=>-r.k,csv:r=>vrFoot(r)+" "+vrChain(r)},
+  {k:"piv",label:"Pivot · buy above",fmt:r=>`<span class="num">${inr(r.piv)}</span><span class="vb-vs"><br>zone to ${inr(Math.round(r.piv*1.05*100)/100)}</span>`,csv:r=>r.piv},
+  {k:"dist",label:"Close vs pivot",fmt:r=>`<span class="num ${r.dist>0?"up":""}">${sgn(r.dist,1)}</span>`},
+  {k:"stop8",label:"Stop 8%",fmt:r=>`<span class="num">${inr(vrStop8(r))}</span><span class="vb-vs"><br>from ${inr(vrEntry(r))}</span>`,sort:r=>vrStop8(r),csv:r=>vrStop8(r)},
+  {k:"low",label:"Last contraction low",fmt:r=>`<span class="num">${inr(r.low)}</span><span class="vb-vs"><br>${sgn((r.low/r.piv-1)*100,1)} from pivot</span>`},
+  {k:"chk",label:"Checks",l:1,fmt:vrChecks,sort:r=>-(+(r.rs>=80)+(+r.hl)+(+(r.dry<=0.8))),csv:r=>`RS ${r.rs}; higher lows ${r.hl?"yes":"no"}; dry-up ${r.dry}`},
+  {k:"rs",label:"RS",fmt:r=>rsPill(r.rs)},
+  {k:"adv",label:"Prior advance",fmt:r=>`<span class="num">+${r.adv}%</span>`},
+  {k:"vr",label:"Volume today",fmt:r=>vbN(r.vr,1,"×")},
+  {k:"blen",label:"Base days",fmt:r=>`<span class="num">${r.blen}</span>`}];
+function vrCards(T,empty){const t=st.tbl.vr;if(!T.length)return `<div class="empty">${esc(empty)}</div>`;
+  const vis=T.slice(0,t.show);
+  return `<div class="vb-cards">${vis.map(r=>`<article class="vb-card" style="--tc:${r.st==="bo"?"var(--up)":"var(--accent)"}">
+    <div class="vb-ch">${vrStatus(r)}<b class="num">${esc(vrFoot(r))}</b></div>
+    <div class="vb-cn">${symBtn(r.s,r.n)}</div>
+    <dl class="vb-kv"><div><dt>Pivot</dt><dd class="num">₹${inr(r.piv)}</dd></div><div><dt>Close vs pivot</dt><dd class="num ${r.dist>0?"up":""}">${sgn(r.dist,1)}</dd></div><div><dt>Stop 8%</dt><dd class="num">₹${inr(vrStop8(r))}</dd></div>
+      <div><dt>Contractions</dt><dd class="num">${esc(vrChain(r))}</dd></div><div><dt>Last low</dt><dd class="num">₹${inr(r.low)}</dd></div><div><dt>Prior advance</dt><dd class="num">+${r.adv}%</dd></div></dl>
+    <div class="vr-chks">${vrChecks(r)}</div>
+    <button type="button" class="btn alt vb-cgo" data-schart="${esc(r.s)}">Open the chart</button></article>`).join("")}</div>
+    ${T.length>t.show?`<div class="tfoot"><span>${T.length} stocks · showing ${t.show}</span><button type="button" class="ghost" data-vrmore="1">Show more</button></div>`:""}`}
+const vbModeSeg=m=>`<div class="ctl"><span>Scanner</span><div class="seg" role="group" aria-label="Which scanner"><button type="button" data-vbmode="rules" aria-pressed="${m==="rules"}">VCP — tested rules</button><button type="button" data-vbmode="classic" aria-pressed="${m==="classic"}">Classic breakout scanner</button></div></div>`;
+function vrSeg(k,opts,labels){const f=st.vr;return `<div class="seg" role="group">`+opts.map(o=>`<button type="button" data-vrs="${k}" data-val="${o}" aria-pressed="${f[k]===o}">${esc(labels[o])}</button>`).join("")+`</div>`}
+async function renderVcpRules(head){vrInit();
+  $("#view").innerHTML=head+`<div class="empty">Loading the VCP scanner…</div>`;
+  const V=await vr2Load();if(st.tab!=="scanners"||st.scanView!=="vb")return;
+  if(!V){$("#view").innerHTML=head+`<div class="card toolbar">${vbModeSeg("rules")}</div><div class="err">The VCP scanner's data isn't there yet. It is made by the evening “Daily update” run — run it once from the Actions tab, then reload.</div>`;wireVbMode();return}
+  const E=V.evidence,mk=V.market,f=st.vr;
+  $("#view").innerHTML=head+`<div class="sec-head"><div><h2>VCP scanner</h2><p>Mark Minervini's volatility contraction pattern as exact rules: a stock in a Stage 2 uptrend with strong relative strength, resting in a base where each pullback is <b>shallower than the one before</b> (25% → 12% → 5%), lows that hold and volume drying up — <b>setting up</b> just under the pivot, or <b>breaking out</b> through it today on 1.4×+ volume. Tested on 21 years of NSE data; the defaults are the version that did best. Most bases it finds are short — 2 to 4 weeks of ever-tighter pullbacks after a strong run — because long bases rarely keep every pullback shallower than the last.</p></div></div>
+    <div class="card toolbar">${vbModeSeg("rules")}</div>
+    ${mk?`<div class="card vr-mkt ${mk.up?"up":"down"}"><b>${mk.up?"Market check: supportive":"Market check: weak — be selective"}</b> The average liquid stock is ${sgn(mk.vs200,1)} ${mk.vs200>=0?"above":"below"} its 200-day average. In the test, VCPs bought in such markets made ${mk.up?sgn(E?.market?.up?.avg,1):sgn(E?.market?.down?.avg,1)} a trade, against ${mk.up?sgn(E?.market?.down?.avg,1)+" when it was below":sgn(E?.market?.up?.avg,1)+" when it was above"}.</div>`:""}
+    <div class="tiles btiles" id="vrTiles"></div>
+    <div class="card toolbar vr-set" id="vrSet">
+      <div class="ctl"><span>RS rating</span>${vrSeg("rs",["70","80","90"],{"70":"70+","80":"80+ (tested best)","90":"90+"})}</div>
+      <div class="ctl"><span>Contraction lows</span>${vrSeg("hl",["req","any"],{req:"Higher lows only",any:"Allow undercuts"})}</div>
+      <div class="ctl"><span>Volume dry-up</span>${vrSeg("dry",["req","any"],{req:"Required (0.8×)",any:"Not required"})}</div>
+      <div class="ctl"><span>Prior advance</span>${vrSeg("adv",["30","100"],{"30":"30%+","100":"100%+"})}</div>
+      <div class="ctl"><span>Status</span>${vrSeg("st",["all","bo","setup"],{all:"All",bo:"Breakout today",setup:"Setting up"})}</div>
+      <div class="ctl"><span>Search</span><input class="select" id="vrq" type="search" placeholder="Symbol or name" value="${esc(f.q)}" aria-label="Search the VCP list"></div>
+      <div class="ctl"><span>&nbsp;</span><div class="chips"><button type="button" class="chipbtn" data-vrpre="best">Best tested settings</button><button type="button" class="chipbtn" data-vrpre="all">Everything that passes the rules</button></div></div>
+    </div>
+    ${E?vrEvidence(E):""}
+    <div class="card vb-res" id="vrRes"></div>
+    <p class="note">Data: NSE daily bars to ${esc(fmtDate(V.asof))}. ${V.scanned.toLocaleString("en-IN")} liquid stocks with RS 70+ checked. Rules: Trend Template (close above the 50-, 150- and 200-day averages, stacked, the 200-day rising, 30%+ above the 52-week low, within 25% of the high); a base under the highest high of the last year with a 30%+ advance into it; 2 to 6 contractions found with a 5% zigzag, each shallower than the last, the first at most 35%, the last at most 10%. Stop: 8% under the entry (the contraction low is shown, but in the test a stop there was hit by ordinary noise). No fixed target. Research tool, not investment advice.</p>`;
+  wireVbMode();
+  $("#view").querySelector(".vr-evid")?.addEventListener("toggle",e=>store.set("vrEv",e.target.open));
+  $("#vrSet").addEventListener("click",e=>{const b=e.target.closest("[data-vrs]");if(b){f[b.dataset.vrs]=b.dataset.val;b.parentElement.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));vrSave();if(st.tbl.vr)st.tbl.vr.show=100;vrDraw();return}
+    const p=e.target.closest("[data-vrpre]");if(p){Object.assign(f,p.dataset.vrpre==="best"?{rs:"80",hl:"req",dry:"req",adv:"30"}:{rs:"70",hl:"any",dry:"any",adv:"30"});vrSave();renderScanners()}});
+  $("#vrq").addEventListener("input",e=>{f.q=e.target.value;vrDraw()});
+  $("#vrTiles").addEventListener("click",e=>{const t=e.target.closest("[data-vrst]");if(t){f.st=t.dataset.vrst;vrSave();renderScanners()}});
+  vrDraw()}
+function wireVbMode(){$("#view").querySelectorAll("[data-vbmode]").forEach(b=>b.addEventListener("click",()=>{store.set("vbMode",b.dataset.vbmode);renderScanners()}))}
+function vrDraw(){const V=VR2;if(!V||!$("#vrRes"))return;const f=st.vr;
+  const all=V.rows.map(r=>({...r,n:D.by[r.s]?.n}));const pre=all.filter(r=>vrPass(r,{...f,st:"all"})),rows=pre.filter(r=>f.st==="all"||r.st===f.st);
+  const nBO=pre.filter(r=>r.st==="bo").length,nSU=pre.length-nBO,nBest=all.filter(vrBest).length;
+  const tile=(st_,k,v,d,c)=>`<button type="button" class="card tile btile ${c}" data-vrst="${st_}"><div class="k">${k}</div><div class="v num">${v}</div><div class="d">${d}</div></button>`;
+  $("#vrTiles").innerHTML=tile("bo","Breakout today",nBO,"closed through the pivot on 1.4×+ volume","t-e")+tile("setup","Setting up",nSU,"inside the last, tightest contraction","t-m")
+    +`<div class="card tile btile"><div class="k">Pass every tested check</div><div class="v num">${nBest}</div><div class="d">RS 80+, higher lows, volume dry-up</div></div>`
+    +`<div class="card tile btile"><div class="k">Pass the base rules</div><div class="v num">${all.length}</div><div class="d">of ${V.scanned.toLocaleString("en-IN")} liquid stocks with RS 70+</div></div>`;
+  if(!st.tbl.vr)st.tbl.vr={key:"st",dir:1,show:100};
+  const phone=matchMedia("(max-width:720px)").matches;
+  const head=`<div class="bxhead"><span><b class="num">${rows.length.toLocaleString("en-IN")}</b> VCP${rows.length===1?"":"s"} · breakouts first, then by RS</span>${ssBtnFor("vcp2",rows.map(r=>r.s),"VCP scanner","sumr")}${rows.length?`<button type="button" class="ghost" data-wl-addall="${esc(JSON.stringify(rows.slice(0,200).map(r=>r.s)))}" data-label="VCP scanner">☆ Add ${Math.min(200,rows.length)} to a watchlist</button>`:""}</div>`;
+  const empty=all.length?`No stock passes these checks today (${all.length} pass the base rules). True VCPs are rare — the best-tested settings found about 2 a day on average, none on some days. Tap “Everything that passes the rules” to see the rest.`:"No stock passes the VCP rules today — common when the market is weak.";
+  $("#vrRes").innerHTML=head+(phone?vrCards(rows,empty):dtable("vr",rows,VR_COLS,{empty,csv:true}));
+  if(!phone)wireTables($("#vrRes"),vrDraw);else $("#vrRes").querySelector("[data-vrmore]")?.addEventListener("click",()=>{st.tbl.vr.show+=60;vrDraw()});
+  $("#vrRes").onclick=e=>{const tr=e.target.closest("tr");if(tr&&!e.target.closest("button,a,input")){const s=tr.querySelector("[data-schart]")?.dataset.schart;if(s)openStockChart(s)}}}
+function vrEvidence(E){const open=store.get("vrEv",true);const by=Object.fromEntries((E.rows||[]).map(r=>[r.key,r]));
+  const x=(v,se)=>isNum(v)?`<b class="num ${cls(v)}">${sgn(v,1)}</b>${isNum(se)?`<span class="vb-vs"> ±${se.toFixed(1)}</span>`:""}`:"–";
+  const row=r=>`<tr${r.key==="b_co"?` class="vb-strong"`:""}><td>${esc(r.label)}</td><td class="num">${r.n.toLocaleString("en-IN")}</td><td>${x(r.x63,r.se)}</td><td class="num">${r.w20.toFixed(0)}%</td><td>${x(r.p8,r.p8se)}</td><td class="num">${r.dev?sgn(r.dev.x63,1):"–"} / ${r.hold?sgn(r.hold.x63,1):"–"}</td></tr>`;
+  const order=["plain","old_co","old_bo","old_co80","core_co","a_co","b_co","b_bo"];
+  return `<details class="card evid vr-evid"${open?" open":""}><summary>What 21 years of NSE data say <span>— ${esc(E.headline||"")}</span></summary><div class="vb-evb">
+    <p>${E.intro||""}</p>
+    <div class="tscroll"><table class="pevm vb-evt"><thead><tr><th>Signals</th><th>Trades</th><th>3-month edge vs the market</th><th>Rose 20% before falling 8%</th><th>Per trade, 8% stop, held 63 sessions</th><th>Edge 2005–15 / 2016–26</th></tr></thead><tbody>
+      ${order.map(k=>by[k]).filter(Boolean).map(row).join("")}</tbody></table></div>
+    <h4 class="vr-h">One change at a time from the default (setting up)</h4>
+    <div class="tscroll"><table class="pevm"><thead><tr><th>Change</th><th>Trades</th><th>3-month edge</th></tr></thead><tbody>
+      <tr class="vb-strong"><td>Default: RS 80+, higher lows, dry-up 0.8×</td><td class="num">${by.b_co.n}</td><td>${x(by.b_co.x63,by.b_co.se)}</td></tr>
+      ${(E.factors||[]).filter(q=>q.co).map(q=>`<tr><td>${esc(q.label)}</td><td class="num">${q.co.n.toLocaleString("en-IN")}</td><td>${x(q.co.x63,q.co.se)}</td></tr>`).join("")}</tbody></table></div>
+    ${E.robust?`<h4 class="vr-h">Does it depend on how contractions are counted? (default checks, setting up)</h4>
+    <div class="tscroll"><table class="pevm"><thead><tr><th>Contractions counted from</th><th>Trades</th><th>3-month edge</th><th>2005–15 / 2016–26</th><th>Typical base</th></tr></thead><tbody>
+      ${E.robust.map(q=>`<tr${/the scanner/.test(q.label)?` class="vb-strong"`:""}><td>${esc(q.label)}</td><td class="num">${q.n.toLocaleString("en-IN")}</td><td>${x(q.x63,q.se)}</td><td class="num">${sgn(q.dev,1)} / ${sgn(q.hold,1)}</td><td class="num">${q.blen} sessions</td></tr>`).join("")}</tbody></table></div>`:""}
+    <h4 class="vr-h">Stop and target (default setups)</h4>
+    <div class="tscroll"><table class="pevm"><thead><tr><th>Exit plan</th><th>Trades</th><th>Per trade</th><th>Winners</th></tr></thead><tbody>
+      ${(E.exits||[]).map(q=>`<tr${/site plan/.test(q.label)?` class="vb-strong"`:""}><td>${esc(q.label)}</td><td class="num">${q.n}</td><td>${x(q.avg,q.se)}</td><td class="num">${q.win.toFixed(0)}%</td></tr>`).join("")}</tbody></table></div>
+    <h4 class="vr-h">Year by year (8% stop, 63 sessions, default setups)</h4>
+    <div class="vr-years">${(E.years||[]).map(q=>`<span class="${q.avg>=0?"up":"down"}" title="${q.n} trades"><b>${q.y}</b> ${sgn(q.avg,1)}<i>${q.n}</i></span>`).join("")}</div>
+    <ul class="vb-find">${(E.findings||[]).map(t=>`<li>${t}</li>`).join("")}</ul>
+    <p class="pnote">${esc(E.method||"")} ${esc(E.limits||"")}</p>
+    <p class="pnote">Sources: ${(E.sources||[]).map(([t,u])=>`<a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)}</a>`).join(" · ")}</p></div></details>`}
 
 /* ── the VCP chart window ── */
 function vbModalEl(){let m=$("#vmodal");if(m)return m;
@@ -3438,7 +3586,7 @@ async function openDrawer(sym,ex,focusWl){
   const navs=[["pchart","Chart"],["wlsec","Watchlist"],hasP&&["patsec","Pattern"],hasS2&&["s2sec","Stage 2"],hasB&&["basesec","Base"],rres&&["ressec","Result"],x&&["retsec","Returns"],x&&["trendsec","Trend"],x&&D.meta.rs&&["rssec","RS"],fundHtml&&["fundsec","Fundamentals"],hasMF&&["mfsec","Mutual funds"],x&&D.meta.dlv&&(isNum(x.dq)||x.t2t)&&["dlvsec","Delivery"],vr&&["vpcisec","VPCI"],["scansec","Scanners"]].filter(Boolean);
   $("#drawer").innerHTML=`<header><div><h2 id="dTitle">${esc(sym)}</h2><div class="co">${esc(name)}${sector?` · ${esc(sector)}`:""}</div></div>
     ${x?`<div class="dprice"><span class="px num">₹${inr(x.px)}</span><span class="chg num ${cls(x.r["1D"])}">${sgn(x.r["1D"])} today</span>${isNum(x.mc)?`<span class="mc num">Mcap ₹${Math.round(x.mc).toLocaleString("en-IN")} Cr</span>`:""}</div>`:`<div></div>`}
-    <div class="dacts"><a class="ghost tvl" href="${tv(sym,ex||vr?.exchange)}" target="_blank" rel="noopener">TradingView ↗</a><button class="close" type="button" data-close aria-label="Close ${esc(sym)}"><b aria-hidden="true">✕</b> Close</button></div>
+    <div class="dacts">${x&&D.meta?.sc?`<button type="button" class="ghost scopen" data-schart="${esc(sym)}">${SC_ICON}Candle chart</button>`:""}<a class="ghost tvl" href="${tv(sym,ex||vr?.exchange)}" target="_blank" rel="noopener">TradingView ↗</a><button class="close" type="button" data-close aria-label="Close ${esc(sym)}"><b aria-hidden="true">✕</b> Close</button></div>
     <nav class="dnav" aria-label="Sections">${navs.map(([id,l])=>`<button type="button" data-jump="${id}">${l}</button>`).join("")}</nav></header>
   <div class="body"><div class="dcols"><div class="dcol">
     ${x?`<div id="pchartSlot"></div>${wlCardHtml(sym)}
@@ -3861,6 +4009,190 @@ function wirePriceChart(s){const box=$("#pchart");if(!box)return;const svg=box.q
     tip.hidden=false;tip.innerHTML=`<b>${new Date(CL.dates[i]+"T00:00:00").toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"})}</b><br>Close ₹${inr(c[i])}${isNum(a)?`<br>50-day avg ₹${inr(Math.round(a*100)/100)}`:""}`;
     const bx=box.getBoundingClientRect();let left=sx/W*r.width+(r.left-bx.left)+12;if(left+tip.offsetWidth>bx.width-6)left-=tip.offsetWidth+24;tip.style.left=Math.max(4,left)+"px";tip.style.top="56px"};
   const out=()=>{tip.hidden=true;xh.setAttribute("opacity","0")};svg.addEventListener("mousemove",mv);svg.addEventListener("touchmove",mv,{passive:true});svg.addEventListener("touchstart",mv,{passive:true});svg.addEventListener("mouseleave",out);svg.addEventListener("touchend",out)}
+
+/* ════════════════════ STOCK CHART (the chart button on every stock) ════════════════════
+   Daily or weekly candles for any stock with EMA 21 / 50 / 200 (each can be switched off; the choice is shared with the
+   group charts), volume, the RS line against NIFTY 500 with blue dots, and the site's own levels for that stock: the long
+   base, the VCP scanner's base (with your VCP settings), chart patterns, the 52-week high and your watchlist levels.
+   data/sc/<symbol>.json (scripts/stock_charts.py) carries ~2 years of daily and ~3 years of weekly bars, plus the state of
+   each EMA just before the first bar, worked out on the stock's full price history - so the EMAs here are exact. */
+const EMA_N=[21,50,200];
+function emaOn(){const o=store.get("emaOn",null)||{};return {21:o[21]!==false,50:o[50]!==false,200:o[200]!==false}}
+function emaSet(n,v){const o=emaOn();o[n]=v;store.set("emaOn",o)}
+const emaCol=P=>({21:P.s3,50:P.s1,200:P.s2});
+/* EMA seeded with the average of the first n closes (as TradingView starts it); st0 = [bars so far, value] continues
+   a series - the value is the running sum while fewer than n bars have passed */
+function emaRun(a,n,st0){const o=new Array(a.length).fill(null),al=2/(n+1);let k=st0?st0[0]:0,e=st0?st0[1]:0;
+  for(let i=0;i<a.length;i++){const v=a[i];if(!isNum(v))continue;k++;if(k<n)e+=v;else if(k===n){e=(e+v)/n;o[i]=e}else{e+=al*(v-e);o[i]=e}}return o}
+function emaChips(attr){const on=emaOn(),c=emaCol(gpal());
+  return `<div class="chips emachips" role="group" aria-label="Moving averages on the chart">${EMA_N.map(n=>`<button type="button" class="chipbtn emachip" ${attr}="${n}" aria-pressed="${on[n]}" title="Show or hide the ${n}-bar EMA"><i style="--c:${c[n]}"></i>EMA ${n}</button>`).join("")}</div>`}
+const SC_ICON=`<svg viewBox="0 0 18 18" aria-hidden="true"><path d="M4 2v3M4 13v3M9 4v2M9 14v2M14 3v3M14 11v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><rect x="2.3" y="5" width="3.4" height="8" rx="1" fill="currentColor"/><rect x="7.3" y="6" width="3.4" height="8" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="12.3" y="6" width="3.4" height="5" rx="1" fill="currentColor"/></svg>`;
+const scBtn=s=>D.meta?.sc?`<button type="button" class="scbtn" data-schart="${esc(s)}" aria-label="Candle chart of ${esc(s)}" title="Candle chart">${SC_ICON}</button>`:"";
+let SCC=null,SCF={},SCH=null,SCH_BACK=false,SCX=null;
+const SST={range:"1Y",int:"D",scale:"lin",rs:"on",lv:{base:true,vcp:true,pat:true,hi:true,my:true}};
+const scName=s=>s.replace(/[^A-Za-z0-9]/g,ch=>"_"+ch.charCodeAt(0).toString(16).toUpperCase().padStart(2,"0"));
+async function scComLoad(){if(SCC)return SCC;let r=null;try{r=await fetch(`data/sc/_common.json?v=${gv()}`)}catch(e){}
+  if(!r||!r.ok)throw new Error("Could not load the chart data. Check the connection and try again.");return SCC=await r.json()}
+async function scFileLoad(s){if(SCF[s])return SCF[s];let r=null;try{r=await fetch(`data/sc/${encodeURIComponent(scName(s))}.json?v=${gv()}`)}catch(e){}
+  if(!r||!r.ok)throw new Error("No chart for this stock yet: it needs a price in today's data.");return SCF[s]=await r.json()}
+function smodalEl(){let m=$("#smodal");if(m)return m;
+  document.body.insertAdjacentHTML("beforeend",`<div class="gscrim scscrim" id="scscrim" hidden></div><section class="gmodal smodal" id="smodal" hidden role="dialog" aria-modal="true" aria-labelledby="sTitle"></section>`);
+  $("#scscrim").addEventListener("click",()=>closeStockChart());
+  m=$("#smodal");m.addEventListener("click",sModalClick);return m}
+/* the site's levels for this stock, each optional */
+async function scOverlays(s){const o={};
+  try{const B=await basesLoad();if(B?.by?.[s])o.base=B.by[s]}catch(e){}
+  try{const T=await patLoad();if(T?.by?.[s]?.length)o.pats=T.by[s]}catch(e){}
+  try{const V=await vr2Load();if(V?.by?.[s])o.vcp=V.by[s]}catch(e){}
+  try{const m=wlGet().meta[s]||{},items=wlListsOf(s).map(l=>l.items.find(i=>i.s===s)).filter(Boolean);
+    if(isNum(m.pivot)||isNum(m.stop)||isNum(m.target)||items.length)o.my={m,items}}catch(e){}
+  return o}
+async function openStockChart(sym){
+  const sv=store.get("schart",{});Object.assign(SST,sv,{lv:{...SST.lv,...(sv.lv||{})}});
+  const m=smodalEl(),wasOpen=!m.hidden,x=D.by[sym]||{};m.dataset.s=sym;
+  m.innerHTML=`<header class="ghead"><div><div class="gkind">Stock chart${x.ind?` · ${esc(x.ind)}`:x.sec?` · ${esc(x.sec)}`:""}</div><h2 id="sTitle">${esc(sym)}<span class="pco">${esc(x.n||"")}</span></h2></div><button class="close" type="button" data-sclose aria-label="Close chart"><b aria-hidden="true">✕</b> Close</button></header><div class="gbody"><div class="empty" style="padding:40px">Loading chart…</div></div>`;
+  m.hidden=false;$("#scscrim").hidden=false;document.body.style.overflow="hidden";
+  if(!wasOpen&&!history.state?.schart)history.pushState({...(history.state||{}),schart:1},"",location.href);
+  try{const [C,F]=await Promise.all([scComLoad(),scFileLoad(sym),lwcLoad()]);const ov=await scOverlays(sym);
+    if(m.hidden||m.dataset.s!==sym)return;drawStockChart(sym,C,F,ov)}
+  catch(e){if(m.dataset.s===sym)m.querySelector(".gbody").innerHTML=`<div class="empty" style="padding:40px">${esc(e.message||String(e))}</div>`}
+  m.querySelector("[data-sclose]")?.focus()}
+function closeStockChart(fromPop){const m=$("#smodal");if(!m||m.hidden)return;if(SCH){SCH.ro?.disconnect();SCH.chart.remove();SCH=null}
+  m.hidden=true;$("#scscrim").hidden=true;
+  if(!["#drawer","#gmodal","#pmodal","#vmodal"].some(q=>$(q)&&!$(q).hidden))document.body.style.overflow="";
+  if(!fromPop&&history.state?.schart){SCH_BACK=true;history.back()}}
+window.addEventListener("popstate",()=>{if(SCH_BACK){SCH_BACK=false;return}if(!history.state?.schart&&$("#smodal")&&!$("#smodal").hidden)closeStockChart(true)});
+window.addEventListener("keydown",e=>{if(e.key==="Escape"&&$("#smodal")&&!$("#smodal").hidden&&(!$("#mdl")||$("#mdl").hidden)){e.stopImmediatePropagation();e.preventDefault();closeStockChart()}},true);
+document.addEventListener("click",e=>{const b=e.target.closest("[data-schart]");if(!b)return;e.preventDefault();e.stopPropagation();openStockChart(b.dataset.schart)},true);
+/* bars of one stock: daily or weekly, with dates */
+function scRows(C,F,weekly){const S=weekly?F.w:F.d,out=[];if(!S)return out;
+  for(let i=0;i<S.t.length;i++){const o=S.o[i],h=S.h[i],l=S.l[i],c=S.c[i];if([o,h,l,c].every(isNum))out.push({t:C.d[S.t[i]],o,h,l,c,v:S.v[i]||0,b:C.b[S.t[i]]})}return out}
+const SC_LV={base:"Long base",vcp:"VCP base",pat:"Chart pattern",hi:"52-week high",my:"My levels"};
+function drawStockChart(sym,C,F,ov){const m=$("#smodal"),x=D.by[sym]||{},P=gpal();SCX={sym,C,F,ov};
+  const kv=(k,v,c)=>`<div><dt>${k}</dt><dd class="num ${c||""}">${v}</dd></div>`;
+  const d=scRows(C,F,false),cl=d.map(q=>q.c),E={};for(const n of EMA_N)E[n]=emaRun(cl,n,F.sd?.[n]);
+  const L1=d[d.length-1],L0=d[d.length-2],vsE=n=>{const e=E[n][d.length-1];return isNum(e)?(L1.c/e-1)*100:null};
+  const hi=Math.max(...d.slice(-252).map(q=>q.h)),fromHi=(L1.c/hi-1)*100,chg=L0?(L1.c/L0.c-1)*100:null;
+  const has={base:!!ov.base,vcp:!!ov.vcp,pat:!!ov.pats,hi:true,my:!!ov.my};
+  const lvLab={base:ov.base?`Long base · pivot ₹${inr(ov.base.piv)}`:"",vcp:ov.vcp?`VCP ${ov.vcp.st==="bo"?"breakout":"setting up"} · ${vrFoot(ov.vcp)} · pivot ₹${inr(ov.vcp.piv)}`:"",
+    pat:ov.pats?"Pattern · "+ov.pats.map(r=>(pdef(r.id).name||r.id)+(r.st==="fm"?" (forming)":r.st==="bd"?" (breakdown)":" (breakout)")).join(", "):"",hi:`52-week high ₹${inr(hi)}`,my:"My pivot / stop / target"};
+  const lvCol={base:P.s4,vcp:cssv("--vb-cup")||P.s3,pat:P.ink,hi:P.muted,my:P.up};
+  const segS=(name,opts,cur,labels)=>`<div class="seg" role="group" aria-label="${esc(name)}">`+opts.map(o=>`<button type="button" data-ss="${name}" data-val="${esc(o)}" aria-pressed="${o===cur}">${esc(labels?labels[o]:o)}</button>`).join("")+`</div>`;
+  const ranges=SST.int==="W"?["6M","1Y","2Y","3Y"]:["3M","6M","1Y","2Y"];if(!ranges.includes(SST.range))SST.range="1Y";
+  const phone=matchMedia("(max-width:700px)").matches;
+  const statsH=`<dl class="gstats">${kv(`Close · ${fmtDate(L1.t)}`,"₹"+inr(L1.c))}${kv("Day",sgn(chg,2),cls(chg))}${kv("RS rating",rsPill(x.rs))}${kv("Stage",stagePill(x.st))}${kv("Upside",isNum(x.up)?upPill(x.up):"–")}${EMA_N.map(n=>kv("vs EMA "+n,sgn(vsE(n),1),cls(vsE(n)))).join("")}${kv("From 52W high",sgn(fromHi,1))}</dl>`;
+  const levelsH=Object.keys(SC_LV).some(k=>has[k])?`<div class="ctl"><span>Levels on the chart</span><div class="chips">${Object.keys(SC_LV).filter(k=>has[k]).map(k=>`<button type="button" class="chipbtn emachip lvchip" data-slv="${k}" aria-pressed="${SST.lv[k]!==false}" title="Show or hide: ${esc(lvLab[k])}"><i style="--c:${lvCol[k]}"></i>${esc(lvLab[k])}</button>`).join("")}</div></div>`:"";
+  m.querySelector(".gbody").innerHTML=`${phone?"":statsH}
+   <div class="gtools">
+     <div class="ctl"><span>Range</span>${segS("range",ranges,SST.range)}</div>
+     <div class="ctl"><span>Bars</span>${segS("int",["D","W"],SST.int,{D:"Daily",W:"Weekly"})}</div>
+     <div class="ctl"><span>Averages${SST.int==="W"?" (weekly bars)":""}</span>${emaChips("data-sema")}</div>
+     ${phone?"":levelsH}
+     <details class="gmore" ${phone?"":"open"}><summary>Chart options</summary><div class="gtools">
+       <div class="ctl"><span>Scale</span>${segS("scale",["lin","log"],SST.scale,{lin:"Linear",log:"Log"})}</div>
+       <div class="ctl"><span>RS line panel</span>${segS("rs",["on","off"],SST.rs,{on:"Show",off:"Hide"})}</div></div></details>
+   </div>
+   <div class="gread" id="sread" aria-live="off"></div>
+   <div class="gchart" id="schartbox"><div class="gplab" id="splab"></div></div>
+   <div class="glegend" id="slegend"></div>
+   ${phone?`<div class="gtools">${levelsH}</div>${statsH}`:""}
+   <p class="note" style="margin:0 0 14px">Daily prices to ${fmtDate(C.asof)} (end of day, split and bonus adjusted). EMA = exponential moving average of the close over 21, 50 and 200 ${SST.int==="W"?"weeks":"sessions"}, worked out on the stock's full price history; tap a chip to hide or show it. ${ov.vcp?"The VCP base uses your current VCP scanner settings. ":""}Levels are the same numbers the scanners use.</p>
+   <div style="display:flex;gap:10px;flex-wrap:wrap"><button type="button" class="btn" data-scard="${esc(sym)}">Open the stock card</button><a class="btn alt" href="${tv(sym)}" target="_blank" rel="noopener">TradingView ↗</a></div>`;
+  sRender()}
+function sIdx(T,date){let a=0,b=T.length-1;if(!date||!T.length||date>T[b])return null;if(date<=T[0])return 0;while(a<b){const mid=(a+b)>>1;if(T[mid]<date)a=mid+1;else b=mid}return a}
+function sRender(keep){const box=$("#schartbox"),L=window.LightweightCharts,P=gpal();if(!box||!L||!SCX)return;const {sym,C,F,ov}=SCX,W=SST.int==="W";
+  let lr=null;if(SCH){if(keep)lr=SCH.chart.timeScale().getVisibleLogicalRange();SCH.ro?.disconnect();SCH.chart.remove();SCH=null}
+  const rows=scRows(C,F,W);if(rows.length<2){box.innerHTML=`<div class="empty">Not enough history yet.</div>`;return}
+  const phone=matchMedia("(max-width:700px)").matches,N=rows.length,T=rows.map(q=>q.t),Cl=rows.map(q=>q.c),last=rows[N-1].c;
+  const prec=last>=1000?1:2;
+  const chart=L.createChart(box,{autoSize:true,layout:{background:{type:"solid",color:P.card},textColor:P.muted,fontFamily:"IBM Plex Sans, system-ui, sans-serif",fontSize:phone?12:13,attributionLogo:true,panes:{separatorColor:P.line,separatorHoverColor:rgba(P.accent,.35),enableResize:true}},
+    grid:{vertLines:{color:rgba(P.track.length>6?P.track:P.line,.6)},horzLines:{color:P.track}},rightPriceScale:{borderColor:P.line,minimumWidth:phone?54:66},
+    timeScale:{borderColor:P.line,rightOffset:5,minBarSpacing:0.5},crosshair:{mode:L.CrosshairMode.Normal},localization:{locale:"en-IN"},handleScale:{axisPressedMouseMove:{time:true,price:false}}});
+  const line=o=>({priceLineVisible:false,lastValueVisible:false,crosshairMarkerVisible:false,lineWidth:2,...o});
+  const cs=chart.addSeries(L.CandlestickSeries,{upColor:P.up,downColor:P.down,borderUpColor:P.up,borderDownColor:P.down,wickUpColor:P.up,wickDownColor:P.down,priceLineVisible:false,priceFormat:{type:"price",precision:prec,minMove:Math.pow(10,-prec)}},0);
+  cs.setData(rows.map(q=>({time:q.t,open:q.o,high:q.h,low:q.l,close:q.c})));
+  /* EMAs, continued from the state shipped with the file */
+  const on=emaOn(),ec=emaCol(P),es={},ev={};
+  for(const n of EMA_N){ev[n]=emaRun(Cl,n,(W?F.sw:F.sd)?.[n]);es[n]=chart.addSeries(L.LineSeries,line({color:ec[n],lineWidth:n===200?2:1.7,visible:on[n]}),0);
+    es[n].setData(ev[n].map((v,i)=>isNum(v)?{time:T[i],value:v}:{time:T[i]}))}
+  /* levels */
+  const segs=[],rings=[],boxes=[],mk=[],tags=[],lg=[],lv=k=>SST.lv[k]!==false,ix=dt=>sIdx(T,dt);
+  const lastI=N-1,dayAt=ago=>C.d[Math.max(0,C.d.length-1-ago)];
+  if(ov.base&&lv("base")){const r=ov.base,c=P.s4,i0=ix(r.start)??0,bo=["bo","bo0","ext"].includes(r.st),i1=bo&&isNum(r.ago)?(ix(dayAt(r.ago))??lastI):lastI;
+    if(isNum(r.piv)&&isNum(r.fl)){boxes.push({i0,i1:Math.max(i0,i1-(bo?1:0)),p0:r.fl,p1:r.piv,fill:rgba(c,.09),stroke:rgba(c,.75),dash:true,label:`Long base · ${r.len} days · ${r.depth}% deep`,lc:c});
+      segs.push({i0:ix(r.pd)??i0,p0:r.piv,i1:lastI,p1:r.piv,color:c,w:2.2,edge:true});tags.push([r.piv,c,"Base pivot"]);
+      if(bo&&isNum(r.ago))mk.push({time:T[i1],position:"belowBar",shape:"arrowUp",color:c,text:"Base breakout",size:1.2});
+      lg.push(`<span><i class="box faint" style="--c:${c}"></i>Long base (pivot to floor)</span>`)}}
+  if(ov.vcp&&lv("vcp")){const r=ov.vcp,c=cssv("--vb-cup")||P.s3,Q=(r.pts||[]).map(([d,p,k])=>({i:ix(d),p,k})).filter(q=>q.i!=null);
+    if(Q.length>1){for(let q=1;q<Q.length;q++)segs.push({i0:Q[q-1].i,p0:Q[q-1].p,i1:Q[q].i,p1:Q[q].p,color:c,w:2.2});
+      let tn=0;for(const q of Q){if(q.k==="L"){tn++;rings.push({i:q.i,p:q.p,color:c,r:4.2,label:W?"":`T${tn} ${(r.dep[tn-1]??0).toFixed(r.dep[tn-1]<10?1:0)}%`,below:true})}else rings.push({i:q.i,p:q.p,color:c,r:3.4,solid:true})}
+      const pi=Q.filter(q=>q.k==="H").pop()?.i??Q[0].i;
+      segs.push({i0:pi,p0:r.piv,i1:lastI,p1:r.piv,color:c,w:2.4,edge:true},{i0:pi,p0:r.low,i1:lastI,p1:r.low,color:P.down,w:1.4,dash:[2,4],edge:true});
+      const s8=vrStop8(r);segs.push({i0:Math.max(pi,lastI-10),p0:s8,i1:lastI,p1:s8,color:P.down,w:1.6,dash:[6,4],edge:true});
+      tags.push([r.piv,c,r.st==="bo"?"VCP pivot":"VCP buy above"],[r.low,P.down,"Last contraction low"],[s8,P.down,"8% stop"]);
+      if(r.st==="bo")mk.push({time:T[lastI],position:"belowBar",shape:"arrowUp",color:c,text:"VCP breakout",size:1.2});
+      lg.push(`<span><i style="--c:${c}"></i>VCP contractions (T1, T2… with depth)</span><span><i class="dash" style="--c:${P.down}"></i>8% stop and the last contraction low</span>`)}}
+  if(ov.pats&&lv("pat")){const c=P.ink;
+    for(const r of ov.pats){const fm=r.st==="fm",sell=pSell(r);
+      for(const [[d0,p0],[d1,p1]] of r.lines||[]){const i0=ix(d0),i1=ix(d1);if(i0==null||i1==null||!isNum(p0)||!isNum(p1))continue;let j1=i1,q1=p1;
+        if(fm&&i1>i0){j1=lastI;q1=Math.exp(Math.log(p0)+(Math.log(p1)-Math.log(p0))*(j1-i0)/(i1-i0))}if(j1<=i0)continue;
+        segs.push({i0,p0,i1:j1,p1:q1,color:c,w:2.2,log:true,edge:fm&&Math.abs(p1/p0-1)<1e-6})}
+      for(const [dt,p,lab] of r.pts||[]){const i=ix(dt);if(i==null||!isNum(p))continue;const q=rows[i],low=Math.abs(p-q.l)<=Math.abs(p-q.h);rings.push({i,p,color:c,r:4.5,label:W?"":lab||"",below:low})}
+      const lvp=pLevel(r);if(isNum(lvp))tags.push([lvp,c,(pdef(r.id).short||pdef(r.id).name)]);
+      if(r.st!=="fm"&&r.d){const i=ix(r.d);if(i!=null)mk.push({time:T[i],position:sell?"aboveBar":"belowBar",shape:sell?"arrowDown":"arrowUp",color:sell?P.down:c,text:(pdef(r.id).short||"Pattern")+(sell?" breakdown":" breakout"),size:1.2})}}
+    lg.push(`<span><i style="--c:${c}"></i>Chart pattern lines</span>`)}
+  if(lv("hi")){const k=W?52:252,a=Math.max(0,N-k);let h=-Infinity,hiI=a;for(let i=a;i<N;i++)if(rows[i].h>h){h=rows[i].h;hiI=i}
+    segs.push({i0:hiI,p0:h,i1:lastI,p1:h,color:P.muted,w:1.4,dash:[2,4],edge:true});tags.push([h,P.muted,"52W high"]);lg.push(`<span><i class="dash" style="--c:${P.muted}"></i>52-week high</span>`)}
+  if(ov.my&&lv("my")){const {m,items}=ov.my,a=Math.max(0,N-(W?26:120));
+    if(isNum(m.pivot)){segs.push({i0:a,p0:m.pivot,i1:lastI,p1:m.pivot,color:P.up,w:1.6,edge:true});tags.push([m.pivot,P.up,"My pivot"])}
+    if(isNum(m.stop)){segs.push({i0:a,p0:m.stop,i1:lastI,p1:m.stop,color:P.down,w:1.6,edge:true});tags.push([m.stop,P.down,"My stop"])}
+    if(isNum(m.target)){segs.push({i0:a,p0:m.target,i1:lastI,p1:m.target,color:P.muted,w:1.6,edge:true});tags.push([m.target,P.muted,"My target"])}
+    for(const it of items){const i=ix(it.d);if(i!=null)mk.push({time:T[i],position:"aboveBar",shape:"circle",color:P.ink,text:"Added",size:0.8})}
+    lg.push(`<span><i style="--c:${P.up}"></i>My levels (watchlist)</span>`)}
+  if(boxes.length){const bx=new VbBoxes(boxes);bx.noLabels=phone;cs.attachPrimitive(bx)}
+  if(segs.length||rings.length){const cm=new ChartMarks(segs,rings);cm.bg=P.card;cm.noLabels=phone;cs.attachPrimitive(cm)}
+  for(const [p,c,t] of tags)if(isNum(p))axisTag(cs,p,c,phone?"":t);
+  mk.sort((a,b)=>a.time<b.time?-1:a.time>b.time?1:0);if(mk.length)L.createSeriesMarkers(cs,mk);
+  /* pane 1: volume and its 50-bar average */
+  const vs=chart.addSeries(L.HistogramSeries,{priceFormat:{type:"volume"},priceLineVisible:false,lastValueVisible:false},1);
+  vs.setData(rows.map((q,i)=>({time:q.t,value:q.v||0,color:rgba(i&&q.c<rows[i-1].c?P.down:P.up,.55)})));
+  const v50=sma(rows.map(q=>q.v),50),vl=chart.addSeries(L.LineSeries,line({color:P.muted,lineWidth:1.2}),1);vl.setData(v50.map((v,i)=>isNum(v)?{time:T[i],value:v}:{time:T[i]}));
+  /* pane 2: RS line vs NIFTY 500 (100 = first bar shipped) and blue dots: the RS line at a 52-week high */
+  let rsv=null;
+  if(SST.rs==="on"){const b0=rows.find(q=>isNum(q.b)),k0=b0?b0.c/b0.b:null;rsv=rows.map(q=>isNum(q.b)&&k0?q.c/q.b/k0*100:null);
+    const rsS=chart.addSeries(L.LineSeries,line({color:P.ink,lineWidth:1.6,lastValueVisible:true,priceFormat:{type:"price",precision:1,minMove:0.1}}),2);
+    rsS.setData(rsv.map((v,i)=>isNum(v)?{time:T[i],value:v}:{time:T[i]}));
+    const win=W?52:252,dots=[];for(let i=win-1;i<N;i++){if(!isNum(rsv[i]))continue;let mx=-Infinity;for(let j=i-win+1;j<=i;j++)if(isNum(rsv[j])&&rsv[j]>mx)mx=rsv[j];
+      if(rsv[i]>=mx-1e-9)dots.push({time:T[i],position:"inBar",shape:"circle",color:P.bdot,size:0.6})}
+    L.createSeriesMarkers(rsS,dots)}
+  const panes=chart.panes(),sf=SST.rs==="on"?(phone?[64,16,20]:[68,14,18]):(phone?[78,22]:[80,20]);panes.forEach((p,i)=>p.setStretchFactor(sf[i]||10));
+  chart.priceScale("right",0).applyOptions({mode:SST.scale==="log"?1:0});
+  SCH={chart,rows,cs,es,ev,rsv};
+  const per={"3M":63,"6M":126,"1Y":252,"2Y":504,"3Y":756}[SST.range]||252,bars=Math.round(per/(W?5:1));
+  if(lr)chart.timeScale().setVisibleLogicalRange(lr);else chart.timeScale().setVisibleLogicalRange({from:Math.max(-1,N-bars),to:N+4});
+  SCH.lg=lg;sLegend();
+  const labels=["Price"+(W?" · weekly bars":" · daily bars"),`Volume · grey line = 50-${W?"week":"day"} average`,"RS line vs NIFTY 500 (100 = first bar)"];
+  const placeLabels=()=>{const lab=$("#splab");if(!lab||!SCH)return;let top=0;lab.innerHTML=SCH.chart.panes().map((p,i)=>{const h=`<span style="top:${top+4}px">${esc(labels[i]||"")}</span>`;top+=p.getHeight()+1;return h}).join("")};
+  requestAnimationFrame(placeLabels);SCH.ro=new ResizeObserver(()=>requestAnimationFrame(placeLabels));SCH.ro.observe(box);
+  chart.subscribeCrosshairMove(prm=>{if(SCH){SCH.lastT=prm.time;sReadout(prm.time)}});sReadout(null)}
+function sLegend(){const leg=$("#slegend");if(!leg||!SCH)return;const on=emaOn(),ec=emaCol(gpal()),W=SST.int==="W";
+  leg.innerHTML=EMA_N.map(n=>`<span${on[n]?"":` style="opacity:.45"`}><i style="--c:${ec[n]}"></i>EMA ${n}${W?" weeks":""}${on[n]?"":" (hidden)"}</span>`).join("")+SCH.lg.join("")+(SST.rs==="on"?`<span><span class="bd" aria-hidden="true"></span>RS line at a 52-week high</span>`:"")}
+function sReadout(t){const el=$("#sread");if(!el||!SCH)return;const rows=SCH.rows;let i=t?rows.findIndex(q=>q.t===t):rows.length-1;if(i<0)i=rows.length-1;
+  const q=rows[i],p=rows[i-1],ch=p?(q.c/p.c-1)*100:null,on=emaOn(),ec=emaCol(gpal());
+  el.innerHTML=`<b>${SST.int==="W"?"Week to ":""}${fmtDate(q.t)}</b><span>O <b class="num">${inr(q.o)}</b></span><span>H <b class="num">${inr(q.h)}</b></span><span>L <b class="num">${inr(q.l)}</b></span><span>C <b class="num">${inr(q.c)}</b> <span class="num ${cls(ch)}">${sgn(ch,2)}</span></span><span>Volume <b class="num">${Math.round(q.v||0).toLocaleString("en-IN")}</b></span>`+
+    EMA_N.filter(n=>on[n]).map(n=>{const v=SCH.ev[n][i];return `<span><i class="emadot" style="--c:${ec[n]}"></i>EMA ${n} <b class="num">${isNum(v)?inr(Math.round(v*100)/100):"–"}</b></span>`}).join("")}
+function sModalClick(e){
+  if(e.target.closest("[data-sclose]")){closeStockChart();return}
+  const cd=e.target.closest("[data-scard]");if(cd){const s=cd.dataset.scard;closeStockChart(true);if(history.state?.schart){const h={...history.state};delete h.schart;history.replaceState(h,"",location.href)}openDrawer(s);return}
+  const em=e.target.closest("[data-sema]");if(em){const n=+em.dataset.sema,v=em.getAttribute("aria-pressed")!=="true";emaSet(n,v);em.setAttribute("aria-pressed",v);
+    if(SCH){SCH.es[n].applyOptions({visible:v});sLegend();sReadout(SCH.lastT)}return}
+  const lvb=e.target.closest("[data-slv]");if(lvb){const k=lvb.dataset.slv,v=lvb.getAttribute("aria-pressed")!=="true";SST.lv[k]=v;lvb.setAttribute("aria-pressed",v);sSave();sRender(true);return}
+  const s=e.target.closest("[data-ss]");if(s){const k=s.dataset.ss,v=s.dataset.val;SST[k]=v;sSave();
+    s.parentElement.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===s));
+    if(k==="range"&&SCH){const per={"3M":63,"6M":126,"1Y":252,"2Y":504,"3Y":756}[v],n=SCH.rows.length,bars=Math.round(per/(SST.int==="W"?5:1));SCH.chart.timeScale().setVisibleLogicalRange({from:Math.max(-1,n-bars),to:n+4});return}
+    if(k==="int"){drawStockChart(SCX.sym,SCX.C,SCX.F,SCX.ov);return}
+    sRender(k==="scale");return}}
+function sSave(){store.set("schart",{range:SST.range,int:SST.int,scale:SST.scale,rs:SST.rs,lv:SST.lv})}
 
 /* ── events ── */
 document.addEventListener("click",e=>{
