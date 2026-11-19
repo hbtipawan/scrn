@@ -1354,6 +1354,28 @@ body.ssopen{overflow:hidden}
   #cmodal .cmp-tbl td[data-l]::before{content:attr(data-l);color:var(--muted);font-size:14px;font-weight:600}
   #cmodal .cmp-tbl td:last-child::before{display:none}
 }
+/* ── RS tab → Stage 2 stocks ──────────────────────────── */
+.gstd{font-size:15px;font-weight:600;color:var(--muted);white-space:nowrap}
+.z-new{background:var(--s1);color:#fff}.z-prime{background:var(--up);color:#fff}.z-mat{background:var(--accent);color:#1b1305}.z-list{background:var(--muted);color:var(--card)}
+.bsub.zsub{white-space:nowrap;max-width:none}
+.zruler{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:14px}
+.zr{position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:stretch;gap:4px;text-align:left;font:inherit;color:inherit;cursor:pointer;background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:18px 16px 14px;box-shadow:var(--d1)}
+.zr::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:var(--zc)}
+.zr.z1{--zc:var(--s1)}.zr.z2{--zc:var(--up)}.zr.z3{--zc:var(--accent)}
+.zr:hover{border-color:var(--zc)}
+.zr[aria-pressed="true"]{border-color:var(--zc);box-shadow:0 0 0 2px var(--zc),var(--d1)}
+.zr:focus-visible{outline:3px solid var(--zc);outline-offset:2px}
+.zr .zk{font-family:var(--display);font-weight:800;font-size:21px}.zr .zk small{font-family:var(--body);font-weight:600;color:var(--muted);font-size:16px;margin-left:8px}
+.zr .zv{font-family:var(--display);font-weight:800;font-stretch:108%;font-size:34px;line-height:1.1}
+.zr .zd{font-size:15px;color:var(--muted);font-weight:600}
+.zr .zrule{font-size:16.5px;line-height:1.45;margin-top:4px}
+.zr .zev{display:block;border-top:1px solid var(--line);padding-top:10px;margin-top:auto}
+.zr .zrule{margin-bottom:8px}
+.zr .zg{display:grid;grid-template-columns:auto repeat(3,minmax(0,1fr));gap:3px 12px;align-items:baseline}
+.zr .zg i{font-style:normal;font-size:14px;color:var(--muted);font-weight:600}
+.zr .zg b{font-size:16.5px;font-weight:800;font-variant-numeric:tabular-nums}
+.zr .zcap{display:block;font-size:14px;color:var(--muted);margin-top:6px;line-height:1.4}
+@media (max-width:900px){.zruler{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:minmax(272px,86%);overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 2px 8px}.zr{scroll-snap-align:start}}
 </style>
 </head>
 <body>
@@ -1425,7 +1447,8 @@ const store={get(k,d){try{const v=localStorage.getItem("radar."+k);return v==nul
 const tv=(s,ex)=>`https://in.tradingview.com/chart/?symbol=${encodeURIComponent((ex||"NSE")+":"+s)}`;
 function seg(name,opts,cur,labels){return `<div class="seg" role="group" aria-label="${esc(name)}">`+opts.map(o=>`<button type="button" data-seg="${name}" data-val="${esc(o)}" aria-pressed="${o===cur}">${esc(labels?labels[o]:o)}</button>`).join("")+`</div>`}
 function rsPill(v){if(!isNum(v))return "–";const c=v>=90?"rs-a":v>=70?"rs-b":v>=40?"rs-c":"rs-d";return `<span class="rs ${c}">${v}</span>`}
-function stagePill(s){return !s?"–":s===2?`<span class="pill p-up">Stage 2</span>`:s===4?`<span class="pill p-down">Stage 4</span>`:s===1?`<span class="pill p-mut">Stage 1</span>`:`<span class="pill p-mut">Stage 3</span>`}
+function stagePill(s,d,c){if(!s)return "–";const t=isNum(d)?` title="${c?"At least ":""}${d.toLocaleString("en-IN")} trading day${d===1?"":"s"} in Stage ${s}"`:"";
+  return s===2?`<span class="pill p-up"${t}>Stage 2</span>`:s===4?`<span class="pill p-down"${t}>Stage 4</span>`:s===1?`<span class="pill p-mut"${t}>Stage 1</span>`:`<span class="pill p-mut"${t}>Stage 3</span>`}
 const symBtn=(s,n,ex)=>wlStar(s)+`<button type="button" class="symbtn" data-sym="${esc(s)}"${ex?` data-ex="${esc(ex)}"`:""}>${esc(s)}</button>${scBtn(s)}${n?`<span class="nm">${esc(n)}</span>`:""}`;
 function fmtDate(d){if(!d)return"";const t=new Date(String(d).slice(0,10)+"T00:00:00");return isNaN(t)?String(d):t.toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"})}
 
@@ -1561,7 +1584,7 @@ const C={
   dp20:{k:"dp20",label:"Delivery % 20d",fmt:r=>`<span class="num">${r.t2t?"T2T":isNum(r.dp20)?r.dp20+"%":"–"}</span>`},
   dq:{k:"dq",label:"Delivered × avg",fmt:r=>`<span class="num">${isNum(r.dq)?r.dq.toFixed(1)+"×":"–"}</span>`},
   h52:{k:"h52",label:"From 52W high",fmt:r=>`<span class="num">${sgn(r.h52,1)}</span>`},
-  st:{k:"st",label:"Stage",l:1,fmt:r=>stagePill(r.st)},
+  st:{k:"st",label:"Stage",l:1,fmt:r=>stagePill(r.st,r.std,r.stdc)},
   vr:{k:"vr",label:"Vol ×",fmt:r=>`<span class="num">${isNum(r.vr)?r.vr.toFixed(1):"–"}</span>`},
   to:{k:"to",label:"Turnover ₹Cr",fmt:r=>`<span class="num">${isNum(r.to)?r.to.toLocaleString("en-IN"):"–"}</span>`},
   fr:{k:"fr",label:"Fund",fmt:r=>rsPill(r.fr)},
@@ -1909,7 +1932,7 @@ function drawGroupChart(){
   const m=$("#gmodal"),kind=m.dataset.k,name=m.dataset.n,r=gRow(kind,name),F=GXF[r.id],u=gU(r),x=r[u],P=gpal();
   const src=r.src==="nse"?`NSE's official index · breadth and turnover from its ${u==="l"?r.ml+" liquid":r.m} member stocks`:`Equal-weight index of ${u==="l"?r.ml+" liquid":r.m} member stocks, built by the site (base 100)`;
   const path=isNum(x.rk4)?(x.rk-x.rk4>=10?`climbing from ${x.rk4} four weeks ago`:x.rk4-x.rk>=10?`slipping from ${x.rk4} four weeks ago`:`steady (${x.rk4} four weeks ago)`):"";
-  const stx={2:"Stage 2",4:"Stage 4",1:"Stage 1",3:"Stage 3"}[x.st]||"–";
+  const stx=({2:"Stage 2",4:"Stage 4",1:"Stage 1",3:"Stage 3"}[x.st]||"–")+(x.st&&isNum(x.std)?` <span class="gstd" title="${x.stc?"At least ":""}${x.std} trading days in Stage ${x.st}">· ${x.stc?"≥ ":""}${x.std}d</span>`:"");
   const kv=(k,v,c)=>`<div><dt>${k}</dt><dd class="num ${c||""}">${v}</dd></div>`;
   const peers=(GXD.kinds[kind]||[]).map(id=>GXD.id[id]).filter(p=>p&&p.n!==name).sort((a,b)=>a.n.localeCompare(b.n));
   const segG=(name_,opts,cur,labels)=>`<div class="seg" role="group" aria-label="${esc(name_)}">`+opts.map(o=>`<button type="button" data-gs="${name_}" data-val="${esc(o)}" aria-pressed="${o===cur}">${esc(labels?labels[o]:o)}</button>`).join("")+`</div>`;
@@ -2042,7 +2065,7 @@ async function gMountMini(){const el=document.querySelector(".gmini[data-gopen]"
     const eOn=emaOn(),eCol=emaCol(P),cAll=all.map(q=>q.c),off=all.length-rows.length;
     for(const n of EMA_N){if(!eOn[n])continue;const e=emaRun(cAll,n).slice(off),ml=ch.addSeries(L.LineSeries,{color:eCol[n],lineWidth:1.5,priceLineVisible:false,lastValueVisible:false,crosshairMarkerVisible:false});
       ml.setData(e.map((v,i)=>isNum(v)?{time:rows[i].t,value:v}:{time:rows[i].t}))}ch.timeScale().fitContent();GMINI=ch;
-    const x=r[u];el.querySelector(".gmh").innerHTML=`<b>${esc(n)}</b> · last 12 months · group RS rating ${gpill(r,u)} · ${{2:"Stage 2",4:"Stage 4",1:"Stage 1",3:"Stage 3"}[x.st]||""} ${gsigChips(r,u,19)}`}
+    const x=r[u];el.querySelector(".gmh").innerHTML=`<b>${esc(n)}</b> · last 12 months · group RS rating ${gpill(r,u)} · ${{2:"Stage 2",4:"Stage 4",1:"Stage 1",3:"Stage 3"}[x.st]||""}${x.st&&isNum(x.std)?` (${x.stc?"≥ ":""}${x.std}d)`:""} ${gsigChips(r,u,19)}`}
   catch(e){el.querySelector(".gmc").innerHTML=`<p class="note" style="margin:8px">${esc(e.message||String(e))}</p>`}}
 function gMiniHtml(kind,name){return `<div class="gmini" data-gopen="${esc(kind+"|"+name)}" role="button" tabindex="0" aria-label="Open the full chart of ${esc(name)}"><div class="gmh">Loading chart…</div><div class="gmc"></div><span class="gmo">Open full chart ⤢</span></div>`}
 /* ── badges on the rotation rows ── */
@@ -2113,10 +2136,11 @@ new MutationObserver(()=>{if($("#gmodal")&&!$("#gmodal").hidden&&GCH)gRenderChar
 
 /* ════════════════════ RS RANKING ════════════════════ */
 function renderRS(){
+  if(st.rsView==="s2"&&D.meta.stg){renderRS2();return}
   const f=st.rs,secs=[...new Set(D.stocks.flatMap(x=>[x.sec,x.ind]).filter(Boolean))].sort(),ths=Object.keys(D.groups.Themes||{}).sort();
   const opt=(a,cur)=>a.map(o=>`<option ${o===cur?"selected":""}>${esc(o)}</option>`).join("");
   const hasH=!!D.meta.rs;
-  $("#view").innerHTML=`<div class="sec-head"><div><h2>Relative strength ranking</h2><p>Every stock ranked 1–99 on weighted 3/6/9/12-month performance (40% on the latest quarter). Leaders usually rank 80+ before the big move.${hasH?" <b>Coming from</b> tells a 90 that is climbing (from 70) apart from one slipping (from 99); a <span class=\"bd\" aria-hidden=\"true\"></span><b>blue dot</b> means the RS line hit a 52-week high.":""}</p></div></div>
+  $("#view").innerHTML=`${rsViewSeg()}<div class="sec-head"><div><h2>Relative strength ranking</h2><p>Every stock ranked 1–99 on weighted 3/6/9/12-month performance (40% on the latest quarter). Leaders usually rank 80+ before the big move.${hasH?" <b>Coming from</b> tells a 90 that is climbing (from 70) apart from one slipping (from 99); a <span class=\"bd\" aria-hidden=\"true\"></span><b>blue dot</b> means the RS line hit a 52-week high.":""}</p></div></div>
   <div class="card toolbar">
     <div class="ctl"><span>Search</span><input class="search" type="search" id="q" placeholder="Symbol or company" value="${esc(f.q)}" aria-label="Search stocks"></div>
     <div class="ctl"><span>Sector / industry</span><select class="select" id="fsec" aria-label="Sector"><option value="">All</option>${opt(secs,f.sec)}</select></div>
@@ -2143,6 +2167,139 @@ function drawRS(){
   $("#rsT").innerHTML=dtable("rs",rows,[C.stock,C.rs,...(hasH?[C.rsfrom,C.rspath,C.rs4w,C.rs12w]:[]),C.drs,...(hasH?[C.bdot,C.rsrng]:[]),C.fr,C.px,C.mc,C.pe,C.patg,C.ret("1D"),C.ret("1W"),C.ret("1M"),C.ret("3M"),C.ret("6M"),C.ret("1Y"),C.h52,C.st,C.rsi,C.roe,C.adr,C.nsc,C.vr,...(D.meta.dlv?[C.dp20,C.dq]:[]),C.to,C.sec],{empty:"No stocks match. Loosen the RS minimum or clear a filter."});
   wireTables($("#rsT"),drawRS);
 }
+/* ════════════════════ RS tab → Stage 2 stocks ════════════════════
+   stages.json (scripts/stages.py): every stock in Stage 2 on its weekly chart, the trading days since the
+   run began (d0 = the session it closed above its base or top), how the run began, and the 20-year test of
+   the stage engine and of the days-in-Stage-2 zones (config/stage_evidence.json). */
+let STGD=null;
+async function stgLoad(){
+  if(!STGD){if(window.EMBED?.stages)STGD=window.EMBED.stages;
+    else{if(!D.meta.stg)return null;try{const r=await fetch(`data/stages.json?v=${encodeURIComponent(D.meta.generated||"")}`);STGD=r.ok?await r.json():null}catch(e){STGD=null}}
+    if(STGD)STGD.by=Object.fromEntries(STGD.s2.map(x=>[x.s,x]))}
+  return STGD}
+if(!st.g2)st.g2={q:"",zone:"all",min:"0",how:"all",mrs:false,all:false};
+if(!st.rsView)st.rsView="rank";
+const ZN=()=>STGD?.zones||D.meta?.stg?.zones||{new:40,late:250};
+const zoneOf=d=>{if(!isNum(d))return null;const z=ZN();return d<=z.new?"new":d<=z.late?"prime":"mature"};
+const ZL={new:["New","z-new"],prime:["Prime","z-prime"],mature:["Mature","z-mat"],list:["Listed recently","z-list"]};
+/* a run held since the stock's first weekly reading has a minimum day count: no zone unless that minimum is already past day 250 */
+const zoneOfZ=z=>z.cap&&z.days<=ZN().late?"list":zoneOf(z.days);
+const zonePill=(z,r)=>{const [l,c]=z==="list"&&r&&!r.ipo?["After a gap","z-list"]:ZL[z]||["–",""];return `<span class="phpill ${c}">${l}</span>`};
+const HOW={1:["Base breakout",z=>z.basew>0?`after a ${z.basew}-week base`:"out of its base"],3:["Resumed",()=>"above its Stage 3 high"],
+  5:["Resumed",()=>"4 weeks above a rising line"],4:["V-turn",()=>"straight out of Stage 4"],0:["First reading",()=>"Stage 2 since its prices begin here"]};
+const pct1=v=>!isNum(v)?"–":Math.abs(v)<0.05?"0.0%":sgn(v,1);
+const rsViewSeg=()=>D.meta.stg?`<div class="subtabs">${seg("rsView",["rank","s2"],st.rsView==="s2"?"s2":"rank",{rank:"RS ranking",s2:"Stage 2 stocks"})}</div>`:"";
+function g2Notice(z,rs){const Z=ZN(),k=zoneOfZ(z);
+  if(k==="list")return "days are a minimum";
+  if(k==="new")return (rs??0)>=70?"RS 70+: notice now":`notice from day ${Z.new+1} · ${Z.new+1-z.days} to go`;
+  return k==="prime"?`day ${Z.new+1}–${Z.late}`:`past day ${Z.late}`}
+const S2R={
+  days:{k:"days",label:"Days in Stage 2",fmt:r=>`<span class="bdays num">${r.z.cap?"≥ ":""}${r.z.days.toLocaleString("en-IN")}</span><span class="bsub">${r.z.cap?"since its first weekly reading":r.z.days===0?"started today":"since "+esc(fmtDate(r.z.d0))}</span>`,sort:r=>r.z.days,csv:r=>(r.z.cap?">=":"")+r.z.days},
+  zone:{k:"zone",label:"When to notice",l:1,fmt:r=>`${zonePill(zoneOfZ(r.z),r.z)}<span class="bsub zsub">${esc(g2Notice(r.z,r.rs))}</span>`,sort:r=>r.z.days,csv:r=>`${(ZL[zoneOfZ(r.z)]||[""])[0]} (${g2Notice(r.z,r.rs)})`},
+  mrs:{k:"mrs",label:"Mansfield RS",fmt:r=>`<span class="num ${cls(r.z.mrs)}">${sgn(r.z.mrs,1,"")}</span>`,sort:r=>r.z.mrs},
+  gain:{k:"gain",label:"Up from breakout",fmt:r=>`<span class="num ${cls(r.z.gain)}">${sgn(r.z.gain,1)}</span>`,sort:r=>r.z.gain},
+  ext:{k:"ext",label:"Above 30-week line",fmt:r=>`<span class="num">${sgn(r.z.ext,1)}</span>`,sort:r=>r.z.ext},
+  slope:{k:"slope",label:"30-week line, 6-week rise",fmt:r=>`<span class="num">${sgn(r.z.slope,1)}</span>`,sort:r=>r.z.slope},
+  bvol:{k:"bvol",label:"Breakout-week volume",fmt:r=>`<span class="num"${(r.z.bvol??0)>=2?' style="font-weight:800"':""}>${isNum(r.z.bvol)?r.z.bvol.toFixed(1)+"×":"–"}</span>`,sort:r=>r.z.bvol},
+  how:{k:"how",label:"How it began",l:1,fmt:r=>{const h=HOW[r.z.how];return h?`<b>${h[0]}</b><span class="bsub">${esc(h[1](r.z))}</span>`:"–"},sort:r=>r.z.how,csv:r=>{const h=HOW[r.z.how];return h?`${h[0]} (${h[1](r.z)})`:""}},
+};
+/* the zones' averages from the age test: weighted by stock-weeks */
+function g2ZoneStats(E){
+  const Z=ZN(),zk=l=>{const a=parseInt(String(l),10);return a<=Z.new?"new":a<=Z.late?"prime":"mature"},out={};
+  for(const g of ["all","rs70"])for(const r of E.age[g]){const o=((out[zk(r.days)]=out[zk(r.days)]||{})[g]=out[zk(r.days)][g]||{n:0,x26:0,x52:0,to4:0});
+    o.n+=r.n;o.x26+=r.x26*r.n;o.x52+=r.x52*r.n;o.to4+=r.to4*r.n}
+  for(const z of Object.values(out))for(const o of Object.values(z)){o.x26/=o.n;o.x52/=o.n;o.to4/=o.n}
+  return out}
+function g2Ruler(B,rows){
+  const E=B.evidence,Z=ZN(),S=E?.age?g2ZoneStats(E):null,f=st.g2;
+  const seg_=(k,cls,title,range,rule,extra)=>{const list=rows.filter(z=>zoneOfZ(z)===k),s=S?.[k];
+    return `<button type="button" class="zr ${cls}" data-g2preset="${k}" aria-pressed="${f.zone===k}">
+      <span class="zk">${title}<small>day ${range}</small></span>
+      <span class="zv num">${list.length.toLocaleString("en-IN")}</span>
+      <span class="zd">${extra(list)}</span>
+      <span class="zrule">${rule}</span>
+      ${s?`<span class="zev"><span class="zg"><i></i><i>6 months</i><i>1 year</i><i>To Stage 4</i><i>RS 70+</i><b>${pct1(s.rs70.x26)}</b><b>${pct1(s.rs70.x52)}</b><b>${Math.round(s.rs70.to4)}%</b><i>All</i><b>${pct1(s.all.x26)}</b><b>${pct1(s.all.x52)}</b><b>${Math.round(s.all.to4)}%</b></span><span class="zcap">What came next, against the average liquid stock (2006–2026); Stage 4 within 6 months</span></span>`:""}
+    </button>`};
+  const rs70=l=>`${l.filter(z=>(D.by[z.s]?.rs??0)>=70).length.toLocaleString("en-IN")} with RS 70+`;
+  return `<div class="zruler" role="group" aria-label="Stage 2 stocks by days in Stage 2">
+    ${seg_("new","z1","New",`0–${Z.new}`,`<b>RS 70+: notice from day 0.</b> Others: wait for day ${Z.new+1} — bought in the first ${Z.new} days they did no better than the average stock over the next 6 months.`,rs70)}
+    ${seg_("prime","z2","Prime",`${Z.new+1}–${Z.late}`,`<b>The window to buy.</b> From day ${Z.new+1} to day ${Z.late}, Stage 2 stocks with or without strong RS beat the average stock.`,rs70)}
+    ${seg_("mature","z3","Mature",`${Z.late+1}+`,`<b>Late in the run.</b> About half fell into Stage 4 within 6 months, and the next year did no better than the average stock. Manage what you hold; be choosy with new buys.`,rs70)}
+  </div>${(()=>{const n=rows.filter(z=>zoneOfZ(z)==="list").length;return n?`<p class="note" style="margin:-4px 0 14px">${n} stock${n===1?" is":"s are"} in Stage 2 since ${n===1?"its":"their"} first weekly reading — listed recently (30 weeks of prices are needed) or back after a long trading gap — so ${n===1?"its":"their"} days are a minimum and ${n===1?"it is":"they are"} not counted in a zone.</p>`:""})()}`}
+function g2Evidence(E){
+  if(!E)return "";
+  const A=E.audit,O=A.old,N=A.new;
+  const f1=(v,d=1,u="%")=>isNum(v)?v.toFixed(d)+u:"–";
+  const arow=(k,a,b,note)=>`<tr><td class="l">${k}${note?`<span class="bsub">${note}</span>`:""}</td><td class="num">${a}</td><td class="num"><b>${b}</b></td></tr>`;
+  const t1=`<div class="tscroll"><table class="dt etab"><thead><tr><th class="l">Measured on liquid NSE stocks, 2006–2026</th><th>Old rule</th><th>Weekly engine</th></tr></thead><tbody>`+
+    arow("Clear bases called Stage 1",f1(O.clear.S1,0),f1(N.clear.S1,0),"a flat 30-week line after a 30%+ fall")+
+    arow("Clear tops called Stage 3",f1(O.clear.S3,0),f1(N.clear.S3,0),"a flat 30-week line after a 30%+ rise")+
+    arow("Clear advances called Stage 2",f1(O.clear.S2,0),f1(N.clear.S2,0),"4 weeks above a rising line; the engine waits for the close above the base")+
+    arow("Clear declines called Stage 4",f1(O.clear.S4,0),f1(N.clear.S4,0),"4 weeks below a falling line")+
+    arow("Stage changes per stock per year",f1(O.changes_per_year,1,""),f1(N.changes_per_year,1,""))+
+    arow("Stage 2 runs of 4 weeks or less",f1(O.short_s2_pct,0),f1(N.short_s2_pct,0))+
+    arow("Median Stage 2 run",f1(O.median_s2_weeks,0," weeks"),f1(N.median_s2_weeks,0," weeks"))+
+    arow("Stage 2: next 6 months against the average stock",sgn(O.fwd_all.S2.x26,1),sgn(N.fwd_all.S2.x26,1))+
+    arow("Stage 4: next 6 months against the average stock",sgn(O.fwd_all.S4.x26,1),sgn(N.fwd_all.S4.x26,1))+
+    `</tbody></table></div><p class="note" style="margin:6px 0 0">On ${esc(fmtDate(A.latest_week))} the two gave the same stage for ${Math.round(A.latest_week_same_pct)}% of liquid stocks.</p>`;
+  const all=[...E.age.all,...E.age.rs70],mx=Math.max(...all.map(r=>Math.abs(r.x26)),1);
+  const bar=v=>`<span class="ebar${v<0?" neg":""}" style="width:${Math.max(2,Math.round(Math.abs(v)/mx*70))}px"></span><span class="num" style="font-weight:700">${pct1(v)}</span>`;
+  const atab=(title,rows)=>`<div><h4>${title}</h4><div class="tscroll"><table class="dt etab"><thead><tr><th class="l">Days in Stage 2</th><th>Next month</th><th class="l">Next 6 months</th><th>Next year</th><th>Fell to Stage 4 in 6 months</th><th>Stock-weeks</th></tr></thead><tbody>`+
+    rows.map(r=>`<tr><td class="l">${zonePill(zoneOf(parseInt(r.days,10)))} <b class="num">${esc(r.days)}</b></td><td class="num">${pct1(r.x4)}</td><td class="l">${bar(r.x26)}</td><td class="num">${pct1(r.x52)}</td><td class="num">${Math.round(r.to4)}%</td><td class="num">${r.n.toLocaleString("en-IN")}</td></tr>`).join("")+
+    `</tbody></table></div></div>`;
+  const pa=Object.fromEntries(E.age.rs70_a.map(r=>[r.days,r])),pb=Object.fromEntries(E.age.rs70_b.map(r=>[r.days,r]));
+  const t3=`<div class="tscroll"><table class="dt etab"><thead><tr><th class="l">RS 70+ · days in Stage 2</th><th>Next year, 2006–15</th><th>Next year, 2016–26</th><th>6 months, 2006–15</th><th>6 months, 2016–26</th></tr></thead><tbody>`+
+    E.age.rs70.map(r=>`<tr><td class="l"><b class="num">${esc(r.days)}</b></td><td class="num">${pct1(pa[r.days]?.x52)}</td><td class="num">${pct1(pb[r.days]?.x52)}</td><td class="num">${pct1(pa[r.days]?.x26)}</td><td class="num">${pct1(pb[r.days]?.x26)}</td></tr>`).join("")+`</tbody></table></div>`;
+  return `<details class="card evid"${store.get("g2Ev",false)?" open":""}><summary>${esc(E.title)} <span>— why stages changed, and when to notice</span></summary><div class="evb">
+    <ul class="fl">${E.findings.map(t=>`<li>${esc(t)}</li>`).join("")}</ul>
+    <h4>The old rule against the weekly engine</h4>${t1}
+    <h4>Days in Stage 2 and what came next — against the average liquid stock</h4>
+    <div class="egrid two">${atab("All Stage 2 stocks",E.age.all)}${atab("Stage 2 stocks with an RS rating of 70+",E.age.rs70)}</div>
+    <h4>The same RS 70+ test in each half of the 20 years</h4>${t3}
+    <p class="note"><b>Rules:</b> ${esc(E.rules)}</p><p class="note">${esc(E.data)} ${esc(E.caveats)}</p></div></details>`}
+function g2Rows(){const f=st.g2,q=f.q.trim().toUpperCase(),min=+f.min;
+  return STGD.s2.filter(z=>{const x=D.by[z.s];if(!x)return false;
+    if(!f.all&&x.lq===0)return false;
+    if(q&&!z.s.includes(q)&&!String(x.n||"").toUpperCase().includes(q))return false;
+    if(f.zone!=="all"&&zoneOfZ(z)!==f.zone)return false;
+    if(min&&!((x.rs??0)>=min))return false;
+    if(f.how!=="all"&&!(f.how==="r"?(z.how===3||z.how===5):String(z.how)===f.how))return false;
+    if(f.mrs&&!((z.mrs??-1)>0))return false;
+    return true}).map(z=>{const x=D.by[z.s];return {s:z.s,n:x.n,rs:x.rs,mc:x.mc,sec:x.sec,ind:x.ind,z}})}
+async function renderRS2(){
+  const head=rsViewSeg();
+  if(!STGD)$("#view").innerHTML=head+`<div class="empty">Loading Stage 2…</div>`;
+  const B=await stgLoad();if(st.tab!=="rs"||st.rsView!=="s2")return;
+  if(!B){$("#view").innerHTML=head+`<div class="err">Stage data isn't there yet. It is made by the evening “Daily update” run — run it once from the Actions tab, then reload.</div>`;return}
+  const f=st.g2,Z=ZN(),pool=B.s2.filter(z=>D.by[z.s]&&(f.all||D.by[z.s].lq!==0));
+  $("#view").innerHTML=head+`<div class="sec-head"><div><h2>Stage 2 stocks, by days in Stage 2</h2><p>Every ${f.all?"":"liquid "}stock in Stage 2 on its weekly chart — out of its base and above a rising 30-week line — with the number of trading days since the run began (the session it closed above its base or its Stage 3 top). Newest first. The guide below comes from 20 years of NSE data: how many days in, a Stage 2 stock was worth noticing.</p></div></div>
+  ${g2Ruler(B,pool)}
+  ${g2Evidence(B.evidence)}
+  <div class="card toolbar">
+    <div class="ctl"><span>Search</span><input class="search" type="search" id="g2q" placeholder="Symbol or company" value="${esc(f.q)}" aria-label="Search Stage 2 stocks"></div>
+    <div class="ctl"><span>Days in Stage 2</span>${seg("g2_zone",["all","new","prime","mature"],f.zone,{all:"All",new:`New · 0–${Z.new}`,prime:`Prime · ${Z.new+1}–${Z.late}`,mature:`Mature · ${Z.late+1}+`})}</div>
+    <div class="ctl"><span>Minimum RS</span>${seg("g2_min",["0","70","80","90"],f.min,{"0":"Any","70":"70+","80":"80+","90":"90+"})}</div>
+    <div class="ctl"><span>How it began</span>${seg("g2_how",["all","1","r","4"],f.how,{all:"All","1":"Base breakout",r:"Resumed",4:"V-turn"})}</div>
+    <div class="ctl"><span>Also</span><div style="display:flex;flex-wrap:wrap;gap:0 16px"><label class="check" title="Price against NIFTY 500 is above its own 52-week average"><input type="checkbox" id="g2m" ${f.mrs?"checked":""}>Mansfield RS above 0</label><label class="check" title="Also list stocks outside the liquid universe (low turnover, low price or small market cap)"><input type="checkbox" id="g2a" ${f.all?"checked":""}>Include illiquid stocks</label></div></div>
+  </div><div class="card" id="g2T"></div>
+  <p class="note"><b>Days</b> are NSE trading days, counted on the weekly chart's rules (this week's bar is the latest, so a run that began this week is confirmed by Friday's weekly close): a failed breakout that slips back under the 30-week line before the line turns up returns the stock to its base, and the count starts again at the next breakout. <b>Resumed</b> runs restart after a Stage 3 pause — check the Stage 2 phase (Scanners → Stage 2) for how old the whole advance is. <b>Mansfield RS</b>: price against NIFTY 500, compared with its own 52-week average (above 0 = beating the index lately). <b>Breakout-week volume</b>: that week's volume over the average of the 10 weeks before it; Weinstein looked for 2× or more.</p>`;
+  const on=(id,k)=>{const el=$(id);if(el)el.addEventListener(el.type==="checkbox"?"change":"input",e=>{f[k]=e.target.type==="checkbox"?e.target.checked:e.target.value;if(st.tbl.g2)st.tbl.g2.show=100;store.set("g2",{...f,q:""});if(k==="all"){const y=window.scrollY;renderRS2().then(()=>window.scrollTo(0,y));return}drawRS2()})};
+  on("#g2q","q");on("#g2m","mrs");on("#g2a","all");
+  $("#view").querySelector(".evid")?.addEventListener("toggle",e=>store.set("g2Ev",e.target.open));
+  drawRS2()}
+function drawRS2(){
+  if(!STGD||!$("#g2T"))return;
+  const rows=g2Rows();
+  if(!st.tbl.g2)st.tbl.g2={key:"days",dir:1,show:100};
+  const cols=[C.stock,S2R.days,S2R.zone,C.rs,S2R.mrs,S2R.gain,S2R.ext,S2R.slope,S2R.bvol,S2R.how,C.sec];
+  $("#g2T").innerHTML=(rows.length?`<div class="bxhead"><span><b class="num">${rows.length.toLocaleString("en-IN")}</b> stocks</span><button type="button" class="ghost" data-wl-addall="${esc(JSON.stringify(rows.slice(0,200).map(r=>r.s)))}" data-label="Stage 2 stocks">☆ Add ${Math.min(200,rows.length)} to a watchlist</button></div>`:"")+dtable("g2",rows,cols,{empty:"No Stage 2 stocks match. Loosen a filter."});
+  wireTables($("#g2T"),drawRS2);
+  document.querySelectorAll("[data-g2preset]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.g2preset===st.g2.zone)));
+  document.querySelectorAll('[data-seg="g2_zone"]').forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.val===st.g2.zone)))}
+function g2Preset(k){const f=st.g2;f.zone=f.zone===k?"all":k;if(st.tbl.g2){st.tbl.g2.show=100;st.tbl.g2.key="days";st.tbl.g2.dir=1}store.set("g2",{...f,q:""});drawRS2()}
+/* the stage line of the stock window: days in the stage, and for Stage 2 its zone, start and how it began */
+function stDaysHtml(x,z){if(!isNum(x.std))return "–";
+  return `${x.stdc?"≥ ":""}${x.std.toLocaleString("en-IN")}${x.st===2?` ${zonePill(zoneOfZ({days:x.std,cap:!!x.stdc}),z)}`:""}${x.st===2&&z?.d0?`<span class="bsub">since ${esc(fmtDate(z.d0))}${HOW[z.how]?` · ${esc(HOW[z.how][0].toLowerCase())}`:""}</span>`:""}`}
 /* ── corporate actions (corp.json: NSE list, last 10 sessions to 60 days ahead) ── */
 let CAD=null;
 async function caLoad(){if(CAD)return CAD;let j=window.EMBED?.corp||null;
@@ -3267,7 +3424,7 @@ if(!st.rx)st.rx={season:"",view:"cards",q:"",sort:"new",qmin:"0",pmin:"0",mc:"0"
 const S2COL={
   ph:{k:"ph",label:"Phase",l:1,fmt:r=>`${phPill(r.z.ph)} <span class="bsub" style="display:inline">${r.z.mat}/9</span>`,sort:r=>PHO[r.z.ph]*1000-r.z.sc,csv:r=>(PHL[r.z.ph]||[""])[0]},
   sc:{k:"sc2",label:"Stage 2 Score",fmt:r=>scorePill(r.z.sc),sort:r=>r.z.sc,csv:r=>r.z.sc},
-  since:{k:"since",label:"In Stage 2 since",fmt:r=>`<span class="num" style="font-weight:700">${esc(bmon(r.z.start))}</span><span class="bsub">${s2wk(r.z.age)}${r.z.cap?" (data limit)":""}${r.z.young?" · new listing":""}</span>`,sort:r=>r.z.age,csv:r=>r.z.start},
+  since:{k:"since",label:"Advance began",fmt:r=>`<span class="num" style="font-weight:700">${esc(bmon(r.z.start))}</span><span class="bsub">${s2wk(r.z.age)}${r.z.cap?" (data limit)":""}${r.z.young?" · new listing":""}</span>`,sort:r=>r.z.age,csv:r=>r.z.start},
   bases:{k:"bases",label:"Bases",fmt:r=>`<span class="num" style="font-weight:700">${r.z.bases}</span>`,sort:r=>r.z.bases},
   gain:{k:"gain",label:"Up from base low",fmt:r=>`<span class="num">${sgn(r.z.gain,0)}</span>`,sort:r=>r.z.gain},
   e150:{k:"e150",label:"Above 150-day",fmt:r=>`<span class="num">${sgn(r.z.e150,0)}</span>`,sort:r=>r.z.e150},
@@ -3304,7 +3461,7 @@ function s2Evidence(E){
     <h4>By phase</h4>${t1}
     <h4>Phase and Stage 2 Score together (average 1-year return vs NIFTY 500)</h4>${t2}
     <h4>By Stage 2 Score</h4>${t3}
-    <div class="egrid">${small("By O'Neil base count since the advance began",E.bases,"Bases")}${small("By months in Stage 2",E.months,"Months")}${small("By distance above the 150-day line",E.ext150,"Above 150-day")}</div>
+    <div class="egrid">${small("By O'Neil base count since the advance began",E.bases,"Bases")}${small("By months since the advance began",E.months,"Months")}${small("By distance above the 150-day line",E.ext150,"Above 150-day")}</div>
     <p class="note">${esc(E.data)} ${esc(E.caveats)}</p><p class="note"><b>Rules:</b> ${esc(E.rules)}</p></div></details>`}
 async function renderStage2(head){
   $("#view").innerHTML=head+`<div class="empty">Loading Stage 2…</div>`;
@@ -3312,7 +3469,7 @@ async function renderStage2(head){
   if(!B){$("#view").innerHTML=head+`<div class="err">Stage 2 data isn't there yet. It is made by the evening “Daily update” run — run it once from the Actions tab, then reload.</div>`;return}
   const f=st.s2,R=B.rows,c=p=>R.filter(z=>z.ph===p);
   const tile=(id,k,v,d,cls)=>`<button type="button" class="card tile btile ${cls||""}" data-s2preset="${id}"><div class="k">${k}</div><div class="v num">${v.toLocaleString("en-IN")}</div><div class="d">${d}</div></button>`;
-  $("#view").innerHTML=head+`<div class="sec-head"><div><h2>Stage 2: early, mid or late?</h2><p>All ${R.length.toLocaleString("en-IN")} stocks in Stage 2 (above a rising 150-day / 30-week line), sorted by how far into the advance they are — Early first — and by Stage 2 Score within each phase. Phase rules follow Weinstein (time in Stage 2), O'Neil (base count) and Minervini, and were tested on 20 years of NSE data below.</p></div></div>
+  $("#view").innerHTML=head+`<div class="sec-head"><div><h2>Stage 2: early, mid or late?</h2><p>The ${R.length.toLocaleString("en-IN")} liquid Stage 2 stocks that are also above a rising 150-day line today — the test the phases were built on — sorted by how far into the advance they are, Early first, and by Stage 2 Score within each phase. Days in the current Stage 2 run: RS tab → Stage 2 stocks. Phase rules follow Weinstein (time in Stage 2), O'Neil (base count) and Minervini, and were tested on 20 years of NSE data below.</p></div></div>
   <div class="tiles btiles">${tile("E","Early Stage 2",c("E").length,`${c("E").filter(z=>z.sc>=70).length} with a Stage 2 Score of 70+`,"t-e")}${tile("M","Mid Stage 2",c("M").length,`${c("M").filter(z=>z.sc>=70).length} with a score of 70+`,"t-m")}${tile("L","Late Stage 2",c("L").length,`${c("L").filter(z=>z.sc<55).length} weakening (score under 55)`,"t-l")}${tile("best","Early + score 70+",R.filter(z=>z.ph==="E"&&z.sc>=70).length,"the best group in the backtest")}</div>
   ${s2Evidence(B.evidence)}
   <div class="card toolbar">
@@ -3339,10 +3496,10 @@ function stage2Section(sym){
   const z=S2D?.by?.[sym];if(!z)return "";
   const kv=(k,v)=>`<div><dt>${k}</dt><dd class="num">${v}</dd></div>`;
   const mp=z.mp||[],sp=z.sp||[];
-  const mrows=[["O'Neil base count",mp[0],4,`${z.bases} base${z.bases===1?"":"s"}`],["Time in Stage 2",mp[1],2,s2wk(z.age)],["Gain from the base low",mp[2],2,sgn(z.gain,0)],["150-day slope slowing",mp[3],1,sgn(z.slc,1)+" pts in 40 days"]];
+  const mrows=[["O'Neil base count",mp[0],4,`${z.bases} base${z.bases===1?"":"s"}`],["Age of the advance",mp[1],2,s2wk(z.age)],["Gain from the base low",mp[2],2,sgn(z.gain,0)],["150-day slope slowing",mp[3],1,sgn(z.slc,1)+" pts in 40 days"]];
   const srows=[["RS rating",sp[0],25],["150-day slope",sp[1],20],["Close to the advance's peak",sp[2],20],["Above the 150-day",sp[3],15],["Above the 50-day",sp[4],10],["Highest close in 6 years",sp[5],10]];
   const bar=(v,mx)=>`<span class="sbt"><i style="width:${(v||0)/mx*100}%"></i></span>`;
-  return `<div class="dsec" id="s2sec"><h4>Stage 2 · ${phPill(z.ph)} <span style="color:var(--ink)">since ${esc(fmtDate(z.start))}</span> (${s2wk(z.age)})${z.young?" — listed under a year ago, so measured from its 170th session":""}</h4>
+  return `<div class="dsec" id="s2sec"><h4>Stage 2 phase · ${phPill(z.ph)} <span style="color:var(--ink)">advance began ${esc(fmtDate(z.start))}</span> (${s2wk(z.age)})${z.young?" — listed under a year ago, so measured from its 170th session":""}</h4>
     <dl class="dgrid">${kv("Stage 2 Score",scorePill(z.sc))}${kv("Bases since the start",z.bases)}${kv("Up from base low",sgn(z.gain,0))}${kv("Up since Stage 2 began",sgn(z.gstart,0))}
       ${kv("Above 150-day",sgn(z.e150,1))}${kv("Above 200-day",sgn(z.e200,1))}${kv("Off the advance's peak",z.pk===0?"At peak":sgn(z.pk,1))}${kv("150-day rise, 20 days",sgn(z.slope,1))}</dl>
     ${z.warn.length?`<div style="margin-top:8px">${z.warn.map(w=>`<span class="wchip">${esc(S2W[w]||w)}</span>`).join(" ")}</div>`:""}
@@ -3667,7 +3824,7 @@ async function openDrawer(sym,ex,focusWl){
   const kv=(k,v)=>`<div><dt>${k}</dt><dd class="num">${v}</dd></div>`;
   const scans=(D.scansOf[sym]||[]).map(id=>D.scanMeta[id]).filter(Boolean);
   const name=x?.n||vr?.["Company Name"]||"",sector=x?.ind||x?.sec||vr?.Sector||"";
-  const [S2B,BB,RR,MFB,PTB]=await Promise.all([s2Load().catch(()=>null),basesLoad().catch(()=>null),resLoad().catch(()=>null),mfLoad().catch(()=>null),patLoad().catch(()=>null)]);
+  const [S2B,BB,RR,MFB,PTB,STB]=await Promise.all([s2Load().catch(()=>null),basesLoad().catch(()=>null),resLoad().catch(()=>null),mfLoad().catch(()=>null),patLoad().catch(()=>null),stgLoad().catch(()=>null)]);
   const hasS2=!!S2B?.by?.[sym],hasB=!!BB?.by?.[sym],rres=RR?.by?.[sym]?.[0]||null,hasMF=!!MFB?.by?.[sym],hasP=!!PTB?.by?.[sym];
   const navs=[["pchart","Chart"],["wlsec","Watchlist"],hasP&&["patsec","Pattern"],hasS2&&["s2sec","Stage 2"],hasB&&["basesec","Base"],rres&&["ressec","Result"],x&&["retsec","Returns"],x&&["trendsec","Trend"],x&&D.meta.rs&&["rssec","RS"],fundHtml&&["fundsec","Fundamentals"],hasMF&&["mfsec","Mutual funds"],x&&D.meta.dlv&&(isNum(x.dq)||x.t2t)&&["dlvsec","Delivery"],vr&&["vpcisec","VPCI"],["scansec","Scanners"]].filter(Boolean);
   $("#drawer").innerHTML=`<header><div><h2 id="dTitle">${esc(sym)}</h2><div class="co">${esc(name)}${sector?` · ${esc(sector)}`:""}</div></div>
@@ -3679,7 +3836,7 @@ async function openDrawer(sym,ex,focusWl){
     <div id="patSlot"></div><div id="s2Slot">${hasS2?stage2Section(sym):""}</div><div id="baseSlot"></div>
     ${x.lq===0?`<p class="note" style="margin:0 0 12px">Outside the liquid universe (median turnover under ₹${D.meta.filters?.min_median_turnover_cr??1} Cr a day, price under ₹${D.meta.filters?.min_price??20}${D.meta.filters?.min_market_cap_cr?` or market cap under ₹${D.meta.filters.min_market_cap_cr} Cr`:""}), so it is not in the scanners or the RS ranking. It counts in breadth and sector rotation; its RS rating places it among the liquid stocks.</p>`:""}
     <div class="dsec" id="retsec"><h4>Returns</h4><dl class="dgrid">${per}</dl></div>
-    <div class="dsec" id="trendsec"><h4>Trend and strength</h4><dl class="dgrid">${kv("RS rating",rsPill(x.rs))}${kv("RS a week ago",x.rs1w??"–")}${isNum(x.up)?kv("Upside score",upPill(x.up)):""}${kv("Stage",stagePill(x.st))}${kv("Trend template",x.tt?'<span class="up">Pass</span>':'<span style="color:var(--muted)">No</span>')}
+    <div class="dsec" id="trendsec"><h4>Trend and strength</h4><dl class="dgrid">${kv("RS rating",rsPill(x.rs))}${kv("RS a week ago",x.rs1w??"–")}${isNum(x.up)?kv("Upside score",upPill(x.up)):""}${kv("Stage",stagePill(x.st,x.std,x.stdc))}${isNum(x.std)?kv(x.st===2?"Days in Stage 2":`Days in Stage ${x.st}`,stDaysHtml(x,STB?.by?.[sym])):""}${kv("Trend template",x.tt?'<span class="up">Pass</span>':'<span style="color:var(--muted)">No</span>')}
       ${kv("Above 20 / 50 / 200",[x.a20,x.a50,x.a200].map(b=>b==null?"–":b?'<span class="up">✓</span>':'<span class="down">✗</span>').join(" "))}${kv("From 52W high",sgn(x.h52,1))}${kv("Above 52W low",sgn(x.l52,1))}${kv("RSI 14",isNum(x.rsi)?x.rsi.toFixed(0):"–")}
       ${kv("ADX 14",isNum(x.adx)?x.adx.toFixed(0):"–")}${kv("ATR % of price",isNum(x.atrp)?x.atrp.toFixed(1)+"%":"–")}${kv("Volume × 50d",isNum(x.vr)?x.vr.toFixed(1):"–")}${kv("Turnover ₹Cr/day",isNum(x.to)?x.to:"–")}
       ${kv("Close range today",isNum(x.dcr)?x.dcr.toFixed(0)+"%":"–")}${kv("ADR % (20d)",isNum(x.adr)?x.adr.toFixed(1)+"%":"–")}${kv("Signal groups today",isNum(x.nsc)?x.nsc.toFixed(0)+" / 7":"–")}</dl></div><div id="rsSlot"></div>`:`<p class="note" style="margin:0">This symbol is outside the main NSE universe (BSE-only, or below the liquidity filter), so only its VPCI read is shown.</p><div id="pchartSlot"></div>${wlCardHtml(sym)}`}
@@ -4166,7 +4323,7 @@ function drawStockChart(sym,C,F,ov){const m=$("#smodal"),x=D.by[sym]||{},P=gpal(
   const segS=(name,opts,cur,labels)=>`<div class="seg" role="group" aria-label="${esc(name)}">`+opts.map(o=>`<button type="button" data-ss="${name}" data-val="${esc(o)}" aria-pressed="${o===cur}">${esc(labels?labels[o]:o)}</button>`).join("")+`</div>`;
   const ranges=SST.int==="W"?["6M","1Y","2Y","3Y"]:["3M","6M","1Y","2Y"];if(!ranges.includes(SST.range))SST.range="1Y";
   const phone=matchMedia("(max-width:700px)").matches;
-  const statsH=`<dl class="gstats">${kv(`Close · ${fmtDate(L1.t)}`,"₹"+inr(L1.c))}${kv("Day",sgn(chg,2),cls(chg))}${kv("RS rating",rsPill(x.rs))}${kv("Stage",stagePill(x.st))}${kv("Upside",isNum(x.up)?upPill(x.up):"–")}${EMA_N.map(n=>kv("vs EMA "+n,sgn(vsE(n),1),cls(vsE(n)))).join("")}${kv("From 52W high",sgn(fromHi,1))}</dl>`;
+  const statsH=`<dl class="gstats">${kv(`Close · ${fmtDate(L1.t)}`,"₹"+inr(L1.c))}${kv("Day",sgn(chg,2),cls(chg))}${kv("RS rating",rsPill(x.rs))}${kv("Stage",stagePill(x.st,x.std,x.stdc)+(x.st===2&&isNum(x.std)?` <span class="num" style="font-weight:700">${x.stdc?"≥ ":""}${x.std}d</span>`:""))}${kv("Upside",isNum(x.up)?upPill(x.up):"–")}${EMA_N.map(n=>kv("vs EMA "+n,sgn(vsE(n),1),cls(vsE(n)))).join("")}${kv("From 52W high",sgn(fromHi,1))}</dl>`;
   const levelsH=Object.keys(SC_LV).some(k=>has[k])?`<div class="ctl"><span>Levels on the chart</span><div class="chips">${Object.keys(SC_LV).filter(k=>has[k]).map(k=>`<button type="button" class="chipbtn emachip lvchip" data-slv="${k}" aria-pressed="${SST.lv[k]!==false}" title="Show or hide: ${esc(lvLab[k])}"><i style="--c:${lvCol[k]}"></i>${esc(lvLab[k])}</button>`).join("")}</div></div>`:"";
   m.querySelector(".gbody").innerHTML=`${phone?"":statsH}
    <div class="gtools">
@@ -5319,7 +5476,7 @@ const GQP=[
   ["Leaders: RS 80+","Group RS rating 80 or more",[{id:"rk",min:80}],"t","lead80"],
   ["Leaders still climbing","RS 70+ and up 10 or more points in 4 weeks",[{id:"rk",min:70},{id:"rkd4",min:10}],"t","climb"],
   ["RS rating climbing fast","RS 70+ and 20+ points higher than 4 weeks ago, fired in the last 4 weeks",[{id:"sig20",in:["g_rank"]}],"t","g_rank"],
-  ["Stage 2 just started","The index crossed above its rising 30-week average in the last 4 weeks",[{id:"sig20",in:["g_stage2","g_stage2m"]}],"t","g_stage2"],
+  ["Stage 2 just started","The group's weekly chart moved from a base into Stage 2 in the last 4 weeks",[{id:"sig20",in:["g_stage2","g_stage2m"]}],"t","g_stage2"],
   ["Money flowing in","Turnover 1.5× its usual level with the index rising, in the last 4 weeks",[{id:"sig20",in:["g_money"]}],"t","g_money"],
   ["At a 52-week high","Index within 3% of its 52-week high",[{id:"h52",min:-3}],"w","g_high"],
   ["Coiling near the high","A tight 20-session range within 3% of the high, above a rising 50-day average, in the last 4 weeks",[{id:"sig20",in:["g_coil"]}],"w","g_coil"],
@@ -5579,6 +5736,8 @@ document.addEventListener("click",e=>{
     if(k==="vpprorate"){VP.prorate=v==="on";renderVpci();return}
     if(k==="vview"){VP.view=v;vpTab();return}
     if(k==="wlview"){st.wl.view=v;store.set("wlview",v);drawWatch();return}
+    if(k==="rsView"){st.rsView=v;store.set("rsView",v);renderRS();return}
+    if(k.startsWith("g2_")){st.g2[k.slice(3)]=v;store.set("g2",{...st.g2,q:""});if(st.tbl.g2)st.tbl.g2.show=100;s.parentElement.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===s));drawRS2();return}
     if(k==="scanView"){st.scanView=v;store.set("scanView",v);const hh=VIEWHASH[v]||"scanners";if(location.hash.slice(1)!==hh)history.replaceState(null,"","#"+hh);renderScanners();return}
     if(k.startsWith("mf_")){const kk=k.slice(3);st.mf[kk]=v;store.set("mf",st.mf);if(st.tbl.mf)st.tbl.mf.show=100;s.parentElement.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===s));if(kk==="per"&&st.tbl.mf)st.tbl.mf.sortFrom=null;drawMF();return}
     if(k.startsWith("s2_")){st.s2[k.slice(3)]=v;store.set("s2",st.s2);if(st.tbl.s2)st.tbl.s2.show=100;s.parentElement.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===s));drawStage2();return}
@@ -5600,6 +5759,7 @@ document.addEventListener("click",e=>{
     if(k==="period")renderPulse();renderRotation();return}
   const vt=e.target.closest("[data-vtab]");if(vt){VP.tab=vt.dataset.vtab;document.querySelectorAll("[data-vtab]").forEach(b=>b.setAttribute("aria-pressed",b===vt));vpTab();return}
   const bp=e.target.closest("[data-bpreset]");if(bp){bPreset(bp.dataset.bpreset);return}
+  const g2p=e.target.closest("[data-g2preset]");if(g2p){g2Preset(g2p.dataset.g2preset);return}
   const pp=e.target.closest("[data-ppreset]");if(pp){pPreset(pp.dataset.ppreset);return}
   const rp=e.target.closest("[data-rpreset]");if(rp){rPreset(rp.dataset.rpreset);return}
   if(e.target.closest("[data-rmore]")){RX_SHOW+=60;drawResults();return}
@@ -5618,7 +5778,7 @@ document.addEventListener("keydown",e=>{
 });
 window.addEventListener("hashchange",()=>{const t=location.hash.slice(1);if(HASHVIEW[t]){if(st.tab!=="scanners"||st.scanView!==HASHVIEW[t])go(t);return}if(TABS.includes(t)&&(t!==st.tab||(t==="scanners"&&VIEWHASH[st.scanView]))){if(t==="scanners")st.scanView="lib";go(t)}});
 $("#themeBtn").addEventListener("click",()=>{const d=document.documentElement,cur=d.dataset.theme||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");d.dataset.theme=cur==="dark"?"light":"dark";store.set("theme",d.dataset.theme)});
-(()=>{const t=store.get("theme",null);if(t)document.documentElement.dataset.theme=t;Object.assign(st,store.get("prefs",{}));st.uni=store.get("uni","all");st.rrgset=store.get("rrgset","sector");st.gsig=store.get("gsig",{kind:"all",win:"5"});st.pulseOpen=!!store.get("pulseOpen",false);Object.assign(st.rs,store.get("rs",{}));Object.assign(st.up,store.get("up",{}));{const z=store.get("sx",null);if(z&&Array.isArray(z.f))st.sx={uni:z.uni==="all"?"all":"lq",f:z.f.filter(f=>f&&SXB[f.id]),cols:(z.cols||[]).filter(id=>SXB[id]),name:z.name||""}}st.up.q="";st.brange=store.get("brange","6M");Object.assign(st.bx,store.get("bx",{}));Object.assign(st.px,store.get("px",{}));st.px.q="";Object.assign(st.s2,store.get("s2",{}));Object.assign(st.rx,store.get("rx",{}));st.rx.q="";st.rx.season="";st.scanView=store.get("scanView","lib");st.scan=store.get("scan2",st.scan);st.scanTop=+store.get("scanTop",0)||0;st.scanFund=+store.get("scanFund",0)||0;
+(()=>{const t=store.get("theme",null);if(t)document.documentElement.dataset.theme=t;Object.assign(st,store.get("prefs",{}));st.uni=store.get("uni","all");st.rrgset=store.get("rrgset","sector");st.gsig=store.get("gsig",{kind:"all",win:"5"});st.pulseOpen=!!store.get("pulseOpen",false);Object.assign(st.rs,store.get("rs",{}));Object.assign(st.up,store.get("up",{}));{const z=store.get("sx",null);if(z&&Array.isArray(z.f))st.sx={uni:z.uni==="all"?"all":"lq",f:z.f.filter(f=>f&&SXB[f.id]),cols:(z.cols||[]).filter(id=>SXB[id]),name:z.name||""}}st.up.q="";st.brange=store.get("brange","6M");Object.assign(st.bx,store.get("bx",{}));Object.assign(st.px,store.get("px",{}));st.px.q="";Object.assign(st.s2,store.get("s2",{}));st.rsView=store.get("rsView","rank");Object.assign(st.g2,store.get("g2",{}));st.g2.q="";Object.assign(st.rx,store.get("rx",{}));st.rx.q="";st.rx.season="";st.scanView=store.get("scanView","lib");st.scan=store.get("scan2",st.scan);st.scanTop=+store.get("scanTop",0)||0;st.scanFund=+store.get("scanFund",0)||0;
   Object.assign(st.mf,store.get("mf",{}));st.mf.q="";
   const h=location.hash.slice(1);if(HASHVIEW[h]){st.scanView=HASHVIEW[h];st.tab="scanners"}else{if(h==="scanners")st.scanView="lib";st.tab=TABS.includes(h)?h:store.get("tab","rotation")}})();
 
