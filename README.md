@@ -11,7 +11,7 @@ A free, ScreeningMantis-style dashboard for NSE stocks:
 - **Multibagger** – seven yes/no checks on every liquid stock (market cap ₹300–5,000 Cr, RS 80+, up-day volume ≥ 1.2× down-day volume, no all-time high for 2+ years, P/B under 1.5 or P/S under 1, operating cash flow ≥ 8% of market cap, sales growth 10+ points above the year before). In a 2016–23 test, stocks passing 5+ made 5× within 3 years about twice as often as the average stock (and about 5 in 6 still did not). Shows the market's 200-day breadth, cautions, the business trend, a **Bought** list (buy price, date, quantity → return, multiple towards 5×, vs Nifty 500, flags; Sold moves it to closed positions; kept and synced with the watchlists), a how-to and the full test with its limits (see *Multibagger* below).
 - **List summary** – every stock list on the site (Screener, each scanner, RS, Upside, Multibagger, Bases, Stage 2, Fund flows, VCP, Patterns, Results, Watchlists, VPCI) has a **Summary** button above it. It opens a pop-up with a donut and a table of where the list's stocks sit by **sector, industry, theme, market-cap size (large = top 100, mid = next 150, small = next 250, micro = the rest) and result grade**: count, share of the list, how many of that group's stocks are on the list, and the median RS and 3-month return. A line names the group most over-represented against the market. Tap a row to see its stocks. Nothing new is fetched.
 - **Screener** – stack any number of filters over 114 fields (price and size, returns, RS, Upside, sector/industry/theme, industry and sector return ranks and rotation, VPCI weekly status, closes-based tightness and days since the 52-week high, trend, volatility, volume and delivery, bases, Stage 2, chart patterns, results, fundamentals, ownership, mutual funds, scanner membership, your watchlists). Each filter shows how many stocks are left after it; fourteen ready screens (including “VPCI fresh signal + Upside 80+”); save your own; add columns; CSV; add the result to a watchlist (see *Screener* below).
-- **RS ranking** – every stock ranked 1–99 by relative strength, with where the rating is **coming from** (▲ from 70 / ▼ from 99 over 12 weeks), a 52-week RS path, RS 4 and 12 weeks ago, and **blue dots** (RS line at a 52-week high). Filterable by sector, theme, direction, blue dot, Stage 2, Minervini trend template.
+- **RS ranking** – every stock ranked 1–99 by relative strength, with where the rating is **coming from** (▲ from 70 / ▼ from 99 over 12 weeks), a 52-week RS path, RS 4 and 12 weeks ago, and **blue dots** (RS line at a 52-week high). Filterable by sector, theme, direction, blue dot, Stage 2, Minervini trend template. A second sub-tab, **Stage 2 stocks**, lists every stock in Stage 2 with its **days in Stage 2** and **when to notice it** (New / Prime / Mature, from a 20-year test — see *Stage* below).
 - **Stock window** – price chart, **relative strength** (RS line with every blue dot of the year + the RS rating week by week), **delivery** (NSE delivery % and value delivered for 3 months), **corporate actions** (splits, bonuses, dividends coming up), plus bases, Stage 2, results, fundamentals and mutual funds.
 - **Scanners** – 99 stock scanners in 18 colour-coded groups (group signals live in Rotation): 59 technical (`scripts/scanners.py`), 4 from the RS history (`scripts/rs_history.py`), 5 from NSE delivery data (`scripts/delivery.py`), 18 from NSE filings, 6 from mutual-fund portfolios and 7 from the long-base, Stage 2 and results models, led by a **Confluence** list (stocks firing in 4+ of the 7 bullish technical groups). Every scanner opens with a collapsible **How this scanner works** panel — what it looks for, the exact rules, how traders use it, what to watch out for and the source (`scripts/scan_docs.py`). A search box finds scanners by any word in their name or write-up ("EMA", "volume", "Minervini"); Enter opens the closest match. Any scan can be limited to the top 5 or 10 themes or by Fund rating.
 - **Fund flows** – what mutual funds bought and sold each month, stock by stock, from every scheme's month-end portfolio (Scanners → Fund flows).
@@ -196,11 +196,56 @@ The **Patterns** tab lists every liquid stock showing one of 13 classic chart pa
 - **Run time.** About 2–3 minutes in the evening run, for about 1,500 stocks.
 - **Caveat.** Stocks delisted more than a year ago are missing from the test data. Patterns can overlap: one stock can show two of them at once.
 
+## Stage (Weinstein, weekly) and RS → Stage 2 stocks
+
+The **Stage** shown everywhere on the site (tables, stock window, candle chart, screener, watchlists, scanners that say "in Stage 2") comes from `scripts/stages.py`. It reads each stock's **weekly** chart against its **30-week line** the way Stan Weinstein does, and it **remembers the stage before**, so a flat line after a fall is a base (Stage 1) and a flat line after a rise is a top (Stage 3).
+
+- **Weekly bars:** Monday–Friday weeks; this week's bar is the latest, as on a live weekly chart. 30-week simple average of weekly closes. The line is *rising* / *falling* when it is more than 1.5% above / below its value 6 weeks earlier; price is *above* / *below* it when the weekly close is more than 2% over / under it. Each stage remembers its range (highest weekly high, lowest weekly low since it began).
+- **1 → 2:** close above the line, the line not falling, close above the base's high, and the base at least 6 weeks old (Weinstein's breakout from the base).
+- **2 → 3:** once the line has risen, it stops rising and price closes under it, or it stays flat 4 weeks, or price closes more than 5% under it two weeks running even while it still rises (a sharp break).
+- **3 → 4:** close below the top's low, or below a falling line two weeks running. **4 → 1:** once the line has fallen, it stops falling with price back at it two weeks running, or it stays flat 4 weeks, or price closes more than 8% over it two weeks running.
+- **Failed moves:** a breakout that slips back under the line before the line turns up returns the stock to the same base (its clock keeps running); the same for a breakdown from a top. **Direct moves:** 2 → 4 below a falling line; 3 → 2 above a rising line and the top's high, or 4 weeks above a rising line; 4 → 2 (a V-turn) above a rising line and every high since the decline began.
+- **Days in the stage** = NSE trading days since the session the stage began (for Stage 2: the first close above the breakout level). Shown in the stock window ("Days in Stage 2"), on the candle chart and as a tooltip on every Stage pill. A stock that has not traded for 25 sessions is read afresh after the gap; "≥" marks a stage held since its prices begin.
+- If `stages.py` fails, the daily run falls back to the old daily rule, so the site always has a stage.
+
+**Why it changed — tested on 20 years of NSE data** (liquid stocks, weekly, 2006–2026; full tables on the site and in `config/stage_evidence.json`):
+
+| | Old rule (150-day line, no memory) | Weekly engine |
+|---|---|---|
+| Clear bases called Stage 1 | 76% | 98% |
+| Clear tops called Stage 3 | 59% | 79% |
+| Stage changes per stock per year | 6.2 | 2.3 |
+| Stage 2 runs of 4 weeks or less | 42% | 5% |
+| Stage 2, next 6 months vs the average stock | +1.8% | +2.0% |
+| Stage 3, next 6 months | −0.9% | −0.4% |
+| Stage 4, next 6 months | −3.0% | −2.8% |
+
+- About a third of liquid stocks show a different stage than before (the two agreed on 66% of liquid stocks on 9 Nov 2026). Most of the changes are tops the old rule called Stage 1, bases it called Stage 3, and stocks above a rising line that have not yet broken out of their base (now Stage 1 until they do).
+- **The breakout matters:** weeks where price had been above a rising line for 4 weeks but the stock had not closed above its base's high did no better than the average stock over the next 6 months (−0.4%); the same picture after a breakout beat it by +2.5%, in both halves of the 20 years.
+- **Sharp breaks:** Stage 2 weeks sitting more than 5% under a still-rising line behaved like tops (−0.4% to −2.6%, 76–91% fell into Stage 4 within 6 months), so two such closes now end Stage 2.
+
+**RS tab → Stage 2 stocks** (sub-tab next to *RS ranking*) lists every liquid stock in Stage 2, newest first, with **Days in Stage 2** (and the date it began), **When to notice** (zone), RS rating, Mansfield RS (price ÷ NIFTY 500 against its own 52-week average), gain from the breakout level, distance above the 30-week line, the line's 6-week rise, breakout-week volume (× the 10 weeks before; Weinstein wanted 2×+) and **how the run began** (base breakout / resumed after Stage 3 / V-turn). Filters: zone, minimum RS, how it began, Mansfield RS above 0, include illiquid stocks; watchlist add-all and CSV.
+
+**When to notice a Stage 2 stock** (what came next, against the average liquid stock, 2006–2026):
+
+| Days in Stage 2 | Next 6 months: all / RS 70+ | Next year: all / RS 70+ | Fell into Stage 4 within 6 months |
+|---|---|---|---|
+| New, day 0–40 | −0.2% / +2.6% | +1.6% / +6.3% | 33% / 29% |
+| Prime, day 41–250 | +2.2% / +3.7% | +3.0% / +5.4% | 36% / 31% |
+| Mature, day 251+ | +0.9% / +0.7% | −0.1% / −0.8% | 50% / 46% |
+
+- **RS 70+:** notice it from day 0. **Others:** wait for day 41 — in the first 40 days they did no better than the average stock over the next 6 months.
+- **Day 41–250** is the window to buy. **After day 250** it is a mature Stage 2: about half fell into Stage 4 within 6 months — manage what you hold, be choosy with new buys. Both halves of the 20 years show the same shape (the early RS 70+ edge was smaller in 2006–15).
+- For a swing trade of a few weeks the age hardly matters (next 4 weeks within −0.1% to +0.7% in every bucket). In every bucket fewer than half of the stocks beat the average stock, so the stop-loss still does the work.
+- Caveats: stocks delisted before today are missing; weekly snapshots overlap, so these are averages, not independent trades; ages are weeks × 5.
+
+Files: `scripts/stages.py` (engine, run by `compute.py`), `config/stage_evidence.json` (the test results shown on the site), `docs/data/stages.json` (made every evening). Each stock in `stocks.json` carries `st` (stage) and `std` (days in it).
+
 ## Stage 2: early, mid or late
 
-**Scanners → Stage 2: early · mid · late** lists every stock in Stage 2 — the same stocks the Stage column marks as Stage 2, i.e. above a 150-day (30-week) line that rose 1%+ in 20 sessions. Each stock gets a **phase** and a **Stage 2 Score**. The list is sorted Early → Mid → Late, highest score first within each phase.
+**Scanners → Stage 2: early · mid · late** lists the liquid stocks the Stage column marks as Stage 2 that are also above a 150-day (30-week) line that rose 1%+ in 20 sessions — the daily definition the phases were tested on (a Stage 2 stock in a pullback below that line gets no phase). Each stock gets a **phase** and a **Stage 2 Score**. The list is sorted Early → Mid → Late, highest score first within each phase.
 
-- **When the advance started:** the first Stage 2 day after the last confirmed Stage 4 (10 of 20 sessions below a falling 150-day line).
+- **When the advance started ("Advance began"):** the first day above a rising 150-day line after the last confirmed Stage 4 (10 of 20 sessions below a falling 150-day line), on the daily chart — so it can be earlier than the day the current weekly Stage 2 run began (RS → Stage 2 stocks).
 - **Phase points (0–9):**
   - O'Neil base count since the start, 0–4. A base counts after a 20%+ gain from the last counted pivot, and undercutting the previous base's low restarts the count at 1. Two bases = 1 point, three = 2, four = 3, five or more = 4.
   - Months in Stage 2, 0–2: 6–12 months = 1, over 12 months = 2.
@@ -417,6 +462,7 @@ Data: `docs/data/sc/_common.json` (calendar, NIFTY 500 closes) and one file per 
 
 - **Price.** NSE's official index (open/high/low/close from `config/nse/idx`) for the NSE-index groups whose history NSE publishes in full (20 of them); for everything else an **equal-weight index** of the members — each day the index moves by the average of the members' daily returns (base 100); open, high and low are the averages of each member's open, high and low against its previous close, so every candle is a real candle. A member counts only on days it traded; a move over ±40% in a day is treated as a data error (120 member-days in six years). Membership is today's list. Checked against NSE's own indices: daily returns correlate 0.88–0.96 (equal weight and cap weight differ in level — Nifty Bank's 14 members equal-weighted rose 8.9% in a year while the official index fell 1.2%, because the smaller banks did better).
 - **With it, per day:** members' turnover (₹ Cr), % of members above their 50- and 200-day averages, members at 52-week highs/lows, and the **group RS rating** (1–99): the IBD formula on the group's own index, ranked against the other groups of the same kind.
+- **Stage** of the group's index: the same weekly Weinstein engine as the stocks (`scripts/stages.py`, see *Stage* above) with one group setting — a group also leaves its base after **two weekly closes above a rising 30-week line**, before its base's high is cleared. Shown with its days in the stage on the group chart (e.g. *Stage 2 · 45d*), in the Rotation row's mini chart and in the group screener.
 - **Website:** `docs/data/grp.json` (latest readings, signals, 26-week sparklines) and one file per group in `docs/data/grp/` (loaded when its chart opens). Charts use TradingView Lightweight Charts™ v5.2.1 (Apache 2.0), kept in `docs/vendor/` so nothing loads from outside.
 
 **Signals, tested point-in-time** on every 5th session from Jul 2021 to Jul 2026 — each group's return over the next 3 months against the average group of the same kind (`config/group_evidence.json`, shown on the site):
@@ -424,12 +470,14 @@ Data: `docs/data/sc/_common.json` (calendar, NIFTY 500 closes) and one file per 
 | Signal | Rule | Next 3 months vs average group (liquid / all stocks) |
 |---|---|---|
 | RS rating climbing | group RS rating 70+, up 20+ points in 4 weeks | +2.4% / +1.8%, both periods positive |
-| Stage 2 start | index crosses above its rising 150-day average after 3 months mostly below | +2.2% / +1.7% (liquid: both periods positive; all stocks: −0.6% in 2021–23) |
-| Stage 2 start with money | the same with turnover 1.2× its usual | +5.0% / +6.6% (small sample: 45 / 37) |
+| Stage 2 start | the group's weekly stage moves from a base (Stage 1) into Stage 2 (since update 12) | +0.3% / +0.8% (all stocks: both periods positive; liquid: −0.6% in 2021–23) |
+| Stage 2 start with money | the same with turnover 1.2× its usual | +0.5% / +1.7% (all stocks: both periods positive; liquid: −0.3% in 2021–23) |
 | Money flowing in | 20-day turnover 1.5× its 120-day average, index up | +1.4% / +1.1% |
 | Leaders (RS 80+) / laggards (RS 20 or less) | state, not a signal | +2.3% / −2.1% |
 | Fresh 52-week high, base breakout, coiling, breadth thrust, new-highs expansion | breakout patterns | about 0 or negative — no edge on their own |
 | RS line breakdown, 52-week low, breadth collapse | weakness | −0.4% to −1.1% (RS line breakdown); others no edge |
+
+**Why the Stage 2 start signals changed (update 12).** They used to fire when the index crossed above its rising 150-day line after 3 months mostly below. They now follow the group's weekly stage, so a "Stage 2 start" chip never disagrees with the group's Stage. On 20 years of group indices rebuilt from NSE prices (2006–2026, today's membership, next 13 weeks against the average group of the same kind) the new start beat the average group by +1.0% (+0.8% in 2006–15, +1.2% in 2016–26) and by +1.5% with money (+0.9%, +2.0%); the old cross did +0.1% (−0.1%, +0.2%) and +0.2% with money (+2.5%, −0.8%). In 2021–26 alone the old cross did better on the site's own data (+3.1% liquid, +2.1% all stocks), so the table above is the recent window and the 20-year test is the long one. The group engine itself, on the same 20 years: clear bases called Stage 1 97% (old rule 73%), clear tops called Stage 3 92% (old 69%), 2.4 stage changes per group per year (old 5.5). The old rule's Stage 2 had a slightly bigger 3-month edge (+0.8% against +0.7%) because it is pure momentum; the weekly engine reads bases and tops correctly and changes far less often.
 
 A turn from lagging to improving on a group RRG did *not* help (−1.2%), which is why the Rotation radar uses the group RS rating instead. Groups share stocks and membership is today's, so treat these as tendencies, not guarantees.
 
@@ -518,7 +566,7 @@ Kite isn't used here (it needs a fresh token every day). Sector-rotation history
 - **Prices** are adjusted for splits and bonuses (checked: HDFC Bank's 1:1 bonus and Bajaj Finance's split show no jumps). Upstox closes and volumes matched NSE's bhavcopy exactly for all 2,912 stocks tested.
 - **Group return** = equal-weighted mean (or median) of member stocks' returns. Rank arrows compare with the same calculation 5 sessions ago.
 - **RS rating** = percentile (1–99) of 0.4 × 3-month + 0.2 × 6-month + 0.2 × 9-month + 0.2 × 12-month performance.
-- **Stage** = price vs the 150-day SMA (30-week) and its 20-day slope: above and rising = Stage 2, below and falling = Stage 4.
+- **Stage** = Weinstein's stage on the weekly chart against the 30-week line, with memory of the stage before (see *Stage (Weinstein, weekly)* above). Before update 12 it was price vs the 150-day SMA and its 20-day slope. Group indices use the same engine with one group setting (see *Group charts*).
 - **Trend template** = Minervini's 8 conditions with RS ≥ 70.
 - **Darvas breakout** = prior 20-session range ≤ 15%, close above its high, volume ≥ 1.5× the 50-day average.
 - **Breadth** counts every main-board stock that traded on each day (the liquid version uses today's liquid universe across the history). McClellan oscillator = 19-day minus 39-day EMA of daily (advances − declines) per 1,000 issues; A/D line = running total of advances − declines over the year shown.
