@@ -1,0 +1,1118 @@
+{
+ "title": "How the stage is worked out — and what 20 years of NSE data say",
+ "data": "Weekly bars of liquid NSE stocks (₹1 Cr+ median daily turnover, price ₹20+), Jan 2006 – Oct 2026, every week of every stock still listed today. Returns are excess over the equal-weight average of the same liquid stocks, as plain averages; the days-in-Stage-2 table trims the 0.5% tails. 'Fell to Stage 4' = the engine showed Stage 4 within the next 26 weeks.",
+ "rules": "Weekly chart, 30-week simple moving average of weekly closes (Mon–Fri weeks; this week's bar is the latest). The line is rising / falling when it is more than 1.5% above / below its value 6 weeks earlier, flat otherwise; price is above / below it when the weekly close is more than 2% over / under it. A stage remembers its range (highest weekly high, lowest weekly low since it began). Stage 1 → 2: close above the line, the line not falling, close above the base's high, base at least 6 weeks old. 2 → 3: once the line has risen, it stops rising and price closes under it, or it stays flat 4 weeks, or price closes more than 5% under it two weeks running even while it still rises. 3 → 4: close below the top's low, or below a falling line 2 weeks running. 4 → 1: once the line has fallen, it stops falling with price back at it 2 weeks running, or it stays flat 4 weeks, or price closes more than 8% over it two weeks running even while it still falls. A breakout that slips back under the line before the line has turned up is a failed breakout: the stock stays in the same base and its clock keeps running (the same for a failed breakdown from a top). Direct moves: 2 → 4 below a falling line; 3 → 2 above a rising line and the top's high, or 4 weeks above a rising line; 4 → 2 above a rising line and every high since the decline began. A stock that has not traded for 25 sessions is read afresh.",
+ "audit": {
+  "old": {
+   "clear": {
+    "S1": 76.1,
+    "S2": 99.8,
+    "S3": 58.6,
+    "S4": 99.7
+   },
+   "clear_n": {
+    "S1": 1234,
+    "S2": 185990,
+    "S3": 2403,
+    "S4": 92022
+   },
+   "clear_avg": 83.6,
+   "changes_per_year": 6.2,
+   "short_s2_pct": 42.1,
+   "median_s2_weeks": 6.0,
+   "fwd_all": {
+    "S1": {
+     "x26": -1.1,
+     "x52": -2.9,
+     "share": 17.2
+    },
+    "S2": {
+     "x26": 1.8,
+     "x52": 3.3,
+     "share": 44.5
+    },
+    "S3": {
+     "x26": -0.9,
+     "x52": -0.9,
+     "share": 13.8
+    },
+    "S4": {
+     "x26": -3.0,
+     "x52": -4.7,
+     "share": 24.6
+    }
+   },
+   "fwd_a": {
+    "S1": {
+     "x26": -2.2,
+     "x52": -4.2,
+     "share": 16.5
+    },
+    "S2": {
+     "x26": 1.3,
+     "x52": 2.2,
+     "share": 47.6
+    },
+    "S3": {
+     "x26": -1.7,
+     "x52": -2.6,
+     "share": 12.4
+    },
+    "S4": {
+     "x26": -2.4,
+     "x52": -4.7,
+     "share": 23.6
+    }
+   },
+   "fwd_b": {
+    "S1": {
+     "x26": -0.8,
+     "x52": -2.5,
+     "share": 17.3
+    },
+    "S2": {
+     "x26": 2.0,
+     "x52": 3.6,
+     "share": 43.7
+    },
+    "S3": {
+     "x26": -0.6,
+     "x52": -0.5,
+     "share": 14.1
+    },
+    "S4": {
+     "x26": -3.1,
+     "x52": -4.7,
+     "share": 24.9
+    }
+   },
+   "confusion": {
+    "S1": {
+     "S1": 76.1,
+     "S2": 0.4,
+     "S3": 19.5,
+     "S4": 4.0
+    },
+    "S2": {
+     "S1": 0.0,
+     "S2": 99.8,
+     "S3": 0.2,
+     "S4": 0.0
+    },
+    "S3": {
+     "S1": 36.4,
+     "S2": 4.1,
+     "S3": 58.6,
+     "S4": 0.9
+    },
+    "S4": {
+     "S1": 0.3,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 99.7
+    }
+   }
+  },
+  "new": {
+   "clear": {
+    "S1": 98.1,
+    "S2": 89.3,
+    "S3": 78.7,
+    "S4": 93.8
+   },
+   "clear_n": {
+    "S1": 1234,
+    "S2": 185990,
+    "S3": 2403,
+    "S4": 92022
+   },
+   "clear_avg": 90.0,
+   "changes_per_year": 2.3,
+   "short_s2_pct": 4.6,
+   "median_s2_weeks": 25.0,
+   "false_start_pct": 5.2,
+   "s2_starts": 5515,
+   "fwd_all": {
+    "S1": {
+     "x26": -1.0,
+     "x52": -1.3,
+     "share": 20.7
+    },
+    "S2": {
+     "x26": 2.0,
+     "x52": 3.2,
+     "share": 41.9
+    },
+    "S3": {
+     "x26": -0.4,
+     "x52": -0.5,
+     "share": 8.5
+    },
+    "S4": {
+     "x26": -2.8,
+     "x52": -4.6,
+     "share": 28.8
+    }
+   },
+   "fwd_a": {
+    "S1": {
+     "x26": -1.6,
+     "x52": -2.6,
+     "share": 18.2
+    },
+    "S2": {
+     "x26": 1.4,
+     "x52": 2.2,
+     "share": 45.3
+    },
+    "S3": {
+     "x26": -1.9,
+     "x52": -2.7,
+     "share": 8.9
+    },
+    "S4": {
+     "x26": -2.5,
+     "x52": -4.8,
+     "share": 27.5
+    }
+   },
+   "fwd_b": {
+    "S1": {
+     "x26": -0.9,
+     "x52": -0.9,
+     "share": 21.4
+    },
+    "S2": {
+     "x26": 2.2,
+     "x52": 3.5,
+     "share": 41.1
+    },
+    "S3": {
+     "x26": 0.1,
+     "x52": 0.2,
+     "share": 8.4
+    },
+    "S4": {
+     "x26": -2.9,
+     "x52": -4.6,
+     "share": 29.1
+    }
+   },
+   "confusion": {
+    "S1": {
+     "S1": 98.1,
+     "S2": 0.2,
+     "S3": 0.6,
+     "S4": 1.0
+    },
+    "S2": {
+     "S1": 10.4,
+     "S2": 89.3,
+     "S3": 0.3,
+     "S4": 0.0
+    },
+    "S3": {
+     "S1": 9.9,
+     "S2": 0.9,
+     "S3": 78.7,
+     "S4": 10.5
+    },
+    "S4": {
+     "S1": 6.2,
+     "S2": 0.0,
+     "S3": 0.0,
+     "S4": 93.8
+    }
+   }
+  },
+  "latest_week_same_pct": 68.1,
+  "latest_week": "2026-10-23",
+  "breakout_test": {
+   "s2_c2": {
+    "n": 166075,
+    "x26": 2.5,
+    "t26": 1.8,
+    "w26": 46.4,
+    "x52": 4.0,
+    "t52": 2.8,
+    "w52": 44.8,
+    "x26a": 2.1,
+    "x26b": 2.6
+   },
+   "s1_c2": {
+    "n": 19251,
+    "x26": -0.4,
+    "t26": -1.0,
+    "w26": 42.5,
+    "x52": 2.9,
+    "t52": 0.9,
+    "w52": 42.4,
+    "x26a": -0.7,
+    "x26b": -0.4
+   }
+  },
+  "sharp_break_test": {
+   "s2_under_rising_line": [
+    {
+     "under": "2–5%",
+     "x26": -0.0,
+     "to4": 68.6
+    },
+    {
+     "under": "5–10%",
+     "x26": -0.4,
+     "to4": 76.1
+    },
+    {
+     "under": "10–15%",
+     "x26": -1.4,
+     "to4": 82.2
+    },
+    {
+     "under": "over 15%",
+     "x26": -2.6,
+     "to4": 91.2
+    }
+   ],
+   "s4_over_falling_line": [
+    {
+     "over": "2–5%",
+     "x26": -2.6,
+     "x52": -4.4
+    },
+    {
+     "over": "5–10%",
+     "x26": -2.3,
+     "x52": -4.2
+    },
+    {
+     "over": "over 10%",
+     "x26": -0.9,
+     "x52": 0.2
+    }
+   ]
+  }
+ },
+ "age": {
+  "all": [
+   {
+    "days": "0–10",
+    "n": 16892,
+    "x4": -0.1,
+    "win4": 44.6,
+    "x13": -0.0,
+    "win13": 44.4,
+    "x26": -0.4,
+    "win26": 42.9,
+    "x52": 1.0,
+    "win52": 42.3,
+    "to4": 31.1,
+    "left8": 16.4
+   },
+   {
+    "days": "11–20",
+    "n": 11647,
+    "x4": 0.1,
+    "win4": 44.7,
+    "x13": -0.1,
+    "win13": 43.9,
+    "x26": -0.4,
+    "win26": 43.2,
+    "x52": 1.3,
+    "win52": 42.0,
+    "to4": 33.2,
+    "left8": 20.2
+   },
+   {
+    "days": "21–40",
+    "n": 22709,
+    "x4": 0.0,
+    "win4": 44.4,
+    "x13": -0.1,
+    "win13": 43.8,
+    "x26": 0.1,
+    "win26": 43.9,
+    "x52": 2.2,
+    "win52": 42.6,
+    "to4": 34.3,
+    "left8": 20.5
+   },
+   {
+    "days": "41–65",
+    "n": 24743,
+    "x4": 0.1,
+    "win4": 44.5,
+    "x13": 0.2,
+    "win13": 44.6,
+    "x26": 1.2,
+    "win26": 45.1,
+    "x52": 3.3,
+    "win52": 43.8,
+    "to4": 35.0,
+    "left8": 19.0
+   },
+   {
+    "days": "66–125",
+    "n": 47084,
+    "x4": 0.1,
+    "win4": 44.6,
+    "x13": 0.3,
+    "win13": 44.8,
+    "x26": 1.9,
+    "win26": 46.4,
+    "x52": 2.9,
+    "win52": 44.2,
+    "to4": 36.2,
+    "left8": 21.5
+   },
+   {
+    "days": "126–250",
+    "n": 58133,
+    "x4": 0.5,
+    "win4": 47.0,
+    "x13": 1.8,
+    "win13": 47.9,
+    "x26": 2.8,
+    "win26": 47.5,
+    "x52": 3.0,
+    "win52": 45.6,
+    "to4": 36.1,
+    "left8": 21.9
+   },
+   {
+    "days": "251–500",
+    "n": 37215,
+    "x4": 0.3,
+    "win4": 46.9,
+    "x13": 0.6,
+    "win13": 46.3,
+    "x26": 0.8,
+    "win26": 46.0,
+    "x52": -0.6,
+    "win52": 43.2,
+    "to4": 50.0,
+    "left8": 28.6
+   },
+   {
+    "days": "500+",
+    "n": 4298,
+    "x4": 0.1,
+    "win4": 48.0,
+    "x13": 0.4,
+    "win13": 47.4,
+    "x26": 1.4,
+    "win26": 47.5,
+    "x52": 4.0,
+    "win52": 50.0,
+    "to4": 52.9,
+    "left8": 30.3
+   }
+  ],
+  "rs70": [
+   {
+    "days": "0–10",
+    "n": 8240,
+    "x4": 0.2,
+    "win4": 46.1,
+    "x13": 1.4,
+    "win13": 47.9,
+    "x26": 2.5,
+    "win26": 47.1,
+    "x52": 6.0,
+    "win52": 44.9,
+    "to4": 28.9,
+    "left8": 12.3
+   },
+   {
+    "days": "11–20",
+    "n": 5739,
+    "x4": 0.5,
+    "win4": 47.2,
+    "x13": 1.5,
+    "win13": 47.6,
+    "x26": 2.6,
+    "win26": 47.6,
+    "x52": 6.1,
+    "win52": 45.4,
+    "to4": 28.7,
+    "left8": 13.9
+   },
+   {
+    "days": "21–40",
+    "n": 11592,
+    "x4": 0.5,
+    "win4": 46.6,
+    "x13": 1.4,
+    "win13": 47.4,
+    "x26": 2.7,
+    "win26": 48.0,
+    "x52": 6.6,
+    "win52": 45.9,
+    "to4": 28.8,
+    "left8": 13.2
+   },
+   {
+    "days": "41–65",
+    "n": 13126,
+    "x4": 0.6,
+    "win4": 46.8,
+    "x13": 1.7,
+    "win13": 48.1,
+    "x26": 3.5,
+    "win26": 47.2,
+    "x52": 7.9,
+    "win52": 46.2,
+    "to4": 29.5,
+    "left8": 11.6
+   },
+   {
+    "days": "66–125",
+    "n": 25268,
+    "x4": 0.5,
+    "win4": 46.6,
+    "x13": 1.2,
+    "win13": 46.5,
+    "x26": 3.5,
+    "win26": 47.5,
+    "x52": 5.9,
+    "win52": 45.6,
+    "to4": 30.9,
+    "left8": 13.9
+   },
+   {
+    "days": "126–250",
+    "n": 34363,
+    "x4": 0.7,
+    "win4": 47.5,
+    "x13": 2.3,
+    "win13": 48.3,
+    "x26": 3.9,
+    "win26": 48.3,
+    "x52": 4.0,
+    "win52": 45.4,
+    "to4": 32.5,
+    "left8": 14.8
+   },
+   {
+    "days": "251–500",
+    "n": 23656,
+    "x4": 0.4,
+    "win4": 47.1,
+    "x13": 0.8,
+    "win13": 46.5,
+    "x26": 0.9,
+    "win26": 45.9,
+    "x52": -1.1,
+    "win52": 42.2,
+    "to4": 45.5,
+    "left8": 21.1
+   },
+   {
+    "days": "500+",
+    "n": 3059,
+    "x4": 0.1,
+    "win4": 47.8,
+    "x13": -0.4,
+    "win13": 45.5,
+    "x26": -0.6,
+    "win26": 44.2,
+    "x52": 1.7,
+    "win52": 46.7,
+    "to4": 50.3,
+    "left8": 24.3
+   }
+  ],
+  "mrs": [
+   {
+    "days": "0–10",
+    "n": 12623,
+    "x4": 0.1,
+    "win4": 45.6,
+    "x13": 0.9,
+    "win13": 46.9,
+    "x26": 1.4,
+    "win26": 45.7,
+    "x52": 3.5,
+    "win52": 44.1,
+    "to4": 29.4,
+    "left8": 14.1
+   },
+   {
+    "days": "11–20",
+    "n": 8503,
+    "x4": 0.4,
+    "win4": 46.2,
+    "x13": 0.9,
+    "win13": 46.8,
+    "x26": 1.4,
+    "win26": 46.0,
+    "x52": 3.4,
+    "win52": 43.8,
+    "to4": 30.6,
+    "left8": 16.3
+   },
+   {
+    "days": "21–40",
+    "n": 16671,
+    "x4": 0.3,
+    "win4": 45.9,
+    "x13": 0.7,
+    "win13": 46.2,
+    "x26": 1.5,
+    "win26": 46.7,
+    "x52": 4.0,
+    "win52": 44.2,
+    "to4": 31.1,
+    "left8": 15.8
+   },
+   {
+    "days": "41–65",
+    "n": 18444,
+    "x4": 0.4,
+    "win4": 46.2,
+    "x13": 1.1,
+    "win13": 47.1,
+    "x26": 2.4,
+    "win26": 46.8,
+    "x52": 5.6,
+    "win52": 45.4,
+    "to4": 31.9,
+    "left8": 14.4
+   },
+   {
+    "days": "66–125",
+    "n": 35640,
+    "x4": 0.3,
+    "win4": 45.9,
+    "x13": 0.9,
+    "win13": 46.3,
+    "x26": 2.8,
+    "win26": 47.5,
+    "x52": 4.5,
+    "win52": 44.8,
+    "to4": 33.4,
+    "left8": 17.0
+   },
+   {
+    "days": "126–250",
+    "n": 45490,
+    "x4": 0.6,
+    "win4": 47.4,
+    "x13": 2.1,
+    "win13": 48.6,
+    "x26": 3.5,
+    "win26": 48.4,
+    "x52": 3.8,
+    "win52": 45.9,
+    "to4": 33.4,
+    "left8": 16.7
+   },
+   {
+    "days": "251–500",
+    "n": 30957,
+    "x4": 0.4,
+    "win4": 47.3,
+    "x13": 0.8,
+    "win13": 47.2,
+    "x26": 1.0,
+    "win26": 46.5,
+    "x52": -0.6,
+    "win52": 43.5,
+    "to4": 47.3,
+    "left8": 23.6
+   },
+   {
+    "days": "500+",
+    "n": 3718,
+    "x4": 0.1,
+    "win4": 48.1,
+    "x13": 0.0,
+    "win13": 46.3,
+    "x26": 0.6,
+    "win26": 45.7,
+    "x52": 3.1,
+    "win52": 48.6,
+    "to4": 51.1,
+    "left8": 26.8
+   }
+  ],
+  "all_a": [
+   {
+    "days": "0–10",
+    "n": 3153,
+    "x4": -0.1,
+    "win4": 46.1,
+    "x13": -0.2,
+    "win13": 48.0,
+    "x26": -1.2,
+    "win26": 43.7,
+    "x52": -0.7,
+    "win52": 43.8,
+    "to4": 34.0,
+    "left8": 19.4
+   },
+   {
+    "days": "11–20",
+    "n": 2231,
+    "x4": 0.2,
+    "win4": 45.5,
+    "x13": -0.5,
+    "win13": 46.4,
+    "x26": -0.8,
+    "win26": 45.5,
+    "x52": 0.1,
+    "win52": 42.9,
+    "to4": 36.4,
+    "left8": 22.1
+   },
+   {
+    "days": "21–40",
+    "n": 4393,
+    "x4": 0.1,
+    "win4": 46.8,
+    "x13": -0.2,
+    "win13": 45.3,
+    "x26": -0.1,
+    "win26": 44.6,
+    "x52": 0.2,
+    "win52": 43.0,
+    "to4": 37.2,
+    "left8": 20.2
+   },
+   {
+    "days": "41–65",
+    "n": 4904,
+    "x4": 0.2,
+    "win4": 46.6,
+    "x13": 0.1,
+    "win13": 45.7,
+    "x26": 0.1,
+    "win26": 46.4,
+    "x52": -0.0,
+    "win52": 45.1,
+    "to4": 38.7,
+    "left8": 17.2
+   },
+   {
+    "days": "66–125",
+    "n": 9883,
+    "x4": -0.0,
+    "win4": 46.0,
+    "x13": 0.4,
+    "win13": 47.7,
+    "x26": 0.7,
+    "win26": 48.7,
+    "x52": 1.4,
+    "win52": 46.5,
+    "to4": 40.1,
+    "left8": 20.2
+   },
+   {
+    "days": "126–250",
+    "n": 13087,
+    "x4": 0.6,
+    "win4": 50.3,
+    "x13": 1.2,
+    "win13": 50.9,
+    "x26": 1.8,
+    "win26": 50.3,
+    "x52": 2.7,
+    "win52": 49.1,
+    "to4": 39.2,
+    "left8": 22.2
+   },
+   {
+    "days": "251–500",
+    "n": 9326,
+    "x4": 0.5,
+    "win4": 49.5,
+    "x13": 1.1,
+    "win13": 49.8,
+    "x26": 1.8,
+    "win26": 49.5,
+    "x52": 1.4,
+    "win52": 48.7,
+    "to4": 48.2,
+    "left8": 28.5
+   },
+   {
+    "days": "500+",
+    "n": 1090,
+    "x4": 0.8,
+    "win4": 51.2,
+    "x13": 3.9,
+    "win13": 53.4,
+    "x26": 7.4,
+    "win26": 53.3,
+    "x52": 9.1,
+    "win52": 53.9,
+    "to4": 42.3,
+    "left8": 23.5
+   }
+  ],
+  "all_b": [
+   {
+    "days": "0–10",
+    "n": 13739,
+    "x4": -0.1,
+    "win4": 44.3,
+    "x13": -0.0,
+    "win13": 43.5,
+    "x26": -0.2,
+    "win26": 42.7,
+    "x52": 1.5,
+    "win52": 41.9,
+    "to4": 30.5,
+    "left8": 15.7
+   },
+   {
+    "days": "11–20",
+    "n": 9416,
+    "x4": 0.0,
+    "win4": 44.5,
+    "x13": -0.1,
+    "win13": 43.3,
+    "x26": -0.3,
+    "win26": 42.6,
+    "x52": 1.6,
+    "win52": 41.8,
+    "to4": 32.4,
+    "left8": 19.8
+   },
+   {
+    "days": "21–40",
+    "n": 18316,
+    "x4": 0.0,
+    "win4": 43.8,
+    "x13": -0.1,
+    "win13": 43.4,
+    "x26": 0.1,
+    "win26": 43.7,
+    "x52": 2.7,
+    "win52": 42.4,
+    "to4": 33.5,
+    "left8": 20.6
+   },
+   {
+    "days": "41–65",
+    "n": 19839,
+    "x4": 0.1,
+    "win4": 44.0,
+    "x13": 0.3,
+    "win13": 44.4,
+    "x26": 1.4,
+    "win26": 44.7,
+    "x52": 4.3,
+    "win52": 43.5,
+    "to4": 34.1,
+    "left8": 19.4
+   },
+   {
+    "days": "66–125",
+    "n": 37201,
+    "x4": 0.1,
+    "win4": 44.2,
+    "x13": 0.3,
+    "win13": 44.0,
+    "x26": 2.3,
+    "win26": 45.7,
+    "x52": 3.4,
+    "win52": 43.5,
+    "to4": 35.1,
+    "left8": 21.9
+   },
+   {
+    "days": "126–250",
+    "n": 45046,
+    "x4": 0.5,
+    "win4": 46.0,
+    "x13": 1.9,
+    "win13": 47.1,
+    "x26": 3.1,
+    "win26": 46.6,
+    "x52": 3.2,
+    "win52": 44.5,
+    "to4": 35.2,
+    "left8": 21.8
+   },
+   {
+    "days": "251–500",
+    "n": 27889,
+    "x4": 0.2,
+    "win4": 45.9,
+    "x13": 0.4,
+    "win13": 45.2,
+    "x26": 0.5,
+    "win26": 44.8,
+    "x52": -1.3,
+    "win52": 41.3,
+    "to4": 50.7,
+    "left8": 28.7
+   },
+   {
+    "days": "500+",
+    "n": 3208,
+    "x4": -0.1,
+    "win4": 46.9,
+    "x13": -0.7,
+    "win13": 45.4,
+    "x26": -0.6,
+    "win26": 45.5,
+    "x52": 2.2,
+    "win52": 48.7,
+    "to4": 56.5,
+    "left8": 32.6
+   }
+  ],
+  "rs70_a": [
+   {
+    "days": "0–10",
+    "n": 1387,
+    "x4": 0.2,
+    "win4": 47.2,
+    "x13": 1.6,
+    "win13": 52.3,
+    "x26": 1.0,
+    "win26": 47.2,
+    "x52": 1.0,
+    "win52": 44.5,
+    "to4": 32.3,
+    "left8": 16.1
+   },
+   {
+    "days": "11–20",
+    "n": 946,
+    "x4": 0.5,
+    "win4": 48.7,
+    "x13": 1.3,
+    "win13": 51.0,
+    "x26": 1.9,
+    "win26": 48.1,
+    "x52": 2.3,
+    "win52": 45.1,
+    "to4": 31.6,
+    "left8": 15.3
+   },
+   {
+    "days": "21–40",
+    "n": 1997,
+    "x4": 0.3,
+    "win4": 47.6,
+    "x13": 1.4,
+    "win13": 48.5,
+    "x26": 2.5,
+    "win26": 46.9,
+    "x52": 2.0,
+    "win52": 44.6,
+    "to4": 32.5,
+    "left8": 12.3
+   },
+   {
+    "days": "41–65",
+    "n": 2356,
+    "x4": 0.7,
+    "win4": 49.4,
+    "x13": 1.9,
+    "win13": 50.7,
+    "x26": 1.9,
+    "win26": 47.7,
+    "x52": 2.0,
+    "win52": 46.9,
+    "to4": 33.9,
+    "left8": 10.7
+   },
+   {
+    "days": "66–125",
+    "n": 4876,
+    "x4": 0.6,
+    "win4": 48.2,
+    "x13": 1.0,
+    "win13": 47.5,
+    "x26": 1.7,
+    "win26": 48.7,
+    "x52": 3.8,
+    "win52": 48.0,
+    "to4": 36.4,
+    "left8": 13.2
+   },
+   {
+    "days": "126–250",
+    "n": 7105,
+    "x4": 0.7,
+    "win4": 49.8,
+    "x13": 1.4,
+    "win13": 50.7,
+    "x26": 2.1,
+    "win26": 50.9,
+    "x52": 3.0,
+    "win52": 48.2,
+    "to4": 34.8,
+    "left8": 15.3
+   },
+   {
+    "days": "251–500",
+    "n": 5819,
+    "x4": 0.4,
+    "win4": 48.9,
+    "x13": 1.1,
+    "win13": 48.4,
+    "x26": 1.7,
+    "win26": 48.9,
+    "x52": 0.6,
+    "win52": 47.6,
+    "to4": 42.8,
+    "left8": 20.3
+   },
+   {
+    "days": "500+",
+    "n": 765,
+    "x4": 1.1,
+    "win4": 52.0,
+    "x13": 4.6,
+    "win13": 54.0,
+    "x26": 7.5,
+    "win26": 53.1,
+    "x52": 7.8,
+    "win52": 52.8,
+    "to4": 39.2,
+    "left8": 18.0
+   }
+  ],
+  "rs70_b": [
+   {
+    "days": "0–10",
+    "n": 6853,
+    "x4": 0.2,
+    "win4": 45.9,
+    "x13": 1.3,
+    "win13": 47.0,
+    "x26": 2.8,
+    "win26": 47.1,
+    "x52": 7.3,
+    "win52": 45.0,
+    "to4": 28.2,
+    "left8": 11.6
+   },
+   {
+    "days": "11–20",
+    "n": 4793,
+    "x4": 0.5,
+    "win4": 46.8,
+    "x13": 1.5,
+    "win13": 46.9,
+    "x26": 2.7,
+    "win26": 47.4,
+    "x52": 7.0,
+    "win52": 45.5,
+    "to4": 28.1,
+    "left8": 13.6
+   },
+   {
+    "days": "21–40",
+    "n": 9595,
+    "x4": 0.5,
+    "win4": 46.4,
+    "x13": 1.4,
+    "win13": 47.1,
+    "x26": 2.8,
+    "win26": 48.3,
+    "x52": 7.9,
+    "win52": 46.2,
+    "to4": 28.0,
+    "left8": 13.4
+   },
+   {
+    "days": "41–65",
+    "n": 10770,
+    "x4": 0.5,
+    "win4": 46.3,
+    "x13": 1.7,
+    "win13": 47.5,
+    "x26": 3.9,
+    "win26": 47.1,
+    "x52": 9.5,
+    "win52": 46.0,
+    "to4": 28.5,
+    "left8": 11.7
+   },
+   {
+    "days": "66–125",
+    "n": 20392,
+    "x4": 0.5,
+    "win4": 46.2,
+    "x13": 1.2,
+    "win13": 46.3,
+    "x26": 4.0,
+    "win26": 47.2,
+    "x52": 6.7,
+    "win52": 44.9,
+    "to4": 29.6,
+    "left8": 14.0
+   },
+   {
+    "days": "126–250",
+    "n": 27258,
+    "x4": 0.7,
+    "win4": 46.8,
+    "x13": 2.5,
+    "win13": 47.6,
+    "x26": 4.4,
+    "win26": 47.6,
+    "x52": 4.3,
+    "win52": 44.6,
+    "to4": 31.9,
+    "left8": 14.7
+   },
+   {
+    "days": "251–500",
+    "n": 17837,
+    "x4": 0.4,
+    "win4": 46.5,
+    "x13": 0.7,
+    "win13": 45.9,
+    "x26": 0.7,
+    "win26": 44.9,
+    "x52": -1.6,
+    "win52": 40.4,
+    "to4": 46.4,
+    "left8": 21.3
+   },
+   {
+    "days": "500+",
+    "n": 2294,
+    "x4": -0.3,
+    "win4": 46.3,
+    "x13": -2.1,
+    "win13": 42.7,
+    "x26": -3.2,
+    "win26": 41.3,
+    "x52": -0.4,
+    "win52": 44.6,
+    "to4": 54.0,
+    "left8": 26.3
+   }
+  ],
+  "market": {
+   "x4": -0.0,
+   "x13": -0.1,
+   "x26": -0.2,
+   "x52": -0.3
+  }
+ },
+ "zones": {
+  "new": 40,
+  "late": 250
+ },
+ "findings": [
+  "The old rule (today's close against the 150-day line and its 20-day slope, with no memory of what came before) could not tell a base from a top. On weeks any chart reader would call a base — a flat 30-week line after a 30%+ fall — it said Stage 3 20% of the time, and it called 36% of clear tops Stage 1. The weekly engine gets 98% of those bases and 79% of those tops right.",
+  "The old label changed 6.2 times a year per stock and 42% of its Stage 2 runs lasted 4 weeks or less. The weekly engine changes 2.3 times a year, 5% of its Stage 2 runs are that short (median run 25 weeks against 6), and 5.2% of its Stage 2 starts fall back to Stage 1 or 4 within 8 weeks.",
+  "The labels mean more: over the next 6 months Stage 2 stocks beat the average liquid stock by +2.0% (old rule +1.8%), Stage 4 stocks trailed it by 2.8% (old 3.0%), and Stage 3 now marks tops (−0.4% over 6 months, −0.5% over a year). Both halves of the 20 years agree on Stage 2 and Stage 4 (2006–15: +1.4% and −2.5%; 2016–26: +2.2% and −2.9%).",
+  "The engine waits for the breakout, as Weinstein does: on 10% of weeks where price had been above a rising line for 4 weeks it still said Stage 1, because the stock had not yet closed above its base's high (or the base was under 6 weeks old). Those weeks did no better than the average stock over the next 6 months (−0.4%), while the same picture after a breakout beat it by +2.5% (2006–15: −0.7% against +2.1%; 2016–26: −0.4% against +2.6%).",
+  "A sharp break ends a stage early. Stage 2 weeks that sat more than 5% under a line that was still rising behaved like tops (−0.4% to −2.6% over the next 6 months, and 76–91% fell into Stage 4 within 6 months), so two such weekly closes now end Stage 2. Rallies up to 10% over a line that was still falling kept behaving like Stage 4 (−2.3% to −2.6%), so a Stage 4 ends early only after two weekly closes more than 8% over the line.",
+  "Days in Stage 2, all stocks: bought in the first 40 trading days they were level with the average stock over the next 6 months (−0.4% to +0.1%); from day 41 to day 250 they beat it by +1.2% to +2.8%; after day 250, +0.8% (−0.6% over a year), and 50% fell into Stage 4 within 6 months.",
+  "With an RS rating of 70+ the edge is there from the first day: +2.5% over 6 months and +6.0% over a year in the first 10 days, +3.5% to +3.9% over 6 months from day 41 to day 250, and mostly gone after day 250 (+0.9% over 6 months, −1.1% over a year, 46% fell into Stage 4). Both halves show it: the early edge was smaller in 2006–15 (+1.0% over 6 months) than in 2016–26 (+2.8%), and after day 250 the next year weakened in both (2006–15: +3.0% → +0.6%; 2016–26: +4.3% → −1.6%) while the share falling into Stage 4 rose (35% → 43%; 32% → 46%).",
+  "For a swing trade of a few weeks the age hardly matters: over the next 4 weeks every age bucket up to day 500 was between −0.1% and +0.7% against the average stock. It matters for positional and investment holds. In every bucket fewer than half of the stocks beat the average stock (at most 48% over 6 months) — a few big winners lift the average — so the stop-loss still does the work.",
+  "So: notice a stock the day it enters Stage 2 if its RS rating is 70+; otherwise let it prove itself for about 40 trading days (two months). Up to about 250 trading days (a year) is the window to buy; after that it is a mature Stage 2 — manage what you hold and be choosy with new buys. Weinstein's own advice points the same way: buy the breakout from the base or the first pullback, not late in the advance."
+ ],
+ "caveats": "Only stocks still listed today (delisted companies are missing, which if anything flatters late Stage 2). Weekly snapshots overlap, so these are averages of stock-weeks, not independent trades. Ages are counted as weeks × 5, close to trading days. Past results are evidence, not a promise."
+}
