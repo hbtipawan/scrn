@@ -1,10 +1,13 @@
 """Stage 2 phase: EARLY, MID or LATE in the advance, plus a Stage 2 Score for strength.
 
-Stage 2 is the dashboard's own definition (Weinstein, on daily bars): close above the 150-day
-SMA (the 30-week line) and the SMA up more than 1% over 20 sessions.
+Which stocks: those in Stage 2 in the site's Stage column (stages.py, weekly bars) that are also
+above a rising 150-day SMA today - close above the 150-day SMA (the 30-week line) and the SMA up
+more than 1% over 20 sessions, the daily definition these phases were tested on. A Stage 2 stock
+in a pullback below that line gets no phase.
 
-The advance is dated from its start: the first Stage 2 day after the last confirmed Stage 4
-(10 or more of 20 sessions below a falling 150-day SMA). Maturity points (0-9):
+The advance is dated from its start on the daily chart: the first such day after the last
+confirmed Stage 4 (10 or more of 20 sessions below a falling 150-day SMA), so it can be earlier
+than the day the current weekly Stage 2 run began. Maturity points (0-9):
 
   O'Neil base count since the start   2 bases 1 · 3 bases 2 · 4 bases 3 · 5+ bases 4
      (a base counts when the stock gained 20%+ from the last counted pivot; undercutting the

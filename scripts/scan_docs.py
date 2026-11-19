@@ -538,7 +538,7 @@ DOCS = {
         what="Fast growers the market is rewarding: revenue and profit both up 30%+ in a stock that is in Stage 2 with RS 80+.",
         rules=["Latest quarter's revenue up 30% or more on the same quarter last year",
                "Latest quarter's net profit up 30% or more", "Profitable over the last four quarters",
-               "RS rating 80 or higher", "In Stage 2 (above a rising 150-day SMA)"],
+               "RS rating 80 or higher", "In Stage 2 (the Stage column: weekly chart, out of its base above a rising 30-week line)"],
         use="A growth-leader list for CANSLIM-style position trades.",
         watch="One quarter's growth can be a base effect — check the trend in the stock card.",
         src="Deepvue 30/30 screen"),
@@ -687,7 +687,7 @@ DOCS = {
     # ── Stage 2 phase (stage2.py)
     "s2_early": dict(
         what="Early in a Stage 2 advance with a strong Stage 2 Score — the best-performing group in 20 years of NSE data.",
-        rules=["Stage 2: close above a 150-day SMA that rose 1%+ over 20 sessions",
+        rules=["In Stage 2 (the Stage column) and above a 150-day SMA that rose 1%+ over 20 sessions — the test the phases were built on",
                "Early phase: 0–1 maturity points (first base or two, young advance, not far from the low)",
                "Stage 2 Score 70+ (RS, slope, near the advance's peak, extension, above the 50-day, multi-year high)"],
         use="Beat NIFTY 500 by about 23% on average over the next year in the backtest; only 6% fell into Stage 4 within 6 months.",
@@ -751,7 +751,7 @@ DOCS = {
     "mf_lead": dict(
         what="Institutional buying behind stocks that are already leading.",
         rules=["Active funds net bought 0.1%+ of the company in the latest month, more buyers than sellers",
-               "Stage 2 (above a rising 150-day line)", "RS rating 70+"],
+               "In Stage 2 (the Stage column: weekly chart, out of its base above a rising 30-week line)", "RS rating 70+"],
         use="Combines demand from the people with the deepest pockets with a stock that is already acting well.",
         watch="Fund buying is reported with a lag — check the chart has not already run far since month end.",
         src="Fund-house monthly portfolio disclosures + this site's trend and RS models"),

@@ -17,6 +17,11 @@ averages, members at 52-week highs and lows, members counted, and the group RS r
 the group's own index, ranked among the groups of the same kind: themes against themes, industries against
 industries ...).
 
+Stage: Weinstein's stage of the group's index on its weekly chart, from the same engine as the stocks (stages.py,
+group setting PG: a group also leaves its base after two weekly closes above a rising 30-week line). The "Stage 2
+start" signals come from it (the weekly stage moving from 1 to 2). If stages.py fails, the earlier daily rule is
+used for both.
+
 Written for the website (docs/data/grp/): one file per group (loaded when its chart opens), _common.json (dates and
 NIFTY 500) and the summary in grp.json (latest numbers, signals, sparklines, rotation-map tails).
 """
@@ -148,9 +153,9 @@ SIG = {
     "g_rsfirst": ("RS line high before price", 1, "The group's RS line (index ÷ NIFTY 500) is at a 6-month high while the index is still 3%+ below its 52-week high — strength showing before the price breakout."),
     "g_thrust": ("Breadth thrust", 1, "% of members above their 50-day average jumped from 30% or less to 60% or more within 10 sessions."),
     "g_rank": ("RS rating climbing", 1, "Group RS rating 70 or higher and at least 20 points higher than 4 weeks ago — the group is moving up the leaderboard."),
-    "g_stage2": ("Stage 2 start", 1, "The index crossed above its rising 150-day (30-week) average in the last 5 sessions after spending most of the prior 3 months below it."),
+    "g_stage2": ("Stage 2 start", 1, "The group's weekly chart moved from a base (Stage 1) into Stage 2 in the last 5 sessions: two weekly closes above a rising 30-week average, or a close above the base's high (Weinstein; the same engine as the Stage column)."),
     "g_money": ("Money flowing in", 1, "Members' turnover over the last 20 sessions is 1.5× its 120-session average, with the index up over the 20 sessions."),
-    "g_stage2m": ("Stage 2 start with money", 1, "A Stage 2 start — the index crosses above its rising 150-day (30-week) average after 3 months mostly below it — while members' turnover over 20 sessions is at least 1.2× its 120-session average."),
+    "g_stage2m": ("Stage 2 start with money", 1, "A Stage 2 start — the group's weekly chart moved from a base into Stage 2 in the last 5 sessions — while members' turnover over 20 sessions is at least 1.2× its 120-session average."),
     "g_nhx": ("New highs expanding", 1, "20%+ of members at 52-week highs (5+ members), up from under 10% in the prior 4 weeks."),
     "g_coil": ("Coiling near the high", 1, "20-session range no wider than 5%, within 3% of the 52-week high and above a rising 50-day average."),
     "g_low": ("Fresh 52-week low", -1, "The group index closed at a 52-week low for the first time in 4+ weeks."),
@@ -159,8 +164,9 @@ SIG = {
 }
 
 
-def signals(df, bench, rk):
-    """Boolean Series per signal on the group's calendar."""
+def signals(df, bench, rk, s2start=None):
+    """Boolean Series per signal on the group's calendar. s2start: the weekly-stage "Stage 2 start" (True for 5
+    sessions from the session that closed the week the stage moved from 1 to 2); without it, the earlier daily rule."""
     c, b = df["c"], bench.reindex(df.index)
     out = {}
     hi252 = c.rolling(252, min_periods=200).max()
@@ -179,9 +185,12 @@ def signals(df, bench, rk):
     out["g_thrust"] = (b50 >= 60) & (b50.shift(1).rolling(10, min_periods=5).min() <= 30)
     out["g_bcollapse"] = (b50 <= 30) & (b50.shift(1).rolling(10, min_periods=5).max() >= 70)
     out["g_rank"] = (rk >= 70) & (rk - rk.shift(20) >= 20)
-    above = c > s150
-    out["g_stage2"] = above & (s150 > s150.shift(20)) & (~above).shift(1).rolling(5, min_periods=1).max().fillna(0).astype(bool) \
-        & ((~above).astype(float).shift(5).rolling(60, min_periods=40).mean() >= 0.5)
+    if s2start is not None:
+        out["g_stage2"] = s2start.reindex(df.index).fillna(False).astype(bool)
+    else:                                         # the earlier daily rule (only if stages.py failed)
+        above = c > s150
+        out["g_stage2"] = above & (s150 > s150.shift(20)) & (~above).shift(1).rolling(5, min_periods=1).max().fillna(0).astype(bool) \
+            & ((~above).astype(float).shift(5).rolling(60, min_periods=40).mean() >= 0.5)
     v = df["v"]
     mr = v.rolling(20, min_periods=15).mean() / v.shift(20).rolling(120, min_periods=80).mean()
     out["g_money"] = (mr >= 1.5) & (c > c.shift(20))
@@ -246,6 +255,31 @@ def build(P, groups, U, bench, out_dir, asof, evidence=None):
             rk = (sc.rank(axis=1, pct=True) * 98 + 1).round()
             for k in keys:
                 series[k][u]["rk"] = rk[k[1]]
+    # weekly Weinstein stage of every group index (stages.py, group setting) and its "Stage 2 start" days
+    stg = {}
+    try:
+        import stages as SG
+        for u in ("a", "l"):
+            keys = [k for k in series if series[k][u] is not None]
+            if not keys:
+                continue
+            col = lambda f: np.column_stack([series[k][u][f].to_numpy(dtype=float) for k in keys])
+            tab = SG.stage_table(col("c"), col("h"), col("l"), cal, SG.PG)
+            hist, ends = tab["hist"], tab["ends"]
+            ev = np.zeros((len(cal), len(keys)), dtype=bool)
+            for w, j in zip(*np.nonzero((hist[1:] == 2) & (hist[:-1] == 1))):
+                ev[ends[w + 1], j] = True                 # the session that closed the week the stage moved 1 -> 2
+            live = pd.DataFrame(ev).rolling(5, min_periods=1).max().to_numpy().astype(bool)
+            for j, k in enumerate(keys):
+                stg[(k, u)] = {"st": int(tab["st"][j]) or None, "days": int(tab["days"][j]) if tab["days"][j] >= 0 else None,
+                               "cap": bool(tab["cap"][j]), "s2": pd.Series(live[:, j], index=cal)}
+        cnt = pd.Series([v["st"] for (k, u), v in stg.items() if u == "a" and v["st"]]).value_counts().to_dict()
+        print(f"group stages (weekly, Weinstein): stage 1 {cnt.get(1, 0)}, 2 {cnt.get(2, 0)}, 3 {cnt.get(3, 0)}, 4 {cnt.get(4, 0)}")
+    except Exception as e:                            # never break the daily run: the earlier daily rule is used
+        import traceback
+        traceback.print_exc()
+        print(f"group stages skipped, using the daily rule: {e}")
+        stg = {}
     today = {}
     for (kind, name), g in series.items():
         sl = slug(kind, name, used)
@@ -263,7 +297,8 @@ def build(P, groups, U, bench, out_dir, asof, evidence=None):
             file[u] = {"o": _arr(d.o, 2), "h": _arr(d.h, 2), "l": _arr(d.l, 2), "c": _arr(d.c, 2), "v": _arr(d.v, 1),
                        "b50": _arr(d.b50, 0), "b200": _arr(d.b200, 0), "nh": _arr(d.nh, 0), "nl": _arr(d.nl, 0),
                        "cnt": _arr(d.n, 0), "rk": _arr(d.rk, 0)}
-            sig = signals(df, bench, df["rk"])
+            sg_ = stg.get(((kind, name), u))
+            sig = signals(df, bench, df["rk"], sg_["s2"] if sg_ else None)
             ev = []                                   # first day of each run of a signal, for chart markers
             for k, on in sig.items():
                 fresh = on & ~on.shift(1, fill_value=False)
@@ -280,7 +315,9 @@ def build(P, groups, U, bench, out_dir, asof, evidence=None):
             s150 = c.rolling(150, min_periods=150).mean()
             sl150 = s150.iloc[L] / s150.iloc[L - 20] - 1 if L >= 170 else np.nan
             stage = None
-            if np.isfinite(s150.iloc[L]) and np.isfinite(sl150):
+            if sg_:
+                stage = sg_["st"]
+            elif np.isfinite(s150.iloc[L]) and np.isfinite(sl150):
                 px = c.iloc[L]
                 stage = 2 if px > s150.iloc[L] and sl150 > 0.01 else 4 if px < s150.iloc[L] and sl150 < -0.01 else 3 if px >= s150.iloc[L] else 1
             v = df.v
@@ -294,7 +331,8 @@ def build(P, groups, U, bench, out_dir, asof, evidence=None):
                       "rk": _r(df.rk.iloc[L], 0), "rk4": _r(df.rk.iloc[L - 20], 0) if L >= 20 else None,
                       "rk12": _r(df.rk.iloc[L - 60], 0) if L >= 60 else None,
                       "h52": _r((c.iloc[L] / hi52 - 1) * 100, 1), "rh52": _r((rsl.iloc[L] / rhi - 1) * 100, 1),
-                      "st": stage, "b50": _r(df.b50.iloc[L], 0), "b200": _r(df.b200.iloc[L], 0),
+                      "st": stage, **({"std": sg_["days"], **({"stc": 1} if sg_["cap"] else {})} if sg_ and stage and sg_["days"] is not None else {}),
+                      "b50": _r(df.b50.iloc[L], 0), "b200": _r(df.b200.iloc[L], 0),
                       "nh": _r(df.nh.iloc[L], 0), "nl": _r(df.nl.iloc[L], 0), "cnt": _r(df.n.iloc[L], 0),
                       "nhp": _r(share * 100, 0), "mr": _r(mr, 2), "to": _r(v.iloc[max(0, L - 19):L + 1].mean(), 1),
                       "sp": [_r(x, 2) for x in wk.iloc[-26:]], "rkp": [_r(x, 0) for x in rkw.iloc[-26:]],

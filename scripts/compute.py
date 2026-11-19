@@ -264,7 +264,20 @@ def main():
               & (rs_all >= 70))
     c, tt = c_all.reindex(U), tt_all.reindex(U)
 
-    def stage(s):
+    # ---------------- stage: Weinstein's, read on weekly bars with a memory of the stage before (stages.py; tested on
+    # 20 years of NSE data, see config/stage_evidence.json). If it fails, the earlier daily rule below is used instead.
+    STG = None
+    try:
+        import stages as SG
+        STG = SG.build(PFULL, A, bench, last)
+    except Exception as e:  # never break the daily run
+        import traceback
+        traceback.print_exc()
+        print(f"weekly stages skipped, using the daily rule: {e}")
+
+    def stage_daily(s):
+        """the earlier rule: today's close against the 150-day SMA and its 20-day slope (also what stage2.py's
+        phases were tested on)"""
         sl, px, m = slope150.get(s), c_all.get(s), sma_a[150].iloc[-1].get(s)
         if pd.isna(sl) or pd.isna(m):
             return None
@@ -273,6 +286,9 @@ def main():
         if px < m and sl < -0.01:
             return 4
         return 3 if px >= m else 1
+
+    def stage(s):
+        return STG["stage"].get(s) if STG is not None else stage_daily(s)
 
     # sectors / names
     # Master classification (config/classification_master.csv): sector and industry for every stock from one file.
@@ -340,6 +356,10 @@ def main():
             "to": r2(med_to[s], 1), "vr": r2(vr_a[s], 1),
             "mc": r2(mc_show.get(s), 0),
         }
+        if STG is not None and s in STG["days"]:
+            row["std"] = STG["days"][s]         # trading days in the current stage
+            if s in STG["capped"]:
+                row["stdc"] = 1                 # ...at least: in it since the stage was first read
         if s not in uset:
             row["lq"] = 0                       # outside the liquid universe: breadth and rotation only
         if s in sec_x.index:
@@ -556,11 +576,25 @@ def main():
         traceback.print_exc()
         print(f"bases skipped: {e}")
 
+    # ---------------- every stock's stage with its days in the stage, and the Stage 2 list (RS tab → Stage 2)
+    stg_meta = None
+    if STG is not None:
+        try:
+            SJ = SG.site_json(STG, last, uset)
+            dump_later["stages.json"] = SJ
+            stg_meta = {"s2": sum(1 for r in SJ["s2"] if r["s"] in uset), "s2_all": len(SJ["s2"]), "zones": SJ["zones"]}
+        except Exception as e:  # never break the daily run
+            import traceback
+            traceback.print_exc()
+            print(f"stages.json skipped: {e}")
+
     # ---------------- Stage 2 phase: early / mid / late (stage2.py; checked on 20 years of NSE data)
+    # Phases were tested on stocks above a rising 150-day line (the earlier daily rule), so they are measured for the
+    # Stage 2 stocks (weekly stage) that are also that today; a Stage 2 stock in a pullback below the line gets none.
     s2_meta = None
     try:
         import stage2 as S2
-        SR = S2.build(LONG, [r["s"] for r in rows if r.get("st") == 2 and r["s"] in uset], rs_now)
+        SR = S2.build(LONG, [r["s"] for r in rows if r.get("st") == 2 and r["s"] in uset and stage_daily(r["s"]) == 2], rs_now)
         for r in rows:
             r.update(SR["per_stock"].get(r["s"], {}))
         sm, sh, smet = S2.scans(SR)
@@ -748,7 +782,7 @@ def main():
             "failed": fm.get("failed_count"), "indices": indices,
             "filters": {"min_price": S["min_price"], "min_median_turnover_cr": S["min_median_turnover_cr"],
                         "min_market_cap_cr": S["min_market_cap_cr"] if mcap is not None else None},
-            "min_group_size": S["min_group_size"], "fund": fund_meta, "bases": base_meta, "stage2": s2_meta, "results": res_meta, "mf": mf_meta, "rs": rs_meta, "dlv": dlv_meta, "idx": idx_meta, "corp": corp_meta, "grp": grp_meta, "pat": pat_meta, "vcp": vcp_meta, "up": up_meta, "mb": mb_meta, "sc": sch_meta, "vcp2": vcp2_meta, "cmp": cmp_meta}
+            "min_group_size": S["min_group_size"], "fund": fund_meta, "bases": base_meta, "stage2": s2_meta, "results": res_meta, "mf": mf_meta, "rs": rs_meta, "dlv": dlv_meta, "idx": idx_meta, "corp": corp_meta, "grp": grp_meta, "pat": pat_meta, "vcp": vcp_meta, "up": up_meta, "mb": mb_meta, "sc": sch_meta, "vcp2": vcp2_meta, "cmp": cmp_meta, "stg": stg_meta}
 
     def dump(name, obj):
         (OUT / name).write_text(json.dumps(obj, separators=(",", ":"), allow_nan=False))
