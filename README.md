@@ -243,12 +243,12 @@ Files: `scripts/stages.py` (engine, run by `compute.py`), `config/stage_evidence
 
 ## Stage 2: early, mid or late
 
-**Scanners → Stage 2: early · mid · late** lists the liquid stocks the Stage column marks as Stage 2 that are also above a 150-day (30-week) line that rose 1%+ in 20 sessions — the daily definition the phases were tested on (a Stage 2 stock in a pullback below that line gets no phase). Each stock gets a **phase** and a **Stage 2 Score**. The list is sorted Early → Mid → Late, highest score first within each phase.
+**Scanners → Stage 2: early · mid · late** lists every liquid stock the Stage column marks as Stage 2 — the same weekly engine and the same stocks as **RS → Stage 2 stocks** (a stock listed under about 8 months ago, too new for a 150-day line, gets no phase). Each stock gets a **phase** and a **Stage 2 Score**. The list is sorted Early → Mid → Late, highest score first within each phase.
 
-- **When the advance started ("Advance began"):** the first day above a rising 150-day line after the last confirmed Stage 4 (10 of 20 sessions below a falling 150-day line), on the daily chart — so it can be earlier than the day the current weekly Stage 2 run began (RS → Stage 2 stocks).
+- **When the advance started ("Advance began"):** from the weekly engine — the first Stage 2 week after the last Stage 1 or 4. A Stage 3 pause that turns back into Stage 2 stays in the same advance, so for those stocks the advance is older than the current Stage 2 run on the RS tab; for the rest it is the same date.
 - **Phase points (0–9):**
-  - O'Neil base count since the start, 0–4. A base counts after a 20%+ gain from the last counted pivot, and undercutting the previous base's low restarts the count at 1. Two bases = 1 point, three = 2, four = 3, five or more = 4.
-  - Months in Stage 2, 0–2: 6–12 months = 1, over 12 months = 2.
+  - O'Neil base count since the start, 0–4 (the base the advance broke out of is the first). A base counts after a 20%+ gain from the last counted pivot, and undercutting the previous base's low restarts the count at 1. Two bases = 1 point, three = 2, four = 3, five or more = 4.
+  - Months since the advance began, 0–2: 6–12 months = 1, over 12 months = 2.
   - Gain from the low before the start, 0–2: 150–300% = 1, over 300% = 2.
   - 150-day slope slowing, 0–1.
   - **Early** 0–1 · **Mid** 2–4 · **Late** 5+.
@@ -266,11 +266,15 @@ Files: `scripts/stages.py` (engine, run by `compute.py`), `config/stage_evidence
 - **Warnings:** below the 50-day, 15%+ off the peak, slope slowing, and climax (100%+ above the 200-day).
 - **Two scanners:** "Early Stage 2, score 70+" (also used in watchlist alerts and Telegram) and "Late Stage 2, weakening".
 
-**Checked on 20 years of NSE data** (119,000 Stage 2 snapshots, 2006–2026; full tables in the tab and in `config/stage2_evidence.json`):
+**Re-checked with the weekly engine on 20 years of NSE data** (update 12: 101,745 Stage 2 snapshots every 2nd week, Oct 2006 – Oct 2025, 1,491 stocks; returns against the equal-weight average of liquid stocks; full tables in the tab and in `config/stage2_evidence.json`). The phase rules did not change; the test confirmed them:
 
-- **Late phase:** more risk in both halves of the period. 25–29% fell into Stage 4 within 6 months, against 17–19% for Early, and drawdowns were deeper. Lower returns showed up only in 2017–26 (+2.7% a year over NIFTY 500 vs +13.3% for Early); in 2007–16 there was no return gap.
+- **Late phase:** more risk in both halves of the period — 47–48% fell into Stage 4 within 6 months, against 34% for Early, and the median worst 6-month drop was about −15% to −16.5% against −11.5%. Lower returns showed up only in 2017–26 (−2.2% a year vs +2.1% for Early); in 2007–16 there was no return gap.
+- **Early vs Mid:** Mid returned more in both halves (+2.9% vs +1.3%, +4.8% vs +2.1%); Early's edge is lower risk (34% vs 39% fell into Stage 4).
+- **Time and base count:** the edge held for about the first 12 months, then faded (about half fell into Stage 4 at 12–24 months); four or more bases meant −2% to 0% a year with about half falling into Stage 4.
 - **Distance above the moving averages** turned out to be bullish rather than a warning, so it is not counted as lateness.
-- **Best group:** Early with a score of 70+ (+23% a year, 6% fell into Stage 4). **Worst:** Late with a score under 55 (+1.5%, 40% fell into Stage 4).
+- **Stage 2 Score** sorted outcomes in both halves: −0.9% a year under 40 to +9.0% at 85+.
+- **Best group:** Early with a score of 70+ (+10.2% a year, 20% fell into Stage 4). **Worst:** Late with a score under 55 (−2.1%, 60% fell into Stage 4).
+- The earlier test (old daily rule, returns against NIFTY 500) showed the same order with bigger numbers, because small and mid caps beat NIFTY 500 over these years.
 
 The code is `scripts/stage2.py`. It uses the long-base breakouts from `bases.py` to count bases.
 
