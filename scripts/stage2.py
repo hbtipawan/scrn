@@ -1,18 +1,17 @@
 """Stage 2 phase: EARLY, MID or LATE in the advance, plus a Stage 2 Score for strength.
 
-Which stocks: those in Stage 2 in the site's Stage column (stages.py, weekly bars) that are also
-above a rising 150-day SMA today - close above the 150-day SMA (the 30-week line) and the SMA up
-more than 1% over 20 sessions, the daily definition these phases were tested on. A Stage 2 stock
-in a pullback below that line gets no phase.
+Which stocks: every stock in Stage 2 in the site's Stage column (stages.py, the weekly Weinstein
+engine) - the same list as the RS tab's Stage 2 stocks (stocks with under ~8 months of prices,
+too short for a 150-day line, get no phase).
 
-The advance is dated from its start on the daily chart: the first such day after the last
-confirmed Stage 4 (10 or more of 20 sessions below a falling 150-day SMA), so it can be earlier
-than the day the current weekly Stage 2 run began. Maturity points (0-9):
+The advance is dated by stages.py: the first Stage 2 week after the last Stage 1 or 4; a Stage 3
+pause that turns back into Stage 2 stays in the same advance, so the advance can be older than the
+current Stage 2 run. Bases are counted from the base the advance broke out of. Maturity points (0-9):
 
   O'Neil base count since the start   2 bases 1 · 3 bases 2 · 4 bases 3 · 5+ bases 4
      (a base counts when the stock gained 20%+ from the last counted pivot; undercutting the
       previous base's low starts the count again at 1 - IBD's rules)
-  time in Stage 2                     6-12 months 1 · 12+ months 2
+  time since the advance began        6-12 months 1 · 12+ months 2
   gain from the low before the start  150-300% 1 · over 300% 2
   150-day slope slowing               1 (slope 40 sessions ago was 1.5+ points steeper)
 
@@ -26,8 +25,9 @@ Stage 2 Score (0-100): RS 25 · 150-day slope 20 · distance from the advance's 
 extension above the 150-day 15 (30-100% best; over 100% scores low) · above the 50-day 10 ·
 at a multi-year closing high 10.
 
-Checked on 20 years of NSE data (2006-2026, 119,000 Stage 2 snapshots taken every 10 sessions,
-1,700+ stocks): see config/stage2_evidence.json, shown on the website.
+Re-checked with the weekly engine on 20 years of NSE data (Oct 2006 - Oct 2025, 101,745 Stage 2
+snapshots every 2nd week, 1,491 stocks; returns against the average liquid stock): see
+config/stage2_evidence.json, shown on the website.
 """
 import json
 from pathlib import Path
@@ -98,7 +98,10 @@ def base_count(c, v, cs, t):
     return cnt, last_t
 
 
-def build(p_long, stage2_syms, rs_now):
+def build(p_long, stage2_syms, rs_now, adv=None):
+    """adv: {symbol: (date the advance began, first session of that week, began at the first weekly reading, new
+    listing)} from stages.py - the weekly engine behind the Stage column. Without it (only if stages.py failed) the
+    advance is dated on the daily chart, the earlier rule."""
     import time
     t0 = time.time()
     data = BS._series(p_long, list(stage2_syms), BS.load_bse())
@@ -118,15 +121,28 @@ def build(p_long, stage2_syms, rs_now):
         sma200 = cs_.rolling(200).mean().to_numpy()
         slope = sma150 / np.roll(sma150, 20) - 1
         slope[:170] = np.nan
-        stage = np.where((c > sma150) & (slope > .01), 2, np.where((c < sma150) & (slope < -.01), 4, 0))
-        conf4 = pd.Series((stage == 4).astype(int)).rolling(20).sum().to_numpy() >= 10
-        l4 = np.flatnonzero(conf4[:e + 1])
-        lo_i = int(l4[-1]) + 1 if len(l4) else 170
-        s2 = np.flatnonzero(stage[lo_i:e + 1] == 2)
-        if not len(s2):
-            continue
-        cs = lo_i + int(s2[0])
-        censored = not len(l4)
+        if adv is not None:
+            if s not in adv:
+                continue
+            a0, ab, acap, aipo = adv[s]
+            dd = d.astype(str)
+            cs = min(e, int(np.searchsorted(dd, a0, side="left")))     # first session on or after the start
+            cap_, young_ = bool(acap and not aipo), bool(acap and aipo)
+            # bases are counted from a week before the start, so the base the advance broke out of is the first
+            cs_b = max(0, min(cs, int(np.searchsorted(dd, ab, side="left"))) - 5)
+        else:                                          # the earlier daily rule
+            stage = np.where((c > sma150) & (slope > .01), 2, np.where((c < sma150) & (slope < -.01), 4, 0))
+            conf4 = pd.Series((stage == 4).astype(int)).rolling(20).sum().to_numpy() >= 10
+            l4 = np.flatnonzero(conf4[:e + 1])
+            lo_i = int(l4[-1]) + 1 if len(l4) else 170
+            s2 = np.flatnonzero(stage[lo_i:e + 1] == 2)
+            if not len(s2):
+                continue
+            cs = lo_i + int(s2[0])
+            censored = not len(l4)
+            cap_ = bool(censored and str(d[0]) <= window_start)
+            young_ = bool(censored and str(d[0]) > window_start and cs <= 175)
+            cs_b = cs
         age = e - cs
         low = c[max(0, cs - 120):cs + 1].min()
         peak = c[cs:e + 1].max()
@@ -138,7 +154,7 @@ def build(p_long, stage2_syms, rs_now):
         dd_peak = c[e] / peak - 1
         a50 = bool(c[e] > sma50[e])
         ath = bool(c[e] >= c[:e + 1].max() * 0.999)
-        nb, last_bo = base_count(c, v, cs, e)
+        nb, last_bo = base_count(c, v, cs_b, e)
         mp = maturity_points(nb, age, gain_cycle, slope_chg)
         sp = score_parts(rs_now.get(s, np.nan), sl, ext150, dd_peak, a50, ath)
         warn = []
@@ -151,8 +167,9 @@ def build(p_long, stage2_syms, rs_now):
         if np.isfinite(ext200) and ext200 > 1.0:
             warn.append("climax")
         rec = {"s": s, "ph": phase_of(mp), "mat": int(sum(mp)), "mp": mp, "sc": int(sum(sp)), "sp": sp,
-               "start": str(d[cs]), "age": int(age), "cap": bool(censored and str(d[0]) <= window_start),
-               "young": bool(censored and str(d[0]) > window_start and cs <= 175),   # clock starts once a 150-day SMA exists
+               "start": str(a0) if adv is not None else str(d[cs]),     # the weekly engine's date, as on the RS tab
+               "age": int(age), "cap": cap_,
+               "young": young_,                    # listed recently: the clock starts at its first weekly reading
                "bases": nb, "lastbo": str(d[last_bo]) if last_bo is not None else None,
                "gain": BS._r(gain_cycle * 100, 0), "gstart": BS._r((c[e] / c[cs] - 1) * 100, 0),
                "e150": BS._r(ext150 * 100, 1), "e200": BS._r(ext200 * 100, 1), "pk": BS._r(dd_peak * 100, 1),
@@ -181,10 +198,10 @@ def scans(B):
 
     add("s2_early", "Early Stage 2, score 70+",
         "Early in a Stage 2 advance (first base or two, under 6-12 months, not yet far from the low) with a Stage 2 Score of 70+. "
-        "In 20 years of NSE data this group beat NIFTY 500 by about 23% on average over the next year, and only 6% fell into Stage 4 within 6 months.",
+        "In 20 years of NSE data this was the best group: it beat the average stock by about 10% over the next year, and 20% fell into Stage 4 within 6 months (60% for late, weak stocks).",
         (R.ph == "E") & (R.sc >= 70), "Stage 2 Score", R.sc)
     add("s2_late_weak", "Late Stage 2, weakening",
         "Late in the advance (4+ bases, a year or more, a very large gain, a slowing 150-day line or a climax run) with a Stage 2 Score under 55. "
-        "This group beat NIFTY 500 by only about 1.5% on average and 40% fell into Stage 4 within 6 months - time to tighten stops.",
+        "In 20 years of NSE data this group trailed the average stock by about 2% over the next year and 60% fell into Stage 4 within 6 months - time to tighten stops.",
         (R.ph == "L") & (R.sc < 55), "Maturity points", R.mat, "metric")
     return meta, hits, metric

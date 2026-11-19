@@ -276,8 +276,8 @@ def main():
         print(f"weekly stages skipped, using the daily rule: {e}")
 
     def stage_daily(s):
-        """the earlier rule: today's close against the 150-day SMA and its 20-day slope (also what stage2.py's
-        phases were tested on)"""
+        """the earlier rule: today's close against the 150-day SMA and its 20-day slope (used only if stages.py
+        fails)"""
         sl, px, m = slope150.get(s), c_all.get(s), sma_a[150].iloc[-1].get(s)
         if pd.isna(sl) or pd.isna(m):
             return None
@@ -588,13 +588,14 @@ def main():
             traceback.print_exc()
             print(f"stages.json skipped: {e}")
 
-    # ---------------- Stage 2 phase: early / mid / late (stage2.py; checked on 20 years of NSE data)
-    # Phases were tested on stocks above a rising 150-day line (the earlier daily rule), so they are measured for the
-    # Stage 2 stocks (weekly stage) that are also that today; a Stage 2 stock in a pullback below the line gets none.
+    # ---------------- Stage 2 phase: early / mid / late (stage2.py; checked on 20 years of NSE data with the weekly
+    # engine): every Stage 2 stock of the Stage column, its advance dated by stages.py
     s2_meta = None
     try:
         import stage2 as S2
-        SR = S2.build(LONG, [r["s"] for r in rows if r.get("st") == 2 and r["s"] in uset and stage_daily(r["s"]) == 2], rs_now)
+        adv = None if STG is None else {s: (d["a0"], d["ab"], bool(d.get("acap")), bool(d.get("aipo")))
+                                        for s, d in STG["detail"].items() if d["st"] == 2 and "a0" in d}
+        SR = S2.build(LONG, [r["s"] for r in rows if r.get("st") == 2 and r["s"] in uset], rs_now, adv)
         for r in rows:
             r.update(SR["per_stock"].get(r["s"], {}))
         sm, sh, smet = S2.scans(SR)

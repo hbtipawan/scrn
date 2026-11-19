@@ -687,17 +687,17 @@ DOCS = {
     # ── Stage 2 phase (stage2.py)
     "s2_early": dict(
         what="Early in a Stage 2 advance with a strong Stage 2 Score — the best-performing group in 20 years of NSE data.",
-        rules=["In Stage 2 (the Stage column) and above a 150-day SMA that rose 1%+ over 20 sessions — the test the phases were built on",
+        rules=["In Stage 2 (the Stage column: weekly chart, out of its base above a rising 30-week line)",
                "Early phase: 0–1 maturity points (first base or two, young advance, not far from the low)",
                "Stage 2 Score 70+ (RS, slope, near the advance's peak, extension, above the 50-day, multi-year high)"],
-        use="Beat NIFTY 500 by about 23% on average over the next year in the backtest; only 6% fell into Stage 4 within 6 months.",
+        use="The best group in the 20-year test: beat the average stock by about 10% over the next year; 20% fell into Stage 4 within 6 months (60% for late, weak stocks).",
         watch="Averages over thousands of cases — individual stocks vary.",
         src="Stage 2 phase identifier (Weinstein stages, O'Neil base count)"),
     "s2_late_weak": dict(
         what="Late in the advance and weakening — the group most likely to roll over.",
         rules=["Late phase: 5+ maturity points (4+ bases, a year or more, a very large gain, slowing 150-day line)",
                "Stage 2 Score under 55"],
-        use="Tighten stops on holdings; 40% fell into Stage 4 within 6 months in the backtest.",
+        use="Tighten stops on holdings; 60% fell into Stage 4 within 6 months in the 20-year test (20% for early, strong stocks).",
         watch="Some late-stage leaders keep going — it's a risk flag, not a sell signal.",
         src="Stage 2 phase identifier"),
     # ── Results (results.py)

@@ -196,6 +196,27 @@ def _sma(x, n):
     return pd.DataFrame(x).rolling(n, min_periods=n).mean().to_numpy()
 
 
+def advance_start(hist):
+    """For the last week of each series: the week its current advance began (the first Stage 2 week after the last
+    week in Stage 1 or 4 - a Stage 3 pause that turns back into Stage 2 stays in the same advance), -1 when it is not
+    in an advance, and whether that advance began at the series' first reading (so its age is a minimum)."""
+    Tw, N = hist.shape
+    start = np.full(N, -1, np.int64)
+    cap = np.zeros(N, bool)
+    for j in range(N):
+        cur, cp = -1, False
+        for w in range(Tw):
+            x = hist[w, j]
+            p = hist[w - 1, j] if w else 0
+            if x == 2:
+                if not (p in (2, 3) and cur >= 0):
+                    cur, cp = w, p == 0
+            elif x != 3 or p not in (2, 3):
+                cur, cp = -1, False
+        start[j], cap[j] = cur, cp
+    return start, cap
+
+
 def _run(WC, WH, WL, MA, SL, prm):
     return machine(WC, WH, WL, MA, SL, prm["s_up"], prm["s_dn"], prm["band"], prm["f23"], prm["f41"], prm["cross"], prm["min_base"],
                    prm["p41"], prm["r32"], prm["init_lb"], prm["b23"], prm["d23"], prm["b41"], prm["d41"], prm["r12"])
@@ -274,7 +295,8 @@ def build(PFULL, symbols, bench, last):
     MA = _sma(WC, P["ma"])
     SL = np.full_like(MA, np.nan)
     SL[P["slope_w"]:] = MA[P["slope_w"]:] / MA[:-P["slope_w"]] - 1
-    st, t0, prev, how, lvl, bw, lo, _ = _run(WC, WH, WL, MA, SL, P)
+    st, t0, prev, how, lvl, bw, lo, hist = _run(WC, WH, WL, MA, SL, P)
+    adv, adv_cap = advance_start(hist)
     bi = want.index(bench)
     rel = WC / WC[:, [bi]]
     mrs = (rel / _sma(rel, 52) - 1) * 100                              # Mansfield relative strength vs NIFTY 500
@@ -302,6 +324,15 @@ def build(PFULL, symbols, bench, last):
             rec["cap"] = True          # in this stage since its first reading: the days are a minimum
             rec["ipo"] = bool(w0 - fv[j] <= P["ma"] + P["slope_w"] + 2)    # first reading soon after its first price
             capped.add(s)
+        if st[j] == 2 and adv[j] >= 0:
+            # the advance this Stage 2 run belongs to (Scanners -> Stage 2 phases): the run's own start, or the first
+            # session of the week the advance began when a Stage 3 pause came in between
+            aw = int(adv[j])
+            ad = d0 if aw == w0 else int(starts[aw])
+            rec.update({"a0": cal[ad], "adays": int(nsess - ad), "ab": cal[int(starts[aw])]})   # ab: that week's first session
+            if adv_cap[j]:
+                rec["acap"] = True
+                rec["aipo"] = bool(aw - fv[j] <= P["ma"] + P["slope_w"] + 2)
         if st[j] == 2:
             rec.update({"how": int(how[j]), "lvl": _r(lvl[j], 2), "basew": int(bw[j]) if bw[j] >= 0 else None,
                         "bvol": _r(WV[w0, j] / vavg[w0, j], 1) if np.isfinite(vavg[w0, j]) and vavg[w0, j] > 0 else None,
