@@ -584,6 +584,15 @@ def main():
         import traceback
         traceback.print_exc()
         print(f"stock charts skipped: {e}")
+    # ---------------- Rotation tab "Compare lines" pop-up: the Bars view drawn day by day (compare_lines.py)
+    cmp_meta = None
+    try:
+        import compare_lines as CL
+        cmp_meta = CL.build(PFULL, rows, groups, bench, last, S["min_group_size"], OUT / "cmp")
+    except Exception as e:  # never break the daily run
+        import traceback
+        traceback.print_exc()
+        print(f"compare lines skipped: {e}")
     # ---------------- VCP scanner, rule-based (vcp_rules.py; tested on NSE 2005-26, config/vcp_rules_evidence.json)
     vcp2_meta = None
     try:
@@ -739,7 +748,7 @@ def main():
             "failed": fm.get("failed_count"), "indices": indices,
             "filters": {"min_price": S["min_price"], "min_median_turnover_cr": S["min_median_turnover_cr"],
                         "min_market_cap_cr": S["min_market_cap_cr"] if mcap is not None else None},
-            "min_group_size": S["min_group_size"], "fund": fund_meta, "bases": base_meta, "stage2": s2_meta, "results": res_meta, "mf": mf_meta, "rs": rs_meta, "dlv": dlv_meta, "idx": idx_meta, "corp": corp_meta, "grp": grp_meta, "pat": pat_meta, "vcp": vcp_meta, "up": up_meta, "mb": mb_meta, "sc": sch_meta, "vcp2": vcp2_meta}
+            "min_group_size": S["min_group_size"], "fund": fund_meta, "bases": base_meta, "stage2": s2_meta, "results": res_meta, "mf": mf_meta, "rs": rs_meta, "dlv": dlv_meta, "idx": idx_meta, "corp": corp_meta, "grp": grp_meta, "pat": pat_meta, "vcp": vcp_meta, "up": up_meta, "mb": mb_meta, "sc": sch_meta, "vcp2": vcp2_meta, "cmp": cmp_meta}
 
     def dump(name, obj):
         (OUT / name).write_text(json.dumps(obj, separators=(",", ":"), allow_nan=False))
