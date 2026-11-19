@@ -1282,6 +1282,78 @@ body.ssopen{overflow:hidden}
 .vr-years{display:flex;flex-wrap:wrap;gap:6px}.vr-years span{border:1px solid var(--line);border-radius:8px;padding:4px 8px;font-size:15px;font-weight:700}
 .vr-years span.up{color:var(--up-t)}.vr-years span.down{color:var(--down-t)}.vr-years b{color:var(--ink);margin-right:4px}.vr-years i{font-style:normal;color:var(--muted);font-weight:600;font-size:12.5px;margin-left:4px}
 .vr-audit{font-size:15.5px;border-left:4px solid var(--accent);padding:6px 10px;background:var(--soft);border-radius:6px;max-width:110ch}
+/* ── Rotation: Compare lines pop-up. Eight line colours, checked for colour-blind readers in both themes
+   (first five well apart; all eight usable because every line also carries its name). ── */
+:root{--cmp0:#1D4ED8;--cmp1:#92400E;--cmp2:#0891B2;--cmp3:#475569;--cmp4:#B7791F;--cmp5:#8B5CF6;--cmp6:#86198F;--cmp7:#D9468A}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--cmp0:#3B82F6;--cmp1:#D97706;--cmp2:#06B6D4;--cmp3:#64748B;--cmp4:#FACC15;--cmp5:#C4B5FD;--cmp6:#C026D3;--cmp7:#F472B6}}
+:root[data-theme="dark"]{--cmp0:#3B82F6;--cmp1:#D97706;--cmp2:#06B6D4;--cmp3:#64748B;--cmp4:#FACC15;--cmp5:#C4B5FD;--cmp6:#C026D3;--cmp7:#F472B6}
+.cmodal{z-index:56}.cmpbtn{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+.cmp-loading{display:flex;align-items:center;justify-content:center;gap:12px;padding:80px 10px;color:var(--muted);font-size:16.5px;font-weight:600}
+.cmp-loading span{width:22px;height:22px;border-radius:50%;border:3px solid var(--track);border-top-color:var(--s1);animation:cmpspin .8s linear infinite}
+@keyframes cmpspin{to{transform:rotate(360deg)}}
+.cmp-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:6px}.cmp-top .gsrc{margin:0}
+.cmp-tools>.gmore{flex:0 1 auto}.cmp-tools .gmore .gtools{margin:0}
+.cmp-chart{position:relative;margin:6px 0}
+.cmp-gl{stroke:var(--track)}.cmp-zero{stroke:var(--muted);stroke-width:1.4}.cmp-ax{fill:var(--muted);font-size:13px}
+.cmp-line{fill:none;stroke-width:2.3;stroke-linejoin:round;stroke-linecap:round;transition:opacity .15s,stroke-width .15s}.cmp-line.foc{stroke-width:3.6}.cmp-line.dim{opacity:.12}.cmp-hit{cursor:crosshair}
+.cmp-bench{fill:none;stroke:var(--ink);stroke-width:2.8;transition:opacity .15s}.cmp-bench.dim{opacity:.3}.cmp-bench.thin{stroke-width:1.6;stroke-dasharray:4 3;opacity:.75}
+.cmp-lab{cursor:pointer;transition:opacity .15s}.cmp-lab.dim{opacity:.22}.cmp-conn{fill:none;stroke-width:1;opacity:.55}
+.cmp-ln{font-weight:800;font-size:14.5px;fill:var(--ink)}.cmp-lv{font-weight:700;font-size:14.5px;fill:var(--ink)}.cmp-lv.up{fill:var(--up-t)}.cmp-lv.down{fill:var(--down-t)}.cmp-xh{stroke:var(--muted)}
+.cmp-pt{stroke:var(--card);stroke-width:2.2;pointer-events:none}
+/* pointing at a row, a name or a chip lights up its line */
+.cmp-svg.hov .cmp-line:not(.hl){opacity:.14}.cmp-svg.hov .cmp-line.hl{opacity:1;stroke-width:3.6}.cmp-svg.hov .cmp-bench{opacity:.45}
+.cmp-svg.hov .cmp-lab:not(.hl):not([data-cfocus=""]){opacity:.3}.cmp-svg.hov .cmp-lab.hl{opacity:1}
+/* the lines draw in from the left when what they show changes */
+.cmp-svg.drawin .cmp-line,.cmp-svg.drawin .cmp-bench{transition:stroke-dashoffset .9s cubic-bezier(.22,.8,.24,1)}
+.cmp-svg.drawin .cmp-lab{animation:cmpfade .4s .6s both}
+@keyframes cmpfade{from{opacity:0}to{opacity:1}}
+.cmp-tip{position:absolute;z-index:3;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:10px;box-shadow:0 10px 26px rgba(0,0,0,.18);padding:8px 10px;font-size:14.5px;min-width:220px;pointer-events:none}
+.cmp-tip div{display:flex;align-items:center;gap:8px;margin-top:2px}.cmp-tip div.dim{opacity:.45}.cmp-tip i{width:10px;height:10px;border-radius:50%;flex:none}.cmp-tip i.bl{width:14px;height:4px;border-radius:2px}.cmp-tip span{flex:1}
+.cmp-legend{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 10px}
+.cmp-lg{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:5px 10px;background:var(--card);color:var(--ink);font-size:15px;cursor:pointer}.cmp-lg i{width:12px;height:12px;border-radius:50%;flex:none}.cmp-lg.dim{opacity:.4}
+.cmp-lgb{cursor:default}.cmp-lgb i{width:18px;height:4px;border-radius:2px;background:var(--ink)}
+.cmp-gnote{margin:2px 0 8px;color:var(--muted);font-size:15px}
+.cmp-focusbar{display:flex;align-items:center;justify-content:space-between;gap:6px 12px;flex-wrap:wrap;background:var(--soft);border-left:4px solid var(--accent);border-radius:8px;padding:4px 6px 4px 12px;font-size:15.5px;margin:4px 0}
+/* plain-language read-out: a status tag, then the sentence */
+.cmp-say ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;font-size:16px}
+.cmp-say li{display:flex;gap:12px;align-items:baseline;margin:0;line-height:1.5}
+.cmp-tag{flex:none;min-width:86px;text-align:center;font-size:13.5px;font-weight:800;padding:1px 10px;border-radius:999px;border:1.5px solid currentColor;line-height:1.55}
+.cmp-tag.up{color:var(--up-t);background:color-mix(in srgb,var(--up) 9%,transparent)}
+.cmp-tag.down{color:var(--down-t);background:color-mix(in srgb,var(--down) 9%,transparent)}
+.cmp-tag.warn{color:var(--warn);background:var(--warn-bg)}
+.cmp-tag.mut{color:var(--muted)}.cmp-tag.mkt{color:var(--ink)}
+.cmp-tbl tbody tr{cursor:pointer}.cmp-tbl tbody tr:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
+#cmodal .cmp-tbl tbody tr:hover td{background:color-mix(in srgb,var(--s1) 7%,var(--card))}
+.cmp-dot{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:8px;vertical-align:-1px;flex:none}
+.cmp-rk{font-weight:800}.cmp-rk.up{color:var(--up-t)}.cmp-rk.down{color:var(--down-t)}.cmp-rk small{color:var(--muted);font-weight:600}
+.cmp-picker{border:1px solid var(--line);border-radius:12px;padding:10px;margin:6px 0 10px;background:var(--soft)}
+.cmp-ph{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}.cmp-ph input{flex:1;min-width:180px}.cmp-ph>span{font-size:15px;color:var(--muted);font-weight:600}
+.cmp-plist{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:4px 12px;max-height:260px;overflow:auto}
+.cmp-pi{display:flex;align-items:center;gap:8px;padding:5px 6px;border-radius:8px;font-size:15px;cursor:pointer}.cmp-pi span{flex:1}.cmp-pi.on{background:var(--card);font-weight:700}
+.cmp-none{margin:6px;color:var(--muted);font-size:15px}
+.cmp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
+.cmp-cell{all:unset;cursor:pointer;border:1px solid var(--line);border-radius:12px;padding:10px;display:block;background:var(--card);transition:border-color .15s,box-shadow .15s}
+.cmp-cell:hover{border-color:var(--accent);box-shadow:var(--shadow)}.cmp-cell:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.cmp-ch{display:flex;justify-content:space-between;gap:8px;font-size:15.5px;font-weight:700}.cmp-ch i{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px}
+.cmp-cf{font-size:14px;color:var(--muted);margin-top:4px}
+.cmp-h4n{font-weight:600;color:var(--muted);font-size:14px;margin-left:6px}
+@media (prefers-reduced-motion:reduce){.cmp-line,.cmp-lab,.cmp-bench,.cmp-cell{transition:none}.cmp-loading span{animation:none}}
+@media (max-width:700px){
+  .cmp-tools>.gmore{flex:1 1 100%}.cmp-sp{display:none}.cmp-tools .chips{gap:6px}
+  .cmodal .ghead{align-items:center;padding:10px 12px 8px}.cmodal .ghead h2{font-size:24px}.cmodal .close .cmp-cl{display:none}.cmodal .close{padding:0 14px}
+  .cmp-say li{flex-direction:column;gap:4px}
+  #cmodal .cmp-tw{max-height:none;overflow:visible}
+  #cmodal table.cmp-tbl,#cmodal .cmp-tbl tbody{display:block;min-width:0}
+  #cmodal .cmp-tbl thead{display:none}
+  #cmodal .cmp-tbl tr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px 12px;padding:12px 6px;border-bottom:1px solid var(--track)}
+  #cmodal .cmp-tbl td{display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:0;border:0;white-space:normal;position:static;box-shadow:none;background:none;text-align:left;font-size:16px}
+  #cmodal .cmp-tbl tbody tr:hover td{background:none}
+  #cmodal .cmp-tbl td:first-child{grid-column:1/3;grid-row:1;flex-direction:row;flex-wrap:nowrap;align-items:center;font-size:17px}
+  #cmodal .cmp-tbl td:first-child b{min-width:0}
+  #cmodal .cmp-tbl td:last-child{grid-column:3;grid-row:1;align-items:flex-end;justify-content:center}
+  #cmodal .cmp-tbl td[data-l]::before{content:attr(data-l);color:var(--muted);font-size:14px;font-weight:600}
+  #cmodal .cmp-tbl td:last-child::before{display:none}
+}
 </style>
 </head>
 <body>
@@ -1561,7 +1633,7 @@ function renderRotation(){
   h+=`</div><p class="note">Bars are the ${st.agg} ${st.period==="1D"?"today's":PL[st.period]} return of stocks in each group, using ${uniWord()} (groups need ${D.meta.min_group_size}+ stocks).${st.uni!=="lq"?" Small, thinly traded stocks swing more — the median is steadier than the mean.":""}${st.group==="Sector"&&sx?` NSE lists a sector only for the ~750 stocks of its broad indices; ${sx.derived.toLocaleString("en-IN")} other stocks take the sector that their industry belongs to (the two agree for ${sx.agree}% of stocks where both are known).`:""}${(st.group==="Sector"||st.group==="Industry"||st.group==="Themes")&&cl?` Sector and industry come from one master list (${cl.matched.toLocaleString("en-IN")} of ${D.meta.all_stocks.toLocaleString("en-IN")} stocks; ${cl.sectors} sectors, ${cl.industries} industries)${st.group==="Themes"?"; each theme takes the companies whose sector or industry is its core business, plus named companies with a large business in it":""}.`:""}</p>`;
   $("#view").innerHTML=h;wireTables($("#view"),renderRotation);if(D.meta.grp)gMountMini();
 }
-const viewSeg=()=>`<div class="ctl"><span>View</span>${seg("view",["bars","heat",...(D.meta.grp?["radar","gsig"]:[]),...(D.meta.idx?["rrg"]:[])],st.view,{bars:"Bars",heat:"Heatmap",radar:"Rotation radar",gsig:"Group signals",rrg:"NSE index map (RRG)"})}</div>`;
+const viewSeg=()=>`<div class="ctl"><span>View</span>${seg("view",["bars","heat",...(D.meta.grp?["radar","gsig"]:[]),...(D.meta.idx?["rrg"]:[])],st.view,{bars:"Bars",heat:"Heatmap",radar:"Rotation radar",gsig:"Group signals",rrg:"NSE index map (RRG)"})}</div>${D.meta.cmp?`<div class="ctl"><span>Compare</span><button type="button" class="btn cmpbtn" data-cmp-open aria-haspopup="dialog"><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M2 15l5-5 3 3 7-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 17l5-3 4 1 7-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".55"/></svg> Compare lines</button></div>`:""}`;
 /* ── NSE index data (indices.json, loaded when needed): valuations, India VIX, RRG ── */
 let IXD=null;
 async function ixLoad(){if(IXD)return IXD;let j=window.EMBED?.indices||null;
@@ -4207,6 +4279,199 @@ function sModalClick(e){
     if(k==="int"){drawStockChart(SCX.sym,SCX.C,SCX.F,SCX.ov);return}
     sRender(k==="scale");return}}
 function sSave(){store.set("schart",{range:SST.range,int:SST.int,scale:SST.scale,rs:SST.rs,lv:SST.lv})}
+
+/* ════════════════════ COMPARE LINES (Rotation tab pop-up) ════════════════════
+   One tap from every Rotation view: the Bars view drawn day by day. Each line is the mean (or median) % change of a
+   group's stocks since the window's first day, so it ends exactly on the bar and the ranks and thirds are the Bars
+   view's own. Opens on the toolbar's group type, period, Stocks (All / Liquid) and Average (Mean / Median).
+   Up to 8 lines, NIFTY 500 for reference, clutter controls, a plain-language read-out and a decision table.
+   Data: data/cmp/<type>.<a|l>.<mean|median>.json, written each night by scripts/compare_lines.py. */
+let CMPD=null,cmpRet=null,cmpSig="",cmpLast=null;const CMPF={};
+const CMP={per:"3M",mode:"pct",pick:"top",lay:"one",bench:true,labels:true,focus:null,sel:{},q:"",picker:false,more:false,colmap:{}};
+const CMP_MAX=8;   /* past 8 lines some colours stop being reliably different, colour-blind readers included */
+const CMP_PER={"1M":"d","3M":"d","6M":"d","YTD":"d","1Y":"d","3Y":"w","5Y":"w"},CMP_BARP=new Set(["1M","3M","6M","YTD","1Y"]);
+const CMP_FROM={"1D":"1M","1W":"1M","1M":"1M","3M":"3M","6M":"6M","YTD":"YTD","1Y":"1Y"};   /* a line needs more than a week */
+const CMP_KIND={Themes:["theme","themes"],Sector:["sector","sectors"],"NSE Index":["NSE index","NSE indices"],Industry:["industry","industries"]};
+const cmpU=()=>st.uni==="lq"?"l":"a",cmpAgg=()=>st.agg==="median"?"median":"mean",cmpSlug=k=>k.toLowerCase().replace(/[^a-z0-9]/g,"");
+const cmpWord=(k,i)=>(CMP_KIND[k]||["group","groups"])[i];
+/* one small file per group type × Stocks × Average, fetched only when the pop-up opens */
+async function cmpLoad(kind){const key=`${cmpSlug(kind)}.${cmpU()}.${cmpAgg()}`;
+  if(!CMPF[key]){let j=window.EMBED?.cmp?.[key]||null;
+    if(!j){const r=await fetch(`data/cmp/${key}.json?v=${gv()}`).catch(()=>null);
+      if(!r||!r.ok)throw new Error(window.EMBED?"The comparison is not in the offline preview — it works on the website.":"Could not load the comparison data. Check the connection and try again.");j=await r.json()}
+    CMPF[key]=j}
+  return CMPD=CMPF[key]}
+const cmpKind=()=>st.view==="rrg"?"NSE Index":st.group;
+const cmpPers=()=>CMPD?.pers?.length?CMPD.pers:Object.keys(CMP_PER);
+const cmpDates=len=>(CMP_PER[CMP.per]==="d"?CMPD.dd:CMPD.wd).slice(-len);
+/* one group's line: % change of its stocks since the first day (pct), or how far ahead of / behind NIFTY 500 that is (rel,
+   the ratio of the two). For 1M–1Y the end value, the stock count and the stocks up are the Bars view's own numbers. */
+function cmpSeries(name,bars){const g=CMPD.g[name]?.[CMP.per],s0=CMPD.s[name]?.[CMP.per];if(!g||!s0)return null;
+  let e=s0[2]/100,n=s0[0],up=s0[1];if(bars){const b=bars[name];if(!b)return null;e=b.v;n=b.n;up=Math.round(b.adv*b.n/100)}
+  const be=CMPD.be[CMP.per],bp=CMPD.b[CMP.per],rel=CMP.mode==="rel",relE=((1+e/100)/(1+be/100)-1)*100;
+  const v=g.map((x,i)=>x==null?null:rel?((1+x/1000)/(1+bp[i]/1000)-1)*100:x/10);v[v.length-1]=rel?relE:e;
+  return {t:cmpDates(g.length),v,last:rel?relE:e,pct:e,rel:relE,n,up}}
+function cmpBench(){const bp=CMPD.b[CMP.per],be=CMPD.be[CMP.per],v=bp.map(x=>x==null?null:x/10);v[v.length-1]=be;return {t:cmpDates(bp.length),v:CMP.mode==="rel"?v.map(x=>x==null?null:0):v,pct:be}}
+function cmpAll(kind){const bars=CMP_BARP.has(CMP.per)?Object.fromEntries(groupStats(false,CMP.per,kind).map(x=>[x.name,x])):null;
+  return Object.keys(CMPD.g).map(name=>({id:kind+"|"+name,name,row:gRow(kind,name),s:cmpSeries(name,bars)})).filter(x=>x.s&&isNum(x.s.last))}
+function cmpPicked(kind,all){const by=[...all].sort((a,b)=>b.s.last-a.s.last);
+  if(CMP.pick==="mine")return (CMP.sel[kind]||[]).slice(0,CMP_MAX).map(id=>all.find(x=>x.id===id)).filter(Boolean);
+  if(CMP.pick==="tb")return [...by.slice(0,5),...by.slice(5).slice(-3)];
+  return by.slice(0,5)}
+/* the ids on the chart right now: the picker always starts from what is shown */
+const cmpShown=kind=>cmpPicked(kind,cmpAll(kind)).map(x=>x.id);
+/* a group keeps its colour while it stays on the chart, whatever the period or the ranking does */
+function cmpColors(pick){const cm=CMP.colmap,used=new Set();
+  for(const x of pick){const c=cm[x.id];if(c!=null&&!used.has(c)){x.ci=c;used.add(c)}}
+  for(const x of pick)if(x.ci==null){let c=0;while(used.has(c))c++;x.ci=c;used.add(c);cm[x.id]=c}
+  for(const x of pick)x.col=`var(--cmp${x.ci})`}
+/* the group's RS block for the toolbar's Stocks setting (All / Liquid) */
+const cmpRS=x=>x.row?(x.row[gU(x.row)]||x.row.a||{}):{},cmpGS=x=>{const a=cmpRS(x);return gState(a.rk,a.rk4)};
+function cmpModalEl(){let m=$("#cmodal");if(m)return m;
+  document.body.insertAdjacentHTML("beforeend",`<div class="gscrim" id="cscrim" hidden></div><section class="gmodal cmodal" id="cmodal" hidden role="dialog" aria-modal="true" aria-labelledby="cTitle"></section>`);
+  $("#cscrim").addEventListener("click",()=>closeCompare());m=$("#cmodal");m.addEventListener("click",cmpClick);
+  m.addEventListener("input",e=>{if(e.target.id==="cmpq"){CMP.q=e.target.value;cmpPickerList()}});
+  m.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.matches("tr[data-cgo]"))e.target.click()});
+  m.addEventListener("toggle",e=>{if(e.target.matches(".gmore"))CMP.more=e.target.open},true);
+  /* pointing at a row, a name or a legend chip lights up that group's line */
+  m.addEventListener("mouseover",e=>{const t=e.target.closest("tr[data-cgo],.cmp-lab,.cmp-lg[data-cfocus],.cmp-cell");cmpHL(t?(t.dataset.cgo||t.dataset.cfocus||null):null)});
+  m.addEventListener("mouseleave",()=>cmpHL(null));return m}
+function cmpHL(id){const svg=$("#cmpChart svg.cmp-svg");if(!svg)return;svg.classList.toggle("hov",!!id);
+  svg.querySelectorAll(".cmp-line").forEach(p=>p.classList.toggle("hl",p.dataset.cid===id));svg.querySelectorAll(".cmp-lab").forEach(g=>g.classList.toggle("hl",g.dataset.cfocus===id))}
+async function openCompare(kind){Object.assign(CMP,store.get("cmp",{}),{focus:null,picker:false,q:"",more:false});kind=kind||cmpKind();
+  CMP.per=CMP_FROM[st.period]||CMP.per;if(CMP.pick==="mine"&&!(CMP.sel[kind]||[]).length)CMP.pick="top";
+  cmpRet=document.activeElement;cmpSig="";const m=cmpModalEl();m.dataset.k=kind;m.hidden=false;$("#cscrim").hidden=false;document.body.style.overflow="hidden";
+  m.innerHTML=`<header class="ghead"><div><div class="gkind">Rotation · compare</div><h2 id="cTitle">Compare ${esc(cmpWord(kind,1))}</h2></div><button class="close" type="button" data-cclose aria-label="Close"><b aria-hidden="true">✕</b> <span class="cmp-cl">Close</span></button></header><div class="gbody"><div class="cmp-loading" role="status"><span></span>Drawing the lines…</div></div>`;
+  m.querySelector("[data-cclose]").focus();
+  try{await Promise.all([cmpLoad(kind),grpLoad().catch(()=>null)]);if(!cmpPers().includes(CMP.per))CMP.per=cmpPers().includes("3M")?"3M":cmpPers()[0];if(!m.hidden&&m.dataset.k===kind)cmpDraw()}
+  catch(e){m.querySelector(".gbody").innerHTML=`<div class="empty">${esc(e.message||String(e))}</div>`}}
+function closeCompare(){const m=$("#cmodal");if(!m||m.hidden)return;m.hidden=true;$("#cscrim").hidden=true;document.body.style.overflow="";cmpSig="";if(cmpRet&&cmpRet.focus&&document.body.contains(cmpRet))cmpRet.focus()}
+const cmpSave=()=>store.set("cmp",{per:CMP.per,mode:CMP.mode,pick:CMP.pick,lay:CMP.lay,bench:CMP.bench,labels:CMP.labels,sel:CMP.sel});
+function cmpDraw(){const m=$("#cmodal"),kind=m.dataset.k,all=cmpAll(kind),N=all.length,B=cmpBench(),pick=cmpPicked(kind,all).sort((a,b)=>b.s.last-a.s.last);
+  const rankOf={};[...all].sort((a,b)=>b.s.last-a.s.last).forEach((x,i)=>rankOf[x.id]=i+1);
+  pick.forEach(x=>x.rank=rankOf[x.id]);cmpColors(pick);if(!pick.length)CMP.picker=true;if(CMP.focus&&!pick.some(x=>x.id===CMP.focus))CMP.focus=null;
+  const ps=m.querySelector(".cmp-plist")?.scrollTop||0,bLast=B.pct,since=B.t[0],phone=matchMedia("(max-width:700px)").matches,word=esc(cmpWord(kind,1)),bn=esc(CMPD.bench_name),rel=CMP.mode==="rel";
+  const segC=(k,opts,labels,aria)=>`<div class="seg" role="group" aria-label="${aria}">`+opts.map(o=>`<button type="button" data-cs="${k}" data-val="${o}" aria-pressed="${CMP[k]===o}">${esc(labels?labels[o]:o)}</button>`).join("")+`</div>`;
+  const nMine=Math.min(CMP_MAX,(CMP.sel[kind]||[]).length),legend=CMP.lay==="one"&&(phone||!CMP.labels)&&pick.length,logS=pick.length&&cmpIsLog(...cmpRange(pick,B));
+  m.querySelector(".gbody").innerHTML=`
+   <div class="cmp-top"><p class="gsrc">${rel?`Lead or lag against ${bn} since`:"% change since"} <b>${fmtDate(since)}</b> · ${cmpAgg()} of ${esc(uniWord())} · ${N} ${word} ranked · ${bn}${rel?" itself":""} <b class="num ${cls(bLast)}">${sgn(bLast,1)}</b>${logS?` · <b>log scale</b>, so one big winner does not flatten the rest`:""}</p>
+     ${segC("per",cmpPers(),null,"Period")}</div>
+   <div class="gtools cmp-tools">
+     <div class="ctl"><span>Lines</span>${segC("pick",["top","tb","mine"],{top:"Top 5",tb:"Top 5 + bottom 3",mine:`My picks${nMine?" ("+nMine+")":""}`},"Lines")}</div>
+     <details class="gmore" ${phone&&!CMP.more?"":"open"}><summary>Chart options</summary><div class="gtools">
+       <div class="ctl"><span>Measure</span>${segC("mode",["pct","rel"],{pct:"% change",rel:"vs "+CMPD.bench_name},"Measure")}</div>
+       <div class="ctl"><span>Layout</span>${segC("lay",["one","grid"],{one:"One chart",grid:"Small charts"},"Layout")}</div></div></details>
+     <div class="ctl"><span class="cmp-sp">&nbsp;</span><div class="chips">
+       <button type="button" class="chipbtn cmp-pickbtn" data-cpicker aria-expanded="${CMP.picker}" aria-controls="cmpPicker">☰ ${pick.length} ${pick.length===1?esc(cmpWord(kind,0)):word} ${CMP.picker?"▴":"▾"}</button>
+       <button type="button" class="chipbtn emachip" data-ctog="bench" aria-pressed="${CMP.bench}"><i style="--c:var(--ink)"></i>${bn}</button>
+       ${phone?"":`<button type="button" class="chipbtn emachip" data-ctog="labels" aria-pressed="${CMP.labels}"><i style="--c:var(--muted)"></i>Labels</button>`}</div></div>
+   </div>
+   <div class="cmp-picker" id="cmpPicker" ${CMP.picker?"":"hidden"}></div>
+   ${CMP.focus?`<div class="cmp-focusbar"><span>Focused on <b>${esc(CMP.focus.split("|").slice(1).join("|"))}</b> — the other lines are faded.</span><button type="button" class="linkbtn" data-cfocus="">Show all</button></div>`:""}
+   <div class="cmp-chart" id="cmpChart"></div>
+   ${legend?`<div class="cmp-legend">${pick.map(x=>`<button type="button" class="cmp-lg${CMP.focus&&CMP.focus!==x.id?" dim":""}" data-cfocus="${esc(x.id)}" aria-pressed="${CMP.focus===x.id}"><i style="background:${x.col}"></i><span>${esc(x.name)}</span><b class="num ${cls(x.s.last)}">${sgn(x.s.last,1)}</b></button>`).join("")}${CMP.bench?`<span class="cmp-lg cmp-lgb"><i></i><span>${bn}</span><b class="num">${rel?"= 0":sgn(bLast,1)}</b></span>`:""}</div>`:""}
+   ${pick.length?cmpSummary(pick,N,B)+`<div class="dsec cmp-dt"><h4>Decision table <span class="cmp-h4n">${phone?"tap":"click"} a row for the group's full chart</span></h4>${cmpTable(pick,N)}</div>`:`<div class="empty">Tick up to ${CMP_MAX} ${word} in the list above to draw them.</div>`}
+   <p class="note">Each line is the Bars view drawn day by day: the ${cmpAgg()} % change of each ${esc(cmpWord(kind,0))}'s stocks since ${fmtDate(since)}, so it ends on the bar${CMP_PER[CMP.per]==="w"?" (3Y and 5Y use week-end closes and count only stocks listed for the whole period)":""}. ${rel?`“vs ${bn}” divides that by ${bn}'s move over the same days, so a line above 0 is ahead of the market. `:""}A row opens the group's own chart, which plots its index. What the test behind the Rotation tab found: groups in the top third by 1-month to 1-year return beat the average stock over the next 1–6 months and the bottom third lagged; week-to-week rank changes told nothing; a group rated 70+ that lost 10+ RS points in 4 weeks went on to lag.</p>`;
+  if(CMP.picker){cmpPickerList();const pl=m.querySelector(".cmp-plist");if(pl)pl.scrollTop=ps}
+  cmpLast={pick,B,N,phone};cmpChartDraw()}
+function cmpChartDraw(){const L_=cmpLast,box=$("#cmpChart");if(!L_||!box)return;L_.w=box.clientWidth;if(CMP.lay==="grid")cmpGrid(L_.pick,L_.B,L_.N);else cmpLines(L_.pick,L_.B,L_.phone)}
+function cmpNice(lo,hi,n){const span=Math.max(1e-6,hi-lo),raw=span/n,p=Math.pow(10,Math.floor(Math.log10(raw))),st_=[1,2,2.5,5,10].map(k=>k*p).find(k=>k>=raw);const a=Math.floor(lo/st_)*st_,b=Math.ceil(hi/st_)*st_;const t=[];for(let v=a;v<=b+1e-9;v+=st_)t.push(Math.round(v*100)/100);return t}
+const cmpTW=(()=>{let c=null;return (s,f)=>{c=c||document.createElement("canvas").getContext("2d");c.font=f;return c.measureText(s).width}})();
+/* y scale: linear, or a log scale of growth once a line is up 300%+ (one big winner would flatten every other line) */
+const CMP_LOGT=[-90,-75,-50,-25,0,25,50,100,200,300,500,1000,2000,3000,5000,10000,20000];
+const cmpRange=(pick,B)=>{const v=[...pick.map(x=>x.s.v),...(CMP.bench?[B.v]:[])].flat().filter(isNum);return [Math.min(0,...v),Math.max(0,...v)]};
+const cmpIsLog=(lo,hi)=>hi>300&&lo>-95;
+function cmpScale(lo,hi,n){
+  if(cmpIsLog(lo,hi)){let b=CMP_LOGT.filter(t=>t<=lo).pop(),a=CMP_LOGT.find(t=>t>=hi);b=b??lo;a=a??hi;let t=CMP_LOGT.filter(x=>x>=b&&x<=a);
+    while(t.length>8)t=t.filter((x,i)=>x===0||i%2===0||i===t.length-1);return {ticks:t,lo:Math.min(b,lo),hi:Math.max(a,hi),f:v=>Math.log1p(v/100),log:true}}
+  const t=cmpNice(lo,hi,n).filter(x=>x>=-100);return {ticks:t,lo:Math.min(t[0],lo),hi:Math.max(t[t.length-1],hi),f:v=>v,log:false}}
+const cmpPctAx=t=>(t>0?"+":t<0?"−":"")+Math.abs(t)+"%";
+const cmpPath=(v,X,Y)=>{let d="",pen=false;v.forEach((y,i)=>{if(!isNum(y)){pen=false;return}d+=(pen?"L":"M")+X(i).toFixed(1)+" "+Y(y).toFixed(1);pen=true});return d};
+function cmpLines(pick,B,phone){const box=$("#cmpChart");if(!box)return;const rel=CMP.mode==="rel",W=Math.max(320,box.clientWidth),H=phone?330:440,lab=!phone&&CMP.labels,pr=lab?262:14,pt=14,pb=30;
+  const ff=getComputedStyle(box).fontFamily,sc=cmpScale(...cmpRange(pick,B),6),ticks=sc.ticks,F0=sc.f(sc.lo),F1=sc.f(sc.hi);
+  const pl=Math.max(44,Math.ceil(Math.max(...ticks.map(t=>cmpTW(cmpPctAx(t),`13px ${ff}`))))+14);
+  const T=B.t,n=T.length,X=i=>pl+i*(W-pl-pr)/Math.max(1,n-1),Y=v=>pt+(1-(sc.f(v)-F0)/(F1-F0))*(H-pt-pb),F=CMP.focus;
+  let g="";for(const t of ticks)g+=`<line x1="${pl}" x2="${W-pr}" y1="${Y(t)}" y2="${Y(t)}" class="${t===0?"cmp-zero":"cmp-gl"}"/><text x="${pl-8}" y="${Y(t)+4.5}" text-anchor="end" class="cmp-ax">${cmpPctAx(t)}</text>`;
+  const long=CMP.per==="3Y"||CMP.per==="5Y"||CMP.per==="1Y",step=Math.ceil(n/(phone?4:7));
+  for(let i=0;i<n;i+=step)g+=`<text x="${X(i)}" y="${H-8}" text-anchor="${i===0?"start":"middle"}" class="cmp-ax">${new Date(T[i]+"T00:00:00").toLocaleDateString("en-IN",long?{month:"short",year:"2-digit"}:{day:"numeric",month:"short"})}</text>`;
+  if(CMP.bench)g+=`<path d="${cmpPath(B.v,X,Y)}" class="cmp-bench${F?" dim":""}"/>`;
+  pick.forEach(x=>{const on=!F||F===x.id;g+=`<path d="${cmpPath(x.s.v,X,Y)}" stroke="${x.col}" class="cmp-line${on?(F?" foc":""):" dim"}" data-cid="${esc(x.id)}"/>`});
+  /* names at the right edge, pushed apart so none overlap, shortened to fit; text in ink, a coloured dot for identity */
+  if(lab){const fN=`800 14.5px ${ff}`,fV=`700 14.5px ${ff}`,xe=W-pr+6,room=W-6-(xe+22);
+    const fit=(name,vt)=>{const max=room-cmpTW(vt,fV)-6;if(cmpTW(name,fN)<=max)return name;let s=name;while(s.length>2&&cmpTW(s.trimEnd()+"…",fN)>max)s=s.slice(0,-1);return s.trimEnd()+"…"};
+    const L=[...pick.map(x=>({id:x.id,y:Y(x.s.last),y0:Y(x.s.last),name:x.name,v:x.s.last,col:x.col})),...(CMP.bench?[{id:"",y:Y(B.v[n-1]),y0:Y(B.v[n-1]),name:CMPD.bench_name,v:B.v[n-1],col:"var(--ink)",b:1}]:[])].sort((a,b)=>a.y-b.y);
+    const gap=20;for(let i=1;i<L.length;i++)if(L[i].y-L[i-1].y<gap)L[i].y=L[i-1].y+gap;const over=L.length?L[L.length-1].y-(H-pb):0;if(over>0)for(const q of L)q.y-=over;for(let i=L.length-2;i>=0;i--)if(L[i+1].y-L[i].y<gap)L[i].y=L[i+1].y-gap;
+    for(const q of L){const dim=F&&F!==q.id&&!q.b,vt=q.b&&rel?"= 0":sgn(q.v,1),vc=q.b?"":cls(q.v);
+      g+=`<g class="cmp-lab${dim?" dim":""}" data-cfocus="${esc(q.id)}"><title>${esc(q.name)} ${vt}</title><path d="M${X(n-1)} ${q.y0}L${xe+4} ${q.y}" stroke="${q.col}" class="cmp-conn"/>${q.b?`<rect x="${xe+5}" y="${q.y-2}" width="14" height="4" rx="2" fill="var(--ink)"/>`:`<circle cx="${xe+12}" cy="${q.y}" r="5.5" fill="${q.col}"/>`}<text x="${xe+22}" y="${q.y+5}"><tspan class="cmp-ln">${esc(fit(q.name,vt))}</tspan><tspan class="cmp-lv ${vc}" dx="6">${vt}</tspan></text></g>`}}
+  g+=`<line class="cmp-xh" x1="0" x2="0" y1="${pt}" y2="${H-pb}" opacity="0"/><g class="cmp-dots"></g>`;
+  box.innerHTML=`<svg class="cmp-svg" viewBox="0 0 ${W} ${H}" width="100%" height="${H}" role="img" aria-label="Line chart of ${pick.length} groups${CMP.bench?" and "+esc(CMPD.bench_name):""}, ${rel?"lead or lag against "+esc(CMPD.bench_name):"% change"} over ${CMP.per}">${g}<rect class="cmp-hit" x="${pl}" y="0" width="${W-pl-pr}" height="${H}" fill="transparent"/></svg><div class="cmp-tip" hidden></div>`;
+  const svg=box.querySelector("svg"),hit=svg.querySelector(".cmp-hit"),tip=box.querySelector(".cmp-tip"),xh=svg.querySelector(".cmp-xh"),dots=svg.querySelector(".cmp-dots");
+  const at=e=>{const r=svg.getBoundingClientRect(),cx=e.clientX-r.left,i=Math.max(0,Math.min(n-1,Math.round(((cx/r.width*W)-pl)/((W-pl-pr)/Math.max(1,n-1)))));return {i,r}};
+  const mv=e=>{const {i,r}=at(e),x=X(i);xh.setAttribute("x1",x);xh.setAttribute("x2",x);xh.setAttribute("opacity",".55");
+    const pts=[...pick.map(p=>({n:p.name,v:p.s.v[i],c:p.col,id:p.id})),...(CMP.bench?[{n:CMPD.bench_name,v:B.v[i],c:"var(--ink)",b:1}]:[])].filter(q=>isNum(q.v));
+    dots.innerHTML=pts.filter(q=>!F||q.b||q.id===F).map(q=>`<circle cx="${x}" cy="${Y(q.v)}" r="5" fill="${q.c}" class="cmp-pt"/>`).join("");
+    const rows=pts.filter(q=>!(rel&&q.b)).sort((a,b)=>b.v-a.v);
+    tip.hidden=false;tip.innerHTML=`<b>${fmtDate(T[i])}</b>`+rows.map(q=>`<div class="${F&&!q.b&&q.id!==F?"dim":""}"><i class="${q.b?"bl":""}" style="background:${q.c}"></i><span>${esc(q.n)}</span><b class="num ${cls(q.v)}">${sgn(q.v,1)}</b></div>`).join("");
+    const left=x/W*r.width;tip.style.left=(left>r.width*0.55?left-tip.offsetWidth-14:left+14)+"px";tip.style.top="8px"};
+  const out=()=>{tip.hidden=true;xh.setAttribute("opacity","0");dots.innerHTML=""};
+  hit.addEventListener("pointermove",mv);hit.addEventListener("pointerleave",out);
+  /* a click or tap on the plot focuses the nearest line (a second tap on it shows all again) */
+  hit.addEventListener("click",e=>{const {i,r}=at(e),yc=(e.clientY-r.top)/r.height*H;let best=null,bd=1e9;for(const p of pick){const v=p.s.v[i];if(isNum(v)){const d=Math.abs(Y(v)-yc);if(d<bd){bd=d;best=p.id}}}
+    if(best&&bd<26){CMP.focus=CMP.focus===best?null:best;cmpDraw()}});
+  /* the lines draw in from the left when what they show changes (not on focus or hover); skipped for reduced motion */
+  const sig=[$("#cmodal").dataset.k,CMP.per,CMP.mode,cmpU(),cmpAgg(),CMP.bench,pick.map(x=>x.id).join(",")].join("|");
+  if(sig!==cmpSig&&!matchMedia("(prefers-reduced-motion: reduce)").matches){const ps=[...svg.querySelectorAll(".cmp-line,.cmp-bench")];
+    ps.forEach(p=>{const len=p.getTotalLength();p.style.strokeDasharray=len;p.style.strokeDashoffset=len});svg.getBoundingClientRect();svg.classList.add("drawin");
+    ps.forEach(p=>{p.style.strokeDashoffset="0"});setTimeout(()=>{ps.forEach(p=>{p.style.strokeDasharray="";p.style.strokeDashoffset=""});svg.classList.remove("drawin")},1000)}
+  cmpSig=sig}
+/* small multiples: one shared scale, so a steeper line really is a bigger move */
+function cmpGrid(pick,B,N){const box=$("#cmpChart");if(!box)return;const rel=CMP.mode==="rel";cmpSig="";
+  const sc=cmpScale(...cmpRange(pick,B),6),tk=sc.ticks,F0=sc.f(sc.lo),F1=sc.f(sc.hi);
+  const W=300,H=130,n=B.t.length,X=i=>4+i*(W-8)/Math.max(1,n-1),Y=y=>8+(1-(sc.f(y)-F0)/((F1-F0)||1))*(H-16);
+  box.innerHTML=`<p class="cmp-gnote">Every small chart uses the same ${sc.log?"log ":""}scale, ${cmpPctAx(tk[0])} to ${cmpPctAx(tk[tk.length-1])}, so a steeper line really is a bigger move.${CMP.bench&&!rel?` The dashed line is ${esc(CMPD.bench_name)}.`:""}${rel?` The 0 line is ${esc(CMPD.bench_name)}.`:""}</p>
+   <div class="cmp-grid">${pick.map(x=>`<button type="button" class="cmp-cell" data-cgo="${esc(x.id)}" aria-label="${esc(x.name)} ${sgn(x.s.last,1)}: open its full chart"><div class="cmp-ch"><span><i style="background:${x.col}"></i>${esc(x.name)}</span><b class="num ${cls(x.s.last)}">${sgn(x.s.last,1)}</b></div>
+      <svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" aria-hidden="true">${tk.map(t=>`<line x1="0" x2="${W}" y1="${Y(t)}" y2="${Y(t)}" class="${t===0?"cmp-zero":"cmp-gl"}"/>`).join("")}${CMP.bench&&!rel?`<path d="${cmpPath(B.v,X,Y)}" class="cmp-bench thin"/>`:""}<path d="${cmpPath(x.s.v,X,Y)}" stroke="${x.col}" class="cmp-line"/></svg>
+      <div class="cmp-cf">#${x.rank} of ${N} · ${x.s.up} of ${x.s.n} stocks up · ${gStatePill(cmpGS(x))}</div></button>`).join("")}</div>`}
+/* plain-language read-out: only rules the site has tested, plus one factual caution about small groups */
+function cmpSummary(pick,N,B){const third=k=>k<=N/3?"top":k>N*2/3?"bottom":"mid",lines=[],bn=esc(CMPD.bench_name),P=CMP.per;
+  const item=(tag,cl,html)=>`<li><span class="cmp-tag ${cl}">${tag}</span><span>${html}</span></li>`;
+  const lead=pick.filter(x=>third(x.rank)==="top"&&cmpGS(x)==="strong"),fade=pick.filter(x=>cmpGS(x)==="fade"),lag=pick.filter(x=>third(x.rank)==="bottom"),thin=pick.filter(x=>x.s.n<5);
+  if(lead.length)lines.push(item("Leading","up",`${lead.map(x=>`<b>${esc(x.name)}</b> <span class="num up">${sgn(x.s.last,1)}</span>`).join(", ")} — top third over ${P} with a group RS rating of 70+.`));
+  if(fade.length)lines.push(item("Fading","warn",`${fade.map(x=>{const a=cmpRS(x);return `<b>${esc(x.name)}</b> (RS ${a.rk}, ${sgn(a.rk-a.rk4,0,"")} in 4 weeks)`}).join(", ")} — in testing, groups rated 70+ that lost 10+ points went on to lag.`));
+  if(lag.length)lines.push(item("Lagging","down",`${lag.map(x=>`<b>${esc(x.name)}</b>`).join(", ")} — bottom third over ${P}; lagging groups tended to keep lagging over the next 1–6 months.`));
+  if(thin.length)lines.push(item("Check","mut",`${thin.length>3?`${thin.length} of these ${pick.length} groups have`:thin.map(x=>`<b>${esc(x.name)}</b> (${x.s.up} of ${x.s.n} up)`).join(", ")+(thin.length>1?" have":" has")} under 5 stocks — one stock can carry such an average, so open the group's stocks before reading it as rotation.`));
+  const above=pick.filter(x=>isNum(x.s.rel)&&x.s.rel>0).length;
+  lines.push(item("Market","mkt",`${above} of ${pick.length} lines are ahead of ${bn} over ${P} (${bn} ${sgn(B.pct,1)}).`));
+  return `<div class="dsec cmp-say"><h4>What the chart says</h4><ul>${lines.join("")}</ul></div>`}
+function cmpTable(pick,N){const third=k=>k<=N/3?"up":k>N*2/3?"down":"",bn=esc(CMPD.bench_name);
+  return `<div class="tscroll cmp-tw"><table class="dt cmp-tbl"><thead><tr><th class="l">Group</th><th>${CMP.per} return</th><th>vs ${bn}</th><th>Rank (${CMP.per})</th><th>Stocks up</th><th>Group RS · 4 wk</th><th>% above 50-DMA</th><th class="l">State</th></tr></thead><tbody>
+    ${pick.map(x=>{const a=cmpRS(x);
+      return `<tr data-cgo="${esc(x.id)}" tabindex="0"><td class="l"><span class="cmp-dot" style="background:${x.col}"></span><b>${esc(x.name)}</b></td>
+      <td data-l="${CMP.per} return"><span class="num ${cls(x.s.pct)}">${sgn(x.s.pct,1)}</span></td><td data-l="vs ${bn}"><span class="num ${cls(x.s.rel)}">${sgn(x.s.rel,1)}</span></td>
+      <td data-l="Rank (${CMP.per})"><span class="cmp-rk ${third(x.rank)}">#${x.rank}<small>/${N}</small></span></td><td data-l="Stocks up"><span class="num">${x.s.up} of ${x.s.n}</span></td>
+      <td data-l="Group RS"><span class="cmp-v">${isNum(a.rk)?`${rsPill(a.rk)} ${gMove(a.rk,a.rk4)}`:"–"}</span></td><td data-l="Above 50-DMA"><span class="num">${isNum(a.b50)?a.b50+"%":"–"}</span></td><td class="l" data-l="State">${gStatePill(gState(a.rk,a.rk4))}</td></tr>`}).join("")}</tbody></table></div>`}
+function cmpPickerList(){const el=$("#cmpPicker");if(!el)return;const kind=$("#cmodal").dataset.k,all=cmpAll(kind).sort((a,b)=>b.s.last-a.s.last),sel=cmpShown(kind),q=CMP.q.trim().toLowerCase(),word=esc(cmpWord(kind,1)),hit=all.filter(x=>!q||x.name.toLowerCase().includes(q));
+  el.innerHTML=`<div class="cmp-ph"><input id="cmpq" class="select" type="search" placeholder="Search ${word}" aria-label="Search ${word}" value="${esc(CMP.q)}"><span>${sel.length} of ${CMP_MAX} lines</span><button type="button" class="ghost" data-cpclear>Clear</button><button type="button" class="btn" data-cpdone>Done</button></div>
+   <div class="cmp-plist">${hit.map(x=>{const on=sel.includes(x.id);return `<label class="cmp-pi${on?" on":""}"><input type="checkbox" data-cpick="${esc(x.id)}" ${on?"checked":""} ${!on&&sel.length>=CMP_MAX?"disabled":""}><span>${esc(x.name)}</span><b class="num ${cls(x.s.last)}">${sgn(x.s.last,1)}</b></label>`}).join("")||`<p class="cmp-none">No ${word} match “${esc(CMP.q)}”.</p>`}</div>`;
+  const q2=$("#cmpq");if(q2&&CMP.q&&document.activeElement!==q2){q2.focus();q2.setSelectionRange(q2.value.length,q2.value.length)}}
+function cmpClick(e){const m=$("#cmodal"),kind=m.dataset.k;
+  if(e.target.closest("[data-cclose]")){closeCompare();return}
+  if(!CMPD)return;
+  const s=e.target.closest("[data-cs]");if(s){const k=s.dataset.cs,v=s.dataset.val;if(k==="pick"&&v==="mine"&&!(CMP.sel[kind]||[]).length){CMP.sel[kind]=cmpShown(kind);CMP.picker=true}CMP[k]=v;CMP.focus=null;cmpSave();cmpDraw();return}
+  const t=e.target.closest("[data-ctog]");if(t){CMP[t.dataset.ctog]=!CMP[t.dataset.ctog];cmpSave();cmpDraw();return}
+  if(e.target.closest("[data-cpicker]")){CMP.picker=!CMP.picker;CMP.q="";cmpDraw();return}
+  const pk=e.target.closest("[data-cpick]");if(pk){const id=pk.dataset.cpick,sel=[...cmpShown(kind)],i=sel.indexOf(id);if(i>=0)sel.splice(i,1);else if(sel.length<CMP_MAX)sel.push(id);CMP.sel[kind]=sel;CMP.pick="mine";CMP.focus=null;cmpSave();cmpDraw();return}
+  if(e.target.closest("[data-cpclear]")){CMP.sel[kind]=[];CMP.pick="mine";CMP.focus=null;cmpSave();cmpDraw();return}
+  if(e.target.closest("[data-cpdone]")){CMP.picker=false;CMP.q="";if(CMP.pick==="mine"&&!(CMP.sel[kind]||[]).length)CMP.pick="top";cmpSave();cmpDraw();return}
+  const f=e.target.closest("[data-cfocus]");if(f){const id=f.dataset.cfocus||null;CMP.focus=CMP.focus===id?null:id;cmpDraw();return}
+  const go=e.target.closest("[data-cgo]");if(go){const [k,...n]=go.dataset.cgo.split("|");closeCompare();openGroupChart(k,n.join("|"));return}}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-cmp-open]");if(!b)return;e.preventDefault();openCompare()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&$("#cmodal")&&!$("#cmodal").hidden&&$("#drawer").hidden&&$("#mdl").hidden){e.stopImmediatePropagation();closeCompare()}},true);
+/* a resize redraws the chart only when its width changed (a phone keyboard opening changes the height alone);
+   crossing the phone width redraws the whole pop-up, whose layout differs */
+let cmpRz=0;window.addEventListener("resize",()=>{const m=$("#cmodal");if(!m||m.hidden||!CMPD||!cmpLast)return;clearTimeout(cmpRz);
+  cmpRz=setTimeout(()=>{const box=$("#cmpChart");if(m.hidden||!box)return;if(matchMedia("(max-width:700px)").matches!==cmpLast.phone){cmpDraw();return}
+    if(Math.abs(box.clientWidth-(cmpLast.w||0))>2)cmpChartDraw()},180)});
 
 /* ── events ── */
 document.addEventListener("click",e=>{
