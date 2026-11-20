@@ -1,5 +1,5 @@
 {
- "run": "2026-11-20 03:01",
+ "run": "2026-11-20 17:00",
  "delivery": {
   "added": [],
   "not_published": [],
@@ -11,45 +11,8 @@
   "last": "2026-11-19"
  },
  "close_check": {
-  "date": "2026-11-19",
-  "checked": 2588,
-  "disagree": 1004,
-  "corrected": 1004,
-  "skipped": 0,
-  "examples": {
-   "MASKINVEST": [
-    120.3,
-    131.19
-   ],
-   "HBSL": [
-    53.78,
-    50.64
-   ],
-   "FILATFASH": [
-    0.18,
-    0.17
-   ],
-   "MERCANTILE": [
-    21.0,
-    20.11
-   ],
-   "VIVIDHA": [
-    0.5,
-    0.48
-   ],
-   "SGLRES": [
-    2.13,
-    2.05
-   ],
-   "ANTGRAPHIC": [
-    0.8,
-    0.77
-   ],
-   "IIRM": [
-    106.11,
-    110.31
-   ]
-  },
-  "skipped_examples": {}
+  "date": "2026-11-20",
+  "checked": 0,
+  "note": "NSE file not available"
  }
 }
