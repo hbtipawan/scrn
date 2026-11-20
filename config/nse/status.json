@@ -1,18 +1,59 @@
 {
- "run": "2026-11-20 17:00",
+ "run": "2026-11-21 02:36",
  "delivery": {
-  "added": [],
+  "added": [
+   "2026-11-20"
+  ],
   "not_published": [],
-  "last": "2026-11-19"
+  "last": "2026-11-20"
  },
  "indices": {
-  "added": [],
+  "added": [
+   "2026-11-20"
+  ],
   "not_published": [],
-  "last": "2026-11-19"
+  "last": "2026-11-20"
  },
  "close_check": {
   "date": "2026-11-20",
-  "checked": 0,
-  "note": "NSE file not available"
+  "checked": 2588,
+  "disagree": 1016,
+  "corrected": 1016,
+  "skipped": 0,
+  "examples": {
+   "FILATFASH": [
+    0.17,
+    0.16
+   ],
+   "BILVYAPAR": [
+    4.48,
+    4.28
+   ],
+   "SINTERCOM": [
+    68.99,
+    66.34
+   ],
+   "KEEPLEARN": [
+    1.47,
+    1.53
+   ],
+   "SHYAMTEL": [
+    11.9,
+    11.46
+   ],
+   "RRECL": [
+    125.12,
+    120.84
+   ],
+   "JHS": [
+    8.21,
+    7.93
+   ],
+   "DCMNVL": [
+    165.96,
+    160.4
+   ]
+  },
+  "skipped_examples": {}
  }
 }

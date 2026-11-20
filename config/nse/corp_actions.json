@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-20",
+"fetched": "2026-11-21",
 "rows": [
 {
 "symbol": "ADFFOODS",
@@ -864,6 +864,14 @@
 "kind": "buyback",
 "label": "Buyback",
 "subject": "Buy Back"
+},
+{
+"symbol": "FUSIONCX",
+"series": "EQ",
+"ex": "2026-11-27",
+"kind": "dividend",
+"label": "Dividend \u20b90.75",
+"subject": "Dividend - Re 0.75 Per Share"
 },
 {
 "symbol": "VGL",
