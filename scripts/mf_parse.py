@@ -298,9 +298,11 @@ def _scheme_name(rows, upto, sheet, index_names=None):
             if re.fullmatch(r"\s*(scheme name|name of (the )?scheme|scheme)\s*[:\-]?\s*", c, re.I) and k + 1 < len(strs):
                 return _short_name(strs[k + 1])
         for c in strs:
-            if not 6 <= len(c) <= 250:
+            if len(c) < 6:
                 continue
             t = re.sub(r"\s+", " ", c).strip()
+            if len(t) > 250:                    # measured without padding: Samco's titles (Oct 2026) carry 200+ spaces
+                continue
             m = re.search(r"(?:scheme name|name of (?:the )?scheme|^scheme)\s*[:\-]\s*(.+)", t, re.I)
             if m and len(m.group(1)) > 4:
                 return _short_name(m.group(1))

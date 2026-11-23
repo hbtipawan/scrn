@@ -163,7 +163,7 @@ def static_lister(page, must, exclude=r"fortnight|half[\s\-_]?year|weekly|overla
     """Lister for fund houses that list every monthly file as a plain link on one page.
     must / exclude are matched against the link text + decoded file name; the month comes from either."""
     def lister(y, m):
-        out, seen = [], set()
+        out, seen = [], {}
         for u, t in _page_links(page):
             fname = up.unquote(u.split("?")[0].rsplit("/", 1)[-1])
             if not re.search(r"\.(xlsx?|xlsb|zip)$", fname, re.I):          # viewfile.php?file=NAME.xlsx
@@ -177,10 +177,14 @@ def static_lister(page, must, exclude=r"fortnight|half[\s\-_]?year|weekly|overla
             k = fname.lower()
             if prefer:                                   # same file on two hosts: keep the preferred host
                 k = re.sub(r"^.*?(in_mf|nj-mf)", r"\1", k)
+            rec = {"url": u, "name": t if len(t) > 12 and not re.fullmatch(r"(?i)download|view|click here", t) else fname}
             if k in seen:
+                i = seen[k]                              # the preferred host can come later on the page
+                if prefer and re.search(prefer, u, re.I) and not re.search(prefer, out[i]["url"], re.I):
+                    out[i] = rec
                 continue
-            seen.add(k)
-            out.append({"url": u, "name": t if len(t) > 12 and not re.fullmatch(r"(?i)download|view|click here", t) else fname})
+            seen[k] = len(out)
+            out.append(rec)
         if prefer:
             out.sort(key=lambda f: 0 if re.search(prefer, f["url"], re.I) else 1)
         return out[:1] if one else out
@@ -419,11 +423,18 @@ def invesco(y, m):
     for cls in ("equity", "hybrid", "index-funds", "exchange-traded-fund"):
         # a class that fails to load must fail the whole month: a partial list would read as funds selling out
         r = http_get("https://invescomutualfund.com/api/CompleteMonthlyHoldings", params={"year": str(y), "classification": cls}, tries=4)
-        root = ET.fromstring(r.content)
-        for it in root.findall("a:clsCompleteMonthlyHoldings", ns):
-            nm = (it.findtext("a:Name", default="", namespaces=ns) or "").strip()
-            if (it.findtext(f"a:{MON3[m]}Name", default="", namespaces=ns) or "").strip() == want:
-                u = (it.findtext(f"a:{MON3[m]}Url", default="", namespaces=ns) or "").strip()
+        body = r.content.decode("utf-8-sig", "replace").strip()
+        if body[:1] in ("[", "{"):                  # JSON since Nov 2026 (XML before), with the same field names
+            d = json.loads(body)
+            items = [{k: str(v or "") for k, v in it.items()} for it in (d if isinstance(d, list) else [d])]
+        else:
+            root = ET.fromstring(r.content)
+            items = [{k: it.findtext(f"a:{k}", default="", namespaces=ns) or "" for k in ("Name", f"{MON3[m]}Name", f"{MON3[m]}Url")}
+                     for it in root.findall("a:clsCompleteMonthlyHoldings", ns)]
+        for it in items:
+            nm = it.get("Name", "").strip()
+            if it.get(f"{MON3[m]}Name", "").strip() == want:
+                u = it.get(f"{MON3[m]}Url", "").strip()
                 if u:
                     out.append({"url": u, "name": f"Invesco India {nm} {MONTH[m]} {y}"})
     return out
@@ -453,16 +464,20 @@ _HSBC = None
 
 
 def hsbc(y, m):
-    """Per-scheme workbooks under /portfolios/document-DDMMYYYY/ on the information library page."""
+    """Per-scheme workbooks under /portfolios/document-DDMMYYYY/ on the information library page. Since the
+    September 2026 portfolios the links have no .xlsx at the end; the site sends the same workbook with it added."""
     global _HSBC
     if _HSBC is None:
         u = "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources/information-library"
-        _HSBC = _links(http_get(u, timeout=120).text, u)
+        _HSBC = _links(http_get(u, timeout=120).text, u, pat=r"\.(?:xlsx?|xlsb|zip)(?:\?|$)|/portfolios/document-\d{8}/[^/?#]+$")
     tag = f"document-{month_end(y, m):02d}{m:02d}{y}/"
     out, seen = [], set()
     for u, t in _HSBC:
-        if tag in u and u not in seen and not re.search(r"fortnight", u, re.I):
-            seen.add(u); out.append({"url": u, "name": t})
+        if tag in u and not re.search(r"fortnight", u, re.I):
+            if not re.search(r"\.(?:xlsx?|xlsb|zip)(?:\?|$)", u, re.I):
+                u += ".xlsx"
+            if u not in seen:
+                seen.add(u); out.append({"url": u, "name": t})
     return out
 
 
@@ -674,6 +689,7 @@ SOURCES = {
     "oldbridge": ("Old Bridge Mutual Fund", static_lister("https://oldbridgemf.com/statutory-disclosures.html", r"_portfolio_|monthly_portfolio",
                                                           exclude=r"fortnight|half[\s\-_]?year|overlap|financial|risk|aaum|dashboard|voting")),
     "angelone": ("Angel One Mutual Fund", static_lister("https://www.angelonemf.com/downloads", r"monthly[\-_\s]*portfolio")),
+    # each file is linked twice; the www.samcomf.com/amc-document-download copy answers HTTP 500 since Nov 2026
     "samco": ("Samco Mutual Fund", static_lister("https://www.samcomf.com/StatutoryDisclosure", r"in_mf_monthly_portfolio_",
-                                                 prefer=r"samcomf\.com/amc-document-download")),
+                                                 prefer=r"media\.samcomf\.com/")),
 }
