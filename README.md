@@ -106,7 +106,7 @@ Tap **☆** next to any stock name (Rotation, RS ranking, Scanners, VPCI, stock 
 
 - **Since added** — price and NIFTY 500 level are recorded on the day you add a stock: return since added, return vs NIFTY, days on the list, best gain and worst dip since added, 3-month sparkline. The added date/price can be edited (change the date and the price fills in from that day's close).
 - **Your levels** — pivot (buy-above), stop, target, flag colour and a note. Setup column: below pivot / near pivot / **buy zone** (pivot to +5%, IBD) / extended / below stop / target hit. Risk %, reward/risk and a position-size calculator from your risk per trade.
-- **Needs your attention today** — stop hit, breakout above your pivot, buy zone, near pivot or stop, target reached, warnings (4% breakdown, lost 50 DMA, RS falling below 70, red flags), new hits in key scans, results due within 7 days, fresh VPCI signals. The tab shows a count of urgent items.
+- **Needs your attention today** (below the stock list; the *Alerts today* tile links down to it) — stop hit, breakout above your pivot, buy zone, near pivot or stop, target reached, warnings (4% breakdown, lost 50 DMA, RS falling below 70, red flags), new hits in key scans, results due within 7 days, fresh VPCI signals. The tab shows a count of urgent items.
 - Columns: Tracking / Performance / Fundamentals; sort and CSV like every table.
 - **Track record** — removed stocks are logged with their return and return vs NIFTY, giving your hit rate.
 - Import (paste symbols, TradingView `.txt`, Kite lists), export to TradingView, backup file, share link, and **☆ Add all** on every scanner.
@@ -506,6 +506,7 @@ The stock, group, pattern, VCP and market chart windows have a toolbar above the
 - **Editing:** click a drawing to select it, then drag it or its points; Delete (or the bin) removes it, Ctrl+Z undoes, Esc cancels or deselects (a second Esc closes the window). Colour, line width and dashed/dotted apply to the selected drawing, or to the next one when nothing is selected. Magnet snaps points to the bar's open, high, low or close; the eye hides every drawing; *Clear all* asks for a second tap.
 - **Kept per stock, group or market** as dates and prices, so they stay in place on daily or weekly bars, any range, and log scale. The stock, pattern and VCP windows of a stock share its drawings. They are saved in this browser with your watchlists, and **Sync** (Watchlists tab) carries them to your other devices.
 - Charts scroll with momentum after a drag, and drawings are painted in the same frame as the candles, so they move smoothly with every pan and zoom.
+- **Chart only** (button next to Close, or the **F** key) hides everything in the window except the chart, its read-out line, the drawing toolbar and the Range / Bars buttons, and widens the window, so the chart gets nearly the whole screen. One switch for every chart window, remembered; **Show details** brings the rest back.
 
 ## Index, gold, silver and bitcoin charts (Breadth tab)
 
