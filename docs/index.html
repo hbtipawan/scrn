@@ -1299,6 +1299,32 @@ body.ssopen{overflow:hidden}
 .dkw i.dotted{background:repeating-linear-gradient(90deg,currentColor 0 2.5px,transparent 2.5px 5px)}
 .dkhint{flex:1 1 260px;min-width:0;font-size:15px;color:var(--muted);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .dkclr{min-width:124px}
+.tile .linkbtn[data-wlgo]{display:block;padding:4px 0 0;font-size:15px}
+/* "Chart only" in the candle-chart windows */
+.ghacts{display:flex;align-items:center;gap:10px;flex:none}
+.gfbtn{display:inline-flex;align-items:center;gap:8px;border:2px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;min-height:44px;padding:0 14px;cursor:pointer;font-size:17px;font-weight:800;font-family:inherit}
+.gfbtn svg{width:21px;height:21px;flex:none}
+.gfbtn:hover{border-color:var(--ink)}
+.gfbtn[aria-pressed="true"]{border-color:var(--ink);background:var(--soft)}
+.gfbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+body.gfocus .gcand .ghead{padding:7px 18px 6px;align-items:center}
+body.gfocus .gcand .ghead h2{font-size:25px}
+body.gfocus .gcand .gkind{display:none}
+body.gfocus .gcand .gbody{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-rows:auto auto minmax(0,1fr);column-gap:18px;align-items:center;overflow:hidden;flex:1 1 auto;min-height:0;padding-top:6px;padding-bottom:10px}
+body.gfocus .gcand .gbody>*:not(.gread):not(.dkbar):not(.gchart):not(.gmain){display:none!important}
+body.gfocus .gcand .gmain{grid-column:1;grid-row:1;display:flex;flex-wrap:nowrap;gap:12px;margin:0;overflow-x:auto;min-width:0}
+body.gfocus .gcand .gmain>*:not(.ctl),body.gfocus .gcand .gmain>.ctl:nth-child(n+3),body.gfocus .gcand .gmain>.ctl>span{display:none}
+body.gfocus .gcand .gmain>.ctl{width:auto;flex:none}
+body.gfocus .gcand .gmain .seg button{padding:5px 12px}
+body.gfocus .gcand .gread{grid-column:2;grid-row:1;border-top:0;padding:2px}
+body.gfocus .gcand .dkbar{grid-column:1/-1;grid-row:2;margin:6px 0 2px}
+body.gfocus .gcand .dkhint{display:none}
+body.gfocus .gcand .gchart{grid-column:1/-1;grid-row:3;align-self:stretch;height:auto!important;min-height:0;margin-top:2px}
+@media (min-width:701px){body.gfocus .gcand{top:1vh;height:98vh;width:min(1920px,99vw)}}
+@media (max-width:700px){.gfbtn{padding:0 11px}.gfbtn span{display:none}.ghacts{gap:8px}body.gfocus .gcand .ghead h2{font-size:21px}
+  body.gfocus .gcand .gbody{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto auto minmax(0,1fr)}body.gfocus .gcand .gmain{grid-column:1;grid-row:1}body.gfocus .gcand .gread{grid-column:1;grid-row:2}body.gfocus .gcand .dkbar{grid-row:3}body.gfocus .gcand .gchart{grid-row:4}
+  body.gfocus .gcand .gread>span:has(.emadot){display:none}body.gfocus .gcand .gread{font-size:14.5px;gap:2px 12px}body.gfocus .gcand .gmain .seg button{padding:5px 9px}}
+
 @media (max-width:700px){.dkbar{padding:4px 6px;gap:2px}.dkrow{flex-wrap:nowrap;overflow-x:auto;width:100%;scrollbar-width:thin;padding-bottom:2px}.dkg{flex:none}.dkhint{flex:1 1 100%;font-size:14.5px}}
 .dacts .scopen{display:inline-flex;align-items:center;gap:8px}
 .dacts .scopen svg{width:18px;height:18px}
@@ -1923,14 +1949,14 @@ function gRows(F,u,weekly){const S=F[u]||F.a,dates=GCOM.dates,b=GCOM.bench,i0=F.
 /* ── the big chart window ── */
 const GST={range:"1Y",int:"D",sig:"tested",scale:"lin",cmp:"",ma:true};
 function gmodalEl(){let m=$("#gmodal");if(m)return m;
-  document.body.insertAdjacentHTML("beforeend",`<div class="gscrim" id="gscrim" hidden></div><section class="gmodal" id="gmodal" hidden role="dialog" aria-modal="true" aria-labelledby="gTitle"></section>`);
+  document.body.insertAdjacentHTML("beforeend",`<div class="gscrim" id="gscrim" hidden></div><section class="gmodal gcand" id="gmodal" hidden role="dialog" aria-modal="true" aria-labelledby="gTitle"></section>`);
   $("#gscrim").addEventListener("click",()=>closeGroupChart());
   m=$("#gmodal");m.addEventListener("click",gModalClick);
   return m}
 async function openGroupChart(kind,name){
   Object.assign(GST,store.get("gchart",{}));GST.cmp="";
   const m=gmodalEl(),wasOpen=!m.hidden;m.dataset.k=kind;m.dataset.n=name;
-  m.innerHTML=`<header class="ghead"><div><div class="gkind">${esc(GKIND[kind]||kind)}</div><h2 id="gTitle">${esc(name)}</h2></div><button class="close" type="button" data-gclose aria-label="Close chart"><b aria-hidden="true">✕</b> Close</button></header><div class="gbody"><div class="empty" style="padding:40px">Loading chart…</div></div>`;
+  m.innerHTML=`<header class="ghead"><div><div class="gkind">${esc(GKIND[kind]||kind)}</div><h2 id="gTitle">${esc(name)}</h2></div><div class="ghacts">${gfBtn()}<button class="close" type="button" data-gclose aria-label="Close chart"><b aria-hidden="true">✕</b> Close</button></div></header><div class="gbody"><div class="empty" style="padding:40px">Loading chart…</div></div>`;
   m.hidden=false;$("#gscrim").hidden=false;document.body.style.overflow="hidden";
   if(!wasOpen&&!history.state?.gchart)history.pushState({...(history.state||{}),gchart:1},"",location.href);
   try{await Promise.all([grpLoad(),gcomLoad(),lwcLoad()]);
@@ -1971,7 +1997,7 @@ function drawGroupChart(){
    <dl class="gstats">${kv("Group RS rating",`${gpill(r,u)}`)}${kv("Stage",stx)}${kv("1 month",sgn(x.r["1M"],1),cls(x.r["1M"]))}${kv("3 months",sgn(x.r["3M"],1),cls(x.r["3M"]))}${kv("1 year",sgn(x.r["1Y"],1),cls(x.r["1Y"]))}${kv("From 52W high",sgn(x.h52,1))}${kv("Above 50 DMA",isNum(x.b50)?x.b50+"%":"–")}${kv("At 52W highs",isNum(x.nh)?`${x.nh} of ${x.cnt}`:"–")}${kv("Turnover vs usual",isNum(x.mr)?x.mr.toFixed(2)+"×":"–",x.mr>=1.5?"up":"")}</dl>
    ${path?`<p class="gpath">Group RS rating ${x.rk}: ${path} · ranked against the other ${(GXD.kinds[kind]||[]).length-1} ${({Themes:"themes",Sector:"sectors","NSE Index":"NSE indices",Industry:"industries"})[kind]||"groups"}.</p>`:""}
    ${(x.sig||[]).length?`<div class="gsigrow">${gsigChips(r,u,19,true)}</div>`:""}
-   <div class="gtools">
+   <div class="gtools gmain">
      <div class="ctl"><span>Range</span>${segG("range",["3M","6M","1Y","2Y","5Y","All"],GST.range)}</div>
      <div class="ctl"><span>Bars</span>${segG("int",["D","W"],GST.int,{D:"Daily",W:"Weekly"})}</div>
      <div class="ctl"><span>Averages${GST.int==="W"?" (weekly bars)":""}</span>${emaChips("data-gema")}</div>
@@ -2814,7 +2840,7 @@ function patSection(sym,wpx){const L=PAT?.by?.[sym];if(!L?.length)return "";
     <div><button type="button" class="btn alt" data-pchart="${esc(r.s+"|"+r.id)}">Open the pattern chart</button></div></div>`}).join("")}</div>`}
 /* ── the pattern chart window (candles + the pattern drawn on them) ── */
 function pmodalEl(){let m=$("#pmodal");if(m)return m;
-  document.body.insertAdjacentHTML("beforeend",`<div class="gscrim" id="pscrim" hidden></div><section class="gmodal pmodal" id="pmodal" hidden role="dialog" aria-modal="true" aria-labelledby="pTitle"></section>`);
+  document.body.insertAdjacentHTML("beforeend",`<div class="gscrim" id="pscrim" hidden></div><section class="gmodal gcand pmodal" id="pmodal" hidden role="dialog" aria-modal="true" aria-labelledby="pTitle"></section>`);
   $("#pscrim").addEventListener("click",()=>closePatChart());
   m=$("#pmodal");m.addEventListener("click",e=>{if(e.target.closest("[data-pclose]")){closePatChart();return}
     const sw=e.target.closest("[data-pswitch]");if(sw){openPatChart(m.dataset.s,sw.dataset.pswitch);return}});
@@ -2822,7 +2848,7 @@ function pmodalEl(){let m=$("#pmodal");if(m)return m;
 async function openPatChart(sym,id){
   const m=pmodalEl(),wasOpen=!m.hidden;m.dataset.s=sym;m.dataset.id=id;
   await patLoad();const x=D.by[sym]||{},e=pdef(id);
-  m.innerHTML=`<header class="ghead"><div><div class="gkind">${esc(e.name)}</div><h2 id="pTitle">${esc(sym)}<span class="pco">${esc(x.n||"")}</span></h2></div><button class="close" type="button" data-pclose aria-label="Close chart"><b aria-hidden="true">✕</b> Close</button></header><div class="gbody"><div class="empty" style="padding:40px">Loading chart…</div></div>`;
+  m.innerHTML=`<header class="ghead"><div><div class="gkind">${esc(e.name)}</div><h2 id="pTitle">${esc(sym)}<span class="pco">${esc(x.n||"")}</span></h2></div><div class="ghacts">${gfBtn()}<button class="close" type="button" data-pclose aria-label="Close chart"><b aria-hidden="true">✕</b> Close</button></div></header><div class="gbody"><div class="empty" style="padding:40px">Loading chart…</div></div>`;
   m.hidden=false;$("#pscrim").hidden=false;document.body.style.overflow="hidden";
   if(!wasOpen&&!history.state?.pchart)history.pushState({...(history.state||{}),pchart:1},"",location.href);
   try{if(!PAT)throw new Error("Pattern data isn't there yet.");await lwcLoad();
@@ -3269,7 +3295,7 @@ function vrEvidence(E){const open=store.get("vrEv",true);const by=Object.fromEnt
 
 /* ── the VCP chart window ── */
 function vbModalEl(){let m=$("#vmodal");if(m)return m;
-  document.body.insertAdjacentHTML("beforeend",`<div class="gscrim" id="vscrim" hidden></div><section class="gmodal pmodal vmodal" id="vmodal" hidden role="dialog" aria-modal="true" aria-labelledby="vTitle"></section>`);
+  document.body.insertAdjacentHTML("beforeend",`<div class="gscrim" id="vscrim" hidden></div><section class="gmodal gcand pmodal vmodal" id="vmodal" hidden role="dialog" aria-modal="true" aria-labelledby="vTitle"></section>`);
   $("#vscrim").addEventListener("click",()=>closeVbChart());
   m=$("#vmodal");m.addEventListener("click",e=>{if(e.target.closest("[data-vclose]")){closeVbChart();return}
     const nx=e.target.closest("[data-vbnext]");if(nx){openVbChart(nx.dataset.vbnext);return}});
@@ -3277,7 +3303,7 @@ function vbModalEl(){let m=$("#vmodal");if(m)return m;
 async function openVbChart(sym){const m=vbModalEl(),wasOpen=!m.hidden,R=VB_LAST,r=R?.by?.[sym];
   if(!R||!r)return;m.dataset.s=sym;
   const x=D.by[sym]||{},T=vbType(r.base_type);
-  m.innerHTML=`<header class="ghead"><div><div class="gkind">VCP scanner · ${R.tf} · ${esc(T.n)}${/Pivot$/.test(r.base_type)?"":" base"}</div><h2 id="vTitle">${esc(sym)} <span class="pco">${esc(x.n||"")}</span></h2></div><button class="close" type="button" data-vclose aria-label="Close chart"><b aria-hidden="true">✕</b> Close</button></header><div class="gbody"><div class="empty" style="padding:40px">Loading chart…</div></div>`;
+  m.innerHTML=`<header class="ghead"><div><div class="gkind">VCP scanner · ${R.tf} · ${esc(T.n)}${/Pivot$/.test(r.base_type)?"":" base"}</div><h2 id="vTitle">${esc(sym)} <span class="pco">${esc(x.n||"")}</span></h2></div><div class="ghacts">${gfBtn()}<button class="close" type="button" data-vclose aria-label="Close chart"><b aria-hidden="true">✕</b> Close</button></div></header><div class="gbody"><div class="empty" style="padding:40px">Loading chart…</div></div>`;
   m.hidden=false;$("#vscrim").hidden=false;document.body.style.overflow="hidden";
   if(!wasOpen&&!history.state?.vbchart)history.pushState({...(history.state||{}),vbchart:1},"",location.href);
   try{await lwcLoad();if(m.hidden||m.dataset.s!==sym)return;vbDrawChart(r,vbBars(R.X,R.X.by[sym],R.tf),R)}
@@ -4171,8 +4197,9 @@ function drawWatch(){
     ${tile("Up / down since added",`<span class="up">${sinceA.filter(v=>v>0).length}</span> <span style="color:var(--muted);font-weight:500">/</span> <span class="down">${sinceA.filter(v=>v<0).length}</span>`,`${alphaA.filter(v=>v>0).length} beating ${esc(benchName())}`)}
     ${tile("Best since added",best[0]?`${esc(best[0].s)} <span class="up" style="font-size:.7em">${sgn(best[0].since,1)}</span>`:"–",best.length>1?`Worst: ${esc(best[best.length-1].s)} ${sgn(best[best.length-1].since,1)}`:"")}
     ${tile("In the buy zone",rows.filter(r=>r.setup?.k==="zone").length,`${rows.filter(r=>r.setup?.k==="near").length} near pivot · ${rows.filter(r=>r.setup?.k==="stop").length} below stop`)}
-    ${tile("Alerts today",alerts.filter(a=>a.lvl!=="info").length,`${alerts.filter(a=>a.lvl==="crit").length} urgent · ${alerts.filter(a=>a.lvl==="info").length} notes`)}</div>`;
-  if(alerts.length)h+=`<div class="card" style="margin-bottom:14px"><h3 style="font-size:20px;padding:14px 16px 4px">Needs your attention today</h3><div class="alerts">${alerts.slice(0,40).map(a=>`<div class="al"><span class="tag ${a.lvl}">${a.lvl==="crit"?"Urgent":a.lvl==="warn"?"Warning":a.lvl==="good"?"Signal":"Note"}</span><div class="txt"><button type="button" class="symbtn" data-sym="${esc(a.s)}">${esc(a.s)}</button> — ${esc(a.txt)}</div></div>`).join("")}</div>${alerts.length>40?`<p class="note" style="padding:0 16px 12px">${alerts.length-40} more…</p>`:""}</div>`;
+    ${tile("Alerts today",alerts.filter(a=>a.lvl!=="info").length,`${alerts.filter(a=>a.lvl==="crit").length} urgent · ${alerts.filter(a=>a.lvl==="info").length} notes${alerts.length?`<button type="button" class="linkbtn" data-wlgo>See them below the list ↓</button>`:""}`)}</div>`;
+  /* the alerts come after the stock list (below the table) */
+  const alertsH=!alerts.length?"":`<div class="card" id="wlAlerts" style="margin:14px 0"><h3 style="font-size:20px;padding:14px 16px 4px">Needs your attention today</h3><div class="alerts">${alerts.slice(0,40).map(a=>`<div class="al"><span class="tag ${a.lvl}">${a.lvl==="crit"?"Urgent":a.lvl==="warn"?"Warning":a.lvl==="good"?"Signal":"Note"}</span><div class="txt"><button type="button" class="symbtn" data-sym="${esc(a.s)}">${esc(a.s)}</button> — ${esc(a.txt)}</div></div>`).join("")}</div>${alerts.length>40?`<p class="note" style="padding:0 16px 12px">${alerts.length-40} more…</p>`:""}</div>`;
   const stockW={k:"s",label:"Stock",l:1,fmt:r=>(r.flag?`<span class="fdot ${r.flag}" title="${FLAGS.find(f=>f[0]===r.flag)?.[1]} flag"></span>`:"")+symBtn(r.s,r.n,r.ex),sort:r=>r.s};
   const pc=(k,label,d=1)=>({k,label,fmt:r=>`<span class="num ${cls(r[k])}">${sgn(r[k],d)}</span>`});
   const lv=(k,label)=>({k,label,fmt:r=>`<span class="num">${isNum(r[k])?inr(r[k]):"–"}</span>`});
@@ -4213,8 +4240,10 @@ function drawWatch(){
     ${st.wl.view==="decide"?`<p class="note"><b>Checks</b> (hover for the list): Upside 80+, RS 70+, Stage 2, above the 50-day, industry RS 60+, VPCI 6+ gates or in a VPCI position. <b>Trim flags</b> are the exits and weak spots from the tests: a close below the 50-day (the Upside plan's exit), Upside under 50 (fresh VPCI signals with Upside under 50 made 3.4% a year against 18.1% for Upside 80+), Stage 3 or 4, RS down 15+ points in 4 weeks, the price within 5% of or below the VPCI trailing stop, a weak industry (RS under 40) or a strong industry losing 10+ RS points in 4 weeks (these lagged in testing), and results due within 7 days.</p>`:""}
     ${st.wl.view==="rot"?`<p class="note">Industry and sector strength use the group RS rating (3–12 months, as on the Rotation tab): Strong = 70+, Middle = 40–69, Weak = under 40, and Strong but fading = rated 70+ but down 10+ points in 4 weeks. In 2007–26 NSE tests, stocks in strong groups beat the average stock over the next 3 months, weak groups lagged, and strong-but-fading groups lagged too. Smaller moves (grey arrows) carried no signal.</p>`:""}
     <p class="note">Buy zone = pivot to 5% above it (IBD). Above that is extended — chasing raises risk. “Best since” and “Worst dip” use daily closes since the day added. Rows sort by any column; ✎ sets pivot, stop, target, flag and note.</p>`;
+  h+=alertsH;
   h+=historyHtml();
   $("#view").innerHTML=h;wireTables($("#view"),drawWatch);
+  $("[data-wlgo]")?.addEventListener("click",()=>$("#wlAlerts")?.scrollIntoView({behavior:"smooth",block:"start"}));
   const setCols=c=>{st.wl.cols=c;store.set("wlcols",c);drawWatch()};
   $("#wlcoladd")?.addEventListener("change",e=>{if(e.target.value)setCols([...(st.wl.cols||WLCOLS0),e.target.value])});
   document.querySelectorAll("[data-wlcol-rm]").forEach(b=>b.addEventListener("click",()=>setCols((st.wl.cols||WLCOLS0).filter(id=>id!==b.dataset.wlcolRm))));
@@ -4337,6 +4366,7 @@ const dkActive=()=>{for(let i=DK_LIVE.length-1;i>=0;i--){const K=DK_LIVE[i];if(!
 window.addEventListener("keydown",e=>{const K=dkActive();if(!K)return;const tg=e.target,tag=(tg.tagName||"").toLowerCase();
   if(["input","textarea","select"].includes(tag)||tg.isContentEditable)return;
   if(e.key==="Escape"){if(K.pend||K.tmp||K.sel||DKS.tool!=="cursor"){e.stopImmediatePropagation();e.preventDefault();K.esc()}return}
+  if((e.key==="f"||e.key==="F")&&!e.altKey&&!e.ctrlKey&&!e.metaKey&&!e.shiftKey){e.preventDefault();e.stopImmediatePropagation();gfSet(!gfOn());return}
   if((e.key==="Delete"||e.key==="Backspace")&&K.sel){e.preventDefault();e.stopImmediatePropagation();K.del();return}
   if((e.ctrlKey||e.metaKey)&&!e.shiftKey&&e.code==="KeyZ"){if(K.hist.length){e.preventDefault();e.stopImmediatePropagation();K.undo()}return}
   if(e.altKey&&!e.ctrlKey&&!e.metaKey){const t=DK_TOOLS.find(x=>x[3]&&x[3]===e.code&&(x[0]==="rect"?e.shiftKey:!e.shiftKey));if(t){e.preventDefault();e.stopImmediatePropagation();K.setTool(t[0])}}},true);
@@ -4543,6 +4573,14 @@ function drawKit(chart,series,box,scope,rows,o={}){
     try{series.detachPrimitive(prim)}catch(e){}bar.remove();DK_LIVE=DK_LIVE.filter(k=>k!==K);if(DK_BOX.get(box)===K)DK_BOX.delete(box)};
   DK_BOX.set(box,K);DK_LIVE.push(K);
   return K}
+/* "Chart only": hides everything in a chart window but the chart, its read-out line, the drawing toolbar and the
+   Range / Bars buttons, so the chart takes the whole window. One switch for every chart window, remembered (key F). */
+const GF_ICON=on=>`<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">${on?`<path d="M9 3.5v5.5H3.5M15 3.5v5.5h5.5M9 20.5V15H3.5M15 20.5V15h5.5"/>`:`<path d="M3.5 9V3.5H9M20.5 9V3.5H15M3.5 15v5.5H9M20.5 15v5.5H15"/>`}</svg>`;
+const gfOn=()=>document.body.classList.contains("gfocus");
+function gfBtn(){const on=gfOn();return `<button type="button" class="gfbtn" data-gfocus aria-pressed="${on}" title="${on?"Show the details again (F)":"Chart only: hide the details and give the chart the whole window (F)"}" aria-label="${on?"Show the details again":"Chart only"}">${GF_ICON(on)}<span>${on?"Show details":"Chart only"}</span></button>`}
+function gfSet(on){document.body.classList.toggle("gfocus",on);store.set("gfocus",on);document.querySelectorAll("[data-gfocus]").forEach(b=>{b.outerHTML=gfBtn()})}
+if(store.get("gfocus",false))document.body.classList.add("gfocus");
+document.addEventListener("click",e=>{const b=e.target.closest("[data-gfocus]");if(!b)return;e.preventDefault();e.stopPropagation();gfSet(!gfOn())},true);
 /* calls fn at most once a frame with the latest argument (crosshair read-outs) */
 function rafLatest(fn){let raf=0,arg;return a=>{arg=a;if(!raf)raf=requestAnimationFrame(()=>{raf=0;fn(arg)})}}
 
@@ -4572,7 +4610,7 @@ async function scComLoad(){if(SCC)return SCC;let r=null;try{r=await fetch(`data/
 async function scFileLoad(s){if(SCF[s])return SCF[s];let r=null;try{r=await fetch(`data/sc/${encodeURIComponent(scName(s))}.json?v=${gv()}`)}catch(e){}
   if(!r||!r.ok)throw new Error("No chart for this stock yet: it needs a price in today's data.");return SCF[s]=await r.json()}
 function smodalEl(){let m=$("#smodal");if(m)return m;
-  document.body.insertAdjacentHTML("beforeend",`<div class="gscrim scscrim" id="scscrim" hidden></div><section class="gmodal smodal" id="smodal" hidden role="dialog" aria-modal="true" aria-labelledby="sTitle"></section>`);
+  document.body.insertAdjacentHTML("beforeend",`<div class="gscrim scscrim" id="scscrim" hidden></div><section class="gmodal gcand smodal" id="smodal" hidden role="dialog" aria-modal="true" aria-labelledby="sTitle"></section>`);
   $("#scscrim").addEventListener("click",()=>closeStockChart());
   m=$("#smodal");m.addEventListener("click",sModalClick);return m}
 /* the site's levels for this stock, each optional */
@@ -4586,7 +4624,7 @@ async function scOverlays(s){const o={};
 async function openStockChart(sym){
   const sv=store.get("schart",{});Object.assign(SST,sv,{lv:{...SST.lv,...(sv.lv||{})}});
   const m=smodalEl(),wasOpen=!m.hidden,x=D.by[sym]||{};m.dataset.s=sym;
-  m.innerHTML=`<header class="ghead"><div><div class="gkind">Stock chart${x.ind?` · ${esc(x.ind)}`:x.sec?` · ${esc(x.sec)}`:""}</div><h2 id="sTitle">${esc(sym)}<span class="pco">${esc(x.n||"")}</span></h2></div><button class="close" type="button" data-sclose aria-label="Close chart"><b aria-hidden="true">✕</b> Close</button></header><div class="gbody"><div class="empty" style="padding:40px">Loading chart…</div></div>`;
+  m.innerHTML=`<header class="ghead"><div><div class="gkind">Stock chart${x.ind?` · ${esc(x.ind)}`:x.sec?` · ${esc(x.sec)}`:""}</div><h2 id="sTitle">${esc(sym)}<span class="pco">${esc(x.n||"")}</span></h2></div><div class="ghacts">${gfBtn()}<button class="close" type="button" data-sclose aria-label="Close chart"><b aria-hidden="true">✕</b> Close</button></div></header><div class="gbody"><div class="empty" style="padding:40px">Loading chart…</div></div>`;
   m.hidden=false;$("#scscrim").hidden=false;document.body.style.overflow="hidden";
   if(!wasOpen&&!history.state?.schart)history.pushState({...(history.state||{}),schart:1},"",location.href);
   try{const [C,F]=await Promise.all([scComLoad(),scFileLoad(sym),lwcLoad()]);const ov=await scOverlays(sym);
@@ -4619,7 +4657,7 @@ function drawStockChart(sym,C,F,ov){const m=$("#smodal"),x=D.by[sym]||{},P=gpal(
   const statsH=`<dl class="gstats">${kv(`Close · ${fmtDate(L1.t)}`,"₹"+inr(L1.c))}${kv("Day",sgn(chg,2),cls(chg))}${kv("RS rating",rsPill(x.rs))}${kv("Stage",stagePill(x.st,x.std,x.stdc)+(x.st===2&&isNum(x.std)?` <span class="num" style="font-weight:700">${x.stdc?"≥ ":""}${x.std}d</span>`:""))}${kv("Upside",isNum(x.up)?upPill(x.up):"–")}${EMA_N.map(n=>kv("vs EMA "+n,sgn(vsE(n),1),cls(vsE(n)))).join("")}${kv("From 52W high",sgn(fromHi,1))}</dl>`;
   const levelsH=Object.keys(SC_LV).some(k=>has[k])?`<div class="ctl"><span>Levels on the chart</span><div class="chips">${Object.keys(SC_LV).filter(k=>has[k]).map(k=>`<button type="button" class="chipbtn emachip lvchip" data-slv="${k}" aria-pressed="${SST.lv[k]!==false}" title="Show or hide: ${esc(lvLab[k])}"><i style="--c:${lvCol[k]}"></i>${esc(lvLab[k])}</button>`).join("")}</div></div>`:"";
   m.querySelector(".gbody").innerHTML=`${phone?"":statsH}
-   <div class="gtools">
+   <div class="gtools gmain">
      <div class="ctl"><span>Range</span>${segS("range",ranges,SST.range)}</div>
      <div class="ctl"><span>Bars</span>${segS("int",["D","W"],SST.int,{D:"Daily",W:"Weekly"})}</div>
      <div class="ctl"><span>Averages${SST.int==="W"?" (weekly bars)":""}</span>${emaChips("data-sema")}</div>
@@ -4750,11 +4788,11 @@ const mkBtn=(k,name)=>mkHas(k)?`<button type="button" class="mkbtn" data-mchart=
 const mkUsd=v=>!isNum(v)?"–":"$"+v.toLocaleString("en-US",{minimumFractionDigits:v>=10000?0:2,maximumFractionDigits:v>=10000?0:2});
 const mkFmt=(F,v,inrMode)=>F.kind==="index"?inr(v):inrMode?"₹"+inr(Math.round(v)):mkUsd(v);
 function mmodalEl(){let m=$("#mkmodal");if(m)return m;
-  document.body.insertAdjacentHTML("beforeend",`<div class="gscrim scscrim" id="mkscrim" hidden></div><section class="gmodal smodal" id="mkmodal" hidden role="dialog" aria-modal="true" aria-labelledby="mTitle"></section>`);
+  document.body.insertAdjacentHTML("beforeend",`<div class="gscrim scscrim" id="mkscrim" hidden></div><section class="gmodal gcand smodal" id="mkmodal" hidden role="dialog" aria-modal="true" aria-labelledby="mTitle"></section>`);
   $("#mkscrim").addEventListener("click",()=>closeMktChart());m=$("#mkmodal");m.addEventListener("click",mModalClick);return m}
 async function openMktChart(k){const sv=store.get("mchart",{});Object.assign(MST,sv);
   const m=mmodalEl(),wasOpen=!m.hidden,c=MKD?.by?.[k];m.dataset.k=k;
-  m.innerHTML=`<header class="ghead"><div><div class="gkind">${esc(c?MK_KIND[c.kind]:"Chart")}</div><h2 id="mTitle">${esc(c?.n||k)}</h2></div><button class="close" type="button" data-mkclose aria-label="Close chart"><b aria-hidden="true">✕</b> Close</button></header><div class="gbody"><div class="empty" style="padding:40px">Loading chart…</div></div>`;
+  m.innerHTML=`<header class="ghead"><div><div class="gkind">${esc(c?MK_KIND[c.kind]:"Chart")}</div><h2 id="mTitle">${esc(c?.n||k)}</h2></div><div class="ghacts">${gfBtn()}<button class="close" type="button" data-mkclose aria-label="Close chart"><b aria-hidden="true">✕</b> Close</button></div></header><div class="gbody"><div class="empty" style="padding:40px">Loading chart…</div></div>`;
   m.hidden=false;$("#mkscrim").hidden=false;document.body.style.overflow="hidden";
   if(!wasOpen&&!history.state?.mchart)history.pushState({...(history.state||{}),mchart:1},"",location.href);
   try{const [F]=await Promise.all([mkFile(k),lwcLoad()]);if(m.hidden||m.dataset.k!==k)return;drawMktChart(F)}
@@ -4789,7 +4827,7 @@ function drawMktChart(F){const m=$("#mkmodal"),P=gpal();MCX={F};
   const note=idx?`NSE's own index values, daily to ${fmtDate(F.asof)}. EMA = exponential moving average of the close over 21, 50 and 200 ${MST.int==="W"?"weeks":"sessions"}, worked out on the full history.${rsOk?" RS line: the index divided by NIFTY 500, 100 at the first bar; blue dots mark the RS line at a 52-week high.":""}`
     :`${F.k==="btc"?"Bitcoin in US$ (Yahoo Finance, BTC-USD); it trades every day.":`COMEX ${F.k} futures, front month (Yahoo Finance), US$ per troy ounce.`} The latest bar may still have been trading when the site updated (${fmtDate(F.asof)}); it is corrected the next evening. ${F.fx?`The ₹ view multiplies each bar by that day's US$/₹ rate${F.k==="gold"?", per 10 g":F.k==="silver"?", per kg":""} — the world price in rupees; Indian prices (MCX) also carry import duty and GST, so they run a few percent higher. `:""}<b>For reference only:</b> not used in any breadth number, scanner or anywhere else on the site.`;
   m.querySelector(".gbody").innerHTML=`${phone?"":statsH}
-   <div class="gtools">
+   <div class="gtools gmain">
      <div class="ctl"><span>Range</span>${segM("range",ranges,MST.range)}</div>
      <div class="ctl"><span>Bars</span>${segM("int",["D","W"],MST.int,{D:"Daily",W:"Weekly"})}</div>
      ${idx||!F.fx?"":`<div class="ctl"><span>Price in</span>${segM("cur",["usd","inr"],MST.cur,{usd:"US$",inr:"₹"})}</div>`}
