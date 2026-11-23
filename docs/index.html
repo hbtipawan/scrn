@@ -1270,6 +1270,36 @@ body.ssopen{overflow:hidden}
 .scbtn svg{width:18px;height:18px}
 .scbtn:hover{color:var(--accent-ink);background:var(--soft)}
 .scbtn:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+
+/* Breadth tab: chart buttons on the index / gold / silver / bitcoin cards */
+.mtitle{display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-width:0}
+.mkbtn{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:3px 12px 3px 9px;font-size:14.5px;font-weight:700;cursor:pointer;min-height:34px;line-height:1}
+.mkbtn svg{width:17px;height:17px;flex:none}
+.mkbtn:hover{border-color:var(--accent);color:var(--accent-ink)}
+.mkbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mtag{font-size:12.5px;font-weight:700;color:var(--muted);border:1px dashed var(--line);border-radius:6px;padding:1px 7px;white-space:nowrap}
+.msub{margin:-2px 2px 4px;font-size:14px;color:var(--muted)}
+/* drawing & measuring tools above every candle chart */
+.dkbar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 14px;margin:6px 0 4px;padding:5px 8px;border:1px solid var(--line);border-radius:12px;background:var(--soft)}
+.dkrow{display:flex;flex-wrap:wrap;align-items:center;gap:4px 0;min-width:0}
+.dkg{display:flex;align-items:center;gap:2px;padding:0 8px;border-right:1px solid var(--line)}
+.dkg:first-child{padding-left:0}.dkg:last-child{border-right:0;padding-right:0}
+.dkb{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-width:38px;height:38px;padding:0 7px;border:1px solid transparent;border-radius:8px;background:none;color:var(--ink);cursor:pointer;font-weight:700;font-size:14.5px;font-family:inherit}
+.dkb svg{width:22px;height:22px;flex:none}
+.dkb:hover:not(:disabled):not([aria-pressed="true"]){background:var(--card);border-color:var(--line)}
+.dkb[aria-pressed="true"]{background:var(--sel);color:var(--sel-ink);border-color:color-mix(in srgb,var(--sel-ink) 30%,transparent)}
+.dkb:disabled{opacity:.35;cursor:default}
+.dkb:focus-visible,.dksw:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.dksw{width:24px;height:24px;border-radius:50%;border:2px solid var(--card);background:var(--c);box-shadow:0 0 0 1.5px var(--line);cursor:pointer;margin:0 3px;padding:0;flex:none}
+.dksw[aria-pressed="true"]{box-shadow:0 0 0 2.5px var(--ink)}
+.dkw{flex-direction:column;gap:3px;width:40px}
+.dkw i{display:block;width:22px;background:currentColor;border-radius:2px}
+.dkw i.solid,.dkw i.dashed,.dkw i.dotted{height:2.5px}
+.dkw i.dashed{background:repeating-linear-gradient(90deg,currentColor 0 5px,transparent 5px 8px)}
+.dkw i.dotted{background:repeating-linear-gradient(90deg,currentColor 0 2.5px,transparent 2.5px 5px)}
+.dkhint{flex:1 1 260px;min-width:0;font-size:15px;color:var(--muted);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dkclr{min-width:124px}
+@media (max-width:700px){.dkbar{padding:4px 6px;gap:2px}.dkrow{flex-wrap:nowrap;overflow-x:auto;width:100%;scrollbar-width:thin;padding-bottom:2px}.dkg{flex:none}.dkhint{flex:1 1 100%;font-size:14.5px}}
 .dacts .scopen{display:inline-flex;align-items:center;gap:8px}
 .dacts .scopen svg{width:18px;height:18px}
 .vr-setup{background:color-mix(in srgb,var(--accent) 22%,var(--card));color:var(--accent-ink);border:1px solid color-mix(in srgb,var(--accent) 55%,var(--line))}
@@ -1909,7 +1939,7 @@ async function openGroupChart(kind,name){
   catch(e){m.querySelector(".gbody").innerHTML=`<div class="empty" style="padding:40px">${esc(e.message||String(e))}</div>`}
   m.querySelector("[data-gclose]")?.focus()}
 let GCH_BACK=false;
-function closeGroupChart(fromPop){const m=$("#gmodal");if(!m||m.hidden)return;if(GCH){GCH.ro?.disconnect();GCH.chart.remove();GCH=null}
+function closeGroupChart(fromPop){const m=$("#gmodal");if(!m||m.hidden)return;if(GCH){GCH.ro?.disconnect();GCH.dk?.destroy();GCH.chart.remove();GCH=null}
   m.hidden=true;$("#gscrim").hidden=true;if($("#drawer").hidden)document.body.style.overflow="";
   if(!fromPop&&history.state?.gchart){GCH_BACK=true;history.back()}}
 window.addEventListener("popstate",()=>{if(GCH_BACK){GCH_BACK=false;return}if(!history.state?.gchart&&$("#gmodal")&&!$("#gmodal").hidden&&$("#drawer").hidden)closeGroupChart(true)});
@@ -1976,11 +2006,11 @@ function gSetRange(){if(!GCH)return;const n=GCH.rows.length,per={"3M":63,"6M":12
   const bars=per?Math.round(per/(GST.int==="W"?5:1)):n;GCH.chart.timeScale().setVisibleLogicalRange({from:Math.max(-1,n-bars),to:n+2})}
 async function gRenderChart(){
   const m=$("#gmodal"),r=gRow(m.dataset.k,m.dataset.n),F=GXF[r.id],u=gU(r),L=window.LightweightCharts,P=gpal(),W=GST.int==="W";
-  const box=$("#gchart");if(!box)return;if(GCH){GCH.ro?.disconnect();GCH.chart.remove();GCH=null}
+  const box=$("#gchart");if(!box)return;if(GCH){GCH.ro?.disconnect();GCH.dk?.destroy();GCH.chart.remove();GCH=null}
   const rows=gRows(F,u,W);if(rows.length<5){box.innerHTML=`<div class="empty">Not enough history yet.</div>`;return}
   let cmpRows=null;if(GST.cmp&&GST.cmp!=="__bench"){try{const CF=await gfileLoad(GST.cmp);const cr=gRows(CF,gU(GXD.id[GST.cmp]),W);cmpRows=new Map(cr.map(q=>[q.t,q.c]))}catch(e){}}
   const phone=matchMedia("(max-width:700px)").matches;
-  const chart=L.createChart(box,{autoSize:true,layout:{background:{type:"solid",color:P.card},textColor:P.muted,fontFamily:"IBM Plex Sans, system-ui, sans-serif",fontSize:phone?12:13,attributionLogo:true,panes:{separatorColor:P.line,separatorHoverColor:rgba(P.accent,.35),enableResize:true}},
+  const chart=L.createChart(box,{autoSize:true,kineticScroll:{mouse:true,touch:true},layout:{background:{type:"solid",color:P.card},textColor:P.muted,fontFamily:"IBM Plex Sans, system-ui, sans-serif",fontSize:phone?12:13,attributionLogo:true,panes:{separatorColor:P.line,separatorHoverColor:rgba(P.accent,.35),enableResize:true}},
     grid:{vertLines:{color:rgba(P.track.length>6?P.track:P.line,.6)},horzLines:{color:P.track}},rightPriceScale:{borderColor:P.line,minimumWidth:phone?52:64},
     timeScale:{borderColor:P.line,rightOffset:3,minBarSpacing:0.5},crosshair:{mode:L.CrosshairMode.Normal},localization:{locale:"en-IN"},handleScale:{axisPressedMouseMove:{time:true,price:false}}});
   const T=rows.map(q=>q.t),C=rows.map(q=>q.c),line=(o)=>({priceLineVisible:false,lastValueVisible:false,crosshairMarkerVisible:false,lineWidth:2,...o});
@@ -2025,13 +2055,14 @@ async function gRenderChart(){
      price = linear / log / % from the left edge when comparing; RS line = 100 at the left edge; the rest linear */
   [GST.cmp?2:GST.scale==="log"?1:0,0,3,0,0].forEach((md,i)=>chart.priceScale("right",i).applyOptions({mode:md}));
   GCH={chart,rows,cs,rsv,es};
+  GCH.dk=drawKit(chart,cs,box,"g:"+r.id,rows,{weekly:W});
   gSetRange();
   /* pane titles */
   const labels=phone?["Index"+(GST.cmp?" · % from left edge":""),"Turnover (₹ Cr)","RS line vs NIFTY 500","% above 50 & 200 DMA","Group RS rating"]
     :["Index"+(GST.cmp?" · % change from left edge":""),"Turnover of members (₹ Cr)","RS line vs NIFTY 500 (100 = left edge of the chart)","% of members above 50-day (blue) and 200-day (amber) average","Group RS rating (1–99)"];
   const placeLabels=()=>{const lab=$("#gplab");if(!lab||!GCH)return;let top=0;lab.innerHTML=GCH.chart.panes().map((p,i)=>{const h=`<span style="top:${top+4}px">${esc(labels[i]||"")}</span>`;top+=p.getHeight()+1;return h}).join("")};
   requestAnimationFrame(placeLabels);GCH.ro=new ResizeObserver(()=>requestAnimationFrame(placeLabels));GCH.ro.observe(box);
-  chart.subscribeCrosshairMove(prm=>{GCH.lastT=prm.time;gReadout(prm.time)});
+  {const gro=rafLatest(t=>gReadout(t));chart.subscribeCrosshairMove(prm=>{if(GCH){GCH.lastT=prm.time;gro(prm.time)}})}
   chart.timeScale().subscribeVisibleLogicalRangeChange(()=>{if(GCH)gReadout(GCH.lastT)});gReadout(null)}
 function gReadout(t){const el=$("#gread");if(!el||!GCH)return;const rows=GCH.rows;let i=t?rows.findIndex(q=>q.t===t):rows.length-1;if(i<0)i=rows.length-1;const q=rows[i],p=rows[i-1];
   const ch=p?(q.c/p.c-1)*100:null;
@@ -2799,7 +2830,7 @@ async function openPatChart(sym,id){
     const F=await patFile(sym);if(m.hidden||m.dataset.s!==sym||m.dataset.id!==id)return;drawPatChart(r,F)}
   catch(err){if(m.dataset.s===sym)m.querySelector(".gbody").innerHTML=`<div class="empty" style="padding:40px">${esc(err.message||String(err))}</div>`}
   m.querySelector("[data-pclose]")?.focus()}
-function closePatChart(fromPop){const m=$("#pmodal");if(!m||m.hidden)return;if(PCH){PCH.ro?.disconnect();PCH.chart.remove();PCH=null}
+function closePatChart(fromPop){const m=$("#pmodal");if(!m||m.hidden)return;if(PCH){PCH.ro?.disconnect();PCH.dk?.destroy();PCH.chart.remove();PCH=null}
   m.hidden=true;$("#pscrim").hidden=true;if($("#drawer").hidden&&(!$("#gmodal")||$("#gmodal").hidden))document.body.style.overflow="";
   if(!fromPop&&history.state?.pchart){PCH_BACK=true;history.back()}}
 window.addEventListener("popstate",()=>{if(PCH_BACK){PCH_BACK=false;return}if(!history.state?.pchart&&$("#pmodal")&&!$("#pmodal").hidden&&$("#drawer").hidden)closePatChart(true)});
@@ -2836,11 +2867,11 @@ function drawPatChart(r,F){const m=$("#pmodal"),x=D.by[r.s]||{},e=pdef(r.id),sel
    <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap"><button type="button" class="btn" data-sym="${esc(r.s)}" data-popen="1">Open the stock card</button><a class="btn alt" href="${tv(r.s)}" target="_blank" rel="noopener">TradingView ↗</a></div>`;
   pRenderChart(r,F)}
 function pRenderChart(r,F){const box=$("#pchartbox"),L=window.LightweightCharts,P=gpal(),sell=pSell(r),lv=pLevel(r);if(!box||!L)return;
-  if(PCH){PCH.ro?.disconnect();PCH.chart.remove();PCH=null}
+  if(PCH){PCH.ro?.disconnect();PCH.dk?.destroy();PCH.chart.remove();PCH=null}
   const rows=[];for(let i=0;i<(F.d||[]).length;i++){const o=F.o[i],h=F.h[i],l=F.l[i],c=F.c[i];if([o,h,l,c].every(isNum))rows.push({t:F.d[i],o,h,l,c,v:F.v?.[i]||0})}
   if(rows.length<5){box.innerHTML=`<div class="empty">Not enough history.</div>`;return}
   const phone=matchMedia("(max-width:700px)").matches;
-  const chart=L.createChart(box,{autoSize:true,layout:{background:{type:"solid",color:P.card},textColor:P.muted,fontFamily:"IBM Plex Sans, system-ui, sans-serif",fontSize:phone?12:13,attributionLogo:true,panes:{separatorColor:P.line,separatorHoverColor:rgba(P.accent,.35),enableResize:true}},
+  const chart=L.createChart(box,{autoSize:true,kineticScroll:{mouse:true,touch:true},layout:{background:{type:"solid",color:P.card},textColor:P.muted,fontFamily:"IBM Plex Sans, system-ui, sans-serif",fontSize:phone?12:13,attributionLogo:true,panes:{separatorColor:P.line,separatorHoverColor:rgba(P.accent,.35),enableResize:true}},
     grid:{vertLines:{color:rgba(P.track.length>6?P.track:P.line,.6)},horzLines:{color:P.track}},rightPriceScale:{borderColor:P.line,minimumWidth:phone?52:64},
     timeScale:{borderColor:P.line,rightOffset:r.st==="fm"?8:4,minBarSpacing:0.5},crosshair:{mode:L.CrosshairMode.Normal},localization:{locale:"en-IN"},handleScale:{axisPressedMouseMove:{time:true,price:false}}});
   const T=rows.map(q=>q.t),C=rows.map(q=>q.c),idx=new Map(T.map((t,i)=>[t,i])),line=o=>({priceLineVisible:false,lastValueVisible:false,crosshairMarkerVisible:false,lineWidth:2,...o});
@@ -2875,12 +2906,13 @@ function pRenderChart(r,F){const box=$("#pchartbox"),L=window.LightweightCharts,
   const first=Math.min(...(r.pts||[]).map(q=>idx.get(q[0])).filter(i=>i!=null),...(r.lines||[]).map(l=>idx.get(l[0][0])).filter(i=>i!=null),T.length-60);
   chart.timeScale().setVisibleLogicalRange({from:Math.max(-1,first-30),to:T.length+(r.st==="fm"?6:3)});
   PCH={chart,rows};
+  PCH.dk=drawKit(chart,cs,box,"s:"+r.s,rows,{});
   const labels=["Price · the pattern is drawn on it","Volume"];
   const placeLabels=()=>{const lab=$("#pplab");if(!lab||!PCH)return;let top=0;lab.innerHTML=PCH.chart.panes().map((p,i)=>{const h=`<span style="top:${top+4}px">${esc(labels[i]||"")}</span>`;top+=p.getHeight()+1;return h}).join("")};
   requestAnimationFrame(placeLabels);PCH.ro=new ResizeObserver(()=>requestAnimationFrame(placeLabels));PCH.ro.observe(box);
   const rd=t=>{const el=$("#pread");if(!el||!PCH)return;let i=t?idx.get(t):rows.length-1;if(i==null)i=rows.length-1;const q=rows[i],p=rows[i-1],ch=p?(q.c/p.c-1)*100:null;
     el.innerHTML=`<b>${fmtDate(q.t)}</b><span>O <b class="num">${inr(q.o)}</b></span><span>H <b class="num">${inr(q.h)}</b></span><span>L <b class="num">${inr(q.l)}</b></span><span>C <b class="num">${inr(q.c)}</b> <span class="num ${cls(ch)}">${sgn(ch,2)}</span></span><span>Volume <b class="num">${isNum(q.v)?Math.round(q.v).toLocaleString("en-IN"):"–"}</b></span>`};
-  chart.subscribeCrosshairMove(prm=>rd(prm.time));rd(null)}
+  {const rro=rafLatest(rd);chart.subscribeCrosshairMove(prm=>rro(prm.time))}rd(null)}
 
 /* ════════════════════ VCP SCANNER (Scanners → VCP scanner) ════════════════════
    The VCP breakout scanner of the VCP app (vcp_core.analyze_vcp), ported line by line to
@@ -3251,7 +3283,7 @@ async function openVbChart(sym){const m=vbModalEl(),wasOpen=!m.hidden,R=VB_LAST,
   try{await lwcLoad();if(m.hidden||m.dataset.s!==sym)return;vbDrawChart(r,vbBars(R.X,R.X.by[sym],R.tf),R)}
   catch(err){m.querySelector(".gbody").innerHTML=`<div class="empty" style="padding:40px">${esc(err.message||String(err))}</div>`}
   m.querySelector("[data-vclose]")?.focus()}
-function closeVbChart(fromPop){const m=$("#vmodal");if(!m||m.hidden)return;if(VBCH){VBCH.ro?.disconnect();VBCH.chart.remove();VBCH=null}
+function closeVbChart(fromPop){const m=$("#vmodal");if(!m||m.hidden)return;if(VBCH){VBCH.ro?.disconnect();VBCH.dk?.destroy();VBCH.chart.remove();VBCH=null}
   m.hidden=true;$("#vscrim").hidden=true;if($("#drawer").hidden&&(!$("#gmodal")||$("#gmodal").hidden)&&(!$("#pmodal")||$("#pmodal").hidden))document.body.style.overflow="";
   if(!fromPop&&history.state?.vbchart){VBCH_BACK=true;history.back()}}
 window.addEventListener("popstate",()=>{if(VBCH_BACK){VBCH_BACK=false;return}if(!history.state?.vbchart&&$("#vmodal")&&!$("#vmodal").hidden&&$("#drawer").hidden)closeVbChart(true)});
@@ -3349,10 +3381,10 @@ class VbBoxes{constructor(boxes){this.b=boxes;this.ch=null;this.se=null}
           if(b.under){c.textBaseline="top";c.fillText(b.label,L+3*hr,Bt+3*vr)}
           else{c.textBaseline="bottom";if(b.al==="r"){c.textAlign="right";c.fillText(b.label,R-2*hr,Tp-3*vr);c.textAlign="left"}else c.fillText(b.label,L+3*hr,Tp-3*vr)}}}})}})}]}}
 function vbRenderChart(r,A,R){const box=$("#vchartbox"),L=window.LightweightCharts,P=gpal(),g=r.g,wk=R.tf==="Weekly";if(!box||!L)return;
-  if(VBCH){VBCH.ro?.disconnect();VBCH.chart.remove();VBCH=null}
+  if(VBCH){VBCH.ro?.disconnect();VBCH.dk?.destroy();VBCH.chart.remove();VBCH=null}
   const n=A.n,rows=[];for(let i=0;i<n;i++)rows.push({t:A.d[i],o:A.o[i],h:A.h[i],l:A.l[i],c:A.c[i],v:A.v[i]});
   const phone=matchMedia("(max-width:700px)").matches,tcol=cssv(vbType(r.base_type).c)||P.s3;
-  const chart=L.createChart(box,{autoSize:true,layout:{background:{type:"solid",color:P.card},textColor:P.muted,fontFamily:"IBM Plex Sans, system-ui, sans-serif",fontSize:phone?12:13,attributionLogo:true,panes:{separatorColor:P.line,separatorHoverColor:rgba(P.accent,.35),enableResize:true}},
+  const chart=L.createChart(box,{autoSize:true,kineticScroll:{mouse:true,touch:true},layout:{background:{type:"solid",color:P.card},textColor:P.muted,fontFamily:"IBM Plex Sans, system-ui, sans-serif",fontSize:phone?12:13,attributionLogo:true,panes:{separatorColor:P.line,separatorHoverColor:rgba(P.accent,.35),enableResize:true}},
     grid:{vertLines:{color:rgba(P.track.length>6?P.track:P.line,.6)},horzLines:{color:P.track}},rightPriceScale:{borderColor:P.line,minimumWidth:phone?52:64},
     timeScale:{borderColor:P.line,rightOffset:r.status==="Coiling"?10:6,minBarSpacing:0.5},crosshair:{mode:L.CrosshairMode.Normal},localization:{locale:"en-IN"},handleScale:{axisPressedMouseMove:{time:true,price:false}}});
   const T=rows.map(q=>q.t),C=rows.map(q=>q.c),line=o=>({priceLineVisible:false,lastValueVisible:false,crosshairMarkerVisible:false,lineWidth:2,...o});
@@ -3398,13 +3430,14 @@ function vbRenderChart(r,A,R){const box=$("#vchartbox"),L=window.LightweightChar
   const first=Math.min(g.a,kind==="flat"?g.f[0]:g.a,kind==="htf"?g.p:g.a);
   chart.timeScale().setVisibleLogicalRange({from:Math.max(-1,phone?Math.min(first-10,n-(wk?40:70)):Math.min(first-40,n-(wk?70:130))),to:n+(r.status==="Coiling"?(phone?4:8):(phone?2:4))});
   VBCH={chart,rows};
+  VBCH.dk=drawKit(chart,cs,box,"s:"+r.s,rows,{weekly:wk});
   const labels=["Price · the scanner's base is drawn on it",`Volume · grey line = 50-${wk?"week":"day"} average`];
   const place=()=>{const lab=$("#vplab");if(!lab||!VBCH)return;let top=0;lab.innerHTML=VBCH.chart.panes().map((p,i)=>{const h=`<span style="top:${top+4}px">${esc(labels[i]||"")}</span>`;top+=p.getHeight()+1;return h}).join("")};
   requestAnimationFrame(place);VBCH.ro=new ResizeObserver(()=>requestAnimationFrame(place));VBCH.ro.observe(box);
   const idx=new Map(T.map((t,i)=>[t,i]));
   const rd=t=>{const el=$("#vread");if(!el||!VBCH)return;let i=t?idx.get(t):rows.length-1;if(i==null)i=rows.length-1;const q=rows[i],p=rows[i-1],chg=p?(q.c/p.c-1)*100:null;
     el.innerHTML=`<b>${wk&&i===rows.length-1?"Week to "+fmtDate(R.X.asof):wk?"Week to "+fmtDate(q.t):fmtDate(q.t)}</b><span>O <b class="num">${inr(q.o)}</b></span><span>H <b class="num">${inr(q.h)}</b></span><span>L <b class="num">${inr(q.l)}</b></span><span>C <b class="num">${inr(q.c)}</b> <span class="num ${cls(chg)}">${sgn(chg,2)}</span></span><span>Volume <b class="num">${Math.round(q.v).toLocaleString("en-IN")}</b>${isNum(v50[i])?` <span class="num">(${(q.v/v50[i]).toFixed(1)}× avg)</span>`:""}</span>`};
-  chart.subscribeCrosshairMove(prm=>rd(prm.time));rd(null)}
+  {const rro=rafLatest(rd);chart.subscribeCrosshairMove(prm=>rro(prm.time))}rd(null)}
 
 /* ════════════════════ STAGE 2 PHASES (Scanners → Stage 2 phases) ════════════════════
    stage2.json (scripts/stage2.py): every Stage 2 stock with its phase (E/M/L from maturity
@@ -4058,6 +4091,7 @@ function wlMerge(a,b){ // first connect on a device that already has lists: keep
   for(const [k,v] of Object.entries(older.meta||{}))if(!out.meta[k])out.meta[k]=v;
   if(older.mb){out.mb=out.mb||{open:[],closed:[]};for(const key of ["open","closed"]){const have=new Set((out.mb[key]||[]).map(x=>x.s+x.d+(x.sd||"")));for(const x of older.mb[key]||[])if(!have.has(x.s+x.d+(x.sd||"")))(out.mb[key]=out.mb[key]||[]).push(x)}}
   const seen=new Set(out.log.map(e=>e.s+e.d+e.o));for(const e of older.log||[])if(!seen.has(e.s+e.d+e.o))out.log.push(e);
+  if(older.drw){out.drw=out.drw||{};for(const [k,v] of Object.entries(older.drw))if(!out.drw[k])out.drw[k]=v}   // chart drawings
   out.updated=Date.now();return out}
 async function syncConnect(tok){const w=wlGet();const mine=await gh("/gists?per_page=100",null,tok);let g=mine.find(x=>x.files&&x.files[GFILE]);
   if(g){const full=await gh("/gists/"+g.id,null,tok);let remote=null;try{remote=JSON.parse(full.files[GFILE].content)}catch(e){}
@@ -4072,10 +4106,10 @@ async function syncPull(){const c=syncCfg.get();if(!c)return;try{const full=awai
 let syncT=null;
 function syncPushSoon(){const c=syncCfg.get();if(!c)return;clearTimeout(syncT);syncT=setTimeout(async()=>{try{await gh("/gists/"+c.id,{method:"PATCH",body:JSON.stringify({files:{[GFILE]:{content:JSON.stringify(wlGet())}}})},c.tok);c.at=Date.now();c.err=null}catch(e){c.err=e.message;toast("Sync failed — saved on this device")}syncCfg.set(c)},1500)}
 function syncDialog(){const c=syncCfg.get();
-  modal(c?`<form><h3>Sync is on</h3><p>Your watchlists are saved to a private GitHub gist and kept the same on every device where you connect the same token. Last synced: ${c.at?new Date(c.at).toLocaleString("en-IN"):"–"}.${c.err?`<br><span class="err">${esc(c.err)}</span>`:""}</p>
+  modal(c?`<form><h3>Sync is on</h3><p>Your watchlists (and the lines you draw on charts) are saved to a private GitHub gist and kept the same on every device where you connect the same token. Last synced: ${c.at?new Date(c.at).toLocaleString("en-IN"):"–"}.${c.err?`<br><span class="err">${esc(c.err)}</span>`:""}</p>
       <p style="font-size:15px"><b>Telegram alerts:</b> save this same token as the <code>GIST_TOKEN</code> secret in your repository and the Telegram bot reads these lists — your pivot, stop and target levels — live during market hours (README → Telegram alerts).</p>
       <div class="acts"><button type="button" class="ghost" data-mclose>Close</button><button type="button" class="ghost" id="syncnow">Sync now</button><button class="btn danger" type="submit">Turn off on this device</button></div></form>`
-    :`<form><h3>Sync across your devices</h3><p>Watchlists are saved in this browser. To see the same lists on your phone and PC, store them in a private GitHub gist (free, only you can change it):</p>
+    :`<form><h3>Sync across your devices</h3><p>Watchlists and chart drawings are saved in this browser. To see the same lists on your phone and PC, store them in a private GitHub gist (free, only you can change it):</p>
       <ol><li>Open <a href="https://github.com/settings/tokens/new?scopes=gist&description=PKCSCREEN%20watchlists" target="_blank" rel="noopener">this GitHub page</a> (signed in as you). It creates a token that can only read and write gists. Choose an expiry, then click <b>Generate token</b>.</li>
       <li>Copy the token (starts with <code>ghp_</code>) and paste it below. Do the same on your other device.</li></ol>
       <input name="tok" placeholder="ghp_…" autocomplete="off" spellcheck="false" aria-label="GitHub token" required>
@@ -4253,6 +4287,265 @@ function wirePriceChart(s){const box=$("#pchart");if(!box)return;const svg=box.q
     const bx=box.getBoundingClientRect();let left=sx/W*r.width+(r.left-bx.left)+12;if(left+tip.offsetWidth>bx.width-6)left-=tip.offsetWidth+24;tip.style.left=Math.max(4,left)+"px";tip.style.top="56px"};
   const out=()=>{tip.hidden=true;xh.setAttribute("opacity","0")};svg.addEventListener("mousemove",mv);svg.addEventListener("touchmove",mv,{passive:true});svg.addEventListener("touchstart",mv,{passive:true});svg.addEventListener("mouseleave",out);svg.addEventListener("touchend",out)}
 
+/* ════════════════════ DRAWING & MEASURING TOOLS (every candle chart) ════════════════════
+   TradingView-style tools on the price pane of the stock, group, pattern, VCP and market charts: trend line, ray,
+   extended line, horizontal line and ray, vertical line, parallel channel, rectangle, Fib retracement; to measure: the
+   ruler (or Shift + click), price range, date range, date and price range.
+   A drawing is a list of points as (date, price), so it stays put across daily / weekly bars, ranges and log scale.
+   Kept per stock (the stock, pattern and VCP windows share them), per group and per market, inside the watchlists
+   file, so Sync carries them to your other devices. One Lightweight Charts primitive paints them on the price pane in
+   the same frame as the candles, so they move with every pan and zoom. */
+const DK_TOOLS=[["cursor","Select, move and edit drawings (Esc)",0,""],["trend","Trend line (Alt+T)",2,"KeyT"],["ray","Ray",2,""],["ext","Extended line",2,""],
+  ["hline","Horizontal line (Alt+H)",1,"KeyH"],["hray","Horizontal ray (Alt+J)",1,"KeyJ"],["vline","Vertical line (Alt+V)",1,"KeyV"],["chan","Parallel channel",3,""],
+  ["rect","Rectangle (Alt+Shift+R)",2,"KeyR"],["fib","Fib retracement (Alt+F)",2,"KeyF"],
+  ["ruler","Measure — or hold Shift and click on the chart",2,""],["prange","Price range",2,""],["drange","Date range",2,""],["dprange","Date and price range",2,""]];
+const DK_NEED=Object.fromEntries(DK_TOOLS.map(t=>[t[0],t[2]]));
+const DK_NAME=Object.fromEntries(DK_TOOLS.map(t=>[t[0],t[1].replace(/ \(.*$| —.*$/,"")]));
+const DK_ICON={cursor:`<path d="M6 3l12.5 9.2-5.6 1.1 3.1 6.3-2.6 1.3-3.1-6.4L6 18.6z" fill="currentColor" stroke="none"/>`,
+  trend:`<path d="M4.5 19L19.5 5"/><circle cx="4.5" cy="19" r="2.3" fill="currentColor"/><circle cx="19.5" cy="5" r="2.3" fill="currentColor"/>`,
+  ray:`<path d="M4.5 19L23 3.4"/><circle cx="4.5" cy="19" r="2.3" fill="currentColor"/><circle cx="12.5" cy="12.3" r="2.3" fill="currentColor"/>`,
+  ext:`<path d="M1 22L23 2"/><circle cx="8" cy="15.6" r="2.3" fill="currentColor"/><circle cx="16" cy="8.4" r="2.3" fill="currentColor"/>`,
+  hline:`<path d="M1.5 12h21"/><circle cx="12" cy="12" r="2.3" fill="currentColor"/>`,
+  hray:`<path d="M6 12h17"/><circle cx="6" cy="12" r="2.3" fill="currentColor"/>`,
+  vline:`<path d="M12 1.5v21"/><circle cx="12" cy="12" r="2.3" fill="currentColor"/>`,
+  chan:`<path d="M2.5 14.5L16 4.5M8 20.5L21.5 10.5"/><path d="M5.3 17.5L18.8 7.5" stroke-dasharray="2 2.4" stroke-width="1.3"/>`,
+  rect:`<rect x="3.5" y="6" width="17" height="12" rx="1.2"/><circle cx="3.5" cy="6" r="1.9" fill="currentColor"/><circle cx="20.5" cy="18" r="1.9" fill="currentColor"/>`,
+  fib:`<path d="M2.5 4.5h19M2.5 9.5h19M2.5 13.5h19M2.5 19.5h19"/><path d="M4.5 19.5L19.5 4.5" stroke-dasharray="2 2.2" stroke-width="1.3"/>`,
+  ruler:`<path d="M2.8 16.2L16.2 2.8l5 5L7.8 21.2z"/><path d="M7 12l2.2 2.2M10 9l1.6 1.6M13 6l2.2 2.2"/>`,
+  prange:`<path d="M12 4v16M8.2 7.8L12 4l3.8 3.8M8.2 16.2L12 20l3.8-3.8"/><path d="M4 3h16M4 21h16" stroke-width="1.4"/>`,
+  drange:`<path d="M4 12h16M7.8 8.2L4 12l3.8 3.8M16.2 8.2L20 12l-3.8 3.8"/><path d="M2 4v16M22 4v16" stroke-width="1.4"/>`,
+  dprange:`<rect x="2.5" y="4.5" width="19" height="15" rx="1.2" stroke-width="1.4"/><path d="M6 16.5L17.5 7.5M12.5 7.5h5v5"/>`,
+  mag:`<path d="M5.5 3.5v7.5a6.5 6.5 0 0 0 13 0V3.5h-4.2V11a2.3 2.3 0 0 1-4.6 0V3.5z"/><path d="M5.5 7h4.2M14.3 7h4.2" stroke-width="1.4"/>`,
+  eye:`<path d="M1.8 12s3.7-6.5 10.2-6.5S22.2 12 22.2 12s-3.7 6.5-10.2 6.5S1.8 12 1.8 12z"/><circle cx="12" cy="12" r="3"/>`,
+  eyeoff:`<path d="M1.8 12s3.7-6.5 10.2-6.5S22.2 12 22.2 12s-3.7 6.5-10.2 6.5S1.8 12 1.8 12z"/><circle cx="12" cy="12" r="3"/><path d="M3.5 21L20.5 3" stroke-width="2.2"/>`,
+  undo:`<path d="M8.5 4.5L3.5 9.5l5 5"/><path d="M3.5 9.5h11a6 6 0 0 1 0 12h-4"/>`,
+  del:`<path d="M3.5 6.5h17M9 6.5V3.8h6v2.7M5.8 6.5l1.1 14h10.2l1.1-14M10 10.5v6.5M14 10.5v6.5"/>`};
+const DK_COLS=["#2962FF","#F23645","#089981","#FF9800","#9C27B0","ink"];
+const DK_FIB=[0,0.236,0.382,0.5,0.618,0.786,1];
+const DKS=Object.assign({tool:"cursor",mag:false,hide:false,col:"#2962FF",w:2,ls:0},store.get("dk",{}),{tool:"cursor"});
+const dkSaveS=()=>store.set("dk",{mag:DKS.mag,hide:DKS.hide,col:DKS.col,w:DKS.w,ls:DKS.ls});
+const dkIc=(k,lab)=>`<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${DK_ICON[k]}</svg>${lab?`<span>${lab}</span>`:""}`;
+/* drawings live in the watchlists file (synced): WL.drw[scope] = [drawing] */
+function dkGet(scope){const w=wlGet();return JSON.parse(JSON.stringify(w.drw?.[scope]||[]))}
+function dkPut(scope,arr){const w=wlGet();w.drw=w.drw||{};if(arr.length)w.drw[scope]=JSON.parse(JSON.stringify(arr));else delete w.drw[scope];wlSave()}
+function dkLum(hex){const h=String(hex).replace("#","");if(h.length<6)return 0;const n=parseInt(h.slice(0,6),16);return (0.299*(n>>16&255)+0.587*(n>>8&255)+0.114*(n&255))/255}
+let DK_LIVE=[];
+const dkActive=()=>{for(let i=DK_LIVE.length-1;i>=0;i--){const K=DK_LIVE[i];if(!K.dead&&K.box.isConnected&&K.box.offsetParent)return K}return null};
+/* keys while a chart window is open: Esc first cancels a drawing in progress, the ruler, the selection or the tool (the
+   window's own Esc, which closes it, comes after); Delete removes the selected drawing; Ctrl+Z undoes; Alt+T/H/J/V/F and
+   Alt+Shift+R pick a tool. Registered before the chart windows' own key handlers, so it is asked first. */
+window.addEventListener("keydown",e=>{const K=dkActive();if(!K)return;const tg=e.target,tag=(tg.tagName||"").toLowerCase();
+  if(["input","textarea","select"].includes(tag)||tg.isContentEditable)return;
+  if(e.key==="Escape"){if(K.pend||K.tmp||K.sel||DKS.tool!=="cursor"){e.stopImmediatePropagation();e.preventDefault();K.esc()}return}
+  if((e.key==="Delete"||e.key==="Backspace")&&K.sel){e.preventDefault();e.stopImmediatePropagation();K.del();return}
+  if((e.ctrlKey||e.metaKey)&&!e.shiftKey&&e.code==="KeyZ"){if(K.hist.length){e.preventDefault();e.stopImmediatePropagation();K.undo()}return}
+  if(e.altKey&&!e.ctrlKey&&!e.metaKey){const t=DK_TOOLS.find(x=>x[3]&&x[3]===e.code&&(x[0]==="rect"?e.shiftKey:!e.shiftKey));if(t){e.preventDefault();e.stopImmediatePropagation();K.setTool(t[0])}}},true);
+class DkPrim{constructor(K){this.K=K;this.up=null}
+  attached(p){this.up=p.requestUpdate}detached(){this.up=null}updateAllViews(){}
+  paneViews(){const K=this.K;return [{zOrder:()=>"top",renderer:()=>({draw:tg=>K.paint(tg)})}]}
+  priceAxisViews(){return this.K.axis("p")}timeAxisViews(){return this.K.axis("t")}
+  hitTest(x,y){return this.K.hitTest(x,y)}}
+const DK_BOX=new WeakMap();
+/* chart: a Lightweight Charts chart; series: its candles (price pane); box: the chart's element; scope: where the
+   drawings are kept; rows: the bars shown ({t,o,h,l,c}); o.weekly: weekly bars */
+function drawKit(chart,series,box,scope,rows,o={}){
+  DK_BOX.get(box)?.destroy();
+  const T=rows.map(q=>q.t),N=T.length,weekly=!!o.weekly,ts=chart.timeScale();
+  const every=!weekly&&T.slice(-40).some(t=>{const d=new Date(t+"T00:00:00Z").getUTCDay();return d===0||d===6});
+  const K={box,scope,draws:dkGet(scope),sel:null,pend:null,tmp:null,hist:[],drag:null,dead:false,touch:false,lastTouch:0};
+  /* dates <-> bar numbers (past the last bar: trading days, calendar days for an every-day market, or weeks) */
+  const dn=t=>Date.parse(t+"T00:00:00Z")/864e5,iso=n=>new Date(n*864e5).toISOString().slice(0,10),wkd=n=>{const w=((n%7)+7+4)%7;return w>0&&w<6};
+  const lb=t=>{let a=0,b=N;while(a<b){const m=(a+b)>>1;if(T[m]<t)a=m+1;else b=m}return a};
+  const step=(t,k)=>{let n=dn(t);if(weekly)return iso(n+7*k);if(every)return iso(n+k);const s=Math.sign(k);let c=Math.abs(k);while(c>0){n+=s;if(wkd(n))c--}return iso(n)};
+  const gap=(a,b)=>{const x=dn(a),y=dn(b);if(weekly)return Math.round((y-x)/7);if(every)return y-x;let c=0;for(let n=x+1;n<=y;n++)if(wkd(n))c++;return c};
+  const toL=t=>!N?0:t>T[N-1]?N-1+gap(T[N-1],t):t<T[0]?-gap(t,T[0]):lb(t);
+  const toT=l=>{const i=Math.round(l);return i>=0&&i<N?T[i]:i>=N?step(T[N-1],i-N+1):step(T[0],i)};
+  const X=q=>ts.logicalToCoordinate(toL(q.t)),Y=q=>series.priceToCoordinate(q.p);
+  const PW=()=>ts.width(),PH=()=>chart.panes()[0]?.getHeight()||0;
+  const isLog=()=>{try{return series.priceScale().options().mode===1}catch(e){return false}};
+  const P=()=>gpal(),col=c=>c==="ink"?P().ink:c,fg=c=>dkLum(c)>0.62?"#0B111B":"#fff";
+  const rp=v=>+(+v).toPrecision(7);
+  const axP=v=>{try{return series.priceFormatter().format(v)}catch(e){return fmtP(v)}};
+  const fmtP=v=>!isNum(v)?"–":Math.abs(v)>=1?v.toLocaleString("en-IN",{minimumFractionDigits:2,maximumFractionDigits:2}):v.toPrecision(4);
+  const ptAt=(x,y)=>{let l=ts.coordinateToLogical(x);if(l==null)return null;l=Math.round(l);let p=series.coordinateToPrice(y);if(p==null||!isFinite(p))return null;
+    if(DKS.mag&&l>=0&&l<N){let bd=1e9;for(const v of [rows[l].o,rows[l].h,rows[l].l,rows[l].c]){const yy=series.priceToCoordinate(v);if(yy==null)continue;const d=Math.abs(yy-y);if(d<bd){bd=d;p=v}}}
+    return {t:toT(l),p:rp(p)}};
+  /* where a ray from a through b leaves the price pane */
+  const exitPt=(a,b)=>{const dx=b[0]-a[0],dy=b[1]-a[1],W=PW(),H=PH();if(!dx&&!dy)return b;let t=Infinity;
+    if(dx>0)t=Math.min(t,(W+2-a[0])/dx);else if(dx<0)t=Math.min(t,(-2-a[0])/dx);if(dy>0)t=Math.min(t,(H+2-a[1])/dy);else if(dy<0)t=Math.min(t,(-2-a[1])/dy);
+    if(!isFinite(t)||t<1)t=1;return [a[0]+dx*t,a[1]+dy*t]};
+  const fibP=(d,f)=>d.p[1].p+(d.p[0].p-d.p[1].p)*f;
+  /* screen geometry: lines (for drawing and picking), a box or polygon to pick inside, handles */
+  function shape(d){const S=d.p.map(q=>{const x=X(q),y=Y(q);return x==null||y==null?null:[x,y]});if(!S.length||S.some(v=>!v))return null;
+    const W=PW(),H=PH(),[a,b,c]=S,o={segs:[],box:null,poly:null,h:S};
+    switch(d.ty){
+      case "trend":o.segs.push([a,b]);break;
+      case "ray":o.segs.push([a,exitPt(a,b)]);break;
+      case "ext":o.segs.push([exitPt(b,a),exitPt(a,b)]);break;
+      case "hline":o.segs.push([[0,a[1]],[W,a[1]]]);break;
+      case "hray":o.segs.push([a,[W,a[1]]]);break;
+      case "vline":o.segs.push([[a[0],0],[a[0],H]]);break;
+      case "chan":{o.segs.push([a,b]);if(!c)break;const k=b[0]!==a[0]?(b[1]-a[1])/(b[0]-a[0]):0,off=c[1]-(a[1]+k*(c[0]-a[0]));
+        const a2=[a[0],a[1]+off],b2=[b[0],b[1]+off];o.segs.push([a2,b2]);o.mid=[[a[0],a[1]+off/2],[b[0],b[1]+off/2]];o.poly=[a,b,b2,a2];o.h=[a,b,[c[0],a[1]+k*(c[0]-a[0])+off]];break}
+      case "fib":{const x0=Math.min(a[0],b[0]),x1=Math.max(a[0],b[0]);o.lv=DK_FIB.map(f=>{const p=fibP(d,f),y=series.priceToCoordinate(p);return [f,y,p]}).filter(v=>v[1]!=null);
+        for(const [,y] of o.lv)o.segs.push([[x0,y],[x1,y]]);const ys=o.lv.map(v=>v[1]);o.box=[x0,Math.min(...ys),x1,Math.max(...ys)];break}
+      default:{const x0=Math.min(a[0],b?.[0]??a[0]),x1=Math.max(a[0],b?.[0]??a[0]),y0=Math.min(a[1],b?.[1]??a[1]),y1=Math.max(a[1],b?.[1]??a[1]);o.box=[x0,y0,x1,y1];
+        if(d.ty==="rect")o.segs.push([[x0,y0],[x1,y0]],[[x1,y0],[x1,y1]],[[x1,y1],[x0,y1]],[[x0,y1],[x0,y0]])}}
+    return o}
+  const dseg=(x,y,[[x0,y0],[x1,y1]])=>{const dx=x1-x0,dy=y1-y0,L2=dx*dx+dy*dy;let t=L2?((x-x0)*dx+(y-y0)*dy)/L2:0;t=Math.max(0,Math.min(1,t));return Math.hypot(x-x0-t*dx,y-y0-t*dy)};
+  const inPoly=(x,y,pl)=>{let c=false;for(let i=0,j=pl.length-1;i<pl.length;j=i++){const [xi,yi]=pl[i],[xj,yj]=pl[j];if((yi>y)!==(yj>y)&&x<(xj-xi)*(y-yi)/(yj-yi)+xi)c=!c}return c};
+  function pick(x,y){if(DKS.hide)return null;const tol=K.touch?14:7;
+    if(K.sel){const s=shape(K.sel);if(s)for(let i=0;i<s.h.length;i++){const [hx,hy]=s.h[i];if(Math.hypot(x-hx,y-hy)<=tol+3)return {d:K.sel,pt:i}}}
+    for(let k=K.draws.length-1;k>=0;k--){const d=K.draws[k],s=shape(d);if(!s)continue;
+      if(s.segs.some(g=>dseg(x,y,g)<=tol))return {d,pt:null};
+      if(s.box&&d.ty!=="fib"&&x>=s.box[0]-2&&x<=s.box[2]+2&&y>=s.box[1]-2&&y<=s.box[3]+2)return {d,pt:null};
+      if(s.box&&d.ty==="fib"&&x>=s.box[0]&&x<=s.box[2]&&y>=s.box[1]&&y<=s.box[3])return {d,pt:null};
+      if(s.poly&&inPoly(x,y,s.poly))return {d,pt:null}}
+    return null}
+  /* painting, in CSS pixels */
+  const dash=(s,w)=>s===1?[6*Math.max(1,w/2),4*Math.max(1,w/2)]:s===2?[1.5,3*Math.max(1,w/1.5)]:[];
+  function label(c,x,y,lines,bg,anchor){c.font=`600 13px "IBM Plex Sans", system-ui, sans-serif`;const lh=17,pw=8,w=Math.max(...lines.map(t=>c.measureText(t).width))+pw*2,h=lines.length*lh+8,W=PW(),H=PH();
+    let bx=anchor==="c"?x-w/2:anchor==="r"?x-w:x,by=y;bx=Math.max(2,Math.min(W-w-2,bx));by=Math.max(2,Math.min(H-h-2,by));
+    c.fillStyle=bg;c.beginPath();c.roundRect?c.roundRect(bx,by,w,h,5):c.rect(bx,by,w,h);c.fill();c.fillStyle=fg(bg);c.textBaseline="top";c.textAlign="left";
+    lines.forEach((t,i)=>c.fillText(t,bx+pw,by+5+i*lh))}
+  const arrow=(c,x0,y0,x1,y1)=>{c.beginPath();c.moveTo(x0,y0);c.lineTo(x1,y1);c.stroke();const a=Math.atan2(y1-y0,x1-x0),k=7;
+    c.beginPath();c.moveTo(x1,y1);c.lineTo(x1-k*Math.cos(a-0.45),y1-k*Math.sin(a-0.45));c.moveTo(x1,y1);c.lineTo(x1-k*Math.cos(a+0.45),y1-k*Math.sin(a+0.45));c.stroke()};
+  const bars=d=>Math.round(Math.abs(toL(d.p[1].t)-toL(d.p[0].t))),days=d=>Math.round(Math.abs(dn(d.p[1].t)-dn(d.p[0].t)));
+  const spanTxt=d=>{const b=bars(d),n=days(d);return `${b} ${weekly?"week":"bar"}${b===1?"":"s"} · ${n} day${n===1?"":"s"}`};
+  const chgTxt=d=>{const a=d.p[0].p,b=d.p[1].p,ch=b-a,pc=a?(b/a-1)*100:0;return `${ch>=0?"+":"−"}${fmtP(Math.abs(ch))} (${sgn(pc,2)})`};
+  function one(c,d,selected){const s=shape(d);if(!s)return;const C=col(d.c),w=d.w||2,W=PW();
+    c.strokeStyle=C;c.fillStyle=C;c.lineWidth=w+(selected?0.5:0);c.setLineDash(dash(d.s,w));c.lineCap="round";
+    const meas=["ruler","prange","drange","dprange"].includes(d.ty);
+    if(meas&&d.p.length>1){const up=d.p[1].p>=d.p[0].p,mc=d.ty==="drange"?C:up?P().up:P().down,[x0,y0,x1,y1]=s.box,[a,b]=s.h;
+      c.setLineDash([]);c.fillStyle=rgba(mc.startsWith("#")?mc:"#2962FF",.14);c.fillRect(x0,y0,x1-x0,y1-y0);c.strokeStyle=mc;c.lineWidth=1.5;
+      const xm=(a[0]+b[0])/2,ym=(a[1]+b[1])/2,lines=[];
+      if(d.ty!=="drange"){arrow(c,xm,a[1],xm,b[1]);lines.push(chgTxt(d))}
+      if(d.ty!=="prange"){arrow(c,a[0],ym,b[0],ym);lines.push(spanTxt(d))}
+      if(d.ty==="prange"){c.beginPath();c.moveTo(x0,a[1]);c.lineTo(x1,a[1]);c.moveTo(x0,b[1]);c.lineTo(x1,b[1]);c.stroke()}
+      if(d.ty==="drange"){c.beginPath();c.moveTo(a[0],y0);c.lineTo(a[0],y1);c.moveTo(b[0],y0);c.lineTo(b[0],y1);c.stroke()}
+      label(c,xm,up||d.ty==="drange"?y0-8-(lines.length*17+8):y1+8,lines,mc,"c")}
+    else if(d.ty==="rect"){const [x0,y0,x1,y1]=s.box;c.fillStyle=rgba(C.startsWith("#")?C:"#2962FF",.12);c.fillRect(x0,y0,x1-x0,y1-y0)}
+    else if(d.ty==="chan"&&s.poly){c.save();c.fillStyle=rgba(C.startsWith("#")?C:"#2962FF",.09);c.beginPath();s.poly.forEach(([x,y],i)=>i?c.lineTo(x,y):c.moveTo(x,y));c.closePath();c.fill();c.restore();
+      if(s.mid){c.save();c.setLineDash([5,5]);c.lineWidth=1;c.beginPath();c.moveTo(...s.mid[0]);c.lineTo(...s.mid[1]);c.stroke();c.restore()}}
+    else if(d.ty==="fib"&&s.lv){const [x0,,x1]=s.box;for(let i=0;i<s.lv.length-1;i++){const y0=s.lv[i][1],y1=s.lv[i+1][1];c.fillStyle=rgba(C.startsWith("#")?C:"#2962FF",i%2?.05:.10);c.fillRect(x0,Math.min(y0,y1),x1-x0,Math.abs(y1-y0))}
+      c.font=`600 12.5px "IBM Plex Sans", system-ui, sans-serif`;c.textBaseline="bottom";c.textAlign="left";c.fillStyle=C;
+      c.lineJoin="round";c.lineWidth=3.5;c.strokeStyle=P().card;for(const [f,y,p] of s.lv){const t=`${f} (${fmtP(p)})`;c.strokeText(t,x0+4,y-2);c.fillText(t,x0+4,y-2)}c.strokeStyle=C;
+      c.save();c.setLineDash([4,4]);c.lineWidth=1;c.beginPath();c.moveTo(...s.h[0]);c.lineTo(...s.h[1]);c.stroke();c.restore()}
+    if(!meas){c.strokeStyle=C;c.lineWidth=w+(selected?0.5:0);c.setLineDash(dash(d.s,w));
+      for(const g of s.segs){if(d.ty==="fib"){const f=s.lv[s.segs.indexOf(g)]?.[0];c.lineWidth=f===0.5||f===0.618?w+0.5:Math.max(1,w-0.5)}c.beginPath();c.moveTo(...g[0]);c.lineTo(...g[1]);c.stroke()}}
+    c.setLineDash([]);
+    if(selected&&["trend","ray","ext"].includes(d.ty)&&d.p.length>1){const b=s.h[1];label(c,b[0]+10,b[1]-30,[`${chgTxt(d)} · ${bars(d)} ${weekly?"wk":"bars"}`],C,"l")}
+    if(selected)for(const [x,y] of s.h){c.beginPath();c.arc(x,y,5.5,0,Math.PI*2);c.fillStyle=P().card;c.fill();c.lineWidth=2;c.strokeStyle=C;c.stroke()}}
+  K.paint=tg=>{if(K.dead)return;tg.useMediaCoordinateSpace(({context:c})=>{c.save();
+    if(!DKS.hide){for(const d of K.draws)if(d!==K.sel)one(c,d,false);if(K.sel&&K.draws.includes(K.sel))one(c,K.sel,true)}
+    if(K.tmp)one(c,K.tmp,false);
+    if(K.pend&&K.pend.cur){const p=[...K.pend.p,K.pend.cur].slice(0,DK_NEED[K.pend.ty]);if(p.length>1||DK_NEED[K.pend.ty]===1)one(c,{ty:K.pend.ty,p,c:DKS.col,w:DKS.w,s:DKS.ls},true)}
+    c.restore()})};
+  /* price / date tags on the axes: horizontal lines always, the selected drawing's points while selected */
+  const tag=(kind,v,text,c)=>({coordinate:()=>v,text:()=>text,textColor:()=>fg(c),backColor:()=>c,visible:()=>v!=null,tickVisible:()=>true});
+  K.axis=k=>{if(K.dead)return [];const out=[],one1=["hline","hray","vline"];
+    const add=(d,q)=>{const C=col(d.c);if(k==="p"){const y=Y(q);if(y!=null)out.push(tag(k,y,axP(q.p),C))}else{const x=X(q);if(x!=null)out.push(tag(k,x,fmtDate(q.t),C))}};
+    if(!DKS.hide){for(const d of K.draws){if(k==="p"&&(d.ty==="hline"||d.ty==="hray"))add(d,d.p[0]);if(k==="t"&&d.ty==="vline")add(d,d.p[0])}
+      const s=K.sel&&K.draws.includes(K.sel)?K.sel:null;if(s&&!one1.includes(s.ty))for(const q of s.p)add(s,q)}
+    const live=K.pend?.cur?{c:DKS.col,p:[...K.pend.p,K.pend.cur].slice(0,DK_NEED[K.pend.ty]),ty:K.pend.ty}:K.tmp;
+    if(live)for(const q of live.p)if(k==="p"?live.ty!=="vline":!(live.ty==="hline"||live.ty==="hray"))add(live,q);
+    return out};
+  K.hitTest=(x,y)=>{if(K.dead)return null;if(DKS.tool!=="cursor"||K.pend)return {cursorStyle:"crosshair",externalId:"dk",zOrder:"top"};
+    const h=pick(x,y);return h?{cursorStyle:h.pt!=null||h.d===K.sel?"move":"pointer",externalId:"dk",zOrder:"top"}:null};
+  const prim=new DkPrim(K);series.attachPrimitive(prim);
+  const upd=()=>{prim.up?.();bar_()};
+  /* changes */
+  const snap=()=>{K.hist.push(JSON.stringify(K.draws));if(K.hist.length>60)K.hist.shift()};
+  const save=()=>dkPut(scope,K.draws);
+  const newId=()=>"d"+Date.now().toString(36)+Math.random().toString(36).slice(2,5);
+  function finish(){const pd=K.pend;K.pend=null;const need=DK_NEED[pd.ty],p=pd.p.slice(0,need);if(p.length<need){upd();return}
+    const d={id:newId(),ty:pd.ty,p,c:DKS.col,w:DKS.w,s:DKS.ls};
+    if(pd.ty==="ruler"){K.tmp=d;K.sel=null}else{snap();K.draws.push(d);K.sel=d;save()}
+    if(!DKS.keep)K.setTool("cursor");else upd()}
+  K.setTool=t=>{DKS.tool=t;K.pend=null;if(t!=="cursor"){K.sel=null;if(DKS.hide){DKS.hide=false;dkSaveS()}}upd()};
+  K.esc=()=>{if(K.pend)K.pend=null;else if(K.tmp)K.tmp=null;else if(K.sel)K.sel=null;else DKS.tool="cursor";upd()};
+  K.del=()=>{if(!K.sel)return;snap();K.draws=K.draws.filter(d=>d!==K.sel);K.sel=null;save();upd()};
+  K.undo=()=>{const h=K.hist.pop();if(h==null)return;const id=K.sel?.id;K.draws=JSON.parse(h);K.sel=K.draws.find(d=>d.id===id)||null;save();upd()};
+  K.clear=()=>{if(!K.draws.length)return;snap();K.draws=[];K.sel=null;save();upd()};
+  K.style=(k,v)=>{DKS[k]=v;dkSaveS();if(K.sel){snap();K.sel[{col:"c",w:"w",ls:"s"}[k]]=v;save()}upd()};
+  /* pointer handling: drawing and editing take the press; anything else goes to the chart (pan, zoom) */
+  const loc=(e)=>{const r=box.getBoundingClientRect(),p=e.touches?e.touches[0]||e.changedTouches[0]:e;return {x:p.clientX-r.left,y:p.clientY-r.top}};
+  const inPane=({x,y})=>x>=0&&y>=0&&x<=PW()&&y<=PH();
+  const stop=e=>{e.stopPropagation();if(e.cancelable)e.preventDefault()};
+  function down(e){if(K.dead)return;const isT=!!e.touches;if(!isT&&(e.button!==0||Date.now()-K.lastTouch<800))return;if(isT){K.touch=true;K.lastTouch=Date.now();if(e.touches.length>1)return}else K.touch=false;
+    DK_LIVE=DK_LIVE.filter(k=>k!==K);DK_LIVE.push(K);
+    const p=loc(e);if(!inPane(p))return;
+    const tool=DKS.tool!=="cursor"?DKS.tool:(!isT&&e.shiftKey?"ruler":null);
+    if(tool||K.pend){stop(e);const pt=ptAt(p.x,p.y);if(!pt)return;K.tmp=null;
+      if(!K.pend){K.pend={ty:tool,p:[pt],cur:pt,down:p};if(DK_NEED[K.pend.ty]===1){finish();return}}
+      else{K.pend.p.push(pt);K.pend.cur=pt;K.pend.down=p;if(K.pend.p.length>=DK_NEED[K.pend.ty]){finish();return}}
+      K.drag={mode:"new"};upd();return}
+    if(K.tmp){K.tmp=null;upd()}
+    const h=pick(p.x,p.y);
+    if(!h){if(K.sel){K.sel=null;upd()}return}
+    stop(e);K.sel=h.d;const l0=ts.coordinateToLogical(p.x),p0=series.coordinateToPrice(p.y);
+    K.drag={mode:h.pt!=null?"pt":"move",i:h.pt,l0,p0,orig:JSON.parse(JSON.stringify(h.d.p)),moved:false,start:p};upd()}
+  function move(e){if(K.dead||!K.drag&&!K.pend)return;if(!e.touches&&Date.now()-K.lastTouch<800&&K.touch)return;const p=loc(e);
+    if(K.pend&&(!K.drag||K.drag.mode==="new")){const pt=ptAt(Math.max(0,Math.min(PW(),p.x)),Math.max(0,Math.min(PH(),p.y)));if(pt){K.pend.cur=pt;prim.up?.()}if(K.drag&&e.touches&&e.cancelable)e.preventDefault();return}
+    const g=K.drag;if(!g)return;if(e.cancelable)e.preventDefault();if(Math.hypot(p.x-g.start.x,p.y-g.start.y)>3)g.moved=true;if(!g.moved)return;
+    const d=K.sel;if(!d)return;
+    if(g.mode==="pt"){const pt=ptAt(p.x,p.y);if(pt)d.p[g.i]=pt}
+    else{const l=ts.coordinateToLogical(p.x),pr=series.coordinateToPrice(p.y);if(l==null||pr==null||g.p0==null)return;const dl=Math.round(l-g.l0),lg=isLog()&&g.p0>0&&pr>0;
+      d.p=g.orig.map(q=>({t:toT(toL(q.t)+dl),p:rp(lg?q.p*pr/g.p0:q.p+(pr-g.p0))}))}
+    prim.up?.()}
+  function up(e){if(K.dead)return;const g=K.drag;if(!g)return;if(e.type==="mouseup"&&K.touch&&Date.now()-K.lastTouch<800)return;K.drag=null;
+    if(g.mode==="new"){const pd=K.pend;if(!pd)return;const p=loc(e);
+      if(pd.down&&Math.hypot(p.x-pd.down.x,p.y-pd.down.y)>6&&pd.p.length<DK_NEED[pd.ty]){const pt=ptAt(Math.max(0,Math.min(PW(),p.x)),Math.max(0,Math.min(PH(),p.y)));
+        if(pt){pd.p.push(pt);pd.cur=pt;if(pd.p.length>=DK_NEED[pd.ty])finish();else upd()}}
+      return}
+    if(g.moved){const now=JSON.stringify(K.sel?.p),was=JSON.stringify(g.orig);if(now!==was){K.hist.push(JSON.stringify(K.draws.map(d=>d===K.sel?{...d,p:g.orig}:d)));if(K.hist.length>60)K.hist.shift();save()}}
+    upd()}
+  const opt={capture:true};
+  box.addEventListener("mousedown",down,opt);box.addEventListener("touchstart",down,{capture:true,passive:false});
+  box.addEventListener("mousemove",move,opt);box.addEventListener("touchmove",move,{capture:true,passive:false});
+  window.addEventListener("mouseup",up,true);box.addEventListener("touchend",up,{capture:true,passive:false});
+  /* the toolbar above the chart */
+  const bar=document.createElement("div");bar.className="dkbar";bar.setAttribute("role","toolbar");bar.setAttribute("aria-label","Drawing and measuring tools");
+  const tb=(k,title,act,pressed,dis,ico,lab)=>`<button type="button" class="dkb${lab?" dkt":""}" data-dk="${act}" title="${esc(title)}" aria-label="${esc(title)}"${pressed!=null?` aria-pressed="${pressed}"`:""}${dis?" disabled":""}>${dkIc(ico||k,lab)}</button>`;
+  function bar_(){if(K.dead)return;const s=K.sel,cur=s?s.c:DKS.col,cw=s?s.w||2:DKS.w,cs=s?s.s||0:DKS.ls,t=DKS.tool,n=K.draws.length;
+    const need=K.pend?DK_NEED[K.pend.ty]:0,got=K.pend?K.pend.p.length:0;
+    const tap=K.touch||matchMedia("(pointer:coarse)").matches,cl=tap?"tap":"click",drag=tap?"":" (or press and drag)";
+    const hint=K.pend?(K.pend.ty==="chan"&&got===2?`${cl[0].toUpperCase()+cl.slice(1)} to set the channel's width`:`${DK_NAME[K.pend.ty]}: ${cl} the ${got?"end":"start"}${got?"":drag}`)
+      :t!=="cursor"?(DK_NEED[t]===1?`${DK_NAME[t]}: ${cl} on the chart`:`${DK_NAME[t]}: ${cl} the start${drag}`)
+      :K.tmp?`${cl[0].toUpperCase()+cl.slice(1)} anywhere to clear the measurement`:s?(tap?"Drag it or its points · the bin removes it":"Drag it or its points · Delete removes it · Ctrl+Z undoes")
+      :n?`${n} drawing${n===1?"":"s"} · ${cl} one to edit it${tap?"":" · Shift + click measures"}`:`Pick a tool to draw${tap?"":" · Shift + click measures"}`;
+    bar.innerHTML=`<div class="dkrow"><div class="dkg">${tb("cursor",DK_TOOLS[0][1],"tool:cursor",t==="cursor"&&!K.pend)}</div>
+      <div class="dkg">${DK_TOOLS.slice(1,10).map(x=>tb(x[0],x[1],"tool:"+x[0],(K.pend?K.pend.ty:t)===x[0])).join("")}</div>
+      <div class="dkg">${DK_TOOLS.slice(10).map(x=>tb(x[0],x[1],"tool:"+x[0],(K.pend?K.pend.ty:t)===x[0])).join("")}</div>
+      <div class="dkg dkstyle" aria-label="${s?"Style of the selected drawing":"Style of the next drawing"}">${DK_COLS.map(c=>`<button type="button" class="dksw" data-dk="col:${c}" title="${c==="ink"?"Black / white":"Colour"}" aria-label="Colour ${c==="ink"?"black or white":c}" aria-pressed="${cur===c}" style="--c:${c==="ink"?"var(--ink)":c}"></button>`).join("")}
+        <button type="button" class="dkb dkw" data-dk="w" title="Line width" aria-label="Line width ${cw}">${[1,2,3].map(v=>`<i style="height:${v+0.5}px;opacity:${v===cw?1:.28}"></i>`).join("")}</button>
+        <button type="button" class="dkb dkw" data-dk="ls" title="Line style: solid, dashed, dotted" aria-label="Line style">${["solid","dashed","dotted"].map((v,i)=>`<i class="${v}" style="opacity:${i===cs?1:.28}"></i>`).join("")}</button></div>
+      <div class="dkg">${tb("mag",DKS.mag?"Magnet on: points snap to the bar's open, high, low or close":"Magnet off: points go exactly where you click","mag",DKS.mag)}
+        ${tb("eye",DKS.hide?"Drawings hidden: show them":"Hide drawings","hide",DKS.hide,false,DKS.hide?"eyeoff":"eye")}
+        ${tb("undo","Undo (Ctrl+Z)","undo",null,!K.hist.length)}${tb("del","Delete the selected drawing (Delete)","del",null,!s)}
+        <button type="button" class="dkb dkt dkclr" data-dk="clear" title="Remove every drawing on this chart" ${n?"":"disabled"}><span>${K.clr?"Sure? Tap again":"Clear all"}</span></button></div></div>
+      <span class="dkhint" aria-live="polite">${esc(hint)}</span>`}
+  bar.addEventListener("click",e=>{const b=e.target.closest("[data-dk]");if(!b||b.disabled)return;const [k,v]=b.dataset.dk.split(":");
+    DK_LIVE=DK_LIVE.filter(x=>x!==K);DK_LIVE.push(K);
+    if(k!=="clear")K.clr=false;
+    if(k==="tool"){K.setTool(v==="cursor"||DKS.tool!==v||K.pend?v:"cursor");return}
+    if(k==="col"){K.style("col",v);return}
+    if(k==="w"){K.style("w",((K.sel?K.sel.w||2:DKS.w)%3)+1);return}
+    if(k==="ls"){K.style("ls",((K.sel?K.sel.s||0:DKS.ls)+1)%3);return}
+    if(k==="mag"){DKS.mag=!DKS.mag;dkSaveS();upd();return}
+    if(k==="hide"){DKS.hide=!DKS.hide;if(DKS.hide){K.sel=null;K.pend=null}dkSaveS();upd();return}
+    if(k==="undo"){K.undo();return}
+    if(k==="del"){K.del();return}
+    if(k==="clear"){if(!K.clr){K.clr=true;bar_();clearTimeout(K.clrT);K.clrT=setTimeout(()=>{K.clr=false;bar_()},3500);return}K.clr=false;K.clear()}});
+  box.parentElement.insertBefore(bar,box);bar_();
+  K.destroy=()=>{if(K.dead)return;K.dead=true;box.removeEventListener("mousedown",down,opt);box.removeEventListener("touchstart",down,{capture:true});
+    box.removeEventListener("mousemove",move,opt);box.removeEventListener("touchmove",move,{capture:true});window.removeEventListener("mouseup",up,true);box.removeEventListener("touchend",up,{capture:true});
+    try{series.detachPrimitive(prim)}catch(e){}bar.remove();DK_LIVE=DK_LIVE.filter(k=>k!==K);if(DK_BOX.get(box)===K)DK_BOX.delete(box)};
+  DK_BOX.set(box,K);DK_LIVE.push(K);
+  return K}
+/* calls fn at most once a frame with the latest argument (crosshair read-outs) */
+function rafLatest(fn){let raf=0,arg;return a=>{arg=a;if(!raf)raf=requestAnimationFrame(()=>{raf=0;fn(arg)})}}
+
 /* ════════════════════ STOCK CHART (the chart button on every stock) ════════════════════
    Daily or weekly candles for any stock with EMA 21 / 50 / 200 (each can be switched off; the choice is shared with the
    group charts), volume, the RS line against NIFTY 500 with blue dots, and the site's own levels for that stock: the long
@@ -4300,7 +4593,7 @@ async function openStockChart(sym){
     if(m.hidden||m.dataset.s!==sym)return;drawStockChart(sym,C,F,ov)}
   catch(e){if(m.dataset.s===sym)m.querySelector(".gbody").innerHTML=`<div class="empty" style="padding:40px">${esc(e.message||String(e))}</div>`}
   m.querySelector("[data-sclose]")?.focus()}
-function closeStockChart(fromPop){const m=$("#smodal");if(!m||m.hidden)return;if(SCH){SCH.ro?.disconnect();SCH.chart.remove();SCH=null}
+function closeStockChart(fromPop){const m=$("#smodal");if(!m||m.hidden)return;if(SCH){SCH.ro?.disconnect();SCH.dk?.destroy();SCH.chart.remove();SCH=null}
   m.hidden=true;$("#scscrim").hidden=true;
   if(!["#drawer","#gmodal","#pmodal","#vmodal"].some(q=>$(q)&&!$(q).hidden))document.body.style.overflow="";
   if(!fromPop&&history.state?.schart){SCH_BACK=true;history.back()}}
@@ -4344,11 +4637,11 @@ function drawStockChart(sym,C,F,ov){const m=$("#smodal"),x=D.by[sym]||{},P=gpal(
   sRender()}
 function sIdx(T,date){let a=0,b=T.length-1;if(!date||!T.length||date>T[b])return null;if(date<=T[0])return 0;while(a<b){const mid=(a+b)>>1;if(T[mid]<date)a=mid+1;else b=mid}return a}
 function sRender(keep){const box=$("#schartbox"),L=window.LightweightCharts,P=gpal();if(!box||!L||!SCX)return;const {sym,C,F,ov}=SCX,W=SST.int==="W";
-  let lr=null;if(SCH){if(keep)lr=SCH.chart.timeScale().getVisibleLogicalRange();SCH.ro?.disconnect();SCH.chart.remove();SCH=null}
+  let lr=null;if(SCH){if(keep)lr=SCH.chart.timeScale().getVisibleLogicalRange();SCH.ro?.disconnect();SCH.dk?.destroy();SCH.chart.remove();SCH=null}
   const rows=scRows(C,F,W);if(rows.length<2){box.innerHTML=`<div class="empty">Not enough history yet.</div>`;return}
   const phone=matchMedia("(max-width:700px)").matches,N=rows.length,T=rows.map(q=>q.t),Cl=rows.map(q=>q.c),last=rows[N-1].c;
   const prec=last>=1000?1:2;
-  const chart=L.createChart(box,{autoSize:true,layout:{background:{type:"solid",color:P.card},textColor:P.muted,fontFamily:"IBM Plex Sans, system-ui, sans-serif",fontSize:phone?12:13,attributionLogo:true,panes:{separatorColor:P.line,separatorHoverColor:rgba(P.accent,.35),enableResize:true}},
+  const chart=L.createChart(box,{autoSize:true,kineticScroll:{mouse:true,touch:true},layout:{background:{type:"solid",color:P.card},textColor:P.muted,fontFamily:"IBM Plex Sans, system-ui, sans-serif",fontSize:phone?12:13,attributionLogo:true,panes:{separatorColor:P.line,separatorHoverColor:rgba(P.accent,.35),enableResize:true}},
     grid:{vertLines:{color:rgba(P.track.length>6?P.track:P.line,.6)},horzLines:{color:P.track}},rightPriceScale:{borderColor:P.line,minimumWidth:phone?54:66},
     timeScale:{borderColor:P.line,rightOffset:5,minBarSpacing:0.5},crosshair:{mode:L.CrosshairMode.Normal},localization:{locale:"en-IN"},handleScale:{axisPressedMouseMove:{time:true,price:false}}});
   const line=o=>({priceLineVisible:false,lastValueVisible:false,crosshairMarkerVisible:false,lineWidth:2,...o});
@@ -4411,13 +4704,14 @@ function sRender(keep){const box=$("#schartbox"),L=window.LightweightCharts,P=gp
   const panes=chart.panes(),sf=SST.rs==="on"?(phone?[64,16,20]:[68,14,18]):(phone?[78,22]:[80,20]);panes.forEach((p,i)=>p.setStretchFactor(sf[i]||10));
   chart.priceScale("right",0).applyOptions({mode:SST.scale==="log"?1:0});
   SCH={chart,rows,cs,es,ev,rsv};
+  SCH.dk=drawKit(chart,cs,box,"s:"+sym,rows,{weekly:W});
   const per={"3M":63,"6M":126,"1Y":252,"2Y":504,"3Y":756}[SST.range]||252,bars=Math.round(per/(W?5:1));
   if(lr)chart.timeScale().setVisibleLogicalRange(lr);else chart.timeScale().setVisibleLogicalRange({from:Math.max(-1,N-bars),to:N+4});
   SCH.lg=lg;sLegend();
   const labels=["Price"+(W?" · weekly bars":" · daily bars"),`Volume · grey line = 50-${W?"week":"day"} average`,"RS line vs NIFTY 500 (100 = first bar)"];
   const placeLabels=()=>{const lab=$("#splab");if(!lab||!SCH)return;let top=0;lab.innerHTML=SCH.chart.panes().map((p,i)=>{const h=`<span style="top:${top+4}px">${esc(labels[i]||"")}</span>`;top+=p.getHeight()+1;return h}).join("")};
   requestAnimationFrame(placeLabels);SCH.ro=new ResizeObserver(()=>requestAnimationFrame(placeLabels));SCH.ro.observe(box);
-  chart.subscribeCrosshairMove(prm=>{if(SCH){SCH.lastT=prm.time;sReadout(prm.time)}});sReadout(null)}
+  const sro=rafLatest(t=>sReadout(t));chart.subscribeCrosshairMove(prm=>{if(SCH){SCH.lastT=prm.time;sro(prm.time)}});sReadout(null)}
 function sLegend(){const leg=$("#slegend");if(!leg||!SCH)return;const on=emaOn(),ec=emaCol(gpal()),W=SST.int==="W";
   leg.innerHTML=EMA_N.map(n=>`<span${on[n]?"":` style="opacity:.45"`}><i style="--c:${ec[n]}"></i>EMA ${n}${W?" weeks":""}${on[n]?"":" (hidden)"}</span>`).join("")+SCH.lg.join("")+(SST.rs==="on"?`<span><span class="bd" aria-hidden="true"></span>RS line at a 52-week high</span>`:"")}
 function sReadout(t){const el=$("#sread");if(!el||!SCH)return;const rows=SCH.rows;let i=t?rows.findIndex(q=>q.t===t):rows.length-1;if(i<0)i=rows.length-1;
@@ -4436,6 +4730,132 @@ function sModalClick(e){
     if(k==="int"){drawStockChart(SCX.sym,SCX.C,SCX.F,SCX.ov);return}
     sRender(k==="scale");return}}
 function sSave(){store.set("schart",{range:SST.range,int:SST.int,scale:SST.scale,rs:SST.rs,lv:SST.lv})}
+
+/* ════════════════════ MARKET CHARTS (Breadth tab: the five Nifty indices, gold, silver, bitcoin) ════════════════════
+   data/mkt.json carries the eight cards; data/mkt/<key>.json one chart each (scripts/markets.py): ~3 years of daily and
+   ~10 years of weekly bars with the EMA state before the first bar, NIFTY 500 on the same dates for the RS line of the
+   other indices, and the US$/₹ rate for gold, silver and bitcoin. Gold, silver and bitcoin are for reference only:
+   nothing else on the site reads them. */
+let MKD=null,MKP=null,MCH=null,MCH_BACK=false,MCX=null;const MKF={};
+const MST={range:"1Y",int:"D",scale:"lin",cur:"usd",rs:"on"};
+const MK_TV={nifty50:"NSE:NIFTY",nifty500:"NSE:CNX500",midcap150:"NSE:NIFTYMIDCAP150",smallcap250:"NSE:NIFTYSMLCAP250",microcap250:"NSE:NIFTY_MICROCAP250",gold:"COMEX:GC1!",silver:"COMEX:SI1!",btc:"BITSTAMP:BTCUSD"};
+const MK_OF={"NIFTY 50":"nifty50","NIFTY 500":"nifty500","NIFTY MIDCAP 150":"midcap150","NIFTY SMLCAP 250":"smallcap250","NIFTY MICROCAP250":"microcap250"};
+const MK_KIND={index:"NSE index",metal:"COMEX futures · for reference only",crypto:"Crypto · for reference only"};
+function mkLoad(){if(MKD)return Promise.resolve(MKD);if(!D.meta?.mkt)return Promise.resolve(null);
+  return MKP=MKP||fetch(`data/mkt.json?v=${gv()}`).then(r=>r.ok?r.json():null).catch(()=>null).then(j=>{if(j){j.by=Object.fromEntries((j.rows||[]).map(r=>[r.k,r]))}MKP=null;return MKD=j})}
+async function mkFile(k){if(MKF[k])return MKF[k];let r=null;try{r=await fetch(`data/mkt/${k}.json?v=${gv()}`)}catch(e){}
+  if(!r||!r.ok)throw new Error("Could not load this chart. Check the connection and try again.");return MKF[k]=await r.json()}
+const mkHas=k=>!!D.meta?.mkt?.keys?.includes(k);
+const mkBtn=(k,name)=>mkHas(k)?`<button type="button" class="mkbtn" data-mchart="${k}" aria-label="Open the candle chart of ${esc(name)}" title="Open the chart">${SC_ICON}<span>Chart</span></button>`:"";
+const mkUsd=v=>!isNum(v)?"–":"$"+v.toLocaleString("en-US",{minimumFractionDigits:v>=10000?0:2,maximumFractionDigits:v>=10000?0:2});
+const mkFmt=(F,v,inrMode)=>F.kind==="index"?inr(v):inrMode?"₹"+inr(Math.round(v)):mkUsd(v);
+function mmodalEl(){let m=$("#mkmodal");if(m)return m;
+  document.body.insertAdjacentHTML("beforeend",`<div class="gscrim scscrim" id="mkscrim" hidden></div><section class="gmodal smodal" id="mkmodal" hidden role="dialog" aria-modal="true" aria-labelledby="mTitle"></section>`);
+  $("#mkscrim").addEventListener("click",()=>closeMktChart());m=$("#mkmodal");m.addEventListener("click",mModalClick);return m}
+async function openMktChart(k){const sv=store.get("mchart",{});Object.assign(MST,sv);
+  const m=mmodalEl(),wasOpen=!m.hidden,c=MKD?.by?.[k];m.dataset.k=k;
+  m.innerHTML=`<header class="ghead"><div><div class="gkind">${esc(c?MK_KIND[c.kind]:"Chart")}</div><h2 id="mTitle">${esc(c?.n||k)}</h2></div><button class="close" type="button" data-mkclose aria-label="Close chart"><b aria-hidden="true">✕</b> Close</button></header><div class="gbody"><div class="empty" style="padding:40px">Loading chart…</div></div>`;
+  m.hidden=false;$("#mkscrim").hidden=false;document.body.style.overflow="hidden";
+  if(!wasOpen&&!history.state?.mchart)history.pushState({...(history.state||{}),mchart:1},"",location.href);
+  try{const [F]=await Promise.all([mkFile(k),lwcLoad()]);if(m.hidden||m.dataset.k!==k)return;drawMktChart(F)}
+  catch(e){if(m.dataset.k===k)m.querySelector(".gbody").innerHTML=`<div class="empty" style="padding:40px">${esc(e.message||String(e))}</div>`}
+  m.querySelector("[data-mkclose]")?.focus()}
+function closeMktChart(fromPop){const m=$("#mkmodal");if(!m||m.hidden)return;if(MCH){MCH.ro?.disconnect();MCH.dk?.destroy();MCH.chart.remove();MCH=null}
+  m.hidden=true;$("#mkscrim").hidden=true;
+  if(!["#drawer","#gmodal","#pmodal","#vmodal","#smodal"].some(q=>$(q)&&!$(q).hidden))document.body.style.overflow="";
+  if(!fromPop&&history.state?.mchart){MCH_BACK=true;history.back()}}
+window.addEventListener("popstate",()=>{if(MCH_BACK){MCH_BACK=false;return}if(!history.state?.mchart&&$("#mkmodal")&&!$("#mkmodal").hidden)closeMktChart(true)});
+window.addEventListener("keydown",e=>{if(e.key==="Escape"&&$("#mkmodal")&&!$("#mkmodal").hidden&&(!$("#mdl")||$("#mdl").hidden)&&(!$("#smodal")||$("#smodal").hidden)){e.stopImmediatePropagation();e.preventDefault();closeMktChart()}},true);
+document.addEventListener("click",e=>{const b=e.target.closest("[data-mchart]");if(!b)return;e.preventDefault();e.stopPropagation();mkLoad().then(()=>openMktChart(b.dataset.mchart))},true);
+const mkInr=F=>F.kind!=="index"&&MST.cur==="inr"&&!!F.fx;
+/* bars in the chosen currency; ₹ = US$ × that day's rate × (10 g, 1 kg or 1 coin) */
+function mRows(F,weekly){const S=weekly?F.w:F.d,inrM=mkInr(F),fx=inrM?(weekly?F.fx.w:F.fx.d):null,m=inrM?F.fx.m:1,b=weekly?F.bw:F.bd,out=[];if(!S)return out;
+  for(let i=0;i<S.t.length;i++){let o=S.o[i],h=S.h[i],l=S.l[i],c=S.c[i];if(![o,h,l,c].every(isNum))continue;
+    if(inrM){const r=fx[i];if(!isNum(r))continue;o*=r*m;h*=r*m;l*=r*m;c*=r*m}
+    out.push({t:S.t[i],o,h,l,c,v:S.v?.[i]||0,b:b?b[i]:null})}return out}
+function mRet(rows,days){if(rows.length<2)return null;const L=rows[rows.length-1],t0=new Date(new Date(L.t+"T00:00:00Z").getTime()-days*864e5).toISOString().slice(0,10);
+  let i=-1;for(let j=rows.length-1;j>=0;j--)if(rows[j].t<=t0){i=j;break}return i>=0?(L.c/rows[i].c-1)*100:null}
+function drawMktChart(F){const m=$("#mkmodal"),P=gpal();MCX={F};
+  const kv=(k,v,c)=>`<div><dt>${k}</dt><dd class="num ${c||""}">${v}</dd></div>`,inrM=mkInr(F);
+  const d=mRows(F,false),cl=d.map(q=>q.c),seed=inrM?F.sdi:F.sd,E={};for(const n of EMA_N)E[n]=emaRun(cl,n,seed?.[n]);
+  const L1=d[d.length-1],L0=d[d.length-2],chg=L0?(L1.c/L0.c-1)*100:null,vsE=n=>{const e=E[n][d.length-1];return isNum(e)?(L1.c/e-1)*100:null};
+  const y0=new Date(new Date(L1.t+"T00:00:00Z").getTime()-365*864e5).toISOString().slice(0,10),hi=Math.max(...d.filter(q=>q.t>y0).map(q=>q.h)),fromHi=(L1.c/hi-1)*100;
+  const segM=(name,opts,cur,labels)=>`<div class="seg" role="group" aria-label="${esc(name)}">`+opts.map(o=>`<button type="button" data-ms="${name}" data-val="${esc(o)}" aria-pressed="${o===cur}">${esc(labels?labels[o]:o)}</button>`).join("")+`</div>`;
+  const ranges=MST.int==="W"?["1Y","2Y","5Y","10Y"]:["3M","6M","1Y","2Y","3Y"];if(!ranges.includes(MST.range))MST.range=MST.int==="W"?"2Y":"1Y";
+  const idx=F.kind==="index",rsOk=idx&&!!F.bd,u=idx?"points":inrM?F.fx.u:F.unit;
+  m.querySelector(".gkind").textContent=MK_KIND[F.kind]||"";
+  const statsH=`<dl class="gstats">${kv(`Close · ${fmtDate(L1.t)}`,mkFmt(F,L1.c,inrM))}${kv("Day",sgn(chg,2),cls(chg))}${kv("1 month",sgn(mRet(d,30),1),cls(mRet(d,30)))}${kv("3 months",sgn(mRet(d,91),1),cls(mRet(d,91)))}${kv("1 year",sgn(mRet(d,365),1),cls(mRet(d,365)))}${kv("From 52W high",sgn(fromHi,1))}${EMA_N.map(n=>kv("vs EMA "+n,sgn(vsE(n),1),cls(vsE(n)))).join("")}</dl>`;
+  const phone=matchMedia("(max-width:700px)").matches;
+  const note=idx?`NSE's own index values, daily to ${fmtDate(F.asof)}. EMA = exponential moving average of the close over 21, 50 and 200 ${MST.int==="W"?"weeks":"sessions"}, worked out on the full history.${rsOk?" RS line: the index divided by NIFTY 500, 100 at the first bar; blue dots mark the RS line at a 52-week high.":""}`
+    :`${F.k==="btc"?"Bitcoin in US$ (Yahoo Finance, BTC-USD); it trades every day.":`COMEX ${F.k} futures, front month (Yahoo Finance), US$ per troy ounce.`} The latest bar may still have been trading when the site updated (${fmtDate(F.asof)}); it is corrected the next evening. ${F.fx?`The ₹ view multiplies each bar by that day's US$/₹ rate${F.k==="gold"?", per 10 g":F.k==="silver"?", per kg":""} — the world price in rupees; Indian prices (MCX) also carry import duty and GST, so they run a few percent higher. `:""}<b>For reference only:</b> not used in any breadth number, scanner or anywhere else on the site.`;
+  m.querySelector(".gbody").innerHTML=`${phone?"":statsH}
+   <div class="gtools">
+     <div class="ctl"><span>Range</span>${segM("range",ranges,MST.range)}</div>
+     <div class="ctl"><span>Bars</span>${segM("int",["D","W"],MST.int,{D:"Daily",W:"Weekly"})}</div>
+     ${idx||!F.fx?"":`<div class="ctl"><span>Price in</span>${segM("cur",["usd","inr"],MST.cur,{usd:"US$",inr:"₹"})}</div>`}
+     <div class="ctl"><span>Averages${MST.int==="W"?" (weekly bars)":""}</span>${emaChips("data-mema")}</div>
+     <div class="ctl"><span>Scale</span>${segM("scale",["lin","log"],MST.scale,{lin:"Linear",log:"Log"})}</div>
+     ${rsOk?`<div class="ctl"><span>RS line vs NIFTY 500</span>${segM("rs",["on","off"],MST.rs,{on:"Show",off:"Hide"})}</div>`:""}
+   </div>
+   <div class="gread" id="mread" aria-live="off"></div>
+   <div class="gchart" id="mchartbox"><div class="gplab" id="mplab"></div></div>
+   <div class="glegend" id="mlegend"></div>
+   ${phone?statsH:""}
+   <p class="note" style="margin:0 0 14px">${note} Unit: ${esc(u)}.</p>
+   <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn alt" href="https://in.tradingview.com/chart/?symbol=${encodeURIComponent(MK_TV[F.k]||"")}" target="_blank" rel="noopener">TradingView ↗</a></div>`;
+  mRender()}
+function mRender(keep){const box=$("#mchartbox"),L=window.LightweightCharts,P=gpal();if(!box||!L||!MCX)return;const {F}=MCX,W=MST.int==="W",inrM=mkInr(F);
+  let lr=null;if(MCH){if(keep)lr=MCH.chart.timeScale().getVisibleLogicalRange();MCH.ro?.disconnect();MCH.dk?.destroy();MCH.chart.remove();MCH=null}
+  const rows=mRows(F,W);if(rows.length<2){box.innerHTML=`<div class="empty">Not enough history yet.</div>`;return}
+  const phone=matchMedia("(max-width:700px)").matches,N=rows.length,T=rows.map(q=>q.t),Cl=rows.map(q=>q.c),last=rows[N-1].c,prec=last>=1000?1:2;
+  const chart=L.createChart(box,{autoSize:true,kineticScroll:{mouse:true,touch:true},layout:{background:{type:"solid",color:P.card},textColor:P.muted,fontFamily:"IBM Plex Sans, system-ui, sans-serif",fontSize:phone?12:13,attributionLogo:true,panes:{separatorColor:P.line,separatorHoverColor:rgba(P.accent,.35),enableResize:true}},
+    grid:{vertLines:{color:rgba(P.track.length>6?P.track:P.line,.6)},horzLines:{color:P.track}},rightPriceScale:{borderColor:P.line,minimumWidth:phone?58:72},
+    timeScale:{borderColor:P.line,rightOffset:5,minBarSpacing:0.5},crosshair:{mode:L.CrosshairMode.Normal},localization:{locale:"en-IN"},handleScale:{axisPressedMouseMove:{time:true,price:false}}});
+  const line=o=>({priceLineVisible:false,lastValueVisible:false,crosshairMarkerVisible:false,lineWidth:2,...o});
+  const cs=chart.addSeries(L.CandlestickSeries,{upColor:P.up,downColor:P.down,borderUpColor:P.up,borderDownColor:P.down,wickUpColor:P.up,wickDownColor:P.down,priceLineVisible:true,priceLineStyle:L.LineStyle.Dotted,priceFormat:{type:"price",precision:prec,minMove:Math.pow(10,-prec)}},0);
+  cs.setData(rows.map(q=>({time:q.t,open:q.o,high:q.h,low:q.l,close:q.c})));
+  const on=emaOn(),ec=emaCol(P),es={},ev={},seed=inrM?(W?F.swi:F.sdi):(W?F.sw:F.sd);
+  for(const n of EMA_N){ev[n]=emaRun(Cl,n,seed?.[n]);es[n]=chart.addSeries(L.LineSeries,line({color:ec[n],lineWidth:n===200?2:1.7,visible:on[n]}),0);
+    es[n].setData(ev[n].map((v,i)=>isNum(v)?{time:T[i],value:v}:{time:T[i]}))}
+  /* the 52-week high, for orientation */
+  {const k=W?52:F.k==="btc"?365:252,a=Math.max(0,N-k);let h=-Infinity,hi=a;for(let i=a;i<N;i++)if(rows[i].h>h){h=rows[i].h;hi=i}
+    const cm=new ChartMarks([{i0:hi,p0:h,i1:N-1,p1:h,color:P.muted,w:1.4,dash:[2,4],edge:true}],[]);cm.bg=P.card;cs.attachPrimitive(cm);axisTag(cs,h,P.muted,phone?"":"52W high")}
+  const panes=[],labels=["Price · "+(W?"weekly bars":"daily bars")+(inrM?" · ₹":"")];let rsv=null,pi=1;
+  if(F.k==="btc"&&rows.some(q=>q.v>0)){const vs=chart.addSeries(L.HistogramSeries,{priceFormat:{type:"volume"},priceLineVisible:false,lastValueVisible:false},pi);
+    vs.setData(rows.map((q,i)=>({time:q.t,value:q.v||0,color:rgba(i&&q.c<rows[i-1].c?P.down:P.up,.55)})));labels.push("Volume (US$, as reported to Yahoo)");panes.push(22);pi++}
+  if(F.kind==="index"&&F.bd&&MST.rs==="on"){const b0=rows.find(q=>isNum(q.b)),k0=b0?b0.c/b0.b:null;rsv=rows.map(q=>isNum(q.b)&&k0?q.c/q.b/k0*100:null);
+    const rsS=chart.addSeries(L.LineSeries,line({color:P.ink,lineWidth:1.6,lastValueVisible:true,priceFormat:{type:"price",precision:1,minMove:0.1}}),pi);
+    rsS.setData(rsv.map((v,i)=>isNum(v)?{time:T[i],value:v}:{time:T[i]}));
+    const win=W?52:252,dots=[];for(let i=win-1;i<N;i++){if(!isNum(rsv[i]))continue;let mx=-Infinity;for(let j=i-win+1;j<=i;j++)if(isNum(rsv[j])&&rsv[j]>mx)mx=rsv[j];if(rsv[i]>=mx-1e-9)dots.push({time:T[i],position:"inBar",shape:"circle",color:P.bdot,size:0.6})}
+    L.createSeriesMarkers(rsS,dots);labels.push("RS line vs NIFTY 500 (100 = first bar)");panes.push(24);pi++}
+  const sf=[100-panes.reduce((a,b)=>a+b,0),...panes];chart.panes().forEach((p,i)=>p.setStretchFactor(sf[i]||10));
+  chart.priceScale("right",0).applyOptions({mode:MST.scale==="log"?1:0});
+  MCH={chart,rows,cs,es,ev,rsv,idx:new Map(T.map((t,i)=>[t,i]))};
+  if(lr)chart.timeScale().setVisibleLogicalRange(lr);else mSetRange();
+  MCH.dk=drawKit(chart,cs,box,"m:"+F.k+(inrM?":inr":""),rows,{weekly:W});
+  mLegend();
+  const placeLabels=()=>{const lab=$("#mplab");if(!lab||!MCH)return;let top=0;lab.innerHTML=MCH.chart.panes().map((p,i)=>{const h=`<span style="top:${top+4}px">${esc(labels[i]||"")}</span>`;top+=p.getHeight()+1;return h}).join("")};
+  requestAnimationFrame(placeLabels);MCH.ro=new ResizeObserver(()=>requestAnimationFrame(placeLabels));MCH.ro.observe(box);
+  const ro=rafLatest(t=>mReadout(t));chart.subscribeCrosshairMove(prm=>{if(MCH){MCH.lastT=prm.time;ro(prm.time)}});mReadout(null)}
+function mSetRange(){if(!MCH)return;const rows=MCH.rows,N=rows.length,yrs={"3M":.25,"6M":.5,"1Y":1,"2Y":2,"3Y":3,"5Y":5,"10Y":10}[MST.range]||1;
+  const t0=new Date(new Date(rows[N-1].t+"T00:00:00Z").getTime()-yrs*365.25*864e5).toISOString().slice(0,10);let i=0;while(i<N-1&&rows[i].t<t0)i++;
+  MCH.chart.timeScale().setVisibleLogicalRange({from:Math.max(-1,i-1),to:N+4})}
+function mLegend(){const leg=$("#mlegend");if(!leg||!MCH)return;const on=emaOn(),ec=emaCol(gpal()),W=MST.int==="W",P=gpal();
+  leg.innerHTML=EMA_N.map(n=>`<span${on[n]?"":` style="opacity:.45"`}><i style="--c:${ec[n]}"></i>EMA ${n}${W?" weeks":""}${on[n]?"":" (hidden)"}</span>`).join("")+`<span><i class="dash" style="--c:${P.muted}"></i>52-week high</span>`+(MCH.rsv?`<span><span class="bd" aria-hidden="true"></span>RS line at a 52-week high</span>`:"")}
+function mReadout(t){const el=$("#mread");if(!el||!MCH||!MCX)return;const rows=MCH.rows,F=MCX.F,inrM=mkInr(F);let i=t!=null&&MCH.idx.has(t)?MCH.idx.get(t):rows.length-1;
+  const q=rows[i],p=rows[i-1],ch=p?(q.c/p.c-1)*100:null,on=emaOn(),ec=emaCol(gpal()),f=v=>mkFmt(F,v,inrM);
+  el.innerHTML=`<b>${MST.int==="W"?"Week to ":""}${fmtDate(q.t)}</b><span>O <b class="num">${f(q.o)}</b></span><span>H <b class="num">${f(q.h)}</b></span><span>L <b class="num">${f(q.l)}</b></span><span>C <b class="num">${f(q.c)}</b> <span class="num ${cls(ch)}">${sgn(ch,2)}</span></span>`+
+    EMA_N.filter(n=>on[n]).map(n=>{const v=MCH.ev[n][i];return `<span><i class="emadot" style="--c:${ec[n]}"></i>EMA ${n} <b class="num">${isNum(v)?f(v):"–"}</b></span>`}).join("")+
+    (MCH.rsv&&isNum(MCH.rsv[i])?`<span>RS line <b class="num">${MCH.rsv[i].toFixed(1)}</b></span>`:"")}
+function mModalClick(e){
+  if(e.target.closest("[data-mkclose]")){closeMktChart();return}
+  const em=e.target.closest("[data-mema]");if(em){const n=+em.dataset.mema,v=em.getAttribute("aria-pressed")!=="true";emaSet(n,v);em.setAttribute("aria-pressed",v);
+    if(MCH){MCH.es[n].applyOptions({visible:v});mLegend();mReadout(MCH.lastT)}return}
+  const s=e.target.closest("[data-ms]");if(s){const k=s.dataset.ms,v=s.dataset.val;MST[k]=v;store.set("mchart",{range:MST.range,int:MST.int,scale:MST.scale,cur:MST.cur,rs:MST.rs});
+    s.parentElement.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===s));
+    if(k==="range"){mSetRange();return}
+    if(k==="int"||k==="cur"){drawMktChart(MCX.F);return}
+    mRender(k==="scale");return}}
 
 /* ════════════════════ COMPARE LINES (Rotation tab pop-up) ════════════════════
    One tap from every Rotation view: the Bars view drawn day by day. Each line is the mean (or median) % change of a
@@ -5256,18 +5676,28 @@ function wireMini(box,id,dates,vals,o,fmtTip){
   const out=()=>{tip.hidden=true;xh.setAttribute("opacity","0");xd.setAttribute("opacity","0")};
   svg.addEventListener("mousemove",move);svg.addEventListener("touchmove",move,{passive:true});svg.addEventListener("touchstart",move,{passive:true});svg.addEventListener("mouseleave",out);svg.addEventListener("touchend",out);
 }
-const BIDX=[["NIFTY 50","Nifty 50"],["NIFTY 500","Nifty 500"],["NIFTY SMLCAP 250","Nifty Smallcap 250"],["NIFTY MICROCAP250","Nifty Microcap 250"]];
+const BIDX=[["NIFTY 50","Nifty 50"],["NIFTY 500","Nifty 500"],["NIFTY MIDCAP 150","Nifty Midcap 150"],["NIFTY SMLCAP 250","Nifty Smallcap 250"],["NIFTY MICROCAP250","Nifty Microcap 250"]];
+const BMK=[["gold","Gold"],["silver","Silver"],["btc","Bitcoin"]];   // reference only: never part of a breadth number
 const BEMA=[["e20","20-day","--pe20"],["e50","50-day","--pe50"],["e100","100-day","--pe100"],["e200","200-day","--pe200"]];
 function breadthSmall(b){
   const N=b.dates.length,k=Math.min(N,BRANGE[st.brange]||126),s0=N-k,dts=b.dates.slice(s0),L=N-1,P=Math.max(0,L-5);
   const idx=b.idx||D.breadth.idx||{},hasI=BIDX.some(([nm])=>idx[nm]),hasE=!!b.e20;if(!hasI&&!hasE)return {h:"",wire:()=>{}};
   const vw=viewW(),cols=vw>=900?2:1,MW=Math.max(280,Math.round((vw-(cols-1)*14)/cols-30)),MH=Math.round(Math.min(250,Math.max(180,MW*.34)));
-  const wires=[];let h=`<div class="msec-head"><div><h3>Benchmark indices and trend participation</h3><p>Where the main indices are trading, and how many stocks hold above their exponential moving averages (EMA) — the faster averages turn first.</p></div><div class="ctl"><span>Range</span>${seg("brange",["3M","6M","1Y"],st.brange)}</div></div>`;
-  if(hasI){h+=`<div class="mgrid${cols>1?" two":""}">`;
+  const wires=[],mk=!!D.meta?.mkt;let h=`<div class="msec-head"><div><h3>Benchmark indices and trend participation</h3><p>Where the main indices are trading${mk?" (with gold, silver and bitcoin alongside, for reference only)":""}, and how many stocks hold above their exponential moving averages (EMA) — the faster averages turn first.${mk?" The chart button opens a full candle chart.":""}</p></div><div class="ctl"><span>Range</span>${seg("brange",["3M","6M","1Y"],st.brange)}</div></div>`;
+  if(hasI||mk){h+=`<div class="mgrid${cols>1?" two":""}">`;
     for(const [nm,lab] of BIDX){const a=(idx[nm]||[]).slice(s0);if(!a.some(isNum))continue;const f0=a.find(isNum),fl=a[a.length-1],ch=(fl/f0-1)*100,c=ch>=0?"var(--up)":"var(--down)",id="bi"+nm.replace(/\W/g,"");
-      h+=`<div class="card mcard" id="mc_${id}"><div class="mhead"><h4>${esc(lab)}</h4><div class="mval"><b class="num">${inr(fl)}</b><span class="num ${cls(ch)}">${sgn(ch,1)} in ${st.brange}</span></div></div>${miniChart(id,dts,a,{c,W:MW,h:MH,label:`${lab}, last ${st.brange}`,tf:t=>t.toLocaleString("en-IN")})}</div>`;
+      h+=`<div class="card mcard" id="mc_${id}"><div class="mhead"><div class="mtitle"><h4>${esc(lab)}</h4>${mkBtn(MK_OF[nm],lab)}</div><div class="mval"><b class="num">${inr(fl)}</b><span class="num ${cls(ch)}">${sgn(ch,1)} in ${st.brange}</span></div></div>${mk?`<p class="msub">NSE index · ${fmtDate(dts[dts.length-1])}</p>`:""}${miniChart(id,dts,a,{c,W:MW,h:MH,label:`${lab}, last ${st.brange}`,tf:t=>t.toLocaleString("en-IN")})}</div>`;
       wires.push(()=>wireMini($("#mc_"+id),id,dts,a,{},i=>`<b>${fmtDate(dts[i])}</b><br>${esc(lab)}: <b>${inr(a[i])}</b><br>From the range start: <b>${sgn((a[i]/f0-1)*100,1)}</b>`))}
-    h+=`</div>`}
+    if(mk)for(const [k,lab] of BMK)if(mkHas(k))h+=`<div class="card mcard mkcard" id="mc_mk${k}"><div class="mhead"><div class="mtitle"><h4>${esc(lab)}</h4><span class="mtag">Reference only</span></div></div><div class="empty" style="padding:40px 10px">Loading…</div></div>`;
+    h+=`</div>`;
+    if(mk)h+=`<p class="note" style="margin:-4px 2px 18px">Gold, silver and bitcoin are for reference only — world prices in US$ from Yahoo Finance (COMEX futures for the metals), read at the evening update — and are not used in any breadth number or anywhere else on the site. ₹ figures use the day's US$/₹ rate; Indian (MCX) prices also carry import duty and GST.</p>`;
+    if(mk)wires.push(()=>mkLoad().then(M=>{for(const [k] of BMK){const el=$("#mc_mk"+k);if(!el)continue;const r=M?.by?.[k];if(!r){el.remove();continue}
+      const days={"3M":91,"6M":182,"1Y":365}[st.brange]||182,t0=new Date(new Date(r.d+"T00:00:00Z").getTime()-days*864e5).toISOString().slice(0,10);let i0=r.st.findIndex(t=>t>=t0);if(i0<0)i0=0;
+      const dt=r.st.slice(i0),a=r.sc.slice(i0),f0=a.find(isNum),fl=a[a.length-1],ch=(fl/f0-1)*100,c=ch>=0?"var(--up)":"var(--down)",id="mk"+k;
+      const ri=r.inr&&isNum(r.inr.c)?`≈ ₹${inr(r.inr.c)}${r.inr.u.replace(/^₹/,"")} · `:"";
+      el.innerHTML=`<div class="mhead"><div class="mtitle"><h4>${esc(r.n)}</h4>${mkBtn(k,r.n)}<span class="mtag">Reference only</span></div><div class="mval"><b class="num">${mkUsd(fl)}</b><span class="num ${cls(ch)}">${sgn(ch,1)} in ${st.brange}</span></div></div>
+        <p class="msub">${r.kind==="crypto"?"US$":"US$ per ounce"} · ${ri}${fmtDate(r.d)}${r.fresh===false?" · not updated today":""}</p>${miniChart(id,dt,a,{c,W:MW,h:MH,label:`${r.n} in US$, last ${st.brange}`,tf:t=>t>=1000?Math.round(t).toLocaleString("en-US"):String(+t.toFixed(t>=100?0:1))})}`;
+      wireMini(el,id,dt,a,{},i=>`<b>${fmtDate(dt[i])}</b><br>${esc(r.n)}: <b>${mkUsd(a[i])}</b><br>From the range start: <b>${sgn((a[i]/f0-1)*100,1)}</b>`)}}))}
   if(hasE){h+=`<div class="mgrid${cols>1?" two":""}">`;
     for(const [key,lab,cv] of BEMA){const a=b[key].slice(s0),v=b[key][L],d=v-b[key][P],id="be"+key;
       h+=`<div class="card mcard" id="mc_${id}"><div class="mhead"><h4>Stocks above their ${lab} EMA</h4><div class="mval"><b class="num">${isNum(v)?v.toFixed(1)+"%":"–"}</b><span class="num ${cls(d)}">${isNum(d)?(d>0?"+":"")+d.toFixed(1)+" pts in a week":""}</span></div></div>${miniChart(id,dts,a,{c:`var(${cv})`,W:MW,h:MH,lo:0,hi:100,ticks:[0,20,50,80,100],ref:50,unit:"%",label:`Percent of stocks above their ${lab} EMA, last ${st.brange}`})}</div>`;
