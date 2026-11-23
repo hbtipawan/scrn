@@ -1,6 +1,6 @@
 """Download and read every fund house's monthly portfolio; save one compact file per fund house per month.
 
-    python scripts/fetch_mf.py                     # latest months not yet saved (run daily 1st-15th)
+    python scripts/fetch_mf.py                     # latest months not yet saved (run daily 1st-20th)
     python scripts/fetch_mf.py --months 2025-09:2026-09 --only sbi,hdfc
     python scripts/fetch_mf.py --redo 2026-09      # re-read a month even if saved
 
@@ -246,7 +246,7 @@ def main():
     ap.add_argument("--skip", help="comma-separated codes to skip")
     ap.add_argument("--redo", action="store_true", help="re-read months already saved")
     ap.add_argument("--auto", action="store_true",
-                    help="daily-run mode: from the 1st to the 20th, read new month-end files; otherwise do nothing")
+                    help="daily-run mode: from the 1st to the 20th, read new month-end files; later, only months still missing")
     a = ap.parse_args()
     today = dt.date.today()
     months = month_list(a.months) if a.months else default_months(today)
@@ -254,15 +254,19 @@ def main():
     if a.skip:
         codes = [c for c in codes if c not in a.skip.split(",")]
     changed = 0
-    if a.auto and today.day > 20:
-        print("fund portfolios: nothing new expected after the 20th")
-        months = []
+    # after the 20th the daily job skips this step; it runs only when "Rebuild mutual-fund flows" is ticked by hand -
+    # then read just the fund-house months not saved yet (e.g. a fund house whose site changed and was fixed late)
+    late = a.auto and today.day > 20
+    if late:
+        print("fund portfolios: after the 20th (a rebuild started by hand) - reading only fund-house months not saved yet")
     t0 = time.time()
     for (y, m) in months:
         for code in codes:
             done = OUT / f"{y}-{m:02d}" / f"{code}.json"
             files = None
             if done.exists() and not a.redo:
+                if late:
+                    continue
                 try:
                     old = json.loads(done.read_text())
                 except ValueError:
