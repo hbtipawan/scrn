@@ -1,0 +1,11 @@
+# Hand-reviewed sector corrections; they win over classification_master.csv. Leave industry blank to keep the master's.
+# Each target sector is the one the company's listed peers carry in the master. Delete a line once the master is right.
+symbol,sector,industry,reason
+PREMIERENE,Capital Goods Electrical Equipment,,solar cell and module maker like Waaree and Websol (master: Trading)
+AEGISLOG,Logistics,,LPG and liquid-chemical terminals like Aegis Vopak (master: Trading)
+RAYMOND,Realty,,real estate after the lifestyle and engineering demergers (master: Air Transport Service)
+PFOCUS,Entertainment,,visual-effects and film-services studio (master: Realty)
+NBCC,Infrastructure Developers and Operators,,government construction and project management like RVNL and IRCON (master: Miscellaneous)
+RITES,Infrastructure Developers and Operators,,railway and infrastructure engineering consultant like Engineers India (master: Miscellaneous)
+ENRIN,Capital Goods Electrical Equipment,,Siemens Energy India - power generation and transmission equipment maker like Siemens and ABB (master: Power Generation and Distribution)
+BHAGYANGR,Non Ferrous Metals,,copper products and copper recycling like Hindustan Copper and Precision Wires (master: Power Generation and Distribution)
