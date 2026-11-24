@@ -755,6 +755,7 @@ details.exp>div{padding:0 0 8px}
 /* rotation-row badges and chart button */
 .gbadges{display:inline-flex;flex-wrap:wrap;gap:4px;margin-left:8px;vertical-align:2px}
 .gbrk{font-size:13px;font-weight:700;border-radius:6px;padding:0 6px;background:var(--soft);color:var(--ink);border:1px solid var(--line)}
+.gtrail{font-size:14px;white-space:nowrap}.gtrail b{font-weight:800}.gtrail .tv{font-weight:500}.gtrail .tsep{color:var(--muted);margin:0 3px}
 .gbtn{display:inline-flex;align-items:center;justify-content:center;width:32px;height:28px;margin-left:6px;border:1.5px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);cursor:pointer;vertical-align:-6px}
 .gbtn svg{width:18px;height:18px}
 .gbtn:hover{border-color:var(--accent)}
@@ -1679,7 +1680,7 @@ function renderRotation(){
   if(st.view==="radar"){renderRadar();return}
   if(st.view==="gsig"){renderGroupSignals();return}
   if(D.meta.grp&&!GXD){grpLoad().then(()=>{if(st.tab==="rotation")renderRotation()})}
-  const now=groupStats(false),prev=groupStats(true);
+  const now=groupStats(false).filter(g=>!gMixed(st.group,g.name)),prev=groupStats(true).filter(g=>!gMixed(st.group,g.name));
   const prank={};[...prev].sort((a,b)=>b.v-a.v).forEach((g,i)=>prank[g.name]=i+1);
   const ranked=[...now].sort((a,b)=>b.v-a.v);ranked.forEach((g,i)=>g.rank=i+1);
   let rows=ranked;if(st.sort==="name")rows=[...now].sort((a,b)=>a.name.localeCompare(b.name));if(st.sort==="br")rows=[...now].sort((a,b)=>(b.br??-1)-(a.br??-1));
@@ -1709,7 +1710,7 @@ function renderRotation(){
       ${open?members(g):""}</div>`;
   }
   const sx=D.meta.sector_from_industry,cl=D.meta.classification;
-  h+=`</div><p class="note">Bars are the ${st.agg} ${st.period==="1D"?"today's":PL[st.period]} return of stocks in each group, using ${uniWord()} (groups need ${D.meta.min_group_size}+ stocks).${st.uni!=="lq"?" Small, thinly traded stocks swing more — the median is steadier than the mean.":""}${st.group==="Sector"&&sx?` NSE lists a sector only for the ~750 stocks of its broad indices; ${sx.derived.toLocaleString("en-IN")} other stocks take the sector that their industry belongs to (the two agree for ${sx.agree}% of stocks where both are known).`:""}${(st.group==="Sector"||st.group==="Industry"||st.group==="Themes")&&cl?` Sector and industry come from one master list (${cl.matched.toLocaleString("en-IN")} of ${D.meta.all_stocks.toLocaleString("en-IN")} stocks; ${cl.sectors} sectors, ${cl.industries} industries)${st.group==="Themes"?"; each theme takes the companies whose sector or industry is its core business, plus named companies with a large business in it":""}.`:""}</p>`;
+  h+=`</div><p class="note">Bars are the ${st.agg} ${st.period==="1D"?"today's":PL[st.period]} return of stocks in each group, using ${uniWord()} (groups need ${D.meta.min_group_size}+ stocks).${st.uni!=="lq"?" Small, thinly traded stocks swing more — the median is steadier than the mean.":""}${st.group==="Sector"&&sx?` NSE lists a sector only for the ~750 stocks of its broad indices; ${sx.derived.toLocaleString("en-IN")} other stocks take the sector that their industry belongs to (the two agree for ${sx.agree}% of stocks where both are known).`:""}${(st.group==="Sector"||st.group==="Industry"||st.group==="Themes")&&cl?` Sector and industry come from one master list (${cl.matched.toLocaleString("en-IN")} of ${D.meta.all_stocks.toLocaleString("en-IN")} stocks; ${cl.sectors} sectors, ${cl.industries} industries${cl.corrected?`; ${cl.corrected} sectors corrected by hand where the list was plainly wrong`:""})${st.group==="Themes"?"; each theme takes the companies whose sector or industry is its core business, plus named companies with a large business in it":""}.`:""}${mixedNote(st.group)}${D.meta.grp?" Beside each group: its RS rating at the last 6 weekly closes, this week first (bold).":""}</p>`;
   $("#view").innerHTML=h;wireTables($("#view"),renderRotation);if(D.meta.grp)gMountMini();
 }
 const viewSeg=()=>`<div class="ctl"><span>View</span>${seg("view",["bars","heat",...(D.meta.grp?["radar","gsig"]:[]),...(D.meta.idx?["rrg"]:[])],st.view,{bars:"Bars",heat:"Heatmap",radar:"Rotation radar",gsig:"Group signals",rrg:"NSE index map (RRG)"})}</div>${D.meta.cmp?`<div class="ctl"><span>Compare</span><button type="button" class="btn cmpbtn" data-cmp-open aria-haspopup="dialog"><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M2 15l5-5 3 3 7-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 17l5-3 4 1 7-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".55"/></svg> Compare lines</button></div>`:""}`;
@@ -1776,7 +1777,7 @@ function members(g){
   return `<div class="members">${D.meta.grp?gMiniHtml(st.group,g.name):""}<div class="meta">${g.adv.toFixed(0)}% of stocks up over ${st.period==="1D"?"today":PL[st.period]} · ${g.br==null?"–":g.br.toFixed(0)+"%"} above 50 DMA</div>${dtable("grp_"+g.name,g.syms.map(s=>D.by[s]),[C.stock,C.ret(st.period),C.px,C.mc,C.rs,C.fr,C.pe,C.h52,C.st,C.vr],{limit:60,csv:false})}</div>`;
 }
 function heatmap(rows){
-  const stats=Object.fromEntries(PERIODS.map(p=>[p,Object.fromEntries(groupStats(false,p).map(g=>[g.name,g.v]))]));
+  const stats=Object.fromEntries(PERIODS.map(p=>[p,Object.fromEntries(groupStats(false,p).filter(g=>!gMixed(st.group,g.name)).map(g=>[g.name,g.v]))]));
   const mx=Object.fromEntries(PERIODS.map(p=>[p,Math.max(1,...Object.values(stats[p]).map(Math.abs))]));
   const sorted=st.sort==="ret"?[...rows].sort((a,b)=>(stats[st.period][b.name]??-999)-(stats[st.period][a.name]??-999)):rows;
   const cell=(v,m)=>{if(!isNum(v))return `<div class="cell">–</div>`;const f=Math.min(1,Math.abs(v)/m),c=v>=0?"var(--up)":"var(--down)";return `<div class="cell num" style="background:color-mix(in srgb,${c} ${Math.round(8+f*62)}%,transparent);${f>.55?"color:#fff":""}">${sgn(v,1)}</div>`};
@@ -2127,14 +2128,21 @@ async function gMountMini(){const el=document.querySelector(".gmini[data-gopen]"
 function gMiniHtml(kind,name){return `<div class="gmini" data-gopen="${esc(kind+"|"+name)}" role="button" tabindex="0" aria-label="Open the full chart of ${esc(name)}"><div class="gmh">Loading chart…</div><div class="gmc"></div><span class="gmo">Open full chart ⤢</span></div>`}
 /* ── badges on the rotation rows ── */
 function gBadges(kind,name){const r=gRow(kind,name);if(!r)return "";const u=gU(r),x=r[u];if(!x)return "";
-  return `<span class="gbadges">${isNum(x.rk)?`<span class="gbrk" title="Group RS rating ${x.rk}${isNum(x.rk4)?`, ${x.rk4} four weeks ago`:""}">RS ${x.rk}</span>${gMove(x.rk,x.rk4)}`:""}${gsigChips(r,u,4)}</span>`}
+  return `<span class="gbadges">${isNum(x.rk)?`${gTrail(x)}${gMove(x.rk,x.rk4)}`:""}${gsigChips(r,u,4)}</span>`}
+/* the group RS rating at the last 6 weekly closes, this week first (rkp: one rating per week, oldest first, the last = this week) */
+function gTrail(x){const p=(x.rkp||[]).slice(-6).reverse(),t=p.length>=2&&p[0]===x.rk?p:[x.rk];
+  const w=i=>i===0?"this week":i===1?"1 week ago":i+" weeks ago";
+  return `<span class="gbrk gtrail" title="Group RS rating at each week's close, this week first: ${t.map((v,i)=>`${isNum(v)?v:"–"} (${w(i)})`).join(", ")}">RS <b>${t[0]}</b>${t.slice(1).map(v=>`<span class="tsep">·</span><span class="tv">${isNum(v)?v:"–"}</span>`).join("")}</span>`}
+function gMixed(k,n){const m=D.meta.mixed;return !!(m&&m[k]&&m[k].includes(n))}
+function mixedNote(k){const m=(D.meta.mixed||{})[k]||[];if(!m.length)return "";
+  return ` Not ranked here: ${m.length} mixed-bag ${k==="Sector"?"sectors":"industries"} (${k==="Sector"?m.join(", "):"Trading, Miscellaneous, Diversified and the “… Others” labels"}) — their companies share only the label, and in 2021–26 tests a mixed bag in the top fifth was followed by −2.5% against the average stock over 3 months. Their stocks still count in their themes and NSE indices.`}
 /* ── Group signals view ── */
 function renderGroupSignals(){
   if(!GXD){$("#view").innerHTML=`<div class="card empty">Loading group data…</div>`;grpLoad().then(()=>{if(st.tab==="rotation"&&st.view==="gsig")renderGroupSignals()});return}
   const f=st.gsig||(st.gsig={kind:"all",win:"5"});const kinds=Object.keys(GXD.kinds||{});
-  let h=`<div class="sec-head"><div><h2>Group signals</h2><p>Every theme, sector, NSE index and industry is turned into a daily index and checked for the early signs of a rotation. The first block held up in testing on 2021–26 data; breakouts are listed because traders watch them, but on their own they did not beat other groups. Tap a group for its chart.</p></div></div>
+  let h=`<div class="sec-head"><div><h2>Group signals</h2><p>Every theme, sector, NSE index and industry is turned into a daily index and checked for the early signs of a rotation. The first block held up in testing on 2021–26 data; breakouts are listed because traders watch them, but on their own they did not beat other groups. Tap a group for its chart.${(D.meta.mixed?.Sector||[]).length?" Mixed-bag sectors and industries (Trading, Miscellaneous, Diversified, “… Others”) are left out.":""}</p></div></div>
   <div class="card toolbar"><div class="ctl"><span>Groups</span>${seg("gsig_kind",["all",...kinds],f.kind,Object.fromEntries([["all","All kinds"],...kinds.map(k=>[k,k])]))}</div>${uniSeg()}<div class="ctl"><span>Fired</span>${seg("gsig_win",["0","5","20"],f.win,{"0":"Today","5":"Last 5 sessions","20":"Last 4 weeks"})}</div>${viewSeg()}</div>`;
-  const rowsAll=GXD.rows.filter(r=>f.kind==="all"||r.k===f.kind);
+  const rowsAll=GXD.rows.filter(r=>(f.kind==="all"||r.k===f.kind)&&!gMixed(r.k,r.n));
   const block=(title,ids,note)=>{let out=`<h3 class="gblk">${esc(title)}</h3>`;if(note)out+=`<p class="note" style="margin:0 2px 10px">${note}</p>`;
     for(const k of ids){const m=GXD.sig[k];if(!m)continue;const hits=rowsAll.map(r=>({r,x:r[gU(r)]})).filter(o=>o.x&&o.x.ago&&isNum(o.x.ago[k])&&o.x.ago[k]<=+f.win);
       const ev=GXD.evidence?.signals?.[k]?.[st.uni==="lq"?"l":"a"];
@@ -2152,7 +2160,7 @@ function gSpark(a,rk){a=(a||[]).filter(v=>v!==undefined);const v=a.filter(isNum)
 /* ── Rotation radar: group RS rating (x) against its change over 4 weeks (y), 8-week tails ── */
 function renderRadar(){
   if(!GXD){$("#view").innerHTML=`<div class="card empty">Loading group data…</div>`;grpLoad().then(()=>{if(st.tab==="rotation"&&st.view==="radar")renderRadar()});return}
-  const kind=GXD.kinds[st.group]?st.group:"Themes",rowsK=(GXD.kinds[kind]||[]).map(id=>GXD.id[id]).filter(Boolean);
+  const kind=GXD.kinds[st.group]?st.group:"Themes",rowsK=(GXD.kinds[kind]||[]).map(id=>GXD.id[id]).filter(r=>r&&!gMixed(r.k,r.n));
   let h=`<div class="sec-head"><div><h2>Rotation radar</h2><p>Each dot is a ${esc((GKIND[kind]||kind).toLowerCase())}: how strong it is (group RS rating, across) and how fast that is changing (points gained over 4 weeks, up). Tails show the last 8 weeks. In 2021–26 tests, groups entering the shaded corner — rated 70+ and up 20+ points in 4 weeks — beat the average group over the next 3 months; leaders stayed leaders more often than not.</p></div></div>
   <div class="card toolbar"><div class="ctl"><span>Group by</span>${seg("group",Object.keys(D.groups),kind)}</div>${uniSeg()}${viewSeg()}</div>`;
   const pts=rowsK.map(r=>{const x=r[gU(r)];if(!x||!x.rkp)return null;const a=x.rkp,tail=[];for(let j=Math.max(4,a.length-8);j<a.length;j++)if(isNum(a[j])&&isNum(a[j-4]))tail.push([a[j],Math.max(-60,Math.min(60,a[j]-a[j-4]))]);
@@ -2177,7 +2185,7 @@ function renderRadar(){
   for(const p of pts){const c=col(...p.tail.at(-1)),pp=p.tail.map(([a,b])=>`${X(a).toFixed(1)},${Y(b).toFixed(1)}`).join(" "),hd=p.tail.at(-1);
     g+=`<g class="rrs rdr" data-gopen="${esc(p.r.k+"|"+p.r.n)}" data-ix="${esc(p.r.id)}" style="cursor:pointer"><polyline class="rtail" points="${pp}" fill="none" stroke="${c}" stroke-width="2"/>${p.tail.slice(0,-1).map(([a,b])=>`<circle class="rtail" cx="${X(a).toFixed(1)}" cy="${Y(b).toFixed(1)}" r="2.6" fill="${c}"/>`).join("")}<circle cx="${X(hd[0]).toFixed(1)}" cy="${Y(hd[1]).toFixed(1)}" r="6.5" fill="${c}" stroke="var(--card)" stroke-width="2"/></g>`}
   for(const p of pts){const L_=lab[p.r.id];if(L_)g+=`<text x="${(L_.side>0?L_.x:L_.x+L_.w).toFixed(1)}" y="${(L_.y+12).toFixed(1)}" text-anchor="${L_.side>0?"start":"end"}" class="rl" data-ixl="${esc(p.r.id)}">${esc(L_.t)}</text>`}
-  h+=`<div class="card chart" id="rrgc"><div class="legend"><span>Shaded: rated 70+ and up 20+ points in 4 weeks — the tested "RS rating climbing" signal. Hover a dot for its 8-week trail; tap it for the chart.${pts.length>maxLab?` The ${maxLab} most telling groups are labelled — the table has them all.`:""}</span></div><svg viewBox="0 0 ${Wd} ${Hd}" width="100%" role="img" aria-label="Rotation radar of groups" style="display:block">${g}</svg><div class="tip" hidden></div></div>`;
+  h+=`<div class="card chart" id="rrgc"><div class="legend"><span>Shaded: rated 70+ and up 20+ points in 4 weeks — the tested "RS rating climbing" signal.${(kind==="Sector"||kind==="Industry")&&(D.meta.mixed?.[kind]||[]).length?" Mixed-bag groups (Trading, Miscellaneous, Diversified, “… Others”) are left out.":""} Hover a dot for its 8-week trail; tap it for the chart.${pts.length>maxLab?` The ${maxLab} most telling groups are labelled — the table has them all.`:""}</span></div><svg viewBox="0 0 ${Wd} ${Hd}" width="100%" role="img" aria-label="Rotation radar of groups" style="display:block">${g}</svg><div class="tip" hidden></div></div>`;
   const tr=pts.map(p=>({n:p.r.n,k:p.r.k,rk:p.x.rk,d:isNum(p.x.rk4)?p.x.rk-p.x.rk4:null,r1:p.x.r["1M"],r3:p.x.r["3M"],b50:p.x.b50,mr:p.x.mr,sig:p.r,u:gU(p.r)}));
   if(!st.tbl.radar)st.tbl.radar={key:"d",dir:-1,show:60};
   h+=`<div class="card">${dtable("radar",tr,[{k:"n",label:"Group",l:1,fmt:r=>`<button type="button" class="linkbtn" data-gopen="${esc(r.k+"|"+r.n)}">${esc(r.n)}</button>`,sort:r=>r.n},{k:"rk",label:"RS rating",fmt:r=>rsPill(r.rk)},{k:"d",label:"Δ 4 weeks",fmt:r=>`<span class="num ${cls(r.d)}">${r.d==null?"–":(r.d>0?"+":"")+r.d}</span>`},{k:"r1",label:"1M",fmt:r=>`<span class="num ${cls(r.r1)}">${sgn(r.r1,1)}</span>`},{k:"r3",label:"3M",fmt:r=>`<span class="num ${cls(r.r3)}">${sgn(r.r3,1)}</span>`},{k:"b50",label:">50 DMA",fmt:r=>`<span class="num">${isNum(r.b50)?r.b50+"%":"–"}</span>`},{k:"mr",label:"Turnover ×",fmt:r=>`<span class="num">${isNum(r.mr)?r.mr.toFixed(2):"–"}</span>`},{k:"sg",label:"Signals (5 days)",l:1,fmt:r=>gsigChips(r.sig,r.u,4)||"–",sort:r=>(r.sig[r.u]?.sig||[]).length}],{limit:60})}</div>`;
