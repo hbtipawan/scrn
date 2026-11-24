@@ -1,6 +1,6 @@
 {
  "scan_date": "2026-11-20",
- "scan_timestamp": "2026-11-24T06:38:32+05:30",
+ "scan_timestamp": "2026-11-24T15:10:49+05:30",
  "market": "IN",
  "sector_both": [
   {
@@ -190,12 +190,6 @@
    "hit_rate_%": 16.7
   },
   {
-   "sector": "Bearings",
-   "stocks_passing": 1,
-   "total_in_universe": 7,
-   "hit_rate_%": 14.3
-  },
-  {
    "sector": "Crude Oil and Natural Gas",
    "stocks_passing": 1,
    "total_in_universe": 7,
@@ -307,6 +301,12 @@
    "sector": "Aluminium",
    "stocks_passing": 0,
    "total_in_universe": 1,
+   "hit_rate_%": 0.0
+  },
+  {
+   "sector": "Bearings",
+   "stocks_passing": 0,
+   "total_in_universe": 7,
    "hit_rate_%": 0.0
   },
   {
@@ -522,12 +522,6 @@
    "hit_rate_%": 20.0
   },
   {
-   "industry": "Trading",
-   "stocks_passing": 4,
-   "total_in_universe": 32,
-   "hit_rate_%": 12.5
-  },
-  {
    "industry": "PSU Banks",
    "stocks_passing": 3,
    "total_in_universe": 13,
@@ -550,6 +544,12 @@
    "stocks_passing": 3,
    "total_in_universe": 20,
    "hit_rate_%": 15.0
+  },
+  {
+   "industry": "Trading",
+   "stocks_passing": 3,
+   "total_in_universe": 32,
+   "hit_rate_%": 9.4
   },
   {
    "industry": "Textiles Technical Textile",
@@ -2481,9 +2481,9 @@
   },
   {
    "sector": "Textiles",
-   "stocks_passing": 44,
+   "stocks_passing": 43,
    "total_in_universe": 59,
-   "hit_rate_%": 74.6
+   "hit_rate_%": 72.9
   },
   {
    "sector": "Realty",
@@ -4522,12 +4522,6 @@
    "hit_rate_%": 100.0
   },
   {
-   "industry": "Textiles Socks",
-   "stocks_passing": 1,
-   "total_in_universe": 1,
-   "hit_rate_%": 100.0
-  },
-  {
    "industry": "Transport Airlines",
    "stocks_passing": 1,
    "total_in_universe": 1,
@@ -4873,6 +4867,12 @@
    "industry": "Textiles Hosiery and Knitwear",
    "stocks_passing": 0,
    "total_in_universe": 4,
+   "hit_rate_%": 0.0
+  },
+  {
+   "industry": "Textiles Socks",
+   "stocks_passing": 0,
+   "total_in_universe": 1,
    "hit_rate_%": 0.0
   },
   {
