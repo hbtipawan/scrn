@@ -10,7 +10,11 @@ Two clean-ups are applied, and only these:
   * a few old-style industry labels ("Computers - Software - Medium / Small", ...) get the current label of the
     same industry (MANUAL_IND below).
 A site symbol is matched to NSE:SYMBOL; if the master lists the company only under BSE:SYMBOL with the same symbol,
-that row is used when the company names agree. A stock not in the master is left unclassified (never guessed)."""
+that row is used when the company names agree. A stock not in the master is left unclassified (never guessed).
+
+Hand-reviewed corrections in config/class_overrides.csv (symbol, sector, industry, reason) win over the master: for a
+label that is plainly wrong for the company's business today (Raymond under "Air Transport Service", Premier Energies
+under "Trading", ...). They survive a refresh of the master file; delete a line when the master gets it right."""
 import difflib
 import re
 from pathlib import Path
@@ -32,6 +36,33 @@ MANUAL_IND = {
 }
 # lenders, brokers, insurers ... (used where the site treats financial companies differently)
 FINANCIAL_SECTORS = {"Finance", "Banks", "Insurance", "Stock and Commodity Brokers", "Financial Services"}
+
+# Mixed-bag labels: companies that share only the label (traders, holding companies, "... Others"). They stay on
+# every stock, but the Rotation tab does not rank them as groups: in 2021-26 tests a mixed bag in the top fifth of
+# groups was followed by -2.5% against the average stock over 3 months (real industries +3.5%), and with them left
+# out the site's other groups still flagged 34 of the 35 rallies found from prices alone (the 35th was not a labelling
+# problem). Glass containers / aluminium sheets are real product groups, so they stay ranked.
+MIXED = {
+    "Sector": {"Trading", "Miscellaneous", "Diversified"},
+    "Industry": {"Trading", "Miscellaneous", "Diversified", "Finance", "Services Others", "Finance and Investments Others",
+                 "Finance Investment and Others", "NBFC Others", "Pharma Others", "Textiles Others", "Chemicals Others",
+                 "Petrochemicals Others", "Plastics Others", "Auto Others", "Food Processing Others", "Leather Products Others",
+                 "Platform Others", "Machine Tools Others", "Metal Others", "Capital Goods Others", "Electronics Others",
+                 "Packaging Others", "Sugar Others"},
+}
+
+
+def load_overrides(cfg: Path):
+    """config/class_overrides.csv: symbol, sector, industry (blank = keep the master's), reason. Reviewed by hand:
+    where the master's label is plainly wrong for the company's business today. Also classifies a stock the master
+    does not have yet."""
+    f = cfg / "class_overrides.csv"
+    if not f.exists():
+        return pd.DataFrame(columns=["symbol", "sector", "industry", "reason"])
+    d = pd.read_csv(f, dtype=str, comment="#").fillna("")
+    for c in ("symbol", "sector", "industry"):
+        d[c] = d[c].str.strip()
+    return d[d.symbol != ""].drop_duplicates("symbol", keep="last")
 
 
 def _key(x):
@@ -107,7 +138,28 @@ def classify(symbols, names, cfg: Path):
             sec[s] = r["Sector"]
         if isinstance(r["Industry"], str):
             ind[s] = r["Industry"]
-    rep = {"rows": int(len(d)), "matched": len(sec), "via_bse": via_bse, "missing": len(missing), "refused": len(refused),
+    matched = len(sec)
+    # hand-reviewed corrections win over the master file
+    ov = load_overrides(cfg)
+    known_sec, known_ind = set(d["Sector"].dropna()), set(d["Industry"].dropna())
+    applied, odd = [], []
+    wanted = set(symbols)
+    for _, o in ov.iterrows():
+        s = o["symbol"]
+        if s not in wanted:
+            continue
+        if o["sector"]:
+            if o["sector"] not in known_sec:
+                odd.append(f"{s}: sector '{o['sector']}'")
+            sec[s] = o["sector"]
+        if o["industry"]:
+            if o["industry"] not in known_ind:
+                odd.append(f"{s}: industry '{o['industry']}'")
+            ind[s] = o["industry"]
+        applied.append(s)
+    if odd:
+        print("class_overrides.csv: label not used anywhere in the master (check the spelling): " + "; ".join(odd))
+    rep = {"rows": int(len(d)), "matched": matched, "via_bse": via_bse, "missing": len(missing), "refused": len(refused),
            "sectors": int(pd.Series(sec).nunique()), "industries": int(pd.Series(ind).nunique()),
-           "missing_list": missing[:50], "refused_list": refused[:50]}
+           "missing_list": missing[:50], "refused_list": refused[:50], "overrides": applied}
     return pd.Series(sec, dtype=object), pd.Series(ind, dtype=object), rep

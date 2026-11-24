@@ -299,7 +299,8 @@ def main():
     if MASTER:
         print(f"classification master: {m_rep['matched']} of {len(A)} stocks classified ({m_rep['via_bse']} via the BSE listing), "
               f"{m_rep['sectors']} sectors, {m_rep['industries']} industries; not in the file: {m_rep['missing']} "
-              f"{m_rep['missing_list'][:10]}; same symbol but another company: {m_rep['refused']} {m_rep['refused_list'][:10]}")
+              f"{m_rep['missing_list'][:10]}; same symbol but another company: {m_rep['refused']} {m_rep['refused_list'][:10]}"
+              f"; hand-reviewed corrections (class_overrides.csv): {len(m_rep['overrides'])} {m_rep['overrides'][:10]}")
     sec = pd.read_csv(CFG / "sectors.csv").set_index("Symbol")["Sector"] if (CFG / "sectors.csv").exists() else pd.Series(dtype=str)
     # industry for every stock (Yahoo's classification, NSE's where Yahoo has none; fund_info.csv from fetch_fundamentals.py)
     info_f = CFG / "fund_info.csv"
@@ -390,6 +391,9 @@ def main():
     if len(ind):
         ia = ind[ind.index.isin(aset)]
         groups["Industry"] = {k: list(ia.index[ia == k]) for k in sorted(ia.unique())}
+    # mixed-bag sectors / industries (classify.MIXED): still on every stock and in every file, but the Rotation tab
+    # and the group alerts leave them out of their rankings (nothing is recalculated: other groups keep their ratings)
+    mixed_meta = {k: sorted(n for n in groups.get(k, {}) if n in CL.MIXED.get(k, ())) for k in ("Sector", "Industry")}
 
     # ---------------- breadth history: every stock with prices (no liquidity filter), and the liquid universe
     nb = S["breadth_history_days"]
@@ -789,11 +793,12 @@ def main():
     meta = {"asof": last, "generated": datetime.now(ist).strftime("%Y-%m-%d %H:%M IST"),
             "source": fm.get("source"), "stocks_with_data": len(syms), "universe": len(U), "all_stocks": len(A),
             "sector_from_industry": sec_check,
-            "classification": ({k: m_rep[k] for k in ("matched", "via_bse", "missing", "sectors", "industries")} if MASTER else None),
+            "classification": ({**{k: m_rep[k] for k in ("matched", "via_bse", "missing", "sectors", "industries")},
+                                "corrected": len(m_rep["overrides"])} if MASTER else None),
             "failed": fm.get("failed_count"), "indices": indices,
             "filters": {"min_price": S["min_price"], "min_median_turnover_cr": S["min_median_turnover_cr"],
                         "min_market_cap_cr": S["min_market_cap_cr"] if mcap is not None else None},
-            "min_group_size": S["min_group_size"], "fund": fund_meta, "bases": base_meta, "stage2": s2_meta, "results": res_meta, "mf": mf_meta, "rs": rs_meta, "dlv": dlv_meta, "idx": idx_meta, "corp": corp_meta, "grp": grp_meta, "pat": pat_meta, "vcp": vcp_meta, "up": up_meta, "mb": mb_meta, "sc": sch_meta, "vcp2": vcp2_meta, "cmp": cmp_meta, "stg": stg_meta, "mkt": mkt_meta}
+            "min_group_size": S["min_group_size"], "mixed": mixed_meta, "fund": fund_meta, "bases": base_meta, "stage2": s2_meta, "results": res_meta, "mf": mf_meta, "rs": rs_meta, "dlv": dlv_meta, "idx": idx_meta, "corp": corp_meta, "grp": grp_meta, "pat": pat_meta, "vcp": vcp_meta, "up": up_meta, "mb": mb_meta, "sc": sch_meta, "vcp2": vcp2_meta, "cmp": cmp_meta, "stg": stg_meta, "mkt": mkt_meta}
 
     def dump(name, obj):
         (OUT / name).write_text(json.dumps(obj, separators=(",", ":"), allow_nan=False))

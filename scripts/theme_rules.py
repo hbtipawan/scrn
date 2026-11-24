@@ -114,6 +114,10 @@ th("Housing Finance", ind=["Finance Housing"])
 th("Paper & Packaging", sec=["Paper", "Packaging"])
 th("Alcoholic Beverages", sec=["Alcoholic Beverages"], ind=["Alcoholic Beverages", "Breweries"])
 th("Education", sec=["Education", "Computer Education"], ind=["Computer Education", "IT Education", "Platform Education"])
+# a business group, not a sector: the six core Adani companies move as one block (+94% against the average stock in the
+# 26 weeks from Oct 2020) and no sector, industry or index held them. ACC and Ambuja stay in Cement: with them the
+# basket flagged the Nov 2025 rally 22 weeks late instead of 2 weeks early. Moves on group news (Jan 2023: -64%).
+th("Adani Group", add="ADANIENT ADANIPORTS ADANIPOWER ADANIGREEN ADANIENSOL ATGL")
 
 # ---- reviewed corrections (member-by-member review)
 def _drop(name, syms): T[name]["drop"] |= set(syms.split())

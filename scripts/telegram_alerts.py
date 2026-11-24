@@ -270,8 +270,9 @@ def evening():
                  "g_money": "Money flowing in"}
         kind = {"Themes": "theme", "Sector": "sector", "NSE Index": "index", "Industry": "industry"}
         got = []
+        mixed = {(k, n) for k, ns in ((meta or {}).get("mixed") or {}).items() for n in ns}   # Trading, Miscellaneous ...
         for sid, label in names.items():
-            hit = [r for r in G["rows"] if (r.get("a") or {}).get("ago", {}).get(sid) == 0]
+            hit = [r for r in G["rows"] if (r.get("a") or {}).get("ago", {}).get(sid) == 0 and (r["k"], r["n"]) not in mixed]
             if sid == "g_stage2":
                 hit = [r for r in hit if (r.get("a") or {}).get("ago", {}).get("g_stage2m") != 0]
             if hit:

@@ -64,6 +64,9 @@ INDEX_FILES = {
     "Nifty IPO": "ind_niftyipo_list.csv",
     "Nifty MidSmall Healthcare": "ind_niftymidsmallhealthcare_list.csv",
     "Nifty MidSmall IT & Telecom": "ind_niftymidsmallitandtelecom_list.csv",
+    # mid and small companies only: no existing group shares more than a quarter of their stocks
+    "Nifty MidSmall Financial Services": "ind_niftymidsmallfinancailservice_list.csv",   # NSE's own spelling of the file
+    "Nifty MidSmall India Consumption": "ind_niftymidsmallindiaconsumption_list.csv",
 }
 
 
