@@ -755,7 +755,7 @@ details.exp>div{padding:0 0 8px}
 /* rotation-row badges and chart button */
 .gbadges{display:inline-flex;flex-wrap:wrap;gap:4px;margin-left:8px;vertical-align:2px}
 .gbrk{font-size:13px;font-weight:700;border-radius:6px;padding:0 6px;background:var(--soft);color:var(--ink);border:1px solid var(--line)}
-.gtrail{font-size:14px;white-space:nowrap}.gtrail b{font-weight:800}.gtrail .tv{font-weight:500}.gtrail .tsep{color:var(--muted);margin:0 3px}
+.gtrail{font-size:14px;white-space:nowrap}.gtrail b{font-weight:800}.gtrail .tv{font-weight:500}.gtrail .tar{margin:0 3px;font-size:11px;vertical-align:1px;color:var(--muted)}.gtrail .tar.up{color:var(--up)}.gtrail .tar.dn{color:var(--down)}
 .gbtn{display:inline-flex;align-items:center;justify-content:center;width:32px;height:28px;margin-left:6px;border:1.5px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);cursor:pointer;vertical-align:-6px}
 .gbtn svg{width:18px;height:18px}
 .gbtn:hover{border-color:var(--accent)}
@@ -1152,7 +1152,17 @@ body{background:var(--wash),var(--desk);background-attachment:scroll;min-height:
 
 .vupl{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:15px}.vupl>span{color:var(--muted);font-weight:600}.vupl small{color:var(--muted);font-size:14px}
 .wlchk{display:inline-flex;align-items:baseline;gap:1px;padding:2px 9px;border-radius:999px;font-variant-numeric:tabular-nums;font-size:15px;border:1.5px solid currentColor;cursor:help}
-.wlchk b{font-size:16px}.wlchk.g{color:var(--up)}.wlchk.m{color:var(--accent-ink)}.wlchk.b{color:var(--down)}
+.wlchk b{font-size:16px}
+.scanand{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:12px 0 4px}.scanand .sak{font-weight:800;font-size:15px;color:var(--ink)}
+.andchip{display:inline-flex;align-items:center;gap:6px;padding:4px 6px 4px 10px;border-radius:999px;border:1.5px solid var(--g);font-size:15px;font-weight:600}
+.andchip small{color:var(--muted);font-size:13px}.andchip button{border:0;background:transparent;font-size:15px;cursor:pointer;color:var(--muted);padding:0 4px;min-height:28px}.andchip button:hover{color:var(--down)}
+.scanand .sasel{max-width:340px;font-size:15px}button.wlchk.eyebtn{cursor:pointer;background:transparent;font:inherit;font-size:15px}
+.eye h4{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.eyew{font-size:16px;font-weight:700}.eyew.g{color:var(--up-t,var(--up))}.eyew.m{color:var(--accent-ink)}.eyew.b{color:var(--down-t,var(--down))}
+.eyecols{display:grid;grid-template-columns:1fr 1fr;gap:6px 18px}@media (max-width:640px){.eyecols{grid-template-columns:1fr}}
+.eyeh{margin:4px 0 6px;font-weight:800;font-size:16px}.eyeh.up{color:var(--up-t,var(--up))}.eyeh.down{color:var(--down-t,var(--down))}
+.eyel{list-style:none;margin:0;padding:0;display:grid;gap:6px}.eyel li{display:flex;gap:8px;align-items:flex-start;font-size:16px;line-height:1.35}
+.eyel li .em{font-weight:900;flex:0 0 auto;width:18px;text-align:center}.eyel li.ok .em{color:var(--up)}.eyel li.no .em{color:var(--down)}
+.eyel li small{display:block;font-size:12.5px;font-weight:700;color:var(--muted);letter-spacing:.02em}.eyel li.none{color:var(--muted)}.eyel li[title]{cursor:help}.wlchk.g{color:var(--up)}.wlchk.m{color:var(--accent-ink)}.wlchk.b{color:var(--down)}
 .tflag{display:inline-block;margin:1px 2px 1px 0;padding:1px 8px;border-radius:6px;font-size:14px;font-weight:600;background:color-mix(in srgb,var(--down) 12%,transparent);color:var(--down);white-space:nowrap}
 .wlcols{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:0 14px 12px}.wlcols .select{max-width:300px}
 .rkl{justify-self:end;display:inline-flex;align-items:baseline;gap:1px;padding:3px 9px;border-radius:8px;font-size:18px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.2;white-space:nowrap}
@@ -1710,7 +1720,7 @@ function renderRotation(){
       ${open?members(g):""}</div>`;
   }
   const sx=D.meta.sector_from_industry,cl=D.meta.classification;
-  h+=`</div><p class="note">Bars are the ${st.agg} ${st.period==="1D"?"today's":PL[st.period]} return of stocks in each group, using ${uniWord()} (groups need ${D.meta.min_group_size}+ stocks).${st.uni!=="lq"?" Small, thinly traded stocks swing more — the median is steadier than the mean.":""}${st.group==="Sector"&&sx?` NSE lists a sector only for the ~750 stocks of its broad indices; ${sx.derived.toLocaleString("en-IN")} other stocks take the sector that their industry belongs to (the two agree for ${sx.agree}% of stocks where both are known).`:""}${(st.group==="Sector"||st.group==="Industry"||st.group==="Themes")&&cl?` Sector and industry come from one master list (${cl.matched.toLocaleString("en-IN")} of ${D.meta.all_stocks.toLocaleString("en-IN")} stocks; ${cl.sectors} sectors, ${cl.industries} industries${cl.corrected?`; ${cl.corrected} sectors corrected by hand where the list was plainly wrong`:""})${st.group==="Themes"?"; each theme takes the companies whose sector or industry is its core business, plus named companies with a large business in it":""}.`:""}${mixedNote(st.group)}${D.meta.grp?" Beside each group: its RS rating at the last 6 weekly closes, this week first (bold).":""}</p>`;
+  h+=`</div><p class="note">Bars are the ${st.agg} ${st.period==="1D"?"today's":PL[st.period]} return of stocks in each group, using ${uniWord()} (groups need ${D.meta.min_group_size}+ stocks).${st.uni!=="lq"?" Small, thinly traded stocks swing more — the median is steadier than the mean.":""}${st.group==="Sector"&&sx?` NSE lists a sector only for the ~750 stocks of its broad indices; ${sx.derived.toLocaleString("en-IN")} other stocks take the sector that their industry belongs to (the two agree for ${sx.agree}% of stocks where both are known).`:""}${(st.group==="Sector"||st.group==="Industry"||st.group==="Themes")&&cl?` Sector and industry come from one master list (${cl.matched.toLocaleString("en-IN")} of ${D.meta.all_stocks.toLocaleString("en-IN")} stocks; ${cl.sectors} sectors, ${cl.industries} industries${cl.corrected?`; ${cl.corrected} sectors corrected by hand where the list was plainly wrong`:""})${st.group==="Themes"?"; each theme takes the companies whose sector or industry is its core business, plus named companies with a large business in it":""}.`:""}${mixedNote(st.group)}${D.meta.grp?" Beside each group: its RS rating at the last 6 weekly closes, this week first (bold); each arrow shows the move into the newer week on its left (green ▲ up, red ▼ down).":""}</p>`;
   $("#view").innerHTML=h;wireTables($("#view"),renderRotation);if(D.meta.grp)gMountMini();
 }
 const viewSeg=()=>`<div class="ctl"><span>View</span>${seg("view",["bars","heat",...(D.meta.grp?["radar","gsig"]:[]),...(D.meta.idx?["rrg"]:[])],st.view,{bars:"Bars",heat:"Heatmap",radar:"Rotation radar",gsig:"Group signals",rrg:"NSE index map (RRG)"})}</div>${D.meta.cmp?`<div class="ctl"><span>Compare</span><button type="button" class="btn cmpbtn" data-cmp-open aria-haspopup="dialog"><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M2 15l5-5 3 3 7-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 17l5-3 4 1 7-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".55"/></svg> Compare lines</button></div>`:""}`;
@@ -2132,7 +2142,7 @@ function gBadges(kind,name){const r=gRow(kind,name);if(!r)return "";const u=gU(r
 /* the group RS rating at the last 6 weekly closes, this week first (rkp: one rating per week, oldest first, the last = this week) */
 function gTrail(x){const p=(x.rkp||[]).slice(-6).reverse(),t=p.length>=2&&p[0]===x.rk?p:[x.rk];
   const w=i=>i===0?"this week":i===1?"1 week ago":i+" weeks ago";
-  return `<span class="gbrk gtrail" title="Group RS rating at each week's close, this week first: ${t.map((v,i)=>`${isNum(v)?v:"–"} (${w(i)})`).join(", ")}">RS <b>${t[0]}</b>${t.slice(1).map(v=>`<span class="tsep">·</span><span class="tv">${isNum(v)?v:"–"}</span>`).join("")}</span>`}
+  return `<span class="gbrk gtrail" title="Group RS rating at each week's close, this week first: ${t.map((v,i)=>`${isNum(v)?v:"–"} (${w(i)})`).join(", ")}">RS <b>${t[0]}</b>${t.slice(1).map((v,i)=>{const nw=t[i],d=isNum(nw)&&isNum(v)?nw-v:null;return `<span class="tar ${d==null?"":d>0?"up":d<0?"dn":"eq"}" aria-hidden="true">${d==null?"·":d>0?"▲":d<0?"▼":"="}</span><span class="tv">${isNum(v)?v:"–"}</span>`}).join("")}</span>`}
 function gMixed(k,n){const m=D.meta.mixed;return !!(m&&m[k]&&m[k].includes(n))}
 function mixedNote(k){const m=(D.meta.mixed||{})[k]||[];if(!m.length)return "";
   return ` Not ranked here: ${m.length} mixed-bag ${k==="Sector"?"sectors":"industries"} (${k==="Sector"?m.join(", "):"Trading, Miscellaneous, Diversified and the “… Others” labels"}) — their companies share only the label, and in 2021–26 tests a mixed bag in the top fifth was followed by −2.5% against the average stock over 3 months. Their stocks still count in their themes and NSE indices.`}
@@ -2509,6 +2519,11 @@ function renderScanners(){
   const pick=`<select class="select" id="scanSel" style="width:100%" aria-label="Choose a scanner">${S.cats.map(c=>`<optgroup label="${esc(c)}">${S.meta.filter(x=>x.cat===c).map(x=>`<option value="${x.id}" ${x.id===m.id?"selected":""}>${esc(x.name)} (${(S.hits[x.id]||[]).length})</option>`).join("")}</optgroup>`).join("")}</select>`;
   let rows=hits.map(s=>D.by[s]).filter(Boolean);const metric=S.metric?.[m.id]||{};
   let topNote="";
+  if(st.scanAnd==null)st.scanAnd=store.get("scanAnd",[]);
+  const andIds=st.scanAnd.filter(id=>D.scanMeta[id]&&id!==m.id);
+  if(andIds.length){const before=rows.length;for(const id of andIds){const set=new Set(S.hits[id]||[]);rows=rows.filter(r=>set.has(r.s))}
+    topNote=`${rows.length} of ${before} stocks are also in ${andIds.map(id=>"“"+D.scanMeta[id].name+"”").join(" and ")}. `}
+  const nAll=rows.length;
   if(st.scanFund){const before=rows.length;rows=rows.filter(r=>(r.fr??0)>=st.scanFund);topNote=`${rows.length} of ${before} stocks have a Fund rating of ${st.scanFund}+. `}
   if(st.scanTop){const top=new Set(groupStats(false,st.period,"Themes").sort((a,b)=>b.v-a.v).slice(0,st.scanTop).map(g=>g.name));
     const before=rows.length;rows=rows.filter(r=>(D.themesOf[r.s]||[]).some(t=>top.has(t)));
@@ -2526,15 +2541,21 @@ function renderScanners(){
   $("#view").innerHTML=scanViewSeg()+`<div class="sec-head"><div><h2>Scanner library</h2><p>${S.meta.length} scanners in ${S.cats.length} colour-coded groups run on every stock after the close: ${nT} technical, ${nF} from NSE filings${nP?`, ${nP} from mutual-fund portfolios`:""}${nM?` and ${nM} from the long-base, Stage 2 and results models`:""}. Each one opens with its exact rules. Tap any stock for its detail card, including every other scan it appears in.</p></div></div>
   <div class="scan-layout"><aside class="card rail-wrap" id="scanWrap"><div class="rail-search"><input class="search" type="search" id="scanQ" placeholder="Find a scanner: EMA, volume…" value="${esc(st.scanQ)}" aria-label="Find a scanner" autocomplete="off"><span id="scanQn" class="note"></span></div>
     <div class="scan-pick">${pick}</div><nav class="rail" id="scanRail" aria-label="Scanners"></nav></aside>
-  <section class="card scan-main" style="--g:${g}"><div class="scan-head"><div class="sh-top"><span class="gchip">${bead(m.cat)}${esc(m.cat)}</span><span class="sh-cnt num" title="Stocks in this scan today">${hits.length}<small>${hits.length===1?"stock":"stocks"}</small></span></div>
+  <section class="card scan-main" style="--g:${g}"><div class="scan-head"><div class="sh-top"><span class="gchip">${bead(m.cat)}${esc(m.cat)}</span><span class="sh-cnt num" title="${andIds.length?"Stocks in all the combined scanners today":"Stocks in this scan today"}">${andIds.length?nAll:hits.length}<small>${andIds.length?`in all ${andIds.length+1}`:hits.length===1?"stock":"stocks"}</small></span></div>
     <h3>${esc(m.name)}</h3><p>${esc(m.desc)}${m.cat==="Fund flows"&&D.meta.mf?` <button type="button" class="linkbtn" style="padding:0 2px;font-size:inherit" data-seg="scanView" data-val="mf">Open the full Fund flows table</button>`:""}</p>${scanDoc(m)}
+  <div class="scanand"><span class="sak">AND also in</span>${andIds.map(id=>{const x=D.scanMeta[id];return `<span class="andchip" style="--g:${gcol(x.cat)}">${bead(x.cat)}${esc(x.name)} <small class="num">${(S.hits[id]||[]).length}</small><button type="button" data-scan-and-rm="${id}" aria-label="Remove ${esc(x.name)}">✕</button></span>`}).join("")}
+    <select class="select sasel" id="scanAndSel" aria-label="Add a scanner to combine with"><option value="">+ Combine with another scanner…</option>${S.cats.map(c=>{const a=S.meta.filter(x=>x.cat===c&&x.id!==m.id&&!andIds.includes(x.id));return a.length?`<optgroup label="${esc(c)}">${a.map(x=>`<option value="${x.id}">${esc(x.name)} (${(S.hits[x.id]||[]).length})</option>`).join("")}</optgroup>`:""}).join("")}</select>
+    ${andIds.length?`<button type="button" class="ghost" data-scan-and-clr>Clear</button>`:""}</div>
   <div class="sh-ctl"><div class="ctl"><span>Stocks shown</span>${seg("scanTop",["0","5","10"],String(st.scanTop),{"0":"All","5":"Top 5 themes","10":"Top 10 themes"})}</div>
   ${D.meta.fund?`<div class="ctl"><span>Fundamentals</span>${seg("scanFund",["0","60","80"],String(st.scanFund),{"0":"Any","60":"Fund 60+","80":"Fund 80+"})}</div>`:""}
-  ${rows.length?`<div class="ctl"><span>&nbsp;</span><button type="button" class="ghost" data-wl-addall="${esc(JSON.stringify(rows.map(r=>r.s)))}" data-label="${esc(m.name)} stocks">☆ Add all ${rows.length} to a watchlist</button></div>`:""}</div>${topNote?`<p class="note" style="margin:8px 0 0">${esc(topNote)}</p>`:""}</div>
-  <div id="scanT">${dtable(tid,rows,cols,{empty:"No stocks triggered this scan today."})}</div></section></div>`;
+  ${rows.length?`<div class="ctl"><span>&nbsp;</span><button type="button" class="ghost" data-wl-addall="${esc(JSON.stringify(rows.map(r=>r.s)))}" data-label="${esc(andIds.length?[m.name,...andIds.map(id=>D.scanMeta[id].name)].join(" + "):m.name)} stocks">☆ Add all ${rows.length} to a watchlist</button></div>`:""}</div>${topNote?`<p class="note" style="margin:8px 0 0">${esc(topNote)}</p>`:""}</div>
+  <div id="scanT">${dtable(tid,rows,cols,{empty:andIds.length?"No stock is in all of these scanners today. Remove one to widen it.":"No stocks triggered this scan today."})}</div></section></div>`;
   drawRail();
   wireTables($("#scanT"),renderScanners);
   $("#scanSel").addEventListener("change",e=>{st.scan=e.target.value;store.set("scan2",st.scan);renderScanners()});
+  $("#scanAndSel").addEventListener("change",e=>{if(e.target.value){st.scanAnd=[...andIds,e.target.value];store.set("scanAnd",st.scanAnd);renderScanners()}});
+  $("#view").querySelectorAll("[data-scan-and-rm]").forEach(b=>b.addEventListener("click",()=>{st.scanAnd=andIds.filter(id=>id!==b.dataset.scanAndRm);store.set("scanAnd",st.scanAnd);renderScanners()}));
+  $("#view").querySelector("[data-scan-and-clr]")?.addEventListener("click",()=>{st.scanAnd=[];store.set("scanAnd",[]);renderScanners()});
   const q=$("#scanQ");
   q.addEventListener("input",()=>{st.scanQ=q.value;drawRail()});
   q.addEventListener("keydown",e=>{if(e.key==="Enter"){const f=scanMatches(st.scanQ,true)[0];if(f){st.scan=f.id;store.set("scan2",f.id);renderScanners();$("#scanQ")?.focus()}}if(e.key==="Escape"){st.scanQ="";renderScanners()}});
@@ -3893,13 +3914,13 @@ async function openDrawer(sym,ex,focusWl){
   const name=x?.n||vr?.["Company Name"]||"",sector=x?.ind||x?.sec||vr?.Sector||"";
   const [S2B,BB,RR,MFB,PTB,STB]=await Promise.all([s2Load().catch(()=>null),basesLoad().catch(()=>null),resLoad().catch(()=>null),mfLoad().catch(()=>null),patLoad().catch(()=>null),stgLoad().catch(()=>null)]);
   const hasS2=!!S2B?.by?.[sym],hasB=!!BB?.by?.[sym],rres=RR?.by?.[sym]?.[0]||null,hasMF=!!MFB?.by?.[sym],hasP=!!PTB?.by?.[sym];
-  const navs=[["pchart","Chart"],["wlsec","Watchlist"],hasP&&["patsec","Pattern"],hasS2&&["s2sec","Stage 2"],hasB&&["basesec","Base"],rres&&["ressec","Result"],x&&["retsec","Returns"],x&&["trendsec","Trend"],x&&D.meta.rs&&["rssec","RS"],fundHtml&&["fundsec","Fundamentals"],hasMF&&["mfsec","Mutual funds"],x&&D.meta.dlv&&(isNum(x.dq)||x.t2t)&&["dlvsec","Delivery"],vr&&["vpcisec","VPCI"],["scansec","Scanners"]].filter(Boolean);
+  const navs=[["pchart","Chart"],x&&["eyesec","PKC Eye"],["wlsec","Watchlist"],hasP&&["patsec","Pattern"],hasS2&&["s2sec","Stage 2"],hasB&&["basesec","Base"],rres&&["ressec","Result"],x&&["retsec","Returns"],x&&["trendsec","Trend"],x&&D.meta.rs&&["rssec","RS"],fundHtml&&["fundsec","Fundamentals"],hasMF&&["mfsec","Mutual funds"],x&&D.meta.dlv&&(isNum(x.dq)||x.t2t)&&["dlvsec","Delivery"],vr&&["vpcisec","VPCI"],["scansec","Scanners"]].filter(Boolean);
   $("#drawer").innerHTML=`<header><div><h2 id="dTitle">${esc(sym)}</h2><div class="co">${esc(name)}${sector?` · ${esc(sector)}`:""}</div></div>
     ${x?`<div class="dprice"><span class="px num">₹${inr(x.px)}</span><span class="chg num ${cls(x.r["1D"])}">${sgn(x.r["1D"])} today</span>${isNum(x.mc)?`<span class="mc num">Mcap ₹${Math.round(x.mc).toLocaleString("en-IN")} Cr</span>`:""}</div>`:`<div></div>`}
     <div class="dacts">${x&&D.meta?.sc?`<button type="button" class="ghost scopen" data-schart="${esc(sym)}">${SC_ICON}Candle chart</button>`:""}<a class="ghost tvl" href="${tv(sym,ex||vr?.exchange)}" target="_blank" rel="noopener">TradingView ↗</a><button class="close" type="button" data-close aria-label="Close ${esc(sym)}"><b aria-hidden="true">✕</b> Close</button></div>
     <nav class="dnav" aria-label="Sections">${navs.map(([id,l])=>`<button type="button" data-jump="${id}">${l}</button>`).join("")}</nav></header>
   <div class="body"><div class="dcols"><div class="dcol">
-    ${x?`<div id="pchartSlot"></div>${wlCardHtml(sym)}
+    ${x?`<div id="pchartSlot"></div>${eyeCard(x)}${wlCardHtml(sym)}
     <div id="patSlot"></div><div id="s2Slot">${hasS2?stage2Section(sym):""}</div><div id="baseSlot"></div>
     ${x.lq===0?`<p class="note" style="margin:0 0 12px">Outside the liquid universe (median turnover under ₹${D.meta.filters?.min_median_turnover_cr??1} Cr a day, price under ₹${D.meta.filters?.min_price??20}${D.meta.filters?.min_market_cap_cr?` or market cap under ₹${D.meta.filters.min_market_cap_cr} Cr`:""}), so it is not in the scanners or the RS ranking. It counts in breadth and sector rotation; its RS rating places it among the liquid stocks.</p>`:""}
     <div class="dsec" id="retsec"><h4>Returns</h4><dl class="dgrid">${per}</dl></div>
@@ -3928,11 +3949,12 @@ async function openDrawer(sym,ex,focusWl){
   wireWlCard(sym);
   if(hasMF)mfxFill(sym);
   if(!focusWl)$("#drawer .body").scrollTop=0;
-  if(focusWl)$("#wlsec")?.scrollIntoView({block:"start"});else if(!reopen)$("#drawer .close").focus();
+  const fsel=focusWl==="eye"?"#eyesec":"#wlsec";
+  if(focusWl)$(fsel)?.scrollIntoView({block:"start"});else if(!reopen)$("#drawer .close").focus();
   const colW=el=>Math.round(el?.parentElement?.getBoundingClientRect().width||0);   // empty slots are hidden, so measure the column
   const bslot=$("#baseSlot");if(BB&&bslot)bslot.outerHTML=baseSection(sym,colW(bslot));
   const pslot=$("#patSlot");if(pslot)pslot.outerHTML=hasP?patSection(sym,colW(pslot)):"";
-  clLoad().then(()=>{const slot=$("#pchartSlot");if(slot&&$("#dTitle")?.textContent===sym){PCW=Math.max(300,Math.min(900,(colW(slot)||494)-34));slot.outerHTML=priceChart(sym);wirePriceChart(sym);if(focusWl)$("#wlsec")?.scrollIntoView({block:"start"})}});
+  clLoad().then(()=>{const slot=$("#pchartSlot");if(slot&&$("#dTitle")?.textContent===sym){PCW=Math.max(300,Math.min(900,(colW(slot)||494)-34));slot.outerHTML=priceChart(sym);wirePriceChart(sym);if(focusWl)$(fsel)?.scrollIntoView({block:"start"})}});
   if(D.meta.corp?.n)caLoad().then(()=>{const sl=$("#caSlot");if(sl&&$("#dTitle")?.textContent===sym)sl.outerHTML=caHtml(sym)});
   if(x&&D.meta.dlv)Promise.all([clLoad(),dlvLoad()]).then(()=>{const sl=$("#dlvSlot");if(sl&&$("#dTitle")?.textContent===sym){sl.outerHTML=dlvSection(sym);wireDlv(sym)}});
   if(x&&D.meta.rs)Promise.all([clLoad(),rshLoad()]).then(()=>{const sl=$("#rsSlot");if(sl&&$("#dTitle")?.textContent===sym){sl.outerHTML=rsChart(sym);wireRsChart(sym)}});
@@ -4154,6 +4176,66 @@ function syncDialog(){const c=syncCfg.get();
     const tok=String(fd.get("tok")||"").trim();try{await syncConnect(tok);toast("Sync connected");renderWatch()}catch(e){const er=$("#syncerr");er.hidden=false;er.textContent=e.message;return false}});
   $("#syncnow")?.addEventListener("click",async()=>{await syncPull();syncPushSoon();modalClose();toast("Synced")})}
 
+/* ── PKC Eye: one stock through the yes/no checks the site already measures, split into what is going for it and
+   what is against it. Only checks with an answer are shown; a check that is neither clearly good nor bad stays out. ── */
+function eyeChecks(x){if(!x)return [];const out=[],n=isNum,f1=v=>(v>0?"+":"")+(+v).toFixed(1);
+  const add=(g,ok,yes,no,short,why)=>{if(ok==null)return;out.push({g,ok:!!ok,t:ok?yes:no,s:short,why:why||""})};
+  // Trend
+  if(x.st)add("Trend",x.st===2,`Stage 2 on the weekly chart${n(x.std)?` · ${x.std} days`:""}`,`Stage ${x.st} on the weekly chart (${x.st===4?"declining":x.st===3?"topping":"basing"})`,`Stage ${x.st}`,"Weinstein stage from the weekly engine, as in the Stage column.");
+  if(x.tt!=null)add("Trend",x.tt,"Minervini trend template: all 8 rules pass","Minervini trend template not met","No trend template");
+  if(x.a200!=null)add("Trend",x.a200,`Above the 200-day average (${f1(x.d200)}%)`,`Below the 200-day average (${f1(x.d200)}%)`,"Below 200-day");
+  if(n(x.adx)&&x.adx>=25&&x.st)add("Trend",x.st===2||x.st===1?true:x.st===4?false:null,`Trending: ADX ${x.adx.toFixed(0)}`,`Strong downtrend: ADX ${x.adx.toFixed(0)} in Stage 4`,"Strong downtrend");
+  if(x.a50!=null)add("Trend",x.a50,`Above the 50-day average (${f1(x.d50)}%)`,`Below the 50-day average (${f1(x.d50)}%)`,"Below 50-day","A close below the 50-day is the exit in the tested Upside plan.");
+  // Strength
+  if(n(x.rs))add("Strength",x.rs>=80,`RS rating ${x.rs} — in the top fifth of the market`,`RS rating ${x.rs} — under 80`,"RS under 80","Holding RS 90+ for 8 weeks beat the average stock by 4.2% over 3 months (2021–26).");
+  if(n(x.rs)&&n(x.rs4w)){const d=x.rs-x.rs4w;add("Strength",d>-15,d>=5?`RS rising: +${d} points in 4 weeks`:`RS holding: ${d>=0?"+":""}${d} points in 4 weeks`,`RS falling: ${d} points in 4 weeks`,"RS falling")}
+  if(x.rsdir)add("Strength",x.rsdir===1,"RS rating trending up over 12 weeks","RS rating trending down over 12 weeks","RS trending down");
+  if(n(x.rsnhd)&&x.rsnhd<=10)add("Strength",true,`RS line at a 52-week high ${x.rsnhd===0?"today":x.rsnhd+" sessions ago"} (blue dot)`,"","");
+  if(n(x.h52))add("Strength",x.h52>=-15,`Within 15% of its 52-week high (${f1(x.h52)}%)`,`${Math.abs(x.h52).toFixed(1)}% below its 52-week high`,"Far from high");
+  {const r=grpRot(x,"ind"),nm=x.ind?` (${x.ind})`:"";
+   if(r)add("Strength",r==="strong"?true:r==="fade"||r==="weak"?false:null,`Industry strong: group RS 70+${nm}`,r==="fade"?`Industry strong but fading: down 10+ points in 4 weeks${nm}`:`Industry weak: group RS under 40${nm}`,r==="fade"?"Industry fading":"Weak industry","In 2007–26 NSE tests stocks in strong groups beat the average stock over the next 3 months; weak and strong-but-fading groups lagged.");
+   else if(n(x.irs))add("Strength",x.irs>=60?true:x.irs<40?false:null,`Industry RS rating ${x.irs}${nm}`,`Industry RS rating ${x.irs}${nm}`,"Weak industry")}
+  {const r=grpRot(x,"sec");if(r&&x.sec)add("Strength",r==="strong"?true:r==="fade"||r==="weak"?false:null,`Sector strong: group RS 70+ (${x.sec})`,r==="fade"?`Sector strong but fading (${x.sec})`:`Sector weak: group RS under 40 (${x.sec})`,r==="fade"?"Sector fading":"Weak sector")}
+  // Setup and risk
+  if(n(x.d50)&&n(x.atrp)&&x.atrp>0&&x.d50>=0){const a=x.d50/x.atrp,clim=n(x.d200)&&x.d200>100;
+    add("Setup",!(clim||a>=5),`Not stretched: ${a.toFixed(1)} ATRs above the 50-day`,clim?`Climax zone: ${x.d200.toFixed(0)}% above the 200-day`:`Stretched: ${a.toFixed(1)} ATRs above the 50-day`,clim?"Climax zone":"Stretched","More than 100% above the 200-day: deeper drawdowns followed in the Stage 2 study.")}
+  if(n(x.rsi))add("Setup",x.rsi>=50&&x.rsi<=75?true:x.rsi>80||x.rsi<40?false:null,`Healthy momentum: RSI ${x.rsi.toFixed(0)}`,x.rsi>80?`Overbought: RSI ${x.rsi.toFixed(0)}`:`Weak momentum: RSI ${x.rsi.toFixed(0)}`,x.rsi>80?"Overbought":"Weak RSI");
+  if(n(x.dcr))add("Setup",x.dcr>=75?true:x.dcr<=25?false:null,`Closed in the top quarter of today's range (${x.dcr.toFixed(0)}%)`,`Closed in the bottom quarter of today's range (${x.dcr.toFixed(0)}%)`,"Weak close");
+  if(n(x.bsc)&&x.bsc>=70)add("Setup",true,`Base Score ${x.bsc}`,"","");
+  if(n(x.atrp))add("Setup",x.atrp<=6,`Calm enough to size: ATR ${x.atrp.toFixed(1)}% of price`,`Volatile: ATR ${x.atrp.toFixed(1)}% of price`,"Volatile");
+  if(x.bst){const m={bo0:"Broke out of its base today",bo:"Broke out of a base in the last 20 sessions",near:"Within 5% of its base pivot"}[x.bst];
+    if(m)add("Setup",true,m,"","");else if(x.bst==="ext")add("Setup",false,"","Extended above its base pivot — chasing raises risk","Extended")}
+  if(x.s2p)add("Setup",x.s2p!=="L",x.s2p==="E"?"Early in its Stage 2 advance":"Mid-way through its Stage 2 advance","Late in its Stage 2 advance (many bases, a big gain or a slowing trend)","Late Stage 2","Late, weakening Stage 2 stocks trailed the average stock by about 2% over the next year (20-year test).");
+  if(x.next_results){const dd=Math.round((new Date(x.next_results+"T00:00:00")-new Date(D.meta.asof+"T00:00:00"))/864e5);if(dd>=0&&dd<=7)add("Setup",false,"",`Results due in ${dd} day${dd===1?"":"s"} — gap risk`,`Results in ${dd}d`)}
+  // Volume and money
+  if(n(x.r?.["1D"])&&n(x.vr)&&x.vr>=1.5&&Math.abs(x.r["1D"])>=4)add("Money",x.r["1D"]>0,`Up ${x.r["1D"].toFixed(1)}% today on ${x.vr.toFixed(1)}× volume`,`Down ${Math.abs(x.r["1D"]).toFixed(1)}% today on ${x.vr.toFixed(1)}× volume`,"Heavy-volume drop");
+  if(n(x.acc)&&n(x.dist)){if(x.acc>=3&&x.acc>x.dist)add("Money",true,`${x.acc} heavy-delivery up days in 20 sessions`,"","");else if(x.dist>=3&&x.dist>=x.acc)add("Money",false,"",`${x.dist} heavy-delivery down days in 20 sessions`,"Distribution")}
+  if(n(x.inst_1y)&&Math.abs(x.inst_1y)>=0.5)add("Money",x.inst_1y>0,`FII + DII holding up ${x.inst_1y.toFixed(2)} points in a year`,`FII + DII holding down ${Math.abs(x.inst_1y).toFixed(2)} points in a year`,"Institutions selling");
+  if(n(x.dp20))add("Money",x.dp20>=50?true:x.dp20<25?false:null,`Delivery ${x.dp20.toFixed(0)}% of volume over 20 sessions`,`Delivery only ${x.dp20.toFixed(0)}% of volume over 20 sessions`,"Low delivery");
+  if(n(x.mf_1y)&&Math.abs(x.mf_1y)>=0.5)add("Money",x.mf_1y>0,`Mutual-fund holding up ${x.mf_1y.toFixed(2)} points in a year`,`Mutual-fund holding down ${Math.abs(x.mf_1y).toFixed(2)} points in a year`,"Funds selling");
+  if(n(x.promoter)&&x.promoter>=50)add("Money",true,`Promoter holds ${x.promoter.toFixed(1)}%`,"","");
+  if(n(x.promoter_1y)&&x.promoter_1y<=-1)add("Money",false,"",`Promoter holding down ${Math.abs(x.promoter_1y).toFixed(2)} points in a year`,"Promoter selling");
+  {const v=VPX?.[x.s];if(v&&n(v.gate_count)){const op=vpOpen(v);add("Money",v.gate_count>=6||op?true:v.gate_count<=3?false:null,`VPCI: ${v.gate_count} of 7 gates${op?" · in a VPCI position":""}`,`VPCI: only ${v.gate_count} of 7 gates`,"VPCI weak")}}
+  // Business
+  if(n(x.up))add("Business",x.up>=80?true:x.up<50?false:null,`Upside score ${x.up} (80+)`,`Upside score ${x.up} (under 50)`,"Upside under 50","Fresh VPCI signals with Upside 80+ made 18.1% a year; with Upside under 50, 3.4%.");
+  if(n(x.rq))add("Business",x.rq>=55?true:x.rq<40?false:null,`Latest result: Quality ${x.rq}`,`Weak latest result: Quality ${x.rq}`,"Weak result");
+  if(n(x.fr))add("Business",x.fr>=60?true:x.fr<40?false:null,`Fund rating ${x.fr}`,`Fund rating ${x.fr} (under 40)`,"Weak fundamentals");
+  if(n(x.fr)||x.qe)add("Business",!(x.flags&&x.flags.length),"No fundamental red flags",`Red flag${x.flags?.length>1?"s":""}: ${(x.flags||[]).slice(0,2).join("; ")}${x.flags?.length>2?" …":""}`,"Red flags");
+  if(n(x.pat_yoy))add("Business",x.pat_yoy>=20?true:x.pat_yoy<0?false:null,`Profit up ${x.pat_yoy.toFixed(0)}% year on year`,`Profit down ${Math.abs(x.pat_yoy).toFixed(0)}% year on year`,"Profit falling");
+  if(n(x.rev_yoy))add("Business",x.rev_yoy>=15?true:x.rev_yoy<0?false:null,`Revenue up ${x.rev_yoy.toFixed(0)}% year on year`,`Revenue down ${Math.abs(x.rev_yoy).toFixed(0)}% year on year`,"Revenue falling");
+  if(n(x.roe))add("Business",x.roe>=15?true:x.roe<8?false:null,`ROE ${x.roe.toFixed(1)}%`,`Low ROE: ${x.roe.toFixed(1)}%`,"Low ROE");
+  if(n(x.de)&&!x.fin)add("Business",x.de<=0.5?true:x.de>1.5?false:null,`Low debt: ${x.de.toFixed(2)}× equity`,`High debt: ${x.de.toFixed(2)}× equity`,"High debt");
+  if(n(x.pead))add("Business",x.pead>=5?true:null,`Strong reaction to the last result: PEAD score ${x.pead} of 9`,"","");
+  if(n(x.mb)&&x.mb>=5)add("Business",true,`Passes ${x.mb} of 7 multibagger checks`,"","");
+  return out}
+function eyeSum(x){const c=eyeChecks(x),p=c.filter(z=>z.ok).length,pct=c.length?p/c.length*100:null;return {c,p,n:c.length,pct,cls:pct==null?"":pct>=75?"g":pct>=50?"m":"b",word:pct==null?"":pct>=75?"Mostly healthy":pct>=50?"Mixed":"Weak"}}
+function eyeCard(x){const E=eyeSum(x);if(!E.n)return "";const G=["Trend","Strength","Setup","Money","Business"];
+  const li=z=>`<li class="${z.ok?"ok":"no"}"${z.why?` title="${esc(z.why)}"`:""}><span class="em" aria-hidden="true">${z.ok?"✓":"✗"}</span><span><small>${z.g}</small>${esc(z.t)}</span></li>`;
+  const list=ok=>{const a=E.c.filter(z=>z.ok===ok).sort((a,b)=>G.indexOf(a.g)-G.indexOf(b.g));return a.length?a.map(li).join(""):`<li class="none">${ok?"Nothing on this side today.":"Nothing against it today."}</li>`};
+  return `<div class="dsec eye" id="eyesec"><h4>PKC Eye <span class="wlchk ${E.cls}" title="Checks passed of those with an answer"><b>${E.p}</b>/${E.n}</span> <span class="eyew ${E.cls}">${E.word}</span></h4>
+    <div class="eyecols"><div><p class="eyeh up">Going for it · ${E.p}</p><ul class="eyel">${list(true)}</ul></div><div><p class="eyeh down">Against it · ${E.n-E.p}</p><ul class="eyel">${list(false)}</ul></div></div>
+    <p class="note" style="margin:8px 0 0">Every number the site already measures, read as yes or no. Only checks with a clear answer are counted. A summary, not a tested score — hover a line for the test behind it where there is one.</p></div>`}
+
 /* ── the Watchlists tab ── */
 st.wl={view:store.get("wlview","decide"),flag:"",cols:store.get("wlcols",null)};
 const WLCOLS0=["up","rs","rsd4","r1M","r3M","h52","st","d50","irs","irot","vpst","dp20","rq","nres"];
@@ -4231,8 +4313,11 @@ function drawWatch(){
     chk:{k:"_chk",label:"Checks",l:1,fmt:r=>{const c=wlChecks(r);return `<span class="wlchk ${c.ok>=5?"g":c.ok>=3?"m":"b"}" title="${esc(c.list.map(([t,ok])=>(ok?"✓ ":"✗ ")+t).join("\n"))}"><b>${c.ok}</b>/${c.list.length}</span>`},sort:r=>wlChecks(r).ok,csv:r=>wlChecks(r).ok},
     trim:{k:"_trim",label:"Trim flags",l:1,td:()=>"wrapcell",fmt:r=>{const a=wlTrim(r);return a.length?a.map(t=>`<span class="tflag">${esc(t)}</span>`).join(" "):'<span class="up" style="font-weight:600">None</span>'},sort:r=>wlTrim(r).length,csv:r=>wlTrim(r).join("; ")},
     prom:{k:"promoter",label:"Promoter %",fmt:r=>`<span class="num">${isNum(r.promoter)?r.promoter.toFixed(1):"–"}</span>`},inst:pc("inst_1y","FII+DII Δ1Y",2),
+    eye:{k:"_eye",label:"PKC Eye",l:1,fmt:r=>{const E=eyeSum(r);return E.n?`<button type="button" class="wlchk ${E.cls} eyebtn" data-eye-open="${esc(r.s)}" title="Open the PKC Eye card"><b>${E.p}</b>/${E.n}</button>`:"–"},sort:r=>{const E=eyeSum(r);return E.n?E.pct+E.p/100:null},csv:r=>{const E=eyeSum(r);return E.n?`${E.p}/${E.n}`:""}},
+    eyeno:{k:"_eyeno",label:"Against it",l:1,td:()=>"wrapcell",fmt:r=>{const a=eyeChecks(r).filter(z=>!z.ok);return a.length?a.map(z=>`<span class="tflag" title="${esc(z.t)}">${esc(z.s)}</span>`).join(" "):'<span class="up" style="font-weight:600">Nothing</span>'},sort:r=>eyeChecks(r).filter(z=>!z.ok).length,csv:r=>eyeChecks(r).filter(z=>!z.ok).map(z=>z.t).join("; ")},
+    eyeyes:{k:"_eyeyes",label:"Going for it",fmt:r=>{const a=eyeChecks(r).filter(z=>z.ok);return `<span class="num up" title="${esc(a.map(z=>"✓ "+z.t).join("\n"))}" style="cursor:help">${a.length}</span>`},sort:r=>eyeChecks(r).filter(z=>z.ok).length},
     act:{k:"_a",label:"",fmt:r=>`<span class="rowact"><button type="button" data-wl-edit="${esc(r.s)}" title="Levels, note, flag" aria-label="Edit ${esc(r.s)}">✎</button><button type="button" data-wl-mv="${esc(r.s)}" title="Move or copy to another list" aria-label="Move ${esc(r.s)}">⇄</button><button type="button" data-wl-rm="${esc(r.s)}" title="Remove from this list" aria-label="Remove ${esc(r.s)}">✕</button></span>`,sort:()=>0}};
-  const views={decide:[stockW,C.px,C.ret("1D"),col.chk,col.trim,col.up,C.rs,col.rsd4,C.ret("1M"),C.ret("3M"),C.h52,C.st,col.d50,col.irs,col.irot,col.vp,col.vptr,col.since,col.res,col.act],
+  const views={eye:[stockW,C.px,C.ret("1D"),col.eye,col.eyeyes,col.eyeno,C.rs,C.st,col.irot,col.res,col.act],decide:[stockW,C.px,C.ret("1D"),col.chk,col.trim,col.up,C.rs,col.rsd4,C.ret("1M"),C.ret("3M"),C.h52,C.st,col.d50,col.irs,col.irot,col.vp,col.vptr,col.since,col.res,col.act],
     rot:[stockW,C.px,col.up,C.rs,col.irs,col.srs,col.irot,{k:"_srot",label:"Sector strength",l:1,fmt:r=>{const y=grpX(r,"sec");return y&&isNum(y.rk)?`${rotPill(gState(y.rk,y.rk4))} ${gMove(y.rk,y.rk4)}`:"–"},sort:r=>grpRS(r,"sec"),csv:r=>grpRot(r,"sec")||""},
       {k:"_ir3",label:"Industry rank 3M",fmt:r=>rsPill(grpR(r,"ind","3M")),sort:r=>grpR(r,"ind","3M")},C.themes,C.sec,col.act],
     track:[stockW,col.spark,C.px,C.ret("1D"),col.added,col.since,col.alpha,col.days,col.maxg,col.maxdd,col.setup,col.piv,col.stp,col.toStop,C.rs,C.fr,col.scans,col.res,col.note,col.act],
@@ -4240,12 +4325,13 @@ function drawWatch(){
     fund:[stockW,C.px,C.mc,C.fr,col.rq,C.pe,C.patg,C.revg,C.roe,col.prom,col.inst,C.mfn,col.res,C.sec,col.act]};
   views.custom=[stockW,C.px,...(st.wl.cols||WLCOLS0).filter(id=>SXB[id]).map(id=>sxCol(SXB[id])),col.act];
   if(!views[st.wl.view])st.wl.view="track";
-  const tid="wl_"+L.id+"_"+st.wl.view;if(!st.tbl[tid])st.tbl[tid]={key:{track:"since",decide:"_chk",rot:"_irot",custom:null}[st.wl.view]??"rs",dir:-1,show:200};
-  h+=`<div class="card"><div style="display:flex;flex-wrap:wrap;gap:12px 22px;padding:12px 14px;align-items:flex-end"><div class="ctl"><span>Columns</span>${seg("wlview",["decide","track","perf","rot","fund","custom"],st.wl.view,{decide:"Add or trim",track:"Tracking",perf:"Performance",rot:"Rotation",fund:"Fundamentals",custom:"My columns"})}</div>
+  const tid="wl_"+L.id+"_"+st.wl.view;if(!st.tbl[tid])st.tbl[tid]={key:{track:"since",decide:"_chk",rot:"_irot",eye:"_eye",custom:null}[st.wl.view]??"rs",dir:-1,show:200};
+  h+=`<div class="card"><div style="display:flex;flex-wrap:wrap;gap:12px 22px;padding:12px 14px;align-items:flex-end"><div class="ctl"><span>Columns</span>${seg("wlview",["eye","decide","track","perf","rot","fund","custom"],st.wl.view,{eye:"PKC Eye",decide:"Add or trim",track:"Tracking",perf:"Performance",rot:"Rotation",fund:"Fundamentals",custom:"My columns"})}</div>
     ${flags.length?`<div class="ctl"><span>Flag</span><div class="chips"><button type="button" class="chipbtn" data-wl-flag="" aria-pressed="${!st.wl.flag}">All</button>${flags.map(([k,n])=>`<button type="button" class="chipbtn" data-wl-flag="${k}" aria-pressed="${st.wl.flag===k}"><span class="fdot ${k}"></span>${n}</button>`).join("")}</div></div>`:""}</div>
     ${st.wl.view==="custom"?wlColPicker():""}
     <div id="wlT">${dtable(tid,rows,views[st.wl.view],{empty:"No stocks with this flag."})}</div></div>
     ${st.wl.view==="decide"?`<p class="note"><b>Checks</b> (hover for the list): Upside 80+, RS 70+, Stage 2, above the 50-day, industry RS 60+, VPCI 6+ gates or in a VPCI position. <b>Trim flags</b> are the exits and weak spots from the tests: a close below the 50-day (the Upside plan's exit), Upside under 50 (fresh VPCI signals with Upside under 50 made 3.4% a year against 18.1% for Upside 80+), Stage 3 or 4, RS down 15+ points in 4 weeks, the price within 5% of or below the VPCI trailing stop, a weak industry (RS under 40) or a strong industry losing 10+ RS points in 4 weeks (these lagged in testing), and results due within 7 days.</p>`:""}
+    ${st.wl.view==="eye"?`<p class="note"><b>PKC Eye</b> runs every stock in this list through the same yes/no checks as the card in its stock window — trend, strength, setup, money and the business — and counts the ones with a clear answer. <b>Against it</b> lists every failed check; hover a tag for the detail, tap the score for the full card. A summary to decide what needs a look, not a tested score.</p>`:""}
     ${st.wl.view==="rot"?`<p class="note">Industry and sector strength use the group RS rating (3–12 months, as on the Rotation tab): Strong = 70+, Middle = 40–69, Weak = under 40, and Strong but fading = rated 70+ but down 10+ points in 4 weeks. In 2007–26 NSE tests, stocks in strong groups beat the average stock over the next 3 months, weak groups lagged, and strong-but-fading groups lagged too. Smaller moves (grey arrows) carried no signal.</p>`:""}
     <p class="note">Buy zone = pivot to 5% above it (IBD). Above that is extended — chasing raises risk. “Best since” and “Worst dip” use daily closes since the day added. Rows sort by any column; ✎ sets pivot, stop, target, flag and note.</p>`;
   h+=alertsH;
@@ -5111,6 +5197,7 @@ document.addEventListener("click",e=>{
   const fl=e.target.closest("[data-wl-flag]");if(fl){st.wl.flag=fl.dataset.wlFlag;drawWatch();return}
   const qk=e.target.closest("[data-wl-quick]");if(qk){const w=wlGet();w.lists.push({id:wlNewId(),name:qk.dataset.wlQuick,items:[]});wlSave();drawWatch();return}
   const ed=e.target.closest("[data-wl-edit]");if(ed){openDrawer(ed.dataset.wlEdit,null,true);return}
+  const eo=e.target.closest("[data-eye-open]");if(eo){openDrawer(eo.dataset.eyeOpen,null,"eye");return}
   const rm=e.target.closest("[data-wl-rm]");if(rm){const w=wlGet(),s=rm.dataset.wlRm;wlRemove(w.active,s);wlSave();drawWatch();toast(`${s} removed — kept in your track record`);return}
   const mv=e.target.closest("[data-wl-mv]");if(mv){const w=wlGet(),s=mv.dataset.wlMv,others=w.lists.filter(l=>l.id!==w.active);
     if(!others.length){toast("Create another list first");return}
