@@ -319,7 +319,7 @@ BCG,Advertising Agencies,Communication Services,2026-10-08,,,2026-11-14
 BCLIND,Beverages - Wineries & Distilleries,Consumer Defensive,2026-10-08,,,2026-11-02
 BCONCEPTS,Footwear & Accessories,Consumer Cyclical,2026-10-08,,,2026-11-05
 BCPL,Infrastructure Operations,Industrials,2026-10-08,,,2026-11-05
-BCSSL,Metal Fabrication,Industrials,2026-11-05,,2026-11-23,2026-11-23
+BCSSL,Metal Fabrication,Industrials,2026-11-05,,,2026-11-23
 BDL,Aerospace & Defense,Industrials,2026-10-08,,,2026-11-12
 BEARDSELL,Building Products & Equipment,Industrials,2026-10-08,Plastic And Plastic Products,,2026-11-14
 BECTORFOOD,Packaged Foods,Consumer Defensive,2026-10-08,,,2026-11-04
@@ -483,7 +483,6 @@ CIFL,Credit Services,Financial Services,2026-10-08,,,2026-11-06
 CINELINE,Entertainment,Communication Services,2026-10-08,,,2026-11-02
 CINEVISTA,Entertainment,Communication Services,2026-10-08,Media & Entertainment,,2026-10-27
 CIPLA,Drug Manufacturers - Specialty & Generic,Healthcare,2026-10-08,Pharmaceuticals,,2026-10-27
-CLCIND,Textile Manufacturing,Consumer Cyclical,2026-11-23,,,2026-11-02
 CLEAN,Specialty Chemicals,Basic Materials,2026-10-08,,,2026-10-31
 CLEANMAX,Utilities - Renewable,Utilities,2026-10-08,,,2026-11-03
 CLEDUCATE,Education & Training Services,Consumer Defensive,2026-10-08,,,2026-11-03
@@ -928,12 +927,12 @@ HCC,Engineering & Construction,Industrials,2026-10-08,Construction,,2026-11-05
 HCG,Medical Care Facilities,Healthcare,2026-10-08,,,2026-11-05
 HCL-INSYS,Electronics & Computer Distribution,Technology,2026-10-08,Computers - Hardware,,2026-11-05
 HCLTECH,Information Technology Services,Technology,2026-10-08,Computers - Software,,2026-10-12
-HDBFS,Credit Services,Financial Services,2026-10-08,,2026-11-23,2026-11-23
+HDBFS,Credit Services,Financial Services,2026-10-08,,,2026-11-23
 HDFCAMC,Asset Management,Financial Services,2026-10-08,,,2026-10-15
 HDFCBANK,Banks - Regional,Financial Services,2026-10-08,Banks,,2026-10-17
 HDFCLIFE,Insurance - Life,Financial Services,2026-10-08,,,2026-10-15
 HDFIRE,Specialty Industrial Machinery,Industrials,2026-10-21,,,2026-11-12
-HEADSUP,Apparel Retail,Consumer Cyclical,2026-10-08,,2026-11-24,2026-08-14
+HEADSUP,Apparel Retail,Consumer Cyclical,2026-10-08,,2026-11-24,2026-11-24
 HEALTHX,Pharmaceutical Retailers,Healthcare,2026-10-08,,,2026-11-14
 HECPROJECT,Engineering & Construction,Industrials,2026-10-08,,,2026-11-02
 HEGAM,Electrical Equipment & Parts,Industrials,2026-10-08,,,2026-11-03
@@ -1304,7 +1303,6 @@ LANCORHOL,Real Estate - Development,Real Estate,2026-10-08,,,2026-11-14
 LANDMARK,Auto & Truck Dealerships,Consumer Cyclical,2026-10-08,,,2026-11-12
 LANDSMILL,Conglomerates,Industrials,2026-10-08,,,2026-11-03
 LAOPALA,"Furnishings, Fixtures & Appliances",Consumer Cyclical,2026-10-08,Miscellaneous,,2026-11-13
-LASA,Drug Manufacturers - Specialty & Generic,Healthcare,2026-11-23,,,2026-11-14
 LASERPOWER,Electrical Equipment & Parts,Industrials,2026-10-08,,,2026-11-12
 LATENTVIEW,Consulting Services,Industrials,2026-10-08,,,2026-10-31
 LATTEYS,Specialty Industrial Machinery,Industrials,2026-10-08,,2026-12-05,2026-11-05
@@ -1320,7 +1318,7 @@ LEENEE,Information Technology Services,Technology,2026-10-08,,,
 LEMERITE,Textile Manufacturing,Consumer Cyclical,2026-10-08,,,2026-11-05
 LEMONTREE,Lodging,Consumer Cyclical,2026-10-08,,,2026-11-05
 LENSKART,Medical Instruments & Supplies,Healthcare,2026-10-08,,,2026-11-04
-LEXUS,Building Products & Equipment,Industrials,2026-10-08,,2026-11-24,2026-11-14
+LEXUS,Building Products & Equipment,Industrials,2026-10-08,,2026-11-24,2026-11-24
 LFIC,Asset Management,Financial Services,2026-10-08,,,2026-11-10
 LGBBROSLTD,Auto Parts,Consumer Cyclical,2026-10-08,Auto Ancillaries,,2026-10-31
 LGEINDIA,Consumer Electronics,Technology,2026-10-08,,,2026-11-05
@@ -1468,9 +1466,10 @@ MINDACORP,Auto Parts,Consumer Cyclical,2026-10-08,Auto Ancillaries,,2026-11-03
 MINDTECK,Information Technology Services,Technology,2026-10-08,,,2026-11-04
 MIRZAINT,Footwear & Accessories,Consumer Cyclical,2026-10-08,Leather And Leather Products,,2026-11-13
 MITCON,Engineering & Construction,Industrials,2026-10-08,,,2026-11-06
+MITSU,,,2026-11-24,,,
 MITTAL,Textile Manufacturing,Consumer Cyclical,2026-10-08,,,2026-11-04
 MKEXIM,Household & Personal Products,Consumer Defensive,2026-10-08,,,
-MKJEWELS,,,2026-11-04,,2026-11-24,
+MKJEWELS,,,2026-11-04,,2026-11-24,2026-11-24
 MKPL,Packaged Foods,Consumer Defensive,2026-10-08,,,2026-11-13
 MLKFOOD,Packaged Foods,Consumer Defensive,2026-10-08,,,
 MMFL,Metal Fabrication,Industrials,2026-10-08,Castings/Forgings,,2026-11-05
@@ -2020,17 +2019,16 @@ SEDEMAC,Auto Parts,Consumer Cyclical,2026-10-08,,,2026-11-03
 SEIL,Education & Training Services,Consumer Defensive,2026-10-08,,,
 SEJALLTD,Building Products & Equipment,Industrials,2026-10-08,,,2026-10-13
 SEKURITIND,Auto Parts,Consumer Cyclical,2026-10-08,,,
-SELMC,Textile Manufacturing,Consumer Cyclical,2026-11-23,,,2026-11-14
 SEMAC,Engineering & Construction,Industrials,2026-10-08,,,2026-11-13
 SENCO,Luxury Goods,Consumer Cyclical,2026-10-08,,,2026-11-13
 SENORES,Drug Manufacturers - General,Healthcare,2026-10-08,,,2026-10-29
 SEPC,Engineering & Construction,Industrials,2026-10-08,,,2026-11-11
 SERVOTECH,Electrical Equipment & Parts,Industrials,2026-10-08,,,2026-11-03
 SESHAPAPER,Paper & Paper Products,Basic Materials,2026-10-08,Paper And Paper Products,,2026-10-24
-SETCO,Auto Parts,Consumer Cyclical,2026-10-08,,2026-11-24,2026-10-23
+SETCO,Auto Parts,Consumer Cyclical,2026-10-08,,2026-11-24,2026-11-24
 SETL,Specialty Industrial Machinery,Industrials,2026-10-08,,,2026-11-05
 SEYAIND,Specialty Chemicals,Basic Materials,2026-10-08,,,
-SFCTECH,Pollution & Treatment Controls,Industrials,2026-11-03,,2026-11-23,2026-11-23
+SFCTECH,Pollution & Treatment Controls,Industrials,2026-11-03,,,2026-11-23
 SFL,"Furnishings, Fixtures & Appliances",Consumer Cyclical,2026-10-08,,,2026-11-02
 SGFIN,Capital Markets,Financial Services,2026-10-08,,,2026-10-16
 SGIL,Metal Fabrication,Industrials,2026-10-08,,,2026-11-03
@@ -2427,7 +2425,6 @@ UNITDSPR,Beverages - Wineries & Distilleries,Consumer Defensive,2026-10-08,,,202
 UNITECH,Real Estate - Diversified,Real Estate,2026-10-08,Construction,,2026-11-12
 UNITEDPOLY,Textile Manufacturing,Consumer Cyclical,2026-10-08,,,2026-10-28
 UNITEDTEA,Farm Products,Consumer Defensive,2026-10-08,Tea And Coffee,,2026-11-10
-UNIVAFOODS,Shell Companies,Financial Services,2026-11-23,,,2026-11-04
 UNIVASTU,Engineering & Construction,Industrials,2026-10-08,,,2026-11-05
 UNIVCABLES,Electrical Equipment & Parts,Industrials,2026-10-08,Cables - Power,,2026-11-04
 UNIVPHOTO,Medical Devices,Healthcare,2026-10-08,,,2026-11-13
