@@ -1,18 +1,59 @@
 {
- "run": "2026-11-25 16:52",
+ "run": "2026-11-26 04:02",
  "delivery": {
-  "added": [],
+  "added": [
+   "2026-11-25"
+  ],
   "not_published": [],
-  "last": "2026-11-23"
+  "last": "2026-11-25"
  },
  "indices": {
-  "added": [],
+  "added": [
+   "2026-11-25"
+  ],
   "not_published": [],
-  "last": "2026-11-23"
+  "last": "2026-11-25"
  },
  "close_check": {
   "date": "2026-11-25",
-  "checked": 0,
-  "note": "NSE file not available"
+  "checked": 2591,
+  "disagree": 1000,
+  "corrected": 1000,
+  "skipped": 0,
+  "examples": {
+   "RRECL": [
+    134.0,
+    121.42
+   ],
+   "FILATFASH": [
+    0.17,
+    0.16
+   ],
+   "DNAMEDIA": [
+    2.28,
+    2.18
+   ],
+   "SINTERCOM": [
+    65.2,
+    68.0
+   ],
+   "SRIKPRIND": [
+    26.0,
+    25.05
+   ],
+   "SVLL": [
+    770.0,
+    745.8
+   ],
+   "MEDICAMEQ": [
+    276.9,
+    268.3
+   ],
+   "BRIGHTBR": [
+    221.85,
+    215.15
+   ]
+  },
+  "skipped_examples": {}
  }
 }
