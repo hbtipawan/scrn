@@ -1,6 +1,6 @@
 {
  "scan_date": "2026-11-27",
- "scan_timestamp": "2026-11-26T17:06:48+05:30",
+ "scan_timestamp": "2026-11-27T04:07:59+05:30",
  "market": "IN",
  "sector_both": [
   {
@@ -16,12 +16,6 @@
    "hit_rate_%": 4.9
   },
   {
-   "sector": "Textiles",
-   "stocks_passing": 5,
-   "total_in_universe": 59,
-   "hit_rate_%": 8.5
-  },
-  {
    "sector": "Auto Ancillaries",
    "stocks_passing": 5,
    "total_in_universe": 67,
@@ -32,6 +26,12 @@
    "stocks_passing": 4,
    "total_in_universe": 41,
    "hit_rate_%": 9.8
+  },
+  {
+   "sector": "Textiles",
+   "stocks_passing": 4,
+   "total_in_universe": 59,
+   "hit_rate_%": 6.8
   },
   {
    "sector": "Capital Goods Non Electrical Equipment",
@@ -540,12 +540,6 @@
    "hit_rate_%": 66.7
   },
   {
-   "industry": "Textiles Home Textile",
-   "stocks_passing": 2,
-   "total_in_universe": 5,
-   "hit_rate_%": 40.0
-  },
-  {
    "industry": "Diversified",
    "stocks_passing": 2,
    "total_in_universe": 15,
@@ -751,6 +745,12 @@
   },
   {
    "industry": "Shipping",
+   "stocks_passing": 1,
+   "total_in_universe": 5,
+   "hit_rate_%": 20.0
+  },
+  {
+   "industry": "Textiles Home Textile",
    "stocks_passing": 1,
    "total_in_universe": 5,
    "hit_rate_%": 20.0
@@ -2744,12 +2744,6 @@
    "hit_rate_%": 83.3
   },
   {
-   "sector": "Paints and Varnish",
-   "stocks_passing": 5,
-   "total_in_universe": 6,
-   "hit_rate_%": 83.3
-  },
-  {
    "sector": "Crude Oil and Natural Gas",
    "stocks_passing": 5,
    "total_in_universe": 7,
@@ -2793,6 +2787,12 @@
   },
   {
    "sector": "Leather",
+   "stocks_passing": 4,
+   "total_in_universe": 6,
+   "hit_rate_%": 66.7
+  },
+  {
+   "sector": "Paints and Varnish",
    "stocks_passing": 4,
    "total_in_universe": 6,
    "hit_rate_%": 66.7
@@ -3346,12 +3346,6 @@
    "hit_rate_%": 100.0
   },
   {
-   "industry": "Building Materials Paints",
-   "stocks_passing": 5,
-   "total_in_universe": 6,
-   "hit_rate_%": 83.3
-  },
-  {
    "industry": "FMCG Foods",
    "stocks_passing": 5,
    "total_in_universe": 6,
@@ -3512,6 +3506,12 @@
    "stocks_passing": 4,
    "total_in_universe": 5,
    "hit_rate_%": 80.0
+  },
+  {
+   "industry": "Building Materials Paints",
+   "stocks_passing": 4,
+   "total_in_universe": 6,
+   "hit_rate_%": 66.7
   },
   {
    "industry": "Capital Goods Solar",
