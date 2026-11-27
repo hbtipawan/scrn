@@ -1,19 +1,60 @@
 {
- "run": "2026-11-27 16:19",
+ "run": "2026-11-28 03:30",
  "delivery": {
-  "added": [],
+  "added": [
+   "2026-11-27"
+  ],
   "not_published": [],
-  "last": "2026-11-26"
+  "last": "2026-11-27"
  },
  "indices": {
-  "added": [],
+  "added": [
+   "2026-11-27"
+  ],
   "not_published": [],
-  "last": "2026-11-26"
+  "last": "2026-11-27"
  },
  "fo_list": 218,
  "close_check": {
   "date": "2026-11-27",
-  "checked": 0,
-  "note": "NSE file not available"
+  "checked": 2597,
+  "disagree": 1048,
+  "corrected": 1048,
+  "skipped": 0,
+  "examples": {
+   "FILATFASH": [
+    0.17,
+    0.16
+   ],
+   "INFOMEDIA": [
+    5.56,
+    5.24
+   ],
+   "KANANIIND": [
+    1.47,
+    1.56
+   ],
+   "EQUIPPP": [
+    21.24,
+    20.14
+   ],
+   "KSR": [
+    30.5,
+    29.21
+   ],
+   "PNC": [
+    17.99,
+    17.24
+   ],
+   "SUDARSHAN": [
+    29.49,
+    28.3
+   ],
+   "MONEYBOXX": [
+    39.65,
+    41.38
+   ]
+  },
+  "skipped_examples": {}
  }
 }
