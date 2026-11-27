@@ -13,7 +13,7 @@ A free, ScreeningMantis-style dashboard for NSE stocks:
 - **Screener** – stack any number of filters over 114 fields (price and size, returns, RS, Upside, sector/industry/theme, industry and sector return ranks and rotation, VPCI weekly status, closes-based tightness and days since the 52-week high, trend, volatility, volume and delivery, bases, Stage 2, chart patterns, results, fundamentals, ownership, mutual funds, scanner membership, your watchlists). Each filter shows how many stocks are left after it; fourteen ready screens (including “VPCI fresh signal + Upside 80+”); save your own; add columns; CSV; add the result to a watchlist (see *Screener* below).
 - **RS ranking** – every stock ranked 1–99 by relative strength, with where the rating is **coming from** (▲ from 70 / ▼ from 99 over 12 weeks), a 52-week RS path, RS 4 and 12 weeks ago, and **blue dots** (RS line at a 52-week high). Filterable by sector, theme, direction, blue dot, Stage 2, Minervini trend template. A second sub-tab, **Stage 2 stocks**, lists every stock in Stage 2 with its **days in Stage 2** and **when to notice it** (New / Prime / Mature, from a 20-year test — see *Stage* below).
 - **Stock window** – price chart, **relative strength** (RS line with every blue dot of the year + the RS rating week by week), **delivery** (NSE delivery % and value delivered for 3 months), **corporate actions** (splits, bonuses, dividends coming up), plus bases, Stage 2, results, fundamentals and mutual funds.
-- **Scanners** – 99 stock scanners in 18 colour-coded groups (group signals live in Rotation): 59 technical (`scripts/scanners.py`), 4 from the RS history (`scripts/rs_history.py`), 5 from NSE delivery data (`scripts/delivery.py`), 18 from NSE filings, 6 from mutual-fund portfolios and 7 from the long-base, Stage 2 and results models, led by a **Confluence** list (stocks firing in 4+ of the 7 bullish technical groups). Every scanner opens with a collapsible **How this scanner works** panel — what it looks for, the exact rules, how traders use it, what to watch out for and the source (`scripts/scan_docs.py`). A search box finds scanners by any word in their name or write-up ("EMA", "volume", "Minervini"); Enter opens the closest match. Any scan can be limited to the top 5 or 10 themes or by Fund rating.
+- **Scanners** – 111 stock scanners in 19 colour-coded groups (group signals live in Rotation), including 7 **ready-made lists** (update 20): 64 technical (`scripts/scanners.py`), 4 from the RS history (`scripts/rs_history.py`), 5 from NSE delivery data (`scripts/delivery.py`), 18 from NSE filings, 6 from mutual-fund portfolios and 7 from the long-base, Stage 2 and results models, led by a **Confluence** list (stocks firing in 4+ of the 7 bullish technical groups). Every scanner opens with a collapsible **How this scanner works** panel — what it looks for, the exact rules, how traders use it, what to watch out for and the source (`scripts/scan_docs.py`). A search box finds scanners by any word in their name or write-up ("EMA", "volume", "Minervini"); Enter opens the closest match. Any scan can be limited to the top 5 or 10 themes or by Fund rating.
 - **Fund flows** – what mutual funds bought and sold each month, stock by stock, from every scheme's month-end portfolio (Scanners → Fund flows).
 - **Watchlists** – multiple lists; an *Add or trim* view (Upside, RS, returns, stage, 50-day, industry RS and rotation, VPCI status and distance to its trailing stop, a 6-point check and trim flags), Rotation, Performance, Fundamentals and *My columns* (any screener field as a column); return since added, pivot/stop/target with buy-zone alerts, notes, flags, track record, import/export, phone ↔ PC sync.
 - **VPCI Screener** – your Streamlit screener (`vpci/` folder, files unchanged) run every evening, with each stock's Upside score added to every table and card: Fresh Signals, Buyable, Watchlist, All Results, Ranked, G4 Pending, New Listings, Sector Leadership, Sector Rotation — for both completed weeks and the running week.
@@ -24,7 +24,7 @@ A free, ScreeningMantis-style dashboard for NSE stocks:
 GitHub Actions (6:40 PM IST, Mon–Fri, free)
    ├─ update_reference.py   sector + NSE index lists      (niftyindices.com)
    ├─ fetch_prices.py       2 years of daily candles       (Upstox → NSE bhavcopy for today; Yahoo backup)
-   ├─ fetch_nse_daily.py    NSE delivery, index P/E-P/B-yield + VIX, corporate actions, holidays (config/nse/);
+   ├─ fetch_nse_daily.py    NSE delivery, index P/E-P/B-yield + VIX, corporate actions, holidays, F&O stock list (config/nse/);
    │                        corrects any close that differs from NSE's official close
    ├─ compute.py            returns, RS + RS history, breadth, delivery, index data, group indices, scans → docs/data/*.json
    ├─ fetch_fundamentals.py new NSE results + shareholding (config/fund_*.csv)
@@ -479,6 +479,39 @@ Data: `docs/data/sc/_common.json` (calendar, NIFTY 500 daily and month-end close
 ## Rotation sort by RS (update 19)
 
 The Rotation tab's **Sort** now also has **RS rating** (the group's 3–12 month RS rating, highest first) and **RS change** (biggest rise in the RS rating first — the groups rotating in). The RS change follows the **Period** you pick: Today compares with yesterday's rating, 1W with a week ago, 1M with a month ago, and so on for 3M, 6M, YTD and 1Y. The ▲/▼ number next to each group's RS uses the same period. The red "fading" warning (a group rated 70+ that lost 10+ points) only shows on 1M, because that is the window it was tested on. Both use the Stocks setting (All or Liquid). `scripts/group_index.py` ships the rating at the start of each period (`rka` in `grp.json`).
+
+## Update 20 — breadth, the Tracker, group labels, ready-made lists, chart grids
+
+Ideas from the AayQ demo, built on numbers the site already has (no paid data).
+
+**Breadth tab**
+- **Today in brief** — six or seven lines written from the day's numbers: advancers vs decliners (ratio), 4% movers, Nifty 500 and small vs large caps, 52-week highs vs lows (and for how many sessions in a row), the two leading and the weakest industry (median stock, industries with 5+ stocks), stocks at twice their usual volume, % above the 50-day and its weekly change, and the distribution-day count.
+- **Index** switch — Whole market, Nifty 50, Nifty 500, Midcap 150, Smallcap 250, Microcap 250. Every tile and chart then uses only that index's members (today's list from niftyindices.com, `config/indices_broad.csv`), against the index itself.
+- Three new tiles with the change against yesterday: **advance / decline ratio**, **net new highs**, **net 4% movers**; and two new charts: the 10-day A/D ratio and net 4% movers a day.
+- **Breadth by market cap** — up / down bars and the median stock for large (top 100 by market cap), mid (101–250), small (251–500) and micro.
+- **Distribution days** (William O'Neil) — the Nifty 500 down 0.2%+ on higher volume than the day before (volume = the members' total, as NSE adds it up), counted over 25 sessions; a day drops out once the index closes 5% above it. 5+ = under pressure. With the list of the days and the count over the year.
+
+**Rotation tab → View: Tracker**
+- Every group with its **label**, RS rating and its change for the period, the **median RS of its stocks**, how many stocks are **up and down** over the period, and the return.
+- Tap a group: the full-screen chart opens with **groups on the left, that group's stocks next to them, the chart, and the data panel**. ← → moves through groups, ↑ ↓ through stocks.
+- **Labels** from the group RS rating and its 4-week change: Leading (70+, rising or flat), Holding (70+, down up to 10), Fading (70+, down more), Improving (40–69, up 10+), Middle, Slipping (40–69, down 10+), Igniting (under 40, up 10+), Lagging. Tested on the site's own group indices 2021–26 (`scripts/test_group_labels.py` → `config/group_label_evidence.json`, shown in the tab): Leading +4.1% and Holding +3.5% against the median group over the next 3 months, both halves of the period positive; Lagging −0.5%; Igniting (+0.5%) had no edge on its own.
+
+**Scanners → Ready-made lists** (`scripts/ready_lists.py`)
+- RS 80+ leaders (RS 80+, above the 200-day EMA, ₹500 Cr+, ₹10 Cr+ turnover, price ₹10+; new listings on provisional RS), 1-month gainers (+15%), 3-month gainers (+30%), highest volume on record (HVE, since mid-2020 or listing, up day), new on NSE in the last 12 months, liquid large caps (top 100, ₹50 Cr+ a day), F&O stocks (NSE's market-lot file, `config/nse/fo_list.csv`).
+- New pattern scans: tight closes over 10 days, tight monthly closes, short base breakout (7 weeks), inside week (finished weeks only), highest volume in a quarter. None of these count in Confluence, so that tested count is unchanged.
+
+**Screener**
+- New fields: EPS growth YoY (latest and previous quarter), profit and revenue growth YoY for the previous quarter, EPS growth QoQ, quarters in a row with EPS above a year earlier, quarters in a row with a profit, margin change for the previous quarter, lowest operating margin of the last 4 quarters, **result grade** (Blockbuster: sales +20% and profit +30%; Good: +10% and +15%; Turnaround; Steady; Mixed; Weak; Loss), **in NSE index**, **F&O stock**.
+- **Must pass: at least N of M filters** — the count beside each filter then shows how many pass it alone, and a "Filters passed" column appears.
+- Three ready screens: O'Neil two strong quarters, Blockbuster or good results with a strong chart, consistent margins and profits.
+- **Provisional RS** — a stock with less than a year of prices shows its RS with a `*`.
+
+**Chart grid** — Scanners, Screener and Watchlists have **List | Charts**: the list as small daily candle charts (EMA 21 and 50, volume), 2, 3 or 4 a row, in the table's sort order; tap a chart for the full workspace with the list on the left.
+
+**Watchlists**
+- **Ready-made lists**: Nifty 50, Next 50, 100, 200, 500, Midcap 150, Smallcap 250, Microcap 250 and every NSE sector and theme index — read-only, with *Copy into a new watchlist*.
+- **Today in this list**: up / down and the average move, top gainers and losers, within 1% of the 52-week high, volume 2×+, results in the next 7 days.
+- **Add to a watchlist from any big chart**: the ☆ next to the name in the full-screen chart (and the pattern and VCP chart windows).
 
 ## Look (update 19)
 
