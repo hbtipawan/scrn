@@ -458,16 +458,31 @@ Each evening it adds every session not stored yet (it catches up after a missed 
 
 To rebuild the history: `python scripts/fetch_nse_daily.py --backfill 2024-01-01 2026-10-13` (delivery) and `--backfill-idx 2016-01-01 2026-10-13` (indices).
 
-## Stock chart
+## Stock chart (full-screen workspace, update 19)
 
-Every stock has a small candle icon next to its symbol (and a **Candle chart** button on the stock card). It opens:
+Every stock has a small candle icon next to its symbol (and a **Candle chart** button on the stock card). It opens a full-screen workspace laid out like Deepvue and TradingView:
 
-- **Daily or weekly candles** — about 2 years of daily and 3 years of weekly bars, end of day, split and bonus adjusted (the same prices the scanners use).
-- **EMA 21, 50 and 200** (sessions on daily bars, weeks on weekly bars). Tap a chip to hide or show each line; the choice is remembered and is shared with the group charts. The EMAs are worked out on each stock's full price history (since 2020): `scripts/stock_charts.py` ships the EMA state just before the first bar, so the lines are exact, not warmed up from the visible bars. Each EMA starts from the simple average of its first n closes, as TradingView's does. A stock listed less than n sessions ago has no EMA n yet.
-- **Levels**, each with its own chip: the long base (box from pivot to floor, pivot line), the rule-based VCP's contractions (T1, T2… with depth), pivot, last contraction low and 8% stop, chart-pattern lines from the Patterns tab, the 52-week high, and your watchlist pivot / stop / target with the day you added it.
-- **Volume** with its 50-bar average, and the **RS line** against NIFTY 500 with blue dots (RS line at a 52-week high) — the panel can be hidden.
+- **Left: the list you came from.** Open a chart from any table (a scanner, RS, Upside, a watchlist…) and every stock in that table is listed on the left with its change and price. Click a name, or press **↑ / ↓**, to move through the list. The list title says which table it came from.
+- **Top: symbol search.** Just start typing (no need to click): a search box takes the letters, shows matching stocks, and **Enter** opens the first one. ← / → pan the chart.
+- **D / W / M** — daily (about 2 years), weekly (about 6 years) and monthly bars (all history since 2020). Range buttons under the chart (1M to All) depend on the interval.
+- **Indicators** menu: EMA 21 / 50 / 200, SMA 50 / 150 / 200, Bollinger Bands (20, 2), volume with its 50-bar average, RS line vs NIFTY 500 with blue dots, RSI 14 and MACD (12, 26, 9). Each lower indicator gets its own pane; values for the bar under the cursor show at the top of each pane, as on TradingView. Choices are remembered.
+- **Levels** menu: long base box and pivot, VCP contractions, pattern lines, 52-week high, your watchlist pivot / stop / target (daily and weekly only).
+- **Full chart** hides the list and the data panel together (press again to bring them back); **Data** hides or shows the data panel alone; the panel also has its own ✕, and a **Show data panel** button appears under the chart while it is hidden.
+- The chart itself carries no open / high / low / close / volume numbers — only the symbol, interval and the indicator values.
+- **Log** scale, a pencil button to show or hide the drawing toolbar (a vertical bar on the left, as on TradingView; hidden by default on phones), and buttons for the **Stock card** (opens on top of the chart; Esc goes back to the chart) and **TradingView**.
+- **Right: data panel** — price, RS / Stage / Upside / Fund / Result Q / PKC Eye ratings, the columns of the table you opened it from, price and trend, fundamentals, themes and the scanners the stock is in. The panel and the list can each be hidden.
 
-Data: `docs/data/sc/_common.json` (calendar, NIFTY 500 closes) and one file per stock, `docs/data/sc/<symbol>.json` (about 10 KB to download), about 52 MB in all; written by the daily run, not committed. The daily run checks that the shipped EMA state reproduces the full-history EMA and fails that step if it does not.
+Why these pieces: Deepvue's chart page (docs.deepvue.com) is built around a watchlist on the left, a data panel on the right, type-anywhere symbol change and arrow-key navigation; those are the parts copied here. Nothing else on the site changed concept.
+
+Data: `docs/data/sc/_common.json` (calendar, NIFTY 500 daily and month-end closes) and one file per stock, `docs/data/sc/<symbol>.json` (daily, weekly and monthly bars), about 70 MB in all; written by the daily run, not committed. EMAs are worked out on each stock's full price history (since 2020) and the shipped EMA state is checked against the full-history EMA every run.
+
+## Rotation sort by RS (update 19)
+
+The Rotation tab's **Sort** now also has **RS rating** (the group's 3–12 month RS rating, highest first) and **RS change** (biggest rise in the RS rating first — the groups rotating in). The RS change follows the **Period** you pick: Today compares with yesterday's rating, 1W with a week ago, 1M with a month ago, and so on for 3M, 6M, YTD and 1Y. The ▲/▼ number next to each group's RS uses the same period. The red "fading" warning (a group rated 70+ that lost 10+ points) only shows on 1M, because that is the window it was tested on. Both use the Stocks setting (All or Liquid). `scripts/group_index.py` ships the rating at the start of each period (`rka` in `grp.json`).
+
+## Look (update 19)
+
+Inter typeface, flat cards and buttons, quieter header, and the same layout in dark mode. No tab was added or removed.
 
 ## Group charts and group signals (spotting rotation early)
 
