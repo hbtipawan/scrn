@@ -4,6 +4,9 @@ Writes docs/data/sc/_common.json (the session calendar and NIFTY 500 closes, for
 stock, docs/data/sc/<name>.json, with:
   daily   the last DAYS sessions: open, high, low, close, volume
   weekly  the last WEEKS weeks (Monday-Friday, dated by the week's last session): open, high, low, close, volume
+  monthly every calendar month of the stock's full history ("m", dated by the month's last session, dates written out;
+          the browser works out monthly EMAs from these bars); _common.json carries NIFTY 500's month-end closes ("m")
+          for the monthly RS line
   seeds   the state of EMA 21 / 50 / 200 just before the first bar shipped, computed on the stock's FULL price history,
           so the browser continues each EMA exactly as if it had every bar (no warm-up error, nothing approximated)
 
@@ -19,7 +22,7 @@ import numpy as np
 import pandas as pd
 
 DAYS = 500                 # about 2 years of daily bars
-WEEKS = 160                # about 3 years of weekly bars
+WEEKS = 330                # every week of the ~6 years of prices kept (was 160, about 3 years)
 EMAS = (21, 50, 200)
 
 
@@ -66,6 +69,18 @@ def weekly(d):
                          "low": g["low"].min(), "close": g["close"].last(), "volume": g["volume"].sum()}).reset_index(drop=True)
 
 
+def monthly(d):
+    """calendar months from daily bars; dated by the month's last session"""
+    g = d.assign(mk=d["date"].str.slice(0, 7)).groupby("mk", sort=True)
+    return pd.DataFrame({"date": g["date"].last(), "open": g["open"].first(), "high": g["high"].max(),
+                         "low": g["low"].min(), "close": g["close"].last(), "volume": g["volume"].sum()}).reset_index(drop=True)
+
+
+def pack_dated(w):
+    return {"t": list(w["date"]), "o": [rd(x) for x in w.open], "h": [rd(x) for x in w.high],
+            "l": [rd(x) for x in w.low], "c": [rd(x) for x in w.close], "v": [int(x) for x in w.volume]}
+
+
 def pack(w, cal_pos):
     return {"t": [cal_pos[x] for x in w["date"]], "o": [rd(x) for x in w.open], "h": [rd(x) for x in w.high],
             "l": [rd(x) for x in w.low], "c": [rd(x) for x in w.close], "v": [int(x) for x in w.volume]}
@@ -85,8 +100,12 @@ def build(PFULL, symbols, bench, last, out_dir):
     pos = {d: i for i, d in enumerate(cal)}
     dstart = cal[max(0, len(cal) - DAYS)]
     b = PFULL[PFULL.symbol == bench].drop_duplicates("date").set_index("date")["close"].reindex(cal)
+    bf = PFULL[(PFULL.symbol == bench) & (PFULL.date <= last)].drop_duplicates("date").sort_values("date")
+    bm = bf.assign(mk=bf["date"].str.slice(0, 7)).groupby("mk", sort=True)["close"].last()
     (out_dir / "_common.json").write_text(json.dumps({"asof": last, "d": cal, "b": [rd(x) for x in b], "days": DAYS,
-                                                      "weeks": WEEKS, "emas": list(EMAS)}, separators=(",", ":")))
+                                                      "weeks": WEEKS, "emas": list(EMAS),
+                                                      "m": {"k": list(bm.index), "b": [rd(x) for x in bm]}},
+                                                     separators=(",", ":")))
     want = set(symbols)
     P = PFULL[PFULL.symbol.isin(want)][["symbol", "date", "open", "high", "low", "close", "volume"]]
     P = P[P.date <= last].sort_values(["symbol", "date"])
@@ -110,7 +129,7 @@ def build(PFULL, symbols, bench, last, out_dir):
         if not len(dd):
             n_short += 1
             continue
-        rec = {"s": sym, "d": pack(dd, pos), "w": pack(ww, pos),
+        rec = {"s": sym, "d": pack(dd, pos), "w": pack(ww, pos), "m": pack_dated(monthly(d)),
                "sd": {str(n): ema_state(c[:k0], n) for n in EMAS},
                "sw": {str(n): ema_state(wc[:j0], n) for n in EMAS}}
         # self-check on a sample: continuing the seed must give the full-history EMA on the last bar

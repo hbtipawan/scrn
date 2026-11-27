@@ -330,6 +330,10 @@ def build(P, groups, U, bench, out_dir, asof, evidence=None):
                             "YTD": _r((c.iloc[L] / y0.iloc[-1] - 1) * 100) if len(y0) else None},
                       "rk": _r(df.rk.iloc[L], 0), "rk4": _r(df.rk.iloc[L - 20], 0) if L >= 20 else None,
                       "rk12": _r(df.rk.iloc[L - 60], 0) if L >= 60 else None,
+                      # the RS rating at the start of each Rotation period, so the RS change follows the period picked
+                      "rka": {p: (_r(df.rk.iloc[i], 0) if 0 <= i < L else None) for p, i in
+                              {"1D": L - 1, "1W": L - 5, "1M": L - 21, "3M": L - 63, "6M": L - 126, "1Y": L - 252,
+                               "YTD": c.index.get_loc(y0.index[-1]) if len(y0) else -1}.items()},
                       "h52": _r((c.iloc[L] / hi52 - 1) * 100, 1), "rh52": _r((rsl.iloc[L] / rhi - 1) * 100, 1),
                       "st": stage, **({"std": sg_["days"], **({"stc": 1} if sg_["cap"] else {})} if sg_ and stage and sg_["days"] is not None else {}),
                       "b50": _r(df.b50.iloc[L], 0), "b200": _r(df.b200.iloc[L], 0),
