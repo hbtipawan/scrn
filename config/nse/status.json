@@ -1,5 +1,5 @@
 {
- "run": "2026-11-27 05:48",
+ "run": "2026-11-27 11:42",
  "delivery": {
   "added": [],
   "not_published": [],
@@ -10,46 +10,19 @@
   "not_published": [],
   "last": "2026-11-26"
  },
+ "fo_list": 218,
  "close_check": {
   "date": "2026-11-26",
-  "checked": 2592,
-  "disagree": 1008,
-  "corrected": 1008,
-  "skipped": 0,
-  "examples": {
-   "ARTNIRMAN": [
-    39.39,
-    37.42
-   ],
-   "MUKTAARTS": [
-    52.84,
-    50.37
-   ],
-   "GATECHDVR": [
-    0.45,
-    0.43
-   ],
-   "LYKALABS": [
-    87.0,
-    83.8
-   ],
-   "SVGLOBAL": [
-    123.35,
-    118.97
-   ],
-   "AARNAV": [
-    35.6,
-    34.36
-   ],
-   "SUPERSPIN": [
-    6.8,
-    6.59
-   ],
-   "BOHRAIND": [
-    12.9,
-    12.54
+  "checked": 2593,
+  "disagree": 1,
+  "corrected": 0,
+  "skipped": 1,
+  "examples": {},
+  "skipped_examples": {
+   "VGL": [
+    21.12,
+    52.81
    ]
-  },
-  "skipped_examples": {}
+  }
  }
 }
