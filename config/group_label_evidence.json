@@ -1,0 +1,166 @@
+{
+ "rules": {
+  "Leading": "RS 70+, 4-week change 0 or more",
+  "Holding": "RS 70+, change \u22121 to \u221210",
+  "Fading": "RS 70+, change \u221211 or worse",
+  "Improving": "RS 40\u201369, change +10 or more",
+  "Middle": "RS 40\u201369, change \u22129 to +9",
+  "Slipping": "RS 40\u201369, change \u221210 or worse",
+  "Igniting": "RS under 40, change +10 or more",
+  "Lagging": "RS under 40, change under +10"
+ },
+ "method": "Every 5th session with a year of history before it, each group's index return over the next 21 and 63 sessions minus the median group of the same kind that day. Groups use today's membership and share stocks, so read these as tendencies.",
+ "u": {
+  "l": {
+   "Leading": {
+    "n": 14288,
+    "x21": 1.72,
+    "x63": 4.17,
+    "med63": 2.36,
+    "beat63": 59.8,
+    "x63_a": 5.63,
+    "x63_b": 3.01
+   },
+   "Holding": {
+    "n": 7036,
+    "x21": 1.09,
+    "x63": 3.55,
+    "med63": 1.58,
+    "beat63": 57.0,
+    "x63_a": 4.75,
+    "x63_b": 2.47
+   },
+   "Fading": {
+    "n": 1130,
+    "x21": 0.33,
+    "x63": 1.57,
+    "med63": -0.06,
+    "beat63": 49.5,
+    "x63_a": 2.04,
+    "x63_b": 1.18
+   },
+   "Improving": {
+    "n": 5783,
+    "x21": 0.71,
+    "x63": 1.46,
+    "med63": 0.24,
+    "beat63": 51.3,
+    "x63_a": 2.02,
+    "x63_b": 1.07
+   },
+   "Middle": {
+    "n": 11613,
+    "x21": 0.34,
+    "x63": 1.16,
+    "med63": 0.08,
+    "beat63": 50.6,
+    "x63_a": 1.77,
+    "x63_b": 0.58
+   },
+   "Slipping": {
+    "n": 4790,
+    "x21": -0.01,
+    "x63": 0.63,
+    "med63": -0.6,
+    "beat63": 46.1,
+    "x63_a": 0.5,
+    "x63_b": 0.74
+   },
+   "Igniting": {
+    "n": 2697,
+    "x21": 0.37,
+    "x63": 0.24,
+    "med63": -0.73,
+    "beat63": 46.0,
+    "x63_a": 0.05,
+    "x63_b": 0.37
+   },
+   "Lagging": {
+    "n": 25070,
+    "x21": -0.24,
+    "x63": -0.61,
+    "med63": -1.29,
+    "beat63": 42.4,
+    "x63_a": -1.53,
+    "x63_b": 0.17
+   }
+  },
+  "a": {
+   "Leading": {
+    "n": 17474,
+    "x21": 1.66,
+    "x63": 4.08,
+    "med63": 2.22,
+    "beat63": 59.4,
+    "x63_a": 5.39,
+    "x63_b": 3.01
+   },
+   "Holding": {
+    "n": 8894,
+    "x21": 1.07,
+    "x63": 3.45,
+    "med63": 1.46,
+    "beat63": 56.7,
+    "x63_a": 4.09,
+    "x63_b": 2.89
+   },
+   "Fading": {
+    "n": 1308,
+    "x21": 0.19,
+    "x63": 1.77,
+    "med63": 0.13,
+    "beat63": 51.1,
+    "x63_a": 1.5,
+    "x63_b": 1.96
+   },
+   "Improving": {
+    "n": 7183,
+    "x21": 0.67,
+    "x63": 1.31,
+    "med63": 0.0,
+    "beat63": 49.6,
+    "x63_a": 2.34,
+    "x63_b": 0.54
+   },
+   "Middle": {
+    "n": 14032,
+    "x21": 0.44,
+    "x63": 1.29,
+    "med63": 0.07,
+    "beat63": 50.4,
+    "x63_a": 2.07,
+    "x63_b": 0.59
+   },
+   "Slipping": {
+    "n": 6262,
+    "x21": 0.19,
+    "x63": 1.04,
+    "med63": -0.3,
+    "beat63": 47.4,
+    "x63_a": 1.27,
+    "x63_b": 0.86
+   },
+   "Igniting": {
+    "n": 3506,
+    "x21": 0.37,
+    "x63": 0.53,
+    "med63": -0.92,
+    "beat63": 45.1,
+    "x63_a": 0.52,
+    "x63_b": 0.54
+   },
+   "Lagging": {
+    "n": 31123,
+    "x21": -0.11,
+    "x63": -0.47,
+    "med63": -1.09,
+    "beat63": 43.1,
+    "x63_a": -1.16,
+    "x63_b": 0.12
+   }
+  }
+ },
+ "from": "2021-08-09",
+ "to": "2026-08-10",
+ "split": "2024-01-01"
+}
