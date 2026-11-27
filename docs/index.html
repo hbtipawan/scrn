@@ -7,7 +7,7 @@
 <meta name="theme-color" content="#10233D">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=IBM+Plex+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 /* Layout: navy market band (brand + pulse hero) on top, sticky tab bar (bottom bar on phones),
    white working cards on a cool-grey desk. One accent (marigold) marks the active place. */
@@ -1269,6 +1269,78 @@ body.ssopen{overflow:hidden}
 .card>.tscroll:first-child table.dt thead th:first-child{border-top-left-radius:var(--r)}
 /* stock chart + EMA chips */
 .scscrim{z-index:64}.smodal{z-index:65}
+/* ── chart workspace (stock charts) ── */
+.sws[hidden]{display:none!important}
+.sws{display:grid!important;top:0!important;left:0;right:0;width:100vw!important;height:100vh!important;height:100dvh!important;border-radius:0!important;background:var(--card);
+  grid-template-columns:248px minmax(0,1fr) 320px;grid-template-rows:54px minmax(0,1fr);font-family:var(--body)}
+.sws.nolist{grid-template-columns:0 minmax(0,1fr) 320px}.sws.nopanel{grid-template-columns:248px minmax(0,1fr) 0}.sws.nolist.nopanel{grid-template-columns:0 minmax(0,1fr) 0}
+.sws.nolist .sw-list,.sws.nopanel .sw-panel{display:none}
+.sw-top{grid-column:1/-1;grid-row:1;display:flex;align-items:center;gap:6px;padding:0 10px;border-bottom:1px solid var(--line);min-width:0}
+.sw-list{grid-column:1;grid-row:2}.sw-main{grid-column:2;grid-row:2}.sw-panel{grid-column:3;grid-row:2}
+.swib{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:36px;min-width:36px;padding:0 8px;border:0;background:transparent;border-radius:9px;cursor:pointer;color:var(--ink);font-size:15px;font-weight:600;white-space:nowrap}
+.swib svg{width:19px;height:19px}.swib:hover{background:var(--soft)}.swib[aria-pressed="true"]{background:color-mix(in srgb,var(--s1) 14%,transparent);color:var(--s1)}
+.swx{font-size:18px;margin-left:2px}
+.swsym{position:relative}.swsym input{height:38px;width:150px;padding:0 10px 0 34px;border:1px solid var(--line);border-radius:10px;background:var(--soft);font-weight:800;font-size:16px;text-transform:uppercase;letter-spacing:.01em}
+.swsym input:focus{outline:2px solid var(--s1);outline-offset:0;background:var(--card)}
+.swsico{position:absolute;left:10px;top:10px;color:var(--muted);pointer-events:none}.swsico svg{width:18px;height:18px}
+.swres{position:absolute;top:44px;left:0;width:400px;max-width:92vw;max-height:62vh;overflow:auto;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 18px 44px rgba(0,0,0,.2);z-index:9;padding:4px}
+.swr{display:grid;grid-template-columns:104px minmax(0,1fr) auto;gap:8px;align-items:center;width:100%;text-align:left;border:0;background:transparent;padding:9px 10px;border-radius:8px;cursor:pointer;font-size:15px}
+.swr span{color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.swr.on,.swr:hover{background:var(--soft)}
+.swname{display:flex;flex-direction:column;line-height:1.2;min-width:0;max-width:240px;margin-right:6px}.swname b{font-size:14.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.swname span{font-size:12.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.swseg{display:inline-flex;background:var(--soft);border-radius:10px;padding:3px;gap:2px}.swseg button{border:0;background:transparent;height:30px;min-width:34px;padding:0 9px;border-radius:7px;font-weight:700;font-size:14.5px;cursor:pointer;color:var(--muted)}
+.swseg button:hover{color:var(--ink)}.swseg button[aria-pressed="true"]{background:var(--card);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.14)}
+.swseg.sm button{height:26px;font-size:13.5px;min-width:30px}
+.swmenu{position:relative}.swmenu summary{list-style:none}.swmenu summary::-webkit-details-marker{display:none}.swmenu[open] summary{background:var(--soft)}
+.swdrop{position:absolute;top:44px;left:0;min-width:300px;max-height:70vh;overflow:auto;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 18px 44px rgba(0,0,0,.2);padding:6px;z-index:9}
+.swdg{margin:8px 10px 4px;font-size:12.5px;font-weight:700;color:var(--muted)}
+.swck{display:flex;gap:10px;align-items:center;padding:7px 10px;border-radius:8px;cursor:pointer;font-size:15px}.swck:hover{background:var(--soft)}.swck input{width:17px;height:17px;accent-color:var(--s1);margin:0}
+.swck i{flex:0 0 14px;height:3px;background:var(--c);border-radius:2px}
+.swgap{flex:1}
+.swbtn{display:inline-flex;align-items:center;height:36px;padding:0 13px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font-weight:600;font-size:14.5px;text-decoration:none;cursor:pointer;white-space:nowrap}
+.swbtn:hover{border-color:var(--ink)}
+.sw-list{border-right:1px solid var(--line);display:flex;flex-direction:column;min-height:0;min-width:0}
+.swlh{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid var(--line);font-size:14px}.swlh b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.swlh span{color:var(--muted)}
+.swlb{overflow:auto;flex:1;min-height:0;scrollbar-width:thin}
+.swi{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1px 8px;width:100%;text-align:left;border:0;border-bottom:1px solid var(--track);background:transparent;padding:7px 12px;cursor:pointer;color:var(--ink)}
+.swi:hover{background:var(--soft)}.swi.on{background:color-mix(in srgb,var(--s1) 12%,transparent);box-shadow:inset 3px 0 0 var(--s1)}
+.swis{font-weight:800;font-size:15px}.swi>.num:nth-child(2){font-size:14px;font-weight:700;text-align:right}.swin{font-size:12.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.swip{font-size:12.5px;color:var(--muted);text-align:right}
+.swlk{margin:0;padding:8px 12px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line)}
+.sw-main{display:flex;flex-direction:column;min-width:0;min-height:0}
+.sw-plot{flex:1;display:flex;flex-direction:column;min-height:0;position:relative}
+.sw-plot .gchart{flex:1;min-height:0;height:auto!important;position:relative;margin:0}
+.sw-plot{flex-direction:row}.sw-plot .gchart{min-width:0}
+.sw-plot .dkbar{display:flex;flex-direction:column;flex-wrap:nowrap;margin:0;padding:6px 3px;border:0;border-right:1px solid var(--line);border-radius:0;background:transparent;width:44px;flex:none;overflow-y:auto;overflow-x:hidden;scrollbar-width:none}
+.sw-plot .dkrow{flex-direction:column;flex-wrap:nowrap;overflow:visible;width:auto;gap:0;padding:0}
+.sw-plot .dkg{flex-direction:column;padding:5px 0;border-right:0;border-bottom:1px solid var(--line);gap:1px}.sw-plot .dkg:last-child{border-bottom:0}
+.sw-plot .dkb{min-width:34px;width:34px;height:32px;padding:0}.sw-plot .dkb svg{width:19px;height:19px}.sw-plot .dksw{width:18px;height:18px;margin:3px 0}
+.sw-plot .dkclr{min-width:0;width:36px;height:auto;padding:4px 0;font-size:10.5px;line-height:1.1;white-space:normal;text-align:center}.sw-plot .dkhint{display:none}
+.sws.nodraw .dkbar{display:none}
+.swleg{position:absolute;left:10px;top:0;right:80px;z-index:3;pointer-events:none}
+.swlp{position:absolute;left:0;right:0;display:flex;flex-direction:column;gap:2px;font-size:13px;line-height:1.35;text-shadow:0 0 3px var(--card),0 0 6px var(--card)}
+.swl0,.swl1,.swlp.sub{display:flex;flex-wrap:wrap;gap:2px 12px;align-items:baseline}.swlp span{color:var(--muted)}.swlp b{color:var(--ink);font-weight:600}
+.swl0 .swls{font-size:15.5px;font-weight:800;color:var(--ink)}.swlt{color:var(--muted)}.swl0 .num.up,.swl0 .num.down{font-weight:700}
+.swload{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);z-index:4;font-size:16px}
+.sw-bot{display:flex;align-items:center;gap:10px;padding:5px 10px;border-top:1px solid var(--line)}.swasof{margin-left:auto;font-size:13px;color:var(--muted)}
+.sw-panel{border-left:1px solid var(--line);overflow:auto;padding:14px 16px 18px;min-height:0;min-width:0;scrollbar-width:thin}
+.swpx{font-size:27px;font-weight:800;letter-spacing:-.01em}.swmeta{font-size:13px;color:var(--muted);margin-top:3px}
+.swrat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin:14px 0 6px}
+.swrat>div{background:var(--soft);border-radius:10px;padding:7px 8px;display:flex;flex-direction:column;gap:4px;align-items:flex-start;min-width:0}.swrat>div>span:first-child{font-size:12px;color:var(--muted);font-weight:600}.swrat small{font-size:12px}
+.sw-panel section{border-top:1px solid var(--line);padding:11px 0 8px}.sw-panel h5{margin:0 0 6px;font-size:13px;font-weight:700;color:var(--muted);font-family:var(--body)}
+.sw-panel dl{margin:0;display:grid;gap:1px}.swkv{display:flex;justify-content:space-between;gap:12px;font-size:14.5px;padding:3px 0}.swkv dt{color:var(--muted)}.swkv dd{margin:0;font-weight:600;text-align:right}
+.swchips{display:flex;flex-wrap:wrap;gap:5px}.swchips span{font-size:13px;padding:3px 9px;border-radius:999px;background:var(--soft);display:inline-flex;gap:5px;align-items:center}
+.swpb{display:flex;gap:8px;flex-wrap:wrap;padding-top:10px;border-top:1px solid var(--line)}
+.swph{position:relative;padding-right:34px}
+.swpclose{position:absolute;top:0;right:-4px;width:34px;height:34px;border:1px solid var(--line);border-radius:9px;background:var(--card);color:var(--muted);font-size:16px;cursor:pointer}
+.swpclose:hover{color:var(--ink);background:var(--soft)}
+.sw-reopen{margin-left:12px;height:36px;padding:0 14px;border:1px solid var(--s1);border-radius:9px;background:color-mix(in srgb,var(--s1) 10%,var(--card));color:var(--s1);font:700 15px var(--body);cursor:pointer;white-space:nowrap}
+.sw-reopen:hover{background:var(--soft)}.sw-reopen[hidden]{display:none}
+body.swcard .drawer{z-index:72}body.swcard .scrim{z-index:71}
+@media (max-width:760px){
+  .sws{grid-template-columns:minmax(0,1fr)!important;grid-template-rows:auto minmax(0,1fr)}
+  .sw-top{flex-wrap:wrap;padding:6px 8px;gap:4px}.swname,.sw-top .swbtn,.swgap{display:none}.swsym input{width:118px}.swib.wide span{display:none}
+  .sw-main{grid-column:1}.sw-list,.sw-panel{grid-column:1;grid-row:2;z-index:7;background:var(--card);box-shadow:0 0 0 100vmax rgba(5,12,22,.35)}
+  .sw-list{width:84vw;justify-self:start}.sw-panel{width:90vw;justify-self:end}.swres{width:92vw}.swdrop{position:fixed;left:8px;right:8px;top:100px;min-width:0}}
+
 .emachips{gap:8px}
 .emachip{display:inline-flex;align-items:center;gap:8px;min-height:38px;font-size:15.5px;font-weight:700;padding:4px 14px}
 .emachip i{display:inline-block;width:20px;height:4px;border-radius:2px;background:var(--c);flex:none}
@@ -1443,6 +1515,46 @@ body.gfocus .gcand .gchart{grid-column:1/-1;grid-row:3;align-self:stretch;height
 .zr .zg b{font-size:16.5px;font-weight:800;font-variant-numeric:tabular-nums}
 .zr .zcap{display:block;font-size:14px;color:var(--muted);margin-top:6px;line-height:1.4}
 @media (max-width:900px){.zruler{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:minmax(272px,86%);overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 2px 8px}.zr{scroll-snap-align:start}}
+
+/* ══ Modern UI (update 19): one clean type family, flat quiet surfaces, no 3D keycaps or glossy bars.
+   Only looks change here - every control, table and number stays where it was. ══ */
+:root{--body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;--display:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;--r:14px;
+  --desk:#F3F5F8;--line:#DEE3EA;--track:#E8ECF1;--shadow:0 1px 2px rgba(15,26,42,.05),0 1px 1px rgba(15,26,42,.03);--d1:var(--shadow)}
+:root[data-theme="dark"]{--desk:#0A0E15;--card:#111823;--soft:#172130;--line:#233042;--track:#1D2836;--face:#111823}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--desk:#0A0E15;--card:#111823;--soft:#172130;--line:#233042;--track:#1D2836;--face:#111823}}
+body{font-feature-settings:"cv11","ss01";letter-spacing:-.003em}
+h1,h2,h3,h4{font-stretch:100%;letter-spacing:-.018em}
+.sec-head h2{font-weight:750}
+.sec-head h2::before{width:4px;height:26px;border-radius:3px;background:var(--t,var(--accent));box-shadow:none}
+.card,.dcol .dsec{background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:var(--r)}
+details.exp,.drawer header{background:var(--card)}
+.band{background:linear-gradient(180deg,#0E1B2E,#13243B);position:relative}.band::after{background:var(--band-line)}
+.hero-idx{background:rgba(255,255,255,.035)}.hero-idx .val{font-stretch:100%;letter-spacing:-.02em}
+.tabbar{background:var(--card);box-shadow:0 1px 0 var(--line)}
+.tab svg{background:transparent;box-shadow:none}
+.tab[aria-selected="true"]{background:transparent;color:var(--ink);border-bottom-color:var(--tv)}
+.tab[aria-selected="true"] svg{color:var(--tv);background:color-mix(in srgb,var(--tv) 14%,transparent);box-shadow:none}
+.tab:hover{color:var(--ink)}
+@media (max-width:720px){.tabbar{background:var(--card);box-shadow:0 -1px 0 var(--line)}.tab[aria-selected="true"]{background:transparent}}
+.seg{background:var(--soft);border:1px solid var(--line);box-shadow:none;padding:3px;gap:2px;border-radius:11px}
+.seg button{border-radius:8px}.seg button:hover{background:transparent;color:var(--ink)}
+.seg button[aria-pressed="true"]{background:var(--card);color:var(--ink);box-shadow:0 1px 2px rgba(15,26,42,.14),0 0 0 1px var(--line)}
+.subtabs button{background:var(--card);box-shadow:none}
+.subtabs button[aria-pressed="true"]{background:var(--sel);color:var(--sel-ink);border-color:var(--sel);box-shadow:none}
+.btn{background:var(--sel);color:var(--sel-ink);box-shadow:none;border-radius:10px}.btn:hover{filter:brightness(1.12)}
+.btn.alt,.ghost,.chipbtn,.wlchip,.rowact button,.dnav button{background:var(--card);box-shadow:none}
+.ghost:hover,.chipbtn:hover,.btn.alt:hover,.dnav button:hover{border-color:color-mix(in srgb,var(--ink) 45%,var(--line))}
+.btn:active,.ghost:active,.chipbtn:active,.wlchip:active,.rowact button:active,.dnav button:active,.subtabs button:active,.seg button:active{transform:none;box-shadow:none}
+.select,.search{box-shadow:none;border-radius:10px}
+.pill,.rs,.badge{box-shadow:none}.rs-a{background:var(--up);box-shadow:none}
+.fill.pos{background:var(--up);box-shadow:none}.fill.neg{background:var(--down);box-shadow:none}
+.frow .bar,.sbar{background:var(--s1)}.hbar .b{background:var(--up)}
+.meter i{background:var(--accent);box-shadow:none}.meter.split i{background:var(--up)}.meter.split i+i{background:var(--down)}
+.tile::before{height:3px;background:var(--tc,#1D4ED8)}.tile .bar{box-shadow:none}.tile .bar i{background:var(--s1)}
+.dgrid div,:root[data-theme="dark"] .dgrid div{box-shadow:none}
+.rcard{background:var(--rc);box-shadow:var(--shadow)}
+.dt th{font-weight:650;color:var(--muted)}.dt tbody tr:hover td{background:var(--soft)}
+@media (hover:hover){button.btile:hover,.scard:hover,.rcard:hover{transform:none}}
 </style>
 </head>
 <body>
@@ -1694,14 +1806,15 @@ function renderRotation(){
   const prank={};[...prev].sort((a,b)=>b.v-a.v).forEach((g,i)=>prank[g.name]=i+1);
   const ranked=[...now].sort((a,b)=>b.v-a.v);ranked.forEach((g,i)=>g.rank=i+1);
   let rows=ranked;if(st.sort==="name")rows=[...now].sort((a,b)=>a.name.localeCompare(b.name));if(st.sort==="br")rows=[...now].sort((a,b)=>(b.br??-1)-(a.br??-1));
+  if((st.sort==="rs"||st.sort==="rsd")&&D.meta.grp){const v=g=>{const r=gRow(st.group,g.name),x=r&&r[gU(r)];if(!x||!isNum(x.rk))return -999;const pv=gPrev(x);return st.sort==="rs"?x.rk:isNum(pv)?x.rk-pv:-998};rows=[...now].sort((a,b)=>v(b)-v(a)||b.v-a.v)}
   const what=st.group==="Themes"?"theme":st.group==="NSE Index"?"NSE index":st.group.toLowerCase();
-  let h=`<div class="sec-head"><div><h2>Where the money is rotating</h2><p>Average return of the stocks in each ${what}, ranked. The rank on the right is what counts: in 20 years of NSE data, top-third groups by 1-month to 1-year return (green) beat the average stock over the next 1–6 months and bottom-third groups (red) lagged; how the rank moved week to week added nothing. <b>RS</b> is the group's RS rating (3–12 months) with its change over 4 weeks — grey unless it matters: <span class="gmv fade">red</span> when a group rated 70+ has lost 10+ points. Tap a row for its stocks.</p></div></div>
+  let h=`<div class="sec-head"><div><h2>Where the money is rotating</h2><p>Average return of the stocks in each ${what}, ranked. The rank on the right is what counts: in 20 years of NSE data, top-third groups by 1-month to 1-year return (green) beat the average stock over the next 1–6 months and bottom-third groups (red) lagged; how the rank moved week to week added nothing. <b>RS</b> is the group's RS rating (3–12 months) with its change over the period you pick — grey unless it matters: on 1M, <span class="gmv fade">red</span> when a group rated 70+ has lost 10+ points. Tap a row for its stocks.</p></div></div>
   <div class="card toolbar">
     <div class="ctl"><span>Period</span>${seg("period",PERIODS,st.period,PL)}</div>
     <div class="ctl"><span>Group by</span>${seg("group",Object.keys(D.groups),st.group)}</div>
     ${uniSeg()}
     <div class="ctl"><span>Average</span>${seg("agg",["mean","median"],st.agg,{mean:"Mean",median:"Median"})}</div>
-    <div class="ctl"><span>Sort</span>${seg("sort",["ret","br","name"],st.sort,{ret:"Return",br:"Breadth",name:"A–Z"})}</div>
+    <div class="ctl"><span>Sort</span>${seg("sort",["ret",...(D.meta.grp?["rs","rsd"]:[]),"br","name"],st.sort,{ret:"Return",rs:"RS rating",rsd:`RS change (${st.period==="1D"?"1D":PL[st.period]})`,br:"Breadth",name:"A–Z"})}</div>
     ${viewSeg()}
   </div>`;
   if(!rows.length){$("#view").innerHTML=h+`<div class="card empty">No group has ${D.meta.min_group_size}+ stocks with data for this period.</div>`;return}
@@ -1792,7 +1905,7 @@ function heatmap(rows){
   const sorted=st.sort==="ret"?[...rows].sort((a,b)=>(stats[st.period][b.name]??-999)-(stats[st.period][a.name]??-999)):rows;
   const cell=(v,m)=>{if(!isNum(v))return `<div class="cell">–</div>`;const f=Math.min(1,Math.abs(v)/m),c=v>=0?"var(--up)":"var(--down)";return `<div class="cell num" style="background:color-mix(in srgb,${c} ${Math.round(8+f*62)}%,transparent);${f>.55?"color:#fff":""}">${sgn(v,1)}</div>`};
   let h=`<div class="card"><div class="tscroll"><table class="heat"><thead><tr><th>Group</th>${D.meta.grp?"<th>RS · 4 wk</th>":""}${PERIODS.map(p=>`<th data-hp="${p}" class="${p===st.period?"on":""}" tabindex="0">${p}</th>`).join("")}</tr></thead><tbody>`;
-  for(const g of sorted){h+=`<tr class="hr" data-g="${esc(g.name)}" tabindex="0"><td>${esc(g.name)} <span style="color:var(--muted);font-weight:400;font-size:14px">${g.n}</span></td>${D.meta.grp?`<td class="hrs">${(()=>{const r=gRow(st.group,g.name),x=r&&r[gU(r)];return x&&isNum(x.rk)?`${rsPill(x.rk)} ${gMove(x.rk,x.rk4)}`:"–"})()}</td>`:""}${PERIODS.map(p=>`<td>${cell(stats[p][g.name],mx[p])}</td>`).join("")}</tr>`;
+  for(const g of sorted){h+=`<tr class="hr" data-g="${esc(g.name)}" tabindex="0"><td>${esc(g.name)} <span style="color:var(--muted);font-weight:400;font-size:14px">${g.n}</span></td>${D.meta.grp?`<td class="hrs">${(()=>{const r=gRow(st.group,g.name),x=r&&r[gU(r)];return x&&isNum(x.rk)?`${rsPill(x.rk)} ${gMove(x.rk,gPrev(x),st.period)}`:"–"})()}</td>`:""}${PERIODS.map(p=>`<td>${cell(stats[p][g.name],mx[p])}</td>`).join("")}</tr>`;
     if(st.open===g.name)h+=`<tr><td colspan="${PERIODS.length+1+(D.meta.grp?1:0)}" style="padding:0 8px 10px;position:static">${members(g)}</td></tr>`}
   return h+`</tbody></table></div></div><p class="note">Colour depth is scaled within each period column. Click a period heading to rank by it; click a group for its stocks.</p>`;
 }
@@ -1985,9 +2098,13 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape"&&$("#gmodal")&&!$("#
    70+ that lost 10+ points went on to lag (industries +0.4% / -1.2%, sectors +0.1% / -2.0% over 3 months vs +1.1-1.4% steady);
    a 70+ group gaining 10+ did a little better for industries (+1.8-2.2%), not for sectors. So: every move is shown, in grey;
    only "70+ and down 10+" is coloured (a warning) and "70+ and up 10+" is set bold. */
-function gMove(rk,rk4){if(!isNum(rk)||!isNum(rk4))return "";const d=rk-rk4,c=rk>=70&&d<=-10?"fade":rk>=70&&d>=10?"firm":"";
-  const t=`Group RS rating ${rk}, ${rk4} four weeks ago (${d>0?"+":""}${d})${c==="fade"?" — a strong group losing 10+ points: in testing these lagged over the next 3 months":c==="firm"?" — a strong group gaining 10+ points: a mild plus in testing (industries)":Math.abs(d)<10?" — moves under 10 points carried no signal in testing":""}`;
-  return `<span class="gmv ${c}" title="${esc(t)}">${d>0?"▲":d<0?"▼":"="}${d?Math.abs(d):""}${c==="fade"?" in 4 wk":""}</span>`}
+/* the group's RS rating at the start of a Rotation period (shipped as rka; older files: 1W from the weekly ratings, 1M = 4 weeks, 3M = 12 weeks) */
+function gPrev(x,p=st.period){if(!x)return null;if(x.rka&&p in x.rka)return x.rka[p];if(p==="1M")return x.rk4;if(p==="3M")return x.rk12;
+  if(p==="1W"&&x.rkp?.length>1)return x.rkp[x.rkp.length-2];return null}
+const PAGO={"1D":"yesterday","1W":"a week ago","1M":"a month ago","3M":"3 months ago","6M":"6 months ago","YTD":"at the start of the year","1Y":"a year ago"};
+function gMove(rk,rk4,p){if(!isNum(rk)||!isNum(rk4))return "";const d=rk-rk4,ev=!p||p==="1M",c=ev&&rk>=70&&d<=-10?"fade":ev&&rk>=70&&d>=10?"firm":"";
+  const t=`Group RS rating ${rk}, ${rk4} ${p?PAGO[p]:"four weeks ago"} (${d>0?"+":""}${d})${!ev?"":c==="fade"?" — a strong group losing 10+ points: in testing these lagged over the next 3 months":c==="firm"?" — a strong group gaining 10+ points: a mild plus in testing (industries)":Math.abs(d)<10?" — moves under 10 points carried no signal in testing":""}`;
+  return `<span class="gmv ${c}" title="${esc(t)}">${d>0?"▲":d<0?"▼":"="}${d?Math.abs(d):""}${c==="fade"?(p?" in 1M":" in 4 wk"):""}</span>`}
 const gState=(rk,rk4)=>!isNum(rk)?null:rk>=70?(isNum(rk4)&&rk-rk4<=-10?"fade":"strong"):rk>=40?"mid":"weak";
 const GSL={strong:"Strong (RS 70+)",fade:"Strong but fading (70+, down 10+ in 4 weeks)",mid:"Middle (RS 40–69)",weak:"Weak (RS under 40)"};
 const GSC={strong:"var(--up-t)",fade:"var(--accent-ink)",mid:"var(--muted)",weak:"var(--down-t)"};
@@ -2138,7 +2255,7 @@ async function gMountMini(){const el=document.querySelector(".gmini[data-gopen]"
 function gMiniHtml(kind,name){return `<div class="gmini" data-gopen="${esc(kind+"|"+name)}" role="button" tabindex="0" aria-label="Open the full chart of ${esc(name)}"><div class="gmh">Loading chart…</div><div class="gmc"></div><span class="gmo">Open full chart ⤢</span></div>`}
 /* ── badges on the rotation rows ── */
 function gBadges(kind,name){const r=gRow(kind,name);if(!r)return "";const u=gU(r),x=r[u];if(!x)return "";
-  return `<span class="gbadges">${isNum(x.rk)?`${gTrail(x)}${gMove(x.rk,x.rk4)}`:""}${gsigChips(r,u,4)}</span>`}
+  return `<span class="gbadges">${isNum(x.rk)?`${gTrail(x)}${gMove(x.rk,gPrev(x),st.period)}`:""}${gsigChips(r,u,4)}</span>`}
 /* the group RS rating at the last 6 weekly closes, this week first (rkp: one rating per week, oldest first, the last = this week) */
 function gTrail(x){const p=(x.rkp||[]).slice(-6).reverse(),t=p.length>=2&&p[0]===x.rk?p:[x.rk];
   const w=i=>i===0?"this week":i===1?"1 week ago":i+" weeks ago";
@@ -3960,11 +4077,11 @@ async function openDrawer(sym,ex,focusWl){
   if(x&&D.meta.rs)Promise.all([clLoad(),rshLoad()]).then(()=>{const sl=$("#rsSlot");if(sl&&$("#dTitle")?.textContent===sym){sl.outerHTML=rsChart(sym);wireRsChart(sym)}});
 }
 /* nav: true when closing because the user picked a link inside the window (keeps history tidy) */
-function closeDrawer(nav){if($("#drawer").hidden)return;$("#drawer").hidden=true;$("#scrim").hidden=true;document.body.style.overflow=$("#gmodal")&&!$("#gmodal").hidden?"hidden":"";
+function closeDrawer(nav){if($("#drawer").hidden)return;document.body.classList.remove("swcard");$("#drawer").hidden=true;$("#scrim").hidden=true;document.body.style.overflow=($("#gmodal")&&!$("#gmodal").hidden)||swOpen()?"hidden":"";
   if(history.state?.card){const {card,...rest}=history.state;if(nav)history.replaceState(Object.keys(rest).length?rest:null,"",location.href);else{DRAWER_BACK=true;history.back()}}
   if(!nav)lastFocus?.focus?.()}
 let DRAWER_BACK=false;
-window.addEventListener("popstate",()=>{if(DRAWER_BACK){DRAWER_BACK=false;return}if(!$("#drawer").hidden&&!history.state?.card){$("#drawer").hidden=true;$("#scrim").hidden=true;document.body.style.overflow=$("#gmodal")&&!$("#gmodal").hidden?"hidden":""}});
+window.addEventListener("popstate",()=>{if(DRAWER_BACK){DRAWER_BACK=false;return}if(!$("#drawer").hidden&&!history.state?.card){document.body.classList.remove("swcard");$("#drawer").hidden=true;$("#scrim").hidden=true;document.body.style.overflow=$("#gmodal")&&!$("#gmodal").hidden?"hidden":""}});
 
 /* ════════════════════ WATCHLISTS ════════════════════
    Stored in this browser (localStorage). Optional sync between devices through a private
@@ -4460,7 +4577,7 @@ const dkActive=()=>{for(let i=DK_LIVE.length-1;i>=0;i--){const K=DK_LIVE[i];if(!
 window.addEventListener("keydown",e=>{const K=dkActive();if(!K)return;const tg=e.target,tag=(tg.tagName||"").toLowerCase();
   if(["input","textarea","select"].includes(tag)||tg.isContentEditable)return;
   if(e.key==="Escape"){if(K.pend||K.tmp||K.sel||DKS.tool!=="cursor"){e.stopImmediatePropagation();e.preventDefault();K.esc()}return}
-  if((e.key==="f"||e.key==="F")&&!e.altKey&&!e.ctrlKey&&!e.metaKey&&!e.shiftKey){e.preventDefault();e.stopImmediatePropagation();gfSet(!gfOn());return}
+  if((e.key==="f"||e.key==="F")&&!e.altKey&&!e.ctrlKey&&!e.metaKey&&!e.shiftKey&&!swOpen()){e.preventDefault();e.stopImmediatePropagation();gfSet(!gfOn());return}
   if((e.key==="Delete"||e.key==="Backspace")&&K.sel){e.preventDefault();e.stopImmediatePropagation();K.del();return}
   if((e.ctrlKey||e.metaKey)&&!e.shiftKey&&e.code==="KeyZ"){if(K.hist.length){e.preventDefault();e.stopImmediatePropagation();K.undo()}return}
   if(e.altKey&&!e.ctrlKey&&!e.metaKey){const t=DK_TOOLS.find(x=>x[3]&&x[3]===e.code&&(x[0]==="rect"?e.shiftKey:!e.shiftKey));if(t){e.preventDefault();e.stopImmediatePropagation();K.setTool(t[0])}}},true);
@@ -4697,16 +4814,38 @@ function emaChips(attr){const on=emaOn(),c=emaCol(gpal());
 const SC_ICON=`<svg viewBox="0 0 18 18" aria-hidden="true"><path d="M4 2v3M4 13v3M9 4v2M9 14v2M14 3v3M14 11v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><rect x="2.3" y="5" width="3.4" height="8" rx="1" fill="currentColor"/><rect x="7.3" y="6" width="3.4" height="8" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="12.3" y="6" width="3.4" height="5" rx="1" fill="currentColor"/></svg>`;
 const scBtn=s=>D.meta?.sc?`<button type="button" class="scbtn" data-schart="${esc(s)}" aria-label="Candle chart of ${esc(s)}" title="Candle chart">${SC_ICON}</button>`:"";
 let SCC=null,SCF={},SCH=null,SCH_BACK=false,SCX=null;
-const SST={range:"1Y",int:"D",scale:"lin",rs:"on",lv:{base:true,vcp:true,pat:true,hi:true,my:true}};
+const SST={int:"D",scale:"lin",rs:"on",lv:{base:true,vcp:true,pat:true,hi:true,my:true},ind:{vol:true,rsi:false,macd:false,bb:false,sma50:false,sma150:false,sma200:false},rng:{D:"1Y",W:"3Y",M:"All"},list:true,panel:true,draw:true};
 const scName=s=>s.replace(/[^A-Za-z0-9]/g,ch=>"_"+ch.charCodeAt(0).toString(16).toUpperCase().padStart(2,"0"));
 async function scComLoad(){if(SCC)return SCC;let r=null;try{r=await fetch(`data/sc/_common.json?v=${gv()}`)}catch(e){}
   if(!r||!r.ok)throw new Error("Could not load the chart data. Check the connection and try again.");return SCC=await r.json()}
 async function scFileLoad(s){if(SCF[s])return SCF[s];let r=null;try{r=await fetch(`data/sc/${encodeURIComponent(scName(s))}.json?v=${gv()}`)}catch(e){}
   if(!r||!r.ok)throw new Error("No chart for this stock yet: it needs a price in today's data.");return SCF[s]=await r.json()}
+/* ════════════════════ CHART WORKSPACE (every stock chart) ════════════════════
+   One full-screen window, laid out like a trading terminal: the list of stocks it was opened from on the left (click or
+   ↑ ↓ to move through it), the chart in the middle with daily / weekly / monthly bars, indicators, the site's levels and
+   the drawing tools, and a data panel on the right (the row of the table it came from, ratings, key numbers and
+   fundamentals). Type any symbol while the chart is open to jump to it. */
+const SW={list:[],rows:{},src:"",sym:null,tok:0,hist:store.get("swHist",[]),open:false};
+const swOpen=()=>SW.open&&$("#smodal")&&!$("#smodal").hidden;
+const SW_R={D:[["1M",21],["3M",63],["6M",126],["YTD","ytd"],["1Y",252],["2Y",504]],W:[["6M",26],["1Y",52],["2Y",104],["3Y",156],["5Y",260],["All",1e9]],M:[["2Y",24],["5Y",60],["All",1e9]]};
+const SW_IND=[["ema21","EMA 21","Moving averages"],["ema50","EMA 50","Moving averages"],["ema200","EMA 200","Moving averages"],["sma50","SMA 50","Moving averages"],["sma150","SMA 150","Moving averages"],["sma200","SMA 200","Moving averages"],
+  ["bb","Bollinger Bands (20, 2)","On the price"],["vol","Volume + 50-bar average","Panes below"],["rs","RS line vs NIFTY 500 + blue dots","Panes below"],["rsi","RSI 14","Panes below"],["macd","MACD (12, 26, 9)","Panes below"]];
+function swInd(k){if(k.startsWith("ema"))return emaOn()[+k.slice(3)];if(k==="rs")return SST.rs!=="off";return !!SST.ind[k]}
+function swSetInd(k,v){if(k.startsWith("ema"))emaSet(+k.slice(3),v);else if(k==="rs")SST.rs=v?"on":"off";else SST.ind[k]=v;sSave()}
+/* the list a chart was opened from: the table's rows (and each row's cells, for the data panel), or the cards around it */
+function swCapture(b){const tbl=b.closest("table");let syms=[],rows={},src="";
+  if(tbl){const heads=[...(tbl.tHead?.rows[0]?.cells||[])].map(c=>c.innerText.replace(/[▲▼↕⇅]/g,"").replace(/\s+/g," ").trim());
+    for(const tr of tbl.tBodies[0]?.rows||[]){const s=tr.querySelector("[data-schart]")?.dataset.schart;if(!s||rows[s])continue;syms.push(s);const kv=[];
+      [...tr.cells].forEach((td,i)=>{const h=heads[i];if(!h||i===0||/^(stock|symbol|chart|company)$/i.test(h))return;const v=td.innerText.replace(/\s+/g," ").trim();if(v&&v!=="–"&&v.length<=48)kv.push([h,v])});rows[s]=kv}
+    const card=tbl.closest(".scan-main,.card,section");src=(card?.querySelector("h3,h2")?.innerText||"").trim()}
+  else{const box=b.closest(".card,section,.rgrid,.vb-grid")||null;if(box){syms=[...new Set([...box.querySelectorAll("[data-schart]")].map(e=>e.dataset.schart))];src=(box.querySelector("h3,h2")?.innerText||"").trim()}}
+  if(syms.length<2)return null;
+  const tab=document.querySelector(`#tabs .tab[aria-selected="true"]`)?.innerText.trim()||"";
+  return {syms,rows,src:(src||tab).slice(0,60)}}
 function smodalEl(){let m=$("#smodal");if(m)return m;
-  document.body.insertAdjacentHTML("beforeend",`<div class="gscrim scscrim" id="scscrim" hidden></div><section class="gmodal gcand smodal" id="smodal" hidden role="dialog" aria-modal="true" aria-labelledby="sTitle"></section>`);
+  document.body.insertAdjacentHTML("beforeend",`<div class="gscrim scscrim" id="scscrim" hidden></div><section class="gmodal smodal sws" id="smodal" hidden role="dialog" aria-modal="true" aria-label="Stock chart"></section>`);
   $("#scscrim").addEventListener("click",()=>closeStockChart());
-  m=$("#smodal");m.addEventListener("click",sModalClick);return m}
+  m=$("#smodal");m.addEventListener("click",sModalClick);m.addEventListener("input",swInput);m.addEventListener("keydown",swSearchKeys);return m}
 /* the site's levels for this stock, each optional */
 async function scOverlays(s){const o={};
   try{const B=await basesLoad();if(B?.by?.[s])o.base=B.by[s]}catch(e){}
@@ -4715,153 +4854,245 @@ async function scOverlays(s){const o={};
   try{const m=wlGet().meta[s]||{},items=wlListsOf(s).map(l=>l.items.find(i=>i.s===s)).filter(Boolean);
     if(isNum(m.pivot)||isNum(m.stop)||isNum(m.target)||items.length)o.my={m,items}}catch(e){}
   return o}
-async function openStockChart(sym){
-  const sv=store.get("schart",{});Object.assign(SST,sv,{lv:{...SST.lv,...(sv.lv||{})}});
-  const m=smodalEl(),wasOpen=!m.hidden,x=D.by[sym]||{};m.dataset.s=sym;
-  m.innerHTML=`<header class="ghead"><div><div class="gkind">Stock chart${x.ind?` · ${esc(x.ind)}`:x.sec?` · ${esc(x.sec)}`:""}</div><h2 id="sTitle">${esc(sym)}<span class="pco">${esc(x.n||"")}</span></h2></div><div class="ghacts">${gfBtn()}<button class="close" type="button" data-sclose aria-label="Close chart"><b aria-hidden="true">✕</b> Close</button></div></header><div class="gbody"><div class="empty" style="padding:40px">Loading chart…</div></div>`;
-  m.hidden=false;$("#scscrim").hidden=false;document.body.style.overflow="hidden";
-  if(!wasOpen&&!history.state?.schart)history.pushState({...(history.state||{}),schart:1},"",location.href);
-  try{const [C,F]=await Promise.all([scComLoad(),scFileLoad(sym),lwcLoad()]);const ov=await scOverlays(sym);
-    if(m.hidden||m.dataset.s!==sym)return;drawStockChart(sym,C,F,ov)}
-  catch(e){if(m.dataset.s===sym)m.querySelector(".gbody").innerHTML=`<div class="empty" style="padding:40px">${esc(e.message||String(e))}</div>`}
-  m.querySelector("[data-sclose]")?.focus()}
+const SW_ICO={full:`<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 8V3h5M12 3h5v5M17 12v5h-5M8 17H3v-5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>`,list:`<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>`,
+  panel:`<svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2.5" y="3.5" width="15" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12.5 3.5v13" stroke="currentColor" stroke-width="1.7"/></svg>`,
+  draw:`<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 16l2.8-.6 8.4-8.4a1.6 1.6 0 0 0-2.2-2.2L4.6 13.2 4 16z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>`,
+  ind:`<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2.5 15c3-6 5-6 7.5-2s4.5 3 7.5-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>`,
+  search:`<svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12.5 12.5l4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>`};
+async function openStockChart(sym,cap){
+  const sv=store.get("schart",{});Object.assign(SST,sv,{lv:{...SST.lv,...(sv.lv||{})},ind:{...SST.ind,...(sv.ind||{})},rng:{...SST.rng,...(sv.rng||{})}});
+  const m=smodalEl(),wasOpen=!m.hidden;
+  if(cap){SW.list=cap.syms;SW.rows=cap.rows;SW.src=cap.src}
+  else if(!wasOpen&&!SW.list.includes(sym)){SW.list=[];SW.rows={};SW.src=""}
+  if(!wasOpen){swShell(m);m.hidden=false;$("#scscrim").hidden=false;document.body.style.overflow="hidden";SW.open=true;
+    if(!history.state?.schart)history.pushState({...(history.state||{}),schart:1},"",location.href)}
+  swGo(sym)}
+function swShell(m){const phone=matchMedia("(max-width:760px)").matches;
+  m.classList.toggle("nolist",phone||SST.list===false);m.classList.toggle("nopanel",phone||SST.panel===false);m.classList.toggle("nodraw",SST.draw===false||(phone&&SST.drawPh!==true));swTogState();
+  m.innerHTML=`<div class="sw-top">
+    <button type="button" class="swib" data-swt="list" title="Stock list (L)" aria-label="Show or hide the stock list">${SW_ICO.list}</button>
+    <div class="swsym"><span class="swsico">${SW_ICO.search}</span><input id="swq" type="text" autocomplete="off" spellcheck="false" aria-label="Type a symbol or company name" placeholder="Symbol"><div class="swres" id="swres" hidden role="listbox"></div></div>
+    <div class="swname" id="swname"></div>
+    <div class="swseg" role="group" aria-label="Bars">${["D","W","M"].map(k=>`<button type="button" data-swint="${k}" aria-pressed="${SST.int===k}" title="${{D:"Daily",W:"Weekly",M:"Monthly"}[k]} bars">${k}</button>`).join("")}</div>
+    <details class="swmenu" id="swind"><summary class="swib wide">${SW_ICO.ind}<span>Indicators</span></summary><div class="swdrop" id="swinddrop"></div></details>
+    <details class="swmenu" id="swlv"><summary class="swib wide"><span>Levels</span></summary><div class="swdrop" id="swlvdrop"></div></details>
+    <button type="button" class="swib wide" data-swt="scale" aria-pressed="${SST.scale==="log"}" title="Logarithmic price scale">Log</button>
+    <button type="button" class="swib" data-swt="draw" aria-pressed="${SST.draw!==false}" title="Drawing tools">${SW_ICO.draw}</button>
+    <span class="swgap"></span>
+    <button type="button" class="swbtn" data-swcard title="Open the stock card">Stock card</button>
+    <a class="swbtn" id="swtv" target="_blank" rel="noopener" title="Open on TradingView">TradingView ↗</a>
+    <button type="button" class="swib wide" data-swt="full" title="Full chart: hide the list and the data panel (press again to bring them back)" aria-label="Full chart">${SW_ICO.full}<span>Full chart</span></button>
+    <button type="button" class="swib wide" data-swt="panel" title="Show or hide the data panel" aria-label="Show or hide the data panel">${SW_ICO.panel}<span>Data</span></button>
+    <button type="button" class="swib swx" data-sclose title="Close (Esc)" aria-label="Close the chart">✕</button></div>
+  <aside class="sw-list" id="swlist" aria-label="Stocks"></aside>
+  <div class="sw-main"><div class="sw-plot" id="swplot"><div class="gchart" id="schartbox"><div class="swleg" id="swleg"></div></div></div>
+    <div class="sw-bot"><div class="swseg sm" id="swrng" role="group" aria-label="Range"></div><span class="swasof" id="swasof"></span><button type="button" class="sw-reopen" id="swreopen" data-swt="panel" title="Show the data panel again" hidden>Show data panel ›</button></div></div>
+  <aside class="sw-panel" id="swpanel" aria-label="Data panel"></aside>`;
+  document.addEventListener("click",swOutside,true)}
+function swOutside(e){if(!swOpen())return;document.querySelectorAll("#smodal details.swmenu[open]").forEach(d=>{if(!d.contains(e.target))d.open=false});
+  if(!e.target.closest(".swsym")){const r=$("#swres");if(r)r.hidden=true}}
+async function swGo(sym){const m=$("#smodal");if(!m)return;const tok=++SW.tok;SW.sym=sym;m.dataset.s=sym;
+  SW.hist=[sym,...SW.hist.filter(s=>s!==sym)].slice(0,30);store.set("swHist",SW.hist);
+  const x=D.by[sym]||{};const q=$("#swq");if(q&&document.activeElement!==q)q.value=sym;
+  $("#swname").innerHTML=`<b>${esc(x.n||sym)}</b>${x.ind?`<span>${esc(x.ind)}</span>`:""}`;$("#swtv").href=tv(sym);
+  swList();swPanel(sym);
+  const box=$("#schartbox");if(!SCH&&box)box.insertAdjacentHTML("beforeend",`<div class="swload">Loading ${esc(sym)}…</div>`);
+  try{const [C,F]=await Promise.all([scComLoad(),scFileLoad(sym),lwcLoad()]);const ov=await scOverlays(sym);if(tok!==SW.tok||!swOpen())return;
+    SCX={sym,C,F,ov};sRender();box?.querySelector(".swload")?.remove();swPanel(sym,F,C);
+    const i=SW.list.indexOf(sym);for(const s of [SW.list[i+1],SW.list[i-1]])if(s)scFileLoad(s).catch(()=>{})}   /* the neighbours load in the background */
+  catch(e){if(tok!==SW.tok)return;if(SCH){SCH.ro?.disconnect();SCH.dk?.destroy();SCH.chart.remove();SCH=null}
+    if(box)box.innerHTML=`<div class="swleg" id="swleg"></div><div class="empty" style="padding:40px">${esc(e.message||String(e))}</div>`}}
+function swList(){const el=$("#swlist");if(!el)return;const own=SW.list.length>1,L=own?SW.list:SW.hist;
+  const row=s=>{const x=D.by[s]||{},c=x.r?.["1D"];return `<button type="button" class="swi${s===SW.sym?" on":""}" data-swgo="${esc(s)}"${s===SW.sym?' aria-current="true"':""}><span class="swis">${esc(s)}</span><span class="num ${cls(c)}">${isNum(c)?sgn(c,2):""}</span><span class="swin">${esc((x.n||"").slice(0,26))}</span><span class="num swip">${isNum(x.px)?inr(x.px):""}</span></button>`};
+  el.innerHTML=`<div class="swlh"><b>${esc(own?(SW.src||"From the table"):"Recently viewed")}</b><span class="num">${L.length}</span></div><div class="swlb">${L.map(row).join("")||`<p class="note" style="padding:10px 14px">Open a chart from any table to list its stocks here.</p>`}</div>
+    <p class="swlk">↑ ↓ move through the list · type to search</p>`;
+  el.querySelector(".swi.on")?.scrollIntoView({block:"nearest"})}
+function swStep(d){const L=SW.list.length>1?SW.list:SW.hist,i=L.indexOf(SW.sym);if(i<0&&!L.length)return;const j=Math.max(0,Math.min(L.length-1,(i<0?0:i+d)));if(L[j]&&L[j]!==SW.sym)swGo(L[j])}
+/* data panel: the table row it came from, ratings, numbers and fundamentals */
+function swPanel(sym,F,C){const el=$("#swpanel");if(!el)return;const x=D.by[sym]||{};const kv=(k,v,c)=>v==null||v===""||v==="–"?"":`<div class="swkv"><dt>${k}</dt><dd class="num ${c||""}">${v}</dd></div>`;
+  const n1=v=>isNum(v)?v.toFixed(1):null,pc=v=>isNum(v)?sgn(v,1):null,E=eyeSum(x),rsd=isNum(x.rs)&&isNum(x.rs4w)?x.rs-x.rs4w:null;
+  const nx=x.next_results?Math.round((new Date(x.next_results+"T00:00:00")-new Date(D.meta.asof+"T00:00:00"))/864e5):null;
+  const SAME=/^(price|mcap ₹?cr|1d|day %|rs|rs rating|fund|fund rating|stage|from 52w high( %)?|sector( \/ industry)?|industry|themes?|upside|result q|pkc eye|1m|3m|1y)$/i,tbl=(SW.rows[sym]||[]).filter(([k])=>!SAME.test(k));
+  const sc=(D.scansOf[sym]||[]).map(id=>D.scanMeta[id]).filter(Boolean);
+  el.innerHTML=`<div class="swph"><button type="button" class="swpclose" data-swt="panel" title="Hide the data panel (bring it back with ‹ Data or the Data button)" aria-label="Hide the data panel">✕</button><div class="swpx num">${isNum(x.px)?"₹"+inr(x.px):"–"}</div><div class="num ${cls(x.r?.["1D"])}" style="font-weight:700">${isNum(x.r?.["1D"])?sgn(x.r["1D"],2)+" today":""}</div>
+      <div class="swmeta">${esc([x.sec,isNum(x.mc)?"Mcap ₹"+Math.round(x.mc).toLocaleString("en-IN")+" Cr":""].filter(Boolean).join(" · "))}</div></div>
+    <div class="swrat">${[["RS",rsPill(x.rs),rsd!=null?`<small class="num ${cls(rsd)}">${rsd>0?"▲":rsd<0?"▼":""}${Math.abs(rsd)} 4w</small>`:""],["Stage",stagePill(x.st,x.std,x.stdc),isNum(x.std)&&x.std>0?`<small class="num">${x.stdc?"≥ ":""}${x.std}d</small>`:""],["Upside",isNum(x.up)?upPill(x.up):"–",""],["Fund",isNum(x.fr)?rsPill(x.fr):"–",""],["Result Q",isNum(x.rq)?scorePill(x.rq):"–",""],
+      ["PKC Eye",E.n?`<button type="button" class="wlchk ${E.cls} eyebtn" data-swcard="eye"><b>${E.p}</b>/${E.n}</button>`:"–",""]].map(([k,v,s])=>`<div><span>${k}</span>${v}${s}</div>`).join("")}</div>
+    ${tbl.length?`<section><h5>${esc(SW.src||"From the table")}</h5><dl>${tbl.map(([k,v])=>`<div class="swkv"><dt>${esc(k)}</dt><dd class="num">${esc(v)}</dd></div>`).join("")}</dl></section>`:""}
+    <section><h5>Price and trend</h5><dl>${kv("From 52W high",pc(x.h52),cls(x.h52))}${kv("Above 52W low",pc(x.l52))}${kv("vs 50-day",pc(x.d50),cls(x.d50))}${kv("vs 200-day",pc(x.d200),cls(x.d200))}${kv("1 month",pc(x.r?.["1M"]),cls(x.r?.["1M"]))}${kv("3 months",pc(x.r?.["3M"]),cls(x.r?.["3M"]))}${kv("1 year",pc(x.r?.["1Y"]),cls(x.r?.["1Y"]))}
+      ${kv("ATR % / ADR %",isNum(x.atrp)?`${x.atrp.toFixed(1)} / ${isNum(x.adr)?x.adr.toFixed(1):"–"}`:null)}${kv("RSI · ADX",isNum(x.rsi)?`${x.rsi.toFixed(0)} · ${isNum(x.adx)?x.adx.toFixed(0):"–"}`:null)}${kv("Volume × 50d",n1(x.vr))}${kv("Delivery % (20d)",isNum(x.dp20)?x.dp20.toFixed(0)+"%":null)}${kv("Turnover ₹Cr/day",n1(x.to))}</dl></section>
+    <section><h5>Fundamentals</h5><dl>${kv("P/E · PEG",isNum(x.pe)?`${x.pe.toFixed(1)} · ${isNum(x.peg)?x.peg.toFixed(2):"–"}`:null)}${kv("ROE · ROCE",isNum(x.roe)?`${x.roe.toFixed(1)}% · ${isNum(x.roce)?x.roce.toFixed(1)+"%":"–"}`:null)}${x.fin?"":kv("Debt ÷ equity",isNum(x.de)?x.de.toFixed(2):null)}
+      ${kv("Profit YoY",isNum(x.pat_yoy)?sgn(x.pat_yoy,0):null,cls(x.pat_yoy))}${kv("Revenue YoY",isNum(x.rev_yoy)?sgn(x.rev_yoy,0):null,cls(x.rev_yoy))}${kv("Operating margin",isNum(x.opm)?x.opm.toFixed(1)+"%":null)}
+      ${kv("Promoter",isNum(x.promoter)?x.promoter.toFixed(1)+"%":null)}${kv("FII + DII, 1 year",isNum(x.inst_1y)?sgn(x.inst_1y,2)+" pts":null,cls(x.inst_1y))}${kv("Mutual funds, 1 year",isNum(x.mf_1y)?sgn(x.mf_1y,2)+" pts":null,cls(x.mf_1y))}
+      ${kv("Next results",nx!=null&&nx>=0?`${fmtDate(x.next_results)} · ${nx}d`:null)}</dl></section>
+    ${(D.themesOf[sym]||[]).length?`<section><h5>Themes</h5><div class="swchips">${(D.themesOf[sym]||[]).map(t=>`<span>${esc(t)}</span>`).join("")}</div></section>`:""}
+    ${sc.length?`<section><h5>In today's scanners · ${sc.length}</h5><div class="swchips">${sc.slice(0,12).map(s=>`<span style="--g:${gcol(s.cat)}">${bead(s.cat)}${esc(s.name)}</span>`).join("")}${sc.length>12?`<span>+${sc.length-12} more</span>`:""}</div></section>`:""}
+    <div class="swpb"><button type="button" class="swbtn" data-swcard>Open the stock card</button><a class="swbtn" href="${tv(sym)}" target="_blank" rel="noopener">TradingView ↗</a></div>`}
+/* symbol search: type anywhere on the chart */
+function swMatches(q){q=q.trim().toUpperCase();if(!q)return [];const a=[],b=[],c=[];
+  for(const x of D.stocks){const s=x.s.toUpperCase(),n=(x.n||"").toUpperCase();if(s===q)a.unshift(x);else if(s.startsWith(q))a.push(x);else if(n.startsWith(q))b.push(x);else if(n.includes(q)||s.includes(q))c.push(x)}
+  const by=(u,v)=>(v.mc||0)-(u.mc||0);return [...a.slice(0,1),...a.slice(1).sort(by),...b.sort(by),...c.sort(by)].slice(0,12)}
+function swInput(e){if(e.target.id!=="swq")return;const r=$("#swres"),L=swMatches(e.target.value);SW.pick=0;
+  r.innerHTML=L.map((x,i)=>`<button type="button" role="option" class="swr${i===0?" on":""}" data-swgo="${esc(x.s)}"><b>${esc(x.s)}</b><span>${esc(x.n||"")}</span><small class="num ${cls(x.r?.["1D"])}">${isNum(x.r?.["1D"])?sgn(x.r["1D"],2):""}</small></button>`).join("")||`<p class="note" style="margin:8px 12px">No stock matches.</p>`;r.hidden=!e.target.value.trim()}
+function swSearchKeys(e){if(e.target.id!=="swq")return;const r=$("#swres"),it=[...r.querySelectorAll(".swr")];
+  if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();if(!it.length)return;SW.pick=(SW.pick+(e.key==="ArrowDown"?1:-1)+it.length)%it.length;it.forEach((b,i)=>b.classList.toggle("on",i===SW.pick));it[SW.pick].scrollIntoView({block:"nearest"});return}
+  if(e.key==="Enter"){e.preventDefault();const b=it[SW.pick||0];if(b){r.hidden=true;e.target.blur();swGo(b.dataset.swgo)}return}
+  if(e.key==="Escape"){e.preventDefault();e.stopPropagation();r.hidden=true;e.target.value=SW.sym;e.target.blur()}}
+window.addEventListener("keydown",e=>{if(!swOpen())return;const tg=e.target,tag=(tg.tagName||"").toLowerCase();
+  if(["input","textarea","select"].includes(tag)||tg.isContentEditable)return;
+  if(!$("#drawer").hidden||($("#mdl")&&!$("#mdl").hidden))return;
+  if(e.ctrlKey||e.metaKey||e.altKey)return;
+  if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();e.stopImmediatePropagation();swStep(e.key==="ArrowDown"?1:-1);return}
+  if((e.key==="ArrowLeft"||e.key==="ArrowRight")&&SCH){e.preventDefault();const ts=SCH.chart.timeScale(),r=ts.getVisibleLogicalRange();if(r){const d=(e.key==="ArrowLeft"?-1:1)*(e.shiftKey?10:1);ts.setVisibleLogicalRange({from:r.from+d,to:r.to+d})}return}
+  if(e.key.length===1&&/[A-Za-z0-9&]/.test(e.key)){const q=$("#swq");if(!q)return;e.preventDefault();e.stopImmediatePropagation();q.value=e.key.toUpperCase();q.focus();q.dispatchEvent(new Event("input",{bubbles:true}))}},true);
 function closeStockChart(fromPop){const m=$("#smodal");if(!m||m.hidden)return;if(SCH){SCH.ro?.disconnect();SCH.dk?.destroy();SCH.chart.remove();SCH=null}
-  m.hidden=true;$("#scscrim").hidden=true;
+  m.hidden=true;$("#scscrim").hidden=true;SW.open=false;SW.tok++;document.removeEventListener("click",swOutside,true);
   if(!["#drawer","#gmodal","#pmodal","#vmodal"].some(q=>$(q)&&!$(q).hidden))document.body.style.overflow="";
   if(!fromPop&&history.state?.schart){SCH_BACK=true;history.back()}}
 window.addEventListener("popstate",()=>{if(SCH_BACK){SCH_BACK=false;return}if(!history.state?.schart&&$("#smodal")&&!$("#smodal").hidden)closeStockChart(true)});
-window.addEventListener("keydown",e=>{if(e.key==="Escape"&&$("#smodal")&&!$("#smodal").hidden&&(!$("#mdl")||$("#mdl").hidden)){e.stopImmediatePropagation();e.preventDefault();closeStockChart()}},true);
-document.addEventListener("click",e=>{const b=e.target.closest("[data-schart]");if(!b)return;e.preventDefault();e.stopPropagation();openStockChart(b.dataset.schart)},true);
-/* bars of one stock: daily or weekly, with dates */
-function scRows(C,F,weekly){const S=weekly?F.w:F.d,out=[];if(!S)return out;
+window.addEventListener("keydown",e=>{if(e.key==="Escape"&&$("#smodal")&&!$("#smodal").hidden&&(!$("#mdl")||$("#mdl").hidden)&&$("#drawer").hidden){e.stopImmediatePropagation();e.preventDefault();closeStockChart()}},true);
+document.addEventListener("click",e=>{const b=e.target.closest("[data-schart]");if(!b)return;e.preventDefault();e.stopPropagation();
+  if(b.closest("#drawer")&&swOpen()){closeDrawer();openStockChart(b.dataset.schart);return}openStockChart(b.dataset.schart,b.closest("#smodal,#drawer")?null:swCapture(b))},true);
+/* bars of one stock: daily, weekly or monthly, with dates */
+function scRows(C,F,iv){if(iv===true)iv="W";else if(!iv)iv="D";
+  if(iv==="M"){const S=F.m,out=[];if(!S)return out;const bm={};(C.m?.k||[]).forEach((k,i)=>bm[k]=C.m.b[i]);
+    for(let i=0;i<S.t.length;i++){const o=S.o[i],h=S.h[i],l=S.l[i],c=S.c[i];if([o,h,l,c].every(isNum))out.push({t:S.t[i],o,h,l,c,v:S.v[i]||0,b:bm[S.t[i].slice(0,7)]})}return out}
+  const S=iv==="W"?F.w:F.d,out=[];if(!S)return out;
   for(let i=0;i<S.t.length;i++){const o=S.o[i],h=S.h[i],l=S.l[i],c=S.c[i];if([o,h,l,c].every(isNum))out.push({t:C.d[S.t[i]],o,h,l,c,v:S.v[i]||0,b:C.b[S.t[i]]})}return out}
 const SC_LV={base:"Long base",vcp:"VCP base",pat:"Chart pattern",hi:"52-week high",my:"My levels"};
-function drawStockChart(sym,C,F,ov){const m=$("#smodal"),x=D.by[sym]||{},P=gpal();SCX={sym,C,F,ov};
-  const kv=(k,v,c)=>`<div><dt>${k}</dt><dd class="num ${c||""}">${v}</dd></div>`;
-  const d=scRows(C,F,false),cl=d.map(q=>q.c),E={};for(const n of EMA_N)E[n]=emaRun(cl,n,F.sd?.[n]);
-  const L1=d[d.length-1],L0=d[d.length-2],vsE=n=>{const e=E[n][d.length-1];return isNum(e)?(L1.c/e-1)*100:null};
-  const hi=Math.max(...d.slice(-252).map(q=>q.h)),fromHi=(L1.c/hi-1)*100,chg=L0?(L1.c/L0.c-1)*100:null;
+/* indicators */
+function rsiArr(c,n=14){const o=new Array(c.length).fill(null);let g=0,l=0;for(let i=1;i<c.length;i++){const d=c[i]-c[i-1],up=Math.max(d,0),dn=Math.max(-d,0);
+  if(i<=n){g+=up;l+=dn;if(i===n){g/=n;l/=n;o[i]=l===0?100:100-100/(1+g/l)}}else{g=(g*(n-1)+up)/n;l=(l*(n-1)+dn)/n;o[i]=l===0?100:100-100/(1+g/l)}}return o}
+function macdArr(c){const f=emaRun(c,12),s=emaRun(c,26),m=c.map((_,i)=>isNum(f[i])&&isNum(s[i])?f[i]-s[i]:null);const k=m.findIndex(isNum);
+  const sig=new Array(c.length).fill(null);if(k>=0){const e=emaRun(m.slice(k),9);e.forEach((v,i)=>sig[k+i]=v)}return {m,sig,h:m.map((v,i)=>isNum(v)&&isNum(sig[i])?v-sig[i]:null)}}
+function bbArr(c,n=20,k=2){const mid=sma(c,n),u=[],d=[];for(let i=0;i<c.length;i++){if(!isNum(mid[i])){u.push(null);d.push(null);continue}let s=0;for(let j=i-n+1;j<=i;j++)s+=(c[j]-mid[i])**2;const sd=Math.sqrt(s/n);u.push(mid[i]+k*sd);d.push(mid[i]-k*sd)}return {mid,u,d}}
+function sIdx(T,date){let a=0,b=T.length-1;if(!date||!T.length||date>T[b])return null;if(date<=T[0])return 0;while(a<b){const mid=(a+b)>>1;if(T[mid]<date)a=mid+1;else b=mid}return a}
+function swRange(N,rows){const iv=SST.int,k=SST.rng[iv]||{D:"1Y",W:"3Y",M:"All"}[iv],opt=SW_R[iv].find(o=>o[0]===k)||SW_R[iv][0];let bars=opt[1];
+  if(bars==="ytd"){const y=rows[N-1].t.slice(0,4);bars=N-rows.findIndex(q=>q.t.slice(0,4)===y)}
+  return {from:Math.max(-1,N-bars),to:N+(iv==="D"?4:2)}}
+function swRangeBar(){const el=$("#swrng");if(!el)return;const iv=SST.int,k=SST.rng[iv]||{D:"1Y",W:"3Y",M:"All"}[iv];
+  el.innerHTML=SW_R[iv].map(([n])=>`<button type="button" data-swrng="${n}" aria-pressed="${n===k}">${n}</button>`).join("")}
+function swMenus(ov,lvLab,has,lvCol){const id=$("#swinddrop");if(id){let g="";id.innerHTML=SW_IND.map(([k,lab,grp])=>{const h=grp!==g?`<p class="swdg">${grp}</p>`:"";g=grp;return h+`<label class="swck"><input type="checkbox" data-swind="${k}"${swInd(k)?" checked":""}><span>${esc(lab)}</span></label>`}).join("")}
+  const ld=$("#swlvdrop");if(ld){const ks=Object.keys(SC_LV).filter(k=>has[k]);ld.innerHTML=ks.length?`<p class="swdg">The site's levels for this stock</p>`+ks.map(k=>`<label class="swck"><input type="checkbox" data-swlv="${k}"${SST.lv[k]!==false?" checked":""}><i style="--c:${lvCol[k]}"></i><span>${esc(lvLab[k])}</span></label>`).join(""):`<p class="swdg">No levels for this stock</p>`;
+    $("#swlv summary span").textContent=`Levels${ks.length?" · "+ks.filter(k=>SST.lv[k]!==false).length:""}`}}
+function sRender(keep){const box=$("#schartbox"),L=window.LightweightCharts,P=gpal();if(!box||!L||!SCX)return;const {sym,C,F,ov}=SCX,iv=SST.int,W=iv!=="D";
+  let lr=null;if(SCH){if(keep)lr=SCH.chart.timeScale().getVisibleLogicalRange();SCH.ro?.disconnect();SCH.dk?.destroy();SCH.chart.remove();SCH=null}
+  box.querySelectorAll(".empty").forEach(e=>e.remove());
+  $("#smodal")?.querySelectorAll("[data-swint]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.swint===iv));swRangeBar();
+  const rows=scRows(C,F,iv);if(rows.length<2){box.insertAdjacentHTML("beforeend",`<div class="empty">Not enough history yet.</div>`);return}
+  const phone=matchMedia("(max-width:760px)").matches,N=rows.length,T=rows.map(q=>q.t),Cl=rows.map(q=>q.c),last=rows[N-1].c;
+  const prec=last>=1000?1:2,dark=document.documentElement.dataset.theme==="dark"||(!document.documentElement.dataset.theme&&matchMedia("(prefers-color-scheme: dark)").matches);
+  const grid=dark?"rgba(255,255,255,.045)":"rgba(15,26,42,.055)";
+  const chart=L.createChart(box,{autoSize:true,kineticScroll:{mouse:true,touch:true},layout:{background:{type:"solid",color:P.card},textColor:P.muted,fontFamily:"Inter, IBM Plex Sans, system-ui, sans-serif",fontSize:phone?11:12,attributionLogo:false,panes:{separatorColor:P.line,separatorHoverColor:rgba(P.accent,.35),enableResize:true}},
+    grid:{vertLines:{color:grid},horzLines:{color:grid}},rightPriceScale:{borderVisible:false,minimumWidth:phone?50:62,scaleMargins:{top:.1,bottom:.08}},
+    timeScale:{borderVisible:false,rightOffset:iv==="D"?6:3,minBarSpacing:0.5,barSpacing:iv==="D"?7:iv==="W"?9:12},crosshair:{mode:L.CrosshairMode.Normal,vertLine:{labelBackgroundColor:P.ink},horzLine:{labelBackgroundColor:P.ink}},
+    localization:{locale:"en-IN"},handleScale:{axisPressedMouseMove:{time:true,price:true}}});
+  const line=o=>({priceLineVisible:false,lastValueVisible:false,crosshairMarkerVisible:false,lineWidth:2,...o});
+  const cs=chart.addSeries(L.CandlestickSeries,{upColor:P.up,downColor:P.down,borderUpColor:P.up,borderDownColor:P.down,wickUpColor:P.up,wickDownColor:P.down,priceLineVisible:true,priceLineStyle:2,priceLineColor:rgba(P.muted,.7),priceFormat:{type:"price",precision:prec,minMove:Math.pow(10,-prec)}},0);
+  cs.setData(rows.map(q=>({time:q.t,open:q.o,high:q.h,low:q.l,close:q.c})));
+  /* moving averages: EMAs continue the state shipped with the file (exact); SMAs and the monthly EMAs from the bars shown */
+  const ec=emaCol(P),es={},ev={},seed=iv==="D"?F.sd:iv==="W"?F.sw:null;
+  for(const n of EMA_N){ev[n]=emaRun(Cl,n,seed?.[n]);es[n]=chart.addSeries(L.LineSeries,line({color:ec[n],lineWidth:n===200?2:1.6,visible:swInd("ema"+n)}),0);
+    es[n].setData(ev[n].map((v,i)=>isNum(v)?{time:T[i],value:v}:{time:T[i]}))}
+  const smc={50:P.s4,150:P.muted,200:P.ink},ss={},sv={};
+  for(const n of [50,150,200]){if(!swInd("sma"+n))continue;sv[n]=sma(Cl,n);ss[n]=chart.addSeries(L.LineSeries,line({color:smc[n],lineWidth:1.4,lineStyle:2}),0);ss[n].setData(sv[n].map((v,i)=>isNum(v)?{time:T[i],value:v}:{time:T[i]}))}
+  let bb=null;if(swInd("bb")){bb=bbArr(Cl);const bc=rgba(P.s1,.75);for(const [k,w] of [["u",1.2],["mid",1],["d",1.2]]){const s=chart.addSeries(L.LineSeries,line({color:k==="mid"?rgba(P.s1,.45):bc,lineWidth:w}),0);s.setData(bb[k].map((v,i)=>isNum(v)?{time:T[i],value:v}:{time:T[i]}))}}
+  /* levels */
+  const segs=[],rings=[],boxes=[],mk=[],tags=[],lv=k=>SST.lv[k]!==false,ix=dt=>sIdx(T,dt);
+  const lastI=N-1,dayAt=ago=>C.d[Math.max(0,C.d.length-1-ago)],hi=Math.max(...rows.slice(-(iv==="D"?252:iv==="W"?52:12)).map(q=>q.h));
   const has={base:!!ov.base,vcp:!!ov.vcp,pat:!!ov.pats,hi:true,my:!!ov.my};
   const lvLab={base:ov.base?`Long base · pivot ₹${inr(ov.base.piv)}`:"",vcp:ov.vcp?`VCP ${ov.vcp.st==="bo"?"breakout":"setting up"} · ${vrFoot(ov.vcp)} · pivot ₹${inr(ov.vcp.piv)}`:"",
     pat:ov.pats?"Pattern · "+ov.pats.map(r=>(pdef(r.id).name||r.id)+(r.st==="fm"?" (forming)":r.st==="bd"?" (breakdown)":" (breakout)")).join(", "):"",hi:`52-week high ₹${inr(hi)}`,my:"My pivot / stop / target"};
   const lvCol={base:P.s4,vcp:cssv("--vb-cup")||P.s3,pat:P.ink,hi:P.muted,my:P.up};
-  const segS=(name,opts,cur,labels)=>`<div class="seg" role="group" aria-label="${esc(name)}">`+opts.map(o=>`<button type="button" data-ss="${name}" data-val="${esc(o)}" aria-pressed="${o===cur}">${esc(labels?labels[o]:o)}</button>`).join("")+`</div>`;
-  const ranges=SST.int==="W"?["6M","1Y","2Y","3Y"]:["3M","6M","1Y","2Y"];if(!ranges.includes(SST.range))SST.range="1Y";
-  const phone=matchMedia("(max-width:700px)").matches;
-  const statsH=`<dl class="gstats">${kv(`Close · ${fmtDate(L1.t)}`,"₹"+inr(L1.c))}${kv("Day",sgn(chg,2),cls(chg))}${kv("RS rating",rsPill(x.rs))}${kv("Stage",stagePill(x.st,x.std,x.stdc)+(x.st===2&&isNum(x.std)?` <span class="num" style="font-weight:700">${x.stdc?"≥ ":""}${x.std}d</span>`:""))}${kv("Upside",isNum(x.up)?upPill(x.up):"–")}${EMA_N.map(n=>kv("vs EMA "+n,sgn(vsE(n),1),cls(vsE(n)))).join("")}${kv("From 52W high",sgn(fromHi,1))}</dl>`;
-  const levelsH=Object.keys(SC_LV).some(k=>has[k])?`<div class="ctl"><span>Levels on the chart</span><div class="chips">${Object.keys(SC_LV).filter(k=>has[k]).map(k=>`<button type="button" class="chipbtn emachip lvchip" data-slv="${k}" aria-pressed="${SST.lv[k]!==false}" title="Show or hide: ${esc(lvLab[k])}"><i style="--c:${lvCol[k]}"></i>${esc(lvLab[k])}</button>`).join("")}</div></div>`:"";
-  m.querySelector(".gbody").innerHTML=`${phone?"":statsH}
-   <div class="gtools gmain">
-     <div class="ctl"><span>Range</span>${segS("range",ranges,SST.range)}</div>
-     <div class="ctl"><span>Bars</span>${segS("int",["D","W"],SST.int,{D:"Daily",W:"Weekly"})}</div>
-     <div class="ctl"><span>Averages${SST.int==="W"?" (weekly bars)":""}</span>${emaChips("data-sema")}</div>
-     ${phone?"":levelsH}
-     <details class="gmore" ${phone?"":"open"}><summary>Chart options</summary><div class="gtools">
-       <div class="ctl"><span>Scale</span>${segS("scale",["lin","log"],SST.scale,{lin:"Linear",log:"Log"})}</div>
-       <div class="ctl"><span>RS line panel</span>${segS("rs",["on","off"],SST.rs,{on:"Show",off:"Hide"})}</div></div></details>
-   </div>
-   <div class="gread" id="sread" aria-live="off"></div>
-   <div class="gchart" id="schartbox"><div class="gplab" id="splab"></div></div>
-   <div class="glegend" id="slegend"></div>
-   ${phone?`<div class="gtools">${levelsH}</div>${statsH}`:""}
-   <p class="note" style="margin:0 0 14px">Daily prices to ${fmtDate(C.asof)} (end of day, split and bonus adjusted). EMA = exponential moving average of the close over 21, 50 and 200 ${SST.int==="W"?"weeks":"sessions"}, worked out on the stock's full price history; tap a chip to hide or show it. ${ov.vcp?"The VCP base uses your current VCP scanner settings. ":""}Levels are the same numbers the scanners use.</p>
-   <div style="display:flex;gap:10px;flex-wrap:wrap"><button type="button" class="btn" data-scard="${esc(sym)}">Open the stock card</button><a class="btn alt" href="${tv(sym)}" target="_blank" rel="noopener">TradingView ↗</a></div>`;
-  sRender()}
-function sIdx(T,date){let a=0,b=T.length-1;if(!date||!T.length||date>T[b])return null;if(date<=T[0])return 0;while(a<b){const mid=(a+b)>>1;if(T[mid]<date)a=mid+1;else b=mid}return a}
-function sRender(keep){const box=$("#schartbox"),L=window.LightweightCharts,P=gpal();if(!box||!L||!SCX)return;const {sym,C,F,ov}=SCX,W=SST.int==="W";
-  let lr=null;if(SCH){if(keep)lr=SCH.chart.timeScale().getVisibleLogicalRange();SCH.ro?.disconnect();SCH.dk?.destroy();SCH.chart.remove();SCH=null}
-  const rows=scRows(C,F,W);if(rows.length<2){box.innerHTML=`<div class="empty">Not enough history yet.</div>`;return}
-  const phone=matchMedia("(max-width:700px)").matches,N=rows.length,T=rows.map(q=>q.t),Cl=rows.map(q=>q.c),last=rows[N-1].c;
-  const prec=last>=1000?1:2;
-  const chart=L.createChart(box,{autoSize:true,kineticScroll:{mouse:true,touch:true},layout:{background:{type:"solid",color:P.card},textColor:P.muted,fontFamily:"IBM Plex Sans, system-ui, sans-serif",fontSize:phone?12:13,attributionLogo:true,panes:{separatorColor:P.line,separatorHoverColor:rgba(P.accent,.35),enableResize:true}},
-    grid:{vertLines:{color:rgba(P.track.length>6?P.track:P.line,.6)},horzLines:{color:P.track}},rightPriceScale:{borderColor:P.line,minimumWidth:phone?54:66},
-    timeScale:{borderColor:P.line,rightOffset:5,minBarSpacing:0.5},crosshair:{mode:L.CrosshairMode.Normal},localization:{locale:"en-IN"},handleScale:{axisPressedMouseMove:{time:true,price:false}}});
-  const line=o=>({priceLineVisible:false,lastValueVisible:false,crosshairMarkerVisible:false,lineWidth:2,...o});
-  const cs=chart.addSeries(L.CandlestickSeries,{upColor:P.up,downColor:P.down,borderUpColor:P.up,borderDownColor:P.down,wickUpColor:P.up,wickDownColor:P.down,priceLineVisible:false,priceFormat:{type:"price",precision:prec,minMove:Math.pow(10,-prec)}},0);
-  cs.setData(rows.map(q=>({time:q.t,open:q.o,high:q.h,low:q.l,close:q.c})));
-  /* EMAs, continued from the state shipped with the file */
-  const on=emaOn(),ec=emaCol(P),es={},ev={};
-  for(const n of EMA_N){ev[n]=emaRun(Cl,n,(W?F.sw:F.sd)?.[n]);es[n]=chart.addSeries(L.LineSeries,line({color:ec[n],lineWidth:n===200?2:1.7,visible:on[n]}),0);
-    es[n].setData(ev[n].map((v,i)=>isNum(v)?{time:T[i],value:v}:{time:T[i]}))}
-  /* levels */
-  const segs=[],rings=[],boxes=[],mk=[],tags=[],lg=[],lv=k=>SST.lv[k]!==false,ix=dt=>sIdx(T,dt);
-  const lastI=N-1,dayAt=ago=>C.d[Math.max(0,C.d.length-1-ago)];
+  if(iv!=="M"){
   if(ov.base&&lv("base")){const r=ov.base,c=P.s4,i0=ix(r.start)??0,bo=["bo","bo0","ext"].includes(r.st),i1=bo&&isNum(r.ago)?(ix(dayAt(r.ago))??lastI):lastI;
-    if(isNum(r.piv)&&isNum(r.fl)){boxes.push({i0,i1:Math.max(i0,i1-(bo?1:0)),p0:r.fl,p1:r.piv,fill:rgba(c,.09),stroke:rgba(c,.75),dash:true,label:`Long base · ${r.len} days · ${r.depth}% deep`,lc:c});
-      segs.push({i0:ix(r.pd)??i0,p0:r.piv,i1:lastI,p1:r.piv,color:c,w:2.2,edge:true});tags.push([r.piv,c,"Base pivot"]);
-      if(bo&&isNum(r.ago))mk.push({time:T[i1],position:"belowBar",shape:"arrowUp",color:c,text:"Base breakout",size:1.2});
-      lg.push(`<span><i class="box faint" style="--c:${c}"></i>Long base (pivot to floor)</span>`)}}
+    if(isNum(r.piv)&&isNum(r.fl)){boxes.push({i0,i1:Math.max(i0,i1-(bo?1:0)),p0:r.fl,p1:r.piv,fill:rgba(c,.035),stroke:rgba(c,.55),dash:true,label:`Long base · ${r.len} days · ${r.depth}% deep`,lc:c});
+      segs.push({i0:ix(r.pd)??i0,p0:r.piv,i1:lastI,p1:r.piv,color:c,w:2,edge:true});tags.push([r.piv,c,"Base pivot"]);
+      if(bo&&isNum(r.ago))mk.push({time:T[i1],position:"belowBar",shape:"arrowUp",color:c,text:"Base breakout",size:1.1})}}
   if(ov.vcp&&lv("vcp")){const r=ov.vcp,c=cssv("--vb-cup")||P.s3,Q=(r.pts||[]).map(([d,p,k])=>({i:ix(d),p,k})).filter(q=>q.i!=null);
-    if(Q.length>1){for(let q=1;q<Q.length;q++)segs.push({i0:Q[q-1].i,p0:Q[q-1].p,i1:Q[q].i,p1:Q[q].p,color:c,w:2.2});
-      let tn=0;for(const q of Q){if(q.k==="L"){tn++;rings.push({i:q.i,p:q.p,color:c,r:4.2,label:W?"":`T${tn} ${(r.dep[tn-1]??0).toFixed(r.dep[tn-1]<10?1:0)}%`,below:true})}else rings.push({i:q.i,p:q.p,color:c,r:3.4,solid:true})}
+    if(Q.length>1){for(let q=1;q<Q.length;q++)segs.push({i0:Q[q-1].i,p0:Q[q-1].p,i1:Q[q].i,p1:Q[q].p,color:c,w:2});
+      let tn=0;for(const q of Q){if(q.k==="L"){tn++;rings.push({i:q.i,p:q.p,color:c,r:4,label:W?"":`T${tn} ${(r.dep[tn-1]??0).toFixed(r.dep[tn-1]<10?1:0)}%`,below:true})}else rings.push({i:q.i,p:q.p,color:c,r:3.2,solid:true})}
       const pi=Q.filter(q=>q.k==="H").pop()?.i??Q[0].i;
-      segs.push({i0:pi,p0:r.piv,i1:lastI,p1:r.piv,color:c,w:2.4,edge:true},{i0:pi,p0:r.low,i1:lastI,p1:r.low,color:P.down,w:1.4,dash:[2,4],edge:true});
-      const s8=vrStop8(r);segs.push({i0:Math.max(pi,lastI-10),p0:s8,i1:lastI,p1:s8,color:P.down,w:1.6,dash:[6,4],edge:true});
+      segs.push({i0:pi,p0:r.piv,i1:lastI,p1:r.piv,color:c,w:2.2,edge:true},{i0:pi,p0:r.low,i1:lastI,p1:r.low,color:P.down,w:1.3,dash:[2,4],edge:true});
+      const s8=vrStop8(r);segs.push({i0:Math.max(pi,lastI-10),p0:s8,i1:lastI,p1:s8,color:P.down,w:1.5,dash:[6,4],edge:true});
       tags.push([r.piv,c,r.st==="bo"?"VCP pivot":"VCP buy above"],[r.low,P.down,"Last contraction low"],[s8,P.down,"8% stop"]);
-      if(r.st==="bo")mk.push({time:T[lastI],position:"belowBar",shape:"arrowUp",color:c,text:"VCP breakout",size:1.2});
-      lg.push(`<span><i style="--c:${c}"></i>VCP contractions (T1, T2… with depth)</span><span><i class="dash" style="--c:${P.down}"></i>8% stop and the last contraction low</span>`)}}
+      if(r.st==="bo")mk.push({time:T[lastI],position:"belowBar",shape:"arrowUp",color:c,text:"VCP breakout",size:1.1})}}
   if(ov.pats&&lv("pat")){const c=P.ink;
     for(const r of ov.pats){const fm=r.st==="fm",sell=pSell(r);
       for(const [[d0,p0],[d1,p1]] of r.lines||[]){const i0=ix(d0),i1=ix(d1);if(i0==null||i1==null||!isNum(p0)||!isNum(p1))continue;let j1=i1,q1=p1;
         if(fm&&i1>i0){j1=lastI;q1=Math.exp(Math.log(p0)+(Math.log(p1)-Math.log(p0))*(j1-i0)/(i1-i0))}if(j1<=i0)continue;
-        segs.push({i0,p0,i1:j1,p1:q1,color:c,w:2.2,log:true,edge:fm&&Math.abs(p1/p0-1)<1e-6})}
-      for(const [dt,p,lab] of r.pts||[]){const i=ix(dt);if(i==null||!isNum(p))continue;const q=rows[i],low=Math.abs(p-q.l)<=Math.abs(p-q.h);rings.push({i,p,color:c,r:4.5,label:W?"":lab||"",below:low})}
+        segs.push({i0,p0,i1:j1,p1:q1,color:c,w:2,log:true,edge:fm&&Math.abs(p1/p0-1)<1e-6})}
+      for(const [dt,p,lab] of r.pts||[]){const i=ix(dt);if(i==null||!isNum(p))continue;const q=rows[i],low=Math.abs(p-q.l)<=Math.abs(p-q.h);rings.push({i,p,color:c,r:4.2,label:W?"":lab||"",below:low})}
       const lvp=pLevel(r);if(isNum(lvp))tags.push([lvp,c,(pdef(r.id).short||pdef(r.id).name)]);
-      if(r.st!=="fm"&&r.d){const i=ix(r.d);if(i!=null)mk.push({time:T[i],position:sell?"aboveBar":"belowBar",shape:sell?"arrowDown":"arrowUp",color:sell?P.down:c,text:(pdef(r.id).short||"Pattern")+(sell?" breakdown":" breakout"),size:1.2})}}
-    lg.push(`<span><i style="--c:${c}"></i>Chart pattern lines</span>`)}
-  if(lv("hi")){const k=W?52:252,a=Math.max(0,N-k);let h=-Infinity,hiI=a;for(let i=a;i<N;i++)if(rows[i].h>h){h=rows[i].h;hiI=i}
-    segs.push({i0:hiI,p0:h,i1:lastI,p1:h,color:P.muted,w:1.4,dash:[2,4],edge:true});tags.push([h,P.muted,"52W high"]);lg.push(`<span><i class="dash" style="--c:${P.muted}"></i>52-week high</span>`)}
-  if(ov.my&&lv("my")){const {m,items}=ov.my,a=Math.max(0,N-(W?26:120));
-    if(isNum(m.pivot)){segs.push({i0:a,p0:m.pivot,i1:lastI,p1:m.pivot,color:P.up,w:1.6,edge:true});tags.push([m.pivot,P.up,"My pivot"])}
-    if(isNum(m.stop)){segs.push({i0:a,p0:m.stop,i1:lastI,p1:m.stop,color:P.down,w:1.6,edge:true});tags.push([m.stop,P.down,"My stop"])}
-    if(isNum(m.target)){segs.push({i0:a,p0:m.target,i1:lastI,p1:m.target,color:P.muted,w:1.6,edge:true});tags.push([m.target,P.muted,"My target"])}
-    for(const it of items){const i=ix(it.d);if(i!=null)mk.push({time:T[i],position:"aboveBar",shape:"circle",color:P.ink,text:"Added",size:0.8})}
-    lg.push(`<span><i style="--c:${P.up}"></i>My levels (watchlist)</span>`)}
+      if(r.st!=="fm"&&r.d){const i=ix(r.d);if(i!=null)mk.push({time:T[i],position:sell?"aboveBar":"belowBar",shape:sell?"arrowDown":"arrowUp",color:sell?P.down:c,text:(pdef(r.id).short||"Pattern")+(sell?" breakdown":" breakout"),size:1.1})}}}}
+  if(lv("hi")){const k=iv==="D"?252:iv==="W"?52:12,a=Math.max(0,N-k);let h=-Infinity,hiI=a;for(let i=a;i<N;i++)if(rows[i].h>h){h=rows[i].h;hiI=i}
+    segs.push({i0:hiI,p0:h,i1:lastI,p1:h,color:P.muted,w:1.2,dash:[2,4],edge:true});tags.push([h,P.muted,"52W high"])}
+  if(ov.my&&lv("my")&&iv!=="M"){const {m,items}=ov.my,a=Math.max(0,N-(W?26:120));
+    if(isNum(m.pivot)){segs.push({i0:a,p0:m.pivot,i1:lastI,p1:m.pivot,color:P.up,w:1.5,edge:true});tags.push([m.pivot,P.up,"My pivot"])}
+    if(isNum(m.stop)){segs.push({i0:a,p0:m.stop,i1:lastI,p1:m.stop,color:P.down,w:1.5,edge:true});tags.push([m.stop,P.down,"My stop"])}
+    if(isNum(m.target)){segs.push({i0:a,p0:m.target,i1:lastI,p1:m.target,color:P.muted,w:1.5,edge:true});tags.push([m.target,P.muted,"My target"])}
+    for(const it of items){const i=ix(it.d);if(i!=null)mk.push({time:T[i],position:"aboveBar",shape:"circle",color:P.ink,text:"Added",size:0.7})}}
   if(boxes.length){const bx=new VbBoxes(boxes);bx.noLabels=phone;cs.attachPrimitive(bx)}
   if(segs.length||rings.length){const cm=new ChartMarks(segs,rings);cm.bg=P.card;cm.noLabels=phone;cs.attachPrimitive(cm)}
   for(const [p,c,t] of tags)if(isNum(p))axisTag(cs,p,c,phone?"":t);
   mk.sort((a,b)=>a.time<b.time?-1:a.time>b.time?1:0);if(mk.length)L.createSeriesMarkers(cs,mk);
-  /* pane 1: volume and its 50-bar average */
-  const vs=chart.addSeries(L.HistogramSeries,{priceFormat:{type:"volume"},priceLineVisible:false,lastValueVisible:false},1);
-  vs.setData(rows.map((q,i)=>({time:q.t,value:q.v||0,color:rgba(i&&q.c<rows[i-1].c?P.down:P.up,.55)})));
-  const v50=sma(rows.map(q=>q.v),50),vl=chart.addSeries(L.LineSeries,line({color:P.muted,lineWidth:1.2}),1);vl.setData(v50.map((v,i)=>isNum(v)?{time:T[i],value:v}:{time:T[i]}));
-  /* pane 2: RS line vs NIFTY 500 (100 = first bar shipped) and blue dots: the RS line at a 52-week high */
+  swMenus(ov,lvLab,has,lvCol);
+  /* panes below: volume, RS line, RSI, MACD - each optional */
+  const pn={},lab=[{k:"price"}];let pi=0;
+  if(swInd("vol")){pi++;pn.vol=pi;lab.push({k:"vol"});const vs=chart.addSeries(L.HistogramSeries,{priceFormat:{type:"volume"},priceLineVisible:false,lastValueVisible:false},pi);
+    vs.setData(rows.map((q,i)=>({time:q.t,value:q.v||0,color:rgba(i&&q.c<rows[i-1].c?P.down:P.up,.5)})));
+    pn.v50=sma(rows.map(q=>q.v),50);const vl=chart.addSeries(L.LineSeries,line({color:P.muted,lineWidth:1.1}),pi);vl.setData(pn.v50.map((v,i)=>isNum(v)?{time:T[i],value:v}:{time:T[i]}))}
   let rsv=null;
-  if(SST.rs==="on"){const b0=rows.find(q=>isNum(q.b)),k0=b0?b0.c/b0.b:null;rsv=rows.map(q=>isNum(q.b)&&k0?q.c/q.b/k0*100:null);
-    const rsS=chart.addSeries(L.LineSeries,line({color:P.ink,lineWidth:1.6,lastValueVisible:true,priceFormat:{type:"price",precision:1,minMove:0.1}}),2);
-    rsS.setData(rsv.map((v,i)=>isNum(v)?{time:T[i],value:v}:{time:T[i]}));
-    const win=W?52:252,dots=[];for(let i=win-1;i<N;i++){if(!isNum(rsv[i]))continue;let mx=-Infinity;for(let j=i-win+1;j<=i;j++)if(isNum(rsv[j])&&rsv[j]>mx)mx=rsv[j];
-      if(rsv[i]>=mx-1e-9)dots.push({time:T[i],position:"inBar",shape:"circle",color:P.bdot,size:0.6})}
-    L.createSeriesMarkers(rsS,dots)}
-  const panes=chart.panes(),sf=SST.rs==="on"?(phone?[64,16,20]:[68,14,18]):(phone?[78,22]:[80,20]);panes.forEach((p,i)=>p.setStretchFactor(sf[i]||10));
+  if(swInd("rs")){const b0=rows.find(q=>isNum(q.b)),k0=b0?b0.c/b0.b:null;rsv=rows.map(q=>isNum(q.b)&&k0?q.c/q.b/k0*100:null);
+    if(rsv.some(isNum)){pi++;pn.rs=pi;lab.push({k:"rs"});const rsS=chart.addSeries(L.LineSeries,line({color:P.ink,lineWidth:1.5,lastValueVisible:true,priceFormat:{type:"price",precision:1,minMove:0.1}}),pi);
+      rsS.setData(rsv.map((v,i)=>isNum(v)?{time:T[i],value:v}:{time:T[i]}));
+      const win=iv==="D"?252:iv==="W"?52:12,dots=[];for(let i=win-1;i<N;i++){if(!isNum(rsv[i]))continue;let mx=-Infinity;for(let j=i-win+1;j<=i;j++)if(isNum(rsv[j])&&rsv[j]>mx)mx=rsv[j];
+        if(rsv[i]>=mx-1e-9)dots.push({time:T[i],position:"inBar",shape:"circle",color:P.bdot,size:0.6})}
+      L.createSeriesMarkers(rsS,dots)}}
+  let rsi=null;if(swInd("rsi")){pi++;pn.rsi=pi;lab.push({k:"rsi"});rsi=rsiArr(Cl);const s=chart.addSeries(L.LineSeries,line({color:P.s3,lineWidth:1.5,lastValueVisible:true,priceFormat:{type:"price",precision:1,minMove:0.1}}),pi);
+    s.setData(rsi.map((v,i)=>isNum(v)?{time:T[i],value:v}:{time:T[i]}));for(const [p,c] of [[70,P.down],[30,P.up],[50,P.muted]])s.createPriceLine({price:p,color:rgba(c,.55),lineWidth:1,lineStyle:2,axisLabelVisible:false})}
+  let mc=null;if(swInd("macd")){pi++;pn.macd=pi;lab.push({k:"macd"});mc=macdArr(Cl);
+    const h=chart.addSeries(L.HistogramSeries,{priceLineVisible:false,lastValueVisible:false},pi);h.setData(mc.h.map((v,i)=>isNum(v)?{time:T[i],value:v,color:rgba(v>=0?P.up:P.down,.5)}:{time:T[i]}));
+    for(const [k,c] of [["m",P.s1],["sig",P.s2]]){const s=chart.addSeries(L.LineSeries,line({color:c,lineWidth:1.4}),pi);s.setData(mc[k].map((v,i)=>isNum(v)?{time:T[i],value:v}:{time:T[i]}))}}
+  const sub=pi,panes=chart.panes(),main=phone?(sub?100-sub*14:100):(sub?100-sub*13:100);panes.forEach((p,i)=>p.setStretchFactor(i===0?main:13));
   chart.priceScale("right",0).applyOptions({mode:SST.scale==="log"?1:0});
-  SCH={chart,rows,cs,es,ev,rsv};
+  SCH={chart,rows,cs,es,ev,sv,bb,rsv,rsi,mc,pn,lab,iv};
   SCH.dk=drawKit(chart,cs,box,"s:"+sym,rows,{weekly:W});
-  const per={"3M":63,"6M":126,"1Y":252,"2Y":504,"3Y":756}[SST.range]||252,bars=Math.round(per/(W?5:1));
-  if(lr)chart.timeScale().setVisibleLogicalRange(lr);else chart.timeScale().setVisibleLogicalRange({from:Math.max(-1,N-bars),to:N+4});
-  SCH.lg=lg;sLegend();
-  const labels=["Price"+(W?" · weekly bars":" · daily bars"),`Volume · grey line = 50-${W?"week":"day"} average`,"RS line vs NIFTY 500 (100 = first bar)"];
-  const placeLabels=()=>{const lab=$("#splab");if(!lab||!SCH)return;let top=0;lab.innerHTML=SCH.chart.panes().map((p,i)=>{const h=`<span style="top:${top+4}px">${esc(labels[i]||"")}</span>`;top+=p.getHeight()+1;return h}).join("")};
-  requestAnimationFrame(placeLabels);SCH.ro=new ResizeObserver(()=>requestAnimationFrame(placeLabels));SCH.ro.observe(box);
+  chart.timeScale().setVisibleLogicalRange(lr||swRange(N,rows));
+  $("#swasof").textContent=`${{D:"Daily",W:"Weekly",M:"Monthly"}[iv]} bars to ${fmtDate(rows[N-1].t)}`;
+  SCH.ro=new ResizeObserver(()=>requestAnimationFrame(()=>sReadout(SCH?.lastT)));SCH.ro.observe(box);
   const sro=rafLatest(t=>sReadout(t));chart.subscribeCrosshairMove(prm=>{if(SCH){SCH.lastT=prm.time;sro(prm.time)}});sReadout(null)}
-function sLegend(){const leg=$("#slegend");if(!leg||!SCH)return;const on=emaOn(),ec=emaCol(gpal()),W=SST.int==="W";
-  leg.innerHTML=EMA_N.map(n=>`<span${on[n]?"":` style="opacity:.45"`}><i style="--c:${ec[n]}"></i>EMA ${n}${W?" weeks":""}${on[n]?"":" (hidden)"}</span>`).join("")+SCH.lg.join("")+(SST.rs==="on"?`<span><span class="bd" aria-hidden="true"></span>RS line at a 52-week high</span>`:"")}
-function sReadout(t){const el=$("#sread");if(!el||!SCH)return;const rows=SCH.rows;let i=t?rows.findIndex(q=>q.t===t):rows.length-1;if(i<0)i=rows.length-1;
-  const q=rows[i],p=rows[i-1],ch=p?(q.c/p.c-1)*100:null,on=emaOn(),ec=emaCol(gpal());
-  el.innerHTML=`<b>${SST.int==="W"?"Week to ":""}${fmtDate(q.t)}</b><span>O <b class="num">${inr(q.o)}</b></span><span>H <b class="num">${inr(q.h)}</b></span><span>L <b class="num">${inr(q.l)}</b></span><span>C <b class="num">${inr(q.c)}</b> <span class="num ${cls(ch)}">${sgn(ch,2)}</span></span><span>Volume <b class="num">${Math.round(q.v||0).toLocaleString("en-IN")}</b></span>`+
-    EMA_N.filter(n=>on[n]).map(n=>{const v=SCH.ev[n][i];return `<span><i class="emadot" style="--c:${ec[n]}"></i>EMA ${n} <b class="num">${isNum(v)?inr(Math.round(v*100)/100):"–"}</b></span>`}).join("")}
+/* the read-out at the top of each pane (as on TradingView): the bar under the cursor, or the last one */
+function sReadout(t){const el=$("#swleg");if(!el||!SCH)return;const rows=SCH.rows;let i=t?rows.findIndex(q=>q.t===t):rows.length-1;if(i<0)i=rows.length-1;
+  const q=rows[i],p=rows[i-1],ch=p?(q.c/p.c-1)*100:null,ec=emaCol(gpal()),P=gpal(),f=v=>isNum(v)?inr(Math.round(v*100)/100):"–",vol=v=>!isNum(v)?"–":v>=1e7?(v/1e7).toFixed(2)+" Cr":v>=1e5?(v/1e5).toFixed(2)+" L":Math.round(v).toLocaleString("en-IN");
+  const ma=[...EMA_N.filter(n=>swInd("ema"+n)).map(n=>`<span style="color:${ec[n]}">EMA ${n} <b class="num">${f(SCH.ev[n][i])}</b></span>`),
+    ...Object.keys(SCH.sv||{}).map(n=>`<span style="color:${({50:P.s4,150:P.muted,200:P.ink})[n]}">SMA ${n} <b class="num">${f(SCH.sv[n][i])}</b></span>`),
+    ...(SCH.bb?[`<span style="color:${P.s1}">BB 20 2 <b class="num">${f(SCH.bb.u[i])} · ${f(SCH.bb.d[i])}</b></span>`]:[])].join("");
+  const L={price:`<div class="swl0"><b class="swls">${esc(SCX.sym)}</b><span class="swlt">${{D:"1D",W:"1W",M:"1M"}[SCH.iv]}</span></div>${ma?`<div class="swl1">${ma}</div>`:""}`,
+    vol:`<span style="color:${P.muted}">Volume · 50-bar average</span>`,
+    rs:`<span>RS line vs NIFTY 500 <b class="num">${isNum(SCH.rsv?.[i])?SCH.rsv[i].toFixed(1):"–"}</b></span><span style="color:${P.bdot}">● RS line at a 52-week high</span>`,
+    rsi:`<span style="color:${P.s3}">RSI 14 <b class="num">${isNum(SCH.rsi?.[i])?SCH.rsi[i].toFixed(1):"–"}</b></span>`,
+    macd:`<span>MACD 12 26 9 <b class="num" style="color:${P.s1}">${isNum(SCH.mc?.m[i])?SCH.mc.m[i].toFixed(2):"–"}</b> <b class="num" style="color:${P.s2}">${isNum(SCH.mc?.sig[i])?SCH.mc.sig[i].toFixed(2):"–"}</b> <b class="num ${cls(SCH.mc?.h[i])}">${isNum(SCH.mc?.h[i])?SCH.mc.h[i].toFixed(2):"–"}</b></span>`};
+  let top=0;const ps=SCH.chart.panes();
+  el.innerHTML=SCH.lab.map((o,j)=>{const h=`<div class="swlp${j?" sub":""}" style="top:${top+6}px">${L[o.k]||""}</div>`;top+=(ps[j]?.getHeight()||0)+1;return h}).join("")}
+function swTogState(){const m=$("#smodal");if(!m)return;const hl=m.classList.contains("nolist"),hp=m.classList.contains("nopanel");
+  m.querySelectorAll('.sw-top [data-swt="panel"]').forEach(b=>b.setAttribute("aria-pressed",!hp));m.querySelectorAll('.sw-top [data-swt="list"]').forEach(b=>b.setAttribute("aria-pressed",!hl));
+  m.querySelectorAll('[data-swt="full"]').forEach(b=>b.setAttribute("aria-pressed",hl&&hp));const r=$("#swreopen");if(r)r.hidden=!hp}
 function sModalClick(e){
   if(e.target.closest("[data-sclose]")){closeStockChart();return}
-  const cd=e.target.closest("[data-scard]");if(cd){const s=cd.dataset.scard;closeStockChart(true);if(history.state?.schart){const h={...history.state};delete h.schart;history.replaceState(h,"",location.href)}openDrawer(s);return}
-  const em=e.target.closest("[data-sema]");if(em){const n=+em.dataset.sema,v=em.getAttribute("aria-pressed")!=="true";emaSet(n,v);em.setAttribute("aria-pressed",v);
-    if(SCH){SCH.es[n].applyOptions({visible:v});sLegend();sReadout(SCH.lastT)}return}
-  const lvb=e.target.closest("[data-slv]");if(lvb){const k=lvb.dataset.slv,v=lvb.getAttribute("aria-pressed")!=="true";SST.lv[k]=v;lvb.setAttribute("aria-pressed",v);sSave();sRender(true);return}
-  const s=e.target.closest("[data-ss]");if(s){const k=s.dataset.ss,v=s.dataset.val;SST[k]=v;sSave();
-    s.parentElement.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===s));
-    if(k==="range"&&SCH){const per={"3M":63,"6M":126,"1Y":252,"2Y":504,"3Y":756}[v],n=SCH.rows.length,bars=Math.round(per/(SST.int==="W"?5:1));SCH.chart.timeScale().setVisibleLogicalRange({from:Math.max(-1,n-bars),to:n+4});return}
-    if(k==="int"){drawStockChart(SCX.sym,SCX.C,SCX.F,SCX.ov);return}
-    sRender(k==="scale");return}}
-function sSave(){store.set("schart",{range:SST.range,int:SST.int,scale:SST.scale,rs:SST.rs,lv:SST.lv})}
+  const go=e.target.closest("[data-swgo]");if(go){$("#swres")&&($("#swres").hidden=true);swGo(go.dataset.swgo);return}
+  const cd=e.target.closest("[data-swcard]");if(cd){document.body.classList.add("swcard");openDrawer(SW.sym,null,cd.dataset.swcard==="eye"?"eye":undefined);return}
+  const iv=e.target.closest("[data-swint]");if(iv){SST.int=iv.dataset.swint;sSave();sRender();return}
+  const rg=e.target.closest("[data-swrng]");if(rg&&SCH){SST.rng[SST.int]=rg.dataset.swrng;sSave();swRangeBar();SCH.chart.timeScale().setVisibleLogicalRange(swRange(SCH.rows.length,SCH.rows));return}
+  const tg=e.target.closest("[data-swt]");if(tg){const k=tg.dataset.swt,m=$("#smodal");
+    if(k==="full"){const both=m.classList.contains("nolist")&&m.classList.contains("nopanel");m.classList.toggle("nolist",!both);m.classList.toggle("nopanel",!both);
+      if(!matchMedia("(max-width:760px)").matches){SST.list=both;SST.panel=both;sSave()}swTogState();return}
+    if(k==="list"||k==="panel"){const phone=matchMedia("(max-width:760px)").matches,cl="no"+k,on=m.classList.contains(cl);m.classList.toggle(cl,!on);if(phone&&on)m.classList.add(k==="list"?"nopanel":"nolist");if(!phone){SST[k]=on;sSave()}swTogState();return}
+    if(k==="scale"){SST.scale=SST.scale==="log"?"lin":"log";tg.setAttribute("aria-pressed",SST.scale==="log");sSave();if(SCH)SCH.chart.priceScale("right",0).applyOptions({mode:SST.scale==="log"?1:0});return}
+    if(k==="draw"){if(matchMedia("(max-width:760px)").matches){const on=m.classList.contains("nodraw");SST.drawPh=on;m.classList.toggle("nodraw",!on);tg.setAttribute("aria-pressed",on);return}SST.draw=SST.draw===false;tg.setAttribute("aria-pressed",SST.draw!==false);m.classList.toggle("nodraw",SST.draw===false);sSave();return}}
+  const ci=e.target.closest("[data-swind]");if(ci){swSetInd(ci.dataset.swind,ci.checked);sRender(true);return}
+  const cl=e.target.closest("[data-swlv]");if(cl){SST.lv[cl.dataset.swlv]=cl.checked;sSave();sRender(true);return}}
+function sSave(){store.set("schart",{int:SST.int,scale:SST.scale,rs:SST.rs,lv:SST.lv,ind:SST.ind,rng:SST.rng,list:SST.list,panel:SST.panel,draw:SST.draw})}
 
 /* ════════════════════ MARKET CHARTS (Breadth tab: the five Nifty indices, gold, silver, bitcoin) ════════════════════
    data/mkt.json carries the eight cards; data/mkt/<key>.json one chart each (scripts/markets.py): ~3 years of daily and
