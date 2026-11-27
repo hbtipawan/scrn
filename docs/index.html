@@ -561,6 +561,17 @@ table.dt{border-collapse:separate;border-spacing:0;width:100%;font-size:16px}
 .ghost:hover{border-color:var(--muted)}
 
 /* ── Breadth ──────────────────────────────────────────── */
+.brief{padding:16px 18px 10px;margin-bottom:14px}.brief h3{font-size:20px;margin:0 0 8px;display:flex;gap:10px;align-items:baseline}.brief h3 small{font-size:14px;color:var(--muted);font-weight:500}
+.brief ul{margin:0;padding:0;list-style:none;display:grid;gap:7px}.brief li{display:flex;gap:10px;align-items:flex-start;font-size:16px;line-height:1.5}
+.brdot{flex:none;width:10px;height:10px;border-radius:50%;margin-top:8px;background:var(--muted)}.brdot.u{background:var(--up)}.brdot.d{background:var(--down)}.brdot.w{background:#D97706}
+.brgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:14px;margin-bottom:14px}.brgrid:empty{display:none}
+.capcard,.ddcard{padding:16px 18px}.capcard h3,.ddcard h3{font-size:20px;margin:0 0 4px}.capr{padding:9px 0;border-top:1px solid var(--line)}.caph{display:flex;gap:10px;align-items:baseline;font-size:16px}.caph .num{margin-left:auto;font-weight:700}
+.capbar{display:flex;height:10px;border-radius:6px;overflow:hidden;background:var(--track);margin:7px 0 4px}.capbar .u{background:var(--up)}.capbar .d{background:var(--down);margin-left:auto}
+.capn{display:flex;justify-content:space-between;font-size:14.5px;font-weight:600}
+.ddtop{display:flex;align-items:center;gap:12px;margin:4px 0 6px}.ddn{font-size:40px;font-weight:800;line-height:1}
+.pill.good{background:color-mix(in srgb,var(--up) 15%,transparent);color:var(--up)}.pill.warn{background:color-mix(in srgb,#D97706 16%,transparent);color:#B45309}.pill.bad{background:color-mix(in srgb,var(--down) 15%,transparent);color:var(--down)}
+.ddcard .pill{padding:4px 12px;border-radius:999px;font-weight:700;font-size:15px}
+.ddl{margin:8px 0 6px;padding-left:20px;font-size:15.5px;line-height:1.7}.ddh{font-size:15px;margin:10px 0 4px;color:var(--muted)}
 .tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:14px}
 .tile{padding:14px 16px}
 .tile .k{color:var(--muted);font-size:15px;font-weight:600}
@@ -1277,6 +1288,35 @@ body.ssopen{overflow:hidden}
 .sws.nolist .sw-list,.sws.nopanel .sw-panel{display:none}
 .sw-top{grid-column:1/-1;grid-row:1;display:flex;align-items:center;gap:6px;padding:0 10px;border-bottom:1px solid var(--line);min-width:0}
 .sw-list{grid-column:1;grid-row:2}.sw-main{grid-column:2;grid-row:2}.sw-panel{grid-column:3;grid-row:2}
+.sws.hasgrp{grid-template-columns:236px 246px minmax(0,1fr) 320px}.sws.hasgrp.nopanel{grid-template-columns:236px 246px minmax(0,1fr) 0}
+.sws.hasgrp.nolist{grid-template-columns:0 0 minmax(0,1fr) 320px}.sws.hasgrp.nolist.nopanel{grid-template-columns:0 0 minmax(0,1fr) 0}
+.sws.hasgrp .sw-grp{grid-column:1;grid-row:2}.sws.hasgrp .sw-list{grid-column:2}.sws.hasgrp .sw-main{grid-column:3}.sws.hasgrp .sw-panel{grid-column:4}
+.sws.nolist .sw-grp{display:none}
+.sw-grp{border-right:1px solid var(--line);display:flex;flex-direction:column;min-height:0;min-width:0;background:color-mix(in srgb,var(--soft) 45%,var(--card))}
+.swg{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 8px;width:100%;text-align:left;border:0;border-bottom:1px solid var(--track);background:transparent;padding:8px 12px;cursor:pointer;color:var(--ink);font-size:14.5px}
+.swg:hover{background:var(--soft)}.swg.on{background:color-mix(in srgb,var(--s1) 12%,transparent);box-shadow:inset 3px 0 0 var(--s1)}
+.swgn{font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;gap:7px}.swgn i{flex:none;width:9px;height:9px;border-radius:50%;background:var(--c)}
+.swgad{font-size:13px;font-weight:600}.swg .nm{font-size:12.5px;text-align:right}
+.swstar{font-size:22px;margin-left:2px}.ghstar{font-size:24px;align-self:center}
+.glab{display:inline-block;padding:2px 10px;border-radius:999px;font-size:13.5px;font-weight:700;color:var(--c);background:color-mix(in srgb,var(--c) 13%,transparent);border:1px solid color-mix(in srgb,var(--c) 35%,transparent);white-space:nowrap}
+.glabev{padding:0;margin-bottom:14px}.glabev summary{padding:14px 18px;cursor:pointer;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;font-size:16px}.glabev summary span{color:var(--muted);font-size:14px}
+.glabev .cnote,.glabev .tscroll{margin:0 18px 12px}
+.rsp{font-weight:800;color:var(--muted);margin-left:1px}
+.wlix{margin-top:10px;align-items:center}.wlk{font-size:13px;font-weight:700;color:var(--muted);margin-right:4px}.wlchip.ix{font-weight:600}
+.wltoday{padding:14px 18px;margin-bottom:14px}.wltoday h3{font-size:20px;margin:0 0 10px;display:flex;gap:10px;align-items:baseline}.wltoday h3 small{font-size:14px;color:var(--muted);font-weight:500}
+.wltg .v{white-space:nowrap;display:block}.wltools>.nm{flex:1 1 320px}select[data-wl-ixsel]{min-width:260px}
+.wltg{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:12px 18px}.wltg .k{font-size:13.5px;font-weight:700;color:var(--muted);margin-bottom:4px}.wltg .v{font-size:26px;font-weight:800}.wltg .d{font-size:15px;line-height:1.6}
+.wltg .capbar{margin:6px 0}
+.cgbar{display:flex;justify-content:flex-end;padding:8px 0 2px}.cgctl{display:inline-flex;gap:8px;align-items:center}.cgseg button{min-width:44px}
+.cgrid{display:grid;grid-template-columns:repeat(var(--cgc,3),minmax(0,1fr));gap:12px;padding:12px 0}
+.cg{padding:0;overflow:hidden;display:flex;flex-direction:column}.cgh{display:flex;align-items:center;gap:8px;padding:8px 10px;border-bottom:1px solid var(--line);font-size:14px;min-width:0}
+.cgs{border:0;background:none;padding:0;font:800 15.5px var(--body);color:var(--ink);cursor:pointer}.cgs:hover{color:var(--s1)}.cgn{flex:1;min-width:0;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:13px}
+.cgc{height:230px;cursor:pointer;position:relative}.cgc .empty{padding:60px 10px}.cgfoot{display:flex;justify-content:center;padding:6px 0 14px}
+@media (max-width:760px){.cgrid{grid-template-columns:minmax(0,1fr)!important}}
+.sxneed{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 16px;border-top:1px solid var(--line)}.sxneed[hidden]{display:none}.sxneed .nm{font-size:14px}
+.trkhead{padding:14px 18px;margin-bottom:14px}.trkhead p{margin:0;font-size:15.5px;line-height:1.55}
+table.trk tbody tr{cursor:pointer}table.trk tbody tr:hover{background:var(--soft)}
+.trkad{display:flex;align-items:center;gap:8px;min-width:150px}.capbar.sm{flex:1;height:8px;margin:0}
 .swib{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:36px;min-width:36px;padding:0 8px;border:0;background:transparent;border-radius:9px;cursor:pointer;color:var(--ink);font-size:15px;font-weight:600;white-space:nowrap}
 .swib svg{width:19px;height:19px}.swib:hover{background:var(--soft)}.swib[aria-pressed="true"]{background:color-mix(in srgb,var(--s1) 14%,transparent);color:var(--s1)}
 .swx{font-size:18px;margin-left:2px}
@@ -1626,6 +1666,8 @@ const store={get(k,d){try{const v=localStorage.getItem("radar."+k);return v==nul
 const tv=(s,ex)=>`https://in.tradingview.com/chart/?symbol=${encodeURIComponent((ex||"NSE")+":"+s)}`;
 function seg(name,opts,cur,labels){return `<div class="seg" role="group" aria-label="${esc(name)}">`+opts.map(o=>`<button type="button" data-seg="${name}" data-val="${esc(o)}" aria-pressed="${o===cur}">${esc(labels?labels[o]:o)}</button>`).join("")+`</div>`}
 function rsPill(v){if(!isNum(v))return "–";const c=v>=90?"rs-a":v>=70?"rs-b":v>=40?"rs-c":"rs-d";return `<span class="rs ${c}">${v}</span>`}
+/* a stock's RS with a * when it is provisional (under a year of prices, ranked on the part that exists) */
+const rsPillX=x=>rsPill(x?.rs)+(x?.rsp&&isNum(x?.rs)?`<sup class="rsp" title="Provisional: less than a year of prices, so the rating uses the months that exist">*</sup>`:"");
 function stagePill(s,d,c){if(!s)return "–";const t=isNum(d)?` title="${c?"At least ":""}${d.toLocaleString("en-IN")} trading day${d===1?"":"s"} in Stage ${s}"`:"";
   return s===2?`<span class="pill p-up"${t}>Stage 2</span>`:s===4?`<span class="pill p-down"${t}>Stage 4</span>`:s===1?`<span class="pill p-mut"${t}>Stage 1</span>`:`<span class="pill p-mut"${t}>Stage 3</span>`}
 const symBtn=(s,n,ex)=>wlStar(s)+`<button type="button" class="symbtn" data-sym="${esc(s)}"${ex?` data-ex="${esc(ex)}"`:""}>${esc(s)}</button>${scBtn(s)}${n?`<span class="nm">${esc(n)}</span>`:""}`;
@@ -1711,6 +1753,10 @@ function renderFoot(){
 /* ════════════════════ generic table ════════════════════ */
 const TBL={};
 const MCAUTO={k:"mc",label:"Mcap ₹Cr",fmt:r=>{const v=r.mc??D.by?.[r.s??r.symbol]?.mc;return `<span class="num">${isNum(v)?Math.round(v).toLocaleString("en-IN"):"–"}</span>`},sort:r=>r.mc??D.by?.[r.s??r.symbol]?.mc??null};
+/* rows in the order a table would show them (its sort column and direction), for the chart grid */
+function tSorted(id,rows,cols){const T=st.tbl[id];if(!T?.key)return rows;const c=cols.find(c=>c.k===T.key);if(!c)return rows;const f=c.sort||(r=>r[c.k]);
+  return [...rows].sort((a,b)=>{const A=f(a),B=f(b);if(A==null||A==="")return 1;if(B==null||B==="")return -1;return typeof A==="string"?T.dir*A.localeCompare(B):T.dir*(A-B)})}
+const sxSorted=(rows,cols)=>tSorted("sx",rows,cols);
 function dtable(id,rows,cols,{limit=100,empty="Nothing to show.",csv=true}={}){
   /* every table of stocks carries market cap: added after the stock column when the table does not have it */
   {const si=cols.findIndex(c=>c.k==="s"||c.k==="symbol");
@@ -1750,7 +1796,7 @@ const C={
   stock:{k:"s",label:"Stock",l:1,fmt:r=>symBtn(r.s,r.n),sort:r=>r.s},
   px:{k:"px",label:"Price",fmt:r=>`<span class="num">${inr(r.px)}</span>`},
   ret:p=>({k:"r."+p,label:p,fmt:r=>`<span class="num ${cls(r.r[p])}">${sgn(r.r[p],1)}</span>`,sort:r=>r.r[p]}),
-  rs:{k:"rs",label:"RS",fmt:r=>rsPill(r.rs)},
+  rs:{k:"rs",label:"RS",fmt:r=>rsPillX(r)},
   drs:{k:"drs",label:"RS Δ1W",fmt:r=>{const d=isNum(r.rs)&&isNum(r.rs1w)?r.rs-r.rs1w:null;return `<span class="num ${cls(d)}">${d==null?"–":(d>0?"+":"")+d}</span>`},sort:r=>isNum(r.rs)&&isNum(r.rs1w)?r.rs-r.rs1w:null},
   rs4w:{k:"rs4w",label:"RS 4W ago",fmt:r=>rsPill(r.rs4w)},
   rs12w:{k:"rs12w",label:"RS 12W ago",fmt:r=>rsPill(r.rs12w)},
@@ -1795,11 +1841,52 @@ function groupStats(prev,period=st.period,group=st.group){
   }
   return out;
 }
+/* ── Group labels (update 20): RS rating level × its change over 4 weeks, tested in scripts/test_group_labels.py ── */
+const GLAB=["Leading","Holding","Fading","Improving","Middle","Slipping","Igniting","Lagging"];
+const GLC={Leading:"#15803D",Holding:"#0F766E",Fading:"#B45309",Improving:"#1D4ED8",Middle:"#64748B",Slipping:"#C2410C",Igniting:"#7C3AED",Lagging:"#B91C1C"};
+function gLabel(rk,rk4){if(!isNum(rk)||!isNum(rk4))return null;const d=rk-rk4;
+  return rk>=70?(d>=0?"Leading":d>=-10?"Holding":"Fading"):rk>=40?(d>=10?"Improving":d<=-10?"Slipping":"Middle"):(d>=10?"Igniting":"Lagging")}
+function gLabEv(l){const E=GXD?.labels;const u=E?.u?.[st.uni==="lq"?"l":"a"]||E?.u?.a;return u?.[l]||null}
+function gLabPill(l){if(!l)return "–";const e=gLabEv(l),r=GXD?.labels?.rules?.[l]||"";
+  const t=`${l}: ${r}.${e?` In testing (${GXD.labels.from.slice(0,4)}–${GXD.labels.to.slice(0,4)}) groups with this label did ${sgn(e.x63,1)} against the median group over the next 3 months, beating it ${Math.round(e.beat63)}% of the time.`:""}`;
+  return `<span class="glab" style="--c:${GLC[l]}" title="${esc(t)}">${l}</span>`}
+function gLabTable(){const E=GXD?.labels,u=E?.u?.[st.uni==="lq"?"l":"a"];if(!u)return "";
+  return `<details class="card glabev"><summary><b>What the labels mean and how they tested</b><span>${esc(E.from.slice(0,7))} to ${esc(E.to.slice(0,7))} · ${st.uni==="lq"?"liquid stocks":"all stocks"}</span></summary>
+    <p class="cnote">Each group gets a label from its RS rating today and how much the rating moved in the last 4 weeks (20 sessions). ${esc(E.method)}</p>
+    <div class="tscroll"><table class="dt"><thead><tr><th class="l">Label</th><th class="l">Rule</th><th>Next 1 month</th><th>Next 3 months</th><th>Beat the median</th><th>${esc(E.split.slice(0,4)>"2023"?"2021–23":"First half")}</th><th>2024–26</th><th>Cases</th></tr></thead><tbody>
+    ${GLAB.filter(l=>u[l]).map(l=>{const e=u[l];return `<tr><td class="l">${gLabPill(l)}</td><td class="l">${esc(E.rules[l])}</td><td><span class="num ${cls(e.x21)}">${sgn(e.x21,1)}</span></td><td><span class="num ${cls(e.x63)}">${sgn(e.x63,1)}</span></td><td><span class="num">${Math.round(e.beat63)}%</span></td><td><span class="num ${cls(e.x63_a)}">${sgn(e.x63_a,1)}</span></td><td><span class="num ${cls(e.x63_b)}">${sgn(e.x63_b,1)}</span></td><td><span class="num">${e.n.toLocaleString("en-IN")}</span></td></tr>`}).join("")}</tbody></table></div>
+    <p class="cnote">Returns are the group's index return minus the median group of the same kind. Strength persisted: Leading and Holding groups kept beating the field, Lagging ones kept trailing. A weak group jumping 10+ points (Igniting) had no edge on its own — wait for it to reach Improving or Leading.</p></details>`}
+/* the Tracker view: every group with its label, RS, member RS, advancers and return; a row opens the 3-pane tracker */
+function trkGroups(){const now=groupStats(false).filter(g=>!gMixed(st.group,g.name)),P=st.period;
+  const out=now.map(g=>{const r=gRow(st.group,g.name),x=r&&r[gU(r)],rets=g.syms.map(s=>D.by[s].r?.[P]).filter(isNum),rs=g.syms.map(s=>D.by[s].rs).filter(isNum);
+    return {name:g.name,n:g.n,v:g.v,br:g.br,syms:g.syms,rk:x?.rk,pv:x?gPrev(x):null,lab:x?gLabel(x.rk,x.rk4):null,mrs:rs.length?Math.round(median(rs)):null,
+      adv:rets.filter(v=>v>0).length,dec:rets.filter(v=>v<0).length}});
+  const v=g=>!isNum(g.rk)?-999:st.sort==="rs"?g.rk:isNum(g.pv)?g.rk-g.pv:-998;
+  if(st.sort==="name")out.sort((a,b)=>a.name.localeCompare(b.name));else if(st.sort==="br")out.sort((a,b)=>(b.br??-1)-(a.br??-1));
+  else if((st.sort==="rs"||st.sort==="rsd"))out.sort((a,b)=>v(b)-v(a)||b.v-a.v);else out.sort((a,b)=>b.v-a.v);
+  return out}
+function renderTracker(h){if(!GXD){grpLoad().then(()=>{if(st.tab==="rotation")renderRotation()});$("#view").innerHTML=h+`<div class="card empty">Loading groups…</div>`;return}
+  const G=trkGroups(),P=st.period,pl=P==="1D"?"today":PL[P];TRK.rows=G;
+  h+=`<div class="card trkhead"><p>Every ${esc(st.group==="NSE Index"?"NSE index":st.group.toLowerCase().replace(/s$/,""))} with its <b>label</b> (RS rating and its 4-week change), the <b>median RS</b> of its stocks, how many of its stocks are <b>up and down ${esc(pl)}</b>, and its ${st.agg} return. <b>Tap a row</b> to open the tracker: groups on the left, the group's stocks next to them, the chart on the right. Keys: ↑ ↓ stocks, ← → groups.</p></div>
+  ${gLabTable()}
+  <div class="card"><div class="tscroll"><table class="dt trk"><thead><tr><th class="l">${esc(st.group==="NSE Index"?"Index":st.group.replace(/s$/,""))}</th><th class="l">Label</th><th>RS</th><th>Median stock RS</th><th class="l">Up / down ${esc(pl)}</th><th>Return ${esc(pl)}</th></tr></thead><tbody>
+  ${G.map((g,i)=>{const t=g.adv+g.dec;return `<tr data-trk="${i}" tabindex="0" role="button" aria-label="Open ${esc(g.name)} in the tracker"><td class="l"><b>${esc(g.name)}</b> <span class="nm">${g.n}</span></td><td class="l">${gLabPill(g.lab)}</td>
+    <td>${isNum(g.rk)?`${rsPill(g.rk)} ${gMove(g.rk,g.pv,P)}`:"–"}</td><td>${isNum(g.mrs)?rsPill(g.mrs):"–"}</td>
+    <td class="l"><div class="trkad"><span class="up num">${g.adv}</span><span class="capbar sm"><i class="u" style="width:${t?g.adv/t*100:0}%"></i><i class="d" style="width:${t?g.dec/t*100:0}%"></i></span><span class="down num">${g.dec}</span></div></td>
+    <td><span class="num ${cls(g.v)}">${sgn(g.v,1)}</span></td></tr>`}).join("")}</tbody></table></div></div>`;
+  $("#view").innerHTML=h;
+  $("#view").querySelector("table.trk").addEventListener("click",e=>{const tr=e.target.closest("tr[data-trk]");if(tr&&!e.target.closest("button,a"))trkOpen(+tr.dataset.trk)});
+  $("#view").querySelector("table.trk").addEventListener("keydown",e=>{if(e.key==="Enter"){const tr=e.target.closest("tr[data-trk]");if(tr)trkOpen(+tr.dataset.trk)}})}
+const TRK={rows:[]};
+function trkStocks(g){const P=st.period;return [...g.syms].sort((a,b)=>(D.by[b].r?.[P]??-1e9)-(D.by[a].r?.[P]??-1e9))}
+function trkOpen(i){const g=TRK.rows[i];if(!g)return;const syms=trkStocks(g);
+  openStockChart(syms[0],{syms,rows:{},src:`${g.name} · ${st.period==="1D"?"today":PL[st.period]}`,grp:{kind:st.group,per:st.period,rows:TRK.rows,i}})}
 function renderRotation(){
   if(st.view==="rrg"&&D.meta.idx){renderRRG();return}
   if(st.view==="rrg")st.view="bars";
   if((st.view==="radar"||st.view==="gsig")&&!D.meta.grp)st.view="bars";
   if(st.view==="radar"){renderRadar();return}
+  if(st.view==="track"&&!D.meta.grp)st.view="bars";
   if(st.view==="gsig"){renderGroupSignals();return}
   if(D.meta.grp&&!GXD){grpLoad().then(()=>{if(st.tab==="rotation")renderRotation()})}
   const now=groupStats(false).filter(g=>!gMixed(st.group,g.name)),prev=groupStats(true).filter(g=>!gMixed(st.group,g.name));
@@ -1818,6 +1905,7 @@ function renderRotation(){
     ${viewSeg()}
   </div>`;
   if(!rows.length){$("#view").innerHTML=h+`<div class="card empty">No group has ${D.meta.min_group_size}+ stocks with data for this period.</div>`;return}
+  if(st.view==="track"){renderTracker(h);return}
   if(st.view==="heat"){$("#view").innerHTML=h+heatmap(rows);wireTables($("#view"),renderRotation);if(D.meta.grp)gMountMini();return}
   const mx=Math.max(1,...now.map(g=>Math.abs(g.v))),showRank=st.period!=="1D";void prank;
   h+=`<div class="card rows">`;
@@ -1836,7 +1924,7 @@ function renderRotation(){
   h+=`</div><p class="note">Bars are the ${st.agg} ${st.period==="1D"?"today's":PL[st.period]} return of stocks in each group, using ${uniWord()} (groups need ${D.meta.min_group_size}+ stocks).${st.uni!=="lq"?" Small, thinly traded stocks swing more — the median is steadier than the mean.":""}${st.group==="Sector"&&sx?` NSE lists a sector only for the ~750 stocks of its broad indices; ${sx.derived.toLocaleString("en-IN")} other stocks take the sector that their industry belongs to (the two agree for ${sx.agree}% of stocks where both are known).`:""}${(st.group==="Sector"||st.group==="Industry"||st.group==="Themes")&&cl?` Sector and industry come from one master list (${cl.matched.toLocaleString("en-IN")} of ${D.meta.all_stocks.toLocaleString("en-IN")} stocks; ${cl.sectors} sectors, ${cl.industries} industries${cl.corrected?`; ${cl.corrected} sectors corrected by hand where the list was plainly wrong`:""})${st.group==="Themes"?"; each theme takes the companies whose sector or industry is its core business, plus named companies with a large business in it":""}.`:""}${mixedNote(st.group)}${D.meta.grp?" Beside each group: its RS rating at the last 6 weekly closes, this week first (bold); each arrow shows the move into the newer week on its left (green ▲ up, red ▼ down).":""}</p>`;
   $("#view").innerHTML=h;wireTables($("#view"),renderRotation);if(D.meta.grp)gMountMini();
 }
-const viewSeg=()=>`<div class="ctl"><span>View</span>${seg("view",["bars","heat",...(D.meta.grp?["radar","gsig"]:[]),...(D.meta.idx?["rrg"]:[])],st.view,{bars:"Bars",heat:"Heatmap",radar:"Rotation radar",gsig:"Group signals",rrg:"NSE index map (RRG)"})}</div>${D.meta.cmp?`<div class="ctl"><span>Compare</span><button type="button" class="btn cmpbtn" data-cmp-open aria-haspopup="dialog"><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M2 15l5-5 3 3 7-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 17l5-3 4 1 7-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".55"/></svg> Compare lines</button></div>`:""}`;
+const viewSeg=()=>`<div class="ctl"><span>View</span>${seg("view",["bars","track","heat",...(D.meta.grp?["radar","gsig"]:[]),...(D.meta.idx?["rrg"]:[])].filter(v=>v!=="track"||D.meta.grp),st.view,{bars:"Bars",track:"Tracker",heat:"Heatmap",radar:"Rotation radar",gsig:"Group signals",rrg:"NSE index map (RRG)"})}</div>${D.meta.cmp?`<div class="ctl"><span>Compare</span><button type="button" class="btn cmpbtn" data-cmp-open aria-haspopup="dialog"><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M2 15l5-5 3 3 7-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 17l5-3 4 1 7-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".55"/></svg> Compare lines</button></div>`:""}`;
 /* ── NSE index data (indices.json, loaded when needed): valuations, India VIX, RRG ── */
 let IXD=null;
 async function ixLoad(){if(IXD)return IXD;let j=window.EMBED?.indices||null;
@@ -1937,15 +2025,54 @@ function wireChart(box,id,fmtTip){
 }
 function nticks(lo,hi,n=4){const r=hi-lo||1,b=Math.pow(10,Math.floor(Math.log10(r/n))),m=[1,2,2.5,5,10].find(k=>r/(k*b)<=n)*b,a=[];for(let v=Math.ceil(lo/m)*m;v<=hi+1e-9;v+=m)a.push(Math.round(v));return a}
 const kfmt=v=>Math.abs(v)>=1000?(v/1000).toFixed(Math.abs(v)>=10000?0:1).replace(/\.0$/,"")+"k":String(v);
+/* ── Breadth add-ons (update 20): index choice, Today in brief, breadth by market cap, distribution days ── */
+const BIX=[["","Whole market"],["Nifty 50","Nifty 50"],["Nifty 500","Nifty 500"],["Nifty Midcap 150","Midcap 150"],["Nifty Smallcap 250","Smallcap 250"],["Nifty Microcap 250","Microcap 250"]];
+function brB(){if(st.bix===undefined)st.bix=store.get("bix","");const b=D.breadth;if(st.bix&&b.by?.[st.bix])return Object.assign({},b,b.by[st.bix],{lq:null});if(st.bix)st.bix="";return uniB()}
+function brIndexSeg(){const by=D.breadth.by;if(!by)return "";const o=BIX.filter(([k])=>!k||by[k]);return `<div class="ctl"><span>Index</span>${seg("bix",o.map(x=>x[0]),st.bix||"",Object.fromEntries(o.map(([k,l])=>[k,l])))}</div>`}
+const brDot=c=>`<i class="brdot ${c}" aria-hidden="true"></i>`;
+function todayBrief(){const b=D.breadth,L=b.dates.length-1,adv=b.adv[L],dec=b.dec[L],u4=b.up4[L],d4=b.dn4[L],out=[];
+  const f=n=>n.toLocaleString("en-IN"),r=adv&&dec?(adv>=dec?adv/dec:dec/adv):null;
+  if(isNum(r)){const lead=adv>=dec;out.push([r<1.25?"n":lead?"u":"d",`${r<1.25?"Mixed day":lead?"Broad buying":"Broad selling"}: ${f(lead?adv:dec)} ${lead?"advancers":"decliners"} against ${f(lead?dec:adv)} ${lead?"decliners":"advancers"} (${r.toFixed(1)} to 1); ${f(u4)} rose 4% or more, ${f(d4)} fell 4% or more.`])}
+  const ix=D.meta.indices||{},n5=ix["NIFTY 500"]?.r?.["1D"],n50=ix["NIFTY 50"]?.r?.["1D"],sm=ix["NIFTY SMLCAP 250"]?.r?.["1D"];
+  if(isNum(n5)){let t=`Nifty 500 ${sgn(n5,2)}.`;if(isNum(n50)&&isNum(sm)){const g=sm-n50;t+=Math.abs(g)<0.25?` Small and large caps moved together (Smallcap 250 ${sgn(sm,2)}, Nifty 50 ${sgn(n50,2)}).`:` Small caps ${g>0?"beat":"lagged"} large caps (Smallcap 250 ${sgn(sm,2)} vs Nifty 50 ${sgn(n50,2)}).`}out.push([n5>=0.15?"u":n5<=-0.15?"d":"n",t])}
+  const nh=b.nh[L],nl=b.nl[L];if(isNum(nh)&&isNum(nl)){const hiW=nh>nl,eq=nh===nl;let k=0;for(let i=L;i>=0;i--){if(eq||(hiW?b.nh[i]>b.nl[i]:b.nl[i]>b.nh[i]))k++;else break}
+    out.push([eq?"n":hiW?"u":"d",eq?`52-week highs and lows level at ${nh} each.`:`Stocks at 52-week ${hiW?"highs":"lows"} (${hiW?nh:nl}) outnumbered those at ${hiW?"lows":"highs"} (${hiW?nl:nh})${k>1?` for the ${k}${k%100>=11&&k%100<=13?"th":["th","st","nd","rd"][k%10]||"th"} session in a row`:""}.`])}
+  try{const gs=groupStats(false,"1D","Industry").filter(g=>g.n>=5).map(g=>({...g,m:median(g.syms.map(s=>D.by[s].r?.["1D"]).filter(isNum))})).filter(g=>isNum(g.m)).sort((a,b)=>b.m-a.m);
+    if(gs.length>=6){const t=gs.slice(0,2),w=gs[gs.length-1];out.push(["n",`${t.map(g=>`${esc(g.name)} (${sgn(g.m,1)})`).join(" and ")} led the industries; ${esc(w.name)} (${sgn(w.m,1)}) lagged.`])}}catch(e){}
+  const v2=D.liq.filter(x=>isNum(x.vr)&&x.vr>=2&&isNum(x.r?.["1D"]));if(v2.length){const up=v2.filter(x=>x.r["1D"]>0).length;out.push(["n",`${f(v2.length)} liquid stocks traded at twice their usual volume or more — ${up} closed up, ${v2.length-up} down.`])}
+  const a50=b.a50[L],a50w=b.a50[Math.max(0,L-5)];if(isNum(a50)&&isNum(a50w)){const d=a50-a50w;out.push([d>=2?"u":d<=-2?"d":"n",`${a50.toFixed(1)}% of stocks are above their 50-day average, ${Math.abs(d)<0.05?"unchanged":`${d>0?"up":"down"} ${Math.abs(d).toFixed(1)} points`} in a week.`])}
+  const dd=b.dd;if(dd)out.push([dd.n>=5?"d":dd.n>=3?"w":"u",`${dd.n} distribution day${dd.n===1?"":"s"} on the Nifty 500 in the last 25 sessions${dd.n>=5?" — the uptrend is under pressure":dd.n>=3?" — worth watching":""}.`]);
+  return `<div class="card brief"><h3>Today in brief <small>${fmtDate(b.dates[L])}</small></h3><ul>${out.map(([c,t])=>`<li>${brDot(c)}<span>${t}</span></li>`).join("")}</ul></div>`}
+function capBreadth(){const base=st.uni==="lq"?D.liq:D.stocks,grp={};for(const x of base){const v=x.r?.["1D"];if(!isNum(v))continue;const k=ssCap(x);if(k===SSCAP[4])continue;(grp[k]=grp[k]||[]).push(v)}
+  const rng={[SSCAP[0]]:"#1–100",[SSCAP[1]]:"#101–250",[SSCAP[2]]:"#251–500",[SSCAP[3]]:"#501 and smaller"};
+  const rows=SSCAP.slice(0,4).filter(k=>grp[k]?.length).map(k=>{const a=grp[k],up=a.filter(v=>v>0).length,dn=a.filter(v=>v<0).length,n=a.length,m=median(a);
+    return `<div class="capr"><div class="caph"><b>${k.replace(" cap","")}</b><span class="nm">${rng[k]} by market cap</span><span class="num ${cls(m)}" title="Median stock today">median ${sgn(m,2)}</span></div>
+      <div class="capbar" role="img" aria-label="${up} up, ${dn} down of ${n}"><i class="u" style="width:${up/n*100}%"></i><i class="d" style="width:${dn/n*100}%"></i></div>
+      <div class="capn"><span class="up">${up.toLocaleString("en-IN")} up</span><span class="down">${dn.toLocaleString("en-IN")} down</span></div></div>`}).join("");
+  return `<div class="card capcard"><h3>Breadth by market cap</h3><p class="cnote">Where today's buying or selling was focused. Companies are ranked by market cap across all NSE stocks (the SEBI lines: top 100 large, next 150 mid, next 250 small); ${st.uni==="lq"?"only liquid stocks are counted":"every stock that traded is counted"}.</p>${rows}</div>`}
+function ddCard(){const dd=D.breadth.dd;if(!dd)return "";const b=D.breadth,L=b.dates.length-1,pos=Object.fromEntries(b.dates.map((d,i)=>[d,i]));
+  const lv=dd.n>=5?["d","Under pressure"]:dd.n>=3?["w","Watch"]:["u","Normal"];
+  const items=dd.dates.map((d,i)=>{const left=isNum(pos[d])?25-(L-pos[d]):null;return `<li><b>${fmtDate(d)}</b> <span class="down num">${sgn(dd.chg[i],2)}</span> on <span class="num">${sgn(dd.vol_up[i],0)}</span> volume${isNum(left)?` <span class="nm">· counts ${left} more session${left===1?"":"s"}</span>`:""}</li>`}).join("");
+  const h=dd.hist||[],mx=Math.max(6,...h);
+  return `<div class="card ddcard"><h3>Distribution days</h3><div class="ddtop"><span class="ddn num">${dd.n}</span><span class="pill ${lv[0]==="d"?"bad":lv[0]==="w"?"warn":"good"}">${lv[1]}</span></div>
+    <p class="cnote">William O'Neil's count of institutional selling: the Nifty 500 closed down 0.2% or more on higher volume than the day before. Volume is the total of the index members (as NSE adds it up). A day counts for 25 sessions, or until the index closes 5% above it. Five or more in 25 sessions has often meant the uptrend is under pressure.</p>
+    ${items?`<ul class="ddl">${items}</ul>`:`<p class="cnote" style="margin:0">None in the last 25 sessions.</p>`}
+    ${h.length===b.dates.length?`<h4 class="ddh">Count over the year</h4>${lineChart("dd",[{data:h,c:"var(--down)",w:2.2}],{lo:0,hi:mx,ticks:[0,3,5,mx].filter((v,i,a)=>a.indexOf(v)===i&&v<=mx),h:170,label:"Distribution days counted on each session"})}`:""}</div>`}
 function renderBreadth(){
   const vw=viewW(),two=vw>=1300;LCW=Math.round((two?(vw-14)/2:vw)-30);
-  const b=uniB(),L=b.dates.length-1,P=Math.max(0,L-5),sum=k=>b[k].slice(-5).reduce((x,y)=>x+y,0);
+  const b=brB(),L=b.dates.length-1,P=Math.max(0,L-5),sum=k=>b[k].slice(-5).reduce((x,y)=>x+y,0);
+  const vsY=(v,p,fx=0)=>isNum(v)&&isNum(p)?`<span class="num ${cls(v-p)}">${v>p?"▲":v<p?"▼":"="}${v!==p?Math.abs(v-p).toFixed(fx):""}</span> vs yesterday`:"";
+  const tile2=(lab,v,sub)=>`<div class="card tile"><div class="k">${lab}</div><div class="v num">${v}</div><div class="d" style="color:var(--muted)">${sub}</div></div>`;
+  const adr=b.dec[L]>0?b.adv[L]/b.dec[L]:null,adrP=b.dec[L-1]>0?b.adv[L-1]/b.dec[L-1]:null,nnh=b.nh[L]-b.nl[L],nnhP=b.nh[L-1]-b.nl[L-1],n4=b.up4[L]-b.dn4[L],n4P=b.up4[L-1]-b.dn4[L-1];
   const tile=(k,lab)=>{const v=b[k][L],d=v-b[k][P];return `<div class="card tile"><div class="k">${lab}</div><div class="v num">${v.toFixed(1)}%</div><div class="d num ${cls(d)}">${d>0?"+":""}${d.toFixed(1)} pts vs a week ago</div><div class="bar"><i style="width:${v}%"></i></div></div>`};
   const pair=(lab,a,c,k1,k2)=>`<div class="card tile"><div class="k">${lab}</div><div class="v num"><span class="up">${a}</span> <span style="color:var(--muted);font-weight:500">/</span> <span class="down">${c}</span></div><div class="d" style="color:var(--muted)">5-day total ${sum(k1).toLocaleString("en-IN")} / ${sum(k2).toLocaleString("en-IN")}</div></div>`;
   let h=`<div class="sec-head"><div><h2>Market breadth</h2><p>How many stocks are taking part. A rising index on falling breadth is a warning; breadth turning up from below 20% has marked many bottoms.</p></div></div>
-  ${D.breadth.universe?`<div class="card toolbar">${uniSeg()}<p class="tbnote">${st.uni==="lq"?"Only the liquid stocks the scanners use.":"Every main-board stock that traded that day — no price, turnover or size filter, as NSE counts advances and declines."}</p></div>`:""}
+  ${D.breadth.universe?`<div class="card toolbar">${st.bix?"":uniSeg()}${brIndexSeg()}<p class="tbnote">${st.bix?`The members of the ${esc(st.bix)} (today's list, ${b.members} stocks) — every number and chart below is for them, against the index itself.`:st.uni==="lq"?"Only the liquid stocks the scanners use.":"Every main-board stock that traded that day — no price, turnover or size filter, as NSE counts advances and declines."}</p></div>`:""}
+  ${todayBrief()}
   <div class="tiles">${tile("a20","Above 20 DMA")}${tile("a50","Above 50 DMA")}${tile("a200","Above 200 DMA")}
-    ${pair("Advances / declines today",b.adv[L],b.dec[L],"adv","dec")}${pair("52-week highs / lows today",b.nh[L],b.nl[L],"nh","nl")}${pair("Up 4%+ / down 4%+ today",b.up4[L],b.dn4[L],"up4","dn4")}</div>`;
+    ${pair("Advances / declines today",b.adv[L],b.dec[L],"adv","dec")}${pair("52-week highs / lows today",b.nh[L],b.nl[L],"nh","nl")}${pair("Up 4%+ / down 4%+ today",b.up4[L],b.dn4[L],"up4","dn4")}
+    ${tile2("Advance / decline ratio",isNum(adr)?`<span class="${adr>=1?"up":"down"}">${adr.toFixed(2)}</span>`:"–",vsY(adr,adrP,2))}${tile2("Net new highs",`<span class="${cls(nnh)}">${nnh>0?"+":""}${nnh}</span>`,`highs minus lows · ${vsY(nnh,nnhP)}`)}${tile2("Net 4% movers",`<span class="${cls(n4)}">${n4>0?"+":""}${n4}</span>`,`up 4%+ minus down 4%+ · ${vsY(n4,n4P)}`)}</div>
+  <div class="brgrid">${st.bix?"":capBreadth()}${st.bix?"":ddCard()}</div>`;
   const SM=breadthSmall(b);h+=SM.h+`<div class="msec-head"><div><h3>Breadth history, one year</h3></div></div><div class="bgrid2${two?" two":""}">`;
   const bv=b.bench.filter(isNum),blo=Math.min(...bv),bhi=Math.max(...bv),bsc={lo:blo-(bhi-blo)*.05,hi:bhi+(bhi-blo)*.05};
   h+=`<div class="card chart" id="ch1"><h3>Share of stocks above their moving averages</h3>
@@ -1964,7 +2091,14 @@ function renderBreadth(){
   }
   const net=b.nh.map((v,i)=>v-b.nl[i]),nlo=Math.min(0,...net),nhi=Math.max(1,...net),tk=[nlo,0,nhi].map(Math.round).filter((v,i,a)=>a.indexOf(v)===i);
   h+=`<div class="card chart" id="ch2"><h3>Net new 52-week highs</h3><div class="legend"><span><i style="--c:var(--up)"></i>More highs than lows</span><span><i style="--c:var(--down)"></i>More lows than highs</span></div>
-    ${lineChart("b",[{data:net,bars:1}],{lo:nlo,hi:nhi,ticks:tk,mid:0,label:"Daily new 52-week highs minus new lows",h:220})}</div></div>`;
+    ${lineChart("b",[{data:net,bars:1}],{lo:nlo,hi:nhi,ticks:tk,mid:0,label:"Daily new 52-week highs minus new lows",h:220})}</div>`;
+  const adr10=b.adv.map((_,i)=>{if(i<9)return null;let a=0,d=0;for(let k=i-9;k<=i;k++){a+=b.adv[k];d+=b.dec[k]}return d>0?+(a/d).toFixed(2):null}),ahi=Math.max(2,...adr10.filter(isNum)),alo=Math.min(0.5,...adr10.filter(isNum));
+  h+=`<div class="card chart" id="ch5"><h3>Advance / decline ratio, 10 days</h3><p class="cnote">Advances divided by declines over the last 10 sessions. Above 1, more stocks are rising than falling; a turn up from below 0.7 has often come near a low.</p>
+    <div class="legend"><span><i style="--c:var(--s1)"></i>A/D ratio, 10 days</span><span><i class="dash" style="--c:var(--muted)"></i>${esc(b.bench_name)} (own scale)</span></div>
+    ${lineChart("e",[{data:b.bench,c:"var(--muted)",...bsc,dash:1,w:1.6},{data:adr10,c:"var(--s1)",w:2.2}],{lo:alo,hi:ahi,ticks:[+alo.toFixed(1),1,+ahi.toFixed(1)].filter((v,i,a)=>a.indexOf(v)===i),mid:1,tf:t=>t.toFixed(1),label:"Advance decline ratio over 10 sessions"})}</div>`;
+  const n4s=b.up4.map((v,i)=>v-b.dn4[i]),n4lo=Math.min(0,...n4s),n4hi=Math.max(1,...n4s);
+  h+=`<div class="card chart" id="ch6"><h3>Net 4% movers</h3><p class="cnote">Stocks up 4% or more minus stocks down 4% or more, each day — the momentum burst count (Stockbee). Clusters of big positive days mark thrusts; big negative days mark washouts.</p>
+    ${lineChart("f",[{data:n4s,bars:1}],{lo:n4lo,hi:n4hi,ticks:[n4lo,0,n4hi].map(Math.round).filter((v,i,a)=>a.indexOf(v)===i),mid:0,label:"Stocks up 4% minus stocks down 4%",h:220})}</div></div>`;
   const last=[];for(let i=L;i>=Math.max(0,L-14);i--)last.push({i,d:b.dates[i]});
   const pc=k=>({k,label:{a20:">20 DMA",a50:">50 DMA",a200:">200 DMA"}[k],fmt:r=>`<span class="num">${b[k][r.i]}%</span>`,sort:r=>b[k][r.i]});
   const ct=(k,lab,c)=>({k,label:lab,fmt:r=>`<span class="num ${c}">${b[k][r.i].toLocaleString("en-IN")}</span>`,sort:r=>b[k][r.i]});
@@ -1978,6 +2112,9 @@ function renderBreadth(){
   $("#view").innerHTML=h;wireTables($("#view"),renderBreadth);SM.wire();
   wireChart($("#ch1"),"a",i=>`<b>${fmtDate(b.dates[i])}</b><br>Above 50 DMA: <b>${b.a50[i]}%</b><br>Above 200 DMA: <b>${b.a200[i]}%</b><br>${esc(b.bench_name)}: <b>${inr(b.bench[i])}</b>`);
   wireChart($("#ch2"),"b",i=>`<b>${fmtDate(b.dates[i])}</b><br>Highs <b>${b.nh[i]}</b> · Lows <b>${b.nl[i]}</b><br>Net <b>${net[i]>0?"+":""}${net[i]}</b>`);
+  wireChart($("#ch5"),"e",i=>`<b>${fmtDate(b.dates[i])}</b><br>A/D ratio, 10 days: <b>${isNum(adr10[i])?adr10[i].toFixed(2):"–"}</b><br>Today: ${b.adv[i]} up · ${b.dec[i]} down<br>${esc(b.bench_name)}: <b>${inr(b.bench[i])}</b>`);
+  wireChart($("#ch6"),"f",i=>`<b>${fmtDate(b.dates[i])}</b><br>Up 4%+ <b>${b.up4[i]}</b> · Down 4%+ <b>${b.dn4[i]}</b><br>Net <b>${n4s[i]>0?"+":""}${n4s[i]}</b>`);
+  if($(".ddcard svg"))wireChart($(".ddcard"),"dd",i=>`<b>${fmtDate(D.breadth.dates[i])}</b><br>Distribution days in the last 25 sessions: <b>${D.breadth.dd.hist[i]}</b>`);
   if(b.adl){wireChart($("#ch3"),"c",i=>`<b>${fmtDate(b.dates[i])}</b><br>Advances <b>${b.adv[i]}</b> · Declines <b>${b.dec[i]}</b><br>A/D line <b>${b.adl[i].toLocaleString("en-IN")}</b><br>${esc(b.bench_name)}: <b>${inr(b.bench[i])}</b>`);
     wireChart($("#ch4"),"d",i=>`<b>${fmtDate(b.dates[i])}</b><br>McClellan <b>${b.mco[i]>0?"+":""}${b.mco[i].toFixed(1)}</b><br>Advances <b>${b.adv[i]}</b> · Declines <b>${b.dec[i]}</b>`)}
   if(D.meta.idx)ixLoad().then(()=>{const sl=$("#valSlot");if(sl&&st.tab==="breadth"&&IXD){sl.outerHTML=valSection();wireVal()}});
@@ -2590,7 +2727,7 @@ const scanViewSeg=()=>`<div class="subtabs">${seg("scanView",["lib","s2",...(D.m
 /* sub-views of Scanners that have their own address */
 const VIEWHASH={s2:"stage2",mf:"fundflows",vb:"vcpscan"},HASHVIEW={stage2:"s2",fundflows:"mf",vcpscan:"vb"};
 /* Scanner groups: each has its own colour, used wherever the group appears (rail, scan header, stock card) */
-const GRP={"Confluence":"#A16207","Momentum":"#1E3A8A","Breakouts":"#C2410C","Bases":"#4338CA","Stage 2":"#0F766E","Results":"#A21CAF",
+const GRP={"Confluence":"#A16207","Ready-made lists":"#65A30D","Momentum":"#1E3A8A","Breakouts":"#C2410C","Bases":"#4338CA","Stage 2":"#0F766E","Results":"#A21CAF",
   "Volume":"#92400E","Delivery":"#0891B2","Trend & pullbacks":"#1D4ED8","Price action":"#BE185D","Oscillators":"#6D28D9","Relative strength":"#15803D",
   "Earnings & growth":"#0369A1","Quality & value":"#7E22CE","Ownership":"#047857","Fund flows":"#4F46E5","Weakness":"#B91C1C","Fundamental red flags":"#86198F"};
 /* order matters: neighbours in the list were checked to stay distinct for normal and colour-blind vision */
@@ -2654,8 +2791,8 @@ function renderScanners(){
   else cols.push(C.ret("1M"),C.vr,C.dcr,C.adr,C.rs,C.fr,C.h52,C.st,C.sec,C.themes);
   const tid="scan_"+m.id,mk=dup||"metric";
   if(!st.tbl[tid])st.tbl[tid]={key:m.sort==="metric"||m.sort==="metric_asc"?mk:"rs",dir:m.sort==="metric_asc"?1:-1,show:100};
-  const nT=S.meta.filter(x=>TECH_CATS.includes(x.cat)).length,nF=S.meta.filter(x=>FCATS.includes(x.cat)).length,nP=S.meta.filter(x=>x.cat==="Fund flows").length,nM=S.meta.length-nT-nF-nP;
-  $("#view").innerHTML=scanViewSeg()+`<div class="sec-head"><div><h2>Scanner library</h2><p>${S.meta.length} scanners in ${S.cats.length} colour-coded groups run on every stock after the close: ${nT} technical, ${nF} from NSE filings${nP?`, ${nP} from mutual-fund portfolios`:""}${nM?` and ${nM} from the long-base, Stage 2 and results models`:""}. Each one opens with its exact rules. Tap any stock for its detail card, including every other scan it appears in.</p></div></div>
+  const nL=S.meta.filter(x=>x.cat==="Ready-made lists").length,nT=S.meta.filter(x=>TECH_CATS.includes(x.cat)).length,nF=S.meta.filter(x=>FCATS.includes(x.cat)).length,nP=S.meta.filter(x=>x.cat==="Fund flows").length,nM=S.meta.length-nT-nF-nP-nL;
+  $("#view").innerHTML=scanViewSeg()+`<div class="sec-head"><div><h2>Scanner library</h2><p>${S.meta.length} scanners in ${S.cats.length} colour-coded groups run on every stock after the close: ${nL?`${nL} ready-made lists, `:""}${nT} technical, ${nF} from NSE filings${nP?`, ${nP} from mutual-fund portfolios`:""}${nM?` and ${nM} from the long-base, Stage 2 and results models`:""}. Each one opens with its exact rules. Tap any stock for its detail card, including every other scan it appears in.</p></div></div>
   <div class="scan-layout"><aside class="card rail-wrap" id="scanWrap"><div class="rail-search"><input class="search" type="search" id="scanQ" placeholder="Find a scanner: EMA, volume…" value="${esc(st.scanQ)}" aria-label="Find a scanner" autocomplete="off"><span id="scanQn" class="note"></span></div>
     <div class="scan-pick">${pick}</div><nav class="rail" id="scanRail" aria-label="Scanners"></nav></aside>
   <section class="card scan-main" style="--g:${g}"><div class="scan-head"><div class="sh-top"><span class="gchip">${bead(m.cat)}${esc(m.cat)}</span><span class="sh-cnt num" title="${andIds.length?"Stocks in all the combined scanners today":"Stocks in this scan today"}">${andIds.length?nAll:hits.length}<small>${andIds.length?`in all ${andIds.length+1}`:hits.length===1?"stock":"stocks"}</small></span></div>
@@ -2666,9 +2803,10 @@ function renderScanners(){
   <div class="sh-ctl"><div class="ctl"><span>Stocks shown</span>${seg("scanTop",["0","5","10"],String(st.scanTop),{"0":"All","5":"Top 5 themes","10":"Top 10 themes"})}</div>
   ${D.meta.fund?`<div class="ctl"><span>Fundamentals</span>${seg("scanFund",["0","60","80"],String(st.scanFund),{"0":"Any","60":"Fund 60+","80":"Fund 80+"})}</div>`:""}
   ${rows.length?`<div class="ctl"><span>&nbsp;</span><button type="button" class="ghost" data-wl-addall="${esc(JSON.stringify(rows.map(r=>r.s)))}" data-label="${esc(andIds.length?[m.name,...andIds.map(id=>D.scanMeta[id].name)].join(" + "):m.name)} stocks">☆ Add all ${rows.length} to a watchlist</button></div>`:""}</div>${topNote?`<p class="note" style="margin:8px 0 0">${esc(topNote)}</p>`:""}</div>
-  <div id="scanT">${dtable(tid,rows,cols,{empty:andIds.length?"No stock is in all of these scanners today. Remove one to widen it.":"No stocks triggered this scan today."})}</div></section></div>`;
+  <div class="cgbar">${cgCtl("scan")}</div>
+  <div id="scanT">${cgOn("scan")?cgHtml("scan",tSorted(tid,rows,cols).map(r=>r.s)):dtable(tid,rows,cols,{empty:andIds.length?"No stock is in all of these scanners today. Remove one to widen it.":"No stocks triggered this scan today."})}</div></section></div>`;
   drawRail();
-  wireTables($("#scanT"),renderScanners);
+  if(cgOn("scan"))cgWire($("#scanT"),tSorted(tid,rows,cols).map(r=>r.s),m.name);else{cgClear();wireTables($("#scanT"),renderScanners)}
   $("#scanSel").addEventListener("change",e=>{st.scan=e.target.value;store.set("scan2",st.scan);renderScanners()});
   $("#scanAndSel").addEventListener("change",e=>{if(e.target.value){st.scanAnd=[...andIds,e.target.value];store.set("scanAnd",st.scanAnd);renderScanners()}});
   $("#view").querySelectorAll("[data-scan-and-rm]").forEach(b=>b.addEventListener("click",()=>{st.scanAnd=andIds.filter(id=>id!==b.dataset.scanAndRm);store.set("scanAnd",st.scanAnd);renderScanners()}));
@@ -2680,6 +2818,34 @@ function renderScanners(){
   $("#scanRail [aria-current=true]")?.scrollIntoView({block:"nearest"});
 }
 
+/* ── Chart grid (update 20): any list as small daily charts, 2–4 per row; a chart draws when it scrolls into view ── */
+const CG={charts:[],io:null,lim:{}};
+const cgOn=ctx=>store.get("cg_"+ctx,false);
+const cgCols=()=>Math.max(2,Math.min(4,+store.get("cgcols",3)||3));
+function cgCtl(ctx){const on=cgOn(ctx);return `<span class="cgctl"><span class="swseg sm cgseg" role="group" aria-label="List or charts">${[["list","List"],["charts","Charts"]].map(([k,l])=>`<button type="button" data-cgv="${ctx}|${k}" aria-pressed="${(k==="charts")===on}">${l}</button>`).join("")}</span>${on?`<span class="swseg sm cgseg" role="group" aria-label="Charts per row">${[2,3,4].map(n=>`<button type="button" data-cgn="${n}" aria-pressed="${cgCols()===n}">${n}</button>`).join("")}</span>`:""}</span>`}
+function cgHtml(ctx,syms){const lim=CG.lim[ctx]||24,n=Math.min(syms.length,lim);if(!syms.length)return `<div class="empty">No stocks to chart.</div>`;
+  return `<div class="cgrid" style="--cgc:${cgCols()}">${syms.slice(0,n).map(s=>{const x=D.by[s]||{},c=x.r?.["1D"];return `<div class="cg card" data-cg="${esc(s)}"><div class="cgh"><button type="button" class="cgs" data-cgopen="${esc(s)}" title="Open the full chart">${esc(s)}</button><span class="cgn">${esc((x.n||"").slice(0,30))}</span><span class="num ${cls(c)}">${isNum(c)?sgn(c,2):""}</span>${isNum(x.rs)?rsPillX(x):""}${wlStar(s)}</div><div class="cgc" data-cgopen="${esc(s)}"></div></div>`}).join("")}</div>
+    ${syms.length>n?`<div class="cgfoot"><button type="button" class="ghost" data-cgmore="${ctx}">Show ${Math.min(24,syms.length-n)} more of ${syms.length-n}</button></div>`:""}`}
+function cgWire(root,syms,src){cgClear();if(!root)return;const io=new IntersectionObserver(es=>{for(const e of es)if(e.isIntersecting){io.unobserve(e.target);cgDraw(e.target)}},{rootMargin:"400px"});CG.io=io;
+  root.querySelectorAll(".cg").forEach(c=>io.observe(c));
+  root.querySelectorAll("[data-cgopen]").forEach(b=>b.addEventListener("click",()=>openStockChart(b.dataset.cgopen,{syms,rows:{},src})))}
+function cgClear(){CG.io?.disconnect();CG.io=null;for(const c of CG.charts){try{c.remove()}catch(e){}}CG.charts=[]}
+async function cgDraw(cell){const s=cell.dataset.cg,box=cell.querySelector(".cgc");
+  try{const [C,F,L]=await Promise.all([scComLoad(),scFileLoad(s),lwcLoad()]);if(!document.contains(box))return;
+    const rows=scRows(C,F,"D");if(rows.length<5){box.innerHTML=`<div class="empty">Not enough history.</div>`;return}
+    const P=gpal(),N=rows.length,k=Math.max(0,N-130),cl=rows.map(q=>q.c),ec=emaCol(P);
+    const ch=L.createChart(box,{autoSize:true,layout:{background:{type:"solid",color:P.card},textColor:P.muted,fontSize:11,fontFamily:"Inter, system-ui, sans-serif",attributionLogo:false},
+      grid:{vertLines:{visible:false},horzLines:{color:rgba(P.muted.startsWith("#")?P.muted:"#64748b",.12)}},rightPriceScale:{borderVisible:false,scaleMargins:{top:.08,bottom:.24}},
+      timeScale:{borderVisible:false,rightOffset:2,fixLeftEdge:true,fixRightEdge:true},handleScroll:false,handleScale:false,crosshair:{mode:0,vertLine:{visible:false},horzLine:{visible:false}}});
+    const vs=ch.addSeries(L.HistogramSeries,{priceScaleId:"v",priceFormat:{type:"volume"},lastValueVisible:false,priceLineVisible:false});
+    ch.priceScale("v").applyOptions({scaleMargins:{top:.8,bottom:0}});
+    vs.setData(rows.slice(k).map(q=>({time:q.t,value:q.v||0,color:rgba(q.c>=q.o?P.up:P.down,.35)})));
+    for(const n of [21,50]){const e=emaRun(cl,n,F.sd?.[n]).slice(k),ls=ch.addSeries(L.LineSeries,{color:ec[n],lineWidth:1.5,priceLineVisible:false,lastValueVisible:false,crosshairMarkerVisible:false});
+      ls.setData(rows.slice(k).map((q,i)=>isNum(e[i])?{time:q.t,value:e[i]}:{time:q.t}))}
+    const cs=ch.addSeries(L.CandlestickSeries,{upColor:P.up,downColor:P.down,borderVisible:false,wickUpColor:P.up,wickDownColor:P.down,priceLineVisible:false});
+    cs.setData(rows.slice(k).map(q=>({time:q.t,open:q.o,high:q.h,low:q.l,close:q.c})));
+    ch.timeScale().fitContent();CG.charts.push(ch)}
+  catch(e){if(document.contains(box))box.innerHTML=`<div class="empty">Chart not available.</div>`}}
 /* ════════════════════ LONG BASES ════════════════════
    bases.json (scripts/bases.py): one row per stock = its longest daily base.
    len = trading days in the base, piv = pivot (highest close inside it), fl = lowest close,
@@ -2994,7 +3160,7 @@ function pmodalEl(){let m=$("#pmodal");if(m)return m;
 async function openPatChart(sym,id){
   const m=pmodalEl(),wasOpen=!m.hidden;m.dataset.s=sym;m.dataset.id=id;
   await patLoad();const x=D.by[sym]||{},e=pdef(id);
-  m.innerHTML=`<header class="ghead"><div><div class="gkind">${esc(e.name)}</div><h2 id="pTitle">${esc(sym)}<span class="pco">${esc(x.n||"")}</span></h2></div><div class="ghacts">${gfBtn()}<button class="close" type="button" data-pclose aria-label="Close chart"><b aria-hidden="true">✕</b> Close</button></div></header><div class="gbody"><div class="empty" style="padding:40px">Loading chart…</div></div>`;
+  m.innerHTML=`<header class="ghead"><div><div class="gkind">${esc(e.name)}</div><h2 id="pTitle">${esc(sym)}<span class="pco">${esc(x.n||"")}</span></h2></div><div class="ghacts">${wlStar(sym).replace('class="wlbtn','class="wlbtn ghstar')}${gfBtn()}<button class="close" type="button" data-pclose aria-label="Close chart"><b aria-hidden="true">✕</b> Close</button></div></header><div class="gbody"><div class="empty" style="padding:40px">Loading chart…</div></div>`;
   m.hidden=false;$("#pscrim").hidden=false;document.body.style.overflow="hidden";
   if(!wasOpen&&!history.state?.pchart)history.pushState({...(history.state||{}),pchart:1},"",location.href);
   try{if(!PAT)throw new Error("Pattern data isn't there yet.");await lwcLoad();
@@ -3028,7 +3194,7 @@ function drawPatChart(r,F){const m=$("#pmodal"),x=D.by[r.s]||{},e=pdef(r.id),sel
   const mv=r.st==="fm"?(sell?-r.gap:r.gap):r.since;
   m.querySelector(".gbody").innerHTML=`
    <div class="pstat">${ptier(r.id)}${pstatus(r)}</div>
-   <dl class="gstats">${kv(pLevelLab(r),"₹"+inr(lv))}${kv("Last close","₹"+inr(x.px))}${kv(r.st==="fm"?"Move needed":"Close vs level",sgn(mv,1),cls(sell?-mv:mv))}${kv(sell?"Right shoulder high":"Stop · pattern low","₹"+inr(r.stop))}${sell?kv("From 52-week high",sgn(x.h52,1)):kv(r.st==="fm"?"Stop vs the level":"Stop vs last close",sgn(risk,1))}${kv(sell?"Bulkowski target":"Target",isNum(r.tgt)?"₹"+inr(r.tgt):r.id==="vcp"?"None (trail)":"–")}${kv("Height · length",`${r.ht.toFixed(0)}% · ${Math.max(1,Math.round(r.wk))} wk`)}${kv("RS rating",rsPill(x.rs))}</dl>
+   <dl class="gstats">${kv(pLevelLab(r),"₹"+inr(lv))}${kv("Last close","₹"+inr(x.px))}${kv(r.st==="fm"?"Move needed":"Close vs level",sgn(mv,1),cls(sell?-mv:mv))}${kv(sell?"Right shoulder high":"Stop · pattern low","₹"+inr(r.stop))}${sell?kv("From 52-week high",sgn(x.h52,1)):kv(r.st==="fm"?"Stop vs the level":"Stop vs last close",sgn(risk,1))}${kv(sell?"Bulkowski target":"Target",isNum(r.tgt)?"₹"+inr(r.tgt):r.id==="vcp"?"None (trail)":"–")}${kv("Height · length",`${r.ht.toFixed(0)}% · ${Math.max(1,Math.round(r.wk))} wk`)}${kv("RS rating",rsPillX(x))}</dl>
    ${r.id==="vcp"&&r.dep?`<p class="gpath">Pullbacks inside the base: ${r.dep.map(v=>v.toFixed(1)+"%").join(" → ")}</p>`:""}
    ${others.length?`<div class="chips" style="margin:0 0 10px"><span style="color:var(--muted);font-weight:600;align-self:center">Also on this stock:</span>${others.map(q=>`<button type="button" class="chipbtn" data-pswitch="${esc(q.id)}">${esc(pdef(q.id).name)}</button>`).join("")}</div>`:""}
    <div class="gread" id="pread" aria-live="off"></div>
@@ -3449,7 +3615,7 @@ function vbModalEl(){let m=$("#vmodal");if(m)return m;
 async function openVbChart(sym){const m=vbModalEl(),wasOpen=!m.hidden,R=VB_LAST,r=R?.by?.[sym];
   if(!R||!r)return;m.dataset.s=sym;
   const x=D.by[sym]||{},T=vbType(r.base_type);
-  m.innerHTML=`<header class="ghead"><div><div class="gkind">VCP scanner · ${R.tf} · ${esc(T.n)}${/Pivot$/.test(r.base_type)?"":" base"}</div><h2 id="vTitle">${esc(sym)} <span class="pco">${esc(x.n||"")}</span></h2></div><div class="ghacts">${gfBtn()}<button class="close" type="button" data-vclose aria-label="Close chart"><b aria-hidden="true">✕</b> Close</button></div></header><div class="gbody"><div class="empty" style="padding:40px">Loading chart…</div></div>`;
+  m.innerHTML=`<header class="ghead"><div><div class="gkind">VCP scanner · ${R.tf} · ${esc(T.n)}${/Pivot$/.test(r.base_type)?"":" base"}</div><h2 id="vTitle">${esc(sym)} <span class="pco">${esc(x.n||"")}</span></h2></div><div class="ghacts">${wlStar(sym).replace('class="wlbtn','class="wlbtn ghstar')}${gfBtn()}<button class="close" type="button" data-vclose aria-label="Close chart"><b aria-hidden="true">✕</b> Close</button></div></header><div class="gbody"><div class="empty" style="padding:40px">Loading chart…</div></div>`;
   m.hidden=false;$("#vscrim").hidden=false;document.body.style.overflow="hidden";
   if(!wasOpen&&!history.state?.vbchart)history.pushState({...(history.state||{}),vbchart:1},"",location.href);
   try{await lwcLoad();if(m.hidden||m.dataset.s!==sym)return;vbDrawChart(r,vbBars(R.X,R.X.by[sym],R.tf),R)}
@@ -4041,7 +4207,7 @@ async function openDrawer(sym,ex,focusWl){
     <div id="patSlot"></div><div id="s2Slot">${hasS2?stage2Section(sym):""}</div><div id="baseSlot"></div>
     ${x.lq===0?`<p class="note" style="margin:0 0 12px">Outside the liquid universe (median turnover under ₹${D.meta.filters?.min_median_turnover_cr??1} Cr a day, price under ₹${D.meta.filters?.min_price??20}${D.meta.filters?.min_market_cap_cr?` or market cap under ₹${D.meta.filters.min_market_cap_cr} Cr`:""}), so it is not in the scanners or the RS ranking. It counts in breadth and sector rotation; its RS rating places it among the liquid stocks.</p>`:""}
     <div class="dsec" id="retsec"><h4>Returns</h4><dl class="dgrid">${per}</dl></div>
-    <div class="dsec" id="trendsec"><h4>Trend and strength</h4><dl class="dgrid">${kv("RS rating",rsPill(x.rs))}${kv("RS a week ago",x.rs1w??"–")}${isNum(x.up)?kv("Upside score",upPill(x.up)):""}${kv("Stage",stagePill(x.st,x.std,x.stdc))}${isNum(x.std)?kv(x.st===2?"Days in Stage 2":`Days in Stage ${x.st}`,stDaysHtml(x,STB?.by?.[sym])):""}${kv("Trend template",x.tt?'<span class="up">Pass</span>':'<span style="color:var(--muted)">No</span>')}
+    <div class="dsec" id="trendsec"><h4>Trend and strength</h4><dl class="dgrid">${kv("RS rating",rsPillX(x))}${kv("RS a week ago",x.rs1w??"–")}${isNum(x.up)?kv("Upside score",upPill(x.up)):""}${kv("Stage",stagePill(x.st,x.std,x.stdc))}${isNum(x.std)?kv(x.st===2?"Days in Stage 2":`Days in Stage ${x.st}`,stDaysHtml(x,STB?.by?.[sym])):""}${kv("Trend template",x.tt?'<span class="up">Pass</span>':'<span style="color:var(--muted)">No</span>')}
       ${kv("Above 20 / 50 / 200",[x.a20,x.a50,x.a200].map(b=>b==null?"–":b?'<span class="up">✓</span>':'<span class="down">✗</span>').join(" "))}${kv("From 52W high",sgn(x.h52,1))}${kv("Above 52W low",sgn(x.l52,1))}${kv("RSI 14",isNum(x.rsi)?x.rsi.toFixed(0):"–")}
       ${kv("ADX 14",isNum(x.adx)?x.adx.toFixed(0):"–")}${kv("ATR % of price",isNum(x.atrp)?x.atrp.toFixed(1)+"%":"–")}${kv("Volume × 50d",isNum(x.vr)?x.vr.toFixed(1):"–")}${kv("Turnover ₹Cr/day",isNum(x.to)?x.to:"–")}
       ${kv("Close range today",isNum(x.dcr)?x.dcr.toFixed(0)+"%":"–")}${kv("ADR % (20d)",isNum(x.adr)?x.adr.toFixed(1)+"%":"–")}${kv("Signal groups today",isNum(x.nsc)?x.nsc.toFixed(0)+" / 7":"–")}</dl></div><div id="rsSlot"></div>`:`<p class="note" style="margin:0">This symbol is outside the main NSE universe (BSE-only, or below the liquidity filter), so only its VPCI read is shown.</p><div id="pchartSlot"></div>${wlCardHtml(sym)}`}
@@ -4373,8 +4539,27 @@ function wlColPicker(){const cur=st.wl.cols||WLCOLS0;
 function renderWatch(){
   $("#view").innerHTML=`<div class="empty">Loading watchlists…</div>`;
   Promise.all([vpxLoad(),clLoad(),D.meta.corp?.n?caLoad():null,D.meta.grp?grpLoad().catch(()=>null):null]).then(()=>{if(st.tab==="watch")drawWatch();updateWlBadge()})}
+/* ── ready-made index lists and the Today card (update 20) ── */
+function wlIxSyms(name){const b=D.meta.broad?.[name];if(b)return b.filter(s=>D.by[s]);const g=D.groups?.["NSE Index"]?.[name];return g?g.filter(s=>D.by[s]):null}
+function wlIxBar(){const br=Object.keys(D.meta.broad||{}),nx=Object.keys(D.groups?.["NSE Index"]||{}).sort();if(!br.length&&!nx.length)return "";const cur=st.wl.ix||"";
+  return `<div class="wlbar wlix" role="group" aria-label="Ready-made lists"><span class="wlk">Ready-made</span>${br.map(n=>`<button type="button" class="wlchip ix" data-wl-ix="${esc(n)}" aria-pressed="${cur===n}">${esc(n.replace("Nifty ","Nifty "))}<span class="c">${(D.meta.broad[n]||[]).filter(s=>D.by[s]).length}</span></button>`).join("")}
+    ${nx.length?`<select class="select sxsel" data-wl-ixsel aria-label="NSE sector and theme indices"><option value="">NSE sector &amp; theme indices…</option>${nx.map(n=>`<option value="${esc(n)}"${cur===n?" selected":""}>${esc(n)}</option>`).join("")}</select>`:""}</div>`}
+function wlToday(syms){const X=syms.map(s=>D.by[s]).filter(x=>x&&isNum(x.r?.["1D"]));if(!X.length)return "";
+  const up=X.filter(x=>x.r["1D"]>0),dn=X.filter(x=>x.r["1D"]<0),avg=X.reduce((a,x)=>a+x.r["1D"],0)/X.length,srt=[...X].sort((a,b)=>b.r["1D"]-a.r["1D"]);
+  const hi=X.filter(x=>isNum(x.h52)&&x.h52>=-1),v2=X.filter(x=>isNum(x.vr)&&x.vr>=2),asof=new Date(D.meta.asof+"T00:00:00");
+  const res=X.filter(x=>{if(!x.next_results)return false;const d=Math.round((new Date(x.next_results+"T00:00:00")-asof)/864e5);return d>=0&&d<=7});
+  const names=a=>a.slice(0,4).map(x=>`<button type="button" class="symbtn" data-sym="${esc(x.s)}">${esc(x.s)}</button>`).join(" ")+(a.length>4?` <span class="nm">+${a.length-4}</span>`:"");
+  const mv=a=>a.map(x=>`<button type="button" class="symbtn" data-sym="${esc(x.s)}">${esc(x.s)}</button> <span class="num ${cls(x.r["1D"])}">${sgn(x.r["1D"],1)}</span>`).join("<br>");
+  return `<div class="card wltoday"><h3>Today in this list <small>${fmtDate(D.meta.asof)}</small></h3><div class="wltg">
+    <div><div class="k">Up / down</div><div class="v num"><span class="up">${up.length}</span> <span class="nm">/</span> <span class="down">${dn.length}</span></div><div class="capbar"><i class="u" style="width:${up.length/X.length*100}%"></i><i class="d" style="width:${dn.length/X.length*100}%"></i></div><div class="d">average <span class="num ${cls(avg)}">${sgn(avg,2)}</span></div></div>
+    <div><div class="k">Top gainers</div><div class="d">${mv(srt.slice(0,3).filter(x=>x.r["1D"]>0))||"–"}</div></div>
+    <div><div class="k">Top losers</div><div class="d">${mv(srt.slice(-3).reverse().filter(x=>x.r["1D"]<0))||"–"}</div></div>
+    <div><div class="k">Within 1% of the 52-week high</div><div class="v num">${hi.length}</div><div class="d">${names(hi)}</div></div>
+    <div><div class="k">Volume 2× average or more</div><div class="v num">${v2.length}</div><div class="d">${names(v2)}</div></div>
+    <div><div class="k">Results in the next 7 days</div><div class="v num">${res.length}</div><div class="d">${names(res)}</div></div></div></div>`}
 function drawWatch(){
-  const w=wlGet(),L=wlList(w.active),sync=syncCfg.get();
+  const w=wlGet(),IXS=st.wl.ix?wlIxSyms(st.wl.ix):null;if(st.wl.ix&&!IXS)st.wl.ix="";
+  const L=IXS?{id:"ix",name:st.wl.ix,items:IXS.map(s=>({s,d:D.meta.asof,p:pxOf(s),b:benchPx()})),ro:1}:wlList(w.active),sync=syncCfg.get();
   const flags=FLAGS.filter(([k])=>L.items.some(i=>w.meta[i.s]?.flag===k));
   let items=L.items;if(st.wl.flag)items=items.filter(i=>w.meta[i.s]?.flag===st.wl.flag);
   const rows=items.map(it=>{const x=D.by[it.s]||{s:it.s,n:nameOf(it.s),r:{}},m=w.meta[it.s]||{},o=itemStats(it);
@@ -4382,15 +4567,16 @@ function drawWatch(){
       scansN:(D.scansOf[it.s]||[]).length,vp:VPX?.[it.s]?.status||""}});
   const vals=k=>rows.map(r=>r[k]).filter(isNum),avg=a=>a.length?a.reduce((x,y)=>x+y,0)/a.length:null;
   const sinceA=vals("since"),alphaA=vals("alpha"),best=[...rows].filter(r=>isNum(r.since)).sort((a,b)=>b.since-a.since);
-  const alerts=wlAlerts(L.items.map(i=>i.s));
+  const alerts=L.ro?[]:wlAlerts(L.items.map(i=>i.s));
   const tile=(k,v,sub)=>`<div class="card tile"><div class="k">${k}</div><div class="v num">${v}</div><div class="d" style="color:var(--muted)">${sub}</div></div>`;
   let h=`<div class="sec-head"><div><h2>Watchlists</h2><p>Track ideas from first spot to buy point. Return since added uses the close on the day you added the stock; ★ next to any stock name anywhere on the site adds it. ${sync?`Synced across your devices${sync.err?` <span class="down">— last sync failed</span>`:""}.`:"Saved in this browser."}</p></div></div>
   <div class="card toolbar" style="display:block">
-    <div class="wlbar" role="group" aria-label="Your lists">${w.lists.map(l=>`<button type="button" class="wlchip" data-wl-list="${l.id}" aria-pressed="${l.id===w.active}">${esc(l.name)}<span class="c">${l.items.length}</span></button>`).join("")}
+    <div class="wlbar" role="group" aria-label="Your lists">${w.lists.map(l=>`<button type="button" class="wlchip" data-wl-list="${l.id}" aria-pressed="${l.id===w.active&&!L.ro}">${esc(l.name)}<span class="c">${l.items.length}</span></button>`).join("")}
       <button type="button" class="wlchip add" data-wl-act="new">+ New list</button></div>
-    <div class="wltools"><button type="button" class="ghost" data-wl-act="rename">Rename</button><button type="button" class="ghost" data-wl-act="dup">Duplicate</button><button type="button" class="ghost" data-wl-act="del">Delete list</button>
+    ${wlIxBar()}
+    ${L.ro?`<div class="wltools"><span class="nm" style="font-size:15px">“${esc(L.name)}” — NSE's list of members today (${L.items.length} stocks). Read-only.</span><span style="flex:1"></span><button type="button" class="ghost" data-wl-ixcopy>Copy into a new watchlist</button></div>`:`<div class="wltools"><button type="button" class="ghost" data-wl-act="rename">Rename</button><button type="button" class="ghost" data-wl-act="dup">Duplicate</button><button type="button" class="ghost" data-wl-act="del">Delete list</button>
       <span style="flex:1"></span><button type="button" class="ghost" data-wl-act="import">Import</button><button type="button" class="ghost" data-wl-act="tv">TradingView .txt</button>
-      <button type="button" class="ghost" data-wl-act="share">Share link</button><button type="button" class="ghost" data-wl-act="backup">Backup</button><button type="button" class="ghost" data-wl-act="sync">${sync?"Sync: on":"Sync devices"}</button></div>
+      <button type="button" class="ghost" data-wl-act="share">Share link</button><button type="button" class="ghost" data-wl-act="backup">Backup</button><button type="button" class="ghost" data-wl-act="sync">${sync?"Sync: on":"Sync devices"}</button></div>`}
   </div>`;
   if(!L.items.length){
     h+=`<div class="card" style="padding:22px 20px"><h3 style="font-size:22px;margin-bottom:8px">“${esc(L.name)}” is empty</h3><p style="margin:0 0 10px;color:var(--muted)">Ways to add stocks:</p>
@@ -4399,7 +4585,8 @@ function drawWatch(){
       ${w.lists.length===1?`<div class="chips" style="margin-top:14px">${["Focus list","Breakout watch","Long-term holdings","Results watch"].map(n=>`<button type="button" class="chipbtn" data-wl-quick="${n}">+ ${n}</button>`).join("")}</div>`:""}</div>`;
     h+=historyHtml();
     $("#view").innerHTML=h;wireTables($("#view"),drawWatch);return}
-  h+=`<div class="tiles">${tile("Stocks in this list",L.items.length,`${rows.filter(r=>isNum(r.piv)).length} with a pivot set`)}
+  h+=wlToday(L.items.map(i=>i.s));
+  if(!L.ro)h+=`<div class="tiles">${tile("Stocks in this list",L.items.length,`${rows.filter(r=>isNum(r.piv)).length} with a pivot set`)}
     ${tile("Average since added",`<span class="${cls(avg(sinceA))}">${sgn(avg(sinceA),1)}</span>`,`vs ${esc(benchName())}: <span class="${cls(avg(alphaA))}">${sgn(avg(alphaA),1," pts")}</span>`)}
     ${tile("Up / down since added",`<span class="up">${sinceA.filter(v=>v>0).length}</span> <span style="color:var(--muted);font-weight:500">/</span> <span class="down">${sinceA.filter(v=>v<0).length}</span>`,`${alphaA.filter(v=>v>0).length} beating ${esc(benchName())}`)}
     ${tile("Best since added",best[0]?`${esc(best[0].s)} <span class="up" style="font-size:.7em">${sgn(best[0].since,1)}</span>`:"–",best.length>1?`Worst: ${esc(best[best.length-1].s)} ${sgn(best[best.length-1].since,1)}`:"")}
@@ -4441,19 +4628,21 @@ function drawWatch(){
     perf:[stockW,col.spark,C.px,C.ret("1D"),C.ret("1W"),C.ret("1M"),C.ret("3M"),C.ret("6M"),C.ret("1Y"),C.h52,col.up,C.rs,C.drs,col.rsd4,C.st,col.d50,col.atr,C.vr,C.adr,C.dp20,col.vp,col.act],
     fund:[stockW,C.px,C.mc,C.fr,col.rq,C.pe,C.patg,C.revg,C.roe,col.prom,col.inst,C.mfn,col.res,C.sec,col.act]};
   views.custom=[stockW,C.px,...(st.wl.cols||WLCOLS0).filter(id=>SXB[id]).map(id=>sxCol(SXB[id])),col.act];
+  if(L.ro){for(const k in views)views[k]=views[k].filter(c=>c&&c.k!=="_a"&&!["d","since","alpha","days","maxg","maxdd"].includes(c.k));if(st.wl.view==="track")st.wl.view="perf"}
   if(!views[st.wl.view])st.wl.view="track";
   const tid="wl_"+L.id+"_"+st.wl.view;if(!st.tbl[tid])st.tbl[tid]={key:{track:"since",decide:"_chk",rot:"_irot",eye:"_eye",custom:null}[st.wl.view]??"rs",dir:-1,show:200};
   h+=`<div class="card"><div style="display:flex;flex-wrap:wrap;gap:12px 22px;padding:12px 14px;align-items:flex-end"><div class="ctl"><span>Columns</span>${seg("wlview",["eye","decide","track","perf","rot","fund","custom"],st.wl.view,{eye:"PKC Eye",decide:"Add or trim",track:"Tracking",perf:"Performance",rot:"Rotation",fund:"Fundamentals",custom:"My columns"})}</div>
     ${flags.length?`<div class="ctl"><span>Flag</span><div class="chips"><button type="button" class="chipbtn" data-wl-flag="" aria-pressed="${!st.wl.flag}">All</button>${flags.map(([k,n])=>`<button type="button" class="chipbtn" data-wl-flag="${k}" aria-pressed="${st.wl.flag===k}"><span class="fdot ${k}"></span>${n}</button>`).join("")}</div></div>`:""}</div>
     ${st.wl.view==="custom"?wlColPicker():""}
-    <div id="wlT">${dtable(tid,rows,views[st.wl.view],{empty:"No stocks with this flag."})}</div></div>
+    <div class="cgbar">${cgCtl("wl")}</div>
+    <div id="wlT">${cgOn("wl")?cgHtml("wl",tSorted(tid,rows,views[st.wl.view]).map(r=>r.s)):dtable(tid,rows,views[st.wl.view],{empty:"No stocks with this flag."})}</div></div>
     ${st.wl.view==="decide"?`<p class="note"><b>Checks</b> (hover for the list): Upside 80+, RS 70+, Stage 2, above the 50-day, industry RS 60+, VPCI 6+ gates or in a VPCI position. <b>Trim flags</b> are the exits and weak spots from the tests: a close below the 50-day (the Upside plan's exit), Upside under 50 (fresh VPCI signals with Upside under 50 made 3.4% a year against 18.1% for Upside 80+), Stage 3 or 4, RS down 15+ points in 4 weeks, the price within 5% of or below the VPCI trailing stop, a weak industry (RS under 40) or a strong industry losing 10+ RS points in 4 weeks (these lagged in testing), and results due within 7 days.</p>`:""}
     ${st.wl.view==="eye"?`<p class="note"><b>PKC Eye</b> runs every stock in this list through the same yes/no checks as the card in its stock window — trend, strength, setup, money and the business — and counts the ones with a clear answer. <b>Against it</b> lists every failed check; hover a tag for the detail, tap the score for the full card. A summary to decide what needs a look, not a tested score.</p>`:""}
     ${st.wl.view==="rot"?`<p class="note">Industry and sector strength use the group RS rating (3–12 months, as on the Rotation tab): Strong = 70+, Middle = 40–69, Weak = under 40, and Strong but fading = rated 70+ but down 10+ points in 4 weeks. In 2007–26 NSE tests, stocks in strong groups beat the average stock over the next 3 months, weak groups lagged, and strong-but-fading groups lagged too. Smaller moves (grey arrows) carried no signal.</p>`:""}
     <p class="note">Buy zone = pivot to 5% above it (IBD). Above that is extended — chasing raises risk. “Best since” and “Worst dip” use daily closes since the day added. Rows sort by any column; ✎ sets pivot, stop, target, flag and note.</p>`;
   h+=alertsH;
-  h+=historyHtml();
-  $("#view").innerHTML=h;wireTables($("#view"),drawWatch);
+  if(!L.ro)h+=historyHtml();
+  $("#view").innerHTML=h;wireTables($("#view"),drawWatch);$("[data-wl-ixsel]")?.addEventListener("change",e=>{st.wl.ix=e.target.value;st.wl.flag="";drawWatch()});if(cgOn("wl"))cgWire($("#wlT"),tSorted(tid,rows,views[st.wl.view]).map(r=>r.s),L.name);else cgClear();
   $("[data-wlgo]")?.addEventListener("click",()=>$("#wlAlerts")?.scrollIntoView({behavior:"smooth",block:"start"}));
   const setCols=c=>{st.wl.cols=c;store.set("wlcols",c);drawWatch()};
   $("#wlcoladd")?.addEventListener("change",e=>{if(e.target.value)setCols([...(st.wl.cols||WLCOLS0),e.target.value])});
@@ -4825,7 +5014,7 @@ async function scFileLoad(s){if(SCF[s])return SCF[s];let r=null;try{r=await fetc
    ↑ ↓ to move through it), the chart in the middle with daily / weekly / monthly bars, indicators, the site's levels and
    the drawing tools, and a data panel on the right (the row of the table it came from, ratings, key numbers and
    fundamentals). Type any symbol while the chart is open to jump to it. */
-const SW={list:[],rows:{},src:"",sym:null,tok:0,hist:store.get("swHist",[]),open:false};
+const SW={list:[],rows:{},src:"",sym:null,tok:0,hist:store.get("swHist",[]),open:false,grp:null};
 const swOpen=()=>SW.open&&$("#smodal")&&!$("#smodal").hidden;
 const SW_R={D:[["1M",21],["3M",63],["6M",126],["YTD","ytd"],["1Y",252],["2Y",504]],W:[["6M",26],["1Y",52],["2Y",104],["3Y",156],["5Y",260],["All",1e9]],M:[["2Y",24],["5Y",60],["All",1e9]]};
 const SW_IND=[["ema21","EMA 21","Moving averages"],["ema50","EMA 50","Moving averages"],["ema200","EMA 200","Moving averages"],["sma50","SMA 50","Moving averages"],["sma150","SMA 150","Moving averages"],["sma200","SMA 200","Moving averages"],
@@ -4862,17 +5051,19 @@ const SW_ICO={full:`<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 8V3h
 async function openStockChart(sym,cap){
   const sv=store.get("schart",{});Object.assign(SST,sv,{lv:{...SST.lv,...(sv.lv||{})},ind:{...SST.ind,...(sv.ind||{})},rng:{...SST.rng,...(sv.rng||{})}});
   const m=smodalEl(),wasOpen=!m.hidden;
-  if(cap){SW.list=cap.syms;SW.rows=cap.rows;SW.src=cap.src}
-  else if(!wasOpen&&!SW.list.includes(sym)){SW.list=[];SW.rows={};SW.src=""}
+  if(cap){SW.list=cap.syms;SW.rows=cap.rows;SW.src=cap.src;SW.grp=cap.grp||null}
+  else if(!wasOpen&&!SW.list.includes(sym)){SW.list=[];SW.rows={};SW.src="";SW.grp=null}
+  else if(!wasOpen)SW.grp=null;
   if(!wasOpen){swShell(m);m.hidden=false;$("#scscrim").hidden=false;document.body.style.overflow="hidden";SW.open=true;
     if(!history.state?.schart)history.pushState({...(history.state||{}),schart:1},"",location.href)}
   swGo(sym)}
 function swShell(m){const phone=matchMedia("(max-width:760px)").matches;
+  m.classList.toggle("hasgrp",!!SW.grp&&!phone);
   m.classList.toggle("nolist",phone||SST.list===false);m.classList.toggle("nopanel",phone||SST.panel===false);m.classList.toggle("nodraw",SST.draw===false||(phone&&SST.drawPh!==true));swTogState();
   m.innerHTML=`<div class="sw-top">
     <button type="button" class="swib" data-swt="list" title="Stock list (L)" aria-label="Show or hide the stock list">${SW_ICO.list}</button>
     <div class="swsym"><span class="swsico">${SW_ICO.search}</span><input id="swq" type="text" autocomplete="off" spellcheck="false" aria-label="Type a symbol or company name" placeholder="Symbol"><div class="swres" id="swres" hidden role="listbox"></div></div>
-    <div class="swname" id="swname"></div>
+    <div class="swname" id="swname"></div><span id="swstar"></span>
     <div class="swseg" role="group" aria-label="Bars">${["D","W","M"].map(k=>`<button type="button" data-swint="${k}" aria-pressed="${SST.int===k}" title="${{D:"Daily",W:"Weekly",M:"Monthly"}[k]} bars">${k}</button>`).join("")}</div>
     <details class="swmenu" id="swind"><summary class="swib wide">${SW_ICO.ind}<span>Indicators</span></summary><div class="swdrop" id="swinddrop"></div></details>
     <details class="swmenu" id="swlv"><summary class="swib wide"><span>Levels</span></summary><div class="swdrop" id="swlvdrop"></div></details>
@@ -4884,6 +5075,7 @@ function swShell(m){const phone=matchMedia("(max-width:760px)").matches;
     <button type="button" class="swib wide" data-swt="full" title="Full chart: hide the list and the data panel (press again to bring them back)" aria-label="Full chart">${SW_ICO.full}<span>Full chart</span></button>
     <button type="button" class="swib wide" data-swt="panel" title="Show or hide the data panel" aria-label="Show or hide the data panel">${SW_ICO.panel}<span>Data</span></button>
     <button type="button" class="swib swx" data-sclose title="Close (Esc)" aria-label="Close the chart">✕</button></div>
+  ${SW.grp&&!phone?`<aside class="sw-grp" id="swgrp" aria-label="Groups"></aside>`:""}
   <aside class="sw-list" id="swlist" aria-label="Stocks"></aside>
   <div class="sw-main"><div class="sw-plot" id="swplot"><div class="gchart" id="schartbox"><div class="swleg" id="swleg"></div></div></div>
     <div class="sw-bot"><div class="swseg sm" id="swrng" role="group" aria-label="Range"></div><span class="swasof" id="swasof"></span><button type="button" class="sw-reopen" id="swreopen" data-swt="panel" title="Show the data panel again" hidden>Show data panel ›</button></div></div>
@@ -4895,7 +5087,8 @@ async function swGo(sym){const m=$("#smodal");if(!m)return;const tok=++SW.tok;SW
   SW.hist=[sym,...SW.hist.filter(s=>s!==sym)].slice(0,30);store.set("swHist",SW.hist);
   const x=D.by[sym]||{};const q=$("#swq");if(q&&document.activeElement!==q)q.value=sym;
   $("#swname").innerHTML=`<b>${esc(x.n||sym)}</b>${x.ind?`<span>${esc(x.ind)}</span>`:""}`;$("#swtv").href=tv(sym);
-  swList();swPanel(sym);
+  const ws=$("#swstar");if(ws)ws.outerHTML=wlStar(sym).replace('class="wlbtn','id="swstar" class="wlbtn swstar');
+  swList();swGrp();swPanel(sym);
   const box=$("#schartbox");if(!SCH&&box)box.insertAdjacentHTML("beforeend",`<div class="swload">Loading ${esc(sym)}…</div>`);
   try{const [C,F]=await Promise.all([scComLoad(),scFileLoad(sym),lwcLoad()]);const ov=await scOverlays(sym);if(tok!==SW.tok||!swOpen())return;
     SCX={sym,C,F,ov};sRender();box?.querySelector(".swload")?.remove();swPanel(sym,F,C);
@@ -4903,10 +5096,16 @@ async function swGo(sym){const m=$("#smodal");if(!m)return;const tok=++SW.tok;SW
   catch(e){if(tok!==SW.tok)return;if(SCH){SCH.ro?.disconnect();SCH.dk?.destroy();SCH.chart.remove();SCH=null}
     if(box)box.innerHTML=`<div class="swleg" id="swleg"></div><div class="empty" style="padding:40px">${esc(e.message||String(e))}</div>`}}
 function swList(){const el=$("#swlist");if(!el)return;const own=SW.list.length>1,L=own?SW.list:SW.hist;
-  const row=s=>{const x=D.by[s]||{},c=x.r?.["1D"];return `<button type="button" class="swi${s===SW.sym?" on":""}" data-swgo="${esc(s)}"${s===SW.sym?' aria-current="true"':""}><span class="swis">${esc(s)}</span><span class="num ${cls(c)}">${isNum(c)?sgn(c,2):""}</span><span class="swin">${esc((x.n||"").slice(0,26))}</span><span class="num swip">${isNum(x.px)?inr(x.px):""}</span></button>`};
+  const pk=SW.grp?SW.grp.per:"1D";
+  const row=s=>{const x=D.by[s]||{},c=x.r?.[pk];return `<button type="button" class="swi${s===SW.sym?" on":""}" data-swgo="${esc(s)}"${s===SW.sym?' aria-current="true"':""}><span class="swis">${esc(s)}</span><span class="num ${cls(c)}">${isNum(c)?sgn(c,2):""}</span><span class="swin">${esc((x.n||"").slice(0,26))}</span><span class="num swip">${isNum(x.px)?inr(x.px):""}</span></button>`};
   el.innerHTML=`<div class="swlh"><b>${esc(own?(SW.src||"From the table"):"Recently viewed")}</b><span class="num">${L.length}</span></div><div class="swlb">${L.map(row).join("")||`<p class="note" style="padding:10px 14px">Open a chart from any table to list its stocks here.</p>`}</div>
     <p class="swlk">↑ ↓ move through the list · type to search</p>`;
   el.querySelector(".swi.on")?.scrollIntoView({block:"nearest"})}
+function swGrp(){const el=$("#swgrp"),G=SW.grp;if(!el||!G)return;const P=G.per,pl=P==="1D"?"today":PL[P];
+  el.innerHTML=`<div class="swlh"><b>${esc(G.kind)} · ${esc(pl)}</b><span class="num">${G.rows.length}</span></div><div class="swlb">${G.rows.map((g,i)=>`<button type="button" class="swg${i===G.i?" on":""}" data-swgrp="${i}"${i===G.i?' aria-current="true"':""}><span class="swgn"><i style="--c:${GLC[g.lab]||"var(--muted)"}" title="${esc(g.lab||"")}"></i>${esc(g.name)}</span><span class="num ${cls(g.v)}">${sgn(g.v,1)}</span><span class="swgad"><span class="up">${g.adv} up</span> · <span class="down">${g.dec} down</span></span><span class="nm" style="color:${GLC[g.lab]||"var(--muted)"};font-weight:700">${g.lab||""}</span></button>`).join("")}</div><p class="swlk">← → groups · ↑ ↓ stocks</p>`;
+  el.querySelector(".swg.on")?.scrollIntoView({block:"nearest"})}
+function swGroupGo(i){const G=SW.grp;if(!G)return;i=Math.max(0,Math.min(G.rows.length-1,i));if(i===G.i&&SW.list.length)return;G.i=i;const g=G.rows[i];
+  SW.list=trkStocks(g);SW.rows={};SW.src=`${g.name} · ${G.per==="1D"?"today":PL[G.per]}`;swGrp();if(SW.list[0])swGo(SW.list[0])}
 function swStep(d){const L=SW.list.length>1?SW.list:SW.hist,i=L.indexOf(SW.sym);if(i<0&&!L.length)return;const j=Math.max(0,Math.min(L.length-1,(i<0?0:i+d)));if(L[j]&&L[j]!==SW.sym)swGo(L[j])}
 /* data panel: the table row it came from, ratings, numbers and fundamentals */
 function swPanel(sym,F,C){const el=$("#swpanel");if(!el)return;const x=D.by[sym]||{};const kv=(k,v,c)=>v==null||v===""||v==="–"?"":`<div class="swkv"><dt>${k}</dt><dd class="num ${c||""}">${v}</dd></div>`;
@@ -4916,7 +5115,7 @@ function swPanel(sym,F,C){const el=$("#swpanel");if(!el)return;const x=D.by[sym]
   const sc=(D.scansOf[sym]||[]).map(id=>D.scanMeta[id]).filter(Boolean);
   el.innerHTML=`<div class="swph"><button type="button" class="swpclose" data-swt="panel" title="Hide the data panel (bring it back with ‹ Data or the Data button)" aria-label="Hide the data panel">✕</button><div class="swpx num">${isNum(x.px)?"₹"+inr(x.px):"–"}</div><div class="num ${cls(x.r?.["1D"])}" style="font-weight:700">${isNum(x.r?.["1D"])?sgn(x.r["1D"],2)+" today":""}</div>
       <div class="swmeta">${esc([x.sec,isNum(x.mc)?"Mcap ₹"+Math.round(x.mc).toLocaleString("en-IN")+" Cr":""].filter(Boolean).join(" · "))}</div></div>
-    <div class="swrat">${[["RS",rsPill(x.rs),rsd!=null?`<small class="num ${cls(rsd)}">${rsd>0?"▲":rsd<0?"▼":""}${Math.abs(rsd)} 4w</small>`:""],["Stage",stagePill(x.st,x.std,x.stdc),isNum(x.std)&&x.std>0?`<small class="num">${x.stdc?"≥ ":""}${x.std}d</small>`:""],["Upside",isNum(x.up)?upPill(x.up):"–",""],["Fund",isNum(x.fr)?rsPill(x.fr):"–",""],["Result Q",isNum(x.rq)?scorePill(x.rq):"–",""],
+    <div class="swrat">${[["RS",rsPillX(x),rsd!=null?`<small class="num ${cls(rsd)}">${rsd>0?"▲":rsd<0?"▼":""}${Math.abs(rsd)} 4w</small>`:""],["Stage",stagePill(x.st,x.std,x.stdc),isNum(x.std)&&x.std>0?`<small class="num">${x.stdc?"≥ ":""}${x.std}d</small>`:""],["Upside",isNum(x.up)?upPill(x.up):"–",""],["Fund",isNum(x.fr)?rsPill(x.fr):"–",""],["Result Q",isNum(x.rq)?scorePill(x.rq):"–",""],
       ["PKC Eye",E.n?`<button type="button" class="wlchk ${E.cls} eyebtn" data-swcard="eye"><b>${E.p}</b>/${E.n}</button>`:"–",""]].map(([k,v,s])=>`<div><span>${k}</span>${v}${s}</div>`).join("")}</div>
     ${tbl.length?`<section><h5>${esc(SW.src||"From the table")}</h5><dl>${tbl.map(([k,v])=>`<div class="swkv"><dt>${esc(k)}</dt><dd class="num">${esc(v)}</dd></div>`).join("")}</dl></section>`:""}
     <section><h5>Price and trend</h5><dl>${kv("From 52W high",pc(x.h52),cls(x.h52))}${kv("Above 52W low",pc(x.l52))}${kv("vs 50-day",pc(x.d50),cls(x.d50))}${kv("vs 200-day",pc(x.d200),cls(x.d200))}${kv("1 month",pc(x.r?.["1M"]),cls(x.r?.["1M"]))}${kv("3 months",pc(x.r?.["3M"]),cls(x.r?.["3M"]))}${kv("1 year",pc(x.r?.["1Y"]),cls(x.r?.["1Y"]))}
@@ -4943,6 +5142,7 @@ window.addEventListener("keydown",e=>{if(!swOpen())return;const tg=e.target,tag=
   if(!$("#drawer").hidden||($("#mdl")&&!$("#mdl").hidden))return;
   if(e.ctrlKey||e.metaKey||e.altKey)return;
   if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();e.stopImmediatePropagation();swStep(e.key==="ArrowDown"?1:-1);return}
+  if((e.key==="ArrowLeft"||e.key==="ArrowRight")&&SW.grp&&!e.shiftKey&&$("#swgrp")){e.preventDefault();e.stopImmediatePropagation();swGroupGo(SW.grp.i+(e.key==="ArrowLeft"?-1:1));return}
   if((e.key==="ArrowLeft"||e.key==="ArrowRight")&&SCH){e.preventDefault();const ts=SCH.chart.timeScale(),r=ts.getVisibleLogicalRange();if(r){const d=(e.key==="ArrowLeft"?-1:1)*(e.shiftKey?10:1);ts.setVisibleLogicalRange({from:r.from+d,to:r.to+d})}return}
   if(e.key.length===1&&/[A-Za-z0-9&]/.test(e.key)){const q=$("#swq");if(!q)return;e.preventDefault();e.stopImmediatePropagation();q.value=e.key.toUpperCase();q.focus();q.dispatchEvent(new Event("input",{bubbles:true}))}},true);
 function closeStockChart(fromPop){const m=$("#smodal");if(!m||m.hidden)return;if(SCH){SCH.ro?.disconnect();SCH.dk?.destroy();SCH.chart.remove();SCH=null}
@@ -4950,7 +5150,8 @@ function closeStockChart(fromPop){const m=$("#smodal");if(!m||m.hidden)return;if
   if(!["#drawer","#gmodal","#pmodal","#vmodal"].some(q=>$(q)&&!$(q).hidden))document.body.style.overflow="";
   if(!fromPop&&history.state?.schart){SCH_BACK=true;history.back()}}
 window.addEventListener("popstate",()=>{if(SCH_BACK){SCH_BACK=false;return}if(!history.state?.schart&&$("#smodal")&&!$("#smodal").hidden)closeStockChart(true)});
-window.addEventListener("keydown",e=>{if(e.key==="Escape"&&$("#smodal")&&!$("#smodal").hidden&&(!$("#mdl")||$("#mdl").hidden)&&$("#drawer").hidden){e.stopImmediatePropagation();e.preventDefault();closeStockChart()}},true);
+window.addEventListener("keydown",e=>{if(e.key==="Escape"&&$("#smodal")&&!$("#smodal").hidden&&(!$("#mdl")||$("#mdl").hidden)&&$("#drawer").hidden){e.stopImmediatePropagation();e.preventDefault();
+  if(!$("#wlpop").hidden){wlPopClose();return}closeStockChart()}},true);
 document.addEventListener("click",e=>{const b=e.target.closest("[data-schart]");if(!b)return;e.preventDefault();e.stopPropagation();
   if(b.closest("#drawer")&&swOpen()){closeDrawer();openStockChart(b.dataset.schart);return}openStockChart(b.dataset.schart,b.closest("#smodal,#drawer")?null:swCapture(b))},true);
 /* bars of one stock: daily, weekly or monthly, with dates */
@@ -5080,6 +5281,7 @@ function swTogState(){const m=$("#smodal");if(!m)return;const hl=m.classList.con
   m.querySelectorAll('[data-swt="full"]').forEach(b=>b.setAttribute("aria-pressed",hl&&hp));const r=$("#swreopen");if(r)r.hidden=!hp}
 function sModalClick(e){
   if(e.target.closest("[data-sclose]")){closeStockChart();return}
+  const gg=e.target.closest("[data-swgrp]");if(gg){swGroupGo(+gg.dataset.swgrp);return}
   const go=e.target.closest("[data-swgo]");if(go){$("#swres")&&($("#swres").hidden=true);swGo(go.dataset.swgo);return}
   const cd=e.target.closest("[data-swcard]");if(cd){document.body.classList.add("swcard");openDrawer(SW.sym,null,cd.dataset.swcard==="eye"?"eye":undefined);return}
   const iv=e.target.closest("[data-swint]");if(iv){SST.int=iv.dataset.swint;sSave();sRender();return}
@@ -5424,7 +5626,9 @@ document.addEventListener("click",e=>{
   const ad=e.target.closest("[data-wl-addall]");if(ad){wlPopMany(ad,JSON.parse(ad.dataset.wlAddall),ad.dataset.label||"stocks");return}
   const tg=e.target.closest("[data-wl-toggle]");if(tg){const s=tg.dataset.sym,l=wlList(tg.dataset.wlToggle);if(l.items.some(i=>i.s===s))wlRemove(l.id,s);else wlAdd(l.id,s);wlSave();if(st.tab==="watch")drawWatch();openDrawer(s,null,true);return}
   const nc=e.target.closest("[data-wl-newcard]");if(nc){const s=nc.dataset.wlNewcard;askName("New list","",n=>{const w=wlGet(),id=wlNewId();w.lists.push({id,name:n,items:[]});wlAdd(id,s);wlSave();if(st.tab==="watch")drawWatch();openDrawer(s,null,true);toast(`Created “${n}” with ${s}`)});return}
-  const li=e.target.closest("[data-wl-list]");if(li){wlGet().active=li.dataset.wlList;st.wl.flag="";wlSave(true);drawWatch();return}
+  const li=e.target.closest("[data-wl-list]");if(li){wlGet().active=li.dataset.wlList;st.wl.flag="";st.wl.ix="";wlSave(true);drawWatch();return}
+  const ixb=e.target.closest("[data-wl-ix]");if(ixb){st.wl.ix=st.wl.ix===ixb.dataset.wlIx?"":ixb.dataset.wlIx;st.wl.flag="";drawWatch();return}
+  if(e.target.closest("[data-wl-ixcopy]")&&st.wl.ix){const syms=wlIxSyms(st.wl.ix)||[],w=wlGet(),id=wlNewId();w.lists.push({id,name:st.wl.ix,items:[]});syms.forEach(s=>wlAdd(id,s));w.active=id;st.wl.ix="";wlSave();drawWatch();toast(`Copied ${syms.length} stocks into “${w.lists.find(l=>l.id===id).name}”`);return}
   const fl=e.target.closest("[data-wl-flag]");if(fl){st.wl.flag=fl.dataset.wlFlag;drawWatch();return}
   const qk=e.target.closest("[data-wl-quick]");if(qk){const w=wlGet();w.lists.push({id:wlNewId(),name:qk.dataset.wlQuick,items:[]});wlSave();drawWatch();return}
   const ed=e.target.closest("[data-wl-edit]");if(ed){openDrawer(ed.dataset.wlEdit,null,true);return}
@@ -5532,7 +5736,7 @@ const RCOL={
   since:{k:"since",label:"Since result",fmt:r=>`<span class="num ${cls(r.since)}">${sgn(r.since,1)}</span>`},
   vr:{k:"vr",label:"Result-day vol ×",fmt:r=>`<span class="num">${isNum(r.vr)?r.vr.toFixed(1):"–"}</span>`},
   mc:{k:"mc",label:"Mcap ₹Cr",fmt:r=>`<span class="num">${isNum(r.mc)?Math.round(r.mc).toLocaleString("en-IN"):"–"}</span>`},
-  rs:{k:"rs",label:"RS",fmt:r=>rsPill(r.rs)},
+  rs:{k:"rs",label:"RS",fmt:r=>rsPillX(r)},
   sec:{k:"sec",label:"Sector / industry",l:1,fmt:r=>esc(r.ind||"–"),sort:r=>r.ind||""},
 };
 const RSORT={new:["Newest",r=>r.d+String(r.qs??0).padStart(3,"0")],qs:["Quality",r=>r.qs??-1],pead:["PEAD",r=>(r.pead??-1)*1000+(r.qs??0)],rev_y:["Revenue YoY",r=>r.rev_y??-1e9],np_y:["Profit YoY",r=>r.np_y??-1e9],ear:["Reaction",r=>r.ear??-1e9],mc:["Market cap",r=>r.mc??-1]};
@@ -6102,10 +6306,20 @@ const vpOpen=v=>!!v&&(!!v.in_open_position||/FRESH/.test(v.status||""));   /* a 
 const VPST=[["🔥 FRESH BUY","🔥 Fresh buy"],["🔥 FRESH EXT","🔥 Fresh, extended"],["★ BUYABLE (7/7)","★ Buyable 7/7"],["📌 CONTINUING (7/7)","📌 Continuing 7/7"],["⚡ 7/7 EXTENDED","⚡ 7/7, extended"],["★ RELAXED (6/7)","★ Relaxed 6/7"],["◉ WATCHLIST (6/7)","◉ Watchlist 6/7"],["▲ MOMENTUM (5+)","▲ Momentum 5+"],["Other","Other"]];
 const SXG={size:["Price & size","#1F5FAE"],perf:["Performance","#0E8A6E"],rs:["Relative strength","#15803D"],up:["Upside & rotation","#6D28D9"],trend:["Trend","#0369A1"],
   vol:["Volatility, volume, delivery","#C2410C"],setup:["Bases, stages, patterns","#4338CA"],res:["Results","#A21CAF"],fund:["Fundamentals","#8A5A00"],own:["Ownership & funds","#BE185D"],vp:["VPCI weekly","#4D7C0F"],sig:["Scanners & lists","#0F766E"]};
+/* result grade of the latest quarter (fundamentals.py): sales and profit against the same quarter a year earlier */
+const GRADES=[["BB","Blockbuster","Sales up 20%+ and profit up 30%+","#047857"],["G","Good","Sales up 10%+ and profit up 15%+","#15803D"],["TA","Turnaround","A profit now, a loss in the same quarter last year","#1D4ED8"],
+  ["ST","Steady","Sales and profit both up, below the Good line","#475569"],["MX","Mixed","One of sales and profit up, the other down","#B45309"],["WK","Weak","Sales and profit both down","#C2410C"],["TR","Loss","A loss this quarter","#B91C1C"]];
+const GRADE_BY=Object.fromEntries(GRADES.map(g=>[g[0],g]));
+const gradePill=k=>{const g=GRADE_BY[k];return g?`<span class="glab" style="--c:${g[3]}" title="${esc(g[1]+": "+g[2])}">${g[1]}</span>`:"–"};
+let FNOSET=null,BIXOF=null;
+const fnoHas=s=>{if(!FNOSET)FNOSET=new Set(D.meta.fno||[]);return FNOSET.has(s)};
+const bixOf=s=>{if(!BIXOF){BIXOF={};for(const [k,a] of Object.entries(D.meta.broad||{}))for(const x of a)(BIXOF[x]=BIXOF[x]||[]).push(k)}return BIXOF[s]||[]};
 const SXF=[],SXB={};
 (()=>{const N=(id,label,g,get,o={})=>SXF.push({id,label,g,t:"n",get,dec:1,...o}),B=(id,label,g,get)=>SXF.push({id,label,g,t:"b",get}),E=(id,label,g,get,opts,o={})=>SXF.push({id,label,g,t:"e",get,opts,...o});
   const ge=(l,v)=>[l,v,null],le=(l,v)=>[l,null,v],dd=d=>d?Math.round((new Date(D.meta.asof+"T00:00:00")-new Date(String(d).slice(0,10)+"T00:00:00"))/864e5):null;
   N("px","Price ₹","size",x=>x.px,{dec:2,ps:[le("Under ₹100",100),["₹100–1,000",100,1000],ge("Above ₹1,000",1000)]});
+  E("bix","In NSE index","size",x=>D.meta.broad?bixOf(x.s):null,()=>Object.keys(D.meta.broad||{}).map(k=>[k,k]));
+  B("fno","F&O stock (futures and options on NSE)","size",x=>D.meta.fno?fnoHas(x.s):null);
   N("mc","Market cap ₹Cr","size",x=>x.mc,{dec:0,ps:[le("Micro, under 1,000",1000),["Small, 1,000–5,000",1000,5000],["Mid, 5,000–20,000",5000,20000],ge("Large, 20,000+",20000)]});
   N("to","Turnover ₹Cr a day (50-day median)","size",x=>x.to,{ps:[ge("3+",3),ge("10+",10),ge("50+",50)]});
   for(const p of PERIODS)N("r"+p,`Return, ${PL[p]==="Today"?"today":PL[p]}`,"perf",x=>x.r?.[p],{u:"%",sg:1,ps:[ge("Up",0),ge("+10% or more",10),ge("+25% or more",25),le("Down",0)]});
@@ -6160,6 +6374,7 @@ const SXF=[],SXB={};
   N("bdp","Base depth","setup",x=>x.bdp,{u:"%",ps:[le("15% or less (flat)",15),le("33% or less",33)]});
   N("btc","Times the pivot was tested","setup",x=>x.btc,{dec:0,ps:[ge("3+",3),ge("5+",5)]});
   E("pt","Chart pattern","setup",x=>x.pt||[],()=>[...new Set(D.stocks.flatMap(x=>x.pt||[]))].map(id=>[id,(PAT&&typeof pdef==="function"&&pdef(id)?.name)||id]).sort((a,b)=>a[1].localeCompare(b[1])));
+  E("grade","Result grade (latest quarter)","res",x=>x.grade||null,()=>GRADES.map(g=>[g[0],g[1]+" — "+g[2]]),{pill:gradePill});
   N("rq","Result Quality score","res",x=>x.rq,{dec:0,pill:v=>scorePill(v),ps:[ge("55+ good",55),ge("70+ very good",70),ge("85+ excellent",85)]});
   N("pead","PEAD score (0–9)","res",x=>x.pead,{dec:0,ps:[ge("5+",5),ge("7+",7)]});
   N("rdays","Days since the latest result","res",x=>dd(x.rd),{dec:0,ps:[le("Last 7 days",7),le("Last 30 days",30)]});
@@ -6171,6 +6386,15 @@ const SXF=[],SXB={};
   N("de","Debt ÷ equity","fund",x=>x.de,{dec:2,ps:[le("0.5 or less",0.5),le("1 or less",1)]});
   N("rev_yoy","Revenue growth, YoY","fund",x=>x.rev_yoy,{u:"%",sg:1,dec:0,ps:[ge("15%+",15),ge("25%+",25)]});
   N("pat_yoy","Profit growth, YoY","fund",x=>x.pat_yoy,{u:"%",sg:1,dec:0,ps:[ge("20%+",20),ge("50%+",50)]});
+  N("eps_yoy","EPS growth, YoY (latest quarter)","fund",x=>x.eps_yoy,{u:"%",sg:1,dec:0,ps:[ge("25%+",25),ge("50%+",50)]});
+  N("eps_yoy1","EPS growth, YoY (previous quarter)","fund",x=>x.eps_yoy1,{u:"%",sg:1,dec:0,ps:[ge("25%+",25),ge("50%+",50)]});
+  N("pat_yoy1","Profit growth, YoY (previous quarter)","fund",x=>x.pat_yoy1,{u:"%",sg:1,dec:0,ps:[ge("20%+",20),ge("50%+",50)]});
+  N("rev_yoy1","Revenue growth, YoY (previous quarter)","fund",x=>x.rev_yoy1,{u:"%",sg:1,dec:0,ps:[ge("15%+",15),ge("25%+",25)]});
+  N("eps_qoq","EPS growth, QoQ","fund",x=>x.eps_qoq,{u:"%",sg:1,dec:0,ps:[ge("Up",0.01),ge("20%+",20)]});
+  N("eps_up","Quarters in a row with EPS above a year earlier","fund",x=>x.eps_up,{dec:0,ps:[ge("2+",2),ge("4+",4),ge("6+",6)]});
+  N("pat_pos","Quarters in a row with a profit","fund",x=>x.pat_pos,{dec:0,ps:[ge("4+",4),ge("8+",8)]});
+  N("opm_chg1","Operating margin change, YoY, previous quarter (points)","fund",x=>x.opm_chg1,{sg:1,ps:[ge("Expanding",0.01),ge("+3 or more",3)]});
+  N("opm_min4","Operating margin, lowest of the last 4 quarters","fund",x=>x.opm_min4,{u:"%",ps:[ge("10%+ every quarter",10),ge("15%+ every quarter",15),ge("20%+ every quarter",20)]});
   N("rev_qoq","Revenue growth, QoQ","fund",x=>x.rev_qoq,{u:"%",sg:1,dec:0,ps:[ge("Up",0)]});N("pat_qoq","Profit growth, QoQ","fund",x=>x.pat_qoq,{u:"%",sg:1,dec:0,ps:[ge("Up",0)]});
   N("rev_ttm_g","Revenue growth, last 4 quarters","fund",x=>x.rev_ttm_g,{u:"%",sg:1,dec:0,ps:[ge("15%+",15)]});
   N("pat_ttm_g","Profit growth, last 4 quarters","fund",x=>x.pat_ttm_g,{u:"%",sg:1,dec:0,ps:[ge("20%+",20)]});
@@ -6215,7 +6439,10 @@ const SXP=[
   ["Strong group, strong stock","Industry RS 80+, sector RS 70+, stock RS 80+, above the 50-day",[{id:"irs",min:80},{id:"srs",min:70},{id:"rs",min:80},{id:"a50",v:true}]],
   ["Strong industry, tight near the high","Industry group RS 70+ and not fading, within 10% of the high, last 10 closes within 8%, Stage 2",[{id:"irot",in:["strong"]},{id:"h52",min:-10},{id:"tight",max:8},{id:"st",in:[2]}]],
   ["VPCI 6/7 with top Upside","VPCI 6 or 7 gates, Upside 90+, above the 50-day, not stretched (5 ATRs or less above it)",[{id:"vpg",min:6},{id:"up",min:90},{id:"a50",v:true},{id:"x50",max:5}]],
-  ["Fresh 52-week high, strong group","Closing high in the last 5 sessions, RS 80+, industry return rank top half for 1 month",[{id:"dsh",max:5},{id:"rs",min:80},{id:"ir1M",min:50}]]];
+  ["Fresh 52-week high, strong group","Closing high in the last 5 sessions, RS 80+, industry return rank top half for 1 month",[{id:"dsh",max:5},{id:"rs",min:80},{id:"ir1M",min:50}]],
+  ["O'Neil: two strong quarters","EPS up 25%+ YoY in the latest and the previous quarter, revenue up 20%+ YoY in the latest, RS 70+",[{id:"eps_yoy",min:25},{id:"eps_yoy1",min:25},{id:"rev_yoy",min:20},{id:"rs",min:70}]],
+  ["Blockbuster or good results, strong chart","Result grade Blockbuster or Good, RS 70+, above the 50-day",[{id:"grade",in:["BB","G"]},{id:"rs",min:70},{id:"a50",v:true}]],
+  ["Consistent margins and profits","Operating margin 15%+ in each of the last 4 quarters, a profit 8 quarters in a row, EPS above a year earlier 4 quarters in a row",[{id:"opm_min4",min:15},{id:"pat_pos",min:8},{id:"eps_up",min:4}]]];
 /* ── Group screener: the same engine on themes, sectors, industries and NSE indices (grp.json). A row is one group:
    its index figures for the chosen universe (All / Liquid, the site-wide switch) plus a few figures worked out here from
    its member stocks. Nothing new is fetched. ── */
@@ -6318,8 +6545,14 @@ function sxTest(d,f,x){const v=d.get(x);
   if(d.t==="b")return v===f.v;
   const a=Array.isArray(v)?v:[v];return f.in.some(q=>a.some(z=>String(z)===String(q)))}
 function sxRun(){const S=st.sx,base=SXC.base(S),act=S.f.filter(sxOn);let cur=base;const left=new Map();
+  const need=isNum(S.need)&&S.need>0&&S.need<act.length?S.need:null;
+  if(need){const pass=new Map();for(const x of base){let k=0;for(const f of act)if(sxTest(SXC.B[f.id],f,x))k++;pass.set(x,k)}
+    for(const f of S.f)left.set(f,sxOn(f)?base.filter(x=>sxTest(SXC.B[f.id],f,x)).length:base.length);
+    SXPASS=pass;return {rows:base.filter(x=>pass.get(x)>=need),base:base.length,left,nAct:act.length,need}}
+  SXPASS=null;
   for(const f of S.f){if(sxOn(f)){const d=SXC.B[f.id];cur=cur.filter(x=>sxTest(d,f,x))}left.set(f,cur.length)}
   return {rows:cur,base:base.length,left,nAct:act.length}}
+let SXPASS=null;
 const sxNum=(d,v)=>!isNum(v)?"–":(d.sg&&v>0?"+":"")+(d.dec===0?Math.round(v).toLocaleString("en-IN"):v.toLocaleString("en-IN",{minimumFractionDigits:d.dec,maximumFractionDigits:d.dec})).replace("-","−")+(d.u==="%"?"%":d.u==="×"?"×":"");
 function sxDesc(f){const d=SXC.B[f.id];if(!d)return "";
   if(d.t==="n"){const a=isNum(f.min),b=isNum(f.max);return d.label+(a&&b?` ${sxNum(d,f.min)} to ${sxNum(d,f.max)}`:a?` ${sxNum(d,f.min)} or more`:b?` ${sxNum(d,f.max)} or less`:"")}
@@ -6345,7 +6578,7 @@ function sxRow(f,i,left,prev){const d=SXC.B[f.id];if(!d)return "";const [gn,gc]=
     else ctl=`<span class="sxps">${O.map(o=>`<button type="button" data-sxe="${i}|${esc(o[0])}" aria-pressed="${sel.has(String(o[0]))}">${esc(o[1])}</button>`).join("")||`<span style="color:var(--muted)">Nothing to choose from today</span>`}</span>`}
   const cut=prev-left;
   return `<div class="sxrow${on?"":" off"}" style="--g:${gc}"><div class="sxlab"><i></i><div><b>${esc(d.label)}</b><small>${esc(gn)}</small></div></div><div class="sxctl">${ctl}</div>
-    <div class="sxleft num" title="Left after this filter">${on?`<b>${left.toLocaleString("en-IN")}</b><small>${cut>0?"−"+cut.toLocaleString("en-IN"):"no cut"}</small>`:`<small>not set</small>`}</div>
+    <div class="sxleft num" title="${prev==null?"Stocks that pass this filter on its own":"Left after this filter"}">${on?`<b>${left.toLocaleString("en-IN")}</b><small>${prev==null?"pass alone":cut>0?"−"+cut.toLocaleString("en-IN"):"no cut"}</small>`:`<small>not set</small>`}</div>
     <button type="button" class="sxdel" data-sxdel="${i}" aria-label="Remove the ${esc(d.label)} filter">✕</button></div>`}
 function sxPicker(){const q=(st.sxq||"").trim().toLowerCase(),used=new Set(st.sx.f.map(f=>f.id));
   const cols=Object.entries(SXC.G).map(([g,[gn,gc]])=>{const a=SXC.F.filter(d=>d.g===g&&(!q||d.label.toLowerCase().includes(q)||gn.toLowerCase().includes(q)));if(!a.length)return "";
@@ -6367,7 +6600,7 @@ function renderScreener(){
       <div class="sxacts">${SXC.uniSeg(S)}
         <span class="sxsave" id="sxSaveBox" hidden><input class="search" id="sxName" maxlength="40" placeholder="Name this screen" aria-label="Screen name"><button type="button" class="btn" data-sxsaveok>Save</button></span><button type="button" class="ghost" data-sxsave ${S.f.some(sxOn)?"":"disabled"}>Save screen</button><button type="button" class="ghost" data-sxclear ${S.f.length?"":"disabled"}>Clear</button></div></div>
     ${pn&&SXC.note?SXC.note(pn):""}
-    <div id="sxRows"></div>
+    <div id="sxRows"></div><div class="sxneed" id="sxNeed" hidden></div>
     <details class="sxadd" id="sxAdd"${S.f.length?"":" open"}><summary><b>+ Add a filter</b><span>${SXC.F.length} to choose from</span></summary>
       <div class="sxfind"><input class="search" type="search" id="sxq" placeholder="${SXC.find}" value="${esc(st.sxq||"")}" aria-label="Find a filter"></div>
       <div class="sxpick" id="sxPick">${sxPicker()}</div></details></div>
@@ -6380,6 +6613,7 @@ function renderScreener(){
   box.addEventListener("change",e=>{const t=e.target,S=st.sx;
     if(t.dataset.sxmin!=null||t.dataset.sxmax!=null){const i=+(t.dataset.sxmin??t.dataset.sxmax),v=t.value===""?null:+t.value;S.f[i][t.dataset.sxmin!=null?"min":"max"]=isNum(v)?v:null;sxChanged(false,true);return}
     if(t.dataset.sxadd!=null&&t.value!==""){const f=S.f[+t.dataset.sxadd];f.in=[...(f.in||[]),t.value];sxChanged();return}});
+  box.addEventListener("change",e=>{if(e.target.id==="sxNeedSel"){st.sx.need=e.target.value===""?null:+e.target.value;sxChanged(true)}});
   box.addEventListener("keydown",e=>{if(e.key==="Enter"&&(e.target.dataset.sxmin!=null||e.target.dataset.sxmax!=null))e.target.dispatchEvent(new Event("change",{bubbles:true}))});
   drawScreener();
 }
@@ -6395,24 +6629,27 @@ function drawScreener(inPlace){
   const rowsEl=$("#sxRows"),have=rowsEl.querySelectorAll(".sxrow");
   if(inPlace===true&&have.length===S.f.length){      /* a number was typed: update counts and preset buttons only */
     S.f.forEach((f,i)=>{const d=SXC.B[f.id],el=have[i],l=R.left.get(f),on=sxOn(f),cut=prev-l;el.classList.toggle("off",!on);
-      el.querySelector(".sxleft").innerHTML=on?`<b>${l.toLocaleString("en-IN")}</b><small>${cut>0?"−"+cut.toLocaleString("en-IN"):"no cut"}</small>`:`<small>not set</small>`;
+      el.querySelector(".sxleft").innerHTML=on?`<b>${l.toLocaleString("en-IN")}</b><small>${R.need?"pass alone":cut>0?"−"+cut.toLocaleString("en-IN"):"no cut"}</small>`:`<small>not set</small>`;
       if(d.t==="n")el.querySelectorAll("[data-sxps]").forEach((b,k)=>{const p=d.ps[k];b.setAttribute("aria-pressed",(p[1]??null)===(f.min??null)&&(p[2]??null)===(f.max??null))});
       if(on)prev=l})}
-  else rowsEl.innerHTML=S.f.map((f,i)=>{const l=R.left.get(f),r=sxRow(f,i,l,prev);if(sxOn(f))prev=l;return r}).join("")||`<p class="sxempty">Pick a ready screen above, or add your first filter below.</p>`;
-  $("#sxCount").innerHTML=`<b class="num">${R.rows.length.toLocaleString("en-IN")}</b> of ${R.base.toLocaleString("en-IN")} ${SXC.noun}s${R.nAct?` pass ${R.nAct} filter${R.nAct===1?"":"s"}`:""}`;
+  else rowsEl.innerHTML=S.f.map((f,i)=>{const l=R.left.get(f),r=sxRow(f,i,l,R.need?null:prev);if(sxOn(f))prev=l;return r}).join("")||`<p class="sxempty">Pick a ready screen above, or add your first filter below.</p>`;
+  $("#sxCount").innerHTML=`<b class="num">${R.rows.length.toLocaleString("en-IN")}</b> of ${R.base.toLocaleString("en-IN")} ${SXC.noun}s${R.nAct?` pass ${R.need?`at least ${R.need} of ${R.nAct}`:R.nAct} filter${R.nAct===1?"":"s"}`:""}`;
+  const nb=$("#sxNeed");if(nb){const n=R.nAct;nb.hidden=n<2;if(n>=2)nb.innerHTML=`<span class="sxk">Must pass</span><select class="select sxsel" id="sxNeedSel" aria-label="How many filters a ${SXC.noun} must pass"><option value="">All ${n} filters</option>${Array.from({length:n-1},(_,i)=>n-1-i).map(k=>`<option value="${k}"${R.need===k?" selected":""}>At least ${k} of ${n}</option>`).join("")}</select>${R.need?`<span class="nm">Counts beside each filter show how many pass that filter on its own.</span>`:""}`}
   if(!st.tbl.sx)st.tbl.sx={key:null,dir:-1,show:100};
   const fixed=SXC.fixed,used=[...new Set(S.f.filter(sxOn).map(f=>f.id))].filter(id=>SXC.B[id]&&!fixed.includes(id));
   const extra=(S.cols||[]).filter(id=>SXC.B[id]&&!fixed.includes(id)&&!used.includes(id));
   const ids=[...new Set([...SXC.lead,...used,...extra,...SXC.tail])].filter(id=>SXC.B[id]);
   const cols=SXC.cols(ids.map(id=>sxCol(SXC.B[id])));
+  if(R.need&&SXPASS){const P=SXPASS;cols.splice(2,0,{k:"sx_pass",label:"Filters passed",fmt:r=>`<span class="num"><b>${P.get(r)}</b>/${R.nAct}</span>`,sort:r=>P.get(r),csv:r=>P.get(r)});if(st.tbl.sx&&!cols.some(c=>c.k===st.tbl.sx.key))st.tbl.sx.key="sx_pass"}
   if(!st.tbl.sx.key||!cols.some(c=>c.k===st.tbl.sx.key))st.tbl.sx.key=used[0]&&SXC.B[used[0]].t==="n"?"sx_"+used[0]:SXC.sort;
   const rest=SXC.F.filter(d=>!ids.includes(d.id)&&!fixed.includes(d.id));
   const head=`<div class="bxhead"><span><b class="num">${R.rows.length.toLocaleString("en-IN")}</b> ${SXC.noun}${R.rows.length===1?"":"s"}${R.nAct?` · ${esc(S.f.filter(sxOn).map(sxDesc).join(" · "))}`:""}</span><span class="sxtools">
     <select class="select sxsel" id="sxColAdd" aria-label="Add a column"><option value="">+ Column</option>${Object.entries(SXC.G).map(([g,[gn]])=>{const a=rest.filter(d=>d.g===g);return a.length?`<optgroup label="${esc(gn)}">${a.map(d=>`<option value="${d.id}">${esc(d.label)}</option>`).join("")}</optgroup>`:""}).join("")}</select>
     ${extra.length?`<button type="button" class="ghost" data-sxcolclr>Remove ${extra.length} added column${extra.length===1?"":"s"}</button>`:""}<button type="button" class="ghost" data-sxcsv>Download CSV</button>
     ${R.rows.length&&SXC.kind==="s"?`<button type="button" class="ghost" data-wl-addall="${esc(JSON.stringify(R.rows.slice(0,200).map(r=>r.s)))}" data-label="${esc(S.name||"Screener")} stocks">☆ Add ${Math.min(200,R.rows.length)} to a watchlist</button>`:""}</span></div>`;
-  $("#sxT").innerHTML=head+dtable("sx",R.rows,cols,{empty:R.nAct?`No ${SXC.noun} passes every filter. Loosen the one with the biggest cut.`:"Add a filter to start."});
-  wireTables($("#sxT"),()=>drawScreener());
+  const cgS=SXC.kind==="s"&&cgOn("sx");
+  $("#sxT").innerHTML=head.replace('<span class="sxtools">',`<span class="sxtools">${SXC.kind==="s"?cgCtl("sx"):""}`)+(cgS?cgHtml("sx",sxSorted(R.rows,cols).map(r=>r.s)):dtable("sx",R.rows,cols,{empty:R.nAct?`No ${SXC.noun} passes every filter. Loosen the one with the biggest cut.`:"Add a filter to start."}));
+  if(cgS)cgWire($("#sxT"),sxSorted(R.rows,cols).map(r=>r.s),S.name||"Screener");else{cgClear();wireTables($("#sxT"),()=>drawScreener())}
   $("#sxColAdd").addEventListener("change",e=>{if(e.target.value){st.sx.cols=[...(st.sx.cols||[]),e.target.value];store.set(SXC.key,st.sx);drawScreener()}});
 }
 function sxClick(e){
@@ -6434,7 +6671,7 @@ function sxClick(e){
 
 /* ════════════════════ routing & wiring ════════════════════ */
 function render(){
-  renderPulse();$("#view").dataset.v=st.tab;
+  cgClear();renderPulse();$("#view").dataset.v=st.tab;
   document.querySelectorAll("#tabs .tab").forEach(b=>b.setAttribute("aria-selected",b.dataset.v===st.tab));
   const tw=$("#tabs"),ta=tw.querySelector('.tab[aria-selected="true"]');tw.classList.toggle("ovf",tw.scrollWidth>tw.clientWidth+1);if(ta&&tw.scrollWidth>tw.clientWidth+1){const l=ta.offsetLeft-tw.offsetLeft,r=l+ta.offsetWidth;if(l<tw.scrollLeft||r>tw.scrollLeft+tw.clientWidth)tw.scrollLeft=Math.max(0,l-24)}
   ({rotation:renderRotation,breadth:renderBreadth,rs:renderRS,upside:renderUpside,multi:renderMulti,screener:renderScreener,scanners:renderScanners,bases:renderBases,patterns:renderPatterns,results:renderResults,watch:renderWatch,vpci:renderVpci})[st.tab]();
@@ -6523,6 +6760,9 @@ document.addEventListener("click",e=>{
   const pch=e.target.closest("[data-pchart]");if(pch){const i=pch.dataset.pchart.lastIndexOf("|");if(!$("#drawer").hidden)closeDrawer(true);openPatChart(pch.dataset.pchart.slice(0,i),pch.dataset.pchart.slice(i+1));return}
   const pop_=e.target.closest("[data-popen]");if(pop_){openDrawer(pop_.dataset.sym);return}
   const gop=e.target.closest("[data-gopen]");if(gop&&!e.target.closest("#gmodal")){const [gk,gn]=gop.dataset.gopen.split("|");if(!$("#drawer").hidden)closeDrawer(true);openGroupChart(gk,gn);return}
+  const cgv=e.target.closest("[data-cgv]");if(cgv){const [ctx,v]=cgv.dataset.cgv.split("|");store.set("cg_"+ctx,v==="charts");CG.lim[ctx]=24;const y=window.scrollY;render();window.scrollTo(0,y);return}
+  const cgn=e.target.closest("[data-cgn]");if(cgn){store.set("cgcols",+cgn.dataset.cgn);const y=window.scrollY;render();window.scrollTo(0,y);return}
+  const cgm=e.target.closest("[data-cgmore]");if(cgm){const ctx=cgm.dataset.cgmore;CG.lim[ctx]=(CG.lim[ctx]||24)+24;const y=window.scrollY;render();window.scrollTo(0,y);return}
   const s=e.target.closest("[data-seg]");
   if(s){const k=s.dataset.seg,v=s.dataset.val;
     if(k==="gsig_kind"||k==="gsig_win"){st.gsig=st.gsig||{kind:"all",win:"5"};st.gsig[k.slice(5)]=v;store.set("gsig",st.gsig);renderGroupSignals();return}
@@ -6546,6 +6786,7 @@ document.addEventListener("click",e=>{
     if(k==="sxmode"){if(v!==SXC.kind){sxSwap();store.set("sxmode",SXC.kind);renderScreener()}return}
     if(k==="sxuni"){st.sx.uni=v;s.parentElement.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===s));sxChanged(true);return}
     if(k==="upmin"){st.up.min=v;store.set("up",{...st.up,q:""});if(st.tbl.up)st.tbl.up.show=100;s.parentElement.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===s));drawUpside();return}
+    if(k==="bix"){st.bix=v;store.set("bix",v);const y=window.scrollY;renderBreadth();window.scrollTo(0,y);return}
     if(k==="brange"){st.brange=v;store.set("brange",v);const y=window.scrollY;renderBreadth();window.scrollTo(0,y);return}
     if(k==="rsdir"||k==="rsdot"){st.rs[k.slice(2)]=v;store.set("rs",st.rs);if(st.tbl.rs)st.tbl.rs.show=100;s.parentElement.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===s));drawRS();return}
     if(k==="rsmin"){st.rs.min=+v;store.set("rs",st.rs);s.parentElement.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===s));drawRS();return}
