@@ -761,4 +761,88 @@ DOCS = {
         use="A check for holdings: heavy, broad fund selling is supply that can weigh on the price.",
         watch="Funds also sell to meet redemptions or to trim a position that grew too big — not always a view on the stock.",
         src="Fund-house monthly portfolio disclosures"),
+    # ── update 20: ready-made lists and new pattern scans
+    "rs80": dict(
+        what="The strongest stocks in the market that are also big and liquid enough to trade — a clean starting list.",
+        rules=["RS rating 80 or higher", "Close above the 200-day EMA; a stock with fewer than 200 sessions must close above "
+               "the EMA of the sessions it has", "Market cap ₹500 Cr or more", "Turnover ₹10 Cr or more a day (50-day median)",
+               "Price ₹10 or more", "New listings are included on their provisional RS (marked with *)"],
+        use="Scroll the charts and keep the ones in a tight base near a high. Combine with ‘AND also in’ to narrow it down.",
+        watch="A list, not a signal: many names will be extended. RS can lag at turning points.",
+        src="Site rule, after the RS 80 scan in the AayQ demo"),
+    "gain1m": dict(
+        what="The fastest movers of the last month.",
+        rules=["Return over the last 21 sessions of 15% or more"],
+        use="Shows where money went this month and which groups lead; good stocks often rest after such a run.",
+        watch="Chasing a stock already up 15%+ in a month carries a high failure rate — wait for a base.",
+        src="Site rule"),
+    "gain3m": dict(
+        what="The biggest gainers of the last three months — the market's new leaders are usually in here.",
+        rules=["Return over the last 63 sessions of 30% or more"],
+        use="Many big winners first appear here; watch for the first tight base after the run.",
+        watch="Some are one-off moves on news. Check the group and the earnings.",
+        src="Site rule"),
+    "hve": dict(
+        what="A day of record volume — institutions arriving (or leaving) in size.",
+        rules=["Today's volume is the largest in all the prices the site holds (since mid-2020, or since listing)",
+               "The stock closed up on the day", "At least 60 sessions of history"],
+        use="Record volume on an up day often marks the start of a new move (Gil Morales and Chris Kacher call it HVE).",
+        watch="Index rebalancing, block deals and results days also produce record volume.",
+        src="HVE / HVY / HVQ (Morales & Kacher)"),
+    "hvq": dict(
+        what="The heaviest volume in about three months on an up day — buying interest picking up.",
+        rules=["Today's volume is the largest of the last 63 sessions", "The stock closed up on the day"],
+        use="A shorter-term version of the record-volume scan; strongest when the stock is breaking out of a base.",
+        watch="Common on results days; read the close in the day's range too.",
+        src="HVE / HVY / HVQ (Morales & Kacher)"),
+    "ipo1y": dict(
+        what="Companies that started trading on NSE's main board in the last 12 months — the pool where new leaders often start.",
+        rules=["First trading day on NSE's main board within the last 365 days (prices on the site go back to mid-2020)",
+               "Includes IPOs and companies that moved over from BSE or the SME platform",
+               "Return is measured from the close of the first day, not the IPO price"],
+        use="Watch for the first base after listing and a breakout above the post-listing high (see ‘IPO high breakout’).",
+        watch="Young stocks are volatile and their RS rating is provisional (less than a year of prices).",
+        src="Site rule"),
+    "liq_large": dict(
+        what="The big, liquid names — where large funds can buy and sell easily.",
+        rules=["Among the 100 biggest companies by market cap (SEBI's large-cap line)",
+               "Turnover ₹50 Cr or more a day (50-day median)"],
+        use="When the market favours large caps, start here.",
+        watch="Large caps move slowly; RS and the group matter as much as for any stock.",
+        src="Site rule"),
+    "fno": dict(
+        what="Stocks that have futures and options on NSE.",
+        rules=["Listed in NSE's derivatives market-lot file for individual stocks, refreshed every evening"],
+        use="For traders who hedge or trade derivatives, or want only the most liquid names.",
+        watch="Stocks in the F&O ban period still appear here.",
+        src="NSE"),
+    "tight_d": dict(
+        what="Ten quiet days near a high: price is barely moving while holding up.",
+        rules=["The last 10 daily closes within 5% of each other", "Close above the 50-day SMA",
+               "Within 15% of the 52-week high"],
+        use="A low-risk area to place a pivot: buy the break of the tight area's high, stop under its low.",
+        watch="Tight ranges can break down as well as up — wait for the break.",
+        src="Site rule (tight-area idea from O'Neil and Minervini)"),
+    "tight_m": dict(
+        what="A leader resting on the monthly chart: three months of closes almost flat inside an uptrend.",
+        rules=["The last three monthly closes (this month so far included) within 5% of each other", STACK,
+               "At least 200 sessions of history"],
+        use="Look for a weekly or daily trigger out of the monthly rest.",
+        watch="This month's close is not final until month end.",
+        src="Site rule"),
+    "short_base": dict(
+        what="A breakout from a short, shallow base of about seven weeks.",
+        rules=["Close above the highest high of the previous 35 sessions", "Those 35 sessions spanned no more than 20% "
+               "from high to low", "Volume at least 1.4× the 50-day average", "Close above the 200-day SMA"],
+        use="Short bases inside a longer uptrend often work as continuation buy points.",
+        watch="A breakout late in a long run is riskier — count the bases since the run began.",
+        src="Site rule (base-on-base idea from O'Neil)"),
+    "inside_w": dict(
+        what="A weekly coil: this week's range sits inside last week's.",
+        rules=["The latest finished week (Monday to Friday; before Friday, last week) has its high at or below the week "
+               "before's high and its low at or above that week's low, at least one strictly inside",
+               "Today's close has not yet broken above the mother week's high", STACK],
+        use="Buy the break of the mother week's high, stop under the inside week's low.",
+        watch="A weekly coil can resolve down as well as up — wait for the break.",
+        src="Site rule"),
 }

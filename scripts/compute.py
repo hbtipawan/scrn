@@ -339,6 +339,7 @@ def main():
         m = nse_mcap(last)
         mc_show = pd.Series(dtype=float) if m is None else \
             (m["MarketCapCr"] * (c_all.reindex(m.index) / m["Close"]).fillna(1.0)).dropna()
+    nbars_a = raw_close[A].notna().sum()
     for s in A:
         row = {
             "s": s, "n": str(stocks.loc[s, "name"])[:40], "sec": sec_all.get(s), "ind": ind.get(s),
@@ -357,6 +358,8 @@ def main():
             "to": r2(med_to[s], 1), "vr": r2(vr_a[s], 1),
             "mc": r2(mc_show.get(s), 0),
         }
+        if row["rs"] is not None and nbars_a.get(s, 0) < 252:
+            row["rsp"] = 1                      # provisional: less than a year of prices, ranked on what exists
         if STG is not None and s in STG["days"]:
             row["std"] = STG["days"][s]         # trading days in the current stage
             if s in STG["capped"]:
@@ -409,6 +412,24 @@ def main():
         print(f"EMA breadth skipped: {e}")
     breadth, bidx = breadth_frame(C, raw_close, sma_all, -nb, ema_b)
     lq, _ = breadth_frame(Cu, raw_close[U], sma, -nb, ema_b)
+    # the same breadth for the members of each broad index (Breadth tab -> index choice); membership is today's list
+    broad = {}
+    bf = CFG / "indices_broad.csv"
+    if bf.exists():
+        try:
+            for _, rr in pd.read_csv(bf).iterrows():
+                broad[str(rr["Index"])] = [x for x in str(rr["Symbols"]).split() if x]
+        except Exception as e:  # optional
+            print(f"broad indices skipped: {e}")
+    by_idx = {}
+    for nm in ("Nifty 50", "Nifty 500", "Nifty Midcap 150", "Nifty Smallcap 250", "Nifty Microcap 250"):
+        mem = [x for x in broad.get(nm, []) if x in C.columns]
+        if len(mem) < 20:
+            continue
+        sub_e = {n: e.reindex(columns=mem) for n, e in ema_b.items()}
+        bb, _ = breadth_frame(C[mem], raw_close[mem], {n: v_[mem] for n, v_ in sma_all.items()}, -nb, sub_e)
+        bb["members"] = len(mem)
+        by_idx[nm] = bb
     del ema_b
     bench_close = W["close"][bench].reindex(bidx) if bench in W["close"] else pd.Series(np.nan, index=bidx)
     breadth.update({"dates": list(bidx), "bench": [r2(x) for x in bench_close], "bench_name": bench, "lq": lq,
@@ -416,6 +437,44 @@ def main():
     # benchmark indices for the Breadth tab (closes on the same sessions)
     breadth["idx"] = {name: [r2(x) for x in W["close"][name].reindex(bidx).ffill()]
                       for name in [bench] + S["extra_indices"] if name in W["close"]}
+    # per-index breadth with that index's own closes as the reference line
+    IDXW = {"Nifty 50": "NIFTY 50", "Nifty 500": "NIFTY 500", "Nifty Midcap 150": "NIFTY MIDCAP 150",
+            "Nifty Smallcap 250": "NIFTY SMLCAP 250", "Nifty Microcap 250": "NIFTY MICROCAP250"}
+    for nm, bb in by_idx.items():
+        wn = IDXW.get(nm)
+        if wn in W["close"]:
+            bb["bench"] = [r2(x) for x in W["close"][wn].reindex(bidx).ffill()]
+            bb["bench_name"] = wn
+    if by_idx:
+        breadth["by"] = by_idx
+    # distribution days (William O'Neil): NIFTY 500 closes down 0.2% or more on higher volume than the day before.
+    # NSE's index volume is the total volume of the members, so the volume here is the summed volume of today's
+    # Nifty 500 members. A day counts for 25 sessions, and stops counting once the index closes 5% above it.
+    try:
+        if bench in W["close"]:
+            ix = W["close"][bench].reindex(C.index).ffill()
+            mem = [x for x in broad.get("Nifty 500", []) if x in V.columns] or list(U)
+            vol = V[mem].sum(axis=1)
+            chg = ix.pct_change(fill_method=None)
+            is_dd = (chg <= -0.002) & (vol > vol.shift(1)) & (vol.shift(1) > 0)
+            ixv, ddv = ix.to_numpy(dtype=float), is_dd.to_numpy()
+            T = len(ixv)
+
+            def active(t):
+                out = []
+                for k in range(max(1, t - 24), t + 1):
+                    if ddv[k] and np.nanmax(ixv[k:t + 1]) < ixv[k] * 1.05:
+                        out.append(k)
+                return out
+            first = max(0, T - nb)
+            hist = [len(active(t)) for t in range(first, T)]
+            now = active(T - 1)
+            breadth["dd"] = {"n": len(now), "hist": hist, "dates": [str(C.index[k]) for k in now],
+                             "chg": [r2(chg.iloc[k] * 100) for k in now],
+                             "vol_up": [r2((vol.iloc[k] / vol.iloc[k - 1] - 1) * 100, 1) for k in now], "members": len(mem)}
+            print(f"distribution days (NIFTY 500, last 25 sessions): {len(now)}")
+    except Exception as e:  # optional - never break the daily run
+        print(f"distribution days skipped: {e}")
 
     indices = {}
     for name in [bench] + S["extra_indices"]:
@@ -554,6 +613,9 @@ def main():
         ev_f = CFG / "group_evidence.json"
         GS, gtoday, gfiles = GI.build(PFULL, groups, U, bench_full, OUT / "grp", last,
                                       json.loads(ev_f.read_text()) if ev_f.exists() else None)
+        lab_f = CFG / "group_label_evidence.json"
+        if lab_f.exists():
+            GS["labels"] = json.loads(lab_f.read_text())      # the tested group labels (scripts/test_group_labels.py)
         dump_later["grp.json"] = GS
         grp_meta = {"groups": len(GS["rows"]), "today": {u: {k: v for k, v in t.items() if v} for u, t in gtoday.items()}}
     except Exception as e:  # never break the daily run
@@ -775,6 +837,22 @@ def main():
         import traceback
         traceback.print_exc()
         print(f"fund flows skipped: {e}")
+    # ---------------- ready-made lists (ready_lists.py): broad one-click lists, not signals
+    try:
+        import ready_lists as RL
+        fo_f = CFG / "nse" / "fo_list.csv"
+        fno = set(pd.read_csv(fo_f)["symbol"].astype(str)) if fo_f.exists() else set()
+        rl_meta, rl_hits, rl_metric = RL.build(rows, Cu, Vu, LONG, fno, last)
+        sc_meta += rl_meta
+        sc_hits.update(rl_hits)
+        sc_metric.update(rl_metric)
+        at = cats.index("Confluence") + 1 if "Confluence" in cats else 0
+        cats = cats[:at] + [RL.CAT] + cats[at:]
+        print("ready-made lists: " + ", ".join(f"{m_['id']} {len(rl_hits[m_['id']])}" for m_ in rl_meta))
+    except Exception as e:  # never break the daily run
+        import traceback
+        traceback.print_exc()
+        print(f"ready-made lists skipped: {e}")
     # detailed documentation for every scanner (shown in a collapsible panel on the site)
     try:
         import scan_docs as SD
@@ -796,6 +874,9 @@ def main():
             "classification": ({**{k: m_rep[k] for k in ("matched", "via_bse", "missing", "sectors", "industries")},
                                 "corrected": len(m_rep["overrides"])} if MASTER else None),
             "failed": fm.get("failed_count"), "indices": indices,
+            "broad": {k: [x for x in v if x in aset] for k, v in broad.items()},
+            "fno": sorted(x for x in (set(pd.read_csv(CFG / "nse" / "fo_list.csv")["symbol"].astype(str))
+                                      if (CFG / "nse" / "fo_list.csv").exists() else set()) if x in aset),
             "filters": {"min_price": S["min_price"], "min_median_turnover_cr": S["min_median_turnover_cr"],
                         "min_market_cap_cr": S["min_market_cap_cr"] if mcap is not None else None},
             "min_group_size": S["min_group_size"], "mixed": mixed_meta, "fund": fund_meta, "bases": base_meta, "stage2": s2_meta, "results": res_meta, "mf": mf_meta, "rs": rs_meta, "dlv": dlv_meta, "idx": idx_meta, "corp": corp_meta, "grp": grp_meta, "pat": pat_meta, "vcp": vcp_meta, "up": up_meta, "mb": mb_meta, "sc": sch_meta, "vcp2": vcp2_meta, "cmp": cmp_meta, "stg": stg_meta, "mkt": mkt_meta}

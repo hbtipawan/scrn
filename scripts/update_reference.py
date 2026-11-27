@@ -4,6 +4,9 @@ Source: niftyindices.com constituent CSVs (official, free, reachable from cloud 
 Writes:
   config/sectors.csv  -> Symbol, Company, Sector   (Nifty Total Market = ~750 stocks)
   config/indices.csv  -> Index, Symbols            (sectoral + thematic NSE indices)
+  config/indices_broad.csv -> Index, Symbols       (broad indices: Nifty 50 ... Microcap 250; used for the
+                                                    Breadth tab's index choice and the ready-made watchlists,
+                                                    never as Rotation groups)
 
 If a download fails, the existing file is kept, so the daily job never breaks on this step.
 Run:  python scripts/update_reference.py
@@ -69,6 +72,18 @@ INDEX_FILES = {
     "Nifty MidSmall India Consumption": "ind_niftymidsmallindiaconsumption_list.csv",
 }
 
+# Broad market indices. Kept apart from INDEX_FILES so they never become Rotation groups.
+BROAD_FILES = {
+    "Nifty 50": "ind_nifty50list.csv",
+    "Nifty Next 50": "ind_niftynext50list.csv",
+    "Nifty 100": "ind_nifty100list.csv",
+    "Nifty 200": "ind_nifty200list.csv",
+    "Nifty 500": "ind_nifty500list.csv",
+    "Nifty Midcap 150": "ind_niftymidcap150list.csv",
+    "Nifty Smallcap 250": "ind_niftysmallcap250list.csv",
+    "Nifty Microcap 250": "ind_niftymicrocap250_list.csv",
+}
+
 
 def get_csv(name):
     r = requests.get(BASE + name, headers=UA, timeout=30)
@@ -108,6 +123,30 @@ def main():
         print(f"indices.csv: {len(rows)} indices")
     if failed:
         print("WARN failed: " + "; ".join(failed), file=sys.stderr)
+
+    # Broad indices (a failed file keeps its previous membership)
+    rows, failed = [], []
+    for name, f in BROAD_FILES.items():
+        try:
+            d = get_csv(f)
+            syms = [x.strip() for x in d["Symbol"].astype(str) if x.strip()]
+            if len(syms) < 40:
+                raise ValueError(f"only {len(syms)} symbols")
+            rows.append((name, " ".join(syms)))
+        except Exception as e:
+            failed.append(f"{name} ({e})")
+    old = CFG / "indices_broad.csv"
+    if failed and old.exists():
+        prev = pd.read_csv(old)
+        got = {r[0] for r in rows}
+        rows += [tuple(x) for x in prev.values if x[0] not in got]
+    if rows:
+        order = list(BROAD_FILES)
+        rows.sort(key=lambda r: order.index(r[0]) if r[0] in order else 99)
+        pd.DataFrame(rows, columns=["Index", "Symbols"]).to_csv(old, index=False)
+        print(f"indices_broad.csv: {len(rows)} indices")
+    if failed:
+        print("WARN broad failed: " + "; ".join(failed), file=sys.stderr)
 
 
 if __name__ == "__main__":

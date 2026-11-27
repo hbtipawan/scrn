@@ -369,6 +369,32 @@ def backfill_idx(start, end, workers=4):
     print(f"index backfill {start}..{end}: {I.date.nunique()} sessions, {I['index'].nunique()} indices")
 
 
+def fo_list(status):
+    """Stocks with futures and options on NSE (the market-lot file NSE publishes): config/nse/fo_list.csv.
+    Index derivatives (NIFTY, BANKNIFTY, ...) are dropped by the section header; a failed download keeps the old file."""
+    out = NSE / "fo_list.csv"
+    r = _get("/content/fo/fo_mktlots.csv")
+    if r is None:
+        status["fo_list"] = "not refreshed"
+        return
+    syms, stock_part = [], False
+    for line in r.text.splitlines():
+        parts = [p.strip() for p in line.split(",")]
+        if len(parts) < 2 or not parts[1]:
+            continue
+        if parts[0].lower().startswith("derivatives on individual securities"):
+            stock_part = True
+            continue
+        if stock_part and parts[1].upper() != "SYMBOL":
+            syms.append(parts[1].upper())
+    syms = sorted(set(syms))
+    if len(syms) < 100:                      # the file changed shape: keep the old list rather than a wrong one
+        status["fo_list"] = f"unexpected file ({len(syms)} symbols), old list kept"
+        return
+    pd.DataFrame({"symbol": syms}).to_csv(out, index=False)
+    status["fo_list"] = len(syms)
+
+
 def symbol_changes(status):
     """NSE's list of symbol changes (old → new, effective date): delivery rows stored under an old symbol are
     joined to the current one when the site is built."""
@@ -421,6 +447,10 @@ def main():
             time.sleep(120)
             catch_up(status)
     corporate_actions(status)
+    try:
+        fo_list(status)
+    except Exception as e:                   # optional: never break the daily run
+        status["fo_list"] = f"failed: {e}"
     if not a.no_check:
         check_closes(status)
     status.pop("last_delivery_file", None)

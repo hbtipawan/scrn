@@ -83,6 +83,36 @@ def stock_metrics(q, hold):
         out["pat_yoy1"] = growth(at(3, "pat"), at(15, "pat"))
         out["pat_yoy2"] = growth(at(6, "pat"), at(18, "pat"))
         out["rev_yoy1"] = growth(at(3, "rev"), at(15, "rev"))
+        # EPS growth (O'Neil looks at EPS, latest and previous quarter, against the same quarter a year earlier)
+        out["eps_yoy"] = growth(at(0, "eps"), at(12, "eps"))
+        out["eps_yoy1"] = growth(at(3, "eps"), at(15, "eps"))
+        out["eps_qoq"] = growth(at(0, "eps"), at(3, "eps"))
+        # quarters in a row (latest first) with a profit, and with EPS above the same quarter a year earlier
+        k = 0
+        while k < 12 and np.isfinite(at(3 * k, "pat")) and at(3 * k, "pat") > 0:
+            k += 1
+        out["pat_pos"] = k
+        k = 0
+        while k < 8:
+            e0, e1 = at(3 * k, "eps"), at(3 * k + 12, "eps")
+            if np.isfinite(e0) and np.isfinite(e1) and e0 > e1:
+                k += 1
+            else:
+                break
+        out["eps_up"] = k
+        # result grade of the latest quarter (sales and profit against the same quarter a year earlier)
+        p0, p4 = at(0, "pat"), at(12, "pat")
+        sg, pg = out["rev_yoy"], out["pat_yoy"]
+        grade = None
+        if np.isfinite(p0):
+            if p0 <= 0:
+                grade = "TR"                                  # a loss this quarter
+            elif np.isfinite(p4) and p4 <= 0:
+                grade = "TA"                                  # profit now, loss a year ago
+            elif np.isfinite(sg) and np.isfinite(pg):
+                grade = ("BB" if sg >= 20 and pg >= 30 else "G" if sg >= 10 and pg >= 15 else
+                         "ST" if sg >= 0 and pg >= 0 else "WK" if sg < 0 and pg < 0 else "MX")
+        out["grade"] = grade
         # revenue growth streak (YoY > 10%) over the last 6 quarters
         streak = 0
         for k in range(6):
@@ -113,6 +143,10 @@ def stock_metrics(q, hold):
             r0 = ttm("rev", 12)
             out["opm_ttm"] = float(op_ttm / out["rev_ttm"]) if np.isfinite(op_ttm) and out["rev_ttm"] > 0 else np.nan
             out["opm_ttm_chg"] = float(out["opm_ttm"] - op_ttm0 / r0) if np.isfinite(out["opm_ttm"]) and np.isfinite(op_ttm0) and r0 and r0 > 0 else np.nan
+            o1, o5 = at(3, "opm"), at(15, "opm")
+            out["opm_chg1"] = float(o1 - o5) if np.isfinite(o1) and np.isfinite(o5) else np.nan     # previous quarter, YoY
+            last4 = [at(3 * k, "opm") for k in range(4)]
+            out["opm_min4"] = float(min(last4)) if all(np.isfinite(v) for v in last4) else np.nan    # lowest of the last 4
         npm = q["pat"] / q["rev"].where(q["rev"] > 0) * 100
         q["npm"] = npm
         out["npm"] = float(npm.iloc[-1]) if np.isfinite(npm.iloc[-1]) else np.nan
@@ -398,6 +432,7 @@ def build(U, ctx):
     # ── per-stock fields for stocks.json
     keep = ["fr", "pe", "ps", "peg", "pb", "roe", "roce", "de", "opm", "opm_chg", "npm", "rev_yoy", "pat_yoy", "pat_yoy1", "pat_yoy2",
             "rev_qoq", "pat_qoq", "rev_ttm", "pat_ttm", "rev_ttm_g", "pat_ttm_g", "rev_streak", "fcf", "ocf_pat", "cwip_pct",
+            "rev_yoy1", "eps_yoy", "eps_yoy1", "eps_qoq", "pat_pos", "eps_up", "grade", "opm_chg1", "opm_min4",
             "promoter", "fii", "dii", "mf", "retail", "inst", "promoter_1q", "promoter_1y", "fii_1q", "fii_1y", "dii_1y", "mf_1y",
             "inst_1q", "inst_1y", "retail_1y", "holders", "qe", "filed", "next_results", "shp_q", "bank", "fin", "fy", "roe_fy"]
     per = {}

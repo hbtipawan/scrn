@@ -121,7 +121,9 @@ CATS = ["Confluence", "Momentum", "Breakouts", "Volume", "Trend & pullbacks", "P
         "Relative strength", "Weakness"]
 
 # Broad "state" lists left out of the confluence count.
-NOT_COUNTED = {"trend_template", "adx_strong", "leaders", "high_octane", "strong_3612"}
+NOT_COUNTED = {"trend_template", "adx_strong", "leaders", "high_octane", "strong_3612",
+               # added in update 20; left out so the confluence count stays exactly as it was tested
+               "tight_d", "tight_m", "short_base", "inside_w", "hvq"}
 
 
 def run_all(x):
@@ -291,6 +293,37 @@ def run_all(x):
     add("bb_break", "Bollinger band breakout", "Breakouts",
         "Closed above the upper Bollinger band (20, 2) on 1.5× average volume.",
         (c > bb_up.iloc[-1]) & (vr >= 1.5), "Vol ×", vr, "x")
+    # tight closes on three time frames (update 20); the weekly one is "3 weeks tight" above
+    c10 = C.iloc[-10:]
+    sp10 = (c10.max() / c10.min() - 1) * 100
+    add("tight_d", "Tight closes, 10 days", "Breakouts",
+        "The last 10 daily closes within 5% of each other, above the 50 DMA and within 15% of the 52-week high — a "
+        "quiet, tight area under a high.",
+        (sp10 <= 5) & (c10.notna().sum() == 10) & (c > s50l) & (pct_from_hi >= -15), "10-day spread %", sp10, "pct", "metric_asc")
+    Mo = C.copy()
+    Mo.index = pd.to_datetime(Mo.index)
+    mo = Mo.resample("ME").last().iloc[-3:]
+    sp3m = (mo.max() / mo.min() - 1) * 100
+    add("tight_m", "Tight monthly closes", "Breakouts",
+        "The last three monthly closes (this month so far included) within 5% of each other, in a Stage-2 uptrend — "
+        "a big stock resting on the monthly chart.",
+        (sp3m <= 5) & (mo.notna().sum() == 3) & uptrend & (bars >= 200), "3-month spread %", sp3m, "pct", "metric_asc")
+    sb_hi, sb_lo = H.iloc[-36:-1].max(), L.iloc[-36:-1].min()
+    sb_dep = (sb_hi / sb_lo - 1) * 100
+    add("short_base", "Short base breakout (7 weeks)", "Breakouts",
+        "Closed above the highest high of the previous 35 sessions (about 7 weeks) after a base no deeper than 20%, "
+        "on 1.4× average volume, above the 200 DMA.",
+        (c > sb_hi) & (sb_dep <= 20) & (vr >= 1.4) & (c > s200l) & (bars >= 60), "Base depth %", sb_dep, "pct")
+    Hw, Lw = H.copy(), L.copy()
+    Hw.index = Lw.index = pd.to_datetime(H.index)
+    wh, wl = Hw.resample("W-FRI").max(), Lw.resample("W-FRI").min()
+    # only finished weeks: before Friday the current week is still forming, so compare the two weeks before it
+    k = 1 if pd.Timestamp(C.index[-1]).weekday() >= 4 else 2
+    iw = (wh.iloc[-k] <= wh.iloc[-k - 1]) & (wl.iloc[-k] >= wl.iloc[-k - 1]) & ((wh.iloc[-k] < wh.iloc[-k - 1]) | (wl.iloc[-k] > wl.iloc[-k - 1]))
+    add("inside_w", "Inside week in uptrend", "Price action",
+        "The latest finished week traded inside the week before it (lower high, higher low), in a Stage-2 uptrend — "
+        "a weekly coil. Buy the break of the mother week's high.",
+        iw & (c <= wh.iloc[-k - 1]) & uptrend, "Week range %", (wh.iloc[-k] / wl.iloc[-k] - 1) * 100, "pct", "metric_asc")
     cross150 = crossed_up(C, s150, 5)
     s150_flat_up = s150l >= s150.iloc[-21] * 0.995
     vr5 = (V.iloc[-5:] / x["avgv50"].iloc[-5:]).max()
@@ -326,6 +359,9 @@ def run_all(x):
     add("vol_high", "Highest volume in a year (up day)", "Volume",
         "Today's volume is the largest of the past 252 sessions and the stock closed up.",
         (v >= V.iloc[-252:].max()) & (d1 > 0) & (bars >= 200), "Vol ×", vr, "x", "metric")
+    add("hvq", "Highest volume in a quarter (up day)", "Volume",
+        "Today's volume is the largest of the past 63 sessions (about a quarter) and the stock closed up.",
+        (v >= V.iloc[-63:].max()) & (d1 > 0) & (bars >= 63), "Vol ×", vr, "x", "metric")
     v5 = V.iloc[-5:].mean() / x["avgv50"].iloc[-1]
     add("dryup", "Volume dry-up near highs", "Volume",
         "5-day average volume ≤ 50% of the 50-day average while the stock holds within 10% of its high above the 50 DMA — supply exhausted.",
